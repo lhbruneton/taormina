@@ -114,6 +114,31 @@
           }
         }
       }
+    },
+    "ui-card": {
+      "projectType": "library",
+      "root": "libs/ui-card",
+      "sourceRoot": "libs/ui-card/src",
+      "prefix": "taormina",
+      "architect": {
+        "lint": {
+          "builder": "@nrwl/linter:eslint",
+          "options": {
+            "lintFilePatterns": [
+              "libs/ui-card/src/**/*.ts",
+              "libs/ui-card/src/**/*.html"
+            ]
+          }
+        },
+        "test": {
+          "builder": "@nrwl/jest:jest",
+          "outputs": ["coverage/libs/ui-card"],
+          "options": {
+            "jestConfig": "libs/ui-card/jest.config.js",
+            "passWithNoTests": true
+          }
+        }
+      }
     }
   },
   "cli": {
