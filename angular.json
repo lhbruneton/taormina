@@ -1,0 +1,146 @@
+{
+  "version": 1,
+  "projects": {
+    "taormina-duel": {
+      "projectType": "application",
+      "root": "apps/taormina-duel",
+      "sourceRoot": "apps/taormina-duel/src",
+      "prefix": "taormina",
+      "architect": {
+        "build": {
+          "builder": "@angular-devkit/build-angular:browser",
+          "options": {
+            "outputPath": "dist/apps/taormina-duel",
+            "index": "apps/taormina-duel/src/index.html",
+            "main": "apps/taormina-duel/src/main.ts",
+            "polyfills": "apps/taormina-duel/src/polyfills.ts",
+            "tsConfig": "apps/taormina-duel/tsconfig.app.json",
+            "aot": true,
+            "assets": [
+              "apps/taormina-duel/src/favicon.ico",
+              "apps/taormina-duel/src/assets"
+            ],
+            "styles": ["apps/taormina-duel/src/styles.css"],
+            "scripts": []
+          },
+          "configurations": {
+            "production": {
+              "fileReplacements": [
+                {
+                  "replace": "apps/taormina-duel/src/environments/environment.ts",
+                  "with": "apps/taormina-duel/src/environments/environment.prod.ts"
+                }
+              ],
+              "optimization": true,
+              "outputHashing": "all",
+              "sourceMap": false,
+              "namedChunks": false,
+              "extractLicenses": true,
+              "vendorChunk": false,
+              "buildOptimizer": true,
+              "budgets": [
+                {
+                  "type": "initial",
+                  "maximumWarning": "2mb",
+                  "maximumError": "5mb"
+                },
+                {
+                  "type": "anyComponentStyle",
+                  "maximumWarning": "6kb",
+                  "maximumError": "10kb"
+                }
+              ]
+            }
+          }
+        },
+        "serve": {
+          "builder": "@angular-devkit/build-angular:dev-server",
+          "options": {
+            "browserTarget": "taormina-duel:build"
+          },
+          "configurations": {
+            "production": {
+              "browserTarget": "taormina-duel:build:production"
+            }
+          }
+        },
+        "extract-i18n": {
+          "builder": "@angular-devkit/build-angular:extract-i18n",
+          "options": {
+            "browserTarget": "taormina-duel:build"
+          }
+        },
+        "lint": {
+          "builder": "@nrwl/linter:eslint",
+          "options": {
+            "lintFilePatterns": [
+              "apps/taormina-duel/src/**/*.ts",
+              "apps/taormina-duel/src/**/*.html"
+            ]
+          }
+        },
+        "test": {
+          "builder": "@nrwl/jest:jest",
+          "outputs": ["coverage/apps/taormina-duel"],
+          "options": {
+            "jestConfig": "apps/taormina-duel/jest.config.js",
+            "passWithNoTests": true
+          }
+        }
+      }
+    },
+    "taormina-duel-e2e": {
+      "root": "apps/taormina-duel-e2e",
+      "sourceRoot": "apps/taormina-duel-e2e/src",
+      "projectType": "application",
+      "architect": {
+        "e2e": {
+          "builder": "@nrwl/cypress:cypress",
+          "options": {
+            "cypressConfig": "apps/taormina-duel-e2e/cypress.json",
+            "tsConfig": "apps/taormina-duel-e2e/tsconfig.e2e.json",
+            "devServerTarget": "taormina-duel:serve"
+          },
+          "configurations": {
+            "production": {
+              "devServerTarget": "taormina-duel:serve:production"
+            }
+          }
+        },
+        "lint": {
+          "builder": "@nrwl/linter:eslint",
+          "options": {
+            "lintFilePatterns": ["apps/taormina-duel-e2e/**/*.{js,ts}"]
+          }
+        }
+      }
+    }
+  },
+  "cli": {
+    "defaultCollection": "@nrwl/angular"
+  },
+  "schematics": {
+    "@nrwl/angular": {
+      "application": {
+        "linter": "eslint"
+      },
+      "library": {
+        "linter": "eslint"
+      },
+      "storybook-configuration": {
+        "linter": "eslint"
+      }
+    },
+    "@nrwl/angular:application": {
+      "unitTestRunner": "jest",
+      "e2eTestRunner": "cypress"
+    },
+    "@nrwl/angular:library": {
+      "unitTestRunner": "jest"
+    },
+    "@nrwl/angular:component": {
+      "style": "css"
+    }
+  },
+  "defaultProject": "taormina-duel"
+}
