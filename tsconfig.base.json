@@ -15,7 +15,8 @@
     "skipDefaultLibCheck": true,
     "baseUrl": ".",
     "paths": {
-      "@taormina/ui-card": ["libs/ui-card/src/index.ts"]
+      "@taormina/ui-card": ["libs/ui-card/src/index.ts"],
+      "@taormina/data-access-game": ["libs/data-access-game/src/index.ts"]
     }
   },
   "exclude": ["node_modules", "tmp"]

@@ -139,6 +139,31 @@
           }
         }
       }
+    },
+    "data-access-game": {
+      "projectType": "library",
+      "root": "libs/data-access-game",
+      "sourceRoot": "libs/data-access-game/src",
+      "prefix": "taormina",
+      "architect": {
+        "lint": {
+          "builder": "@nrwl/linter:eslint",
+          "options": {
+            "lintFilePatterns": [
+              "libs/data-access-game/src/**/*.ts",
+              "libs/data-access-game/src/**/*.html"
+            ]
+          }
+        },
+        "test": {
+          "builder": "@nrwl/jest:jest",
+          "outputs": ["coverage/libs/data-access-game"],
+          "options": {
+            "jestConfig": "libs/data-access-game/jest.config.js",
+            "passWithNoTests": true
+          }
+        }
+      }
     }
   },
   "cli": {
