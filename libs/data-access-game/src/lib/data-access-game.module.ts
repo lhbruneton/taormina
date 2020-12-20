@@ -5,6 +5,9 @@ import { EffectsModule } from '@ngrx/effects';
 import * as fromDomains from './+state/domains/domains.reducer';
 import { DomainsEffects } from './+state/domains/domains.effects';
 import { DomainsFacade } from './+state/domains/domains.facade';
+import * as fromHands from './+state/hands/hands.reducer';
+import { HandsEffects } from './+state/hands/hands.effects';
+import { HandsFacade } from './+state/hands/hands.facade';
 
 @NgModule({
   imports: [
@@ -14,7 +17,9 @@ import { DomainsFacade } from './+state/domains/domains.facade';
       fromDomains.reducer
     ),
     EffectsModule.forFeature([DomainsEffects]),
+    StoreModule.forFeature(fromHands.HANDS_FEATURE_KEY, fromHands.reducer),
+    EffectsModule.forFeature([HandsEffects]),
   ],
-  providers: [DomainsFacade],
+  providers: [DomainsFacade, HandsFacade],
 })
 export class DataAccessGameModule {}
