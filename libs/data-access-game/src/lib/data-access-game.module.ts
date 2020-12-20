@@ -23,6 +23,9 @@ import { StockPilesFacade } from './+state/stock-piles/stock-piles.facade';
 import * as fromLandsPile from './+state/lands-pile/lands-pile.reducer';
 import { LandsPileEffects } from './+state/lands-pile/lands-pile.effects';
 import { LandsPileFacade } from './+state/lands-pile/lands-pile.facade';
+import * as fromFaceUpPiles from './+state/face-up-piles/face-up-piles.reducer';
+import { FaceUpPilesEffects } from './+state/face-up-piles/face-up-piles.effects';
+import { FaceUpPilesFacade } from './+state/face-up-piles/face-up-piles.facade';
 
 @NgModule({
   imports: [
@@ -56,6 +59,11 @@ import { LandsPileFacade } from './+state/lands-pile/lands-pile.facade';
       fromLandsPile.reducer
     ),
     EffectsModule.forFeature([LandsPileEffects]),
+    StoreModule.forFeature(
+      fromFaceUpPiles.FACEUPPILES_FEATURE_KEY,
+      fromFaceUpPiles.reducer
+    ),
+    EffectsModule.forFeature([FaceUpPilesEffects]),
   ],
   providers: [
     DomainsFacade,
@@ -65,6 +73,7 @@ import { LandsPileFacade } from './+state/lands-pile/lands-pile.facade';
     EventsPileFacade,
     StockPilesFacade,
     LandsPileFacade,
+    FaceUpPilesFacade,
   ],
 })
 export class DataAccessGameModule {}
