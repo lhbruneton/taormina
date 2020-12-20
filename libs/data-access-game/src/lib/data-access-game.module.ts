@@ -11,6 +11,9 @@ import { HandsFacade } from './+state/hands/hands.facade';
 import * as fromDice from './+state/dice/dice.reducer';
 import { DiceEffects } from './+state/dice/dice.effects';
 import { DiceFacade } from './+state/dice/dice.facade';
+import * as fromDiscardPile from './+state/discard-pile/discard-pile.reducer';
+import { DiscardPileEffects } from './+state/discard-pile/discard-pile.effects';
+import { DiscardPileFacade } from './+state/discard-pile/discard-pile.facade';
 
 @NgModule({
   imports: [
@@ -24,7 +27,12 @@ import { DiceFacade } from './+state/dice/dice.facade';
     EffectsModule.forFeature([HandsEffects]),
     StoreModule.forFeature(fromDice.DICE_FEATURE_KEY, fromDice.reducer),
     EffectsModule.forFeature([DiceEffects]),
+    StoreModule.forFeature(
+      fromDiscardPile.DISCARDPILE_FEATURE_KEY,
+      fromDiscardPile.reducer
+    ),
+    EffectsModule.forFeature([DiscardPileEffects]),
   ],
-  providers: [DomainsFacade, HandsFacade, DiceFacade],
+  providers: [DomainsFacade, HandsFacade, DiceFacade, DiscardPileFacade],
 })
 export class DataAccessGameModule {}
