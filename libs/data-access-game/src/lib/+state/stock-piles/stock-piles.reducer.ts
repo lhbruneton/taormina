@@ -6,28 +6,30 @@ import { StockPilesEntity } from './stock-piles.models';
 
 export const STOCK_PILES_FEATURE_KEY = 'stockPiles';
 
-export interface State extends EntityState<StockPilesEntity> {
+export interface StockPilesState extends EntityState<StockPilesEntity> {
   selectedId?: string | number; // which StockPiles record has been selected
   loaded: boolean; // has the StockPiles list been loaded
   error?: string | null; // last known error (if any)
 }
 
 export interface StockPilesPartialState {
-  readonly [STOCK_PILES_FEATURE_KEY]: State;
+  readonly [STOCK_PILES_FEATURE_KEY]: StockPilesState;
 }
 
 export const stockPilesAdapter: EntityAdapter<StockPilesEntity> = createEntityAdapter<
   StockPilesEntity
 >();
 
-export const initialState: State = stockPilesAdapter.getInitialState({
-  // set initial required properties
-  loaded: false,
-});
+export const initialStockPilesState: StockPilesState = stockPilesAdapter.getInitialState(
+  {
+    // set initial required properties
+    loaded: false,
+  }
+);
 
-const stockPilesReducer = createReducer(
-  initialState,
-  on(StockPilesActions.init, (state) => ({
+export const stockPilesReducer = createReducer(
+  initialStockPilesState,
+  on(StockPilesActions.initStockPiles, (state) => ({
     ...state,
     loaded: false,
     error: null,
@@ -40,7 +42,3 @@ const stockPilesReducer = createReducer(
     error,
   }))
 );
-
-export function reducer(state: State | undefined, action: Action) {
-  return stockPilesReducer(state, action);
-}

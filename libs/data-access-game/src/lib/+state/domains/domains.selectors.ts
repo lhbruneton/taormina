@@ -1,7 +1,7 @@
 import { createFeatureSelector, createSelector } from '@ngrx/store';
 import {
   DOMAINS_FEATURE_KEY,
-  State,
+  DomainsState,
   DomainsPartialState,
   domainsAdapter,
 } from './domains.reducer';
@@ -9,37 +9,38 @@ import {
 // Lookup the 'Domains' feature state managed by NgRx
 export const getDomainsState = createFeatureSelector<
   DomainsPartialState,
-  State
+  DomainsState
 >(DOMAINS_FEATURE_KEY);
 
 const { selectAll, selectEntities } = domainsAdapter.getSelectors();
 
 export const getDomainsLoaded = createSelector(
   getDomainsState,
-  (state: State) => state.loaded
+  (state: DomainsState) => state.loaded
 );
 
 export const getDomainsError = createSelector(
   getDomainsState,
-  (state: State) => state.error
+  (state: DomainsState) => state.error
 );
 
-export const getAllDomains = createSelector(getDomainsState, (state: State) =>
-  selectAll(state)
+export const getAllDomains = createSelector(
+  getDomainsState,
+  (state: DomainsState) => selectAll(state)
 );
 
 export const getDomainsEntities = createSelector(
   getDomainsState,
-  (state: State) => selectEntities(state)
+  (state: DomainsState) => selectEntities(state)
 );
 
-export const getSelectedId = createSelector(
+export const getDomainsSelectedId = createSelector(
   getDomainsState,
-  (state: State) => state.selectedId
+  (state: DomainsState) => state.selectedId
 );
 
-export const getSelected = createSelector(
+export const getDomainsSelected = createSelector(
   getDomainsEntities,
-  getSelectedId,
+  getDomainsSelectedId,
   (entities, selectedId) => selectedId && entities[selectedId]
 );

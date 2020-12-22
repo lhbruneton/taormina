@@ -9,7 +9,7 @@ import * as DiceActions from './dice.actions';
 export class DiceEffects {
   init$ = createEffect(() =>
     this.actions$.pipe(
-      ofType(DiceActions.init),
+      ofType(DiceActions.initDice),
       fetch({
         run: (action) => {
           // Your custom service 'load' logic goes here. For now just return a success action...

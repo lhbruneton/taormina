@@ -6,28 +6,30 @@ import { DomainsEntity } from './domains.models';
 
 export const DOMAINS_FEATURE_KEY = 'domains';
 
-export interface State extends EntityState<DomainsEntity> {
+export interface DomainsState extends EntityState<DomainsEntity> {
   selectedId?: string | number; // which Domains record has been selected
   loaded: boolean; // has the Domains list been loaded
   error?: string | null; // last known error (if any)
 }
 
 export interface DomainsPartialState {
-  readonly [DOMAINS_FEATURE_KEY]: State;
+  readonly [DOMAINS_FEATURE_KEY]: DomainsState;
 }
 
 export const domainsAdapter: EntityAdapter<DomainsEntity> = createEntityAdapter<
   DomainsEntity
 >();
 
-export const initialState: State = domainsAdapter.getInitialState({
-  // set initial required properties
-  loaded: false,
-});
+export const initialDomainsState: DomainsState = domainsAdapter.getInitialState(
+  {
+    // set initial required properties
+    loaded: false,
+  }
+);
 
-const domainsReducer = createReducer(
-  initialState,
-  on(DomainsActions.init, (state) => ({
+export const domainsReducer = createReducer(
+  initialDomainsState,
+  on(DomainsActions.initDomains, (state) => ({
     ...state,
     loaded: false,
     error: null,
@@ -40,7 +42,3 @@ const domainsReducer = createReducer(
     error,
   }))
 );
-
-export function reducer(state: State | undefined, action: Action) {
-  return domainsReducer(state, action);
-}

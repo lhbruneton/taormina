@@ -17,7 +17,7 @@ export class FaceUpPilesFacade {
     select(FaceUpPilesSelectors.getAllFaceUpPiles)
   );
   selectedFaceUpPiles$ = this.store.pipe(
-    select(FaceUpPilesSelectors.getSelected)
+    select(FaceUpPilesSelectors.getFaceUpSelected)
   );
 
   constructor(private store: Store) {}
@@ -27,6 +27,6 @@ export class FaceUpPilesFacade {
    * or more tasks in your Effects.
    */
   init() {
-    this.store.dispatch(FaceUpPilesActions.init());
+    this.store.dispatch(FaceUpPilesActions.initFaceUp());
   }
 }

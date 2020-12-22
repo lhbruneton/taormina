@@ -6,28 +6,30 @@ import { LandsPileEntity } from './lands-pile.models';
 
 export const LANDS_PILE_FEATURE_KEY = 'landsPile';
 
-export interface State extends EntityState<LandsPileEntity> {
+export interface LandsPileState extends EntityState<LandsPileEntity> {
   selectedId?: string | number; // which LandsPile record has been selected
   loaded: boolean; // has the LandsPile list been loaded
   error?: string | null; // last known error (if any)
 }
 
 export interface LandsPilePartialState {
-  readonly [LANDS_PILE_FEATURE_KEY]: State;
+  readonly [LANDS_PILE_FEATURE_KEY]: LandsPileState;
 }
 
 export const landsPileAdapter: EntityAdapter<LandsPileEntity> = createEntityAdapter<
   LandsPileEntity
 >();
 
-export const initialState: State = landsPileAdapter.getInitialState({
-  // set initial required properties
-  loaded: false,
-});
+export const initialLandsPileState: LandsPileState = landsPileAdapter.getInitialState(
+  {
+    // set initial required properties
+    loaded: false,
+  }
+);
 
-const landsPileReducer = createReducer(
-  initialState,
-  on(LandsPileActions.init, (state) => ({
+export const landsPileReducer = createReducer(
+  initialLandsPileState,
+  on(LandsPileActions.initLandsPile, (state) => ({
     ...state,
     loaded: false,
     error: null,
@@ -40,7 +42,3 @@ const landsPileReducer = createReducer(
     error,
   }))
 );
-
-export function reducer(state: State | undefined, action: Action) {
-  return landsPileReducer(state, action);
-}

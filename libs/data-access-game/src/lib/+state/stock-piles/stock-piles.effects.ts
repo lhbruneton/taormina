@@ -9,7 +9,7 @@ import * as StockPilesActions from './stock-piles.actions';
 export class StockPilesEffects {
   init$ = createEffect(() =>
     this.actions$.pipe(
-      ofType(StockPilesActions.init),
+      ofType(StockPilesActions.initStockPiles),
       fetch({
         run: (action) => {
           // Your custom service 'load' logic goes here. For now just return a success action...

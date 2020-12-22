@@ -9,7 +9,7 @@ import * as HandsActions from './hands.actions';
 export class HandsEffects {
   init$ = createEffect(() =>
     this.actions$.pipe(
-      ofType(HandsActions.init),
+      ofType(HandsActions.initHands),
       fetch({
         run: (action) => {
           // Your custom service 'load' logic goes here. For now just return a success action...

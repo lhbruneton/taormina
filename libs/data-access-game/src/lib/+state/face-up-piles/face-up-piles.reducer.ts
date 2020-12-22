@@ -6,28 +6,30 @@ import { FaceUpPilesEntity } from './face-up-piles.models';
 
 export const FACE_UP_PILES_FEATURE_KEY = 'faceUpPiles';
 
-export interface State extends EntityState<FaceUpPilesEntity> {
+export interface FaceUpState extends EntityState<FaceUpPilesEntity> {
   selectedId?: string | number; // which FaceUpPiles record has been selected
   loaded: boolean; // has the FaceUpPiles list been loaded
   error?: string | null; // last known error (if any)
 }
 
 export interface FaceUpPilesPartialState {
-  readonly [FACE_UP_PILES_FEATURE_KEY]: State;
+  readonly [FACE_UP_PILES_FEATURE_KEY]: FaceUpState;
 }
 
 export const faceUpPilesAdapter: EntityAdapter<FaceUpPilesEntity> = createEntityAdapter<
   FaceUpPilesEntity
 >();
 
-export const initialState: State = faceUpPilesAdapter.getInitialState({
-  // set initial required properties
-  loaded: false,
-});
+export const initialFaceUpState: FaceUpState = faceUpPilesAdapter.getInitialState(
+  {
+    // set initial required properties
+    loaded: false,
+  }
+);
 
-const faceUpPilesReducer = createReducer(
-  initialState,
-  on(FaceUpPilesActions.init, (state) => ({
+export const faceUpPilesReducer = createReducer(
+  initialFaceUpState,
+  on(FaceUpPilesActions.initFaceUp, (state) => ({
     ...state,
     loaded: false,
     error: null,
@@ -40,7 +42,3 @@ const faceUpPilesReducer = createReducer(
     error,
   }))
 );
-
-export function reducer(state: State | undefined, action: Action) {
-  return faceUpPilesReducer(state, action);
-}

@@ -1,7 +1,7 @@
 import { createFeatureSelector, createSelector } from '@ngrx/store';
 import {
   DISCARD_PILE_FEATURE_KEY,
-  State,
+  DiscardPileState,
   DiscardPilePartialState,
   discardPileAdapter,
 } from './discard-pile.reducer';
@@ -9,38 +9,38 @@ import {
 // Lookup the 'DiscardPile' feature state managed by NgRx
 export const getDiscardPileState = createFeatureSelector<
   DiscardPilePartialState,
-  State
->(DISCARDPILE_FEATURE_KEY);
+  DiscardPileState
+>(DISCARD_PILE_FEATURE_KEY);
 
 const { selectAll, selectEntities } = discardPileAdapter.getSelectors();
 
 export const getDiscardPileLoaded = createSelector(
   getDiscardPileState,
-  (state: State) => state.loaded
+  (state: DiscardPileState) => state.loaded
 );
 
 export const getDiscardPileError = createSelector(
   getDiscardPileState,
-  (state: State) => state.error
+  (state: DiscardPileState) => state.error
 );
 
 export const getAllDiscardPile = createSelector(
   getDiscardPileState,
-  (state: State) => selectAll(state)
+  (state: DiscardPileState) => selectAll(state)
 );
 
 export const getDiscardPileEntities = createSelector(
   getDiscardPileState,
-  (state: State) => selectEntities(state)
+  (state: DiscardPileState) => selectEntities(state)
 );
 
-export const getSelectedId = createSelector(
+export const getDiscardPileSelectedId = createSelector(
   getDiscardPileState,
-  (state: State) => state.selectedId
+  (state: DiscardPileState) => state.selectedId
 );
 
-export const getSelected = createSelector(
+export const getDiscarPileSelected = createSelector(
   getDiscardPileEntities,
-  getSelectedId,
+  getDiscardPileSelectedId,
   (entities, selectedId) => selectedId && entities[selectedId]
 );

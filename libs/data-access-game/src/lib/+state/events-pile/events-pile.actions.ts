@@ -1,7 +1,7 @@
 import { createAction, props } from '@ngrx/store';
 import { EventsPileEntity } from './events-pile.models';
 
-export const init = createAction('[EventsPile Page] Init');
+export const initEventsPile = createAction('[EventsPile Page] Init');
 
 export const loadEventsPileSuccess = createAction(
   '[EventsPile/API] Load EventsPile Success',

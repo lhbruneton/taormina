@@ -9,7 +9,7 @@ import * as FaceUpPilesActions from './face-up-piles.actions';
 export class FaceUpPilesEffects {
   init$ = createEffect(() =>
     this.actions$.pipe(
-      ofType(FaceUpPilesActions.init),
+      ofType(FaceUpPilesActions.initFaceUp),
       fetch({
         run: (action) => {
           // Your custom service 'load' logic goes here. For now just return a success action...

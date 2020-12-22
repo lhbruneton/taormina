@@ -14,7 +14,7 @@ export class HandsFacade {
    */
   loaded$ = this.store.pipe(select(HandsSelectors.getHandsLoaded));
   allHands$ = this.store.pipe(select(HandsSelectors.getAllHands));
-  selectedHands$ = this.store.pipe(select(HandsSelectors.getSelected));
+  selectedHands$ = this.store.pipe(select(HandsSelectors.getHandsSelected));
 
   constructor(private store: Store) {}
 
@@ -23,6 +23,6 @@ export class HandsFacade {
    * or more tasks in your Effects.
    */
   init() {
-    this.store.dispatch(HandsActions.init());
+    this.store.dispatch(HandsActions.initHands());
   }
 }

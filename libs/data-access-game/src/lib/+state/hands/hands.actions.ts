@@ -1,7 +1,7 @@
 import { createAction, props } from '@ngrx/store';
 import { HandsEntity } from './hands.models';
 
-export const init = createAction('[Hands Page] Init');
+export const initHands = createAction('[Hands Page] Init');
 
 export const loadHandsSuccess = createAction(
   '[Hands/API] Load Hands Success',

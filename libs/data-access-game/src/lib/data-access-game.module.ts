@@ -32,36 +32,36 @@ import { FaceUpPilesFacade } from './+state/face-up-piles/face-up-piles.facade';
     CommonModule,
     StoreModule.forFeature(
       fromDomains.DOMAINS_FEATURE_KEY,
-      fromDomains.reducer
+      fromDomains.domainsReducer
     ),
     EffectsModule.forFeature([DomainsEffects]),
-    StoreModule.forFeature(fromHands.HANDS_FEATURE_KEY, fromHands.reducer),
+    StoreModule.forFeature(fromHands.HANDS_FEATURE_KEY, fromHands.handsReducer),
     EffectsModule.forFeature([HandsEffects]),
-    StoreModule.forFeature(fromDice.DICE_FEATURE_KEY, fromDice.reducer),
+    StoreModule.forFeature(fromDice.DICE_FEATURE_KEY, fromDice.diceReducer),
     EffectsModule.forFeature([DiceEffects]),
     StoreModule.forFeature(
-      fromDiscardPile.DISCARDPILE_FEATURE_KEY,
-      fromDiscardPile.reducer
+      fromDiscardPile.DISCARD_PILE_FEATURE_KEY,
+      fromDiscardPile.discardPileReducer
     ),
     EffectsModule.forFeature([DiscardPileEffects]),
     StoreModule.forFeature(
-      fromEventsPile.EVENTSPILE_FEATURE_KEY,
-      fromEventsPile.reducer
+      fromEventsPile.EVENTS_PILE_FEATURE_KEY,
+      fromEventsPile.eventsPileReducer
     ),
     EffectsModule.forFeature([EventsPileEffects]),
     StoreModule.forFeature(
-      fromStockPiles.STOCKPILES_FEATURE_KEY,
-      fromStockPiles.reducer
+      fromStockPiles.STOCK_PILES_FEATURE_KEY,
+      fromStockPiles.stockPilesReducer
     ),
     EffectsModule.forFeature([StockPilesEffects]),
     StoreModule.forFeature(
-      fromLandsPile.LANDSPILE_FEATURE_KEY,
-      fromLandsPile.reducer
+      fromLandsPile.LANDS_PILE_FEATURE_KEY,
+      fromLandsPile.landsPileReducer
     ),
     EffectsModule.forFeature([LandsPileEffects]),
     StoreModule.forFeature(
-      fromFaceUpPiles.FACEUPPILES_FEATURE_KEY,
-      fromFaceUpPiles.reducer
+      fromFaceUpPiles.FACE_UP_PILES_FEATURE_KEY,
+      fromFaceUpPiles.faceUpPilesReducer
     ),
     EffectsModule.forFeature([FaceUpPilesEffects]),
   ],

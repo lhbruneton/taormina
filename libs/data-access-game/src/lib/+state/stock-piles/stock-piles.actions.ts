@@ -1,7 +1,7 @@
 import { createAction, props } from '@ngrx/store';
 import { StockPilesEntity } from './stock-piles.models';
 
-export const init = createAction('[StockPiles Page] Init');
+export const initStockPiles = createAction('[StockPiles Page] Init');
 
 export const loadStockPilesSuccess = createAction(
   '[StockPiles/API] Load StockPiles Success',

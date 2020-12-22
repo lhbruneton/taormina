@@ -9,7 +9,7 @@ import * as LandsPileActions from './lands-pile.actions';
 export class LandsPileEffects {
   init$ = createEffect(() =>
     this.actions$.pipe(
-      ofType(LandsPileActions.init),
+      ofType(LandsPileActions.initLandsPile),
       fetch({
         run: (action) => {
           // Your custom service 'load' logic goes here. For now just return a success action...

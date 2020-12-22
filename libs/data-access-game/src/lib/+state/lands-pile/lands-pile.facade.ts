@@ -14,7 +14,9 @@ export class LandsPileFacade {
    */
   loaded$ = this.store.pipe(select(LandsPileSelectors.getLandsPileLoaded));
   allLandsPile$ = this.store.pipe(select(LandsPileSelectors.getAllLandsPile));
-  selectedLandsPile$ = this.store.pipe(select(LandsPileSelectors.getSelected));
+  selectedLandsPile$ = this.store.pipe(
+    select(LandsPileSelectors.getLandsPileSelected)
+  );
 
   constructor(private store: Store) {}
 
@@ -23,6 +25,6 @@ export class LandsPileFacade {
    * or more tasks in your Effects.
    */
   init() {
-    this.store.dispatch(LandsPileActions.init());
+    this.store.dispatch(LandsPileActions.initLandsPile());
   }
 }

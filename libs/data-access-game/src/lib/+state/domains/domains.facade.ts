@@ -14,7 +14,9 @@ export class DomainsFacade {
    */
   loaded$ = this.store.pipe(select(DomainsSelectors.getDomainsLoaded));
   allDomains$ = this.store.pipe(select(DomainsSelectors.getAllDomains));
-  selectedDomains$ = this.store.pipe(select(DomainsSelectors.getSelected));
+  selectedDomains$ = this.store.pipe(
+    select(DomainsSelectors.getDomainsSelected)
+  );
 
   constructor(private store: Store) {}
 
@@ -23,6 +25,6 @@ export class DomainsFacade {
    * or more tasks in your Effects.
    */
   init() {
-    this.store.dispatch(DomainsActions.init());
+    this.store.dispatch(DomainsActions.initDomains());
   }
 }

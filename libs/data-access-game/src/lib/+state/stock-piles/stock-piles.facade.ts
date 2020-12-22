@@ -17,7 +17,7 @@ export class StockPilesFacade {
     select(StockPilesSelectors.getAllStockPiles)
   );
   selectedStockPiles$ = this.store.pipe(
-    select(StockPilesSelectors.getSelected)
+    select(StockPilesSelectors.getStockPilesSelected)
   );
 
   constructor(private store: Store) {}
@@ -27,6 +27,6 @@ export class StockPilesFacade {
    * or more tasks in your Effects.
    */
   init() {
-    this.store.dispatch(StockPilesActions.init());
+    this.store.dispatch(StockPilesActions.initStockPiles());
   }
 }

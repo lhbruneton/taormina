@@ -1,7 +1,7 @@
 import { createFeatureSelector, createSelector } from '@ngrx/store';
 import {
   FACE_UP_PILES_FEATURE_KEY,
-  State,
+  FaceUpState,
   FaceUpPilesPartialState,
   faceUpPilesAdapter,
 } from './face-up-piles.reducer';
@@ -9,38 +9,38 @@ import {
 // Lookup the 'FaceUpPiles' feature state managed by NgRx
 export const getFaceUpPilesState = createFeatureSelector<
   FaceUpPilesPartialState,
-  State
->(FACEUPPILES_FEATURE_KEY);
+  FaceUpState
+>(FACE_UP_PILES_FEATURE_KEY);
 
 const { selectAll, selectEntities } = faceUpPilesAdapter.getSelectors();
 
 export const getFaceUpPilesLoaded = createSelector(
   getFaceUpPilesState,
-  (state: State) => state.loaded
+  (state: FaceUpState) => state.loaded
 );
 
 export const getFaceUpPilesError = createSelector(
   getFaceUpPilesState,
-  (state: State) => state.error
+  (state: FaceUpState) => state.error
 );
 
 export const getAllFaceUpPiles = createSelector(
   getFaceUpPilesState,
-  (state: State) => selectAll(state)
+  (state: FaceUpState) => selectAll(state)
 );
 
 export const getFaceUpPilesEntities = createSelector(
   getFaceUpPilesState,
-  (state: State) => selectEntities(state)
+  (state: FaceUpState) => selectEntities(state)
 );
 
-export const getSelectedId = createSelector(
+export const getFaceUpSelectedId = createSelector(
   getFaceUpPilesState,
-  (state: State) => state.selectedId
+  (state: FaceUpState) => state.selectedId
 );
 
-export const getSelected = createSelector(
+export const getFaceUpSelected = createSelector(
   getFaceUpPilesEntities,
-  getSelectedId,
+  getFaceUpSelectedId,
   (entities, selectedId) => selectedId && entities[selectedId]
 );

@@ -9,7 +9,7 @@ import * as DiscardPileActions from './discard-pile.actions';
 export class DiscardPileEffects {
   init$ = createEffect(() =>
     this.actions$.pipe(
-      ofType(DiscardPileActions.init),
+      ofType(DiscardPileActions.initDiscardPile),
       fetch({
         run: (action) => {
           // Your custom service 'load' logic goes here. For now just return a success action...

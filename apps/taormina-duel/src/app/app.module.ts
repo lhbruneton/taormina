@@ -1,5 +1,6 @@
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
+import { DataAccessGameModule } from '@taormina/data-access-game';
 
 import { AppComponent } from './app.component';
 import { StoreModule } from '@ngrx/store';
@@ -23,6 +24,7 @@ import { environment } from '../environments/environment';
     ),
     EffectsModule.forRoot([]),
     !environment.production ? StoreDevtoolsModule.instrument() : [],
+    DataAccessGameModule,
   ],
   providers: [],
   bootstrap: [AppComponent],

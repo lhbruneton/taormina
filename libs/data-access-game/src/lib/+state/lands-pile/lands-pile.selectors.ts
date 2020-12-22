@@ -1,7 +1,7 @@
 import { createFeatureSelector, createSelector } from '@ngrx/store';
 import {
   LANDS_PILE_FEATURE_KEY,
-  State,
+  LandsPileState,
   LandsPilePartialState,
   landsPileAdapter,
 } from './lands-pile.reducer';
@@ -9,38 +9,38 @@ import {
 // Lookup the 'LandsPile' feature state managed by NgRx
 export const getLandsPileState = createFeatureSelector<
   LandsPilePartialState,
-  State
->(LANDSPILE_FEATURE_KEY);
+  LandsPileState
+>(LANDS_PILE_FEATURE_KEY);
 
 const { selectAll, selectEntities } = landsPileAdapter.getSelectors();
 
 export const getLandsPileLoaded = createSelector(
   getLandsPileState,
-  (state: State) => state.loaded
+  (state: LandsPileState) => state.loaded
 );
 
 export const getLandsPileError = createSelector(
   getLandsPileState,
-  (state: State) => state.error
+  (state: LandsPileState) => state.error
 );
 
 export const getAllLandsPile = createSelector(
   getLandsPileState,
-  (state: State) => selectAll(state)
+  (state: LandsPileState) => selectAll(state)
 );
 
 export const getLandsPileEntities = createSelector(
   getLandsPileState,
-  (state: State) => selectEntities(state)
+  (state: LandsPileState) => selectEntities(state)
 );
 
-export const getSelectedId = createSelector(
+export const getLandsPileSelectedId = createSelector(
   getLandsPileState,
-  (state: State) => state.selectedId
+  (state: LandsPileState) => state.selectedId
 );
 
-export const getSelected = createSelector(
+export const getLandsPileSelected = createSelector(
   getLandsPileEntities,
-  getSelectedId,
+  getLandsPileSelectedId,
   (entities, selectedId) => selectedId && entities[selectedId]
 );

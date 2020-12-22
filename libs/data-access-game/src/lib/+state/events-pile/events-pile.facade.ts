@@ -17,7 +17,7 @@ export class EventsPileFacade {
     select(EventsPileSelectors.getAllEventsPile)
   );
   selectedEventsPile$ = this.store.pipe(
-    select(EventsPileSelectors.getSelected)
+    select(EventsPileSelectors.getEventsPileSelected)
   );
 
   constructor(private store: Store) {}
@@ -27,6 +27,6 @@ export class EventsPileFacade {
    * or more tasks in your Effects.
    */
   init() {
-    this.store.dispatch(EventsPileActions.init());
+    this.store.dispatch(EventsPileActions.initEventsPile());
   }
 }

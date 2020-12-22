@@ -14,7 +14,7 @@ export class DiceFacade {
    */
   loaded$ = this.store.pipe(select(DiceSelectors.getDiceLoaded));
   allDice$ = this.store.pipe(select(DiceSelectors.getAllDice));
-  selectedDice$ = this.store.pipe(select(DiceSelectors.getSelected));
+  selectedDice$ = this.store.pipe(select(DiceSelectors.getDiceSelected));
 
   constructor(private store: Store) {}
 
@@ -23,6 +23,6 @@ export class DiceFacade {
    * or more tasks in your Effects.
    */
   init() {
-    this.store.dispatch(DiceActions.init());
+    this.store.dispatch(DiceActions.initDice());
   }
 }

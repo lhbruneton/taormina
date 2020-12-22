@@ -1,7 +1,7 @@
 import { createFeatureSelector, createSelector } from '@ngrx/store';
 import {
   EVENTS_PILE_FEATURE_KEY,
-  State,
+  EventsPileState,
   EventsPilePartialState,
   eventsPileAdapter,
 } from './events-pile.reducer';
@@ -9,38 +9,38 @@ import {
 // Lookup the 'EventsPile' feature state managed by NgRx
 export const getEventsPileState = createFeatureSelector<
   EventsPilePartialState,
-  State
->(EVENTSPILE_FEATURE_KEY);
+  EventsPileState
+>(EVENTS_PILE_FEATURE_KEY);
 
 const { selectAll, selectEntities } = eventsPileAdapter.getSelectors();
 
 export const getEventsPileLoaded = createSelector(
   getEventsPileState,
-  (state: State) => state.loaded
+  (state: EventsPileState) => state.loaded
 );
 
 export const getEventsPileError = createSelector(
   getEventsPileState,
-  (state: State) => state.error
+  (state: EventsPileState) => state.error
 );
 
 export const getAllEventsPile = createSelector(
   getEventsPileState,
-  (state: State) => selectAll(state)
+  (state: EventsPileState) => selectAll(state)
 );
 
 export const getEventsPileEntities = createSelector(
   getEventsPileState,
-  (state: State) => selectEntities(state)
+  (state: EventsPileState) => selectEntities(state)
 );
 
-export const getSelectedId = createSelector(
+export const getEventsPileSelectedId = createSelector(
   getEventsPileState,
-  (state: State) => state.selectedId
+  (state: EventsPileState) => state.selectedId
 );
 
-export const getSelected = createSelector(
+export const getEventsPileSelected = createSelector(
   getEventsPileEntities,
-  getSelectedId,
+  getEventsPileSelectedId,
   (entities, selectedId) => selectedId && entities[selectedId]
 );

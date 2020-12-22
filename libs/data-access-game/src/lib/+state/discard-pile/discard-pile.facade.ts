@@ -17,7 +17,7 @@ export class DiscardPileFacade {
     select(DiscardPileSelectors.getAllDiscardPile)
   );
   selectedDiscardPile$ = this.store.pipe(
-    select(DiscardPileSelectors.getSelected)
+    select(DiscardPileSelectors.getDiscarPileSelected)
   );
 
   constructor(private store: Store) {}
@@ -27,6 +27,6 @@ export class DiscardPileFacade {
    * or more tasks in your Effects.
    */
   init() {
-    this.store.dispatch(DiscardPileActions.init());
+    this.store.dispatch(DiscardPileActions.initDiscardPile());
   }
 }

@@ -9,7 +9,7 @@ import * as EventsPileActions from './events-pile.actions';
 export class EventsPileEffects {
   init$ = createEffect(() =>
     this.actions$.pipe(
-      ofType(EventsPileActions.init),
+      ofType(EventsPileActions.initEventsPile),
       fetch({
         run: (action) => {
           // Your custom service 'load' logic goes here. For now just return a success action...

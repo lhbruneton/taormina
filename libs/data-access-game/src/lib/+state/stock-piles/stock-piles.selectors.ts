@@ -1,7 +1,7 @@
 import { createFeatureSelector, createSelector } from '@ngrx/store';
 import {
   STOCK_PILES_FEATURE_KEY,
-  State,
+  StockPilesState,
   StockPilesPartialState,
   stockPilesAdapter,
 } from './stock-piles.reducer';
@@ -9,38 +9,38 @@ import {
 // Lookup the 'StockPiles' feature state managed by NgRx
 export const getStockPilesState = createFeatureSelector<
   StockPilesPartialState,
-  State
->(STOCKPILES_FEATURE_KEY);
+  StockPilesState
+>(STOCK_PILES_FEATURE_KEY);
 
 const { selectAll, selectEntities } = stockPilesAdapter.getSelectors();
 
 export const getStockPilesLoaded = createSelector(
   getStockPilesState,
-  (state: State) => state.loaded
+  (state: StockPilesState) => state.loaded
 );
 
 export const getStockPilesError = createSelector(
   getStockPilesState,
-  (state: State) => state.error
+  (state: StockPilesState) => state.error
 );
 
 export const getAllStockPiles = createSelector(
   getStockPilesState,
-  (state: State) => selectAll(state)
+  (state: StockPilesState) => selectAll(state)
 );
 
 export const getStockPilesEntities = createSelector(
   getStockPilesState,
-  (state: State) => selectEntities(state)
+  (state: StockPilesState) => selectEntities(state)
 );
 
-export const getSelectedId = createSelector(
+export const getStockPilesSelectedId = createSelector(
   getStockPilesState,
-  (state: State) => state.selectedId
+  (state: StockPilesState) => state.selectedId
 );
 
-export const getSelected = createSelector(
+export const getStockPilesSelected = createSelector(
   getStockPilesEntities,
-  getSelectedId,
+  getStockPilesSelectedId,
   (entities, selectedId) => selectedId && entities[selectedId]
 );

@@ -6,28 +6,30 @@ import { EventsPileEntity } from './events-pile.models';
 
 export const EVENTS_PILE_FEATURE_KEY = 'eventsPile';
 
-export interface State extends EntityState<EventsPileEntity> {
+export interface EventsPileState extends EntityState<EventsPileEntity> {
   selectedId?: string | number; // which EventsPile record has been selected
   loaded: boolean; // has the EventsPile list been loaded
   error?: string | null; // last known error (if any)
 }
 
 export interface EventsPilePartialState {
-  readonly [EVENTS_PILE_FEATURE_KEY]: State;
+  readonly [EVENTS_PILE_FEATURE_KEY]: EventsPileState;
 }
 
 export const eventsPileAdapter: EntityAdapter<EventsPileEntity> = createEntityAdapter<
   EventsPileEntity
 >();
 
-export const initialState: State = eventsPileAdapter.getInitialState({
-  // set initial required properties
-  loaded: false,
-});
+export const initialEventsPileState: EventsPileState = eventsPileAdapter.getInitialState(
+  {
+    // set initial required properties
+    loaded: false,
+  }
+);
 
-const eventsPileReducer = createReducer(
-  initialState,
-  on(EventsPileActions.init, (state) => ({
+export const eventsPileReducer = createReducer(
+  initialEventsPileState,
+  on(EventsPileActions.initEventsPile, (state) => ({
     ...state,
     loaded: false,
     error: null,
@@ -40,7 +42,3 @@ const eventsPileReducer = createReducer(
     error,
   }))
 );
-
-export function reducer(state: State | undefined, action: Action) {
-  return eventsPileReducer(state, action);
-}

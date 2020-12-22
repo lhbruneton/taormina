@@ -1,43 +1,45 @@
 import { createFeatureSelector, createSelector } from '@ngrx/store';
 import {
   HANDS_FEATURE_KEY,
-  State,
+  HandsState,
   HandsPartialState,
   handsAdapter,
 } from './hands.reducer';
 
 // Lookup the 'Hands' feature state managed by NgRx
-export const getHandsState = createFeatureSelector<HandsPartialState, State>(
-  HANDS_FEATURE_KEY
-);
+export const getHandsState = createFeatureSelector<
+  HandsPartialState,
+  HandsState
+>(HANDS_FEATURE_KEY);
 
 const { selectAll, selectEntities } = handsAdapter.getSelectors();
 
 export const getHandsLoaded = createSelector(
   getHandsState,
-  (state: State) => state.loaded
+  (state: HandsState) => state.loaded
 );
 
 export const getHandsError = createSelector(
   getHandsState,
-  (state: State) => state.error
+  (state: HandsState) => state.error
 );
 
-export const getAllHands = createSelector(getHandsState, (state: State) =>
+export const getAllHands = createSelector(getHandsState, (state: HandsState) =>
   selectAll(state)
 );
 
-export const getHandsEntities = createSelector(getHandsState, (state: State) =>
-  selectEntities(state)
-);
-
-export const getSelectedId = createSelector(
+export const getHandsEntities = createSelector(
   getHandsState,
-  (state: State) => state.selectedId
+  (state: HandsState) => selectEntities(state)
 );
 
-export const getSelected = createSelector(
+export const getHandsSelectedId = createSelector(
+  getHandsState,
+  (state: HandsState) => state.selectedId
+);
+
+export const getHandsSelected = createSelector(
   getHandsEntities,
-  getSelectedId,
+  getHandsSelectedId,
   (entities, selectedId) => selectedId && entities[selectedId]
 );
