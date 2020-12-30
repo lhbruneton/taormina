@@ -26,6 +26,15 @@ import { LandsPileFacade } from './+state/lands-pile/lands-pile.facade';
 import * as fromFaceUpPiles from './+state/face-up-piles/face-up-piles.reducer';
 import { FaceUpPilesEffects } from './+state/face-up-piles/face-up-piles.effects';
 import { FaceUpPilesFacade } from './+state/face-up-piles/face-up-piles.facade';
+import * as fromDomainCards from './+state/domain-cards/domain-cards.reducer';
+import { DomainCardsEffects } from './+state/domain-cards/domain-cards.effects';
+import { DomainCardsFacade } from './+state/domain-cards/domain-cards.facade';
+import * as fromHandCards from './+state/hand-cards/hand-cards.reducer';
+import { HandCardsEffects } from './+state/hand-cards/hand-cards.effects';
+import { HandCardsFacade } from './+state/hand-cards/hand-cards.facade';
+import * as fromStockPileCards from './+state/stock-pile-cards/stock-pile-cards.reducer';
+import { StockPileCardsEffects } from './+state/stock-pile-cards/stock-pile-cards.effects';
+import { StockPileCardsFacade } from './+state/stock-pile-cards/stock-pile-cards.facade';
 
 @NgModule({
   imports: [
@@ -64,6 +73,21 @@ import { FaceUpPilesFacade } from './+state/face-up-piles/face-up-piles.facade';
       fromFaceUpPiles.faceUpPilesReducer
     ),
     EffectsModule.forFeature([FaceUpPilesEffects]),
+    StoreModule.forFeature(
+      fromDomainCards.DOMAIN_CARDS_FEATURE_KEY,
+      fromDomainCards.domainCardsReducer
+    ),
+    EffectsModule.forFeature([DomainCardsEffects]),
+    StoreModule.forFeature(
+      fromHandCards.HAND_CARDS_FEATURE_KEY,
+      fromHandCards.handCardsReducer
+    ),
+    EffectsModule.forFeature([HandCardsEffects]),
+    StoreModule.forFeature(
+      fromStockPileCards.STOCK_PILE_CARDS_FEATURE_KEY,
+      fromStockPileCards.stockPileCardsReducer
+    ),
+    EffectsModule.forFeature([StockPileCardsEffects]),
   ],
   providers: [
     DomainsFacade,
@@ -74,6 +98,9 @@ import { FaceUpPilesFacade } from './+state/face-up-piles/face-up-piles.facade';
     StockPilesFacade,
     LandsPileFacade,
     FaceUpPilesFacade,
+    DomainCardsFacade,
+    HandCardsFacade,
+    StockPileCardsFacade,
   ],
 })
 export class DataAccessGameModule {}
