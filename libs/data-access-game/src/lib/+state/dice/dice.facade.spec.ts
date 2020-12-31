@@ -13,10 +13,15 @@ import { DiceFacade } from './dice.facade';
 
 import * as DiceSelectors from './dice.selectors';
 import * as DiceActions from './dice.actions';
-import { DICE_FEATURE_KEY, State, initialState, reducer } from './dice.reducer';
+import {
+  DICE_FEATURE_KEY,
+  DiceState,
+  initialDiceState,
+  diceReducer,
+} from './dice.reducer';
 
 interface TestSchema {
-  dice: State;
+  dice: DiceState;
 }
 
 describe('DiceFacade', () => {
@@ -34,7 +39,7 @@ describe('DiceFacade', () => {
     beforeEach(() => {
       @NgModule({
         imports: [
-          StoreModule.forFeature(DICE_FEATURE_KEY, reducer),
+          StoreModule.forFeature(DICE_FEATURE_KEY, diceReducer),
           EffectsModule.forFeature([DiceEffects]),
         ],
         providers: [DiceFacade],

@@ -31,7 +31,7 @@ describe('FaceUpPilesEffects', () => {
 
   describe('init$', () => {
     it('should work', () => {
-      actions = hot('-a-|', { a: FaceUpPilesActions.init() });
+      actions = hot('-a-|', { a: FaceUpPilesActions.initFaceUp() });
 
       const expected = hot('-a-|', {
         a: FaceUpPilesActions.loadFaceUpPilesSuccess({ faceUpPiles: [] }),

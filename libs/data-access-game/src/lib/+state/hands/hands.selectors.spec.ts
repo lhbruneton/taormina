@@ -1,5 +1,5 @@
 import { HandsEntity } from './hands.models';
-import { State, handsAdapter, initialState } from './hands.reducer';
+import { HandsState, handsAdapter, initialHandsState } from './hands.reducer';
 import * as HandsSelectors from './hands.selectors';
 
 describe('Hands Selectors', () => {
@@ -22,7 +22,7 @@ describe('Hands Selectors', () => {
           createHandsEntity('PRODUCT-CCC'),
         ],
         {
-          ...initialState,
+          ...initialHandsState,
           selectedId: 'PRODUCT-BBB',
           error: ERROR_MSG,
           loaded: true,
@@ -41,7 +41,7 @@ describe('Hands Selectors', () => {
     });
 
     it('getSelected() should return the selected Entity', () => {
-      const result = HandsSelectors.getSelected(state);
+      const result = HandsSelectors.getHandsSelected(state);
       const selId = getHandsId(result);
 
       expect(selId).toBe('PRODUCT-BBB');

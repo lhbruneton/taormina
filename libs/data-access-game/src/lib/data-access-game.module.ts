@@ -11,21 +11,30 @@ import { HandsFacade } from './+state/hands/hands.facade';
 import * as fromDice from './+state/dice/dice.reducer';
 import { DiceEffects } from './+state/dice/dice.effects';
 import { DiceFacade } from './+state/dice/dice.facade';
-import * as fromDiscardPile from './+state/discard-pile/discard-pile.reducer';
-import { DiscardPileEffects } from './+state/discard-pile/discard-pile.effects';
-import { DiscardPileFacade } from './+state/discard-pile/discard-pile.facade';
-import * as fromEventsPile from './+state/events-pile/events-pile.reducer';
-import { EventsPileEffects } from './+state/events-pile/events-pile.effects';
-import { EventsPileFacade } from './+state/events-pile/events-pile.facade';
 import * as fromStockPiles from './+state/stock-piles/stock-piles.reducer';
 import { StockPilesEffects } from './+state/stock-piles/stock-piles.effects';
 import { StockPilesFacade } from './+state/stock-piles/stock-piles.facade';
-import * as fromLandsPile from './+state/lands-pile/lands-pile.reducer';
-import { LandsPileEffects } from './+state/lands-pile/lands-pile.effects';
-import { LandsPileFacade } from './+state/lands-pile/lands-pile.facade';
 import * as fromFaceUpPiles from './+state/face-up-piles/face-up-piles.reducer';
 import { FaceUpPilesEffects } from './+state/face-up-piles/face-up-piles.effects';
 import { FaceUpPilesFacade } from './+state/face-up-piles/face-up-piles.facade';
+import * as fromDomainCards from './+state/domain-cards/domain-cards.reducer';
+import { DomainCardsEffects } from './+state/domain-cards/domain-cards.effects';
+import { DomainCardsFacade } from './+state/domain-cards/domain-cards.facade';
+import * as fromHandCards from './+state/hand-cards/hand-cards.reducer';
+import { HandCardsEffects } from './+state/hand-cards/hand-cards.effects';
+import { HandCardsFacade } from './+state/hand-cards/hand-cards.facade';
+import * as fromStockPileCards from './+state/stock-pile-cards/stock-pile-cards.reducer';
+import { StockPileCardsEffects } from './+state/stock-pile-cards/stock-pile-cards.effects';
+import { StockPileCardsFacade } from './+state/stock-pile-cards/stock-pile-cards.facade';
+import * as fromDiscardPileCards from './+state/discard-pile-cards/discard-pile-cards.reducer';
+import { DiscardPileCardsEffects } from './+state/discard-pile-cards/discard-pile-cards.effects';
+import { DiscardPileCardsFacade } from './+state/discard-pile-cards/discard-pile-cards.facade';
+import * as fromEventsPileCards from './+state/events-pile-cards/events-pile-cards.reducer';
+import { EventsPileCardsEffects } from './+state/events-pile-cards/events-pile-cards.effects';
+import { EventsPileCardsFacade } from './+state/events-pile-cards/events-pile-cards.facade';
+import * as fromLandsPileCards from './+state/lands-pile-cards/lands-pile-cards.reducer';
+import { LandsPileCardsEffects } from './+state/lands-pile-cards/lands-pile-cards.effects';
+import { LandsPileCardsFacade } from './+state/lands-pile-cards/lands-pile-cards.facade';
 
 @NgModule({
   imports: [
@@ -40,40 +49,58 @@ import { FaceUpPilesFacade } from './+state/face-up-piles/face-up-piles.facade';
     StoreModule.forFeature(fromDice.DICE_FEATURE_KEY, fromDice.diceReducer),
     EffectsModule.forFeature([DiceEffects]),
     StoreModule.forFeature(
-      fromDiscardPile.DISCARD_PILE_FEATURE_KEY,
-      fromDiscardPile.discardPileReducer
-    ),
-    EffectsModule.forFeature([DiscardPileEffects]),
-    StoreModule.forFeature(
-      fromEventsPile.EVENTS_PILE_FEATURE_KEY,
-      fromEventsPile.eventsPileReducer
-    ),
-    EffectsModule.forFeature([EventsPileEffects]),
-    StoreModule.forFeature(
       fromStockPiles.STOCK_PILES_FEATURE_KEY,
       fromStockPiles.stockPilesReducer
     ),
     EffectsModule.forFeature([StockPilesEffects]),
     StoreModule.forFeature(
-      fromLandsPile.LANDS_PILE_FEATURE_KEY,
-      fromLandsPile.landsPileReducer
-    ),
-    EffectsModule.forFeature([LandsPileEffects]),
-    StoreModule.forFeature(
       fromFaceUpPiles.FACE_UP_PILES_FEATURE_KEY,
       fromFaceUpPiles.faceUpPilesReducer
     ),
     EffectsModule.forFeature([FaceUpPilesEffects]),
+    StoreModule.forFeature(
+      fromDomainCards.DOMAIN_CARDS_FEATURE_KEY,
+      fromDomainCards.domainCardsReducer
+    ),
+    EffectsModule.forFeature([DomainCardsEffects]),
+    StoreModule.forFeature(
+      fromHandCards.HAND_CARDS_FEATURE_KEY,
+      fromHandCards.handCardsReducer
+    ),
+    EffectsModule.forFeature([HandCardsEffects]),
+    StoreModule.forFeature(
+      fromStockPileCards.STOCK_PILE_CARDS_FEATURE_KEY,
+      fromStockPileCards.stockPileCardsReducer
+    ),
+    EffectsModule.forFeature([StockPileCardsEffects]),
+    StoreModule.forFeature(
+      fromDiscardPileCards.DISCARD_PILE_CARDS_FEATURE_KEY,
+      fromDiscardPileCards.discardPileCardsReducer
+    ),
+    EffectsModule.forFeature([DiscardPileCardsEffects]),
+    StoreModule.forFeature(
+      fromEventsPileCards.EVENTS_PILE_CARDS_FEATURE_KEY,
+      fromEventsPileCards.eventsPileCardsReducer
+    ),
+    EffectsModule.forFeature([EventsPileCardsEffects]),
+    StoreModule.forFeature(
+      fromLandsPileCards.LANDS_PILE_CARDS_FEATURE_KEY,
+      fromLandsPileCards.landsPileCardsReducer
+    ),
+    EffectsModule.forFeature([LandsPileCardsEffects]),
   ],
   providers: [
     DomainsFacade,
     HandsFacade,
     DiceFacade,
-    DiscardPileFacade,
-    EventsPileFacade,
     StockPilesFacade,
-    LandsPileFacade,
     FaceUpPilesFacade,
+    DomainCardsFacade,
+    HandCardsFacade,
+    StockPileCardsFacade,
+    DiscardPileCardsFacade,
+    EventsPileCardsFacade,
+    LandsPileCardsFacade,
   ],
 })
 export class DataAccessGameModule {}

@@ -1,6 +1,6 @@
 import { HandsEntity } from './hands.models';
 import * as HandsActions from './hands.actions';
-import { State, initialState, reducer } from './hands.reducer';
+import { HandsState, initialHandsState, handsReducer } from './hands.reducer';
 
 describe('Hands Reducer', () => {
   const createHandsEntity = (id: string, name = '') =>
@@ -19,7 +19,7 @@ describe('Hands Reducer', () => {
       ];
       const action = HandsActions.loadHandsSuccess({ hands });
 
-      const result: State = reducer(initialState, action);
+      const result: HandsState = handsReducer(initialHandsState, action);
 
       expect(result.loaded).toBe(true);
       expect(result.ids.length).toBe(2);
@@ -30,9 +30,9 @@ describe('Hands Reducer', () => {
     it('should return the previous state', () => {
       const action = {} as any;
 
-      const result = reducer(initialState, action);
+      const result = handsReducer(initialHandsState, action);
 
-      expect(result).toBe(initialState);
+      expect(result).toBe(initialHandsState);
     });
   });
 });

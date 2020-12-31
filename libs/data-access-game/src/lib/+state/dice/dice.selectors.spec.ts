@@ -1,5 +1,5 @@
 import { DiceEntity } from './dice.models';
-import { State, diceAdapter, initialState } from './dice.reducer';
+import { DiceState, diceAdapter, initialDiceState } from './dice.reducer';
 import * as DiceSelectors from './dice.selectors';
 
 describe('Dice Selectors', () => {
@@ -22,7 +22,7 @@ describe('Dice Selectors', () => {
           createDiceEntity('PRODUCT-CCC'),
         ],
         {
-          ...initialState,
+          ...initialDiceState,
           selectedId: 'PRODUCT-BBB',
           error: ERROR_MSG,
           loaded: true,
@@ -41,7 +41,7 @@ describe('Dice Selectors', () => {
     });
 
     it('getSelected() should return the selected Entity', () => {
-      const result = DiceSelectors.getSelected(state);
+      const result = DiceSelectors.getDiceSelected(state);
       const selId = getDiceId(result);
 
       expect(selId).toBe('PRODUCT-BBB');

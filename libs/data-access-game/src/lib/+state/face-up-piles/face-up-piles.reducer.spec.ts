@@ -1,6 +1,10 @@
 import { FaceUpPilesEntity } from './face-up-piles.models';
 import * as FaceUpPilesActions from './face-up-piles.actions';
-import { State, initialState, reducer } from './face-up-piles.reducer';
+import {
+  FaceUpState,
+  initialFaceUpState,
+  faceUpPilesReducer,
+} from './face-up-piles.reducer';
 
 describe('FaceUpPiles Reducer', () => {
   const createFaceUpPilesEntity = (id: string, name = '') =>
@@ -19,7 +23,10 @@ describe('FaceUpPiles Reducer', () => {
       ];
       const action = FaceUpPilesActions.loadFaceUpPilesSuccess({ faceUpPiles });
 
-      const result: State = reducer(initialState, action);
+      const result: FaceUpState = faceUpPilesReducer(
+        initialFaceUpState,
+        action
+      );
 
       expect(result.loaded).toBe(true);
       expect(result.ids.length).toBe(2);
@@ -30,9 +37,9 @@ describe('FaceUpPiles Reducer', () => {
     it('should return the previous state', () => {
       const action = {} as any;
 
-      const result = reducer(initialState, action);
+      const result = faceUpPilesReducer(initialFaceUpState, action);
 
-      expect(result).toBe(initialState);
+      expect(result).toBe(initialFaceUpState);
     });
   });
 });

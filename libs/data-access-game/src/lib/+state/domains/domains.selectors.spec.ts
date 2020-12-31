@@ -1,5 +1,9 @@
 import { DomainsEntity } from './domains.models';
-import { State, domainsAdapter, initialState } from './domains.reducer';
+import {
+  DomainsState,
+  domainsAdapter,
+  initialDomainsState,
+} from './domains.reducer';
 import * as DomainsSelectors from './domains.selectors';
 
 describe('Domains Selectors', () => {
@@ -22,7 +26,7 @@ describe('Domains Selectors', () => {
           createDomainsEntity('PRODUCT-CCC'),
         ],
         {
-          ...initialState,
+          ...initialDomainsState,
           selectedId: 'PRODUCT-BBB',
           error: ERROR_MSG,
           loaded: true,
@@ -41,7 +45,7 @@ describe('Domains Selectors', () => {
     });
 
     it('getSelected() should return the selected Entity', () => {
-      const result = DomainsSelectors.getSelected(state);
+      const result = DomainsSelectors.getDomainsSelected(state);
       const selId = getDomainsId(result);
 
       expect(selId).toBe('PRODUCT-BBB');

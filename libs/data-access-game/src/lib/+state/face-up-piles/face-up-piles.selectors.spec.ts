@@ -1,8 +1,8 @@
 import { FaceUpPilesEntity } from './face-up-piles.models';
 import {
-  State,
+  FaceUpState,
   faceUpPilesAdapter,
-  initialState,
+  initialFaceUpState,
 } from './face-up-piles.reducer';
 import * as FaceUpPilesSelectors from './face-up-piles.selectors';
 
@@ -26,7 +26,7 @@ describe('FaceUpPiles Selectors', () => {
           createFaceUpPilesEntity('PRODUCT-CCC'),
         ],
         {
-          ...initialState,
+          ...initialFaceUpState,
           selectedId: 'PRODUCT-BBB',
           error: ERROR_MSG,
           loaded: true,
@@ -45,7 +45,7 @@ describe('FaceUpPiles Selectors', () => {
     });
 
     it('getSelected() should return the selected Entity', () => {
-      const result = FaceUpPilesSelectors.getSelected(state);
+      const result = FaceUpPilesSelectors.getFaceUpSelected(state);
       const selId = getFaceUpPilesId(result);
 
       expect(selId).toBe('PRODUCT-BBB');

@@ -31,7 +31,7 @@ describe('HandsEffects', () => {
 
   describe('init$', () => {
     it('should work', () => {
-      actions = hot('-a-|', { a: HandsActions.init() });
+      actions = hot('-a-|', { a: HandsActions.initHands() });
 
       const expected = hot('-a-|', {
         a: HandsActions.loadHandsSuccess({ hands: [] }),

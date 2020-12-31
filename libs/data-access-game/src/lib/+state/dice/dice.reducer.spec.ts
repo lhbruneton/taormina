@@ -1,6 +1,6 @@
 import { DiceEntity } from './dice.models';
 import * as DiceActions from './dice.actions';
-import { State, initialState, reducer } from './dice.reducer';
+import { DiceState, initialDiceState, diceReducer } from './dice.reducer';
 
 describe('Dice Reducer', () => {
   const createDiceEntity = (id: string, name = '') =>
@@ -19,7 +19,7 @@ describe('Dice Reducer', () => {
       ];
       const action = DiceActions.loadDiceSuccess({ dice });
 
-      const result: State = reducer(initialState, action);
+      const result: DiceState = diceReducer(initialDiceState, action);
 
       expect(result.loaded).toBe(true);
       expect(result.ids.length).toBe(2);
@@ -30,9 +30,9 @@ describe('Dice Reducer', () => {
     it('should return the previous state', () => {
       const action = {} as any;
 
-      const result = reducer(initialState, action);
+      const result = diceReducer(initialDiceState, action);
 
-      expect(result).toBe(initialState);
+      expect(result).toBe(initialDiceState);
     });
   });
 });

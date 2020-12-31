@@ -31,7 +31,7 @@ describe('StockPilesEffects', () => {
 
   describe('init$', () => {
     it('should work', () => {
-      actions = hot('-a-|', { a: StockPilesActions.init() });
+      actions = hot('-a-|', { a: StockPilesActions.initStockPiles() });
 
       const expected = hot('-a-|', {
         a: StockPilesActions.loadStockPilesSuccess({ stockPiles: [] }),
