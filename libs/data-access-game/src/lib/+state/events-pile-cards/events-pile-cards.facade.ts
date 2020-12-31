@@ -28,7 +28,11 @@ export class EventsPileCardsFacade {
    * Use the initialization action to perform one
    * or more tasks in your Effects.
    */
-  init() {
-    this.store.dispatch(EventsPileCardsActions.initEventsPileCards());
+  initNewGame() {
+    this.store.dispatch(EventsPileCardsActions.initEventsPileCardsNewGame());
+  }
+
+  initSavedGame() {
+    this.store.dispatch(EventsPileCardsActions.initEventsPileCardsSavedGame());
   }
 }

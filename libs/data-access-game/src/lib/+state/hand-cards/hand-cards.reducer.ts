@@ -8,6 +8,7 @@ export const HAND_CARDS_FEATURE_KEY = 'handCards';
 
 export interface HandCardsState extends EntityState<HandCardsEntity> {
   selectedId?: string | number; // which HandCards record has been selected
+  initialized: boolean;
   loaded: boolean; // has the HandCards list been loaded
   error?: string | null; // last known error (if any)
 }
@@ -21,13 +22,18 @@ export const handCardsAdapter: EntityAdapter<HandCardsEntity> = createEntityAdap
 export const initialHandCardsState: HandCardsState = handCardsAdapter.getInitialState(
   {
     // set initial required properties
+    initialized: false,
     loaded: false,
   }
 );
 
 export const handCardsReducer = createReducer(
   initialHandCardsState,
-  on(HandCardsActions.initHandCards, (state) => ({
+  on(HandCardsActions.initHandCardsNewGame, (state) => ({
+    ...state,
+    initialized: false,
+  })),
+  on(HandCardsActions.initHandCardsSavedGame, (state) => ({
     ...state,
     loaded: false,
     error: null,
@@ -38,5 +44,8 @@ export const handCardsReducer = createReducer(
   on(HandCardsActions.loadHandCardsFailure, (state, { error }) => ({
     ...state,
     error,
-  }))
+  })),
+  on(HandCardsActions.setHandCardsInitialized, (state, { handCards }) =>
+    handCardsAdapter.setAll(handCards, { ...state, initialized: true })
+  )
 );

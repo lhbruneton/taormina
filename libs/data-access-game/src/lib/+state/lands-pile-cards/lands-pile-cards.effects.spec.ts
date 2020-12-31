@@ -29,9 +29,27 @@ describe('LandsPileCardsEffects', () => {
     effects = TestBed.get(LandsPileCardsEffects);
   });
 
-  describe('init$', () => {
+  describe('initNewGame$', () => {
     it('should work', () => {
-      actions = hot('-a-|', { a: LandsPileCardsActions.initLandsPileCards() });
+      actions = hot('-a-|', {
+        a: LandsPileCardsActions.initLandsPileCardsNewGame(),
+      });
+
+      const expected = hot('-a-|', {
+        a: LandsPileCardsActions.setLandsPileCardsInitialized({
+          landsPileCards: [],
+        }),
+      });
+
+      expect(effects.initNewGame$).toBeObservable(expected);
+    });
+  });
+
+  describe('initSavedGame$', () => {
+    it('should work', () => {
+      actions = hot('-a-|', {
+        a: LandsPileCardsActions.initLandsPileCardsSavedGame(),
+      });
 
       const expected = hot('-a-|', {
         a: LandsPileCardsActions.loadLandsPileCardsSuccess({
@@ -39,7 +57,7 @@ describe('LandsPileCardsEffects', () => {
         }),
       });
 
-      expect(effects.init$).toBeObservable(expected);
+      expect(effects.initSavedGame$).toBeObservable(expected);
     });
   });
 });

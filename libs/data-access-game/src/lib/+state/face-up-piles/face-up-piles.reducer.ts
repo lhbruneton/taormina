@@ -8,6 +8,7 @@ export const FACE_UP_PILES_FEATURE_KEY = 'faceUpPiles';
 
 export interface FaceUpState extends EntityState<FaceUpPilesEntity> {
   selectedId?: string | number; // which FaceUpPiles record has been selected
+  initialized: boolean;
   loaded: boolean; // has the FaceUpPiles list been loaded
   error?: string | null; // last known error (if any)
 }
@@ -16,20 +17,23 @@ export interface FaceUpPilesPartialState {
   readonly [FACE_UP_PILES_FEATURE_KEY]: FaceUpState;
 }
 
-export const faceUpPilesAdapter: EntityAdapter<FaceUpPilesEntity> = createEntityAdapter<
-  FaceUpPilesEntity
->();
+export const faceUpPilesAdapter: EntityAdapter<FaceUpPilesEntity> = createEntityAdapter<FaceUpPilesEntity>();
 
 export const initialFaceUpState: FaceUpState = faceUpPilesAdapter.getInitialState(
   {
     // set initial required properties
+    initialized: false,
     loaded: false,
   }
 );
 
 export const faceUpPilesReducer = createReducer(
   initialFaceUpState,
-  on(FaceUpPilesActions.initFaceUp, (state) => ({
+  on(FaceUpPilesActions.initFaceUpNewGame, (state) => ({
+    ...state,
+    initialized: false,
+  })),
+  on(FaceUpPilesActions.initFaceUpSavedGame, (state) => ({
     ...state,
     loaded: false,
     error: null,
@@ -40,5 +44,8 @@ export const faceUpPilesReducer = createReducer(
   on(FaceUpPilesActions.loadFaceUpPilesFailure, (state, { error }) => ({
     ...state,
     error,
-  }))
+  })),
+  on(FaceUpPilesActions.setFaceUpPilesInitialized, (state, { faceUpPiles }) =>
+    faceUpPilesAdapter.setAll(faceUpPiles, { ...state, initialized: true })
+  )
 );

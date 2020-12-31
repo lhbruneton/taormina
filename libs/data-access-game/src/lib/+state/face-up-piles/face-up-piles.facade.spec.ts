@@ -27,10 +27,11 @@ interface TestSchema {
 describe('FaceUpPilesFacade', () => {
   let facade: FaceUpPilesFacade;
   let store: Store<TestSchema>;
-  const createFaceUpPilesEntity = (id: string, name = '') =>
+  const createFaceUpPilesEntity = (id: string, type = '', count = 0) =>
     ({
       id,
-      name: name || `name-${id}`,
+      type: type || `type-${id}`,
+      count,
     } as FaceUpPilesEntity);
 
   beforeEach(() => {});
@@ -72,7 +73,7 @@ describe('FaceUpPilesFacade', () => {
         expect(list.length).toBe(0);
         expect(isLoaded).toBe(false);
 
-        facade.init();
+        facade.initSavedGame();
 
         list = await readFirst(facade.allFaceUpPiles$);
         isLoaded = await readFirst(facade.loaded$);

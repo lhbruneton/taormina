@@ -1,15 +1,23 @@
 import { Injectable } from '@angular/core';
 import { createEffect, Actions, ofType } from '@ngrx/effects';
 import { fetch } from '@nrwl/angular';
+import { map } from 'rxjs/operators';
 
 import * as HandCardsFeature from './hand-cards.reducer';
 import * as HandCardsActions from './hand-cards.actions';
 
 @Injectable()
 export class HandCardsEffects {
-  init$ = createEffect(() =>
+  initNewGame$ = createEffect(() =>
     this.actions$.pipe(
-      ofType(HandCardsActions.initHandCards),
+      ofType(HandCardsActions.initHandCardsNewGame),
+      map(() => HandCardsActions.setHandCardsInitialized({ handCards: [] }))
+    )
+  );
+
+  initSavedGame$ = createEffect(() =>
+    this.actions$.pipe(
+      ofType(HandCardsActions.initHandCardsSavedGame),
       fetch({
         run: (action) => {
           // Your custom service 'load' logic goes here. For now just return a success action...

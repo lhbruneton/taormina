@@ -29,15 +29,27 @@ describe('DomainsEffects', () => {
     effects = TestBed.get(DomainsEffects);
   });
 
-  describe('init$', () => {
+  describe('initNewGame$', () => {
     it('should work', () => {
-      actions = hot('-a-|', { a: DomainsActions.initDomains() });
+      actions = hot('-a-|', { a: DomainsActions.initDomainsNewGame() });
+
+      const expected = hot('-a-|', {
+        a: DomainsActions.setDomainsInitialized({ domains: [] }),
+      });
+
+      expect(effects.initNewGame$).toBeObservable(expected);
+    });
+  });
+
+  describe('initSavedGame$', () => {
+    it('should work', () => {
+      actions = hot('-a-|', { a: DomainsActions.initDomainsSavedGame() });
 
       const expected = hot('-a-|', {
         a: DomainsActions.loadDomainsSuccess({ domains: [] }),
       });
 
-      expect(effects.init$).toBeObservable(expected);
+      expect(effects.initSavedGame$).toBeObservable(expected);
     });
   });
 });

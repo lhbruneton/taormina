@@ -1,15 +1,27 @@
 import { Injectable } from '@angular/core';
 import { createEffect, Actions, ofType } from '@ngrx/effects';
 import { fetch } from '@nrwl/angular';
+import { map } from 'rxjs/operators';
 
 import * as DiscardPileCardsFeature from './discard-pile-cards.reducer';
 import * as DiscardPileCardsActions from './discard-pile-cards.actions';
 
 @Injectable()
 export class DiscardPileCardsEffects {
-  init$ = createEffect(() =>
+  initNewGame$ = createEffect(() =>
     this.actions$.pipe(
-      ofType(DiscardPileCardsActions.initDiscardPileCards),
+      ofType(DiscardPileCardsActions.initDiscardPileCardsNewGame),
+      map(() =>
+        DiscardPileCardsActions.setDiscardPileCardsInitialized({
+          discardPileCards: [],
+        })
+      )
+    )
+  );
+
+  initSavedGame$ = createEffect(() =>
+    this.actions$.pipe(
+      ofType(DiscardPileCardsActions.initDiscardPileCardsSavedGame),
       fetch({
         run: (action) => {
           // Your custom service 'load' logic goes here. For now just return a success action...

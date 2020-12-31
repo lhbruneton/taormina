@@ -28,7 +28,13 @@ export class DiscardPileCardsFacade {
    * Use the initialization action to perform one
    * or more tasks in your Effects.
    */
-  init() {
-    this.store.dispatch(DiscardPileCardsActions.initDiscardPileCards());
+  initNewGame() {
+    this.store.dispatch(DiscardPileCardsActions.initDiscardPileCardsNewGame());
+  }
+
+  initSavedGame() {
+    this.store.dispatch(
+      DiscardPileCardsActions.initDiscardPileCardsSavedGame()
+    );
   }
 }

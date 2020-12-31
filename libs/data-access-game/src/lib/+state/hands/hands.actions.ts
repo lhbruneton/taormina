@@ -1,7 +1,13 @@
 import { createAction, props } from '@ngrx/store';
 import { HandsEntity } from './hands.models';
 
-export const initHands = createAction('[Hands Page] Init');
+export const initHandsNewGame = createAction(
+  '[Start Page] Init Hands New Game'
+);
+
+export const initHandsSavedGame = createAction(
+  '[Start Page] Init Hands Saved Game'
+);
 
 export const loadHandsSuccess = createAction(
   '[Hands/API] Load Hands Success',
@@ -11,4 +17,9 @@ export const loadHandsSuccess = createAction(
 export const loadHandsFailure = createAction(
   '[Hands/API] Load Hands Failure',
   props<{ error: any }>()
+);
+
+export const setHandsInitialized = createAction(
+  '[Hands] Set Hands On Init',
+  props<{ hands: HandsEntity[] }>()
 );

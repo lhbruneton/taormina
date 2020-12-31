@@ -29,10 +29,26 @@ describe('EventsPileCardsEffects', () => {
     effects = TestBed.get(EventsPileCardsEffects);
   });
 
-  describe('init$', () => {
+  describe('initNewGame$', () => {
     it('should work', () => {
       actions = hot('-a-|', {
-        a: EventsPileCardsActions.initEventsPileCards(),
+        a: EventsPileCardsActions.initEventsPileCardsNewGame(),
+      });
+
+      const expected = hot('-a-|', {
+        a: EventsPileCardsActions.setEventsPileCardsInitialized({
+          eventsPileCards: [],
+        }),
+      });
+
+      expect(effects.initNewGame$).toBeObservable(expected);
+    });
+  });
+
+  describe('initSavedGame$', () => {
+    it('should work', () => {
+      actions = hot('-a-|', {
+        a: EventsPileCardsActions.initEventsPileCardsSavedGame(),
       });
 
       const expected = hot('-a-|', {
@@ -41,7 +57,7 @@ describe('EventsPileCardsEffects', () => {
         }),
       });
 
-      expect(effects.init$).toBeObservable(expected);
+      expect(effects.initSavedGame$).toBeObservable(expected);
     });
   });
 });

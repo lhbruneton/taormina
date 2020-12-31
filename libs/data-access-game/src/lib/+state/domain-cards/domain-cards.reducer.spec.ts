@@ -7,10 +7,19 @@ import {
 } from './domain-cards.reducer';
 
 describe('DomainCards Reducer', () => {
-  const createDomainCardsEntity = (id: string, name = '') =>
+  const createDomainCardsEntity = (
+    id: string,
+    domainId = '',
+    cardId = '',
+    col = 0,
+    row = 0
+  ) =>
     ({
       id,
-      name: name || `name-${id}`,
+      domainId: domainId || `domainId-${id}`,
+      cardId: cardId || `cardId-${id}`,
+      col,
+      row,
     } as DomainCardsEntity);
 
   beforeEach(() => {});

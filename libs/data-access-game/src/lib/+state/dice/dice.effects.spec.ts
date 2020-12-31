@@ -29,15 +29,27 @@ describe('DiceEffects', () => {
     effects = TestBed.get(DiceEffects);
   });
 
-  describe('init$', () => {
+  describe('initNewGame$', () => {
     it('should work', () => {
-      actions = hot('-a-|', { a: DiceActions.initDice() });
+      actions = hot('-a-|', { a: DiceActions.initDiceNewGame() });
+
+      const expected = hot('-a-|', {
+        a: DiceActions.setDiceInitialized({ dice: [] }),
+      });
+
+      expect(effects.initNewGame$).toBeObservable(expected);
+    });
+  });
+
+  describe('initSavedGame$', () => {
+    it('should work', () => {
+      actions = hot('-a-|', { a: DiceActions.initDiceSavedGame() });
 
       const expected = hot('-a-|', {
         a: DiceActions.loadDiceSuccess({ dice: [] }),
       });
 
-      expect(effects.init$).toBeObservable(expected);
+      expect(effects.initSavedGame$).toBeObservable(expected);
     });
   });
 });

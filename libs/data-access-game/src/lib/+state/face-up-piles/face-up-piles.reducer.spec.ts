@@ -7,10 +7,11 @@ import {
 } from './face-up-piles.reducer';
 
 describe('FaceUpPiles Reducer', () => {
-  const createFaceUpPilesEntity = (id: string, name = '') =>
+  const createFaceUpPilesEntity = (id: string, type = '', count = 0) =>
     ({
       id,
-      name: name || `name-${id}`,
+      type: type || `type-${id}`,
+      count,
     } as FaceUpPilesEntity);
 
   beforeEach(() => {});

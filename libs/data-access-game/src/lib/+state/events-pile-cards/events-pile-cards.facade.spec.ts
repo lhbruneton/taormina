@@ -27,7 +27,7 @@ interface TestSchema {
 describe('EventsPileCardsFacade', () => {
   let facade: EventsPileCardsFacade;
   let store: Store<TestSchema>;
-  const createEventsPileCardsEntity = (id: string, name = '') =>
+  const createCardsEntity = (id: string, name = '') =>
     ({
       id,
       name: name || `name-${id}`,
@@ -75,7 +75,7 @@ describe('EventsPileCardsFacade', () => {
         expect(list.length).toBe(0);
         expect(isLoaded).toBe(false);
 
-        facade.init();
+        facade.initSavedGame();
 
         list = await readFirst(facade.allEventsPileCards$);
         isLoaded = await readFirst(facade.loaded$);
@@ -103,8 +103,8 @@ describe('EventsPileCardsFacade', () => {
         store.dispatch(
           EventsPileCardsActions.loadEventsPileCardsSuccess({
             eventsPileCards: [
-              createEventsPileCardsEntity('AAA'),
-              createEventsPileCardsEntity('BBB'),
+              createCardsEntity('AAA'),
+              createCardsEntity('BBB'),
             ],
           })
         );

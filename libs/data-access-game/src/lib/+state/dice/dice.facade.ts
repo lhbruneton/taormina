@@ -22,7 +22,11 @@ export class DiceFacade {
    * Use the initialization action to perform one
    * or more tasks in your Effects.
    */
-  init() {
-    this.store.dispatch(DiceActions.initDice());
+  initNewGame() {
+    this.store.dispatch(DiceActions.initDiceNewGame());
+  }
+
+  initSavedGame() {
+    this.store.dispatch(DiceActions.initDiceSavedGame());
   }
 }

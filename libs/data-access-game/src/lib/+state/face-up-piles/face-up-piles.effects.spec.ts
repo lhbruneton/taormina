@@ -29,15 +29,27 @@ describe('FaceUpPilesEffects', () => {
     effects = TestBed.get(FaceUpPilesEffects);
   });
 
-  describe('init$', () => {
+  describe('initNewGame$', () => {
     it('should work', () => {
-      actions = hot('-a-|', { a: FaceUpPilesActions.initFaceUp() });
+      actions = hot('-a-|', { a: FaceUpPilesActions.initFaceUpNewGame() });
+
+      const expected = hot('-a-|', {
+        a: FaceUpPilesActions.setFaceUpPilesInitialized({ faceUpPiles: [] }),
+      });
+
+      expect(effects.initNewGame$).toBeObservable(expected);
+    });
+  });
+
+  describe('initSavedGame$', () => {
+    it('should work', () => {
+      actions = hot('-a-|', { a: FaceUpPilesActions.initFaceUpSavedGame() });
 
       const expected = hot('-a-|', {
         a: FaceUpPilesActions.loadFaceUpPilesSuccess({ faceUpPiles: [] }),
       });
 
-      expect(effects.init$).toBeObservable(expected);
+      expect(effects.initSavedGame$).toBeObservable(expected);
     });
   });
 });
