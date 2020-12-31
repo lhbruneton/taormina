@@ -8,6 +8,7 @@ export const STOCK_PILE_CARDS_FEATURE_KEY = 'stockPileCards';
 
 export interface StockPileCardsState extends EntityState<StockPileCardsEntity> {
   selectedId?: string | number; // which StockPileCards record has been selected
+  initialized: boolean;
   loaded: boolean; // has the StockPileCards list been loaded
   error?: string | null; // last known error (if any)
 }
@@ -21,13 +22,18 @@ export const stockPileCardsAdapter: EntityAdapter<StockPileCardsEntity> = create
 export const initialStockPileCardsState: StockPileCardsState = stockPileCardsAdapter.getInitialState(
   {
     // set initial required properties
+    initialized: false,
     loaded: false,
   }
 );
 
 export const stockPileCardsReducer = createReducer(
   initialStockPileCardsState,
-  on(StockPileCardsActions.initStockPileCards, (state) => ({
+  on(StockPileCardsActions.initStockPileCardsNewGame, (state) => ({
+    ...state,
+    initialized: false,
+  })),
+  on(StockPileCardsActions.initStockPileCardsSavedGame, (state) => ({
     ...state,
     loaded: false,
     error: null,
@@ -40,5 +46,13 @@ export const stockPileCardsReducer = createReducer(
   on(StockPileCardsActions.loadStockPileCardsFailure, (state, { error }) => ({
     ...state,
     error,
-  }))
+  })),
+  on(
+    StockPileCardsActions.setStockPileCardsInitialized,
+    (state, { stockPileCards }) =>
+      stockPileCardsAdapter.setAll(stockPileCards, {
+        ...state,
+        initialized: true,
+      })
+  )
 );

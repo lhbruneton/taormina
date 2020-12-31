@@ -3,4 +3,5 @@
  */
 export interface CardsEntity {
   id: string; // Primary ID
+  name: string;
 }

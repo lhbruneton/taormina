@@ -29,15 +29,27 @@ describe('HandsEffects', () => {
     effects = TestBed.get(HandsEffects);
   });
 
-  describe('init$', () => {
+  describe('initNewGame$', () => {
     it('should work', () => {
-      actions = hot('-a-|', { a: HandsActions.initHands() });
+      actions = hot('-a-|', { a: HandsActions.initHandsNewGame() });
+
+      const expected = hot('-a-|', {
+        a: HandsActions.setHandsInitialized({ hands: [] }),
+      });
+
+      expect(effects.initNewGame$).toBeObservable(expected);
+    });
+  });
+
+  describe('initSavedGame$', () => {
+    it('should work', () => {
+      actions = hot('-a-|', { a: HandsActions.initHandsSavedGame() });
 
       const expected = hot('-a-|', {
         a: HandsActions.loadHandsSuccess({ hands: [] }),
       });
 
-      expect(effects.init$).toBeObservable(expected);
+      expect(effects.initSavedGame$).toBeObservable(expected);
     });
   });
 });

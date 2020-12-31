@@ -29,10 +29,26 @@ describe('DiscardPileCardsEffects', () => {
     effects = TestBed.get(DiscardPileCardsEffects);
   });
 
-  describe('init$', () => {
+  describe('initNewGame$', () => {
     it('should work', () => {
       actions = hot('-a-|', {
-        a: DiscardPileCardsActions.initDiscardPileCards(),
+        a: DiscardPileCardsActions.initDiscardPileCardsNewGame(),
+      });
+
+      const expected = hot('-a-|', {
+        a: DiscardPileCardsActions.setDiscardPileCardsInitialized({
+          discardPileCards: [],
+        }),
+      });
+
+      expect(effects.initNewGame$).toBeObservable(expected);
+    });
+  });
+
+  describe('initSavedGame$', () => {
+    it('should work', () => {
+      actions = hot('-a-|', {
+        a: DiscardPileCardsActions.initDiscardPileCardsSavedGame(),
       });
 
       const expected = hot('-a-|', {
@@ -41,7 +57,7 @@ describe('DiscardPileCardsEffects', () => {
         }),
       });
 
-      expect(effects.init$).toBeObservable(expected);
+      expect(effects.initSavedGame$).toBeObservable(expected);
     });
   });
 });

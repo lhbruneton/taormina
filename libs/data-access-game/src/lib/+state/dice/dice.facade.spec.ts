@@ -72,7 +72,7 @@ describe('DiceFacade', () => {
         expect(list.length).toBe(0);
         expect(isLoaded).toBe(false);
 
-        facade.init();
+        facade.initSavedGame();
 
         list = await readFirst(facade.allDice$);
         isLoaded = await readFirst(facade.loaded$);

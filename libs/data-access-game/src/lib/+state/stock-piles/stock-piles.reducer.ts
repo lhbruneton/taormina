@@ -8,6 +8,7 @@ export const STOCK_PILES_FEATURE_KEY = 'stockPiles';
 
 export interface StockPilesState extends EntityState<StockPilesEntity> {
   selectedId?: string | number; // which StockPiles record has been selected
+  initialized: boolean;
   loaded: boolean; // has the StockPiles list been loaded
   error?: string | null; // last known error (if any)
 }
@@ -16,20 +17,23 @@ export interface StockPilesPartialState {
   readonly [STOCK_PILES_FEATURE_KEY]: StockPilesState;
 }
 
-export const stockPilesAdapter: EntityAdapter<StockPilesEntity> = createEntityAdapter<
-  StockPilesEntity
->();
+export const stockPilesAdapter: EntityAdapter<StockPilesEntity> = createEntityAdapter<StockPilesEntity>();
 
 export const initialStockPilesState: StockPilesState = stockPilesAdapter.getInitialState(
   {
     // set initial required properties
+    initialized: false,
     loaded: false,
   }
 );
 
 export const stockPilesReducer = createReducer(
   initialStockPilesState,
-  on(StockPilesActions.initStockPiles, (state) => ({
+  on(StockPilesActions.initStockPilesNewGame, (state) => ({
+    ...state,
+    initialized: false,
+  })),
+  on(StockPilesActions.initStockPilesSavedGame, (state) => ({
     ...state,
     loaded: false,
     error: null,
@@ -40,5 +44,8 @@ export const stockPilesReducer = createReducer(
   on(StockPilesActions.loadStockPilesFailure, (state, { error }) => ({
     ...state,
     error,
-  }))
+  })),
+  on(StockPilesActions.setStockPilesInitialized, (state, { stockPiles }) =>
+    stockPilesAdapter.setAll(stockPiles, { ...state, initialized: true })
+  )
 );

@@ -8,6 +8,7 @@ export const LANDS_PILE_CARDS_FEATURE_KEY = 'landsPileCards';
 
 export interface LandsPileCardsState extends EntityState<CardsEntity> {
   selectedId?: string | number; // which LandsPileCards record has been selected
+  initialized: boolean;
   loaded: boolean; // has the LandsPileCards list been loaded
   error?: string | null; // last known error (if any)
 }
@@ -21,13 +22,18 @@ export const landsPileCardsAdapter: EntityAdapter<CardsEntity> = createEntityAda
 export const initialLandsPileCardsState: LandsPileCardsState = landsPileCardsAdapter.getInitialState(
   {
     // set initial required properties
+    initialized: false,
     loaded: false,
   }
 );
 
 export const landsPileCardsReducer = createReducer(
   initialLandsPileCardsState,
-  on(LandsPileCardsActions.initLandsPileCards, (state) => ({
+  on(LandsPileCardsActions.initLandsPileCardsNewGame, (state) => ({
+    ...state,
+    initialized: false,
+  })),
+  on(LandsPileCardsActions.initLandsPileCardsSavedGame, (state) => ({
     ...state,
     loaded: false,
     error: null,
@@ -40,5 +46,13 @@ export const landsPileCardsReducer = createReducer(
   on(LandsPileCardsActions.loadLandsPileCardsFailure, (state, { error }) => ({
     ...state,
     error,
-  }))
+  })),
+  on(
+    LandsPileCardsActions.setLandsPileCardsInitialized,
+    (state, { landsPileCards }) =>
+      landsPileCardsAdapter.setAll(landsPileCards, {
+        ...state,
+        initialized: true,
+      })
+  )
 );

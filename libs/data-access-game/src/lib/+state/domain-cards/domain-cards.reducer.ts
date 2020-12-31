@@ -8,6 +8,7 @@ export const DOMAIN_CARDS_FEATURE_KEY = 'domainCards';
 
 export interface DomainCardsState extends EntityState<DomainCardsEntity> {
   selectedId?: string | number; // which DomainCards record has been selected
+  initialized: boolean;
   loaded: boolean; // has the DomainCards list been loaded
   error?: string | null; // last known error (if any)
 }
@@ -21,13 +22,18 @@ export const domainCardsAdapter: EntityAdapter<DomainCardsEntity> = createEntity
 export const initialDomainCardsState: DomainCardsState = domainCardsAdapter.getInitialState(
   {
     // set initial required properties
+    initialized: false,
     loaded: false,
   }
 );
 
 export const domainCardsReducer = createReducer(
   initialDomainCardsState,
-  on(DomainCardsActions.initDomainCards, (state) => ({
+  on(DomainCardsActions.initDomainCardsNewGame, (state) => ({
+    ...state,
+    initialized: false,
+  })),
+  on(DomainCardsActions.initDomainCardsSavedGame, (state) => ({
     ...state,
     loaded: false,
     error: null,
@@ -38,5 +44,8 @@ export const domainCardsReducer = createReducer(
   on(DomainCardsActions.loadDomainCardsFailure, (state, { error }) => ({
     ...state,
     error,
-  }))
+  })),
+  on(DomainCardsActions.setDomainCardsInitialized, (state, { domainCards }) =>
+    domainCardsAdapter.setAll(domainCards, { ...state, initialized: true })
+  )
 );

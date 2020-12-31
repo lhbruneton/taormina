@@ -7,10 +7,11 @@ import {
 } from './hand-cards.reducer';
 
 describe('HandCards Reducer', () => {
-  const createHandCardsEntity = (id: string, name = '') =>
+  const createHandCardsEntity = (id: string, handId = '', cardId = '') =>
     ({
       id,
-      name: name || `name-${id}`,
+      handId: handId || `handId-${id}`,
+      cardId: cardId || `cardId-${id}`,
     } as HandCardsEntity);
 
   beforeEach(() => {});

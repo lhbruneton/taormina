@@ -8,6 +8,7 @@ export const EVENTS_PILE_CARDS_FEATURE_KEY = 'eventsPileCards';
 
 export interface EventsPileCardsState extends EntityState<CardsEntity> {
   selectedId?: string | number; // which EventsPileCards record has been selected
+  initialized: boolean;
   loaded: boolean; // has the EventsPileCards list been loaded
   error?: string | null; // last known error (if any)
 }
@@ -21,13 +22,18 @@ export const eventsPileCardsAdapter: EntityAdapter<CardsEntity> = createEntityAd
 export const initialEventsPileCardsState: EventsPileCardsState = eventsPileCardsAdapter.getInitialState(
   {
     // set initial required properties
+    initialized: false,
     loaded: false,
   }
 );
 
 export const eventsPileCardsReducer = createReducer(
   initialEventsPileCardsState,
-  on(EventsPileCardsActions.initEventsPileCards, (state) => ({
+  on(EventsPileCardsActions.initEventsPileCardsNewGame, (state) => ({
+    ...state,
+    initialized: false,
+  })),
+  on(EventsPileCardsActions.initEventsPileCardsSavedGame, (state) => ({
     ...state,
     loaded: false,
     error: null,
@@ -40,5 +46,13 @@ export const eventsPileCardsReducer = createReducer(
   on(EventsPileCardsActions.loadEventsPileCardsFailure, (state, { error }) => ({
     ...state,
     error,
-  }))
+  })),
+  on(
+    EventsPileCardsActions.setEventsPileCardsInitialized,
+    (state, { eventsPileCards }) =>
+      eventsPileCardsAdapter.setAll(eventsPileCards, {
+        ...state,
+        initialized: true,
+      })
+  )
 );

@@ -27,10 +27,15 @@ interface TestSchema {
 describe('StockPileCardsFacade', () => {
   let facade: StockPileCardsFacade;
   let store: Store<TestSchema>;
-  const createStockPileCardsEntity = (id: string, name = '') =>
+  const createStockPileCardsEntity = (
+    id: string,
+    stockPileId = '',
+    cardId = ''
+  ) =>
     ({
       id,
-      name: name || `name-${id}`,
+      stockPileId: stockPileId || `stockPileId-${id}`,
+      cardId: cardId || `cardId-${id}`,
     } as StockPileCardsEntity);
 
   beforeEach(() => {});
@@ -75,7 +80,7 @@ describe('StockPileCardsFacade', () => {
         expect(list.length).toBe(0);
         expect(isLoaded).toBe(false);
 
-        facade.init();
+        facade.initSavedGame();
 
         list = await readFirst(facade.allStockPileCards$);
         isLoaded = await readFirst(facade.loaded$);

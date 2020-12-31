@@ -26,7 +26,11 @@ export class StockPilesFacade {
    * Use the initialization action to perform one
    * or more tasks in your Effects.
    */
-  init() {
-    this.store.dispatch(StockPilesActions.initStockPiles());
+  initNewGame() {
+    this.store.dispatch(StockPilesActions.initStockPilesNewGame());
+  }
+
+  initSavedGame() {
+    this.store.dispatch(StockPilesActions.initStockPilesSavedGame());
   }
 }

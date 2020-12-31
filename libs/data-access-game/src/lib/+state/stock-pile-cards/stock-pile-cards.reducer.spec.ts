@@ -7,10 +7,15 @@ import {
 } from './stock-pile-cards.reducer';
 
 describe('StockPileCards Reducer', () => {
-  const createStockPileCardsEntity = (id: string, name = '') =>
+  const createStockPileCardsEntity = (
+    id: string,
+    stockPileId = '',
+    cardId = ''
+  ) =>
     ({
       id,
-      name: name || `name-${id}`,
+      stockPileId: stockPileId || `stockPileId-${id}`,
+      cardId: cardId || `cardId-${id}`,
     } as StockPileCardsEntity);
 
   beforeEach(() => {});

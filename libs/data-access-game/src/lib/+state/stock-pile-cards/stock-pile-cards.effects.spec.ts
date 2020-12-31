@@ -29,9 +29,27 @@ describe('StockPileCardsEffects', () => {
     effects = TestBed.get(StockPileCardsEffects);
   });
 
-  describe('init$', () => {
+  describe('initNewGame$', () => {
     it('should work', () => {
-      actions = hot('-a-|', { a: StockPileCardsActions.initStockPileCards() });
+      actions = hot('-a-|', {
+        a: StockPileCardsActions.initStockPileCardsNewGame(),
+      });
+
+      const expected = hot('-a-|', {
+        a: StockPileCardsActions.setStockPileCardsInitialized({
+          stockPileCards: [],
+        }),
+      });
+
+      expect(effects.initNewGame$).toBeObservable(expected);
+    });
+  });
+
+  describe('initSavedGame$', () => {
+    it('should work', () => {
+      actions = hot('-a-|', {
+        a: StockPileCardsActions.initStockPileCardsSavedGame(),
+      });
 
       const expected = hot('-a-|', {
         a: StockPileCardsActions.loadStockPileCardsSuccess({
@@ -39,7 +57,7 @@ describe('StockPileCardsEffects', () => {
         }),
       });
 
-      expect(effects.init$).toBeObservable(expected);
+      expect(effects.initSavedGame$).toBeObservable(expected);
     });
   });
 });

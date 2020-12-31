@@ -29,15 +29,27 @@ describe('StockPilesEffects', () => {
     effects = TestBed.get(StockPilesEffects);
   });
 
-  describe('init$', () => {
+  describe('initNewGame$', () => {
     it('should work', () => {
-      actions = hot('-a-|', { a: StockPilesActions.initStockPiles() });
+      actions = hot('-a-|', { a: StockPilesActions.initStockPilesNewGame() });
+
+      const expected = hot('-a-|', {
+        a: StockPilesActions.setStockPilesInitialized({ stockPiles: [] }),
+      });
+
+      expect(effects.initNewGame$).toBeObservable(expected);
+    });
+  });
+
+  describe('initSavedGame$', () => {
+    it('should work', () => {
+      actions = hot('-a-|', { a: StockPilesActions.initStockPilesSavedGame() });
 
       const expected = hot('-a-|', {
         a: StockPilesActions.loadStockPilesSuccess({ stockPiles: [] }),
       });
 
-      expect(effects.init$).toBeObservable(expected);
+      expect(effects.initSavedGame$).toBeObservable(expected);
     });
   });
 });

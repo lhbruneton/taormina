@@ -24,7 +24,11 @@ export class HandCardsFacade {
    * Use the initialization action to perform one
    * or more tasks in your Effects.
    */
-  init() {
-    this.store.dispatch(HandCardsActions.initHandCards());
+  initNewGame() {
+    this.store.dispatch(HandCardsActions.initHandCardsNewGame());
+  }
+
+  initSavedGame() {
+    this.store.dispatch(HandCardsActions.initHandCardsSavedGame());
   }
 }

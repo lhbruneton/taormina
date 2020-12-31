@@ -28,7 +28,11 @@ export class StockPileCardsFacade {
    * Use the initialization action to perform one
    * or more tasks in your Effects.
    */
-  init() {
-    this.store.dispatch(StockPileCardsActions.initStockPileCards());
+  initNewGame() {
+    this.store.dispatch(StockPileCardsActions.initStockPileCardsNewGame());
+  }
+
+  initSavedGame() {
+    this.store.dispatch(StockPileCardsActions.initStockPileCardsSavedGame());
   }
 }

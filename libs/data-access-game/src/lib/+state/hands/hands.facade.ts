@@ -22,7 +22,11 @@ export class HandsFacade {
    * Use the initialization action to perform one
    * or more tasks in your Effects.
    */
-  init() {
-    this.store.dispatch(HandsActions.initHands());
+  initNewGame() {
+    this.store.dispatch(HandsActions.initHandsNewGame());
+  }
+
+  initSavedGame() {
+    this.store.dispatch(HandsActions.initHandsSavedGame());
   }
 }

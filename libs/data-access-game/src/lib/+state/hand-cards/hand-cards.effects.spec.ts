@@ -29,15 +29,27 @@ describe('HandCardsEffects', () => {
     effects = TestBed.get(HandCardsEffects);
   });
 
-  describe('init$', () => {
+  describe('initNewGame$', () => {
     it('should work', () => {
-      actions = hot('-a-|', { a: HandCardsActions.initHandCards() });
+      actions = hot('-a-|', { a: HandCardsActions.initHandCardsNewGame() });
+
+      const expected = hot('-a-|', {
+        a: HandCardsActions.setHandCardsInitialized({ handCards: [] }),
+      });
+
+      expect(effects.initNewGame$).toBeObservable(expected);
+    });
+  });
+
+  describe('initSavedGame$', () => {
+    it('should work', () => {
+      actions = hot('-a-|', { a: HandCardsActions.initHandCardsSavedGame() });
 
       const expected = hot('-a-|', {
         a: HandCardsActions.loadHandCardsSuccess({ handCards: [] }),
       });
 
-      expect(effects.init$).toBeObservable(expected);
+      expect(effects.initSavedGame$).toBeObservable(expected);
     });
   });
 });

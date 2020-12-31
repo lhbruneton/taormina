@@ -72,7 +72,7 @@ describe('DomainsFacade', () => {
         expect(list.length).toBe(0);
         expect(isLoaded).toBe(false);
 
-        facade.init();
+        facade.initSavedGame();
 
         list = await readFirst(facade.allDomains$);
         isLoaded = await readFirst(facade.loaded$);

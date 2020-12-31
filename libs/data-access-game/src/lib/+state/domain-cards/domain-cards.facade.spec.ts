@@ -27,10 +27,19 @@ interface TestSchema {
 describe('DomainCardsFacade', () => {
   let facade: DomainCardsFacade;
   let store: Store<TestSchema>;
-  const createDomainCardsEntity = (id: string, name = '') =>
+  const createDomainCardsEntity = (
+    id: string,
+    domainId = '',
+    cardId = '',
+    col = 0,
+    row = 0
+  ) =>
     ({
       id,
-      name: name || `name-${id}`,
+      domainId: domainId || `domainId-${id}`,
+      cardId: cardId || `cardId-${id}`,
+      col,
+      row,
     } as DomainCardsEntity);
 
   beforeEach(() => {});
@@ -72,7 +81,7 @@ describe('DomainCardsFacade', () => {
         expect(list.length).toBe(0);
         expect(isLoaded).toBe(false);
 
-        facade.init();
+        facade.initSavedGame();
 
         list = await readFirst(facade.allDomainCards$);
         isLoaded = await readFirst(facade.loaded$);
