@@ -2,6 +2,6 @@
  * Interface for the 'Cards' data
  */
 export interface CardsEntity {
-  id: string; // Primary ID
+  id: string | number; // Primary ID
   name: string;
 }

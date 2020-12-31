@@ -1,5 +1,5 @@
 import { createAction, props } from '@ngrx/store';
-import { CardsEntity } from '../../model/cards.models';
+import { CardsEntity } from '../cards/cards.models';
 
 export const initEventsPileCardsNewGame = createAction(
   '[Start Page] Init EventsPileCards New Game'

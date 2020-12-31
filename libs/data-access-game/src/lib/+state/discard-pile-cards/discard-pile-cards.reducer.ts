@@ -2,7 +2,7 @@ import { createReducer, on, Action } from '@ngrx/store';
 import { EntityState, EntityAdapter, createEntityAdapter } from '@ngrx/entity';
 
 import * as DiscardPileCardsActions from './discard-pile-cards.actions';
-import { CardsEntity } from '../../model/cards.models';
+import { CardsEntity } from '../cards/cards.models';
 
 export const DISCARD_PILE_CARDS_FEATURE_KEY = 'discardPileCards';
 
