@@ -1,6 +1,10 @@
 import { DomainCardsEntity } from './domain-cards.models';
 import * as DomainCardsActions from './domain-cards.actions';
-import { State, initialState, reducer } from './domain-cards.reducer';
+import {
+  DomainCardsState,
+  initialDomainCardsState,
+  domainCardsReducer,
+} from './domain-cards.reducer';
 
 describe('DomainCards Reducer', () => {
   const createDomainCardsEntity = (id: string, name = '') =>
@@ -19,7 +23,10 @@ describe('DomainCards Reducer', () => {
       ];
       const action = DomainCardsActions.loadDomainCardsSuccess({ domainCards });
 
-      const result: State = reducer(initialState, action);
+      const result: DomainCardsState = domainCardsReducer(
+        initialDomainCardsState,
+        action
+      );
 
       expect(result.loaded).toBe(true);
       expect(result.ids.length).toBe(2);
@@ -30,9 +37,9 @@ describe('DomainCards Reducer', () => {
     it('should return the previous state', () => {
       const action = {} as any;
 
-      const result = reducer(initialState, action);
+      const result = domainCardsReducer(initialDomainCardsState, action);
 
-      expect(result).toBe(initialState);
+      expect(result).toBe(initialDomainCardsState);
     });
   });
 });

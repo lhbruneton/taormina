@@ -31,7 +31,7 @@ describe('StockPileCardsEffects', () => {
 
   describe('init$', () => {
     it('should work', () => {
-      actions = hot('-a-|', { a: StockPileCardsActions.init() });
+      actions = hot('-a-|', { a: StockPileCardsActions.initStockPileCards() });
 
       const expected = hot('-a-|', {
         a: StockPileCardsActions.loadStockPileCardsSuccess({

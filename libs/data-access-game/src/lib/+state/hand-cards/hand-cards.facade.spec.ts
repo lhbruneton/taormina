@@ -15,13 +15,13 @@ import * as HandCardsSelectors from './hand-cards.selectors';
 import * as HandCardsActions from './hand-cards.actions';
 import {
   HAND_CARDS_FEATURE_KEY,
-  State,
-  initialState,
-  reducer,
+  HandCardsState,
+  initialHandCardsState,
+  handCardsReducer,
 } from './hand-cards.reducer';
 
 interface TestSchema {
-  handCards: State;
+  handCards: HandCardsState;
 }
 
 describe('HandCardsFacade', () => {
@@ -39,7 +39,7 @@ describe('HandCardsFacade', () => {
     beforeEach(() => {
       @NgModule({
         imports: [
-          StoreModule.forFeature(HAND_CARDS_FEATURE_KEY, reducer),
+          StoreModule.forFeature(HAND_CARDS_FEATURE_KEY, handCardsReducer),
           EffectsModule.forFeature([HandCardsEffects]),
         ],
         providers: [HandCardsFacade],

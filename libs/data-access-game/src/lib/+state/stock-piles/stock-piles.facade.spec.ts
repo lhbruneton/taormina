@@ -15,13 +15,13 @@ import * as StockPilesSelectors from './stock-piles.selectors';
 import * as StockPilesActions from './stock-piles.actions';
 import {
   STOCK_PILES_FEATURE_KEY,
-  State,
-  initialState,
-  reducer,
+  StockPilesState,
+  initialStockPilesState,
+  stockPilesReducer,
 } from './stock-piles.reducer';
 
 interface TestSchema {
-  stockPiles: State;
+  stockPiles: StockPilesState;
 }
 
 describe('StockPilesFacade', () => {
@@ -39,7 +39,7 @@ describe('StockPilesFacade', () => {
     beforeEach(() => {
       @NgModule({
         imports: [
-          StoreModule.forFeature(STOCK_PILES_FEATURE_KEY, reducer),
+          StoreModule.forFeature(STOCK_PILES_FEATURE_KEY, stockPilesReducer),
           EffectsModule.forFeature([StockPilesEffects]),
         ],
         providers: [StockPilesFacade],

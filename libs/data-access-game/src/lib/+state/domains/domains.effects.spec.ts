@@ -31,7 +31,7 @@ describe('DomainsEffects', () => {
 
   describe('init$', () => {
     it('should work', () => {
-      actions = hot('-a-|', { a: DomainsActions.init() });
+      actions = hot('-a-|', { a: DomainsActions.initDomains() });
 
       const expected = hot('-a-|', {
         a: DomainsActions.loadDomainsSuccess({ domains: [] }),

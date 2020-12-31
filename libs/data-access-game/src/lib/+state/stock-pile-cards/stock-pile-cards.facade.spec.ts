@@ -15,13 +15,13 @@ import * as StockPileCardsSelectors from './stock-pile-cards.selectors';
 import * as StockPileCardsActions from './stock-pile-cards.actions';
 import {
   STOCK_PILE_CARDS_FEATURE_KEY,
-  State,
-  initialState,
-  reducer,
+  StockPileCardsState,
+  initialStockPileCardsState,
+  stockPileCardsReducer,
 } from './stock-pile-cards.reducer';
 
 interface TestSchema {
-  stockPileCards: State;
+  stockPileCards: StockPileCardsState;
 }
 
 describe('StockPileCardsFacade', () => {
@@ -39,7 +39,10 @@ describe('StockPileCardsFacade', () => {
     beforeEach(() => {
       @NgModule({
         imports: [
-          StoreModule.forFeature(STOCK_PILE_CARDS_FEATURE_KEY, reducer),
+          StoreModule.forFeature(
+            STOCK_PILE_CARDS_FEATURE_KEY,
+            stockPileCardsReducer
+          ),
           EffectsModule.forFeature([StockPileCardsEffects]),
         ],
         providers: [StockPileCardsFacade],

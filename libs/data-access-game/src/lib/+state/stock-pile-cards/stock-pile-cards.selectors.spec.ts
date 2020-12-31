@@ -1,8 +1,8 @@
 import { StockPileCardsEntity } from './stock-pile-cards.models';
 import {
-  State,
+  StockPileCardsState,
   stockPileCardsAdapter,
-  initialState,
+  initialStockPileCardsState,
 } from './stock-pile-cards.reducer';
 import * as StockPileCardsSelectors from './stock-pile-cards.selectors';
 
@@ -26,7 +26,7 @@ describe('StockPileCards Selectors', () => {
           createStockPileCardsEntity('PRODUCT-CCC'),
         ],
         {
-          ...initialState,
+          ...initialStockPileCardsState,
           selectedId: 'PRODUCT-BBB',
           error: ERROR_MSG,
           loaded: true,
@@ -45,7 +45,7 @@ describe('StockPileCards Selectors', () => {
     });
 
     it('getSelected() should return the selected Entity', () => {
-      const result = StockPileCardsSelectors.getSelected(state);
+      const result = StockPileCardsSelectors.getStockPileCardsSelected(state);
       const selId = getStockPileCardsId(result);
 
       expect(selId).toBe('PRODUCT-BBB');

@@ -1,6 +1,10 @@
 import { DomainsEntity } from './domains.models';
 import * as DomainsActions from './domains.actions';
-import { State, initialState, reducer } from './domains.reducer';
+import {
+  DomainsState,
+  initialDomainsState,
+  domainsReducer,
+} from './domains.reducer';
 
 describe('Domains Reducer', () => {
   const createDomainsEntity = (id: string, name = '') =>
@@ -19,7 +23,7 @@ describe('Domains Reducer', () => {
       ];
       const action = DomainsActions.loadDomainsSuccess({ domains });
 
-      const result: State = reducer(initialState, action);
+      const result: DomainsState = domainsReducer(initialDomainsState, action);
 
       expect(result.loaded).toBe(true);
       expect(result.ids.length).toBe(2);
@@ -30,9 +34,9 @@ describe('Domains Reducer', () => {
     it('should return the previous state', () => {
       const action = {} as any;
 
-      const result = reducer(initialState, action);
+      const result = domainsReducer(initialDomainsState, action);
 
-      expect(result).toBe(initialState);
+      expect(result).toBe(initialDomainsState);
     });
   });
 });

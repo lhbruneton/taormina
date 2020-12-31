@@ -15,13 +15,13 @@ import * as DomainsSelectors from './domains.selectors';
 import * as DomainsActions from './domains.actions';
 import {
   DOMAINS_FEATURE_KEY,
-  State,
-  initialState,
-  reducer,
+  DomainsState,
+  initialDomainsState,
+  domainsReducer,
 } from './domains.reducer';
 
 interface TestSchema {
-  domains: State;
+  domains: DomainsState;
 }
 
 describe('DomainsFacade', () => {
@@ -39,7 +39,7 @@ describe('DomainsFacade', () => {
     beforeEach(() => {
       @NgModule({
         imports: [
-          StoreModule.forFeature(DOMAINS_FEATURE_KEY, reducer),
+          StoreModule.forFeature(DOMAINS_FEATURE_KEY, domainsReducer),
           EffectsModule.forFeature([DomainsEffects]),
         ],
         providers: [DomainsFacade],

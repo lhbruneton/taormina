@@ -31,7 +31,7 @@ describe('HandCardsEffects', () => {
 
   describe('init$', () => {
     it('should work', () => {
-      actions = hot('-a-|', { a: HandCardsActions.init() });
+      actions = hot('-a-|', { a: HandCardsActions.initHandCards() });
 
       const expected = hot('-a-|', {
         a: HandCardsActions.loadHandCardsSuccess({ handCards: [] }),

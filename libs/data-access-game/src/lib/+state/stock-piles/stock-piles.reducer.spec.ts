@@ -1,6 +1,10 @@
 import { StockPilesEntity } from './stock-piles.models';
 import * as StockPilesActions from './stock-piles.actions';
-import { State, initialState, reducer } from './stock-piles.reducer';
+import {
+  StockPilesState,
+  initialStockPilesState,
+  stockPilesReducer,
+} from './stock-piles.reducer';
 
 describe('StockPiles Reducer', () => {
   const createStockPilesEntity = (id: string, name = '') =>
@@ -19,7 +23,10 @@ describe('StockPiles Reducer', () => {
       ];
       const action = StockPilesActions.loadStockPilesSuccess({ stockPiles });
 
-      const result: State = reducer(initialState, action);
+      const result: StockPilesState = stockPilesReducer(
+        initialStockPilesState,
+        action
+      );
 
       expect(result.loaded).toBe(true);
       expect(result.ids.length).toBe(2);
@@ -30,9 +37,9 @@ describe('StockPiles Reducer', () => {
     it('should return the previous state', () => {
       const action = {} as any;
 
-      const result = reducer(initialState, action);
+      const result = stockPilesReducer(initialStockPilesState, action);
 
-      expect(result).toBe(initialState);
+      expect(result).toBe(initialStockPilesState);
     });
   });
 });

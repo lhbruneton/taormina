@@ -15,13 +15,13 @@ import * as FaceUpPilesSelectors from './face-up-piles.selectors';
 import * as FaceUpPilesActions from './face-up-piles.actions';
 import {
   FACE_UP_PILES_FEATURE_KEY,
-  State,
-  initialState,
-  reducer,
+  FaceUpState,
+  initialFaceUpState,
+  faceUpPilesReducer,
 } from './face-up-piles.reducer';
 
 interface TestSchema {
-  faceUpPiles: State;
+  faceUpPiles: FaceUpState;
 }
 
 describe('FaceUpPilesFacade', () => {
@@ -39,7 +39,7 @@ describe('FaceUpPilesFacade', () => {
     beforeEach(() => {
       @NgModule({
         imports: [
-          StoreModule.forFeature(FACE_UP_PILES_FEATURE_KEY, reducer),
+          StoreModule.forFeature(FACE_UP_PILES_FEATURE_KEY, faceUpPilesReducer),
           EffectsModule.forFeature([FaceUpPilesEffects]),
         ],
         providers: [FaceUpPilesFacade],

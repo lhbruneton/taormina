@@ -1,5 +1,9 @@
 import { HandCardsEntity } from './hand-cards.models';
-import { State, handCardsAdapter, initialState } from './hand-cards.reducer';
+import {
+  HandCardsState,
+  handCardsAdapter,
+  initialHandCardsState,
+} from './hand-cards.reducer';
 import * as HandCardsSelectors from './hand-cards.selectors';
 
 describe('HandCards Selectors', () => {
@@ -22,7 +26,7 @@ describe('HandCards Selectors', () => {
           createHandCardsEntity('PRODUCT-CCC'),
         ],
         {
-          ...initialState,
+          ...initialHandCardsState,
           selectedId: 'PRODUCT-BBB',
           error: ERROR_MSG,
           loaded: true,
@@ -41,7 +45,7 @@ describe('HandCards Selectors', () => {
     });
 
     it('getSelected() should return the selected Entity', () => {
-      const result = HandCardsSelectors.getSelected(state);
+      const result = HandCardsSelectors.getHandCardsSelected(state);
       const selId = getHandCardsId(result);
 
       expect(selId).toBe('PRODUCT-BBB');

@@ -31,7 +31,7 @@ describe('DomainCardsEffects', () => {
 
   describe('init$', () => {
     it('should work', () => {
-      actions = hot('-a-|', { a: DomainCardsActions.init() });
+      actions = hot('-a-|', { a: DomainCardsActions.initDomainCards() });
 
       const expected = hot('-a-|', {
         a: DomainCardsActions.loadDomainCardsSuccess({ domainCards: [] }),

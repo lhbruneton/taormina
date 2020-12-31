@@ -31,7 +31,7 @@ describe('DiceEffects', () => {
 
   describe('init$', () => {
     it('should work', () => {
-      actions = hot('-a-|', { a: DiceActions.init() });
+      actions = hot('-a-|', { a: DiceActions.initDice() });
 
       const expected = hot('-a-|', {
         a: DiceActions.loadDiceSuccess({ dice: [] }),

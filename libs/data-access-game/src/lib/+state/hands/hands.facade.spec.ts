@@ -15,13 +15,13 @@ import * as HandsSelectors from './hands.selectors';
 import * as HandsActions from './hands.actions';
 import {
   HANDS_FEATURE_KEY,
-  State,
-  initialState,
-  reducer,
+  HandsState,
+  initialHandsState,
+  handsReducer,
 } from './hands.reducer';
 
 interface TestSchema {
-  hands: State;
+  hands: HandsState;
 }
 
 describe('HandsFacade', () => {
@@ -39,7 +39,7 @@ describe('HandsFacade', () => {
     beforeEach(() => {
       @NgModule({
         imports: [
-          StoreModule.forFeature(HANDS_FEATURE_KEY, reducer),
+          StoreModule.forFeature(HANDS_FEATURE_KEY, handsReducer),
           EffectsModule.forFeature([HandsEffects]),
         ],
         providers: [HandsFacade],
