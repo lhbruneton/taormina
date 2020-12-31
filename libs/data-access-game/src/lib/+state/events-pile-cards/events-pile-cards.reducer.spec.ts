@@ -1,4 +1,4 @@
-import { EventsPileCardsEntity } from './events-pile-cards.models';
+import { CardsEntity } from '../../model/cards.models';
 import * as EventsPileCardsActions from './events-pile-cards.actions';
 import {
   EventsPileCardsState,
@@ -11,7 +11,7 @@ describe('EventsPileCards Reducer', () => {
     ({
       id,
       name: name || `name-${id}`,
-    } as EventsPileCardsEntity);
+    } as CardsEntity);
 
   beforeEach(() => {});
 

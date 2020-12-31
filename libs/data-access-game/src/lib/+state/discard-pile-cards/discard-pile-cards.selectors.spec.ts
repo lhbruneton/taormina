@@ -1,4 +1,4 @@
-import { DiscardPileCardsEntity } from './discard-pile-cards.models';
+import { CardsEntity } from '../../model/cards.models';
 import {
   DiscardPileCardsState,
   discardPileCardsAdapter,
@@ -13,7 +13,7 @@ describe('DiscardPileCards Selectors', () => {
     ({
       id,
       name: name || `name-${id}`,
-    } as DiscardPileCardsEntity);
+    } as CardsEntity);
 
   let state;
 

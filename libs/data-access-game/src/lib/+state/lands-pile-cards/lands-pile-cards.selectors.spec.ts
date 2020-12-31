@@ -1,4 +1,4 @@
-import { LandsPileCardsEntity } from './lands-pile-cards.models';
+import { CardsEntity } from '../../model/cards.models';
 import {
   LandsPileCardsState,
   landsPileCardsAdapter,
@@ -13,7 +13,7 @@ describe('LandsPileCards Selectors', () => {
     ({
       id,
       name: name || `name-${id}`,
-    } as LandsPileCardsEntity);
+    } as CardsEntity);
 
   let state;
 

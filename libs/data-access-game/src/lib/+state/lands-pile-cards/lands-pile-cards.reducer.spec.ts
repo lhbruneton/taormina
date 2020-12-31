@@ -1,4 +1,4 @@
-import { LandsPileCardsEntity } from './lands-pile-cards.models';
+import { CardsEntity } from '../../model/cards.models';
 import * as LandsPileCardsActions from './lands-pile-cards.actions';
 import {
   LandsPileCardsState,
@@ -11,7 +11,7 @@ describe('LandsPileCards Reducer', () => {
     ({
       id,
       name: name || `name-${id}`,
-    } as LandsPileCardsEntity);
+    } as CardsEntity);
 
   beforeEach(() => {});
 

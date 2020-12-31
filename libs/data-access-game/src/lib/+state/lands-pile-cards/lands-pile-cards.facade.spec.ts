@@ -7,7 +7,7 @@ import { StoreModule, Store } from '@ngrx/store';
 
 import { NxModule } from '@nrwl/angular';
 
-import { LandsPileCardsEntity } from './lands-pile-cards.models';
+import { CardsEntity } from '../../model/cards.models';
 import { LandsPileCardsEffects } from './lands-pile-cards.effects';
 import { LandsPileCardsFacade } from './lands-pile-cards.facade';
 
@@ -31,7 +31,7 @@ describe('LandsPileCardsFacade', () => {
     ({
       id,
       name: name || `name-${id}`,
-    } as LandsPileCardsEntity);
+    } as CardsEntity);
 
   beforeEach(() => {});
 

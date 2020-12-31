@@ -7,7 +7,7 @@ import { StoreModule, Store } from '@ngrx/store';
 
 import { NxModule } from '@nrwl/angular';
 
-import { DiscardPileCardsEntity } from './discard-pile-cards.models';
+import { CardsEntity } from '../../model/cards.models';
 import { DiscardPileCardsEffects } from './discard-pile-cards.effects';
 import { DiscardPileCardsFacade } from './discard-pile-cards.facade';
 
@@ -31,7 +31,7 @@ describe('DiscardPileCardsFacade', () => {
     ({
       id,
       name: name || `name-${id}`,
-    } as DiscardPileCardsEntity);
+    } as CardsEntity);
 
   beforeEach(() => {});
 

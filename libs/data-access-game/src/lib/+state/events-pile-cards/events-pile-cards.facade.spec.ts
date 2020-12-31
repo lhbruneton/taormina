@@ -7,7 +7,7 @@ import { StoreModule, Store } from '@ngrx/store';
 
 import { NxModule } from '@nrwl/angular';
 
-import { EventsPileCardsEntity } from './events-pile-cards.models';
+import { CardsEntity } from '../../model/cards.models';
 import { EventsPileCardsEffects } from './events-pile-cards.effects';
 import { EventsPileCardsFacade } from './events-pile-cards.facade';
 
@@ -31,7 +31,7 @@ describe('EventsPileCardsFacade', () => {
     ({
       id,
       name: name || `name-${id}`,
-    } as EventsPileCardsEntity);
+    } as CardsEntity);
 
   beforeEach(() => {});
 

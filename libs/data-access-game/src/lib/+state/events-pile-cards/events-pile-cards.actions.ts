@@ -1,11 +1,11 @@
 import { createAction, props } from '@ngrx/store';
-import { EventsPileCardsEntity } from './events-pile-cards.models';
+import { CardsEntity } from '../../model/cards.models';
 
 export const initEventsPileCards = createAction('[EventsPileCards Page] Init');
 
 export const loadEventsPileCardsSuccess = createAction(
   '[EventsPileCards/API] Load EventsPileCards Success',
-  props<{ eventsPileCards: EventsPileCardsEntity[] }>()
+  props<{ eventsPileCards: CardsEntity[] }>()
 );
 
 export const loadEventsPileCardsFailure = createAction(

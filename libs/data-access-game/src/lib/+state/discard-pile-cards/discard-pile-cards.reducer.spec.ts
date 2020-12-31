@@ -1,4 +1,4 @@
-import { DiscardPileCardsEntity } from './discard-pile-cards.models';
+import { CardsEntity } from '../../model/cards.models';
 import * as DiscardPileCardsActions from './discard-pile-cards.actions';
 import {
   DiscardPileCardsState,
@@ -11,7 +11,7 @@ describe('DiscardPileCards Reducer', () => {
     ({
       id,
       name: name || `name-${id}`,
-    } as DiscardPileCardsEntity);
+    } as CardsEntity);
 
   beforeEach(() => {});
 

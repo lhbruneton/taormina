@@ -1,4 +1,4 @@
-import { EventsPileCardsEntity } from './events-pile-cards.models';
+import { CardsEntity } from '../../model/cards.models';
 import {
   EventsPileCardsState,
   eventsPileCardsAdapter,
@@ -13,7 +13,7 @@ describe('EventsPileCards Selectors', () => {
     ({
       id,
       name: name || `name-${id}`,
-    } as EventsPileCardsEntity);
+    } as CardsEntity);
 
   let state;
 
