@@ -7,25 +7,25 @@ import { StoreModule, Store } from '@ngrx/store';
 
 import { NxModule } from '@nrwl/angular';
 
-import { CardsEntity } from '../cards/cards.models';
-import { DiscardPileCardsEffects } from './discard-pile-cards.effects';
-import { DiscardPileCardsFacade } from './discard-pile-cards.facade';
+import { CardsEntity } from './cards.models';
+import { CardsEffects } from './cards.effects';
+import { CardsFacade } from './cards.facade';
 
-import * as DiscardPileCardsSelectors from './discard-pile-cards.selectors';
-import * as DiscardPileCardsActions from './discard-pile-cards.actions';
+import * as CardsSelectors from './cards.selectors';
+import * as CardsActions from './cards.actions';
 import {
-  DISCARD_PILE_CARDS_FEATURE_KEY,
-  DiscardPileCardsState,
-  initialDiscardPileCardsState,
-  discardPileCardsReducer,
-} from './discard-pile-cards.reducer';
+  CARDS_FEATURE_KEY,
+  CardsState,
+  initialCardsState,
+  cardsReducer,
+} from './cards.reducer';
 
 interface TestSchema {
-  discardPileCards: DiscardPileCardsState;
+  cards: CardsState;
 }
 
-describe('DiscardPileCardsFacade', () => {
-  let facade: DiscardPileCardsFacade;
+describe('CardsFacade', () => {
+  let facade: CardsFacade;
   let store: Store<TestSchema>;
   const createCardsEntity = (id: string, name = '') =>
     ({
@@ -39,13 +39,10 @@ describe('DiscardPileCardsFacade', () => {
     beforeEach(() => {
       @NgModule({
         imports: [
-          StoreModule.forFeature(
-            DISCARD_PILE_CARDS_FEATURE_KEY,
-            discardPileCardsReducer
-          ),
-          EffectsModule.forFeature([DiscardPileCardsEffects]),
+          StoreModule.forFeature(CARDS_FEATURE_KEY, cardsReducer),
+          EffectsModule.forFeature([CardsEffects]),
         ],
-        providers: [DiscardPileCardsFacade],
+        providers: [CardsFacade],
       })
       class CustomFeatureModule {}
 
@@ -61,7 +58,7 @@ describe('DiscardPileCardsFacade', () => {
       TestBed.configureTestingModule({ imports: [RootModule] });
 
       store = TestBed.get(Store);
-      facade = TestBed.get(DiscardPileCardsFacade);
+      facade = TestBed.get(CardsFacade);
     });
 
     /**
@@ -69,7 +66,7 @@ describe('DiscardPileCardsFacade', () => {
      */
     it('loadAll() should return empty list with loaded == true', async (done) => {
       try {
-        let list = await readFirst(facade.allDiscardPileCards$);
+        let list = await readFirst(facade.allCards$);
         let isLoaded = await readFirst(facade.loaded$);
 
         expect(list.length).toBe(0);
@@ -77,7 +74,7 @@ describe('DiscardPileCardsFacade', () => {
 
         facade.initSavedGame();
 
-        list = await readFirst(facade.allDiscardPileCards$);
+        list = await readFirst(facade.allCards$);
         isLoaded = await readFirst(facade.loaded$);
 
         expect(list.length).toBe(0);
@@ -90,26 +87,23 @@ describe('DiscardPileCardsFacade', () => {
     });
 
     /**
-     * Use `loadDiscardPileCardsSuccess` to manually update list
+     * Use `loadCardsSuccess` to manually update list
      */
-    it('allDiscardPileCards$ should return the loaded list; and loaded flag == true', async (done) => {
+    it('allCards$ should return the loaded list; and loaded flag == true', async (done) => {
       try {
-        let list = await readFirst(facade.allDiscardPileCards$);
+        let list = await readFirst(facade.allCards$);
         let isLoaded = await readFirst(facade.loaded$);
 
         expect(list.length).toBe(0);
         expect(isLoaded).toBe(false);
 
         store.dispatch(
-          DiscardPileCardsActions.loadDiscardPileCardsSuccess({
-            discardPileCards: [
-              createCardsEntity('AAA'),
-              createCardsEntity('BBB'),
-            ],
+          CardsActions.loadCardsSuccess({
+            cards: [createCardsEntity('AAA'), createCardsEntity('BBB')],
           })
         );
 
-        list = await readFirst(facade.allDiscardPileCards$);
+        list = await readFirst(facade.allCards$);
         isLoaded = await readFirst(facade.loaded$);
 
         expect(list.length).toBe(2);

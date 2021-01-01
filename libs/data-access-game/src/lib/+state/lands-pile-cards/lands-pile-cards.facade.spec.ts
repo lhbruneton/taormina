@@ -7,7 +7,7 @@ import { StoreModule, Store } from '@ngrx/store';
 
 import { NxModule } from '@nrwl/angular';
 
-import { CardsEntity } from '../../model/cards.models';
+import { CardsEntity } from '../cards/cards.models';
 import { LandsPileCardsEffects } from './lands-pile-cards.effects';
 import { LandsPileCardsFacade } from './lands-pile-cards.facade';
 

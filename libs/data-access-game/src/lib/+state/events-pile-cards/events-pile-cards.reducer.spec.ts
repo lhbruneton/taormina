@@ -1,4 +1,4 @@
-import { CardsEntity } from '../../model/cards.models';
+import { CardsEntity } from '../cards/cards.models';
 import * as EventsPileCardsActions from './events-pile-cards.actions';
 import {
   EventsPileCardsState,

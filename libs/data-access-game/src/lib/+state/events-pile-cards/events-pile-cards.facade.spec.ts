@@ -7,7 +7,7 @@ import { StoreModule, Store } from '@ngrx/store';
 
 import { NxModule } from '@nrwl/angular';
 
-import { CardsEntity } from '../../model/cards.models';
+import { CardsEntity } from '../cards/cards.models';
 import { EventsPileCardsEffects } from './events-pile-cards.effects';
 import { EventsPileCardsFacade } from './events-pile-cards.facade';
 

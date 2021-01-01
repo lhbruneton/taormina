@@ -35,6 +35,9 @@ import { EventsPileCardsFacade } from './+state/events-pile-cards/events-pile-ca
 import * as fromLandsPileCards from './+state/lands-pile-cards/lands-pile-cards.reducer';
 import { LandsPileCardsEffects } from './+state/lands-pile-cards/lands-pile-cards.effects';
 import { LandsPileCardsFacade } from './+state/lands-pile-cards/lands-pile-cards.facade';
+import * as fromCards from './+state/cards/cards.reducer';
+import { CardsEffects } from './+state/cards/cards.effects';
+import { CardsFacade } from './+state/cards/cards.facade';
 
 @NgModule({
   imports: [
@@ -88,6 +91,8 @@ import { LandsPileCardsFacade } from './+state/lands-pile-cards/lands-pile-cards
       fromLandsPileCards.landsPileCardsReducer
     ),
     EffectsModule.forFeature([LandsPileCardsEffects]),
+    StoreModule.forFeature(fromCards.CARDS_FEATURE_KEY, fromCards.cardsReducer),
+    EffectsModule.forFeature([CardsEffects]),
   ],
   providers: [
     DomainsFacade,
@@ -101,6 +106,7 @@ import { LandsPileCardsFacade } from './+state/lands-pile-cards/lands-pile-cards
     DiscardPileCardsFacade,
     EventsPileCardsFacade,
     LandsPileCardsFacade,
+    CardsFacade,
   ],
 })
 export class DataAccessGameModule {}

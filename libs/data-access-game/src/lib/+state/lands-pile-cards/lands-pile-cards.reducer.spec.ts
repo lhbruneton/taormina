@@ -1,4 +1,4 @@
-import { CardsEntity } from '../../model/cards.models';
+import { CardsEntity } from '../cards/cards.models';
 import * as LandsPileCardsActions from './lands-pile-cards.actions';
 import {
   LandsPileCardsState,

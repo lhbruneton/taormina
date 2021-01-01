@@ -2,7 +2,7 @@ import { createReducer, on, Action } from '@ngrx/store';
 import { EntityState, EntityAdapter, createEntityAdapter } from '@ngrx/entity';
 
 import * as LandsPileCardsActions from './lands-pile-cards.actions';
-import { CardsEntity } from '../../model/cards.models';
+import { CardsEntity } from '../cards/cards.models';
 
 export const LANDS_PILE_CARDS_FEATURE_KEY = 'landsPileCards';
 

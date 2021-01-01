@@ -1,4 +1,4 @@
-import { CardsEntity } from '../../model/cards.models';
+import { CardsEntity } from '../cards/cards.models';
 import * as DiscardPileCardsActions from './discard-pile-cards.actions';
 import {
   DiscardPileCardsState,
