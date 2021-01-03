@@ -11,6 +11,13 @@ import { hot } from '@nrwl/angular/testing';
 import { DomainsEffects } from './domains.effects';
 import * as DomainsActions from './domains.actions';
 
+jest.mock('./domains.models', () => {
+  return {
+    __esModule: true,
+    createNewDomainsDuel: jest.fn(() => []),
+  };
+});
+
 describe('DomainsEffects', () => {
   let actions: Observable<any>;
   let effects: DomainsEffects;

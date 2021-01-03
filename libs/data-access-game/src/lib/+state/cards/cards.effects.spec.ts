@@ -11,6 +11,13 @@ import { hot } from '@nrwl/angular/testing';
 import { CardsEffects } from './cards.effects';
 import * as CardsActions from './cards.actions';
 
+jest.mock('./cards.models', () => {
+  return {
+    __esModule: true,
+    createNewCards: jest.fn(() => []),
+  };
+});
+
 describe('CardsEffects', () => {
   let actions: Observable<any>;
   let effects: CardsEffects;
