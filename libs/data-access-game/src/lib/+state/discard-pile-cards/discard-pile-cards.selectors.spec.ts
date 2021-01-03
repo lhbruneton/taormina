@@ -1,4 +1,4 @@
-import { CardsEntity } from '../cards/cards.models';
+import { createCardsEntity } from '../cards/cards.models';
 import {
   DiscardPileCardsState,
   discardPileCardsAdapter,
@@ -9,11 +9,6 @@ import * as DiscardPileCardsSelectors from './discard-pile-cards.selectors';
 describe('DiscardPileCards Selectors', () => {
   const ERROR_MSG = 'No Error Available';
   const getDiscardPileCardsId = (it) => it['id'];
-  const createDiscardPileCardsEntity = (id: string, name = '') =>
-    ({
-      id,
-      name: name || `name-${id}`,
-    } as CardsEntity);
 
   let state;
 
@@ -21,9 +16,9 @@ describe('DiscardPileCards Selectors', () => {
     state = {
       discardPileCards: discardPileCardsAdapter.setAll(
         [
-          createDiscardPileCardsEntity('PRODUCT-AAA'),
-          createDiscardPileCardsEntity('PRODUCT-BBB'),
-          createDiscardPileCardsEntity('PRODUCT-CCC'),
+          createCardsEntity('PRODUCT-AAA'),
+          createCardsEntity('PRODUCT-BBB'),
+          createCardsEntity('PRODUCT-CCC'),
         ],
         {
           ...initialDiscardPileCardsState,
@@ -44,7 +39,7 @@ describe('DiscardPileCards Selectors', () => {
       expect(selId).toBe('PRODUCT-BBB');
     });
 
-    it('getSelected() should return the selected Entity', () => {
+    it('getDiscardPileCardsSelected() should return the selected Entity', () => {
       const result = DiscardPileCardsSelectors.getDiscardPileCardsSelected(
         state
       );

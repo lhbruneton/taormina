@@ -1,4 +1,4 @@
-import { CardsEntity } from '../cards/cards.models';
+import { createCardsEntity } from '../cards/cards.models';
 import {
   LandsPileCardsState,
   landsPileCardsAdapter,
@@ -9,11 +9,6 @@ import * as LandsPileCardsSelectors from './lands-pile-cards.selectors';
 describe('LandsPileCards Selectors', () => {
   const ERROR_MSG = 'No Error Available';
   const getLandsPileCardsId = (it) => it['id'];
-  const createLandsPileCardsEntity = (id: string, name = '') =>
-    ({
-      id,
-      name: name || `name-${id}`,
-    } as CardsEntity);
 
   let state;
 
@@ -21,9 +16,9 @@ describe('LandsPileCards Selectors', () => {
     state = {
       landsPileCards: landsPileCardsAdapter.setAll(
         [
-          createLandsPileCardsEntity('PRODUCT-AAA'),
-          createLandsPileCardsEntity('PRODUCT-BBB'),
-          createLandsPileCardsEntity('PRODUCT-CCC'),
+          createCardsEntity('PRODUCT-AAA'),
+          createCardsEntity('PRODUCT-BBB'),
+          createCardsEntity('PRODUCT-CCC'),
         ],
         {
           ...initialLandsPileCardsState,
@@ -44,7 +39,7 @@ describe('LandsPileCards Selectors', () => {
       expect(selId).toBe('PRODUCT-BBB');
     });
 
-    it('getSelected() should return the selected Entity', () => {
+    it('getLandsPileCardsSelected() should return the selected Entity', () => {
       const result = LandsPileCardsSelectors.getLandsPileCardsSelected(state);
       const selId = getLandsPileCardsId(result);
 

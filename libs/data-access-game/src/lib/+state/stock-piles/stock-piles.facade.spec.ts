@@ -7,7 +7,7 @@ import { StoreModule, Store } from '@ngrx/store';
 
 import { NxModule } from '@nrwl/angular';
 
-import { StockPilesEntity } from './stock-piles.models';
+import { createStockPilesEntity } from './stock-piles.models';
 import { StockPilesEffects } from './stock-piles.effects';
 import { StockPilesFacade } from './stock-piles.facade';
 
@@ -27,11 +27,6 @@ interface TestSchema {
 describe('StockPilesFacade', () => {
   let facade: StockPilesFacade;
   let store: Store<TestSchema>;
-  const createStockPilesEntity = (id: string, name = '') =>
-    ({
-      id,
-      name: name || `name-${id}`,
-    } as StockPilesEntity);
 
   beforeEach(() => {});
 

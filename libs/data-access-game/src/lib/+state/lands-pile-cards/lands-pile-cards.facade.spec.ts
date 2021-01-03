@@ -7,7 +7,7 @@ import { StoreModule, Store } from '@ngrx/store';
 
 import { NxModule } from '@nrwl/angular';
 
-import { CardsEntity } from '../cards/cards.models';
+import { createCardsEntity } from '../cards/cards.models';
 import { LandsPileCardsEffects } from './lands-pile-cards.effects';
 import { LandsPileCardsFacade } from './lands-pile-cards.facade';
 
@@ -27,11 +27,6 @@ interface TestSchema {
 describe('LandsPileCardsFacade', () => {
   let facade: LandsPileCardsFacade;
   let store: Store<TestSchema>;
-  const createLandsPileCardsEntity = (id: string, name = '') =>
-    ({
-      id,
-      name: name || `name-${id}`,
-    } as CardsEntity);
 
   beforeEach(() => {});
 
@@ -103,8 +98,8 @@ describe('LandsPileCardsFacade', () => {
         store.dispatch(
           LandsPileCardsActions.loadLandsPileCardsSuccess({
             landsPileCards: [
-              createLandsPileCardsEntity('AAA'),
-              createLandsPileCardsEntity('BBB'),
+              createCardsEntity('AAA'),
+              createCardsEntity('BBB'),
             ],
           })
         );

@@ -7,7 +7,7 @@ import { StoreModule, Store } from '@ngrx/store';
 
 import { NxModule } from '@nrwl/angular';
 
-import { DiceEntity } from './dice.models';
+import { createDiceEntity } from './dice.models';
 import { DiceEffects } from './dice.effects';
 import { DiceFacade } from './dice.facade';
 
@@ -27,11 +27,6 @@ interface TestSchema {
 describe('DiceFacade', () => {
   let facade: DiceFacade;
   let store: Store<TestSchema>;
-  const createDiceEntity = (id: string, name = '') =>
-    ({
-      id,
-      name: name || `name-${id}`,
-    } as DiceEntity);
 
   beforeEach(() => {});
 

@@ -1,4 +1,4 @@
-import { DomainCardsEntity } from './domain-cards.models';
+import { createDomainCardsEntity } from './domain-cards.models';
 import {
   DomainCardsState,
   domainCardsAdapter,
@@ -9,11 +9,6 @@ import * as DomainCardsSelectors from './domain-cards.selectors';
 describe('DomainCards Selectors', () => {
   const ERROR_MSG = 'No Error Available';
   const getDomainCardsId = (it) => it['id'];
-  const createDomainCardsEntity = (id: string, name = '') =>
-    ({
-      id,
-      name: name || `name-${id}`,
-    } as DomainCardsEntity);
 
   let state;
 
@@ -44,7 +39,7 @@ describe('DomainCards Selectors', () => {
       expect(selId).toBe('PRODUCT-BBB');
     });
 
-    it('getSelected() should return the selected Entity', () => {
+    it('getDomainCardsSelected() should return the selected Entity', () => {
       const result = DomainCardsSelectors.getDomainCardsSelected(state);
       const selId = getDomainCardsId(result);
 

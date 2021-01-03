@@ -10,3 +10,19 @@ export interface DomainCardsEntity {
   col: number;
   row: number;
 }
+
+export const createDomainCardsEntity = (
+  id: string,
+  domainId = '',
+  cardId = '',
+  col = 0,
+  row = 0
+) =>
+  ({
+    id,
+    domainId: domainId || `domainId-${id}`,
+    cardId: cardId || `cardId-${id}`,
+    col,
+    row,
+  } as DomainCardsEntity);
+

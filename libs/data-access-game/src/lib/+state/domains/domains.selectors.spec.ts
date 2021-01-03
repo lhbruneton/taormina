@@ -1,4 +1,4 @@
-import { DomainsEntity } from './domains.models';
+import { createDomainsEntity } from './domains.models';
 import {
   DomainsState,
   domainsAdapter,
@@ -9,11 +9,6 @@ import * as DomainsSelectors from './domains.selectors';
 describe('Domains Selectors', () => {
   const ERROR_MSG = 'No Error Available';
   const getDomainsId = (it) => it['id'];
-  const createDomainsEntity = (id: string, name = '') =>
-    ({
-      id,
-      name: name || `name-${id}`,
-    } as DomainsEntity);
 
   let state;
 
@@ -44,7 +39,7 @@ describe('Domains Selectors', () => {
       expect(selId).toBe('PRODUCT-BBB');
     });
 
-    it('getSelected() should return the selected Entity', () => {
+    it('getDomainsSelected() should return the selected Entity', () => {
       const result = DomainsSelectors.getDomainsSelected(state);
       const selId = getDomainsId(result);
 

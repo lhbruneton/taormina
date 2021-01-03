@@ -1,4 +1,4 @@
-import { CardsEntity } from '../cards/cards.models';
+import { createCardsEntity } from '../cards/cards.models';
 import * as EventsPileCardsActions from './events-pile-cards.actions';
 import {
   EventsPileCardsState,
@@ -7,19 +7,13 @@ import {
 } from './events-pile-cards.reducer';
 
 describe('EventsPileCards Reducer', () => {
-  const createEventsPileCardsEntity = (id: string, name = '') =>
-    ({
-      id,
-      name: name || `name-${id}`,
-    } as CardsEntity);
-
   beforeEach(() => {});
 
   describe('valid EventsPileCards actions', () => {
     it('loadEventsPileCardsSuccess should return set the list of known EventsPileCards', () => {
       const eventsPileCards = [
-        createEventsPileCardsEntity('PRODUCT-AAA'),
-        createEventsPileCardsEntity('PRODUCT-zzz'),
+        createCardsEntity('PRODUCT-AAA'),
+        createCardsEntity('PRODUCT-zzz'),
       ];
       const action = EventsPileCardsActions.loadEventsPileCardsSuccess({
         eventsPileCards,

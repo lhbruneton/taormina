@@ -7,7 +7,7 @@ import { StoreModule, Store } from '@ngrx/store';
 
 import { NxModule } from '@nrwl/angular';
 
-import { FaceUpPilesEntity } from './face-up-piles.models';
+import { createFaceUpPilesEntity } from './face-up-piles.models';
 import { FaceUpPilesEffects } from './face-up-piles.effects';
 import { FaceUpPilesFacade } from './face-up-piles.facade';
 
@@ -27,12 +27,6 @@ interface TestSchema {
 describe('FaceUpPilesFacade', () => {
   let facade: FaceUpPilesFacade;
   let store: Store<TestSchema>;
-  const createFaceUpPilesEntity = (id: string, type = '', count = 0) =>
-    ({
-      id,
-      type: type || `type-${id}`,
-      count,
-    } as FaceUpPilesEntity);
 
   beforeEach(() => {});
 

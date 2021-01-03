@@ -6,3 +6,10 @@ export interface FaceUpPilesEntity {
   type: string;
   count: number;
 }
+
+export const createFaceUpPilesEntity = (id: string, type = '', count = 0) =>
+  ({
+    id,
+    type: type || `type-${id}`,
+    count,
+  } as FaceUpPilesEntity);

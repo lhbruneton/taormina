@@ -1,4 +1,4 @@
-import { HandCardsEntity } from './hand-cards.models';
+import { createHandCardsEntity } from './hand-cards.models';
 import * as HandCardsActions from './hand-cards.actions';
 import {
   HandCardsState,
@@ -7,13 +7,6 @@ import {
 } from './hand-cards.reducer';
 
 describe('HandCards Reducer', () => {
-  const createHandCardsEntity = (id: string, handId = '', cardId = '') =>
-    ({
-      id,
-      handId: handId || `handId-${id}`,
-      cardId: cardId || `cardId-${id}`,
-    } as HandCardsEntity);
-
   beforeEach(() => {});
 
   describe('valid HandCards actions', () => {

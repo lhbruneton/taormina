@@ -1,4 +1,4 @@
-import { FaceUpPilesEntity } from './face-up-piles.models';
+import { createFaceUpPilesEntity } from './face-up-piles.models';
 import * as FaceUpPilesActions from './face-up-piles.actions';
 import {
   FaceUpState,
@@ -7,13 +7,6 @@ import {
 } from './face-up-piles.reducer';
 
 describe('FaceUpPiles Reducer', () => {
-  const createFaceUpPilesEntity = (id: string, type = '', count = 0) =>
-    ({
-      id,
-      type: type || `type-${id}`,
-      count,
-    } as FaceUpPilesEntity);
-
   beforeEach(() => {});
 
   describe('valid FaceUpPiles actions', () => {

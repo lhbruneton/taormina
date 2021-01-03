@@ -1,15 +1,10 @@
-import { DiceEntity } from './dice.models';
+import { createDiceEntity } from './dice.models';
 import { DiceState, diceAdapter, initialDiceState } from './dice.reducer';
 import * as DiceSelectors from './dice.selectors';
 
 describe('Dice Selectors', () => {
   const ERROR_MSG = 'No Error Available';
   const getDiceId = (it) => it['id'];
-  const createDiceEntity = (id: string, name = '') =>
-    ({
-      id,
-      name: name || `name-${id}`,
-    } as DiceEntity);
 
   let state;
 
@@ -40,7 +35,7 @@ describe('Dice Selectors', () => {
       expect(selId).toBe('PRODUCT-BBB');
     });
 
-    it('getSelected() should return the selected Entity', () => {
+    it('getDiceSelected() should return the selected Entity', () => {
       const result = DiceSelectors.getDiceSelected(state);
       const selId = getDiceId(result);
 
