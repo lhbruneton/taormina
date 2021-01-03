@@ -1,4 +1,6 @@
+import { Dictionary } from '@ngrx/entity';
 import { createFeatureSelector, createSelector } from '@ngrx/store';
+import { CardsEntity } from './cards.models';
 import {
   CARDS_FEATURE_KEY,
   CardsState,
@@ -42,4 +44,10 @@ export const getCardsSelected = createSelector(
   getCardsEntities,
   getCardsSelectedId,
   (entities, selectedId) => selectedId && entities[selectedId]
+);
+
+export const getCardEntityById = createSelector(
+  getCardsEntities,
+  (entities: Dictionary<CardsEntity>, props) =>
+    props.cardId && entities[props.cardId]
 );

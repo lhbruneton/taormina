@@ -53,5 +53,13 @@ describe('Cards Selectors', () => {
 
       expect(result).toBe(ERROR_MSG);
     });
+
+    it('getCardEntityById({ cardId }) should return the Entity for the id', () => {
+      const cardId = 'PRODUCT-CCC';
+      const result = CardsSelectors.getCardEntityById(state, { cardId });
+      const selId = getCardsId(result);
+
+      expect(selId).toBe(cardId);
+    });
   });
 });

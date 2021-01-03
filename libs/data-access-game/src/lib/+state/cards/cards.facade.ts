@@ -29,4 +29,10 @@ export class CardsFacade {
   initSavedGame() {
     this.store.dispatch(CardsActions.initCardsSavedGame());
   }
+
+  getCardById(cardId: string) {
+    return this.store.pipe(
+      select(CardsSelectors.getCardEntityById, { cardId })
+    );
+  }
 }
