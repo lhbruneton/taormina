@@ -1,10 +1,19 @@
 import { TestBed } from '@angular/core/testing';
+import { StoreModule } from '@ngrx/store';
+import {
+  CardsFacade,
+  DiceFacade,
+  DomainCardsFacade,
+  DomainsFacade,
+} from '@taormina/data-access-game';
 import { AppComponent } from './app.component';
 
 describe('AppComponent', () => {
   beforeEach(async () => {
     await TestBed.configureTestingModule({
       declarations: [AppComponent],
+      imports: [StoreModule.forRoot({})],
+      providers: [DiceFacade, CardsFacade, DomainsFacade, DomainCardsFacade],
     }).compileComponents();
   });
 
@@ -12,20 +21,5 @@ describe('AppComponent', () => {
     const fixture = TestBed.createComponent(AppComponent);
     const app = fixture.componentInstance;
     expect(app).toBeTruthy();
-  });
-
-  it(`should have as title 'taormina-duel'`, () => {
-    const fixture = TestBed.createComponent(AppComponent);
-    const app = fixture.componentInstance;
-    expect(app.title).toEqual('taormina-duel');
-  });
-
-  it('should render title', () => {
-    const fixture = TestBed.createComponent(AppComponent);
-    fixture.detectChanges();
-    const compiled = fixture.nativeElement;
-    expect(compiled.querySelector('h1').textContent).toContain(
-      'Welcome to taormina-duel!'
-    );
   });
 });

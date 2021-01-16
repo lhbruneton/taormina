@@ -11,6 +11,13 @@ import { hot } from '@nrwl/angular/testing';
 import { DiceEffects } from './dice.effects';
 import * as DiceActions from './dice.actions';
 
+jest.mock('./dice.models', () => {
+  return {
+    __esModule: true,
+    createRandomDice: jest.fn(() => []),
+  };
+});
+
 describe('DiceEffects', () => {
   let actions: Observable<any>;
   let effects: DiceEffects;

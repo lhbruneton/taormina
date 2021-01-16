@@ -29,4 +29,8 @@ export class DiceFacade {
   initSavedGame() {
     this.store.dispatch(DiceActions.initDiceSavedGame());
   }
+
+  throw() {
+    this.store.dispatch(DiceActions.throwDice());
+  }
 }
