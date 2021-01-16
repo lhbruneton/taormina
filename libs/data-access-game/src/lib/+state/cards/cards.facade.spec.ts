@@ -7,7 +7,7 @@ import { StoreModule, Store } from '@ngrx/store';
 
 import { NxModule } from '@nrwl/angular';
 
-import { CardsEntity } from './cards.models';
+import { createCardsEntity } from './cards.models';
 import { CardsEffects } from './cards.effects';
 import { CardsFacade } from './cards.facade';
 
@@ -27,11 +27,6 @@ interface TestSchema {
 describe('CardsFacade', () => {
   let facade: CardsFacade;
   let store: Store<TestSchema>;
-  const createCardsEntity = (id: string, name = '') =>
-    ({
-      id,
-      name: name || `name-${id}`,
-    } as CardsEntity);
 
   beforeEach(() => {});
 

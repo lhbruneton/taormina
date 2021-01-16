@@ -1,4 +1,4 @@
-import { DomainsEntity } from './domains.models';
+import { createDomainsEntity } from './domains.models';
 import * as DomainsActions from './domains.actions';
 import {
   DomainsState,
@@ -7,12 +7,6 @@ import {
 } from './domains.reducer';
 
 describe('Domains Reducer', () => {
-  const createDomainsEntity = (id: string, name = '') =>
-    ({
-      id,
-      name: name || `name-${id}`,
-    } as DomainsEntity);
-
   beforeEach(() => {});
 
   describe('valid Domains actions', () => {

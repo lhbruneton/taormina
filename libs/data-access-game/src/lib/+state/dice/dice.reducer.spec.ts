@@ -1,14 +1,8 @@
-import { DiceEntity } from './dice.models';
+import { createDiceEntity } from './dice.models';
 import * as DiceActions from './dice.actions';
 import { DiceState, initialDiceState, diceReducer } from './dice.reducer';
 
 describe('Dice Reducer', () => {
-  const createDiceEntity = (id: string, name = '') =>
-    ({
-      id,
-      name: name || `name-${id}`,
-    } as DiceEntity);
-
   beforeEach(() => {});
 
   describe('valid Dice actions', () => {

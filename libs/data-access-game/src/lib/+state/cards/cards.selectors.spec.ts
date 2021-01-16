@@ -1,15 +1,10 @@
-import { CardsEntity } from './cards.models';
+import { CardsEntity, createCardsEntity } from './cards.models';
 import { CardsState, cardsAdapter, initialCardsState } from './cards.reducer';
 import * as CardsSelectors from './cards.selectors';
 
 describe('Cards Selectors', () => {
   const ERROR_MSG = 'No Error Available';
   const getCardsId = (it) => it['id'];
-  const createCardsEntity = (id: string, name = '') =>
-    ({
-      id,
-      name: name || `name-${id}`,
-    } as CardsEntity);
 
   let state;
 
@@ -40,7 +35,7 @@ describe('Cards Selectors', () => {
       expect(selId).toBe('PRODUCT-BBB');
     });
 
-    it('getSelected() should return the selected Entity', () => {
+    it('getCardsSelected() should return the selected Entity', () => {
       const result = CardsSelectors.getCardsSelected(state);
       const selId = getCardsId(result);
 
@@ -57,6 +52,14 @@ describe('Cards Selectors', () => {
       const result = CardsSelectors.getCardsError(state);
 
       expect(result).toBe(ERROR_MSG);
+    });
+
+    it('getCardEntityById({ cardId }) should return the Entity for the id', () => {
+      const cardId = 'PRODUCT-CCC';
+      const result = CardsSelectors.getCardEntityById(state, { cardId });
+      const selId = getCardsId(result);
+
+      expect(selId).toBe(cardId);
     });
   });
 });

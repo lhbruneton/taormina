@@ -7,7 +7,7 @@ import { StoreModule, Store } from '@ngrx/store';
 
 import { NxModule } from '@nrwl/angular';
 
-import { DomainCardsEntity } from './domain-cards.models';
+import { createDomainCardsEntity } from './domain-cards.models';
 import { DomainCardsEffects } from './domain-cards.effects';
 import { DomainCardsFacade } from './domain-cards.facade';
 
@@ -27,20 +27,6 @@ interface TestSchema {
 describe('DomainCardsFacade', () => {
   let facade: DomainCardsFacade;
   let store: Store<TestSchema>;
-  const createDomainCardsEntity = (
-    id: string,
-    domainId = '',
-    cardId = '',
-    col = 0,
-    row = 0
-  ) =>
-    ({
-      id,
-      domainId: domainId || `domainId-${id}`,
-      cardId: cardId || `cardId-${id}`,
-      col,
-      row,
-    } as DomainCardsEntity);
 
   beforeEach(() => {});
 

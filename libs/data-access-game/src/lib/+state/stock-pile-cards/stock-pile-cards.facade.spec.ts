@@ -7,7 +7,7 @@ import { StoreModule, Store } from '@ngrx/store';
 
 import { NxModule } from '@nrwl/angular';
 
-import { StockPileCardsEntity } from './stock-pile-cards.models';
+import { createStockPileCardsEntity } from './stock-pile-cards.models';
 import { StockPileCardsEffects } from './stock-pile-cards.effects';
 import { StockPileCardsFacade } from './stock-pile-cards.facade';
 
@@ -27,16 +27,6 @@ interface TestSchema {
 describe('StockPileCardsFacade', () => {
   let facade: StockPileCardsFacade;
   let store: Store<TestSchema>;
-  const createStockPileCardsEntity = (
-    id: string,
-    stockPileId = '',
-    cardId = ''
-  ) =>
-    ({
-      id,
-      stockPileId: stockPileId || `stockPileId-${id}`,
-      cardId: cardId || `cardId-${id}`,
-    } as StockPileCardsEntity);
 
   beforeEach(() => {});
 

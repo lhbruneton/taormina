@@ -1,4 +1,4 @@
-import { CardsEntity } from '../cards/cards.models';
+import { createCardsEntity } from '../cards/cards.models';
 import {
   EventsPileCardsState,
   eventsPileCardsAdapter,
@@ -9,11 +9,6 @@ import * as EventsPileCardsSelectors from './events-pile-cards.selectors';
 describe('EventsPileCards Selectors', () => {
   const ERROR_MSG = 'No Error Available';
   const getEventsPileCardsId = (it) => it['id'];
-  const createEventsPileCardsEntity = (id: string, name = '') =>
-    ({
-      id,
-      name: name || `name-${id}`,
-    } as CardsEntity);
 
   let state;
 
@@ -21,9 +16,9 @@ describe('EventsPileCards Selectors', () => {
     state = {
       eventsPileCards: eventsPileCardsAdapter.setAll(
         [
-          createEventsPileCardsEntity('PRODUCT-AAA'),
-          createEventsPileCardsEntity('PRODUCT-BBB'),
-          createEventsPileCardsEntity('PRODUCT-CCC'),
+          createCardsEntity('PRODUCT-AAA'),
+          createCardsEntity('PRODUCT-BBB'),
+          createCardsEntity('PRODUCT-CCC'),
         ],
         {
           ...initialEventsPileCardsState,
@@ -44,7 +39,7 @@ describe('EventsPileCards Selectors', () => {
       expect(selId).toBe('PRODUCT-BBB');
     });
 
-    it('getSelected() should return the selected Entity', () => {
+    it('getEventsPileCardsSelected() should return the selected Entity', () => {
       const result = EventsPileCardsSelectors.getEventsPileCardsSelected(state);
       const selId = getEventsPileCardsId(result);
 

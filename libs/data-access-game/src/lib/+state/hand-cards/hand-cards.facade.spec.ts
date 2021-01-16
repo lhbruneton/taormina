@@ -7,7 +7,7 @@ import { StoreModule, Store } from '@ngrx/store';
 
 import { NxModule } from '@nrwl/angular';
 
-import { HandCardsEntity } from './hand-cards.models';
+import { createHandCardsEntity } from './hand-cards.models';
 import { HandCardsEffects } from './hand-cards.effects';
 import { HandCardsFacade } from './hand-cards.facade';
 
@@ -27,12 +27,6 @@ interface TestSchema {
 describe('HandCardsFacade', () => {
   let facade: HandCardsFacade;
   let store: Store<TestSchema>;
-  const createHandCardsEntity = (id: string, handId = '', cardId = '') =>
-    ({
-      id,
-      handId: handId || `handId-${id}`,
-      cardId: cardId || `cardId-${id}`,
-    } as HandCardsEntity);
 
   beforeEach(() => {});
 

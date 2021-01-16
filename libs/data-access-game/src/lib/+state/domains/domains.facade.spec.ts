@@ -7,7 +7,7 @@ import { StoreModule, Store } from '@ngrx/store';
 
 import { NxModule } from '@nrwl/angular';
 
-import { DomainsEntity } from './domains.models';
+import { createDomainsEntity } from './domains.models';
 import { DomainsEffects } from './domains.effects';
 import { DomainsFacade } from './domains.facade';
 
@@ -27,11 +27,6 @@ interface TestSchema {
 describe('DomainsFacade', () => {
   let facade: DomainsFacade;
   let store: Store<TestSchema>;
-  const createDomainsEntity = (id: string, name = '') =>
-    ({
-      id,
-      name: name || `name-${id}`,
-    } as DomainsEntity);
 
   beforeEach(() => {});
 

@@ -1,4 +1,4 @@
-import { DomainCardsEntity } from './domain-cards.models';
+import { createDomainCardsEntity } from './domain-cards.models';
 import * as DomainCardsActions from './domain-cards.actions';
 import {
   DomainCardsState,
@@ -7,21 +7,6 @@ import {
 } from './domain-cards.reducer';
 
 describe('DomainCards Reducer', () => {
-  const createDomainCardsEntity = (
-    id: string,
-    domainId = '',
-    cardId = '',
-    col = 0,
-    row = 0
-  ) =>
-    ({
-      id,
-      domainId: domainId || `domainId-${id}`,
-      cardId: cardId || `cardId-${id}`,
-      col,
-      row,
-    } as DomainCardsEntity);
-
   beforeEach(() => {});
 
   describe('valid DomainCards actions', () => {

@@ -5,13 +5,14 @@ import { map } from 'rxjs/operators';
 
 import * as CardsFeature from './cards.reducer';
 import * as CardsActions from './cards.actions';
+import { createNewCards } from './cards.models';
 
 @Injectable()
 export class CardsEffects {
   initNewGame$ = createEffect(() =>
     this.actions$.pipe(
       ofType(CardsActions.initCardsNewGame),
-      map(() => CardsActions.setCardsInitialized({ cards: [] }))
+      map(() => CardsActions.setCardsInitialized({ cards: createNewCards() }))
     )
   );
 

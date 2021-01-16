@@ -1,4 +1,4 @@
-import { StockPilesEntity } from './stock-piles.models';
+import { createStockPilesEntity } from './stock-piles.models';
 import * as StockPilesActions from './stock-piles.actions';
 import {
   StockPilesState,
@@ -7,12 +7,6 @@ import {
 } from './stock-piles.reducer';
 
 describe('StockPiles Reducer', () => {
-  const createStockPilesEntity = (id: string, name = '') =>
-    ({
-      id,
-      name: name || `name-${id}`,
-    } as StockPilesEntity);
-
   beforeEach(() => {});
 
   describe('valid StockPiles actions', () => {

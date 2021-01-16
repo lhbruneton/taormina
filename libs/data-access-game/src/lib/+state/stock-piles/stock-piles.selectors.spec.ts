@@ -1,4 +1,4 @@
-import { StockPilesEntity } from './stock-piles.models';
+import { createStockPilesEntity } from './stock-piles.models';
 import {
   StockPilesState,
   stockPilesAdapter,
@@ -9,11 +9,6 @@ import * as StockPilesSelectors from './stock-piles.selectors';
 describe('StockPiles Selectors', () => {
   const ERROR_MSG = 'No Error Available';
   const getStockPilesId = (it) => it['id'];
-  const createStockPilesEntity = (id: string, name = '') =>
-    ({
-      id,
-      name: name || `name-${id}`,
-    } as StockPilesEntity);
 
   let state;
 
@@ -44,7 +39,7 @@ describe('StockPiles Selectors', () => {
       expect(selId).toBe('PRODUCT-BBB');
     });
 
-    it('getSelected() should return the selected Entity', () => {
+    it('getStockPilesSelected() should return the selected Entity', () => {
       const result = StockPilesSelectors.getStockPilesSelected(state);
       const selId = getStockPilesId(result);
 

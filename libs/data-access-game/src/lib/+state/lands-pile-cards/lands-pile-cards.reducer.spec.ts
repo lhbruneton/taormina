@@ -1,4 +1,4 @@
-import { CardsEntity } from '../cards/cards.models';
+import { createCardsEntity } from '../cards/cards.models';
 import * as LandsPileCardsActions from './lands-pile-cards.actions';
 import {
   LandsPileCardsState,
@@ -7,19 +7,13 @@ import {
 } from './lands-pile-cards.reducer';
 
 describe('LandsPileCards Reducer', () => {
-  const createLandsPileCardsEntity = (id: string, name = '') =>
-    ({
-      id,
-      name: name || `name-${id}`,
-    } as CardsEntity);
-
   beforeEach(() => {});
 
   describe('valid LandsPileCards actions', () => {
     it('loadLandsPileCardsSuccess should return set the list of known LandsPileCards', () => {
       const landsPileCards = [
-        createLandsPileCardsEntity('PRODUCT-AAA'),
-        createLandsPileCardsEntity('PRODUCT-zzz'),
+        createCardsEntity('PRODUCT-AAA'),
+        createCardsEntity('PRODUCT-zzz'),
       ];
       const action = LandsPileCardsActions.loadLandsPileCardsSuccess({
         landsPileCards,

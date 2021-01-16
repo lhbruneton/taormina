@@ -1,14 +1,8 @@
-import { CardsEntity } from './cards.models';
+import { CardsEntity, createCardsEntity } from './cards.models';
 import * as CardsActions from './cards.actions';
 import { CardsState, initialCardsState, cardsReducer } from './cards.reducer';
 
 describe('Cards Reducer', () => {
-  const createCardsEntity = (id: string, name = '') =>
-    ({
-      id,
-      name: name || `name-${id}`,
-    } as CardsEntity);
-
   beforeEach(() => {});
 
   describe('valid Cards actions', () => {

@@ -1,4 +1,4 @@
-import { FaceUpPilesEntity } from './face-up-piles.models';
+import { createFaceUpPilesEntity } from './face-up-piles.models';
 import {
   FaceUpState,
   faceUpPilesAdapter,
@@ -9,11 +9,6 @@ import * as FaceUpPilesSelectors from './face-up-piles.selectors';
 describe('FaceUpPiles Selectors', () => {
   const ERROR_MSG = 'No Error Available';
   const getFaceUpPilesId = (it) => it['id'];
-  const createFaceUpPilesEntity = (id: string, name = '') =>
-    ({
-      id,
-      name: name || `name-${id}`,
-    } as FaceUpPilesEntity);
 
   let state;
 
@@ -44,7 +39,7 @@ describe('FaceUpPiles Selectors', () => {
       expect(selId).toBe('PRODUCT-BBB');
     });
 
-    it('getSelected() should return the selected Entity', () => {
+    it('getFaceUpSelected() should return the selected Entity', () => {
       const result = FaceUpPilesSelectors.getFaceUpSelected(state);
       const selId = getFaceUpPilesId(result);
 

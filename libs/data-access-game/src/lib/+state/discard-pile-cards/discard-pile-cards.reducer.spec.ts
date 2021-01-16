@@ -1,4 +1,4 @@
-import { CardsEntity } from '../cards/cards.models';
+import { createCardsEntity } from '../cards/cards.models';
 import * as DiscardPileCardsActions from './discard-pile-cards.actions';
 import {
   DiscardPileCardsState,
@@ -7,19 +7,13 @@ import {
 } from './discard-pile-cards.reducer';
 
 describe('DiscardPileCards Reducer', () => {
-  const createDiscardPileCardsEntity = (id: string, name = '') =>
-    ({
-      id,
-      name: name || `name-${id}`,
-    } as CardsEntity);
-
   beforeEach(() => {});
 
   describe('valid DiscardPileCards actions', () => {
     it('loadDiscardPileCardsSuccess should return set the list of known DiscardPileCards', () => {
       const discardPileCards = [
-        createDiscardPileCardsEntity('PRODUCT-AAA'),
-        createDiscardPileCardsEntity('PRODUCT-zzz'),
+        createCardsEntity('PRODUCT-AAA'),
+        createCardsEntity('PRODUCT-zzz'),
       ];
       const action = DiscardPileCardsActions.loadDiscardPileCardsSuccess({
         discardPileCards,

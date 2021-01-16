@@ -1,14 +1,8 @@
-import { HandsEntity } from './hands.models';
+import { createHandsEntity } from './hands.models';
 import * as HandsActions from './hands.actions';
 import { HandsState, initialHandsState, handsReducer } from './hands.reducer';
 
 describe('Hands Reducer', () => {
-  const createHandsEntity = (id: string, name = '') =>
-    ({
-      id,
-      name: name || `name-${id}`,
-    } as HandsEntity);
-
   beforeEach(() => {});
 
   describe('valid Hands actions', () => {

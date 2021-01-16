@@ -5,13 +5,18 @@ import { map } from 'rxjs/operators';
 
 import * as DomainsFeature from './domains.reducer';
 import * as DomainsActions from './domains.actions';
+import { createNewDomainsDuel } from './domains.models';
 
 @Injectable()
 export class DomainsEffects {
   initNewGame$ = createEffect(() =>
     this.actions$.pipe(
       ofType(DomainsActions.initDomainsNewGame),
-      map(() => DomainsActions.setDomainsInitialized({ domains: [] }))
+      map(() =>
+        DomainsActions.setDomainsInitialized({
+          domains: createNewDomainsDuel(),
+        })
+      )
     )
   );
 

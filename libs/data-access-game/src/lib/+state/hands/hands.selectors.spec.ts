@@ -1,15 +1,10 @@
-import { HandsEntity } from './hands.models';
+import { createHandsEntity } from './hands.models';
 import { HandsState, handsAdapter, initialHandsState } from './hands.reducer';
 import * as HandsSelectors from './hands.selectors';
 
 describe('Hands Selectors', () => {
   const ERROR_MSG = 'No Error Available';
   const getHandsId = (it) => it['id'];
-  const createHandsEntity = (id: string, name = '') =>
-    ({
-      id,
-      name: name || `name-${id}`,
-    } as HandsEntity);
 
   let state;
 
@@ -40,7 +35,7 @@ describe('Hands Selectors', () => {
       expect(selId).toBe('PRODUCT-BBB');
     });
 
-    it('getSelected() should return the selected Entity', () => {
+    it('getHandsSelected() should return the selected Entity', () => {
       const result = HandsSelectors.getHandsSelected(state);
       const selId = getHandsId(result);
 
