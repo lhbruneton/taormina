@@ -1,5 +1,8 @@
 <button type="button" (click)="startNewGame()">New Game !</button>
 <hr />
+<button type="button" (click)="onThrow()">throw</button>
+<p *ngFor="let die of getDice() | async">{{ die.id }} - {{ die.value }}</p>
+<hr />
 <div *ngIf="getTopDomain() | async as domain">
   <div>{{ domain.name }}</div>
   <div class="grid-container">

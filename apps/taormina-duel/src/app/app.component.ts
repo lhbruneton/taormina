@@ -5,6 +5,7 @@ import {
   DomainsFacade,
 } from '@taormina/data-access-game';
 import { filter, map } from 'rxjs/operators';
+import { DiceFacade } from '@taormina/data-access-game';
 
 @Component({
   selector: 'taormina-root',
@@ -13,15 +14,25 @@ import { filter, map } from 'rxjs/operators';
 })
 export class AppComponent {
   constructor(
+    private dice: DiceFacade,
     private cards: CardsFacade,
     private domains: DomainsFacade,
     private domainCards: DomainCardsFacade
   ) {}
 
   startNewGame() {
+    this.dice.initNewGame();
     this.cards.initNewGame();
     this.domains.initNewGame();
     this.domainCards.initNewGame();
+  }
+
+  onThrow() {
+    this.dice.throw();
+  }
+
+  getDice() {
+    return this.dice.allDice$;
   }
 
   getTopDomain() {

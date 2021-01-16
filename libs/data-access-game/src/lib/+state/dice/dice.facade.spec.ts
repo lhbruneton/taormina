@@ -7,7 +7,7 @@ import { StoreModule, Store } from '@ngrx/store';
 
 import { NxModule } from '@nrwl/angular';
 
-import { createDiceEntity } from './dice.models';
+import { createResourceDiceEntity, createEventDiceEntity } from './dice.models';
 import { DiceEffects } from './dice.effects';
 import { DiceFacade } from './dice.facade';
 
@@ -94,7 +94,10 @@ describe('DiceFacade', () => {
 
         store.dispatch(
           DiceActions.loadDiceSuccess({
-            dice: [createDiceEntity('AAA'), createDiceEntity('BBB')],
+            dice: [
+              createResourceDiceEntity(1),
+              createEventDiceEntity('THIEVES'),
+            ],
           })
         );
 

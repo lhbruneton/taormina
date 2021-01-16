@@ -1,4 +1,4 @@
-import { createDiceEntity } from './dice.models';
+import { createResourceDiceEntity, createEventDiceEntity } from './dice.models';
 import * as DiceActions from './dice.actions';
 import { DiceState, initialDiceState, diceReducer } from './dice.reducer';
 
@@ -8,8 +8,8 @@ describe('Dice Reducer', () => {
   describe('valid Dice actions', () => {
     it('loadDiceSuccess should return set the list of known Dice', () => {
       const dice = [
-        createDiceEntity('PRODUCT-AAA'),
-        createDiceEntity('PRODUCT-zzz'),
+        createResourceDiceEntity(1),
+        createEventDiceEntity('THIEVES'),
       ];
       const action = DiceActions.loadDiceSuccess({ dice });
 

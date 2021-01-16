@@ -1,4 +1,4 @@
-import { createDiceEntity } from './dice.models';
+import { createResourceDiceEntity, createEventDiceEntity } from './dice.models';
 import { DiceState, diceAdapter, initialDiceState } from './dice.reducer';
 import * as DiceSelectors from './dice.selectors';
 
@@ -11,14 +11,10 @@ describe('Dice Selectors', () => {
   beforeEach(() => {
     state = {
       dice: diceAdapter.setAll(
-        [
-          createDiceEntity('PRODUCT-AAA'),
-          createDiceEntity('PRODUCT-BBB'),
-          createDiceEntity('PRODUCT-CCC'),
-        ],
+        [createResourceDiceEntity(1), createEventDiceEntity('THIEVES')],
         {
           ...initialDiceState,
-          selectedId: 'PRODUCT-BBB',
+          selectedId: 'RESOURCE',
           error: ERROR_MSG,
           loaded: true,
         }
@@ -29,17 +25,17 @@ describe('Dice Selectors', () => {
   describe('Dice Selectors', () => {
     it('getAllDice() should return the list of Dice', () => {
       const results = DiceSelectors.getAllDice(state);
-      const selId = getDiceId(results[1]);
+      const secId = getDiceId(results[1]);
 
-      expect(results.length).toBe(3);
-      expect(selId).toBe('PRODUCT-BBB');
+      expect(results.length).toBe(2);
+      expect(secId).toBe('EVENT');
     });
 
     it('getDiceSelected() should return the selected Entity', () => {
       const result = DiceSelectors.getDiceSelected(state);
       const selId = getDiceId(result);
 
-      expect(selId).toBe('PRODUCT-BBB');
+      expect(selId).toBe('RESOURCE');
     });
 
     it("getDiceLoaded() should return the current 'loaded' status", () => {

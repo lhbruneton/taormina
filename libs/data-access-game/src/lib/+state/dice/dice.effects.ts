@@ -5,13 +5,17 @@ import { map } from 'rxjs/operators';
 
 import * as DiceFeature from './dice.reducer';
 import * as DiceActions from './dice.actions';
+import { createRandomDice } from './dice.models';
 
 @Injectable()
 export class DiceEffects {
   initNewGame$ = createEffect(() =>
     this.actions$.pipe(
       ofType(DiceActions.initDiceNewGame),
-      map(() => DiceActions.setDiceInitialized({ dice: [] }))
+      map(() => {
+        const dice = createRandomDice();
+        return DiceActions.setDiceInitialized({ dice });
+      })
     )
   );
 
@@ -28,6 +32,16 @@ export class DiceEffects {
           console.error('Error', error);
           return DiceActions.loadDiceFailure({ error });
         },
+      })
+    )
+  );
+
+  throw$ = createEffect(() =>
+    this.actions$.pipe(
+      ofType(DiceActions.throwDice),
+      map(() => {
+        const dice = createRandomDice();
+        return DiceActions.upsertDice({ dice });
       })
     )
   );

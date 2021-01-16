@@ -21,3 +21,10 @@ export const setDiceInitialized = createAction(
   '[Dice] Set Dice On Init',
   props<{ dice: DiceEntity[] }>()
 );
+
+export const throwDice = createAction('[Dice Component] Throw Dice');
+
+export const upsertDice = createAction(
+  '[Dice] Upsert Dice',
+  props<{ dice: DiceEntity[] }>()
+);

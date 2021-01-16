@@ -17,7 +17,9 @@ export interface DicePartialState {
   readonly [DICE_FEATURE_KEY]: DiceState;
 }
 
-export const diceAdapter: EntityAdapter<DiceEntity> = createEntityAdapter<DiceEntity>();
+export const diceAdapter: EntityAdapter<DiceEntity> = createEntityAdapter<
+  DiceEntity
+>();
 
 export const initialDiceState: DiceState = diceAdapter.getInitialState({
   // set initial required properties
@@ -42,5 +44,8 @@ export const diceReducer = createReducer(
   on(DiceActions.loadDiceFailure, (state, { error }) => ({ ...state, error })),
   on(DiceActions.setDiceInitialized, (state, { dice }) =>
     diceAdapter.setAll(dice, { ...state, initialized: true })
+  ),
+  on(DiceActions.upsertDice, (state, { dice }) =>
+    diceAdapter.upsertMany(dice, state)
   )
 );
