@@ -3,5 +3,6 @@ module.exports = {
     '<rootDir>/apps/taormina-duel',
     '<rootDir>/libs/ui-card',
     '<rootDir>/libs/data-access-game',
+    '<rootDir>/libs/shared-models',
   ],
 };

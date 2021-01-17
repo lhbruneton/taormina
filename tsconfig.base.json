@@ -16,7 +16,8 @@
     "baseUrl": ".",
     "paths": {
       "@taormina/ui-card": ["libs/ui-card/src/index.ts"],
-      "@taormina/data-access-game": ["libs/data-access-game/src/index.ts"]
+      "@taormina/data-access-game": ["libs/data-access-game/src/index.ts"],
+      "@taormina/shared-models": ["libs/shared-models/src/index.ts"]
     }
   },
   "exclude": ["node_modules", "tmp"]

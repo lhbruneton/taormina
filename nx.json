@@ -38,6 +38,9 @@
     },
     "data-access-game": {
       "tags": []
+    },
+    "shared-models": {
+      "tags": []
     }
   }
 }
