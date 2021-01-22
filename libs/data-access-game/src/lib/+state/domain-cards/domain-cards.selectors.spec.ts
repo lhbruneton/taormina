@@ -1,6 +1,5 @@
 import { createDomainCardsEntity } from './domain-cards.models';
 import {
-  DomainCardsState,
   domainCardsAdapter,
   initialDomainCardsState,
 } from './domain-cards.reducer';
@@ -16,9 +15,9 @@ describe('DomainCards Selectors', () => {
     state = {
       domainCards: domainCardsAdapter.setAll(
         [
-          createDomainCardsEntity('PRODUCT-AAA'),
-          createDomainCardsEntity('PRODUCT-BBB'),
-          createDomainCardsEntity('PRODUCT-CCC'),
+          createDomainCardsEntity('PRODUCT-AAA', 'A', 'A', 0, 0),
+          createDomainCardsEntity('PRODUCT-BBB', 'B', 'B', 0, 0),
+          createDomainCardsEntity('PRODUCT-CCC', 'C', 'C', 0, 0),
         ],
         {
           ...initialDomainCardsState,

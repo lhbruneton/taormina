@@ -1,9 +1,11 @@
-import { createDomainsEntity } from './domains.models';
+import { DomainColor } from '@taormina/shared-models';
+
 import * as DomainsActions from './domains.actions';
+import { createDomainsEntity } from './domains.models';
 import {
+  domainsReducer,
   DomainsState,
   initialDomainsState,
-  domainsReducer,
 } from './domains.reducer';
 
 describe('Domains Reducer', () => {
@@ -12,8 +14,8 @@ describe('Domains Reducer', () => {
   describe('valid Domains actions', () => {
     it('loadDomainsSuccess should return set the list of known Domains', () => {
       const domains = [
-        createDomainsEntity('PRODUCT-AAA'),
-        createDomainsEntity('PRODUCT-zzz'),
+        createDomainsEntity('PRODUCT-AAA', DomainColor.Red),
+        createDomainsEntity('PRODUCT-zzz', DomainColor.Blue),
       ];
       const action = DomainsActions.loadDomainsSuccess({ domains });
 

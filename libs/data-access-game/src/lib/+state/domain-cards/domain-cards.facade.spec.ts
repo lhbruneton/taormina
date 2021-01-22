@@ -1,23 +1,18 @@
 import { NgModule } from '@angular/core';
 import { TestBed } from '@angular/core/testing';
+import { EffectsModule } from '@ngrx/effects';
+import { Store, StoreModule } from '@ngrx/store';
+import { NxModule } from '@nrwl/angular';
 import { readFirst } from '@nrwl/angular/testing';
 
-import { EffectsModule } from '@ngrx/effects';
-import { StoreModule, Store } from '@ngrx/store';
-
-import { NxModule } from '@nrwl/angular';
-
-import { createDomainCardsEntity } from './domain-cards.models';
+import * as DomainCardsActions from './domain-cards.actions';
 import { DomainCardsEffects } from './domain-cards.effects';
 import { DomainCardsFacade } from './domain-cards.facade';
-
-import * as DomainCardsSelectors from './domain-cards.selectors';
-import * as DomainCardsActions from './domain-cards.actions';
+import { createDomainCardsEntity } from './domain-cards.models';
 import {
-  DOMAIN_CARDS_FEATURE_KEY,
-  DomainCardsState,
-  initialDomainCardsState,
   domainCardsReducer,
+  DomainCardsState,
+  DOMAIN_CARDS_FEATURE_KEY,
 } from './domain-cards.reducer';
 
 interface TestSchema {
@@ -95,8 +90,8 @@ describe('DomainCardsFacade', () => {
         store.dispatch(
           DomainCardsActions.loadDomainCardsSuccess({
             domainCards: [
-              createDomainCardsEntity('AAA'),
-              createDomainCardsEntity('BBB'),
+              createDomainCardsEntity('AAA', 'A', 'A', 0, 0),
+              createDomainCardsEntity('BBB', 'B', 'B', 0, 0),
             ],
           })
         );

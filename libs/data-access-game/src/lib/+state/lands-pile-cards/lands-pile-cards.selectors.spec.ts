@@ -1,8 +1,9 @@
-import { createCardsEntity } from '../cards/cards.models';
+import { DomainColor, LandType } from '@taormina/shared-models';
+
+import { createLandCardsEntity } from '../cards/models/land';
 import {
-  LandsPileCardsState,
-  landsPileCardsAdapter,
   initialLandsPileCardsState,
+  landsPileCardsAdapter,
 } from './lands-pile-cards.reducer';
 import * as LandsPileCardsSelectors from './lands-pile-cards.selectors';
 
@@ -16,9 +17,24 @@ describe('LandsPileCards Selectors', () => {
     state = {
       landsPileCards: landsPileCardsAdapter.setAll(
         [
-          createCardsEntity('PRODUCT-AAA'),
-          createCardsEntity('PRODUCT-BBB'),
-          createCardsEntity('PRODUCT-CCC'),
+          createLandCardsEntity(
+            'PRODUCT-AAA',
+            LandType.ClayPit,
+            0,
+            DomainColor.Red
+          ),
+          createLandCardsEntity(
+            'PRODUCT-BBB',
+            LandType.Forest,
+            1,
+            DomainColor.Blue
+          ),
+          createLandCardsEntity(
+            'PRODUCT-CCC',
+            LandType.GoldMine,
+            2,
+            DomainColor.Red
+          ),
         ],
         {
           ...initialLandsPileCardsState,

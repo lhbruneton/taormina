@@ -1,20 +1,24 @@
-import { TestBed, async } from '@angular/core/testing';
-
-import { Observable } from 'rxjs';
-
+import { TestBed } from '@angular/core/testing';
 import { provideMockActions } from '@ngrx/effects/testing';
 import { provideMockStore } from '@ngrx/store/testing';
-
-import { NxModule, DataPersistence } from '@nrwl/angular';
+import { DataPersistence, NxModule } from '@nrwl/angular';
 import { hot } from '@nrwl/angular/testing';
+import { Observable } from 'rxjs';
 
-import { CardsEffects } from './cards.effects';
 import * as CardsActions from './cards.actions';
+import { CardsEffects } from './cards.effects';
 
-jest.mock('./cards.models', () => {
+jest.mock('./models/agglomeration', () => {
   return {
     __esModule: true,
-    createNewCards: jest.fn(() => []),
+    createInitialAgglomerationCards: jest.fn(() => []),
+  };
+});
+
+jest.mock('./models/land', () => {
+  return {
+    __esModule: true,
+    createInitialLandCards: jest.fn(() => []),
   };
 });
 

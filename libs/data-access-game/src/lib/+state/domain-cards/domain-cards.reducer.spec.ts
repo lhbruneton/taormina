@@ -1,9 +1,9 @@
-import { createDomainCardsEntity } from './domain-cards.models';
 import * as DomainCardsActions from './domain-cards.actions';
+import { createDomainCardsEntity } from './domain-cards.models';
 import {
+  domainCardsReducer,
   DomainCardsState,
   initialDomainCardsState,
-  domainCardsReducer,
 } from './domain-cards.reducer';
 
 describe('DomainCards Reducer', () => {
@@ -12,8 +12,8 @@ describe('DomainCards Reducer', () => {
   describe('valid DomainCards actions', () => {
     it('loadDomainCardsSuccess should return set the list of known DomainCards', () => {
       const domainCards = [
-        createDomainCardsEntity('PRODUCT-AAA'),
-        createDomainCardsEntity('PRODUCT-zzz'),
+        createDomainCardsEntity('PRODUCT-AAA', 'A', 'A', 0, 0),
+        createDomainCardsEntity('PRODUCT-zzz', 'z', 'z', 0, 0),
       ];
       const action = DomainCardsActions.loadDomainCardsSuccess({ domainCards });
 

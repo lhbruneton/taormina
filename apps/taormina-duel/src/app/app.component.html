@@ -4,7 +4,7 @@
 <p *ngFor="let die of getDice() | async">{{ die.id }} - {{ die.value }}</p>
 <hr />
 <div *ngIf="getTopDomain() | async as domain">
-  <div>{{ domain.name }}</div>
+  <div>{{ domain.color }}</div>
   <div class="grid-container">
     <div
       *ngFor="let pivot of getDomainCards(domain.id) | async"
@@ -14,13 +14,13 @@
         'grid-row-start': 'row' + pivot.row
       }"
     >
-      <div>{{ (getCard(pivot.cardId) | async).name }}</div>
+      <div>{{ (getPrintableCard(pivot.cardId) | async).print() }}</div>
     </div>
   </div>
 </div>
 <hr />
 <div *ngIf="getBottomDomain() | async as domain">
-  <div>{{ domain.name }}</div>
+  <div>{{ domain.color }}</div>
   <div class="grid-container">
     <div
       *ngFor="let pivot of getDomainCards(domain.id) | async"
@@ -30,7 +30,7 @@
         'grid-row-start': 'row' + pivot.row
       }"
     >
-      <div>{{ (getCard(pivot.cardId) | async).name }}</div>
+      <div>{{ (getPrintableCard(pivot.cardId) | async).print() }}</div>
     </div>
   </div>
 </div>
