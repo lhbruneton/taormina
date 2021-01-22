@@ -1,6 +1,9 @@
+import { AgglomerationType, LandType } from '@taormina/shared-models';
 import { v4 as uuidv4 } from 'uuid';
 
 import { CardsEntity } from '../cards/cards.models';
+import { AgglomerationCardsEntity } from '../cards/models/agglomeration';
+import { LandCardsEntity } from '../cards/models/land';
 import { DomainsEntity } from '../domains/domains.models';
 
 /**
@@ -18,15 +21,15 @@ export interface DomainCardsEntity {
 
 export const createDomainCardsEntity = (
   id: string,
-  domainId = '',
-  cardId = '',
-  col = 0,
-  row = 0
+  domainId: string,
+  cardId: string,
+  col: number,
+  row: number
 ) =>
   ({
     id,
-    domainId: domainId || `domainId-${id}`,
-    cardId: cardId || `cardId-${id}`,
+    domainId,
+    cardId,
     col,
     row,
   } as DomainCardsEntity);
@@ -35,69 +38,127 @@ export const createNewDomainCards = (
   domain: DomainsEntity,
   cards: CardsEntity[]
 ) => {
+  let firstHamletId: string;
+
   return [
     {
       id: uuidv4(),
       domainId: domain.id,
-      cardId: cards.find((card) => card.name === `${domain.name}_0_0`).id,
+      cardId: cards.find((card) => {
+        return (
+          card instanceof AgglomerationCardsEntity &&
+          card.type === AgglomerationType.Road &&
+          card.color === domain.color
+        );
+      }).id,
       col: 0,
       row: 0,
     },
     {
       id: uuidv4(),
       domainId: domain.id,
-      cardId: cards.find((card) => card.name === `${domain.name}_0_-1`).id,
-      col: 0,
-      row: -1,
-    },
-    {
-      id: uuidv4(),
-      domainId: domain.id,
-      cardId: cards.find((card) => card.name === `${domain.name}_0_1`).id,
-      col: 0,
-      row: 1,
-    },
-    {
-      id: uuidv4(),
-      domainId: domain.id,
-      cardId: cards.find((card) => card.name === `${domain.name}_-1_0`).id,
+      cardId: cards.find((card) => {
+        const found =
+          card instanceof AgglomerationCardsEntity &&
+          card.type === AgglomerationType.Hamlet &&
+          card.color === domain.color;
+        if (found) firstHamletId = card.id;
+        return found;
+      }).id,
       col: -1,
       row: 0,
     },
     {
       id: uuidv4(),
       domainId: domain.id,
-      cardId: cards.find((card) => card.name === `${domain.name}_-2_-1`).id,
-      col: -2,
-      row: -1,
-    },
-    {
-      id: uuidv4(),
-      domainId: domain.id,
-      cardId: cards.find((card) => card.name === `${domain.name}_-2_1`).id,
-      col: -2,
-      row: 1,
-    },
-    {
-      id: uuidv4(),
-      domainId: domain.id,
-      cardId: cards.find((card) => card.name === `${domain.name}_1_0`).id,
+      cardId: cards.find((card) => {
+        return (
+          card instanceof AgglomerationCardsEntity &&
+          card.type === AgglomerationType.Hamlet &&
+          card.color === domain.color &&
+          card.id !== firstHamletId
+        );
+      }).id,
       col: 1,
       row: 0,
     },
     {
       id: uuidv4(),
       domainId: domain.id,
-      cardId: cards.find((card) => card.name === `${domain.name}_2_-1`).id,
+      cardId: cards.find((card) => {
+        return (
+          card instanceof LandCardsEntity &&
+          card.type === LandType.ClayPit &&
+          card.color === domain.color
+        );
+      }).id,
+      col: -2,
+      row: -1,
+    },
+    {
+      id: uuidv4(),
+      domainId: domain.id,
+      cardId: cards.find((card) => {
+        return (
+          card instanceof LandCardsEntity &&
+          card.type === LandType.Forest &&
+          card.color === domain.color
+        );
+      }).id,
+      col: -2,
+      row: 1,
+    },
+    {
+      id: uuidv4(),
+      domainId: domain.id,
+      cardId: cards.find((card) => {
+        return (
+          card instanceof LandCardsEntity &&
+          card.type === LandType.GoldMine &&
+          card.color === domain.color
+        );
+      }).id,
+      col: 0,
+      row: 1,
+    },
+    {
+      id: uuidv4(),
+      domainId: domain.id,
+      cardId: cards.find((card) => {
+        return (
+          card instanceof LandCardsEntity &&
+          card.type === LandType.Field &&
+          card.color === domain.color
+        );
+      }).id,
+      col: 2,
+      row: 1,
+    },
+    {
+      id: uuidv4(),
+      domainId: domain.id,
+      cardId: cards.find((card) => {
+        return (
+          card instanceof LandCardsEntity &&
+          card.type === LandType.StoneQuarry &&
+          card.color === domain.color
+        );
+      }).id,
       col: 2,
       row: -1,
     },
     {
       id: uuidv4(),
       domainId: domain.id,
-      cardId: cards.find((card) => card.name === `${domain.name}_2_1`).id,
-      col: 2,
-      row: 1,
+      cardId: cards.find((card) => {
+        return (
+          card instanceof LandCardsEntity &&
+          card.type === LandType.Pasture &&
+          card.color === domain.color
+        );
+      }).id,
+      col: 0,
+      row: -1,
     },
   ];
 };

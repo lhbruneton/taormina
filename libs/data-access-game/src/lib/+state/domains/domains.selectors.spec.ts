@@ -1,9 +1,7 @@
+import { DomainColor } from '@taormina/shared-models';
+
 import { createDomainsEntity } from './domains.models';
-import {
-  DomainsState,
-  domainsAdapter,
-  initialDomainsState,
-} from './domains.reducer';
+import { domainsAdapter, initialDomainsState } from './domains.reducer';
 import * as DomainsSelectors from './domains.selectors';
 
 describe('Domains Selectors', () => {
@@ -16,9 +14,9 @@ describe('Domains Selectors', () => {
     state = {
       domains: domainsAdapter.setAll(
         [
-          createDomainsEntity('PRODUCT-AAA'),
-          createDomainsEntity('PRODUCT-BBB'),
-          createDomainsEntity('PRODUCT-CCC'),
+          createDomainsEntity('PRODUCT-AAA', DomainColor.Red),
+          createDomainsEntity('PRODUCT-BBB', DomainColor.Blue),
+          createDomainsEntity('PRODUCT-CCC', DomainColor.Red),
         ],
         {
           ...initialDomainsState,

@@ -1,23 +1,19 @@
 import { NgModule } from '@angular/core';
 import { TestBed } from '@angular/core/testing';
-import { readFirst } from '@nrwl/angular/testing';
-
 import { EffectsModule } from '@ngrx/effects';
-import { StoreModule, Store } from '@ngrx/store';
-
+import { Store, StoreModule } from '@ngrx/store';
 import { NxModule } from '@nrwl/angular';
+import { readFirst } from '@nrwl/angular/testing';
+import { DomainColor } from '@taormina/shared-models';
 
-import { createDomainsEntity } from './domains.models';
+import * as DomainsActions from './domains.actions';
 import { DomainsEffects } from './domains.effects';
 import { DomainsFacade } from './domains.facade';
-
-import * as DomainsSelectors from './domains.selectors';
-import * as DomainsActions from './domains.actions';
+import { createDomainsEntity } from './domains.models';
 import {
-  DOMAINS_FEATURE_KEY,
-  DomainsState,
-  initialDomainsState,
   domainsReducer,
+  DomainsState,
+  DOMAINS_FEATURE_KEY,
 } from './domains.reducer';
 
 interface TestSchema {
@@ -94,7 +90,10 @@ describe('DomainsFacade', () => {
 
         store.dispatch(
           DomainsActions.loadDomainsSuccess({
-            domains: [createDomainsEntity('AAA'), createDomainsEntity('BBB')],
+            domains: [
+              createDomainsEntity('AAA', DomainColor.Red),
+              createDomainsEntity('BBB', DomainColor.Blue),
+            ],
           })
         );
 

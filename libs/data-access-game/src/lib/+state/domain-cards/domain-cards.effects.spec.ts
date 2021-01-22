@@ -1,20 +1,17 @@
-import { TestBed, async } from '@angular/core/testing';
-
-import { Observable } from 'rxjs';
-
+import { TestBed } from '@angular/core/testing';
 import { provideMockActions } from '@ngrx/effects/testing';
 import { provideMockStore } from '@ngrx/store/testing';
-
-import { NxModule, DataPersistence } from '@nrwl/angular';
+import { DataPersistence, NxModule } from '@nrwl/angular';
 import { hot } from '@nrwl/angular/testing';
+import { DomainColor } from '@taormina/shared-models';
+import { Observable } from 'rxjs';
 
-import * as CardsSelectors from '../cards/cards.selectors';
-import * as DomainsSelectors from '../domains/domains.selectors';
-
-import { DomainCardsEffects } from './domain-cards.effects';
-import * as DomainCardsActions from './domain-cards.actions';
 import { createCardsEntity } from '../cards/cards.models';
+import * as CardsSelectors from '../cards/cards.selectors';
 import { createDomainsEntity } from '../domains/domains.models';
+import * as DomainsSelectors from '../domains/domains.selectors';
+import * as DomainCardsActions from './domain-cards.actions';
+import { DomainCardsEffects } from './domain-cards.effects';
 
 jest.mock('./domain-cards.models', () => {
   return {
@@ -56,8 +53,8 @@ describe('DomainCardsEffects', () => {
             {
               selector: DomainsSelectors.getAllDomains,
               value: [
-                createDomainsEntity('DOMAIN-AAA'),
-                createDomainsEntity('DOMAIN-BBB'),
+                createDomainsEntity('DOMAIN-AAA', DomainColor.Red),
+                createDomainsEntity('DOMAIN-BBB', DomainColor.Blue),
               ],
             },
           ],

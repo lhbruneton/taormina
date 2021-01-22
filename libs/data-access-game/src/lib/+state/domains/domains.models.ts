@@ -1,3 +1,4 @@
+import { DomainColor } from '@taormina/shared-models';
 import { v4 as uuidv4 } from 'uuid';
 
 /**
@@ -5,18 +6,18 @@ import { v4 as uuidv4 } from 'uuid';
  */
 export interface DomainsEntity {
   id: string; // Primary ID
-  name: string;
+  color: DomainColor;
 }
 
-export const createDomainsEntity = (id: string, name = '') =>
+export const createDomainsEntity = (id: string, color: DomainColor) =>
   ({
     id,
-    name: name || `name-${id}`,
+    color,
   } as DomainsEntity);
 
 export const createNewDomainsDuel = () => {
   return [
-    { id: uuidv4(), name: 'RED' },
-    { id: uuidv4(), name: 'BLUE' },
+    { id: uuidv4(), color: DomainColor.Red },
+    { id: uuidv4(), color: DomainColor.Blue },
   ];
 };
