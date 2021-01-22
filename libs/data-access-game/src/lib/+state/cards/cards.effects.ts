@@ -1,18 +1,25 @@
 import { Injectable } from '@angular/core';
-import { createEffect, Actions, ofType } from '@ngrx/effects';
+import { Actions, createEffect, ofType } from '@ngrx/effects';
 import { fetch } from '@nrwl/angular';
 import { map } from 'rxjs/operators';
 
-import * as CardsFeature from './cards.reducer';
 import * as CardsActions from './cards.actions';
-import { createNewCards } from './cards.models';
+import { createInitialAgglomerationCards } from './models/agglomeration';
+import { createInitialLandCards } from './models/land';
 
 @Injectable()
 export class CardsEffects {
   initNewGame$ = createEffect(() =>
     this.actions$.pipe(
       ofType(CardsActions.initCardsNewGame),
-      map(() => CardsActions.setCardsInitialized({ cards: createNewCards() }))
+      map(() =>
+        CardsActions.setCardsInitialized({
+          cards: [
+            ...createInitialAgglomerationCards(),
+            ...createInitialLandCards(),
+          ],
+        })
+      )
     )
   );
 

@@ -55,7 +55,7 @@ export class AppComponent {
     );
   }
 
-  getCard(cardId: string) {
-    return this.cards.getCardById(cardId);
+  getPrintableCard(cardId: string) {
+    return this.cards.getPrintableCardById(cardId);
   }
 }
