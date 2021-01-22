@@ -1,23 +1,19 @@
 import { NgModule } from '@angular/core';
 import { TestBed } from '@angular/core/testing';
-import { readFirst } from '@nrwl/angular/testing';
-
 import { EffectsModule } from '@ngrx/effects';
-import { StoreModule, Store } from '@ngrx/store';
-
+import { Store, StoreModule } from '@ngrx/store';
 import { NxModule } from '@nrwl/angular';
+import { readFirst } from '@nrwl/angular/testing';
+import { DomainColor, LandType } from '@taormina/shared-models';
 
-import { createCardsEntity } from '../cards/cards.models';
+import { createLandCardsEntity } from '../cards/models/land';
+import * as LandsPileCardsActions from './lands-pile-cards.actions';
 import { LandsPileCardsEffects } from './lands-pile-cards.effects';
 import { LandsPileCardsFacade } from './lands-pile-cards.facade';
-
-import * as LandsPileCardsSelectors from './lands-pile-cards.selectors';
-import * as LandsPileCardsActions from './lands-pile-cards.actions';
 import {
-  LANDS_PILE_CARDS_FEATURE_KEY,
-  LandsPileCardsState,
-  initialLandsPileCardsState,
   landsPileCardsReducer,
+  LandsPileCardsState,
+  LANDS_PILE_CARDS_FEATURE_KEY,
 } from './lands-pile-cards.reducer';
 
 interface TestSchema {
@@ -98,8 +94,13 @@ describe('LandsPileCardsFacade', () => {
         store.dispatch(
           LandsPileCardsActions.loadLandsPileCardsSuccess({
             landsPileCards: [
-              createCardsEntity('AAA'),
-              createCardsEntity('BBB'),
+              createLandCardsEntity(
+                'AAA',
+                LandType.ClayPit,
+                0,
+                DomainColor.Red
+              ),
+              createLandCardsEntity('BBB', LandType.Field, 3, DomainColor.Blue),
             ],
           })
         );

@@ -1,9 +1,11 @@
-import { createCardsEntity } from '../cards/cards.models';
+import { DomainColor, LandType } from '@taormina/shared-models';
+
+import { createLandCardsEntity } from '../cards/models/land';
 import * as LandsPileCardsActions from './lands-pile-cards.actions';
 import {
-  LandsPileCardsState,
   initialLandsPileCardsState,
   landsPileCardsReducer,
+  LandsPileCardsState,
 } from './lands-pile-cards.reducer';
 
 describe('LandsPileCards Reducer', () => {
@@ -12,8 +14,18 @@ describe('LandsPileCards Reducer', () => {
   describe('valid LandsPileCards actions', () => {
     it('loadLandsPileCardsSuccess should return set the list of known LandsPileCards', () => {
       const landsPileCards = [
-        createCardsEntity('PRODUCT-AAA'),
-        createCardsEntity('PRODUCT-zzz'),
+        createLandCardsEntity(
+          'PRODUCT-AAA',
+          LandType.ClayPit,
+          0,
+          DomainColor.Red
+        ),
+        createLandCardsEntity(
+          'PRODUCT-zzz',
+          LandType.Field,
+          3,
+          DomainColor.Blue
+        ),
       ];
       const action = LandsPileCardsActions.loadLandsPileCardsSuccess({
         landsPileCards,
