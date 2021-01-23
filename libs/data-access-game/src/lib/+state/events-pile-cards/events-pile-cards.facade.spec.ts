@@ -1,23 +1,18 @@
 import { NgModule } from '@angular/core';
 import { TestBed } from '@angular/core/testing';
+import { EffectsModule } from '@ngrx/effects';
+import { Store, StoreModule } from '@ngrx/store';
+import { NxModule } from '@nrwl/angular';
 import { readFirst } from '@nrwl/angular/testing';
 
-import { EffectsModule } from '@ngrx/effects';
-import { StoreModule, Store } from '@ngrx/store';
-
-import { NxModule } from '@nrwl/angular';
-
-import { createCardsEntity } from '../cards/cards.models';
+import { createEventCardsEntity } from '../cards/models/event';
+import * as EventsPileCardsActions from './events-pile-cards.actions';
 import { EventsPileCardsEffects } from './events-pile-cards.effects';
 import { EventsPileCardsFacade } from './events-pile-cards.facade';
-
-import * as EventsPileCardsSelectors from './events-pile-cards.selectors';
-import * as EventsPileCardsActions from './events-pile-cards.actions';
 import {
-  EVENTS_PILE_CARDS_FEATURE_KEY,
-  EventsPileCardsState,
-  initialEventsPileCardsState,
   eventsPileCardsReducer,
+  EventsPileCardsState,
+  EVENTS_PILE_CARDS_FEATURE_KEY,
 } from './events-pile-cards.reducer';
 
 interface TestSchema {
@@ -98,8 +93,8 @@ describe('EventsPileCardsFacade', () => {
         store.dispatch(
           EventsPileCardsActions.loadEventsPileCardsSuccess({
             eventsPileCards: [
-              createCardsEntity('AAA'),
-              createCardsEntity('BBB'),
+              createEventCardsEntity('AAA', 'Some name', []),
+              createEventCardsEntity('BBB', 'Some other name', []),
             ],
           })
         );

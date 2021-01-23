@@ -1,12 +1,13 @@
 import { Component } from '@angular/core';
 import {
   CardsFacade,
+  DiceFacade,
   DomainCardsFacade,
   DomainsFacade,
+  EventsPileCardsFacade,
   LandsPileCardsFacade,
 } from '@taormina/data-access-game';
 import { filter, map } from 'rxjs/operators';
-import { DiceFacade } from '@taormina/data-access-game';
 
 @Component({
   selector: 'taormina-root',
@@ -19,7 +20,8 @@ export class AppComponent {
     private cards: CardsFacade,
     private domains: DomainsFacade,
     private domainCards: DomainCardsFacade,
-    private landCards: LandsPileCardsFacade
+    private landCards: LandsPileCardsFacade,
+    private eventCards: EventsPileCardsFacade
   ) {}
 
   startNewGame() {
@@ -28,6 +30,7 @@ export class AppComponent {
     this.domains.initNewGame();
     this.domainCards.initNewGame();
     this.landCards.initNewGame();
+    this.eventCards.initNewGame();
   }
 
   onThrow() {
@@ -64,5 +67,9 @@ export class AppComponent {
 
   getLandCards() {
     return this.landCards.allLandsPileCards$;
+  }
+
+  getEventCards() {
+    return this.eventCards.allEventsPileCards$;
   }
 }

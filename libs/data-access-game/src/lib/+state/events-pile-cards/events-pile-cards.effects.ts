@@ -3,8 +3,8 @@ import { createEffect, Actions, ofType } from '@ngrx/effects';
 import { fetch } from '@nrwl/angular';
 import { map } from 'rxjs/operators';
 
-import * as EventsPileCardsFeature from './events-pile-cards.reducer';
 import * as EventsPileCardsActions from './events-pile-cards.actions';
+import { getShuffledInitialEventCards } from '../cards/models/event';
 
 @Injectable()
 export class EventsPileCardsEffects {
@@ -13,7 +13,7 @@ export class EventsPileCardsEffects {
       ofType(EventsPileCardsActions.initEventsPileCardsNewGame),
       map(() =>
         EventsPileCardsActions.setEventsPileCardsInitialized({
-          eventsPileCards: [],
+          eventsPileCards: getShuffledInitialEventCards(),
         })
       )
     )

@@ -7,6 +7,10 @@
   {{ land.type }} - {{ land.die }}
 </p>
 <hr />
+<p *ngFor="let event of getEventCards() | async">
+  {{ event.name }}
+</p>
+<hr />
 <div *ngIf="getTopDomain() | async as domain">
   <div>{{ domain.color }}</div>
   <div class="grid-container">
