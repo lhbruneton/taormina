@@ -3,8 +3,8 @@ import { createEffect, Actions, ofType } from '@ngrx/effects';
 import { fetch } from '@nrwl/angular';
 import { map } from 'rxjs/operators';
 
-import * as LandsPileCardsFeature from './lands-pile-cards.reducer';
 import * as LandsPileCardsActions from './lands-pile-cards.actions';
+import { createInitialLandCards } from '../cards/models/land';
 
 @Injectable()
 export class LandsPileCardsEffects {
@@ -13,7 +13,7 @@ export class LandsPileCardsEffects {
       ofType(LandsPileCardsActions.initLandsPileCardsNewGame),
       map(() =>
         LandsPileCardsActions.setLandsPileCardsInitialized({
-          landsPileCards: [],
+          landsPileCards: createInitialLandCards(),
         })
       )
     )

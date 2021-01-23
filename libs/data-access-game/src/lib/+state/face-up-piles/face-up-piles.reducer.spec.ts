@@ -1,21 +1,25 @@
-import { createFaceUpPilesEntity } from './face-up-piles.models';
+import { AgglomerationType } from '@taormina/shared-models';
+
+import { createAgglomerationCardsEntity } from '../cards/models/agglomeration';
 import * as FaceUpPilesActions from './face-up-piles.actions';
 import {
+  faceUpPilesReducer,
   FaceUpState,
   initialFaceUpState,
-  faceUpPilesReducer,
 } from './face-up-piles.reducer';
 
 describe('FaceUpPiles Reducer', () => {
   beforeEach(() => {});
 
   describe('valid FaceUpPiles actions', () => {
-    it('loadFaceUpPilesSuccess should return set the list of known FaceUpPiles', () => {
-      const faceUpPiles = [
-        createFaceUpPilesEntity('PRODUCT-AAA'),
-        createFaceUpPilesEntity('PRODUCT-zzz'),
+    it('loadFaceUpPilesSuccess should return set the list of known AgglomerationCards', () => {
+      const agglomerationCards = [
+        createAgglomerationCardsEntity('PRODUCT-AAA', AgglomerationType.Road),
+        createAgglomerationCardsEntity('PRODUCT-zzz', AgglomerationType.Hamlet),
       ];
-      const action = FaceUpPilesActions.loadFaceUpPilesSuccess({ faceUpPiles });
+      const action = FaceUpPilesActions.loadFaceUpPilesSuccess({
+        agglomerationCards,
+      });
 
       const result: FaceUpState = faceUpPilesReducer(
         initialFaceUpState,

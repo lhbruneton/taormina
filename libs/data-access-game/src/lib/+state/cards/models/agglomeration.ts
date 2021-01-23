@@ -14,7 +14,7 @@ export class AgglomerationCardsEntity
   implements CardsEntity, HasColor, CanPrint {
   id: string;
   type: AgglomerationType;
-  color: DomainColor;
+  color?: DomainColor;
 
   print() {
     return `${this.type}`;
@@ -24,7 +24,7 @@ export class AgglomerationCardsEntity
 export const createAgglomerationCardsEntity = (
   id: string,
   type: AgglomerationType,
-  color: DomainColor
+  color?: DomainColor
 ) => {
   const entity = new AgglomerationCardsEntity();
   entity.id = id;
@@ -33,7 +33,7 @@ export const createAgglomerationCardsEntity = (
   return entity;
 };
 
-export function createInitialAgglomerationCards() {
+export function createInitialDomainAgglomerationCards() {
   return [
     createAgglomerationCardsEntity(
       uuidv4(),
@@ -65,5 +65,29 @@ export function createInitialAgglomerationCards() {
       AgglomerationType.Hamlet,
       DomainColor.Blue
     ),
+  ];
+}
+
+export function createInitialAgglomerationCards() {
+  return [
+    createAgglomerationCardsEntity(uuidv4(), AgglomerationType.Road),
+    createAgglomerationCardsEntity(uuidv4(), AgglomerationType.Road),
+    createAgglomerationCardsEntity(uuidv4(), AgglomerationType.Road),
+    createAgglomerationCardsEntity(uuidv4(), AgglomerationType.Road),
+    createAgglomerationCardsEntity(uuidv4(), AgglomerationType.Road),
+    createAgglomerationCardsEntity(uuidv4(), AgglomerationType.Road),
+    createAgglomerationCardsEntity(uuidv4(), AgglomerationType.Road),
+    createAgglomerationCardsEntity(uuidv4(), AgglomerationType.Hamlet),
+    createAgglomerationCardsEntity(uuidv4(), AgglomerationType.Hamlet),
+    createAgglomerationCardsEntity(uuidv4(), AgglomerationType.Hamlet),
+    createAgglomerationCardsEntity(uuidv4(), AgglomerationType.Hamlet),
+    createAgglomerationCardsEntity(uuidv4(), AgglomerationType.Hamlet),
+    createAgglomerationCardsEntity(uuidv4(), AgglomerationType.Town),
+    createAgglomerationCardsEntity(uuidv4(), AgglomerationType.Town),
+    createAgglomerationCardsEntity(uuidv4(), AgglomerationType.Town),
+    createAgglomerationCardsEntity(uuidv4(), AgglomerationType.Town),
+    createAgglomerationCardsEntity(uuidv4(), AgglomerationType.Town),
+    createAgglomerationCardsEntity(uuidv4(), AgglomerationType.Town),
+    createAgglomerationCardsEntity(uuidv4(), AgglomerationType.Town),
   ];
 }

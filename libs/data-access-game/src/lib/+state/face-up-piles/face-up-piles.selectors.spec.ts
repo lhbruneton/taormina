@@ -1,6 +1,7 @@
-import { createFaceUpPilesEntity } from './face-up-piles.models';
+import { AgglomerationType } from '@taormina/shared-models';
+
+import { createAgglomerationCardsEntity } from '../cards/models/agglomeration';
 import {
-  FaceUpState,
   faceUpPilesAdapter,
   initialFaceUpState,
 } from './face-up-piles.reducer';
@@ -16,9 +17,12 @@ describe('FaceUpPiles Selectors', () => {
     state = {
       faceUpPiles: faceUpPilesAdapter.setAll(
         [
-          createFaceUpPilesEntity('PRODUCT-AAA'),
-          createFaceUpPilesEntity('PRODUCT-BBB'),
-          createFaceUpPilesEntity('PRODUCT-CCC'),
+          createAgglomerationCardsEntity('PRODUCT-AAA', AgglomerationType.Road),
+          createAgglomerationCardsEntity(
+            'PRODUCT-BBB',
+            AgglomerationType.Hamlet
+          ),
+          createAgglomerationCardsEntity('PRODUCT-CCC', AgglomerationType.Town),
         ],
         {
           ...initialFaceUpState,

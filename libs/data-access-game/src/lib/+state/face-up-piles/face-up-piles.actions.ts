@@ -1,5 +1,5 @@
 import { createAction, props } from '@ngrx/store';
-import { FaceUpPilesEntity } from './face-up-piles.models';
+import { AgglomerationCardsEntity } from '../cards/models/agglomeration';
 
 export const initFaceUpNewGame = createAction(
   '[Start Page] Init FaceUpPiles New Game'
@@ -11,7 +11,7 @@ export const initFaceUpSavedGame = createAction(
 
 export const loadFaceUpPilesSuccess = createAction(
   '[FaceUpPiles/API] Load FaceUpPiles Success',
-  props<{ faceUpPiles: FaceUpPilesEntity[] }>()
+  props<{ agglomerationCards: AgglomerationCardsEntity[] }>()
 );
 
 export const loadFaceUpPilesFailure = createAction(
@@ -21,5 +21,5 @@ export const loadFaceUpPilesFailure = createAction(
 
 export const setFaceUpPilesInitialized = createAction(
   '[FaceUpPiles] Set FaceUpPiles On Init',
-  props<{ faceUpPiles: FaceUpPilesEntity[] }>()
+  props<{ agglomerationCards: AgglomerationCardsEntity[] }>()
 );
