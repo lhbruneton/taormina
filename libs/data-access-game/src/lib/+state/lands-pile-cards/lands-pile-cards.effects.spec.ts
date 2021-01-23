@@ -1,15 +1,19 @@
-import { TestBed, async } from '@angular/core/testing';
-
-import { Observable } from 'rxjs';
-
+import { TestBed } from '@angular/core/testing';
 import { provideMockActions } from '@ngrx/effects/testing';
 import { provideMockStore } from '@ngrx/store/testing';
-
-import { NxModule, DataPersistence } from '@nrwl/angular';
+import { DataPersistence, NxModule } from '@nrwl/angular';
 import { hot } from '@nrwl/angular/testing';
+import { Observable } from 'rxjs';
 
-import { LandsPileCardsEffects } from './lands-pile-cards.effects';
 import * as LandsPileCardsActions from './lands-pile-cards.actions';
+import { LandsPileCardsEffects } from './lands-pile-cards.effects';
+
+jest.mock('../cards/models/land', () => {
+  return {
+    __esModule: true,
+    createInitialLandCards: jest.fn(() => []),
+  };
+});
 
 describe('LandsPileCardsEffects', () => {
   let actions: Observable<any>;

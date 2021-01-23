@@ -1,9 +1,9 @@
 import { Injectable } from '@angular/core';
-import { createEffect, Actions, ofType } from '@ngrx/effects';
+import { Actions, createEffect, ofType } from '@ngrx/effects';
 import { fetch } from '@nrwl/angular';
 import { map } from 'rxjs/operators';
 
-import * as FaceUpPilesFeature from './face-up-piles.reducer';
+import { createInitialAgglomerationCards } from '../cards/models/agglomeration';
 import * as FaceUpPilesActions from './face-up-piles.actions';
 
 @Injectable()
@@ -12,7 +12,9 @@ export class FaceUpPilesEffects {
     this.actions$.pipe(
       ofType(FaceUpPilesActions.initFaceUpNewGame),
       map(() =>
-        FaceUpPilesActions.setFaceUpPilesInitialized({ faceUpPiles: [] })
+        FaceUpPilesActions.setFaceUpPilesInitialized({
+          agglomerationCards: createInitialAgglomerationCards(),
+        })
       )
     )
   );
@@ -23,7 +25,9 @@ export class FaceUpPilesEffects {
       fetch({
         run: (action) => {
           // Your custom service 'load' logic goes here. For now just return a success action...
-          return FaceUpPilesActions.loadFaceUpPilesSuccess({ faceUpPiles: [] });
+          return FaceUpPilesActions.loadFaceUpPilesSuccess({
+            agglomerationCards: [],
+          });
         },
 
         onError: (action, error) => {

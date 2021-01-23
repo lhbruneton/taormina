@@ -4,7 +4,7 @@ import { EffectsModule } from '@ngrx/effects';
 import { Store, StoreModule } from '@ngrx/store';
 import { NxModule } from '@nrwl/angular';
 import { readFirst } from '@nrwl/angular/testing';
-import { DomainColor, LandType } from '@taormina/shared-models';
+import { LandType } from '@taormina/shared-models';
 
 import { createLandCardsEntity } from '../cards/models/land';
 import * as LandsPileCardsActions from './lands-pile-cards.actions';
@@ -94,13 +94,8 @@ describe('LandsPileCardsFacade', () => {
         store.dispatch(
           LandsPileCardsActions.loadLandsPileCardsSuccess({
             landsPileCards: [
-              createLandCardsEntity(
-                'AAA',
-                LandType.ClayPit,
-                0,
-                DomainColor.Red
-              ),
-              createLandCardsEntity('BBB', LandType.Field, 3, DomainColor.Blue),
+              createLandCardsEntity('AAA', LandType.ClayPit, 0, 1),
+              createLandCardsEntity('BBB', LandType.Field, 3, 3),
             ],
           })
         );

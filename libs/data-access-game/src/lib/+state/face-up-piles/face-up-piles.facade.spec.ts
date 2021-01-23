@@ -1,23 +1,19 @@
 import { NgModule } from '@angular/core';
 import { TestBed } from '@angular/core/testing';
-import { readFirst } from '@nrwl/angular/testing';
-
 import { EffectsModule } from '@ngrx/effects';
-import { StoreModule, Store } from '@ngrx/store';
-
+import { Store, StoreModule } from '@ngrx/store';
 import { NxModule } from '@nrwl/angular';
+import { readFirst } from '@nrwl/angular/testing';
+import { AgglomerationType } from '@taormina/shared-models';
 
-import { createFaceUpPilesEntity } from './face-up-piles.models';
+import { createAgglomerationCardsEntity } from '../cards/models/agglomeration';
+import * as FaceUpPilesActions from './face-up-piles.actions';
 import { FaceUpPilesEffects } from './face-up-piles.effects';
 import { FaceUpPilesFacade } from './face-up-piles.facade';
-
-import * as FaceUpPilesSelectors from './face-up-piles.selectors';
-import * as FaceUpPilesActions from './face-up-piles.actions';
 import {
-  FACE_UP_PILES_FEATURE_KEY,
-  FaceUpState,
-  initialFaceUpState,
   faceUpPilesReducer,
+  FaceUpState,
+  FACE_UP_PILES_FEATURE_KEY,
 } from './face-up-piles.reducer';
 
 interface TestSchema {
@@ -94,9 +90,9 @@ describe('FaceUpPilesFacade', () => {
 
         store.dispatch(
           FaceUpPilesActions.loadFaceUpPilesSuccess({
-            faceUpPiles: [
-              createFaceUpPilesEntity('AAA'),
-              createFaceUpPilesEntity('BBB'),
+            agglomerationCards: [
+              createAgglomerationCardsEntity('AAA', AgglomerationType.Road),
+              createAgglomerationCardsEntity('BBB', AgglomerationType.Hamlet),
             ],
           })
         );

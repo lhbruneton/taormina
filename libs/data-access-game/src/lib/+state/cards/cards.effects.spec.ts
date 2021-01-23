@@ -11,14 +11,14 @@ import { CardsEffects } from './cards.effects';
 jest.mock('./models/agglomeration', () => {
   return {
     __esModule: true,
-    createInitialAgglomerationCards: jest.fn(() => []),
+    createInitialDomainAgglomerationCards: jest.fn(() => []),
   };
 });
 
 jest.mock('./models/land', () => {
   return {
     __esModule: true,
-    createInitialLandCards: jest.fn(() => []),
+    createInitialDomainLandCards: jest.fn(() => []),
   };
 });
 
