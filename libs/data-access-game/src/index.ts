@@ -33,7 +33,6 @@ export * from './lib/+state/domain-cards/domain-cards.facade';
 export * from './lib/+state/face-up-piles/face-up-piles.actions';
 export * from './lib/+state/face-up-piles/face-up-piles.reducer';
 export * from './lib/+state/face-up-piles/face-up-piles.selectors';
-export * from './lib/+state/face-up-piles/face-up-piles.models';
 export * from './lib/+state/face-up-piles/face-up-piles.facade';
 export * from './lib/+state/stock-piles/stock-piles.actions';
 export * from './lib/+state/stock-piles/stock-piles.reducer';
