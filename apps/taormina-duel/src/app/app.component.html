@@ -3,6 +3,10 @@
 <button type="button" (click)="onThrow()">throw</button>
 <p *ngFor="let die of getDice() | async">{{ die.id }} - {{ die.value }}</p>
 <hr />
+<p *ngFor="let land of getLandCards() | async">
+  {{ land.type }} - {{ land.die }}
+</p>
+<hr />
 <div *ngIf="getTopDomain() | async as domain">
   <div>{{ domain.color }}</div>
   <div class="grid-container">
