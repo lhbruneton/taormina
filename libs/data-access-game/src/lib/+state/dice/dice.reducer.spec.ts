@@ -1,6 +1,8 @@
-import { createResourceDiceEntity, createEventDiceEntity } from './dice.models';
+import { EventValue } from '@taormina/shared-models';
+
 import * as DiceActions from './dice.actions';
-import { DiceState, initialDiceState, diceReducer } from './dice.reducer';
+import { createEventDiceEntity, createResourceDiceEntity } from './dice.models';
+import { diceReducer, DiceState, initialDiceState } from './dice.reducer';
 
 describe('Dice Reducer', () => {
   beforeEach(() => {});
@@ -9,7 +11,7 @@ describe('Dice Reducer', () => {
     it('loadDiceSuccess should return set the list of known Dice', () => {
       const dice = [
         createResourceDiceEntity(1),
-        createEventDiceEntity('THIEVES'),
+        createEventDiceEntity(EventValue.Thieves),
       ];
       const action = DiceActions.loadDiceSuccess({ dice });
 

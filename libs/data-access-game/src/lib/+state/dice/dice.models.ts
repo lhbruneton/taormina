@@ -1,19 +1,15 @@
-export type DiceValue = 1 | 2 | 3 | 4 | 5 | 6;
-export type DiceId = 'RESOURCE' | 'EVENT';
-export type ResourceValue = DiceValue;
-export type EventValue =
-  | 'THIEVES'
-  | 'TRADE'
-  | 'CELEBRATION'
-  | 'HARVEST'
-  | 'EVENT';
+import {
+  DiceId,
+  DiceValue,
+  EventValue,
+  ResourceValue,
+} from '@taormina/shared-models';
 
 /**
  * Interface for the 'Dice' data
  */
 export interface DiceEntity {
   id: DiceId;
-  value: ResourceValue | EventValue;
 }
 
 export interface ResourceDiceEntity extends DiceEntity {
@@ -26,13 +22,13 @@ export interface EventDiceEntity extends DiceEntity {
 
 export const createResourceDiceEntity = (value: ResourceValue) =>
   ({
-    id: 'RESOURCE',
+    id: DiceId.Resource,
     value,
   } as ResourceDiceEntity);
 
 export const createEventDiceEntity = (value: EventValue) =>
   ({
-    id: 'EVENT',
+    id: DiceId.Event,
     value,
   } as EventDiceEntity);
 
@@ -47,15 +43,15 @@ function eventFromValue(value: DiceValue): EventValue {
   switch (value) {
     case 1:
     case 2:
-      return 'EVENT';
+      return EventValue.Event;
     case 3:
-      return 'THIEVES';
+      return EventValue.Thieves;
     case 4:
-      return 'TRADE';
+      return EventValue.Trade;
     case 5:
-      return 'CELEBRATION';
+      return EventValue.Celebration;
     case 6:
-      return 'HARVEST';
+      return EventValue.Harvest;
   }
 }
 
