@@ -3,6 +3,7 @@ import {
   CardsFacade,
   DomainCardsFacade,
   DomainsFacade,
+  LandsPileCardsFacade,
 } from '@taormina/data-access-game';
 import { filter, map } from 'rxjs/operators';
 import { DiceFacade } from '@taormina/data-access-game';
@@ -17,7 +18,8 @@ export class AppComponent {
     private dice: DiceFacade,
     private cards: CardsFacade,
     private domains: DomainsFacade,
-    private domainCards: DomainCardsFacade
+    private domainCards: DomainCardsFacade,
+    private landCards: LandsPileCardsFacade
   ) {}
 
   startNewGame() {
@@ -25,6 +27,7 @@ export class AppComponent {
     this.cards.initNewGame();
     this.domains.initNewGame();
     this.domainCards.initNewGame();
+    this.landCards.initNewGame();
   }
 
   onThrow() {
@@ -57,5 +60,9 @@ export class AppComponent {
 
   getPrintableCard(cardId: string) {
     return this.cards.getPrintableCardById(cardId);
+  }
+
+  getLandCards() {
+    return this.landCards.allLandsPileCards$;
   }
 }

@@ -6,6 +6,7 @@ import {
   LandValue,
   ResourceValue,
 } from '@taormina/shared-models';
+import arrayShuffle from 'array-shuffle';
 import { v4 as uuidv4 } from 'uuid';
 import { CardsEntity } from '../cards.models';
 
@@ -69,7 +70,7 @@ export function createInitialDomainLandCards() {
   ];
 }
 
-export function createInitialLandCards() {
+function createInitialLandCards() {
   return [
     createLandCardsEntity(uuidv4(), LandType.ClayPit, 0, 1),
     createLandCardsEntity(uuidv4(), LandType.Field, 0, 1),
@@ -84,4 +85,8 @@ export function createInitialLandCards() {
     createLandCardsEntity(uuidv4(), LandType.Forest, 0, 6),
     createLandCardsEntity(uuidv4(), LandType.Pasture, 0, 6),
   ];
+}
+
+export function getShuffledInitialLandCards() {
+  return arrayShuffle(createInitialLandCards());
 }
