@@ -1,24 +1,16 @@
 import { NgModule } from '@angular/core';
 import { TestBed } from '@angular/core/testing';
-import { readFirst } from '@nrwl/angular/testing';
-
 import { EffectsModule } from '@ngrx/effects';
-import { StoreModule, Store } from '@ngrx/store';
-
+import { Store, StoreModule } from '@ngrx/store';
 import { NxModule } from '@nrwl/angular';
+import { readFirst } from '@nrwl/angular/testing';
+import { EventValue } from '@taormina/shared-models';
 
-import { createResourceDiceEntity, createEventDiceEntity } from './dice.models';
+import * as DiceActions from './dice.actions';
 import { DiceEffects } from './dice.effects';
 import { DiceFacade } from './dice.facade';
-
-import * as DiceSelectors from './dice.selectors';
-import * as DiceActions from './dice.actions';
-import {
-  DICE_FEATURE_KEY,
-  DiceState,
-  initialDiceState,
-  diceReducer,
-} from './dice.reducer';
+import { createEventDiceEntity, createResourceDiceEntity } from './dice.models';
+import { diceReducer, DiceState, DICE_FEATURE_KEY } from './dice.reducer';
 
 interface TestSchema {
   dice: DiceState;
@@ -96,7 +88,7 @@ describe('DiceFacade', () => {
           DiceActions.loadDiceSuccess({
             dice: [
               createResourceDiceEntity(1),
-              createEventDiceEntity('THIEVES'),
+              createEventDiceEntity(EventValue.Thieves),
             ],
           })
         );

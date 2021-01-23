@@ -1,5 +1,7 @@
-import { createResourceDiceEntity, createEventDiceEntity } from './dice.models';
-import { DiceState, diceAdapter, initialDiceState } from './dice.reducer';
+import { EventValue } from '@taormina/shared-models';
+
+import { createEventDiceEntity, createResourceDiceEntity } from './dice.models';
+import { diceAdapter, initialDiceState } from './dice.reducer';
 import * as DiceSelectors from './dice.selectors';
 
 describe('Dice Selectors', () => {
@@ -11,7 +13,10 @@ describe('Dice Selectors', () => {
   beforeEach(() => {
     state = {
       dice: diceAdapter.setAll(
-        [createResourceDiceEntity(1), createEventDiceEntity('THIEVES')],
+        [
+          createResourceDiceEntity(1),
+          createEventDiceEntity(EventValue.Thieves),
+        ],
         {
           ...initialDiceState,
           selectedId: 'RESOURCE',
