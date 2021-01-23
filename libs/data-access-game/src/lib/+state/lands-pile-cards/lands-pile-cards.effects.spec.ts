@@ -11,7 +11,7 @@ import { LandsPileCardsEffects } from './lands-pile-cards.effects';
 jest.mock('../cards/models/land', () => {
   return {
     __esModule: true,
-    createInitialLandCards: jest.fn(() => []),
+    getShuffledInitialLandCards: jest.fn(() => []),
   };
 });
 

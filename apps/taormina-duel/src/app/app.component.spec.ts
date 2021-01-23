@@ -5,6 +5,8 @@ import {
   DiceFacade,
   DomainCardsFacade,
   DomainsFacade,
+  EventsPileCardsFacade,
+  LandsPileCardsFacade,
 } from '@taormina/data-access-game';
 import { AppComponent } from './app.component';
 
@@ -13,7 +15,14 @@ describe('AppComponent', () => {
     await TestBed.configureTestingModule({
       declarations: [AppComponent],
       imports: [StoreModule.forRoot({})],
-      providers: [DiceFacade, CardsFacade, DomainsFacade, DomainCardsFacade],
+      providers: [
+        DiceFacade,
+        CardsFacade,
+        DomainsFacade,
+        DomainCardsFacade,
+        LandsPileCardsFacade,
+        EventsPileCardsFacade,
+      ],
     }).compileComponents();
   });
 

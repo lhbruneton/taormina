@@ -1,15 +1,19 @@
-import { TestBed, async } from '@angular/core/testing';
-
-import { Observable } from 'rxjs';
-
+import { TestBed } from '@angular/core/testing';
 import { provideMockActions } from '@ngrx/effects/testing';
 import { provideMockStore } from '@ngrx/store/testing';
-
-import { NxModule, DataPersistence } from '@nrwl/angular';
+import { DataPersistence, NxModule } from '@nrwl/angular';
 import { hot } from '@nrwl/angular/testing';
+import { Observable } from 'rxjs';
 
-import { EventsPileCardsEffects } from './events-pile-cards.effects';
 import * as EventsPileCardsActions from './events-pile-cards.actions';
+import { EventsPileCardsEffects } from './events-pile-cards.effects';
+
+jest.mock('../cards/models/event', () => {
+  return {
+    __esModule: true,
+    getShuffledInitialEventCards: jest.fn(() => []),
+  };
+});
 
 describe('EventsPileCardsEffects', () => {
   let actions: Observable<any>;

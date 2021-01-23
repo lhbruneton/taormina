@@ -1,6 +1,5 @@
-import { createCardsEntity } from '../cards/cards.models';
+import { createEventCardsEntity } from '../cards/models/event';
 import {
-  EventsPileCardsState,
   eventsPileCardsAdapter,
   initialEventsPileCardsState,
 } from './events-pile-cards.reducer';
@@ -16,9 +15,9 @@ describe('EventsPileCards Selectors', () => {
     state = {
       eventsPileCards: eventsPileCardsAdapter.setAll(
         [
-          createCardsEntity('PRODUCT-AAA'),
-          createCardsEntity('PRODUCT-BBB'),
-          createCardsEntity('PRODUCT-CCC'),
+          createEventCardsEntity('PRODUCT-AAA', 'Some name', []),
+          createEventCardsEntity('PRODUCT-BBB', 'Some other name', []),
+          createEventCardsEntity('PRODUCT-CCC', 'Some third name', []),
         ],
         {
           ...initialEventsPileCardsState,
