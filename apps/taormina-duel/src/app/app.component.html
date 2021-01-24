@@ -11,6 +11,13 @@
   {{ event.name }}
 </p>
 <hr />
+<div *ngFor="let pile of getStockPiles() | async">
+  <hr />
+  <div *ngFor="let pivot of getStockPileCards(pile.id) | async">
+    <div>{{ (getCard(pivot.cardId) | async).name }}</div>
+  </div>
+</div>
+<hr />
 <div *ngIf="getTopDomain() | async as domain">
   <div>{{ domain.color }}</div>
   <div class="grid-container">

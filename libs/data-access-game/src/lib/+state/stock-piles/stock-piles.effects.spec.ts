@@ -1,15 +1,19 @@
-import { TestBed, async } from '@angular/core/testing';
-
-import { Observable } from 'rxjs';
-
+import { TestBed } from '@angular/core/testing';
 import { provideMockActions } from '@ngrx/effects/testing';
 import { provideMockStore } from '@ngrx/store/testing';
-
-import { NxModule, DataPersistence } from '@nrwl/angular';
+import { DataPersistence, NxModule } from '@nrwl/angular';
 import { hot } from '@nrwl/angular/testing';
+import { Observable } from 'rxjs';
 
-import { StockPilesEffects } from './stock-piles.effects';
 import * as StockPilesActions from './stock-piles.actions';
+import { StockPilesEffects } from './stock-piles.effects';
+
+jest.mock('./stock-piles.models', () => {
+  return {
+    __esModule: true,
+    createInitialStockPiles: jest.fn(() => []),
+  };
+});
 
 describe('StockPilesEffects', () => {
   let actions: Observable<any>;

@@ -8,10 +8,24 @@ import { Observable } from 'rxjs';
 import * as CardsActions from './cards.actions';
 import { CardsEffects } from './cards.effects';
 
+jest.mock('./models/action', () => {
+  return {
+    __esModule: true,
+    createInitialActionCards: jest.fn(() => []),
+  };
+});
+
 jest.mock('./models/agglomeration', () => {
   return {
     __esModule: true,
     createInitialDomainAgglomerationCards: jest.fn(() => []),
+  };
+});
+
+jest.mock('./models/development', () => {
+  return {
+    __esModule: true,
+    createInitialDevelopmentCards: jest.fn(() => []),
   };
 });
 

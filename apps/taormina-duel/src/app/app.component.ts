@@ -6,6 +6,8 @@ import {
   DomainsFacade,
   EventsPileCardsFacade,
   LandsPileCardsFacade,
+  StockPileCardsFacade,
+  StockPilesFacade,
 } from '@taormina/data-access-game';
 import { filter, map } from 'rxjs/operators';
 
@@ -21,7 +23,9 @@ export class AppComponent {
     private domains: DomainsFacade,
     private domainCards: DomainCardsFacade,
     private landCards: LandsPileCardsFacade,
-    private eventCards: EventsPileCardsFacade
+    private eventCards: EventsPileCardsFacade,
+    private stockPiles: StockPilesFacade,
+    private stockPileCards: StockPileCardsFacade
   ) {}
 
   startNewGame() {
@@ -31,6 +35,8 @@ export class AppComponent {
     this.domainCards.initNewGame();
     this.landCards.initNewGame();
     this.eventCards.initNewGame();
+    this.stockPiles.initNewGame();
+    this.stockPileCards.initNewGame();
   }
 
   onThrow() {
@@ -61,6 +67,10 @@ export class AppComponent {
     );
   }
 
+  getCard(cardId: string) {
+    return this.cards.getCardById(cardId);
+  }
+
   getPrintableCard(cardId: string) {
     return this.cards.getPrintableCardById(cardId);
   }
@@ -71,5 +81,15 @@ export class AppComponent {
 
   getEventCards() {
     return this.eventCards.allEventsPileCards$;
+  }
+
+  getStockPiles() {
+    return this.stockPiles.allStockPiles$;
+  }
+
+  getStockPileCards(stockPileId: string) {
+    return this.stockPileCards.allStockPileCards$.pipe(
+      map((cards) => cards.filter((card) => card.stockPileId === stockPileId))
+    );
   }
 }

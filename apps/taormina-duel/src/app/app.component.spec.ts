@@ -7,6 +7,8 @@ import {
   DomainsFacade,
   EventsPileCardsFacade,
   LandsPileCardsFacade,
+  StockPileCardsFacade,
+  StockPilesFacade,
 } from '@taormina/data-access-game';
 import { AppComponent } from './app.component';
 
@@ -22,6 +24,8 @@ describe('AppComponent', () => {
         DomainCardsFacade,
         LandsPileCardsFacade,
         EventsPileCardsFacade,
+        StockPilesFacade,
+        StockPileCardsFacade,
       ],
     }).compileComponents();
   });

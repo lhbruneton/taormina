@@ -1,15 +1,21 @@
-import { TestBed, async } from '@angular/core/testing';
-
-import { Observable } from 'rxjs';
-
+import { TestBed } from '@angular/core/testing';
 import { provideMockActions } from '@ngrx/effects/testing';
 import { provideMockStore } from '@ngrx/store/testing';
-
-import { NxModule, DataPersistence } from '@nrwl/angular';
+import { DataPersistence, NxModule } from '@nrwl/angular';
 import { hot } from '@nrwl/angular/testing';
+import { Observable } from 'rxjs';
 
-import { StockPileCardsEffects } from './stock-pile-cards.effects';
+import * as CardsSelectors from '../cards/cards.selectors';
+import * as StockPilesSelectors from '../stock-piles/stock-piles.selectors';
 import * as StockPileCardsActions from './stock-pile-cards.actions';
+import { StockPileCardsEffects } from './stock-pile-cards.effects';
+
+jest.mock('./stock-pile-cards.models', () => {
+  return {
+    __esModule: true,
+    createInitialStockPileCards: jest.fn(() => []),
+  };
+});
 
 describe('StockPileCardsEffects', () => {
   let actions: Observable<any>;
@@ -22,7 +28,18 @@ describe('StockPileCardsEffects', () => {
         StockPileCardsEffects,
         DataPersistence,
         provideMockActions(() => actions),
-        provideMockStore(),
+        provideMockStore({
+          selectors: [
+            {
+              selector: CardsSelectors.getAllCards,
+              value: [],
+            },
+            {
+              selector: StockPilesSelectors.getAllStockPiles,
+              value: [],
+            },
+          ],
+        }),
       ],
     });
 
