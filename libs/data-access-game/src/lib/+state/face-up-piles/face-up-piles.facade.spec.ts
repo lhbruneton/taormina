@@ -4,7 +4,7 @@ import { EffectsModule } from '@ngrx/effects';
 import { Store, StoreModule } from '@ngrx/store';
 import { NxModule } from '@nrwl/angular';
 import { readFirst } from '@nrwl/angular/testing';
-import { AgglomerationType } from '@taormina/shared-models';
+import { AgglomerationType, ResourceType } from '@taormina/shared-models';
 
 import { createAgglomerationCardsEntity } from '../cards/models/agglomeration';
 import * as FaceUpPilesActions from './face-up-piles.actions';
@@ -91,8 +91,25 @@ describe('FaceUpPilesFacade', () => {
         store.dispatch(
           FaceUpPilesActions.loadFaceUpPilesSuccess({
             agglomerationCards: [
-              createAgglomerationCardsEntity('AAA', AgglomerationType.Road),
-              createAgglomerationCardsEntity('BBB', AgglomerationType.Hamlet),
+              createAgglomerationCardsEntity(
+                'AAA',
+                new Map([
+                  [ResourceType.Wood, 1],
+                  [ResourceType.Clay, 2],
+                ]),
+                AgglomerationType.Road
+              ),
+              createAgglomerationCardsEntity(
+                'BBB',
+                new Map([
+                  [ResourceType.Wood, 1],
+                  [ResourceType.Clay, 1],
+                  [ResourceType.Wool, 1],
+                  [ResourceType.Wheat, 1],
+                ]),
+                AgglomerationType.Hamlet,
+                1
+              ),
             ],
           })
         );
