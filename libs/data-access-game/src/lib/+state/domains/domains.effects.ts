@@ -1,11 +1,10 @@
 import { Injectable } from '@angular/core';
-import { createEffect, Actions, ofType } from '@ngrx/effects';
+import { Actions, createEffect, ofType } from '@ngrx/effects';
 import { fetch } from '@nrwl/angular';
 import { map } from 'rxjs/operators';
 
-import * as DomainsFeature from './domains.reducer';
 import * as DomainsActions from './domains.actions';
-import { createNewDomainsDuel } from './domains.models';
+import { createInitialDomains } from './domains.models';
 
 @Injectable()
 export class DomainsEffects {
@@ -14,7 +13,7 @@ export class DomainsEffects {
       ofType(DomainsActions.initDomainsNewGame),
       map(() =>
         DomainsActions.setDomainsInitialized({
-          domains: createNewDomainsDuel(),
+          domains: createInitialDomains(),
         })
       )
     )

@@ -34,30 +34,30 @@ export const createDomainCardsEntity = (
     row,
   } as DomainCardsEntity);
 
-export const createNewDomainCards = (
+export const createInitialDomainCards = (
   domain: DomainsEntity,
   cards: CardsEntity[]
 ) => {
   let firstHamletId: string;
 
   return [
-    {
-      id: uuidv4(),
-      domainId: domain.id,
-      cardId: cards.find((card) => {
+    createDomainCardsEntity(
+      uuidv4(),
+      domain.id,
+      cards.find((card) => {
         return (
           card instanceof AgglomerationCardsEntity &&
           card.type === AgglomerationType.Road &&
           card.color === domain.color
         );
       }).id,
-      col: 0,
-      row: 0,
-    },
-    {
-      id: uuidv4(),
-      domainId: domain.id,
-      cardId: cards.find((card) => {
+      0,
+      0
+    ),
+    createDomainCardsEntity(
+      uuidv4(),
+      domain.id,
+      cards.find((card) => {
         const found =
           card instanceof AgglomerationCardsEntity &&
           card.type === AgglomerationType.Hamlet &&
@@ -65,13 +65,13 @@ export const createNewDomainCards = (
         if (found) firstHamletId = card.id;
         return found;
       }).id,
-      col: -1,
-      row: 0,
-    },
-    {
-      id: uuidv4(),
-      domainId: domain.id,
-      cardId: cards.find((card) => {
+      -1,
+      0
+    ),
+    createDomainCardsEntity(
+      uuidv4(),
+      domain.id,
+      cards.find((card) => {
         return (
           card instanceof AgglomerationCardsEntity &&
           card.type === AgglomerationType.Hamlet &&
@@ -79,86 +79,86 @@ export const createNewDomainCards = (
           card.id !== firstHamletId
         );
       }).id,
-      col: 1,
-      row: 0,
-    },
-    {
-      id: uuidv4(),
-      domainId: domain.id,
-      cardId: cards.find((card) => {
+      1,
+      0
+    ),
+    createDomainCardsEntity(
+      uuidv4(),
+      domain.id,
+      cards.find((card) => {
         return (
           card instanceof LandCardsEntity &&
           card.type === LandType.ClayPit &&
           card.color === domain.color
         );
       }).id,
-      col: -2,
-      row: -1,
-    },
-    {
-      id: uuidv4(),
-      domainId: domain.id,
-      cardId: cards.find((card) => {
+      -2,
+      -1
+    ),
+    createDomainCardsEntity(
+      uuidv4(),
+      domain.id,
+      cards.find((card) => {
         return (
           card instanceof LandCardsEntity &&
           card.type === LandType.Forest &&
           card.color === domain.color
         );
       }).id,
-      col: -2,
-      row: 1,
-    },
-    {
-      id: uuidv4(),
-      domainId: domain.id,
-      cardId: cards.find((card) => {
+      -2,
+      1
+    ),
+    createDomainCardsEntity(
+      uuidv4(),
+      domain.id,
+      cards.find((card) => {
         return (
           card instanceof LandCardsEntity &&
           card.type === LandType.GoldMine &&
           card.color === domain.color
         );
       }).id,
-      col: 0,
-      row: 1,
-    },
-    {
-      id: uuidv4(),
-      domainId: domain.id,
-      cardId: cards.find((card) => {
+      0,
+      1
+    ),
+    createDomainCardsEntity(
+      uuidv4(),
+      domain.id,
+      cards.find((card) => {
         return (
           card instanceof LandCardsEntity &&
           card.type === LandType.Field &&
           card.color === domain.color
         );
       }).id,
-      col: 2,
-      row: 1,
-    },
-    {
-      id: uuidv4(),
-      domainId: domain.id,
-      cardId: cards.find((card) => {
+      2,
+      1
+    ),
+    createDomainCardsEntity(
+      uuidv4(),
+      domain.id,
+      cards.find((card) => {
         return (
           card instanceof LandCardsEntity &&
           card.type === LandType.StoneQuarry &&
           card.color === domain.color
         );
       }).id,
-      col: 2,
-      row: -1,
-    },
-    {
-      id: uuidv4(),
-      domainId: domain.id,
-      cardId: cards.find((card) => {
+      2,
+      -1
+    ),
+    createDomainCardsEntity(
+      uuidv4(),
+      domain.id,
+      cards.find((card) => {
         return (
           card instanceof LandCardsEntity &&
           card.type === LandType.Pasture &&
           card.color === domain.color
         );
       }).id,
-      col: 0,
-      row: -1,
-    },
+      0,
+      -1
+    ),
   ];
 };

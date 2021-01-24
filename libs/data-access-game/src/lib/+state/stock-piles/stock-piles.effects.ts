@@ -1,17 +1,21 @@
 import { Injectable } from '@angular/core';
-import { createEffect, Actions, ofType } from '@ngrx/effects';
+import { Actions, createEffect, ofType } from '@ngrx/effects';
 import { fetch } from '@nrwl/angular';
 import { map } from 'rxjs/operators';
 
-import * as StockPilesFeature from './stock-piles.reducer';
 import * as StockPilesActions from './stock-piles.actions';
+import { createInitialStockPiles } from './stock-piles.models';
 
 @Injectable()
 export class StockPilesEffects {
   initNewGame$ = createEffect(() =>
     this.actions$.pipe(
       ofType(StockPilesActions.initStockPilesNewGame),
-      map(() => StockPilesActions.setStockPilesInitialized({ stockPiles: [] }))
+      map(() =>
+        StockPilesActions.setStockPilesInitialized({
+          stockPiles: createInitialStockPiles(),
+        })
+      )
     )
   );
 

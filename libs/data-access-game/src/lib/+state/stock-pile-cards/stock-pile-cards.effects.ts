@@ -1,19 +1,33 @@
 import { Injectable } from '@angular/core';
-import { createEffect, Actions, ofType } from '@ngrx/effects';
+import { Actions, createEffect, ofType } from '@ngrx/effects';
+import { Store } from '@ngrx/store';
 import { fetch } from '@nrwl/angular';
-import { map } from 'rxjs/operators';
+import { of } from 'rxjs';
+import { concatMap, map, withLatestFrom } from 'rxjs/operators';
 
-import * as StockPileCardsFeature from './stock-pile-cards.reducer';
+import * as CardsFeature from '../cards/cards.reducer';
+import * as CardsSelectors from '../cards/cards.selectors';
+import * as StockPilesFeature from '../stock-piles/stock-piles.reducer';
+import * as StockPilesSelectors from '../stock-piles/stock-piles.selectors';
 import * as StockPileCardsActions from './stock-pile-cards.actions';
+import { createInitialStockPileCards } from './stock-pile-cards.models';
 
 @Injectable()
 export class StockPileCardsEffects {
   initNewGame$ = createEffect(() =>
     this.actions$.pipe(
       ofType(StockPileCardsActions.initStockPileCardsNewGame),
-      map(() =>
+      concatMap((action) =>
+        of(action).pipe(
+          withLatestFrom(
+            this.cardsStore.select(CardsSelectors.getAllCards),
+            this.stockPilesStore.select(StockPilesSelectors.getAllStockPiles)
+          )
+        )
+      ),
+      map(([action, cards, stockPiles]) =>
         StockPileCardsActions.setStockPileCardsInitialized({
-          stockPileCards: [],
+          stockPileCards: createInitialStockPileCards(stockPiles, cards),
         })
       )
     )
@@ -38,5 +52,9 @@ export class StockPileCardsEffects {
     )
   );
 
-  constructor(private actions$: Actions) {}
+  constructor(
+    private actions$: Actions,
+    private cardsStore: Store<CardsFeature.CardsPartialState>,
+    private stockPilesStore: Store<StockPilesFeature.StockPilesPartialState>
+  ) {}
 }

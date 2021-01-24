@@ -12,8 +12,8 @@ describe('StockPileCards Reducer', () => {
   describe('valid StockPileCards actions', () => {
     it('loadStockPileCardsSuccess should return set the list of known StockPileCards', () => {
       const stockPileCards = [
-        createStockPileCardsEntity('PRODUCT-AAA'),
-        createStockPileCardsEntity('PRODUCT-zzz'),
+        createStockPileCardsEntity('PRODUCT-AAA', 'A', 'A'),
+        createStockPileCardsEntity('PRODUCT-zzz', 'z', 'z'),
       ];
       const action = StockPileCardsActions.loadStockPileCardsSuccess({
         stockPileCards,

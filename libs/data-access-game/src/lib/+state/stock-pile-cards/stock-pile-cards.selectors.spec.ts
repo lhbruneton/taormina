@@ -16,9 +16,9 @@ describe('StockPileCards Selectors', () => {
     state = {
       stockPileCards: stockPileCardsAdapter.setAll(
         [
-          createStockPileCardsEntity('PRODUCT-AAA'),
-          createStockPileCardsEntity('PRODUCT-BBB'),
-          createStockPileCardsEntity('PRODUCT-CCC'),
+          createStockPileCardsEntity('PRODUCT-AAA', 'A', 'A'),
+          createStockPileCardsEntity('PRODUCT-BBB', 'B', 'B'),
+          createStockPileCardsEntity('PRODUCT-CCC', 'C', 'C'),
         ],
         {
           ...initialStockPileCardsState,

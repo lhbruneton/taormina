@@ -98,8 +98,8 @@ describe('StockPileCardsFacade', () => {
         store.dispatch(
           StockPileCardsActions.loadStockPileCardsSuccess({
             stockPileCards: [
-              createStockPileCardsEntity('AAA'),
-              createStockPileCardsEntity('BBB'),
+              createStockPileCardsEntity('AAA', 'A', 'A'),
+              createStockPileCardsEntity('BBB', 'B', 'B'),
             ],
           })
         );

@@ -1,4 +1,5 @@
 import { HasName, HasRules } from '@taormina/shared-models';
+import { v4 as uuidv4 } from 'uuid';
 import { CardsEntity } from '../cards.models';
 
 /**
@@ -23,5 +24,15 @@ export const createActionCardsEntity = (
 };
 
 export function createInitialActionCards() {
-  return [];
+  return [
+    createActionCardsEntity(uuidv4(), 'Soothsayer', []),
+    createActionCardsEntity(uuidv4(), 'Soothsayer', []),
+    createActionCardsEntity(uuidv4(), 'Pathfinder', []),
+    createActionCardsEntity(uuidv4(), 'Pathfinder', []),
+    createActionCardsEntity(uuidv4(), 'Goldsmith', []),
+    createActionCardsEntity(uuidv4(), 'Goldsmith', []),
+    createActionCardsEntity(uuidv4(), 'Trade route', []),
+    createActionCardsEntity(uuidv4(), 'Trade route', []),
+    createActionCardsEntity(uuidv4(), 'Relocation', []),
+  ];
 }

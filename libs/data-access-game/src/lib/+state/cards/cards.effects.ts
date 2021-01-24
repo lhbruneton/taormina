@@ -4,7 +4,9 @@ import { fetch } from '@nrwl/angular';
 import { map } from 'rxjs/operators';
 
 import * as CardsActions from './cards.actions';
+import { createInitialActionCards } from './models/action';
 import { createInitialDomainAgglomerationCards } from './models/agglomeration';
+import { createInitialDevelopmentCards } from './models/development';
 import { createInitialDomainLandCards } from './models/land';
 
 @Injectable()
@@ -17,6 +19,8 @@ export class CardsEffects {
           cards: [
             ...createInitialDomainAgglomerationCards(),
             ...createInitialDomainLandCards(),
+            ...createInitialActionCards(),
+            ...createInitialDevelopmentCards(),
           ],
         })
       )
