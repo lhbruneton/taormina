@@ -15,9 +15,9 @@ export const createDomainsEntity = (id: string, color: DomainColor) =>
     color,
   } as DomainsEntity);
 
-export const createNewDomainsDuel = () => {
+export const createInitialDomains = () => {
   return [
-    { id: uuidv4(), color: DomainColor.Red },
-    { id: uuidv4(), color: DomainColor.Blue },
+    createDomainsEntity(uuidv4(), DomainColor.Red),
+    createDomainsEntity(uuidv4(), DomainColor.Blue),
   ];
 };

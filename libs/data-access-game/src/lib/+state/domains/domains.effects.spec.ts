@@ -14,7 +14,7 @@ import * as DomainsActions from './domains.actions';
 jest.mock('./domains.models', () => {
   return {
     __esModule: true,
-    createNewDomainsDuel: jest.fn(() => []),
+    createInitialDomains: jest.fn(() => []),
   };
 });
 
