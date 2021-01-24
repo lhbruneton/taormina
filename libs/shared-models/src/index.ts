@@ -4,6 +4,7 @@ export * from './lib/interfaces/cost';
 export * from './lib/interfaces/name';
 export * from './lib/interfaces/print';
 export * from './lib/interfaces/rules';
+export * from './lib/interfaces/victory';
 export * from './lib/types/agglomeration';
 export * from './lib/types/development';
 export * from './lib/types/dice';
