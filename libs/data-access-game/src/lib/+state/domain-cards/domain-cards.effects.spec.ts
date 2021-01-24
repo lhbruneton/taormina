@@ -16,7 +16,7 @@ import { DomainCardsEffects } from './domain-cards.effects';
 jest.mock('./domain-cards.models', () => {
   return {
     __esModule: true,
-    createNewDomainCards: jest.fn((domain, cards) =>
+    createInitialDomainCards: jest.fn((domain, cards) =>
       cards.map((card) => {
         return {
           id: `${domain.id}-${card.id}`,

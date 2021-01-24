@@ -1,18 +1,16 @@
 import { Injectable } from '@angular/core';
-import { createEffect, Actions, ofType } from '@ngrx/effects';
+import { Actions, createEffect, ofType } from '@ngrx/effects';
+import { Store } from '@ngrx/store';
 import { fetch } from '@nrwl/angular';
+import { of } from 'rxjs';
 import { concatMap, map, withLatestFrom } from 'rxjs/operators';
 
 import * as CardsFeature from '../cards/cards.reducer';
 import * as CardsSelectors from '../cards/cards.selectors';
 import * as DomainsFeature from '../domains/domains.reducer';
 import * as DomainsSelectors from '../domains/domains.selectors';
-
-import * as DomainCardsFeature from './domain-cards.reducer';
 import * as DomainCardsActions from './domain-cards.actions';
-import { of } from 'rxjs';
-import { Store } from '@ngrx/store';
-import { createNewDomainCards } from './domain-cards.models';
+import { createInitialDomainCards } from './domain-cards.models';
 
 @Injectable()
 export class DomainCardsEffects {
@@ -27,13 +25,13 @@ export class DomainCardsEffects {
           )
         )
       ),
-      map(([action, cards, domains]) => {
-        return DomainCardsActions.setDomainCardsInitialized({
-          domainCards: domains.flatMap((domain) => {
-            return createNewDomainCards(domain, cards);
-          }),
-        });
-      })
+      map(([action, cards, domains]) =>
+        DomainCardsActions.setDomainCardsInitialized({
+          domainCards: domains.flatMap((domain) =>
+            createInitialDomainCards(domain, cards)
+          ),
+        })
+      )
     )
   );
 
