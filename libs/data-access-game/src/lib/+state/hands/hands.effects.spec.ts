@@ -11,6 +11,13 @@ import { hot } from '@nrwl/angular/testing';
 import { HandsEffects } from './hands.effects';
 import * as HandsActions from './hands.actions';
 
+jest.mock('./hands.models', () => {
+  return {
+    __esModule: true,
+    createInitialHands: jest.fn(() => []),
+  };
+});
+
 describe('HandsEffects', () => {
   let actions: Observable<any>;
   let effects: HandsEffects;
