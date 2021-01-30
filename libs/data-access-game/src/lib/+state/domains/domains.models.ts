@@ -1,10 +1,10 @@
-import { DomainColor } from '@taormina/shared-models';
+import { DomainColor, HasColor } from '@taormina/shared-models';
 import { v4 as uuidv4 } from 'uuid';
 
 /**
  * Interface for the 'Domains' data
  */
-export interface DomainsEntity {
+export interface DomainsEntity extends HasColor {
   id: string; // Primary ID
   color: DomainColor;
 }

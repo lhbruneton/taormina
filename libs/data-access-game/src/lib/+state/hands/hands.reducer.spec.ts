@@ -1,6 +1,7 @@
 import { createHandsEntity } from './hands.models';
 import * as HandsActions from './hands.actions';
 import { HandsState, initialHandsState, handsReducer } from './hands.reducer';
+import { DomainColor } from '@taormina/shared-models';
 
 describe('Hands Reducer', () => {
   beforeEach(() => {});
@@ -8,8 +9,8 @@ describe('Hands Reducer', () => {
   describe('valid Hands actions', () => {
     it('loadHandsSuccess should return set the list of known Hands', () => {
       const hands = [
-        createHandsEntity('PRODUCT-AAA'),
-        createHandsEntity('PRODUCT-zzz'),
+        createHandsEntity('PRODUCT-AAA', DomainColor.Red),
+        createHandsEntity('PRODUCT-zzz', DomainColor.Blue),
       ];
       const action = HandsActions.loadHandsSuccess({ hands });
 
