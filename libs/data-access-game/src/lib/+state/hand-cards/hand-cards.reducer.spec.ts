@@ -12,8 +12,8 @@ describe('HandCards Reducer', () => {
   describe('valid HandCards actions', () => {
     it('loadHandCardsSuccess should return set the list of known HandCards', () => {
       const handCards = [
-        createHandCardsEntity('PRODUCT-AAA'),
-        createHandCardsEntity('PRODUCT-zzz'),
+        createHandCardsEntity('PRODUCT-AAA', 'A', 'A'),
+        createHandCardsEntity('PRODUCT-zzz', 'z', 'z'),
       ];
       const action = HandCardsActions.loadHandCardsSuccess({ handCards });
 

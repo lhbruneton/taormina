@@ -9,9 +9,13 @@ export interface HandCardsEntity {
   cardId: string; // Foreign key to cards
 }
 
-export const createHandCardsEntity = (id: string, handId = '', cardId = '') =>
+export const createHandCardsEntity = (
+  id: string,
+  handId: string,
+  cardId: string
+) =>
   ({
     id,
-    handId: handId || `handId-${id}`,
-    cardId: cardId || `cardId-${id}`,
+    handId,
+    cardId,
   } as HandCardsEntity);

@@ -1,9 +1,5 @@
 import { createHandCardsEntity } from './hand-cards.models';
-import {
-  HandCardsState,
-  handCardsAdapter,
-  initialHandCardsState,
-} from './hand-cards.reducer';
+import { handCardsAdapter, initialHandCardsState } from './hand-cards.reducer';
 import * as HandCardsSelectors from './hand-cards.selectors';
 
 describe('HandCards Selectors', () => {
@@ -16,9 +12,9 @@ describe('HandCards Selectors', () => {
     state = {
       handCards: handCardsAdapter.setAll(
         [
-          createHandCardsEntity('PRODUCT-AAA'),
-          createHandCardsEntity('PRODUCT-BBB'),
-          createHandCardsEntity('PRODUCT-CCC'),
+          createHandCardsEntity('PRODUCT-AAA', 'A', 'A'),
+          createHandCardsEntity('PRODUCT-BBB', 'B', 'B'),
+          createHandCardsEntity('PRODUCT-CCC', 'C', 'C'),
         ],
         {
           ...initialHandCardsState,

@@ -1,23 +1,18 @@
 import { NgModule } from '@angular/core';
 import { TestBed } from '@angular/core/testing';
+import { EffectsModule } from '@ngrx/effects';
+import { Store, StoreModule } from '@ngrx/store';
+import { NxModule } from '@nrwl/angular';
 import { readFirst } from '@nrwl/angular/testing';
 
-import { EffectsModule } from '@ngrx/effects';
-import { StoreModule, Store } from '@ngrx/store';
-
-import { NxModule } from '@nrwl/angular';
-
-import { createHandCardsEntity } from './hand-cards.models';
+import * as HandCardsActions from './hand-cards.actions';
 import { HandCardsEffects } from './hand-cards.effects';
 import { HandCardsFacade } from './hand-cards.facade';
-
-import * as HandCardsSelectors from './hand-cards.selectors';
-import * as HandCardsActions from './hand-cards.actions';
+import { createHandCardsEntity } from './hand-cards.models';
 import {
-  HAND_CARDS_FEATURE_KEY,
-  HandCardsState,
-  initialHandCardsState,
   handCardsReducer,
+  HandCardsState,
+  HAND_CARDS_FEATURE_KEY,
 } from './hand-cards.reducer';
 
 interface TestSchema {
@@ -95,8 +90,8 @@ describe('HandCardsFacade', () => {
         store.dispatch(
           HandCardsActions.loadHandCardsSuccess({
             handCards: [
-              createHandCardsEntity('AAA'),
-              createHandCardsEntity('BBB'),
+              createHandCardsEntity('AAA', 'A', 'A'),
+              createHandCardsEntity('BBB', 'B', 'B'),
             ],
           })
         );
