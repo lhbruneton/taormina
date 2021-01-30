@@ -1,4 +1,4 @@
-import { AgglomerationType } from '@taormina/shared-models';
+import { AgglomerationType, ResourceType } from '@taormina/shared-models';
 
 import { createAgglomerationCardsEntity } from '../cards/models/agglomeration';
 import * as FaceUpPilesActions from './face-up-piles.actions';
@@ -14,8 +14,24 @@ describe('FaceUpPiles Reducer', () => {
   describe('valid FaceUpPiles actions', () => {
     it('loadFaceUpPilesSuccess should return set the list of known AgglomerationCards', () => {
       const agglomerationCards = [
-        createAgglomerationCardsEntity('PRODUCT-AAA', AgglomerationType.Road),
-        createAgglomerationCardsEntity('PRODUCT-zzz', AgglomerationType.Hamlet),
+        createAgglomerationCardsEntity(
+          'PRODUCT-AAA',
+          new Map([
+            [ResourceType.Wood, 1],
+            [ResourceType.Clay, 2],
+          ]),
+          AgglomerationType.Road
+        ),
+        createAgglomerationCardsEntity(
+          'PRODUCT-zzz',
+          new Map([
+            [ResourceType.Wood, 1],
+            [ResourceType.Clay, 1],
+            [ResourceType.Wool, 1],
+            [ResourceType.Wheat, 1],
+          ]),
+          AgglomerationType.Hamlet
+        ),
       ];
       const action = FaceUpPilesActions.loadFaceUpPilesSuccess({
         agglomerationCards,

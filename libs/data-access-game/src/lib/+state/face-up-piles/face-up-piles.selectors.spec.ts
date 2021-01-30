@@ -1,4 +1,4 @@
-import { AgglomerationType } from '@taormina/shared-models';
+import { AgglomerationType, ResourceType } from '@taormina/shared-models';
 
 import { createAgglomerationCardsEntity } from '../cards/models/agglomeration';
 import {
@@ -17,12 +17,32 @@ describe('FaceUpPiles Selectors', () => {
     state = {
       faceUpPiles: faceUpPilesAdapter.setAll(
         [
-          createAgglomerationCardsEntity('PRODUCT-AAA', AgglomerationType.Road),
+          createAgglomerationCardsEntity(
+            'PRODUCT-AAA',
+            new Map([
+              [ResourceType.Wood, 1],
+              [ResourceType.Clay, 2],
+            ]),
+            AgglomerationType.Road
+          ),
           createAgglomerationCardsEntity(
             'PRODUCT-BBB',
+            new Map([
+              [ResourceType.Wood, 1],
+              [ResourceType.Clay, 1],
+              [ResourceType.Wool, 1],
+              [ResourceType.Wheat, 1],
+            ]),
             AgglomerationType.Hamlet
           ),
-          createAgglomerationCardsEntity('PRODUCT-CCC', AgglomerationType.Town),
+          createAgglomerationCardsEntity(
+            'PRODUCT-CCC',
+            new Map([
+              [ResourceType.Wheat, 2],
+              [ResourceType.Stone, 3],
+            ]),
+            AgglomerationType.Town
+          ),
         ],
         {
           ...initialFaceUpState,
