@@ -1,17 +1,19 @@
 import { Injectable } from '@angular/core';
-import { createEffect, Actions, ofType } from '@ngrx/effects';
+import { Actions, createEffect, ofType } from '@ngrx/effects';
 import { fetch } from '@nrwl/angular';
 import { map } from 'rxjs/operators';
 
-import * as HandsFeature from './hands.reducer';
 import * as HandsActions from './hands.actions';
+import { createInitialHands } from './hands.models';
 
 @Injectable()
 export class HandsEffects {
   initNewGame$ = createEffect(() =>
     this.actions$.pipe(
       ofType(HandsActions.initHandsNewGame),
-      map(() => HandsActions.setHandsInitialized({ hands: [] }))
+      map(() =>
+        HandsActions.setHandsInitialized({ hands: createInitialHands() })
+      )
     )
   );
 

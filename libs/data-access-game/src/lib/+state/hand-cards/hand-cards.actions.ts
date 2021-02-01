@@ -23,3 +23,13 @@ export const setHandCardsInitialized = createAction(
   '[HandCards] Set HandCards On Init',
   props<{ handCards: HandCardsEntity[] }>()
 );
+
+export const addCardsToHand = createAction(
+  '[HandCards] Add Cards To Hand',
+  props<{ handId: string; cardIds: string[] }>()
+);
+
+export const addHandCards = createAction(
+  '[HandCards] Add HandCards',
+  props<{ handCards: HandCardsEntity[] }>()
+);

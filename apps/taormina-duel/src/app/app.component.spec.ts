@@ -6,6 +6,8 @@ import {
   DomainCardsFacade,
   DomainsFacade,
   EventsPileCardsFacade,
+  HandCardsFacade,
+  HandsFacade,
   LandsPileCardsFacade,
   StockPileCardsFacade,
   StockPilesFacade,
@@ -26,6 +28,8 @@ describe('AppComponent', () => {
         EventsPileCardsFacade,
         StockPilesFacade,
         StockPileCardsFacade,
+        HandsFacade,
+        HandCardsFacade,
       ],
     }).compileComponents();
   });

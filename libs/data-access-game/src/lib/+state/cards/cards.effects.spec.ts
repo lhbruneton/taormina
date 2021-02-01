@@ -5,6 +5,10 @@ import { DataPersistence, NxModule } from '@nrwl/angular';
 import { hot } from '@nrwl/angular/testing';
 import { Observable } from 'rxjs';
 
+import * as HandCardsActions from '../hand-cards/hand-cards.actions';
+import * as StockPileCardsActions from '../stock-pile-cards/stock-pile-cards.actions';
+import * as StockPileCardsSelectors from '../stock-pile-cards/stock-pile-cards.selectors';
+
 import * as CardsActions from './cards.actions';
 import { CardsEffects } from './cards.effects';
 
@@ -47,7 +51,20 @@ describe('CardsEffects', () => {
         CardsEffects,
         DataPersistence,
         provideMockActions(() => actions),
-        provideMockStore(),
+        provideMockStore({
+          selectors: [
+            {
+              selector: StockPileCardsSelectors.getAllStockPileCards,
+              value: [
+                { id: 'AAA', stockPileId: 'A', cardId: 'A' },
+                { id: 'BBB', stockPileId: 'B', cardId: 'B' },
+                { id: 'CCC', stockPileId: 'A', cardId: 'C' },
+                { id: 'DDD', stockPileId: 'B', cardId: 'D' },
+                { id: 'EEE', stockPileId: 'A', cardId: 'E' },
+              ],
+            },
+          ],
+        }),
       ],
     });
 
@@ -75,6 +92,31 @@ describe('CardsEffects', () => {
       });
 
       expect(effects.initSavedGame$).toBeObservable(expected);
+    });
+  });
+
+  describe('drawFromStockToHand$', () => {
+    it('should dispatch removeCardsFromStockPile and addCardsToHand on drawCardsFromStockToHand', () => {
+      actions = hot('a', {
+        a: CardsActions.drawCardsFromStockToHand({
+          stockPileId: 'A',
+          cardsCount: 2,
+          handId: 'A',
+        }),
+      });
+
+      const expected = hot('(ab)', {
+        a: StockPileCardsActions.removeCardsFromStockPile({
+          stockPileId: 'A',
+          cardIds: ['A', 'C'],
+        }),
+        b: HandCardsActions.addCardsToHand({
+          handId: 'A',
+          cardIds: ['A', 'C'],
+        }),
+      });
+
+      expect(effects.drawFromStockToHand$).toBeObservable(expected);
     });
   });
 });

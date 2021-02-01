@@ -10,10 +10,22 @@
 <p *ngFor="let event of getEventCards() | async">
   {{ event.name }}
 </p>
-<hr />
 <div *ngFor="let pile of getStockPiles() | async">
   <hr />
+  <button type="button" (click)="drawInitialTopHand(pile.id)">
+    Draw 3 cards to top hand
+  </button>
+  <button type="button" (click)="drawInitialBottomHand(pile.id)">
+    Draw 3 cards to bottom hand
+  </button>
   <div *ngFor="let pivot of getStockPileCards(pile.id) | async">
+    <div>{{ (getCard(pivot.cardId) | async).name }}</div>
+  </div>
+</div>
+<hr />
+<div *ngIf="getTopHand() | async as hand">
+  <div>{{ hand.color }}</div>
+  <div *ngFor="let pivot of getHandCards(hand.id) | async">
     <div>{{ (getCard(pivot.cardId) | async).name }}</div>
   </div>
 </div>
@@ -47,5 +59,12 @@
     >
       <div>{{ (getPrintableCard(pivot.cardId) | async).print() }}</div>
     </div>
+  </div>
+</div>
+<hr />
+<div *ngIf="getBottomHand() | async as hand">
+  <div>{{ hand.color }}</div>
+  <div *ngFor="let pivot of getHandCards(hand.id) | async">
+    <div>{{ (getCard(pivot.cardId) | async).name }}</div>
   </div>
 </div>

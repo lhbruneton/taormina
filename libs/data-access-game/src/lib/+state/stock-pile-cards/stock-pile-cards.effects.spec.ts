@@ -9,6 +9,7 @@ import * as CardsSelectors from '../cards/cards.selectors';
 import * as StockPilesSelectors from '../stock-piles/stock-piles.selectors';
 import * as StockPileCardsActions from './stock-pile-cards.actions';
 import { StockPileCardsEffects } from './stock-pile-cards.effects';
+import * as StockPileCardsSelectors from './stock-pile-cards.selectors';
 
 jest.mock('./stock-pile-cards.models', () => {
   return {
@@ -37,6 +38,11 @@ describe('StockPileCardsEffects', () => {
             {
               selector: StockPilesSelectors.getAllStockPiles,
               value: [],
+            },
+            {
+              selector:
+                StockPileCardsSelectors.getStockPileCardEntityByStockPileIdCardId,
+              value: { id: 'AAA', stockPileId: 'A', cardId: 'A' },
             },
           ],
         }),
@@ -75,6 +81,25 @@ describe('StockPileCardsEffects', () => {
       });
 
       expect(effects.initSavedGame$).toBeObservable(expected);
+    });
+  });
+
+  describe('removeCards$', () => {
+    it('should dispatch removeStockPileCards', () => {
+      actions = hot('-a-|', {
+        a: StockPileCardsActions.removeCardsFromStockPile({
+          stockPileId: 'A',
+          cardIds: ['A'],
+        }),
+      });
+
+      const expected = hot('-a-|', {
+        a: StockPileCardsActions.removeStockPileCards({
+          stockPileCardIds: ['AAA'],
+        }),
+      });
+
+      expect(effects.removeCards$).toBeObservable(expected);
     });
   });
 });

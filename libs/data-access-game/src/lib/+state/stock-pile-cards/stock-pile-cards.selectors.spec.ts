@@ -18,7 +18,7 @@ describe('StockPileCards Selectors', () => {
         [
           createStockPileCardsEntity('PRODUCT-AAA', 'A', 'A'),
           createStockPileCardsEntity('PRODUCT-BBB', 'B', 'B'),
-          createStockPileCardsEntity('PRODUCT-CCC', 'C', 'C'),
+          createStockPileCardsEntity('PRODUCT-CCC', 'D', 'E'),
         ],
         {
           ...initialStockPileCardsState,
@@ -56,6 +56,18 @@ describe('StockPileCards Selectors', () => {
       const result = StockPileCardsSelectors.getStockPileCardsError(state);
 
       expect(result).toBe(ERROR_MSG);
+    });
+
+    it('getStockPileCardEntityByStockPileIdCardId({ stockPileId, cardId }) should return the Entity for the ids', () => {
+      const stockPileId = 'D';
+      const cardId = 'E';
+      const result = StockPileCardsSelectors.getStockPileCardEntityByStockPileIdCardId(
+        state,
+        { stockPileId, cardId }
+      );
+      const selId = getStockPileCardsId(result);
+
+      expect(selId).toBe('PRODUCT-CCC');
     });
   });
 });

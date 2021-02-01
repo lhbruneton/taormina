@@ -17,7 +17,9 @@ export interface HandCardsPartialState {
   readonly [HAND_CARDS_FEATURE_KEY]: HandCardsState;
 }
 
-export const handCardsAdapter: EntityAdapter<HandCardsEntity> = createEntityAdapter<HandCardsEntity>();
+export const handCardsAdapter: EntityAdapter<HandCardsEntity> = createEntityAdapter<
+  HandCardsEntity
+>();
 
 export const initialHandCardsState: HandCardsState = handCardsAdapter.getInitialState(
   {
@@ -47,5 +49,8 @@ export const handCardsReducer = createReducer(
   })),
   on(HandCardsActions.setHandCardsInitialized, (state, { handCards }) =>
     handCardsAdapter.setAll(handCards, { ...state, initialized: true })
+  ),
+  on(HandCardsActions.addHandCards, (state, { handCards }) =>
+    handCardsAdapter.addMany(handCards, state)
   )
 );

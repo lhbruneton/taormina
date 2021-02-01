@@ -1,5 +1,7 @@
+import { DomainColor } from '@taormina/shared-models';
+
 import { createHandsEntity } from './hands.models';
-import { HandsState, handsAdapter, initialHandsState } from './hands.reducer';
+import { handsAdapter, initialHandsState } from './hands.reducer';
 import * as HandsSelectors from './hands.selectors';
 
 describe('Hands Selectors', () => {
@@ -12,9 +14,9 @@ describe('Hands Selectors', () => {
     state = {
       hands: handsAdapter.setAll(
         [
-          createHandsEntity('PRODUCT-AAA'),
-          createHandsEntity('PRODUCT-BBB'),
-          createHandsEntity('PRODUCT-CCC'),
+          createHandsEntity('PRODUCT-AAA', DomainColor.Red),
+          createHandsEntity('PRODUCT-BBB', DomainColor.Blue),
+          createHandsEntity('PRODUCT-CCC', DomainColor.Red),
         ],
         {
           ...initialHandsState,

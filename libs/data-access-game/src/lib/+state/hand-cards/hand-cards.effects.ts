@@ -1,10 +1,11 @@
 import { Injectable } from '@angular/core';
-import { createEffect, Actions, ofType } from '@ngrx/effects';
+import { Actions, createEffect, ofType } from '@ngrx/effects';
 import { fetch } from '@nrwl/angular';
 import { map } from 'rxjs/operators';
+import { v4 as uuidv4 } from 'uuid';
 
-import * as HandCardsFeature from './hand-cards.reducer';
 import * as HandCardsActions from './hand-cards.actions';
+import { createHandCardsEntity } from './hand-cards.models';
 
 @Injectable()
 export class HandCardsEffects {
@@ -29,6 +30,16 @@ export class HandCardsEffects {
           return HandCardsActions.loadHandCardsFailure({ error });
         },
       })
+    )
+  );
+
+  addCards$ = createEffect(() =>
+    this.actions$.pipe(
+      ofType(HandCardsActions.addCardsToHand),
+      map(({ handId, cardIds }) =>
+        cardIds.map((cardId) => createHandCardsEntity(uuidv4(), handId, cardId))
+      ),
+      map((handCards) => HandCardsActions.addHandCards({ handCards }))
     )
   );
 

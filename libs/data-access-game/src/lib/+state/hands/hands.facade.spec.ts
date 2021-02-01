@@ -1,24 +1,16 @@
 import { NgModule } from '@angular/core';
 import { TestBed } from '@angular/core/testing';
-import { readFirst } from '@nrwl/angular/testing';
-
 import { EffectsModule } from '@ngrx/effects';
-import { StoreModule, Store } from '@ngrx/store';
-
+import { Store, StoreModule } from '@ngrx/store';
 import { NxModule } from '@nrwl/angular';
+import { readFirst } from '@nrwl/angular/testing';
+import { DomainColor } from '@taormina/shared-models';
 
-import { createHandsEntity } from './hands.models';
+import * as HandsActions from './hands.actions';
 import { HandsEffects } from './hands.effects';
 import { HandsFacade } from './hands.facade';
-
-import * as HandsSelectors from './hands.selectors';
-import * as HandsActions from './hands.actions';
-import {
-  HANDS_FEATURE_KEY,
-  HandsState,
-  initialHandsState,
-  handsReducer,
-} from './hands.reducer';
+import { createHandsEntity } from './hands.models';
+import { handsReducer, HandsState, HANDS_FEATURE_KEY } from './hands.reducer';
 
 interface TestSchema {
   hands: HandsState;
@@ -94,7 +86,10 @@ describe('HandsFacade', () => {
 
         store.dispatch(
           HandsActions.loadHandsSuccess({
-            hands: [createHandsEntity('AAA'), createHandsEntity('BBB')],
+            hands: [
+              createHandsEntity('AAA', DomainColor.Red),
+              createHandsEntity('BBB', DomainColor.Blue),
+            ],
           })
         );
 

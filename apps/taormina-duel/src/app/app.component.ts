@@ -5,11 +5,13 @@ import {
   DomainCardsFacade,
   DomainsFacade,
   EventsPileCardsFacade,
+  HandCardsFacade,
+  HandsFacade,
   LandsPileCardsFacade,
   StockPileCardsFacade,
   StockPilesFacade,
 } from '@taormina/data-access-game';
-import { filter, map } from 'rxjs/operators';
+import { filter, map, take, tap } from 'rxjs/operators';
 
 @Component({
   selector: 'taormina-root',
@@ -25,7 +27,9 @@ export class AppComponent {
     private landCards: LandsPileCardsFacade,
     private eventCards: EventsPileCardsFacade,
     private stockPiles: StockPilesFacade,
-    private stockPileCards: StockPileCardsFacade
+    private stockPileCards: StockPileCardsFacade,
+    private hands: HandsFacade,
+    private handCards: HandCardsFacade
   ) {}
 
   startNewGame() {
@@ -37,6 +41,8 @@ export class AppComponent {
     this.eventCards.initNewGame();
     this.stockPiles.initNewGame();
     this.stockPileCards.initNewGame();
+    this.hands.initNewGame();
+    this.handCards.initNewGame();
   }
 
   onThrow() {
@@ -63,7 +69,9 @@ export class AppComponent {
 
   getDomainCards(domainId: string) {
     return this.domainCards.allDomainCards$.pipe(
-      map((cards) => cards.filter((card) => card.domainId === domainId))
+      map((domainCards) =>
+        domainCards.filter((domainCard) => domainCard.domainId === domainId)
+      )
     );
   }
 
@@ -89,7 +97,49 @@ export class AppComponent {
 
   getStockPileCards(stockPileId: string) {
     return this.stockPileCards.allStockPileCards$.pipe(
-      map((cards) => cards.filter((card) => card.stockPileId === stockPileId))
+      map((stockPileCards) =>
+        stockPileCards.filter(
+          (stockPileCard) => stockPileCard.stockPileId === stockPileId
+        )
+      )
     );
+  }
+
+  getTopHand() {
+    return this.hands.allHands$.pipe(
+      filter((hands) => hands.length > 0),
+      map((hands) => hands[0])
+    );
+  }
+
+  getBottomHand() {
+    return this.hands.allHands$.pipe(
+      filter((hands) => hands.length > 1),
+      map((hands) => hands[1])
+    );
+  }
+
+  getHandCards(handId: string) {
+    return this.handCards.allHandCards$.pipe(
+      map((handCards) =>
+        handCards.filter((handCard) => handCard.handId === handId)
+      )
+    );
+  }
+
+  drawInitialTopHand(stockPileId: string) {
+    this.getTopHand()
+      .pipe(take(1))
+      .subscribe((hand) =>
+        this.cards.drawFromStockToHand(stockPileId, 3, hand.id)
+      );
+  }
+
+  drawInitialBottomHand(stockPileId: string) {
+    this.getBottomHand()
+      .pipe(take(1))
+      .subscribe((hand) =>
+        this.cards.drawFromStockToHand(stockPileId, 3, hand.id)
+      );
   }
 }
