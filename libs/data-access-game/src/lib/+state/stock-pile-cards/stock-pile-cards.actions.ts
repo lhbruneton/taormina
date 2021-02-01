@@ -23,3 +23,13 @@ export const setStockPileCardsInitialized = createAction(
   '[StockPileCards] Set StockPileCards On Init',
   props<{ stockPileCards: StockPileCardsEntity[] }>()
 );
+
+export const removeCardsFromStockPile = createAction(
+  '[StockPileCards] Remove Cards From Stock Pile',
+  props<{ stockPileId: string; cardIds: string[] }>()
+);
+
+export const removeStockPileCards = createAction(
+  '[StockPileCards] Remove StockPileCards',
+  props<{ stockPileCardIds: string[] }>()
+);

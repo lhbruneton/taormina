@@ -1,15 +1,19 @@
-import { TestBed, async } from '@angular/core/testing';
-
-import { Observable } from 'rxjs';
-
+import { TestBed } from '@angular/core/testing';
 import { provideMockActions } from '@ngrx/effects/testing';
 import { provideMockStore } from '@ngrx/store/testing';
-
-import { NxModule, DataPersistence } from '@nrwl/angular';
+import { DataPersistence, NxModule } from '@nrwl/angular';
 import { hot } from '@nrwl/angular/testing';
+import { Observable } from 'rxjs';
 
-import { HandCardsEffects } from './hand-cards.effects';
 import * as HandCardsActions from './hand-cards.actions';
+import { HandCardsEffects } from './hand-cards.effects';
+
+jest.mock('uuid', () => {
+  return {
+    __esModule: true,
+    v4: jest.fn(() => 'AAA'),
+  };
+});
 
 describe('HandCardsEffects', () => {
   let actions: Observable<any>;
@@ -50,6 +54,25 @@ describe('HandCardsEffects', () => {
       });
 
       expect(effects.initSavedGame$).toBeObservable(expected);
+    });
+  });
+
+  describe('addCards$', () => {
+    it('should dispatch addHandCards', () => {
+      actions = hot('-a-|', {
+        a: HandCardsActions.addCardsToHand({
+          handId: 'A',
+          cardIds: ['A'],
+        }),
+      });
+
+      const expected = hot('-a-|', {
+        a: HandCardsActions.addHandCards({
+          handCards: [{ id: 'AAA', handId: 'A', cardId: 'A' }],
+        }),
+      });
+
+      expect(effects.addCards$).toBeObservable(expected);
     });
   });
 });

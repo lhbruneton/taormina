@@ -23,3 +23,8 @@ export const setCardsInitialized = createAction(
   '[Cards] Set Cards On Init',
   props<{ cards: CardsEntity[] }>()
 );
+
+export const drawCardsFromStockToHand = createAction(
+  '[Cards] Draw Cards From Stock To Hand',
+  props<{ stockPileId: string; cardsCount: number; handId: string }>()
+);

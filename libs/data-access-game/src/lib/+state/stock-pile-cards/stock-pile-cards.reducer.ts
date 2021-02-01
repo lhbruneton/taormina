@@ -17,7 +17,9 @@ export interface StockPileCardsPartialState {
   readonly [STOCK_PILE_CARDS_FEATURE_KEY]: StockPileCardsState;
 }
 
-export const stockPileCardsAdapter: EntityAdapter<StockPileCardsEntity> = createEntityAdapter<StockPileCardsEntity>();
+export const stockPileCardsAdapter: EntityAdapter<StockPileCardsEntity> = createEntityAdapter<
+  StockPileCardsEntity
+>();
 
 export const initialStockPileCardsState: StockPileCardsState = stockPileCardsAdapter.getInitialState(
   {
@@ -54,5 +56,10 @@ export const stockPileCardsReducer = createReducer(
         ...state,
         initialized: true,
       })
+  ),
+  on(
+    StockPileCardsActions.removeStockPileCards,
+    (state, { stockPileCardIds }) =>
+      stockPileCardsAdapter.removeMany(stockPileCardIds, state)
   )
 );

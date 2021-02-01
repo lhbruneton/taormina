@@ -42,4 +42,10 @@ export class CardsFacade {
       map((card) => (card as unknown) as CanPrint)
     );
   }
+
+  drawFromStockToHand(stockPileId: string, cardsCount: number, handId: string) {
+    this.store.dispatch(
+      CardsActions.drawCardsFromStockToHand({ stockPileId, cardsCount, handId })
+    );
+  }
 }

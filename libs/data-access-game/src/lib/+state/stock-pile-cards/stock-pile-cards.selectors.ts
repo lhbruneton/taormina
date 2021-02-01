@@ -1,4 +1,6 @@
+import { Dictionary } from '@ngrx/entity';
 import { createFeatureSelector, createSelector } from '@ngrx/store';
+import { StockPileCardsEntity } from './stock-pile-cards.models';
 import {
   STOCK_PILE_CARDS_FEATURE_KEY,
   StockPileCardsState,
@@ -43,4 +45,16 @@ export const getStockPileCardsSelected = createSelector(
   getStockPileCardsEntities,
   getStockPileCardsSelectedId,
   (entities, selectedId) => selectedId && entities[selectedId]
+);
+
+export const getStockPileCardEntityByStockPileIdCardId = createSelector(
+  getAllStockPileCards,
+  (entities: StockPileCardsEntity[], props) =>
+    props.stockPileId &&
+    props.cardId &&
+    entities.find(
+      (entity) =>
+        entity.stockPileId === props.stockPileId &&
+        entity.cardId === props.cardId
+    )
 );

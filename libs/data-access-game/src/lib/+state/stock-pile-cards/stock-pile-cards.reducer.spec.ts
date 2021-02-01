@@ -9,8 +9,28 @@ import {
 describe('StockPileCards Reducer', () => {
   beforeEach(() => {});
 
-  describe('valid StockPileCards actions', () => {
-    it('loadStockPileCardsSuccess should return set the list of known StockPileCards', () => {
+  describe('unknown action', () => {
+    it('should return the previous state', () => {
+      const action = {} as any;
+
+      const result = stockPileCardsReducer(initialStockPileCardsState, action);
+
+      expect(result).toBe(initialStockPileCardsState);
+    });
+  });
+
+  describe('loadStockPileCardsSuccess', () => {
+    it('should set the list of known StockPileCards and loaded', () => {
+      const newState: StockPileCardsState = {
+        ids: ['PRODUCT-AAA', 'PRODUCT-zzz'],
+        entities: {
+          'PRODUCT-AAA': { id: 'PRODUCT-AAA', stockPileId: 'A', cardId: 'A' },
+          'PRODUCT-zzz': { id: 'PRODUCT-zzz', stockPileId: 'z', cardId: 'z' },
+        },
+        initialized: false,
+        loaded: true,
+      };
+
       const stockPileCards = [
         createStockPileCardsEntity('PRODUCT-AAA', 'A', 'A'),
         createStockPileCardsEntity('PRODUCT-zzz', 'z', 'z'),
@@ -19,23 +39,49 @@ describe('StockPileCards Reducer', () => {
         stockPileCards,
       });
 
-      const result: StockPileCardsState = stockPileCardsReducer(
+      const state: StockPileCardsState = stockPileCardsReducer(
         initialStockPileCardsState,
         action
       );
 
-      expect(result.loaded).toBe(true);
-      expect(result.ids.length).toBe(2);
+      expect(state).toEqual(newState);
     });
   });
 
-  describe('unknown action', () => {
-    it('should return the previous state', () => {
-      const action = {} as any;
+  describe('removeStockPileCards', () => {
+    it('should remove StockPileCards from the list', () => {
+      const newState: StockPileCardsState = {
+        ids: ['PRODUCT-AAA', 'PRODUCT-zzz'],
+        entities: {
+          'PRODUCT-AAA': { id: 'PRODUCT-AAA', stockPileId: 'A', cardId: 'A' },
+          'PRODUCT-zzz': { id: 'PRODUCT-zzz', stockPileId: 'z', cardId: 'z' },
+        },
+        initialized: true,
+        loaded: false,
+      };
 
-      const result = stockPileCardsReducer(initialStockPileCardsState, action);
+      const initialState: StockPileCardsState = {
+        ids: ['PRODUCT-AAA', 'PRODUCT-BBB', 'PRODUCT-CCC', 'PRODUCT-zzz'],
+        entities: {
+          'PRODUCT-AAA': { id: 'PRODUCT-AAA', stockPileId: 'A', cardId: 'A' },
+          'PRODUCT-BBB': { id: 'PRODUCT-BBB', stockPileId: 'B', cardId: 'B' },
+          'PRODUCT-CCC': { id: 'PRODUCT-CCC', stockPileId: 'C', cardId: 'C' },
+          'PRODUCT-zzz': { id: 'PRODUCT-zzz', stockPileId: 'z', cardId: 'z' },
+        },
+        initialized: true,
+        loaded: false,
+      };
 
-      expect(result).toBe(initialStockPileCardsState);
+      const action = StockPileCardsActions.removeStockPileCards({
+        stockPileCardIds: ['PRODUCT-BBB', 'PRODUCT-CCC'],
+      });
+
+      const state: StockPileCardsState = stockPileCardsReducer(
+        initialState,
+        action
+      );
+
+      expect(state).toEqual(newState);
     });
   });
 });
