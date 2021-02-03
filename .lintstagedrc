@@ -1,0 +1,8 @@
+{
+  "{apps,libs}/**/*.{html,ts}": [
+    "eslint"
+  ],
+  "apps/**/*.css": [
+    "stylelint"
+  ]
+}
