@@ -31,3 +31,4 @@ jobs:
         uses: MansaGroup/nrwl-nx-action@v2.0.3
         with:
           targets: lint,test
+          all: 'true'
