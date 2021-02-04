@@ -1,6 +1,5 @@
 import { createStockPileCardsEntity } from './stock-pile-cards.models';
 import {
-  StockPileCardsState,
   stockPileCardsAdapter,
   initialStockPileCardsState,
 } from './stock-pile-cards.reducer';

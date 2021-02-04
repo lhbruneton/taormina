@@ -16,7 +16,7 @@ export const loadHandCardsSuccess = createAction(
 
 export const loadHandCardsFailure = createAction(
   '[HandCards/API] Load HandCards Failure',
-  props<{ error: any }>()
+  props<{ error: unknown }>()
 );
 
 export const setHandCardsInitialized = createAction(

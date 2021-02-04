@@ -1,15 +1,13 @@
-import { TestBed, async } from '@angular/core/testing';
-
+import { TestBed } from '@angular/core/testing';
+import { provideMockActions } from '@ngrx/effects/testing';
+import { Action } from '@ngrx/store';
+import { provideMockStore } from '@ngrx/store/testing';
+import { DataPersistence, NxModule } from '@nrwl/angular';
+import { hot } from '@nrwl/angular/testing';
 import { Observable } from 'rxjs';
 
-import { provideMockActions } from '@ngrx/effects/testing';
-import { provideMockStore } from '@ngrx/store/testing';
-
-import { NxModule, DataPersistence } from '@nrwl/angular';
-import { hot } from '@nrwl/angular/testing';
-
-import { DomainsEffects } from './domains.effects';
 import * as DomainsActions from './domains.actions';
+import { DomainsEffects } from './domains.effects';
 
 jest.mock('./domains.models', () => {
   return {
@@ -19,7 +17,7 @@ jest.mock('./domains.models', () => {
 });
 
 describe('DomainsEffects', () => {
-  let actions: Observable<any>;
+  let actions: Observable<Action>;
   let effects: DomainsEffects;
 
   beforeEach(() => {

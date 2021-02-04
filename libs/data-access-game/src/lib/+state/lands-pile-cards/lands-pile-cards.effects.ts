@@ -23,14 +23,14 @@ export class LandsPileCardsEffects {
     this.actions$.pipe(
       ofType(LandsPileCardsActions.initLandsPileCardsSavedGame),
       fetch({
-        run: (action) => {
+        run: () => {
           // Your custom service 'load' logic goes here. For now just return a success action...
           return LandsPileCardsActions.loadLandsPileCardsSuccess({
             landsPileCards: [],
           });
         },
 
-        onError: (action, error) => {
+        onError: (_action, error) => {
           console.error('Error', error);
           return LandsPileCardsActions.loadLandsPileCardsFailure({ error });
         },

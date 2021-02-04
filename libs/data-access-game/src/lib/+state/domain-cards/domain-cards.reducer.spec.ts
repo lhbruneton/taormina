@@ -1,3 +1,4 @@
+import { Action } from '@ngrx/store';
 import * as DomainCardsActions from './domain-cards.actions';
 import { createDomainCardsEntity } from './domain-cards.models';
 import {
@@ -7,10 +8,8 @@ import {
 } from './domain-cards.reducer';
 
 describe('DomainCards Reducer', () => {
-  beforeEach(() => {});
-
   describe('valid DomainCards actions', () => {
-    it('loadDomainCardsSuccess should return set the list of known DomainCards', () => {
+    it('loadDomainCardsSuccess should set the list of known DomainCards', () => {
       const domainCards = [
         createDomainCardsEntity('PRODUCT-AAA', 'A', 'A', 0, 0),
         createDomainCardsEntity('PRODUCT-zzz', 'z', 'z', 0, 0),
@@ -29,7 +28,7 @@ describe('DomainCards Reducer', () => {
 
   describe('unknown action', () => {
     it('should return the previous state', () => {
-      const action = {} as any;
+      const action = {} as Action;
 
       const result = domainCardsReducer(initialDomainCardsState, action);
 

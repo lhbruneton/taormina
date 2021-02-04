@@ -2,10 +2,9 @@ import { createHandsEntity } from './hands.models';
 import * as HandsActions from './hands.actions';
 import { HandsState, initialHandsState, handsReducer } from './hands.reducer';
 import { DomainColor } from '@taormina/shared-models';
+import { Action } from '@ngrx/store';
 
 describe('Hands Reducer', () => {
-  beforeEach(() => {});
-
   describe('valid Hands actions', () => {
     it('loadHandsSuccess should return set the list of known Hands', () => {
       const hands = [
@@ -23,7 +22,7 @@ describe('Hands Reducer', () => {
 
   describe('unknown action', () => {
     it('should return the previous state', () => {
-      const action = {} as any;
+      const action = {} as Action;
 
       const result = handsReducer(initialHandsState, action);
 

@@ -1,3 +1,4 @@
+import { Action } from '@ngrx/store';
 import { createCardsEntity } from '../cards/cards.models';
 import * as DiscardPileCardsActions from './discard-pile-cards.actions';
 import {
@@ -7,10 +8,8 @@ import {
 } from './discard-pile-cards.reducer';
 
 describe('DiscardPileCards Reducer', () => {
-  beforeEach(() => {});
-
   describe('valid DiscardPileCards actions', () => {
-    it('loadDiscardPileCardsSuccess should return set the list of known DiscardPileCards', () => {
+    it('loadDiscardPileCardsSuccess should set the list of known DiscardPileCards', () => {
       const discardPileCards = [
         createCardsEntity('PRODUCT-AAA'),
         createCardsEntity('PRODUCT-zzz'),
@@ -31,7 +30,7 @@ describe('DiscardPileCards Reducer', () => {
 
   describe('unknown action', () => {
     it('should return the previous state', () => {
-      const action = {} as any;
+      const action = {} as Action;
 
       const result = discardPileCardsReducer(
         initialDiscardPileCardsState,

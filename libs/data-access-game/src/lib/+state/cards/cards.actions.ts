@@ -16,7 +16,7 @@ export const loadCardsSuccess = createAction(
 
 export const loadCardsFailure = createAction(
   '[Cards/API] Load Cards Failure',
-  props<{ error: any }>()
+  props<{ error: unknown }>()
 );
 
 export const setCardsInitialized = createAction(

@@ -1,3 +1,4 @@
+import { Action } from '@ngrx/store';
 import { createEventCardsEntity } from '../cards/models/event';
 import * as EventsPileCardsActions from './events-pile-cards.actions';
 import {
@@ -7,10 +8,8 @@ import {
 } from './events-pile-cards.reducer';
 
 describe('EventsPileCards Reducer', () => {
-  beforeEach(() => {});
-
   describe('valid EventsPileCards actions', () => {
-    it('loadEventsPileCardsSuccess should return set the list of known EventsPileCards', () => {
+    it('loadEventsPileCardsSuccess should set the list of known EventsPileCards', () => {
       const eventsPileCards = [
         createEventCardsEntity('PRODUCT-AAA', 'Some name', []),
         createEventCardsEntity('PRODUCT-zzz', 'Some other name', []),
@@ -31,7 +30,7 @@ describe('EventsPileCards Reducer', () => {
 
   describe('unknown action', () => {
     it('should return the previous state', () => {
-      const action = {} as any;
+      const action = {} as Action;
 
       const result = eventsPileCardsReducer(
         initialEventsPileCardsState,

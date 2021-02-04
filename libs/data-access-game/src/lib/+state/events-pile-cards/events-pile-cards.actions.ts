@@ -16,7 +16,7 @@ export const loadEventsPileCardsSuccess = createAction(
 
 export const loadEventsPileCardsFailure = createAction(
   '[EventsPileCards/API] Load EventsPileCards Failure',
-  props<{ error: any }>()
+  props<{ error: unknown }>()
 );
 
 export const setEventsPileCardsInitialized = createAction(

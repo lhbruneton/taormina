@@ -1,9 +1,6 @@
 import { Injectable } from '@angular/core';
-
-import { select, Store, Action } from '@ngrx/store';
-
+import { select, Store } from '@ngrx/store';
 import * as StockPilesActions from './stock-piles.actions';
-import * as StockPilesFeature from './stock-piles.reducer';
 import * as StockPilesSelectors from './stock-piles.selectors';
 
 @Injectable()

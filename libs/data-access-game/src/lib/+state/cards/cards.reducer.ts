@@ -1,4 +1,4 @@
-import { createReducer, on, Action } from '@ngrx/store';
+import { createReducer, on } from '@ngrx/store';
 import { EntityState, EntityAdapter, createEntityAdapter } from '@ngrx/entity';
 
 import * as CardsActions from './cards.actions';
@@ -7,10 +7,10 @@ import { CardsEntity } from './cards.models';
 export const CARDS_FEATURE_KEY = 'cards';
 
 export interface CardsState extends EntityState<CardsEntity> {
-  selectedId?: string | number; // which Cards record has been selected
+  selectedId?: string; // which Cards record has been selected
   initialized: boolean;
   loaded: boolean; // has the Cards list been loaded
-  error?: string | null; // last known error (if any)
+  error?: unknown | null; // last known error (if any)
 }
 
 export interface CardsPartialState {

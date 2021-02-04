@@ -5,13 +5,12 @@ import {
   initialHandCardsState,
   handCardsReducer,
 } from './hand-cards.reducer';
+import { Action } from '@ngrx/store';
 
 describe('HandCards Reducer', () => {
-  beforeEach(() => {});
-
   describe('unknown action', () => {
     it('should return the previous state', () => {
-      const action = {} as any;
+      const action = {} as Action;
 
       const result = handCardsReducer(initialHandCardsState, action);
 

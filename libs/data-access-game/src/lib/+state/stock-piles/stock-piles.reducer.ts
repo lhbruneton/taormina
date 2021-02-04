@@ -1,4 +1,4 @@
-import { createReducer, on, Action } from '@ngrx/store';
+import { createReducer, on } from '@ngrx/store';
 import { EntityState, EntityAdapter, createEntityAdapter } from '@ngrx/entity';
 
 import * as StockPilesActions from './stock-piles.actions';
@@ -7,10 +7,10 @@ import { StockPilesEntity } from './stock-piles.models';
 export const STOCK_PILES_FEATURE_KEY = 'stockPiles';
 
 export interface StockPilesState extends EntityState<StockPilesEntity> {
-  selectedId?: string | number; // which StockPiles record has been selected
+  selectedId?: string; // which StockPiles record has been selected
   initialized: boolean;
   loaded: boolean; // has the StockPiles list been loaded
-  error?: string | null; // last known error (if any)
+  error?: unknown | null; // last known error (if any)
 }
 
 export interface StockPilesPartialState {

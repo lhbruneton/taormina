@@ -1,9 +1,6 @@
 import { Injectable } from '@angular/core';
-
-import { select, Store, Action } from '@ngrx/store';
-
+import { select, Store } from '@ngrx/store';
 import * as StockPileCardsActions from './stock-pile-cards.actions';
-import * as StockPileCardsFeature from './stock-pile-cards.reducer';
 import * as StockPileCardsSelectors from './stock-pile-cards.selectors';
 
 @Injectable()

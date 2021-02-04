@@ -1,15 +1,13 @@
-import { TestBed, async } from '@angular/core/testing';
-
+import { TestBed } from '@angular/core/testing';
+import { provideMockActions } from '@ngrx/effects/testing';
+import { Action } from '@ngrx/store';
+import { provideMockStore } from '@ngrx/store/testing';
+import { DataPersistence, NxModule } from '@nrwl/angular';
+import { hot } from '@nrwl/angular/testing';
 import { Observable } from 'rxjs';
 
-import { provideMockActions } from '@ngrx/effects/testing';
-import { provideMockStore } from '@ngrx/store/testing';
-
-import { NxModule, DataPersistence } from '@nrwl/angular';
-import { hot } from '@nrwl/angular/testing';
-
-import { DiceEffects } from './dice.effects';
 import * as DiceActions from './dice.actions';
+import { DiceEffects } from './dice.effects';
 
 jest.mock('./dice.models', () => {
   return {
@@ -19,7 +17,7 @@ jest.mock('./dice.models', () => {
 });
 
 describe('DiceEffects', () => {
-  let actions: Observable<any>;
+  let actions: Observable<Action>;
   let effects: DiceEffects;
 
   beforeEach(() => {

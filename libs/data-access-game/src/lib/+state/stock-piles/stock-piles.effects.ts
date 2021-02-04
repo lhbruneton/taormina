@@ -23,12 +23,12 @@ export class StockPilesEffects {
     this.actions$.pipe(
       ofType(StockPilesActions.initStockPilesSavedGame),
       fetch({
-        run: (action) => {
+        run: () => {
           // Your custom service 'load' logic goes here. For now just return a success action...
           return StockPilesActions.loadStockPilesSuccess({ stockPiles: [] });
         },
 
-        onError: (action, error) => {
+        onError: (_action, error) => {
           console.error('Error', error);
           return StockPilesActions.loadStockPilesFailure({ error });
         },

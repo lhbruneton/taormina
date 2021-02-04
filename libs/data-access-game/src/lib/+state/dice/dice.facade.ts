@@ -1,9 +1,8 @@
 import { Injectable } from '@angular/core';
 
-import { select, Store, Action } from '@ngrx/store';
+import { select, Store } from '@ngrx/store';
 
 import * as DiceActions from './dice.actions';
-import * as DiceFeature from './dice.reducer';
 import * as DiceSelectors from './dice.selectors';
 
 @Injectable()

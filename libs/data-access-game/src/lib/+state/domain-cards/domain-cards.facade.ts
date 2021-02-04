@@ -1,9 +1,6 @@
 import { Injectable } from '@angular/core';
-
-import { select, Store, Action } from '@ngrx/store';
-
+import { select, Store } from '@ngrx/store';
 import * as DomainCardsActions from './domain-cards.actions';
-import * as DomainCardsFeature from './domain-cards.reducer';
 import * as DomainCardsSelectors from './domain-cards.selectors';
 
 @Injectable()

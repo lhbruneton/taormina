@@ -1,5 +1,6 @@
 import { TestBed } from '@angular/core/testing';
 import { provideMockActions } from '@ngrx/effects/testing';
+import { Action } from '@ngrx/store';
 import { provideMockStore } from '@ngrx/store/testing';
 import { DataPersistence, NxModule } from '@nrwl/angular';
 import { hot } from '@nrwl/angular/testing';
@@ -16,7 +17,7 @@ jest.mock('uuid', () => {
 });
 
 describe('HandCardsEffects', () => {
-  let actions: Observable<any>;
+  let actions: Observable<Action>;
   let effects: HandCardsEffects;
 
   beforeEach(() => {

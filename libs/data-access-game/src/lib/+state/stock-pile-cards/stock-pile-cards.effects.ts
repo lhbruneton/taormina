@@ -27,7 +27,8 @@ export class StockPileCardsEffects {
           )
         )
       ),
-      map(([action, cards, stockPiles]) =>
+      // eslint-disable-next-line @typescript-eslint/no-unused-vars
+      map(([_action, cards, stockPiles]) =>
         StockPileCardsActions.setStockPileCardsInitialized({
           stockPileCards: createInitialStockPileCards(stockPiles, cards),
         })
@@ -39,14 +40,14 @@ export class StockPileCardsEffects {
     this.actions$.pipe(
       ofType(StockPileCardsActions.initStockPileCardsSavedGame),
       fetch({
-        run: (action) => {
+        run: () => {
           // Your custom service 'load' logic goes here. For now just return a success action...
           return StockPileCardsActions.loadStockPileCardsSuccess({
             stockPileCards: [],
           });
         },
 
-        onError: (action, error) => {
+        onError: (_action, error) => {
           console.error('Error', error);
           return StockPileCardsActions.loadStockPileCardsFailure({ error });
         },
@@ -82,9 +83,7 @@ export class StockPileCardsEffects {
   constructor(
     private actions$: Actions,
     private cardsStore: Store<CardsFeature.CardsPartialState>,
-    private stockPileCardsStore: Store<
-      StockPileCardsFeature.StockPileCardsPartialState
-    >,
+    private stockPileCardsStore: Store<StockPileCardsFeature.StockPileCardsPartialState>,
     private stockPilesStore: Store<StockPilesFeature.StockPilesPartialState>
   ) {}
 }

@@ -1,3 +1,4 @@
+import { Action } from '@ngrx/store';
 import { DomainColor } from '@taormina/shared-models';
 
 import * as DomainsActions from './domains.actions';
@@ -9,10 +10,8 @@ import {
 } from './domains.reducer';
 
 describe('Domains Reducer', () => {
-  beforeEach(() => {});
-
   describe('valid Domains actions', () => {
-    it('loadDomainsSuccess should return set the list of known Domains', () => {
+    it('loadDomainsSuccess should set the list of known Domains', () => {
       const domains = [
         createDomainsEntity('PRODUCT-AAA', DomainColor.Red),
         createDomainsEntity('PRODUCT-zzz', DomainColor.Blue),
@@ -28,7 +27,7 @@ describe('Domains Reducer', () => {
 
   describe('unknown action', () => {
     it('should return the previous state', () => {
-      const action = {} as any;
+      const action = {} as Action;
 
       const result = domainsReducer(initialDomainsState, action);
 

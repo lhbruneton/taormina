@@ -1,24 +1,15 @@
 import { NgModule } from '@angular/core';
 import { TestBed } from '@angular/core/testing';
+import { EffectsModule } from '@ngrx/effects';
+import { Store, StoreModule } from '@ngrx/store';
+import { NxModule } from '@nrwl/angular';
 import { readFirst } from '@nrwl/angular/testing';
 
-import { EffectsModule } from '@ngrx/effects';
-import { StoreModule, Store } from '@ngrx/store';
-
-import { NxModule } from '@nrwl/angular';
-
-import { createCardsEntity } from './cards.models';
+import * as CardsActions from './cards.actions';
 import { CardsEffects } from './cards.effects';
 import { CardsFacade } from './cards.facade';
-
-import * as CardsSelectors from './cards.selectors';
-import * as CardsActions from './cards.actions';
-import {
-  CARDS_FEATURE_KEY,
-  CardsState,
-  initialCardsState,
-  cardsReducer,
-} from './cards.reducer';
+import { createCardsEntity } from './cards.models';
+import { cardsReducer, CardsState, CARDS_FEATURE_KEY } from './cards.reducer';
 
 interface TestSchema {
   cards: CardsState;
@@ -27,8 +18,6 @@ interface TestSchema {
 describe('CardsFacade', () => {
   let facade: CardsFacade;
   let store: Store<TestSchema>;
-
-  beforeEach(() => {});
 
   describe('used in NgModule', () => {
     beforeEach(() => {

@@ -1,9 +1,6 @@
 import { Injectable } from '@angular/core';
-
-import { select, Store, Action } from '@ngrx/store';
-
+import { select, Store } from '@ngrx/store';
 import * as DiscardPileCardsActions from './discard-pile-cards.actions';
-import * as DiscardPileCardsFeature from './discard-pile-cards.reducer';
 import * as DiscardPileCardsSelectors from './discard-pile-cards.selectors';
 
 @Injectable()

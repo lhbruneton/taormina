@@ -216,6 +216,5 @@
     "@nrwl/angular:component": {
       "style": "css"
     }
-  },
-  "defaultProject": "taormina-duel"
+  }
 }

@@ -23,14 +23,14 @@ export class EventsPileCardsEffects {
     this.actions$.pipe(
       ofType(EventsPileCardsActions.initEventsPileCardsSavedGame),
       fetch({
-        run: (action) => {
+        run: () => {
           // Your custom service 'load' logic goes here. For now just return a success action...
           return EventsPileCardsActions.loadEventsPileCardsSuccess({
             eventsPileCards: [],
           });
         },
 
-        onError: (action, error) => {
+        onError: (_action, error) => {
           console.error('Error', error);
           return EventsPileCardsActions.loadEventsPileCardsFailure({ error });
         },

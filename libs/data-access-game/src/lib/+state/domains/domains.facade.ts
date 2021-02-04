@@ -1,9 +1,6 @@
 import { Injectable } from '@angular/core';
-
-import { select, Store, Action } from '@ngrx/store';
-
+import { select, Store } from '@ngrx/store';
 import * as DomainsActions from './domains.actions';
-import * as DomainsFeature from './domains.reducer';
 import * as DomainsSelectors from './domains.selectors';
 
 @Injectable()

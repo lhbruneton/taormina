@@ -1,12 +1,11 @@
-import { CardsEntity, createCardsEntity } from './cards.models';
+import { Action } from '@ngrx/store';
 import * as CardsActions from './cards.actions';
-import { CardsState, initialCardsState, cardsReducer } from './cards.reducer';
+import { createCardsEntity } from './cards.models';
+import { cardsReducer, CardsState, initialCardsState } from './cards.reducer';
 
 describe('Cards Reducer', () => {
-  beforeEach(() => {});
-
   describe('valid Cards actions', () => {
-    it('loadCardsSuccess should return set the list of known Cards', () => {
+    it('loadCardsSuccess should set the list of known Cards', () => {
       const cards = [
         createCardsEntity('PRODUCT-AAA'),
         createCardsEntity('PRODUCT-zzz'),
@@ -22,7 +21,7 @@ describe('Cards Reducer', () => {
 
   describe('unknown action', () => {
     it('should return the previous state', () => {
-      const action = {} as any;
+      const action = {} as Action;
 
       const result = cardsReducer(initialCardsState, action);
 

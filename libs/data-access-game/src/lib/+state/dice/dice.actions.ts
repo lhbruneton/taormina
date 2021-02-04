@@ -14,7 +14,7 @@ export const loadDiceSuccess = createAction(
 
 export const loadDiceFailure = createAction(
   '[Dice/API] Load Dice Failure',
-  props<{ error: any }>()
+  props<{ error: unknown }>()
 );
 
 export const setDiceInitialized = createAction(

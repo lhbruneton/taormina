@@ -39,12 +39,12 @@ export class CardsEffects {
     this.actions$.pipe(
       ofType(CardsActions.initCardsSavedGame),
       fetch({
-        run: (action) => {
+        run: () => {
           // Your custom service 'load' logic goes here. For now just return a success action...
           return CardsActions.loadCardsSuccess({ cards: [] });
         },
 
-        onError: (action, error) => {
+        onError: (_action, error) => {
           console.error('Error', error);
           return CardsActions.loadCardsFailure({ error });
         },
@@ -87,8 +87,6 @@ export class CardsEffects {
   constructor(
     private actions$: Actions,
     private cardsStore: Store<CardsFeature.CardsPartialState>,
-    private stockPileCardsStore: Store<
-      StockPileCardsFeature.StockPileCardsPartialState
-    >
+    private stockPileCardsStore: Store<StockPileCardsFeature.StockPileCardsPartialState>
   ) {}
 }

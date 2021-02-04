@@ -3,7 +3,6 @@ import { createEffect, Actions, ofType } from '@ngrx/effects';
 import { fetch } from '@nrwl/angular';
 import { map } from 'rxjs/operators';
 
-import * as DiscardPileCardsFeature from './discard-pile-cards.reducer';
 import * as DiscardPileCardsActions from './discard-pile-cards.actions';
 
 @Injectable()
@@ -23,14 +22,14 @@ export class DiscardPileCardsEffects {
     this.actions$.pipe(
       ofType(DiscardPileCardsActions.initDiscardPileCardsSavedGame),
       fetch({
-        run: (action) => {
+        run: () => {
           // Your custom service 'load' logic goes here. For now just return a success action...
           return DiscardPileCardsActions.loadDiscardPileCardsSuccess({
             discardPileCards: [],
           });
         },
 
-        onError: (action, error) => {
+        onError: (_action, error) => {
           console.error('Error', error);
           return DiscardPileCardsActions.loadDiscardPileCardsFailure({ error });
         },
