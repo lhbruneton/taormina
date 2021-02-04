@@ -20,8 +20,6 @@ describe('DiceFacade', () => {
   let facade: DiceFacade;
   let store: Store<TestSchema>;
 
-  beforeEach(() => {});
-
   describe('used in NgModule', () => {
     beforeEach(() => {
       @NgModule({

@@ -16,7 +16,7 @@ export const loadLandsPileCardsSuccess = createAction(
 
 export const loadLandsPileCardsFailure = createAction(
   '[LandsPileCards/API] Load LandsPileCards Failure',
-  props<{ error: any }>()
+  props<{ error: unknown }>()
 );
 
 export const setLandsPileCardsInitialized = createAction(

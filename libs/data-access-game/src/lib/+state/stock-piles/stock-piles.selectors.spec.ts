@@ -1,6 +1,5 @@
 import { createStockPilesEntity } from './stock-piles.models';
 import {
-  StockPilesState,
   stockPilesAdapter,
   initialStockPilesState,
 } from './stock-piles.reducer';

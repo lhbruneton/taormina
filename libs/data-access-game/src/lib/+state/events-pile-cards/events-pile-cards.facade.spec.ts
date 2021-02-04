@@ -23,8 +23,6 @@ describe('EventsPileCardsFacade', () => {
   let facade: EventsPileCardsFacade;
   let store: Store<TestSchema>;
 
-  beforeEach(() => {});
-
   describe('used in NgModule', () => {
     beforeEach(() => {
       @NgModule({

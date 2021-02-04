@@ -1,9 +1,6 @@
 import { Injectable } from '@angular/core';
-
-import { select, Store, Action } from '@ngrx/store';
-
+import { select, Store } from '@ngrx/store';
 import * as LandsPileCardsActions from './lands-pile-cards.actions';
-import * as LandsPileCardsFeature from './lands-pile-cards.reducer';
 import * as LandsPileCardsSelectors from './lands-pile-cards.selectors';
 
 @Injectable()

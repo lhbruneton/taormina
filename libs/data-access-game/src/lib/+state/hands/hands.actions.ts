@@ -16,7 +16,7 @@ export const loadHandsSuccess = createAction(
 
 export const loadHandsFailure = createAction(
   '[Hands/API] Load Hands Failure',
-  props<{ error: any }>()
+  props<{ error: unknown }>()
 );
 
 export const setHandsInitialized = createAction(

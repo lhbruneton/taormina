@@ -16,7 +16,7 @@ export const loadDomainsSuccess = createAction(
 
 export const loadDomainsFailure = createAction(
   '[Domains/API] Load Domains Failure',
-  props<{ error: any }>()
+  props<{ error: unknown }>()
 );
 
 export const setDomainsInitialized = createAction(

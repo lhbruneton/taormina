@@ -1,4 +1,4 @@
-import { createReducer, on, Action } from '@ngrx/store';
+import { createReducer, on } from '@ngrx/store';
 import { EntityState, EntityAdapter, createEntityAdapter } from '@ngrx/entity';
 
 import * as DomainCardsActions from './domain-cards.actions';
@@ -7,10 +7,10 @@ import { DomainCardsEntity } from './domain-cards.models';
 export const DOMAIN_CARDS_FEATURE_KEY = 'domainCards';
 
 export interface DomainCardsState extends EntityState<DomainCardsEntity> {
-  selectedId?: string | number; // which DomainCards record has been selected
+  selectedId?: string; // which DomainCards record has been selected
   initialized: boolean;
   loaded: boolean; // has the DomainCards list been loaded
-  error?: string | null; // last known error (if any)
+  error?: unknown | null; // last known error (if any)
 }
 
 export interface DomainCardsPartialState {

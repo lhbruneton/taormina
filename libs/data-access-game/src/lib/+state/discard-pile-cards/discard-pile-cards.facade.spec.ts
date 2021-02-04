@@ -1,23 +1,18 @@
 import { NgModule } from '@angular/core';
 import { TestBed } from '@angular/core/testing';
+import { EffectsModule } from '@ngrx/effects';
+import { Store, StoreModule } from '@ngrx/store';
+import { NxModule } from '@nrwl/angular';
 import { readFirst } from '@nrwl/angular/testing';
 
-import { EffectsModule } from '@ngrx/effects';
-import { StoreModule, Store } from '@ngrx/store';
-
-import { NxModule } from '@nrwl/angular';
-
 import { createCardsEntity } from '../cards/cards.models';
+import * as DiscardPileCardsActions from './discard-pile-cards.actions';
 import { DiscardPileCardsEffects } from './discard-pile-cards.effects';
 import { DiscardPileCardsFacade } from './discard-pile-cards.facade';
-
-import * as DiscardPileCardsSelectors from './discard-pile-cards.selectors';
-import * as DiscardPileCardsActions from './discard-pile-cards.actions';
 import {
-  DISCARD_PILE_CARDS_FEATURE_KEY,
-  DiscardPileCardsState,
-  initialDiscardPileCardsState,
   discardPileCardsReducer,
+  DiscardPileCardsState,
+  DISCARD_PILE_CARDS_FEATURE_KEY,
 } from './discard-pile-cards.reducer';
 
 interface TestSchema {
@@ -27,8 +22,6 @@ interface TestSchema {
 describe('DiscardPileCardsFacade', () => {
   let facade: DiscardPileCardsFacade;
   let store: Store<TestSchema>;
-
-  beforeEach(() => {});
 
   describe('used in NgModule', () => {
     beforeEach(() => {

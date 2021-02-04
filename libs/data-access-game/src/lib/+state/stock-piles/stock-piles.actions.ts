@@ -16,7 +16,7 @@ export const loadStockPilesSuccess = createAction(
 
 export const loadStockPilesFailure = createAction(
   '[StockPiles/API] Load StockPiles Failure',
-  props<{ error: any }>()
+  props<{ error: unknown }>()
 );
 
 export const setStockPilesInitialized = createAction(

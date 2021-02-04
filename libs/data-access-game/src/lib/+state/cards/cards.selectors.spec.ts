@@ -1,5 +1,5 @@
-import { CardsEntity, createCardsEntity } from './cards.models';
-import { CardsState, cardsAdapter, initialCardsState } from './cards.reducer';
+import { createCardsEntity } from './cards.models';
+import { cardsAdapter, initialCardsState } from './cards.reducer';
 import * as CardsSelectors from './cards.selectors';
 
 describe('Cards Selectors', () => {

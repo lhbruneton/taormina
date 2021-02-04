@@ -1,23 +1,18 @@
 import { NgModule } from '@angular/core';
 import { TestBed } from '@angular/core/testing';
+import { EffectsModule } from '@ngrx/effects';
+import { Store, StoreModule } from '@ngrx/store';
+import { NxModule } from '@nrwl/angular';
 import { readFirst } from '@nrwl/angular/testing';
 
-import { EffectsModule } from '@ngrx/effects';
-import { StoreModule, Store } from '@ngrx/store';
-
-import { NxModule } from '@nrwl/angular';
-
-import { createStockPilesEntity } from './stock-piles.models';
+import * as StockPilesActions from './stock-piles.actions';
 import { StockPilesEffects } from './stock-piles.effects';
 import { StockPilesFacade } from './stock-piles.facade';
-
-import * as StockPilesSelectors from './stock-piles.selectors';
-import * as StockPilesActions from './stock-piles.actions';
+import { createStockPilesEntity } from './stock-piles.models';
 import {
-  STOCK_PILES_FEATURE_KEY,
-  StockPilesState,
-  initialStockPilesState,
   stockPilesReducer,
+  StockPilesState,
+  STOCK_PILES_FEATURE_KEY,
 } from './stock-piles.reducer';
 
 interface TestSchema {
@@ -27,8 +22,6 @@ interface TestSchema {
 describe('StockPilesFacade', () => {
   let facade: StockPilesFacade;
   let store: Store<TestSchema>;
-
-  beforeEach(() => {});
 
   describe('used in NgModule', () => {
     beforeEach(() => {

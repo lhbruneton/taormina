@@ -23,14 +23,14 @@ export class FaceUpPilesEffects {
     this.actions$.pipe(
       ofType(FaceUpPilesActions.initFaceUpSavedGame),
       fetch({
-        run: (action) => {
+        run: () => {
           // Your custom service 'load' logic goes here. For now just return a success action...
           return FaceUpPilesActions.loadFaceUpPilesSuccess({
             agglomerationCards: [],
           });
         },
 
-        onError: (action, error) => {
+        onError: (_action, error) => {
           console.error('Error', error);
           return FaceUpPilesActions.loadFaceUpPilesFailure({ error });
         },

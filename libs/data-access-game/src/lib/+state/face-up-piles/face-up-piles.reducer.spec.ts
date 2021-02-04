@@ -1,3 +1,4 @@
+import { Action } from '@ngrx/store';
 import { AgglomerationType, ResourceType } from '@taormina/shared-models';
 
 import { createAgglomerationCardsEntity } from '../cards/models/agglomeration';
@@ -9,10 +10,8 @@ import {
 } from './face-up-piles.reducer';
 
 describe('FaceUpPiles Reducer', () => {
-  beforeEach(() => {});
-
   describe('valid FaceUpPiles actions', () => {
-    it('loadFaceUpPilesSuccess should return set the list of known AgglomerationCards', () => {
+    it('loadFaceUpPilesSuccess should set the list of known AgglomerationCards', () => {
       const agglomerationCards = [
         createAgglomerationCardsEntity(
           'PRODUCT-AAA',
@@ -49,7 +48,7 @@ describe('FaceUpPiles Reducer', () => {
 
   describe('unknown action', () => {
     it('should return the previous state', () => {
-      const action = {} as any;
+      const action = {} as Action;
 
       const result = faceUpPilesReducer(initialFaceUpState, action);
 

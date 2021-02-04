@@ -1,3 +1,4 @@
+import { Action } from '@ngrx/store';
 import { EventValue } from '@taormina/shared-models';
 
 import * as DiceActions from './dice.actions';
@@ -5,10 +6,8 @@ import { createEventDiceEntity, createResourceDiceEntity } from './dice.models';
 import { diceReducer, DiceState, initialDiceState } from './dice.reducer';
 
 describe('Dice Reducer', () => {
-  beforeEach(() => {});
-
   describe('valid Dice actions', () => {
-    it('loadDiceSuccess should return set the list of known Dice', () => {
+    it('loadDiceSuccess should set the list of known Dice', () => {
       const dice = [
         createResourceDiceEntity(1),
         createEventDiceEntity(EventValue.Thieves),
@@ -24,7 +23,7 @@ describe('Dice Reducer', () => {
 
   describe('unknown action', () => {
     it('should return the previous state', () => {
-      const action = {} as any;
+      const action = {} as Action;
 
       const result = diceReducer(initialDiceState, action);
 

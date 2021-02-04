@@ -11,7 +11,7 @@ import {
   StockPileCardsFacade,
   StockPilesFacade,
 } from '@taormina/data-access-game';
-import { filter, map, take, tap } from 'rxjs/operators';
+import { filter, map, take } from 'rxjs/operators';
 
 @Component({
   selector: 'taormina-root',

@@ -16,7 +16,7 @@ export const loadDomainCardsSuccess = createAction(
 
 export const loadDomainCardsFailure = createAction(
   '[DomainCards/API] Load DomainCards Failure',
-  props<{ error: any }>()
+  props<{ error: unknown }>()
 );
 
 export const setDomainCardsInitialized = createAction(

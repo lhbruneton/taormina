@@ -16,7 +16,7 @@ export const loadFaceUpPilesSuccess = createAction(
 
 export const loadFaceUpPilesFailure = createAction(
   '[FaceUpPiles/API] Load FaceUpPiles Failure',
-  props<{ error: any }>()
+  props<{ error: unknown }>()
 );
 
 export const setFaceUpPilesInitialized = createAction(

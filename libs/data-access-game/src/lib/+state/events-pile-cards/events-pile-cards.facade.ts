@@ -1,9 +1,6 @@
 import { Injectable } from '@angular/core';
-
-import { select, Store, Action } from '@ngrx/store';
-
+import { select, Store } from '@ngrx/store';
 import * as EventsPileCardsActions from './events-pile-cards.actions';
-import * as EventsPileCardsFeature from './events-pile-cards.reducer';
 import * as EventsPileCardsSelectors from './events-pile-cards.selectors';
 
 @Injectable()

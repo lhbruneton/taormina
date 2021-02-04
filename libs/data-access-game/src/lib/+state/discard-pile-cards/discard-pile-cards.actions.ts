@@ -16,7 +16,7 @@ export const loadDiscardPileCardsSuccess = createAction(
 
 export const loadDiscardPileCardsFailure = createAction(
   '[DiscardPileCards/API] Load DiscardPileCards Failure',
-  props<{ error: any }>()
+  props<{ error: unknown }>()
 );
 
 export const setDiscardPileCardsInitialized = createAction(

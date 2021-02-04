@@ -1,6 +1,5 @@
 import { createCardsEntity } from '../cards/cards.models';
 import {
-  DiscardPileCardsState,
   discardPileCardsAdapter,
   initialDiscardPileCardsState,
 } from './discard-pile-cards.reducer';

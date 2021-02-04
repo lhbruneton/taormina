@@ -1,23 +1,18 @@
 import { NgModule } from '@angular/core';
 import { TestBed } from '@angular/core/testing';
+import { EffectsModule } from '@ngrx/effects';
+import { Store, StoreModule } from '@ngrx/store';
+import { NxModule } from '@nrwl/angular';
 import { readFirst } from '@nrwl/angular/testing';
 
-import { EffectsModule } from '@ngrx/effects';
-import { StoreModule, Store } from '@ngrx/store';
-
-import { NxModule } from '@nrwl/angular';
-
-import { createStockPileCardsEntity } from './stock-pile-cards.models';
+import * as StockPileCardsActions from './stock-pile-cards.actions';
 import { StockPileCardsEffects } from './stock-pile-cards.effects';
 import { StockPileCardsFacade } from './stock-pile-cards.facade';
-
-import * as StockPileCardsSelectors from './stock-pile-cards.selectors';
-import * as StockPileCardsActions from './stock-pile-cards.actions';
+import { createStockPileCardsEntity } from './stock-pile-cards.models';
 import {
-  STOCK_PILE_CARDS_FEATURE_KEY,
-  StockPileCardsState,
-  initialStockPileCardsState,
   stockPileCardsReducer,
+  StockPileCardsState,
+  STOCK_PILE_CARDS_FEATURE_KEY,
 } from './stock-pile-cards.reducer';
 
 interface TestSchema {
@@ -27,8 +22,6 @@ interface TestSchema {
 describe('StockPileCardsFacade', () => {
   let facade: StockPileCardsFacade;
   let store: Store<TestSchema>;
-
-  beforeEach(() => {});
 
   describe('used in NgModule', () => {
     beforeEach(() => {

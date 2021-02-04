@@ -20,12 +20,12 @@ export class HandCardsEffects {
     this.actions$.pipe(
       ofType(HandCardsActions.initHandCardsSavedGame),
       fetch({
-        run: (action) => {
+        run: () => {
           // Your custom service 'load' logic goes here. For now just return a success action...
           return HandCardsActions.loadHandCardsSuccess({ handCards: [] });
         },
 
-        onError: (action, error) => {
+        onError: (_action, error) => {
           console.error('Error', error);
           return HandCardsActions.loadHandCardsFailure({ error });
         },

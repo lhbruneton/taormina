@@ -24,8 +24,6 @@ describe('FaceUpPilesFacade', () => {
   let facade: FaceUpPilesFacade;
   let store: Store<TestSchema>;
 
-  beforeEach(() => {});
-
   describe('used in NgModule', () => {
     beforeEach(() => {
       @NgModule({

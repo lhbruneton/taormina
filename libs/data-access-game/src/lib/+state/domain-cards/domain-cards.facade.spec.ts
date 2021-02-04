@@ -23,8 +23,6 @@ describe('DomainCardsFacade', () => {
   let facade: DomainCardsFacade;
   let store: Store<TestSchema>;
 
-  beforeEach(() => {});
-
   describe('used in NgModule', () => {
     beforeEach(() => {
       @NgModule({

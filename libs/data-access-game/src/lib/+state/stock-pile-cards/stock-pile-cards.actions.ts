@@ -16,7 +16,7 @@ export const loadStockPileCardsSuccess = createAction(
 
 export const loadStockPileCardsFailure = createAction(
   '[StockPileCards/API] Load StockPileCards Failure',
-  props<{ error: any }>()
+  props<{ error: unknown }>()
 );
 
 export const setStockPileCardsInitialized = createAction(

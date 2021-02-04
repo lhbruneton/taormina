@@ -1,3 +1,4 @@
+import { Action } from '@ngrx/store';
 import { LandType } from '@taormina/shared-models';
 
 import { createLandCardsEntity } from '../cards/models/land';
@@ -9,10 +10,8 @@ import {
 } from './lands-pile-cards.reducer';
 
 describe('LandsPileCards Reducer', () => {
-  beforeEach(() => {});
-
   describe('valid LandsPileCards actions', () => {
-    it('loadLandsPileCardsSuccess should return set the list of known LandsPileCards', () => {
+    it('loadLandsPileCardsSuccess should set the list of known LandsPileCards', () => {
       const landsPileCards = [
         createLandCardsEntity('PRODUCT-AAA', LandType.ClayPit, 0, 1),
         createLandCardsEntity('PRODUCT-zzz', LandType.Field, 3, 3),
@@ -33,7 +32,7 @@ describe('LandsPileCards Reducer', () => {
 
   describe('unknown action', () => {
     it('should return the previous state', () => {
-      const action = {} as any;
+      const action = {} as Action;
 
       const result = landsPileCardsReducer(initialLandsPileCardsState, action);
 

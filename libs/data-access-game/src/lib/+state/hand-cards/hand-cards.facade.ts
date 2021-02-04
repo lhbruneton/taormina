@@ -1,9 +1,6 @@
 import { Injectable } from '@angular/core';
-
-import { select, Store, Action } from '@ngrx/store';
-
+import { select, Store } from '@ngrx/store';
 import * as HandCardsActions from './hand-cards.actions';
-import * as HandCardsFeature from './hand-cards.reducer';
 import * as HandCardsSelectors from './hand-cards.selectors';
 
 @Injectable()

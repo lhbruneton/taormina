@@ -25,7 +25,8 @@ export class DomainCardsEffects {
           )
         )
       ),
-      map(([action, cards, domains]) =>
+      // eslint-disable-next-line @typescript-eslint/no-unused-vars
+      map(([_action, cards, domains]) =>
         DomainCardsActions.setDomainCardsInitialized({
           domainCards: domains.flatMap((domain) =>
             createInitialDomainCards(domain, cards)
@@ -39,12 +40,12 @@ export class DomainCardsEffects {
     this.actions$.pipe(
       ofType(DomainCardsActions.initDomainCardsSavedGame),
       fetch({
-        run: (action) => {
+        run: () => {
           // Your custom service 'load' logic goes here. For now just return a success action...
           return DomainCardsActions.loadDomainCardsSuccess({ domainCards: [] });
         },
 
-        onError: (action, error) => {
+        onError: (_action, error) => {
           console.error('Error', error);
           return DomainCardsActions.loadDomainCardsFailure({ error });
         },

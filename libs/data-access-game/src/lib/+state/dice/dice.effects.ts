@@ -3,7 +3,6 @@ import { createEffect, Actions, ofType } from '@ngrx/effects';
 import { fetch } from '@nrwl/angular';
 import { map } from 'rxjs/operators';
 
-import * as DiceFeature from './dice.reducer';
 import * as DiceActions from './dice.actions';
 import { createRandomDice } from './dice.models';
 
@@ -23,12 +22,12 @@ export class DiceEffects {
     this.actions$.pipe(
       ofType(DiceActions.initDiceSavedGame),
       fetch({
-        run: (action) => {
+        run: () => {
           // Your custom service 'load' logic goes here. For now just return a success action...
           return DiceActions.loadDiceSuccess({ dice: [] });
         },
 
-        onError: (action, error) => {
+        onError: (_action, error) => {
           console.error('Error', error);
           return DiceActions.loadDiceFailure({ error });
         },

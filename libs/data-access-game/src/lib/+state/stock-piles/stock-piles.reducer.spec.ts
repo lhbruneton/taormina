@@ -5,10 +5,9 @@ import {
   initialStockPilesState,
   stockPilesReducer,
 } from './stock-piles.reducer';
+import { Action } from '@ngrx/store';
 
 describe('StockPiles Reducer', () => {
-  beforeEach(() => {});
-
   describe('valid StockPiles actions', () => {
     it('loadStockPilesSuccess should return set the list of known StockPiles', () => {
       const stockPiles = [
@@ -29,7 +28,7 @@ describe('StockPiles Reducer', () => {
 
   describe('unknown action', () => {
     it('should return the previous state', () => {
-      const action = {} as any;
+      const action = {} as Action;
 
       const result = stockPilesReducer(initialStockPilesState, action);
 

@@ -24,8 +24,6 @@ describe('LandsPileCardsFacade', () => {
   let facade: LandsPileCardsFacade;
   let store: Store<TestSchema>;
 
-  beforeEach(() => {});
-
   describe('used in NgModule', () => {
     beforeEach(() => {
       @NgModule({

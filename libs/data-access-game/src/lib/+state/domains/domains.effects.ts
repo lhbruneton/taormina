@@ -23,12 +23,12 @@ export class DomainsEffects {
     this.actions$.pipe(
       ofType(DomainsActions.initDomainsSavedGame),
       fetch({
-        run: (action) => {
+        run: () => {
           // Your custom service 'load' logic goes here. For now just return a success action...
           return DomainsActions.loadDomainsSuccess({ domains: [] });
         },
 
-        onError: (action, error) => {
+        onError: (_action, error) => {
           console.error('Error', error);
           return DomainsActions.loadDomainsFailure({ error });
         },

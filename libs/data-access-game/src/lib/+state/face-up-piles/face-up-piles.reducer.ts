@@ -7,19 +7,17 @@ import * as FaceUpPilesActions from './face-up-piles.actions';
 export const FACE_UP_PILES_FEATURE_KEY = 'faceUpPiles';
 
 export interface FaceUpState extends EntityState<AgglomerationCardsEntity> {
-  selectedId?: string | number; // which AgglomerationCards record has been selected
+  selectedId?: string; // which AgglomerationCards record has been selected
   initialized: boolean;
   loaded: boolean; // has the AgglomerationCards list been loaded
-  error?: string | null; // last known error (if any)
+  error?: unknown | null; // last known error (if any)
 }
 
 export interface FaceUpPilesPartialState {
   readonly [FACE_UP_PILES_FEATURE_KEY]: FaceUpState;
 }
 
-export const faceUpPilesAdapter: EntityAdapter<AgglomerationCardsEntity> = createEntityAdapter<
-  AgglomerationCardsEntity
->();
+export const faceUpPilesAdapter: EntityAdapter<AgglomerationCardsEntity> = createEntityAdapter<AgglomerationCardsEntity>();
 
 export const initialFaceUpState: FaceUpState = faceUpPilesAdapter.getInitialState(
   {
