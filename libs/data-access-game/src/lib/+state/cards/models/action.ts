@@ -9,19 +9,19 @@ export class ActionCardsEntity implements CardsEntity, HasName, HasRules {
   id: string;
   name: string;
   ruleIds: string[];
+
+  constructor(id: string, name: string, ruleIds: string[]) {
+    this.id = id;
+    this.name = name;
+    this.ruleIds = ruleIds;
+  }
 }
 
 export const createActionCardsEntity = (
   id: string,
   name: string,
-  rulesIds: string[]
-) => {
-  const entity = new ActionCardsEntity();
-  entity.id = id;
-  entity.name = name;
-  entity.ruleIds = rulesIds;
-  return entity;
-};
+  ruleIds: string[]
+) => new ActionCardsEntity(id, name, ruleIds);
 
 export function createInitialActionCards() {
   return [

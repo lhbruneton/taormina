@@ -1,14 +1,21 @@
 import { DomainColor } from '@taormina/shared-models';
 
-import { createHandsEntity } from './hands.models';
-import { handsAdapter, initialHandsState } from './hands.reducer';
+import { createHandsEntity, HandsEntity } from './hands.models';
+import {
+  handsAdapter,
+  HandsPartialState,
+  initialHandsState,
+} from './hands.reducer';
 import * as HandsSelectors from './hands.selectors';
 
 describe('Hands Selectors', () => {
   const ERROR_MSG = 'No Error Available';
-  const getHandsId = (it) => it['id'];
+  const getHandsId = (it: HandsEntity | undefined) => {
+    if (it === undefined) return undefined;
+    return it['id'];
+  };
 
-  let state;
+  let state: HandsPartialState;
 
   beforeEach(() => {
     state = {

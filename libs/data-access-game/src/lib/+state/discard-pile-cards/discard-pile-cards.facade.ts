@@ -1,6 +1,8 @@
 import { Injectable } from '@angular/core';
 import { select, Store } from '@ngrx/store';
+
 import * as DiscardPileCardsActions from './discard-pile-cards.actions';
+import * as DiscardPileCardsFeature from './discard-pile-cards.reducer';
 import * as DiscardPileCardsSelectors from './discard-pile-cards.selectors';
 
 @Injectable()
@@ -19,7 +21,9 @@ export class DiscardPileCardsFacade {
     select(DiscardPileCardsSelectors.getDiscardPileCardsSelected)
   );
 
-  constructor(private store: Store) {}
+  constructor(
+    private store: Store<DiscardPileCardsFeature.DiscardPileCardsPartialState>
+  ) {}
 
   /**
    * Use the initialization action to perform one

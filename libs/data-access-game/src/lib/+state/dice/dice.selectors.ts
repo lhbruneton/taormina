@@ -40,5 +40,8 @@ export const getDiceSelectedId = createSelector(
 export const getDiceSelected = createSelector(
   getDiceEntities,
   getDiceSelectedId,
-  (entities, selectedId) => selectedId && entities[selectedId]
+  (entities, selectedId) => {
+    if (selectedId === undefined) return undefined;
+    return entities[selectedId];
+  }
 );

@@ -1,6 +1,8 @@
 import { Injectable } from '@angular/core';
 import { select, Store } from '@ngrx/store';
+
 import * as StockPileCardsActions from './stock-pile-cards.actions';
+import * as StockPileCardsFeature from './stock-pile-cards.reducer';
 import * as StockPileCardsSelectors from './stock-pile-cards.selectors';
 
 @Injectable()
@@ -19,7 +21,9 @@ export class StockPileCardsFacade {
     select(StockPileCardsSelectors.getStockPileCardsSelected)
   );
 
-  constructor(private store: Store) {}
+  constructor(
+    private store: Store<StockPileCardsFeature.StockPileCardsPartialState>
+  ) {}
 
   /**
    * Use the initialization action to perform one

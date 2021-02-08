@@ -42,5 +42,8 @@ export const getDomainCardsSelectedId = createSelector(
 export const getDomainCardsSelected = createSelector(
   getDomainCardsEntities,
   getDomainCardsSelectedId,
-  (entities, selectedId) => selectedId && entities[selectedId]
+  (entities, selectedId) => {
+    if (selectedId === undefined) return undefined;
+    return entities[selectedId];
+  }
 );

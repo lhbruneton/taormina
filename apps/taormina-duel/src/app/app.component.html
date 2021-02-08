@@ -19,14 +19,18 @@
     Draw 3 cards to bottom hand
   </button>
   <div *ngFor="let pivot of getStockPileCards(pile.id) | async">
-    <div>{{ (getCard(pivot.cardId) | async).name }}</div>
+    <div *ngIf="getNamedCard(pivot.cardId) | async as card">
+      {{ card.name }}
+    </div>
   </div>
 </div>
 <hr />
 <div *ngIf="getTopHand() | async as hand">
   <div>{{ hand.color }}</div>
   <div *ngFor="let pivot of getHandCards(hand.id) | async">
-    <div>{{ (getCard(pivot.cardId) | async).name }}</div>
+    <div *ngIf="getNamedCard(pivot.cardId) | async as card">
+      {{ card.name }}
+    </div>
   </div>
 </div>
 <hr />
@@ -41,7 +45,9 @@
         'grid-row-start': 'row' + pivot.row
       }"
     >
-      <div>{{ (getPrintableCard(pivot.cardId) | async).print() }}</div>
+      <div *ngIf="getPrintableCard(pivot.cardId) | async as card">
+        {{ card.print() }}
+      </div>
     </div>
   </div>
 </div>
@@ -57,7 +63,9 @@
         'grid-row-start': 'row' + pivot.row
       }"
     >
-      <div>{{ (getPrintableCard(pivot.cardId) | async).print() }}</div>
+      <div *ngIf="getPrintableCard(pivot.cardId) | async as card">
+        {{ card.print() }}
+      </div>
     </div>
   </div>
 </div>
@@ -65,6 +73,8 @@
 <div *ngIf="getBottomHand() | async as hand">
   <div>{{ hand.color }}</div>
   <div *ngFor="let pivot of getHandCards(hand.id) | async">
-    <div>{{ (getCard(pivot.cardId) | async).name }}</div>
+    <div *ngIf="getNamedCard(pivot.cardId) | async as card">
+      {{ card.name }}
+    </div>
   </div>
 </div>

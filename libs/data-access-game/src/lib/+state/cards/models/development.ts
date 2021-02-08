@@ -24,6 +24,18 @@ export class DevelopmentCardsEntity
   noDuplicate?: boolean;
   needsTown?: boolean;
   victoryPoints?: number;
+
+  constructor(
+    id: string,
+    name: string,
+    cost: Map<ResourceType, number>,
+    type: DevelopmentType
+  ) {
+    this.id = id;
+    this.name = name;
+    this.cost = cost;
+    this.type = type;
+  }
 }
 
 export const createDevelopmentCardsEntity = (
@@ -31,14 +43,7 @@ export const createDevelopmentCardsEntity = (
   name: string,
   cost: Map<ResourceType, number>,
   type: DevelopmentType
-) => {
-  const entity = new DevelopmentCardsEntity();
-  entity.id = id;
-  entity.name = name;
-  entity.cost = cost;
-  entity.type = type;
-  return entity;
-};
+) => new DevelopmentCardsEntity(id, name, cost, type);
 
 function createBuilding(
   name: string,

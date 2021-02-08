@@ -1,17 +1,21 @@
 import { LandType } from '@taormina/shared-models';
 
-import { createLandCardsEntity } from '../cards/models/land';
+import { createLandCardsEntity, LandCardsEntity } from '../cards/models/land';
 import {
   initialLandsPileCardsState,
   landsPileCardsAdapter,
+  LandsPileCardsPartialState,
 } from './lands-pile-cards.reducer';
 import * as LandsPileCardsSelectors from './lands-pile-cards.selectors';
 
 describe('LandsPileCards Selectors', () => {
   const ERROR_MSG = 'No Error Available';
-  const getLandsPileCardsId = (it) => it['id'];
+  const getLandsPileCardsId = (it: LandCardsEntity | undefined) => {
+    if (it === undefined) return undefined;
+    return it['id'];
+  };
 
-  let state;
+  let state: LandsPileCardsPartialState;
 
   beforeEach(() => {
     state = {

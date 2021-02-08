@@ -1,15 +1,22 @@
-import { createEventCardsEntity } from '../cards/models/event';
+import {
+  createEventCardsEntity,
+  EventCardsEntity,
+} from '../cards/models/event';
 import {
   eventsPileCardsAdapter,
+  EventsPileCardsPartialState,
   initialEventsPileCardsState,
 } from './events-pile-cards.reducer';
 import * as EventsPileCardsSelectors from './events-pile-cards.selectors';
 
 describe('EventsPileCards Selectors', () => {
   const ERROR_MSG = 'No Error Available';
-  const getEventsPileCardsId = (it) => it['id'];
+  const getEventsPileCardsId = (it: EventCardsEntity | undefined) => {
+    if (it === undefined) return undefined;
+    return it['id'];
+  };
 
-  let state;
+  let state: EventsPileCardsPartialState;
 
   beforeEach(() => {
     state = {

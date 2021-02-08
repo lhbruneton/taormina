@@ -1,15 +1,19 @@
-import { createCardsEntity } from '../cards/cards.models';
+import { CardsEntity, createCardsEntity } from '../cards/cards.models';
 import {
   discardPileCardsAdapter,
+  DiscardPileCardsPartialState,
   initialDiscardPileCardsState,
 } from './discard-pile-cards.reducer';
 import * as DiscardPileCardsSelectors from './discard-pile-cards.selectors';
 
 describe('DiscardPileCards Selectors', () => {
   const ERROR_MSG = 'No Error Available';
-  const getDiscardPileCardsId = (it) => it['id'];
+  const getDiscardPileCardsId = (it: CardsEntity | undefined) => {
+    if (it === undefined) return undefined;
+    return it['id'];
+  };
 
-  let state;
+  let state: DiscardPileCardsPartialState;
 
   beforeEach(() => {
     state = {

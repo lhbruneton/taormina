@@ -42,5 +42,8 @@ export const getLandsPileCardsSelectedId = createSelector(
 export const getLandsPileCardsSelected = createSelector(
   getLandsPileCardsEntities,
   getLandsPileCardsSelectedId,
-  (entities, selectedId) => selectedId && entities[selectedId]
+  (entities, selectedId) => {
+    if (selectedId === undefined) return undefined;
+    return entities[selectedId];
+  }
 );

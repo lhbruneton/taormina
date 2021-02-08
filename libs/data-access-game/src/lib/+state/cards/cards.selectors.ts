@@ -43,11 +43,14 @@ export const getCardsSelectedId = createSelector(
 export const getCardsSelected = createSelector(
   getCardsEntities,
   getCardsSelectedId,
-  (entities, selectedId) => selectedId && entities[selectedId]
+  (entities, selectedId) => {
+    if (selectedId === undefined) return undefined;
+    return entities[selectedId];
+  }
 );
 
 export const getCardEntityById = createSelector(
   getCardsEntities,
-  (entities: Dictionary<CardsEntity>, props) =>
-    props.cardId && entities[props.cardId]
+  (entities: Dictionary<CardsEntity>, props: { cardId: string }) =>
+    entities[props.cardId]
 );

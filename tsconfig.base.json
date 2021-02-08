@@ -19,7 +19,15 @@
       "@taormina/data-access-game": ["libs/data-access-game/src/index.ts"],
       "@taormina/shared-models": ["libs/shared-models/src/index.ts"]
     },
-    "allowSyntheticDefaultImports": true
+    "allowSyntheticDefaultImports": true,
+    "strict": true,
+    "forceConsistentCasingInFileNames": true,
+    "noImplicitReturns": true,
+    "noFallthroughCasesInSwitch": true
+  },
+  "angularCompilerOptions": {
+    "strictInjectionParameters": true,
+    "strictTemplates": true
   },
   "exclude": ["node_modules", "tmp"]
 }

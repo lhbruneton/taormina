@@ -1,15 +1,19 @@
-import { createStockPilesEntity } from './stock-piles.models';
+import { createStockPilesEntity, StockPilesEntity } from './stock-piles.models';
 import {
   stockPilesAdapter,
   initialStockPilesState,
+  StockPilesPartialState,
 } from './stock-piles.reducer';
 import * as StockPilesSelectors from './stock-piles.selectors';
 
 describe('StockPiles Selectors', () => {
   const ERROR_MSG = 'No Error Available';
-  const getStockPilesId = (it) => it['id'];
+  const getStockPilesId = (it: StockPilesEntity | undefined) => {
+    if (it === undefined) return undefined;
+    return it['id'];
+  };
 
-  let state;
+  let state: StockPilesPartialState;
 
   beforeEach(() => {
     state = {

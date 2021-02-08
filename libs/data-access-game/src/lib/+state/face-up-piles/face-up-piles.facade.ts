@@ -1,6 +1,8 @@
 import { Injectable } from '@angular/core';
 import { select, Store } from '@ngrx/store';
+
 import * as FaceUpPilesActions from './face-up-piles.actions';
+import * as FaceUpPilesFeature from './face-up-piles.reducer';
 import * as FaceUpPilesSelectors from './face-up-piles.selectors';
 
 @Injectable()
@@ -17,7 +19,9 @@ export class FaceUpPilesFacade {
     select(FaceUpPilesSelectors.getFaceUpSelected)
   );
 
-  constructor(private store: Store) {}
+  constructor(
+    private store: Store<FaceUpPilesFeature.FaceUpPilesPartialState>
+  ) {}
 
   /**
    * Use the initialization action to perform one

@@ -10,7 +10,10 @@ import * as CardsSelectors from '../cards/cards.selectors';
 import * as StockPilesFeature from '../stock-piles/stock-piles.reducer';
 import * as StockPilesSelectors from '../stock-piles/stock-piles.selectors';
 import * as StockPileCardsActions from './stock-pile-cards.actions';
-import { createInitialStockPileCards } from './stock-pile-cards.models';
+import {
+  createInitialStockPileCards,
+  StockPileCardsEntity,
+} from './stock-pile-cards.models';
 import * as StockPileCardsFeature from './stock-pile-cards.reducer';
 import * as StockPileCardsSelectors from './stock-pile-cards.selectors';
 
@@ -72,7 +75,13 @@ export class StockPileCardsEffects {
         )
       ),
       map((stockPileCards) =>
-        stockPileCards.map((stockPileCard) => stockPileCard.id)
+        stockPileCards
+          // TODO: throw error instead of filtering out undefined ?
+          .filter(
+            (stockPileCard): stockPileCard is StockPileCardsEntity =>
+              stockPileCard !== undefined
+          )
+          .map((stockPileCard) => stockPileCard.id)
       ),
       map((stockPileCardIds) =>
         StockPileCardsActions.removeStockPileCards({ stockPileCardIds })

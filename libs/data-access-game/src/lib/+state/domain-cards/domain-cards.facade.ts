@@ -1,6 +1,8 @@
 import { Injectable } from '@angular/core';
 import { select, Store } from '@ngrx/store';
+
 import * as DomainCardsActions from './domain-cards.actions';
+import * as DomainCardsFeature from './domain-cards.reducer';
 import * as DomainCardsSelectors from './domain-cards.selectors';
 
 @Injectable()
@@ -17,7 +19,9 @@ export class DomainCardsFacade {
     select(DomainCardsSelectors.getDomainCardsSelected)
   );
 
-  constructor(private store: Store) {}
+  constructor(
+    private store: Store<DomainCardsFeature.DomainCardsPartialState>
+  ) {}
 
   /**
    * Use the initialization action to perform one

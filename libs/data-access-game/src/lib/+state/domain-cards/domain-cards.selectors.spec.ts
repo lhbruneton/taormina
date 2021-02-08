@@ -1,15 +1,22 @@
-import { createDomainCardsEntity } from './domain-cards.models';
+import {
+  createDomainCardsEntity,
+  DomainCardsEntity,
+} from './domain-cards.models';
 import {
   domainCardsAdapter,
+  DomainCardsPartialState,
   initialDomainCardsState,
 } from './domain-cards.reducer';
 import * as DomainCardsSelectors from './domain-cards.selectors';
 
 describe('DomainCards Selectors', () => {
   const ERROR_MSG = 'No Error Available';
-  const getDomainCardsId = (it) => it['id'];
+  const getDomainCardsId = (it: DomainCardsEntity | undefined) => {
+    if (it === undefined) return undefined;
+    return it['id'];
+  };
 
-  let state;
+  let state: DomainCardsPartialState;
 
   beforeEach(() => {
     state = {

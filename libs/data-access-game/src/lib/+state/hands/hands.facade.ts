@@ -1,6 +1,8 @@
 import { Injectable } from '@angular/core';
 import { select, Store } from '@ngrx/store';
+
 import * as HandsActions from './hands.actions';
+import * as HandsFeature from './hands.reducer';
 import * as HandsSelectors from './hands.selectors';
 
 @Injectable()
@@ -13,7 +15,7 @@ export class HandsFacade {
   allHands$ = this.store.pipe(select(HandsSelectors.getAllHands));
   selectedHands$ = this.store.pipe(select(HandsSelectors.getHandsSelected));
 
-  constructor(private store: Store) {}
+  constructor(private store: Store<HandsFeature.HandsPartialState>) {}
 
   /**
    * Use the initialization action to perform one

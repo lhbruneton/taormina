@@ -1,14 +1,25 @@
 import { EventValue } from '@taormina/shared-models';
 
-import { createEventDiceEntity, createResourceDiceEntity } from './dice.models';
-import { diceAdapter, initialDiceState } from './dice.reducer';
+import {
+  createEventDiceEntity,
+  createResourceDiceEntity,
+  DiceEntity,
+} from './dice.models';
+import {
+  diceAdapter,
+  DicePartialState,
+  initialDiceState,
+} from './dice.reducer';
 import * as DiceSelectors from './dice.selectors';
 
 describe('Dice Selectors', () => {
   const ERROR_MSG = 'No Error Available';
-  const getDiceId = (it) => it['id'];
+  const getDiceId = (it: DiceEntity | undefined) => {
+    if (it === undefined) return undefined;
+    return it['id'];
+  };
 
-  let state;
+  let state: DicePartialState;
 
   beforeEach(() => {
     state = {

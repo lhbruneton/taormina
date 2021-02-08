@@ -41,5 +41,8 @@ export const getHandsSelectedId = createSelector(
 export const getHandsSelected = createSelector(
   getHandsEntities,
   getHandsSelectedId,
-  (entities, selectedId) => selectedId && entities[selectedId]
+  (entities, selectedId) => {
+    if (selectedId === undefined) return undefined;
+    return entities[selectedId];
+  }
 );

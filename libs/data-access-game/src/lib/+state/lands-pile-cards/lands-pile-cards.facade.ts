@@ -1,6 +1,8 @@
 import { Injectable } from '@angular/core';
 import { select, Store } from '@ngrx/store';
+
 import * as LandsPileCardsActions from './lands-pile-cards.actions';
+import * as LandsPileCardsFeature from './lands-pile-cards.reducer';
 import * as LandsPileCardsSelectors from './lands-pile-cards.selectors';
 
 @Injectable()
@@ -19,7 +21,9 @@ export class LandsPileCardsFacade {
     select(LandsPileCardsSelectors.getLandsPileCardsSelected)
   );
 
-  constructor(private store: Store) {}
+  constructor(
+    private store: Store<LandsPileCardsFeature.LandsPileCardsPartialState>
+  ) {}
 
   /**
    * Use the initialization action to perform one

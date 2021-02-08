@@ -1,9 +1,15 @@
 import { Injectable } from '@angular/core';
 import { select, Store } from '@ngrx/store';
-import { CanPrint, isCanPrint } from '@taormina/shared-models';
+import {
+  CanPrint,
+  HasName,
+  isCanPrint,
+  isHasName,
+} from '@taormina/shared-models';
 import { filter, map } from 'rxjs/operators';
 
 import * as CardsActions from './cards.actions';
+import * as CardsFeature from './cards.reducer';
 import * as CardsSelectors from './cards.selectors';
 
 @Injectable()
@@ -16,7 +22,7 @@ export class CardsFacade {
   allCards$ = this.store.pipe(select(CardsSelectors.getAllCards));
   selectedCards$ = this.store.pipe(select(CardsSelectors.getCardsSelected));
 
-  constructor(private store: Store) {}
+  constructor(private store: Store<CardsFeature.CardsPartialState>) {}
 
   /**
    * Use the initialization action to perform one
@@ -33,6 +39,13 @@ export class CardsFacade {
   getCardById(cardId: string) {
     return this.store.pipe(
       select(CardsSelectors.getCardEntityById, { cardId })
+    );
+  }
+
+  getNamedCardById(cardId: string) {
+    return this.getCardById(cardId).pipe(
+      filter((card) => isHasName(card)),
+      map((card) => (card as unknown) as HasName)
     );
   }
 

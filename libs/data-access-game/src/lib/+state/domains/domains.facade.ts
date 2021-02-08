@@ -1,6 +1,8 @@
 import { Injectable } from '@angular/core';
 import { select, Store } from '@ngrx/store';
+
 import * as DomainsActions from './domains.actions';
+import * as DomainsFeature from './domains.reducer';
 import * as DomainsSelectors from './domains.selectors';
 
 @Injectable()
@@ -15,7 +17,7 @@ export class DomainsFacade {
     select(DomainsSelectors.getDomainsSelected)
   );
 
-  constructor(private store: Store) {}
+  constructor(private store: Store<DomainsFeature.DomainsPartialState>) {}
 
   /**
    * Use the initialization action to perform one

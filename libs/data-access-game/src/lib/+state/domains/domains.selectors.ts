@@ -42,5 +42,8 @@ export const getDomainsSelectedId = createSelector(
 export const getDomainsSelected = createSelector(
   getDomainsEntities,
   getDomainsSelectedId,
-  (entities, selectedId) => selectedId && entities[selectedId]
+  (entities, selectedId) => {
+    if (selectedId === undefined) return undefined;
+    return entities[selectedId];
+  }
 );

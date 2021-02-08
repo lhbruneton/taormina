@@ -7,7 +7,7 @@ import { hot } from '@nrwl/angular/testing';
 import { DomainColor } from '@taormina/shared-models';
 import { Observable } from 'rxjs';
 
-import { createCardsEntity } from '../cards/cards.models';
+import { CardsEntity, createCardsEntity } from '../cards/cards.models';
 import * as CardsSelectors from '../cards/cards.selectors';
 import { createDomainsEntity } from '../domains/domains.models';
 import * as DomainsSelectors from '../domains/domains.selectors';
@@ -18,7 +18,7 @@ jest.mock('./domain-cards.models', () => {
   return {
     __esModule: true,
     createInitialDomainCards: jest.fn((domain, cards) =>
-      cards.map((card) => {
+      cards.map((card: CardsEntity) => {
         return {
           id: `${domain.id}-${card.id}`,
           domainId: domain.id,
