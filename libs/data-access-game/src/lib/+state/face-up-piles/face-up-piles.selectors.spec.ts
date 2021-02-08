@@ -1,17 +1,24 @@
 import { AgglomerationType, ResourceType } from '@taormina/shared-models';
 
-import { createAgglomerationCardsEntity } from '../cards/models/agglomeration';
+import {
+  AgglomerationCardsEntity,
+  createAgglomerationCardsEntity,
+} from '../cards/models/agglomeration';
 import {
   faceUpPilesAdapter,
+  FaceUpPilesPartialState,
   initialFaceUpState,
 } from './face-up-piles.reducer';
 import * as FaceUpPilesSelectors from './face-up-piles.selectors';
 
 describe('FaceUpPiles Selectors', () => {
   const ERROR_MSG = 'No Error Available';
-  const getFaceUpPilesId = (it) => it['id'];
+  const getFaceUpPilesId = (it: AgglomerationCardsEntity | undefined) => {
+    if (it === undefined) return undefined;
+    return it['id'];
+  };
 
-  let state;
+  let state: FaceUpPilesPartialState;
 
   beforeEach(() => {
     state = {

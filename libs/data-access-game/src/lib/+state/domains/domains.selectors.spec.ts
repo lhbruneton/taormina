@@ -1,14 +1,21 @@
 import { DomainColor } from '@taormina/shared-models';
 
-import { createDomainsEntity } from './domains.models';
-import { domainsAdapter, initialDomainsState } from './domains.reducer';
+import { createDomainsEntity, DomainsEntity } from './domains.models';
+import {
+  domainsAdapter,
+  DomainsPartialState,
+  initialDomainsState,
+} from './domains.reducer';
 import * as DomainsSelectors from './domains.selectors';
 
 describe('Domains Selectors', () => {
   const ERROR_MSG = 'No Error Available';
-  const getDomainsId = (it) => it['id'];
+  const getDomainsId = (it: DomainsEntity | undefined) => {
+    if (it === undefined) return undefined;
+    return it['id'];
+  };
 
-  let state;
+  let state: DomainsPartialState;
 
   beforeEach(() => {
     state = {

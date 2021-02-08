@@ -20,6 +20,18 @@ export class LandCardsEntity implements CardsEntity, HasColor, CanPrint {
   die: ResourceValue;
   color?: DomainColor;
 
+  constructor(
+    id: string,
+    type: LandType,
+    value: LandValue,
+    die: ResourceValue
+  ) {
+    this.id = id;
+    this.type = type;
+    this.value = value;
+    this.die = die;
+  }
+
   print() {
     return `${this.type} - ${this.value}`;
   }
@@ -32,11 +44,7 @@ export const createLandCardsEntity = (
   die: ResourceValue,
   color?: DomainColor
 ) => {
-  const entity = new LandCardsEntity();
-  entity.id = id;
-  entity.type = type;
-  entity.value = value;
-  entity.die = die;
+  const entity = new LandCardsEntity(id, type, value, die);
   entity.color = color;
   return entity;
 };

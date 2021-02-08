@@ -42,5 +42,8 @@ export const getStockPilesSelectedId = createSelector(
 export const getStockPilesSelected = createSelector(
   getStockPilesEntities,
   getStockPilesSelectedId,
-  (entities, selectedId) => selectedId && entities[selectedId]
+  (entities, selectedId) => {
+    if (selectedId === undefined) return undefined;
+    return entities[selectedId];
+  }
 );

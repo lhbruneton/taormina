@@ -42,5 +42,8 @@ export const getEventsPileCardsSelectedId = createSelector(
 export const getEventsPileCardsSelected = createSelector(
   getEventsPileCardsEntities,
   getEventsPileCardsSelectedId,
-  (entities, selectedId) => selectedId && entities[selectedId]
+  (entities, selectedId) => {
+    if (selectedId === undefined) return undefined;
+    return entities[selectedId];
+  }
 );

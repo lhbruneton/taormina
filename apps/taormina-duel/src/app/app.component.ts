@@ -75,8 +75,8 @@ export class AppComponent {
     );
   }
 
-  getCard(cardId: string) {
-    return this.cards.getCardById(cardId);
+  getNamedCard(cardId: string) {
+    return this.cards.getNamedCardById(cardId);
   }
 
   getPrintableCard(cardId: string) {

@@ -1,12 +1,19 @@
-import { createCardsEntity } from './cards.models';
-import { cardsAdapter, initialCardsState } from './cards.reducer';
+import { CardsEntity, createCardsEntity } from './cards.models';
+import {
+  cardsAdapter,
+  CardsPartialState,
+  initialCardsState,
+} from './cards.reducer';
 import * as CardsSelectors from './cards.selectors';
 
 describe('Cards Selectors', () => {
   const ERROR_MSG = 'No Error Available';
-  const getCardsId = (it) => it['id'];
+  const getCardsId = (it: CardsEntity | undefined) => {
+    if (it === undefined) return undefined;
+    return it['id'];
+  };
 
-  let state;
+  let state: CardsPartialState;
 
   beforeEach(() => {
     state = {

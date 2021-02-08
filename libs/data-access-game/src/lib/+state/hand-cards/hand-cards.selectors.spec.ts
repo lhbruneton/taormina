@@ -1,12 +1,19 @@
-import { createHandCardsEntity } from './hand-cards.models';
-import { handCardsAdapter, initialHandCardsState } from './hand-cards.reducer';
+import { createHandCardsEntity, HandCardsEntity } from './hand-cards.models';
+import {
+  handCardsAdapter,
+  HandCardsPartialState,
+  initialHandCardsState,
+} from './hand-cards.reducer';
 import * as HandCardsSelectors from './hand-cards.selectors';
 
 describe('HandCards Selectors', () => {
   const ERROR_MSG = 'No Error Available';
-  const getHandCardsId = (it) => it['id'];
+  const getHandCardsId = (it: HandCardsEntity | undefined) => {
+    if (it === undefined) return undefined;
+    return it['id'];
+  };
 
-  let state;
+  let state: HandCardsPartialState;
 
   beforeEach(() => {
     state = {

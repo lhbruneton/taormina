@@ -1,6 +1,8 @@
 import { Injectable } from '@angular/core';
 import { select, Store } from '@ngrx/store';
+
 import * as HandCardsActions from './hand-cards.actions';
+import * as HandCardsFeature from './hand-cards.reducer';
 import * as HandCardsSelectors from './hand-cards.selectors';
 
 @Injectable()
@@ -15,7 +17,7 @@ export class HandCardsFacade {
     select(HandCardsSelectors.getHandCardsSelected)
   );
 
-  constructor(private store: Store) {}
+  constructor(private store: Store<HandCardsFeature.HandCardsPartialState>) {}
 
   /**
    * Use the initialization action to perform one

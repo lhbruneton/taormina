@@ -42,5 +42,8 @@ export const getFaceUpSelectedId = createSelector(
 export const getFaceUpSelected = createSelector(
   getFaceUpPilesEntities,
   getFaceUpSelectedId,
-  (entities, selectedId) => selectedId && entities[selectedId]
+  (entities, selectedId) => {
+    if (selectedId === undefined) return undefined;
+    return entities[selectedId];
+  }
 );

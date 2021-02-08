@@ -10,6 +10,7 @@ import {
  */
 export interface DiceEntity {
   id: DiceId;
+  value: ResourceValue | EventValue;
 }
 
 export interface ResourceDiceEntity extends DiceEntity {

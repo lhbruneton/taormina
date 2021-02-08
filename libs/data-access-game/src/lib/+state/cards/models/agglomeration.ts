@@ -21,6 +21,16 @@ export class AgglomerationCardsEntity
   victoryPoints?: number;
   color?: DomainColor;
 
+  constructor(
+    id: string,
+    cost: Map<ResourceType, number>,
+    type: AgglomerationType
+  ) {
+    this.id = id;
+    this.cost = cost;
+    this.type = type;
+  }
+
   print() {
     return `${this.type}`;
   }
@@ -33,10 +43,7 @@ export const createAgglomerationCardsEntity = (
   victoryPoints?: number,
   color?: DomainColor
 ) => {
-  const entity = new AgglomerationCardsEntity();
-  entity.id = id;
-  entity.cost = cost;
-  entity.type = type;
+  const entity = new AgglomerationCardsEntity(id, cost, type);
   entity.victoryPoints = victoryPoints;
   entity.color = color;
   return entity;

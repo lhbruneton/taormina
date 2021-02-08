@@ -42,5 +42,8 @@ export const getDiscardPileCardsSelectedId = createSelector(
 export const getDiscardPileCardsSelected = createSelector(
   getDiscardPileCardsEntities,
   getDiscardPileCardsSelectedId,
-  (entities, selectedId) => selectedId && entities[selectedId]
+  (entities, selectedId) => {
+    if (selectedId === undefined) return undefined;
+    return entities[selectedId];
+  }
 );

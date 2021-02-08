@@ -42,5 +42,8 @@ export const getHandCardsSelectedId = createSelector(
 export const getHandCardsSelected = createSelector(
   getHandCardsEntities,
   getHandCardsSelectedId,
-  (entities, selectedId) => selectedId && entities[selectedId]
+  (entities, selectedId) => {
+    if (selectedId === undefined) return undefined;
+    return entities[selectedId];
+  }
 );

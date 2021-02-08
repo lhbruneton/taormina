@@ -1,15 +1,22 @@
-import { createStockPileCardsEntity } from './stock-pile-cards.models';
+import {
+  createStockPileCardsEntity,
+  StockPileCardsEntity,
+} from './stock-pile-cards.models';
 import {
   stockPileCardsAdapter,
   initialStockPileCardsState,
+  StockPileCardsPartialState,
 } from './stock-pile-cards.reducer';
 import * as StockPileCardsSelectors from './stock-pile-cards.selectors';
 
 describe('StockPileCards Selectors', () => {
   const ERROR_MSG = 'No Error Available';
-  const getStockPileCardsId = (it) => it['id'];
+  const getStockPileCardsId = (it: StockPileCardsEntity | undefined) => {
+    if (it === undefined) return undefined;
+    return it['id'];
+  };
 
-  let state;
+  let state: StockPileCardsPartialState;
 
   beforeEach(() => {
     state = {

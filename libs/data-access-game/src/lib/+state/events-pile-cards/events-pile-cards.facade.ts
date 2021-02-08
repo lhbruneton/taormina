@@ -1,6 +1,8 @@
 import { Injectable } from '@angular/core';
 import { select, Store } from '@ngrx/store';
+
 import * as EventsPileCardsActions from './events-pile-cards.actions';
+import * as EventsPileCardsFeature from './events-pile-cards.reducer';
 import * as EventsPileCardsSelectors from './events-pile-cards.selectors';
 
 @Injectable()
@@ -19,7 +21,9 @@ export class EventsPileCardsFacade {
     select(EventsPileCardsSelectors.getEventsPileCardsSelected)
   );
 
-  constructor(private store: Store) {}
+  constructor(
+    private store: Store<EventsPileCardsFeature.EventsPileCardsPartialState>
+  ) {}
 
   /**
    * Use the initialization action to perform one

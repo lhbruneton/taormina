@@ -10,19 +10,19 @@ export class EventCardsEntity implements CardsEntity, HasName, HasRules {
   id: string;
   name: string;
   ruleIds: string[];
+
+  constructor(id: string, name: string, ruleIds: string[]) {
+    this.id = id;
+    this.name = name;
+    this.ruleIds = ruleIds;
+  }
 }
 
 export const createEventCardsEntity = (
   id: string,
   name: string,
   ruleIds: string[]
-) => {
-  const entity = new EventCardsEntity();
-  entity.id = id;
-  entity.name = name;
-  entity.ruleIds = ruleIds;
-  return entity;
-};
+) => new EventCardsEntity(id, name, ruleIds);
 
 function createInitialEventCards() {
   return [

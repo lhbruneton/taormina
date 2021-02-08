@@ -43,14 +43,18 @@ export const getStockPileCardsSelectedId = createSelector(
 export const getStockPileCardsSelected = createSelector(
   getStockPileCardsEntities,
   getStockPileCardsSelectedId,
-  (entities, selectedId) => selectedId && entities[selectedId]
+  (entities, selectedId) => {
+    if (selectedId === undefined) return undefined;
+    return entities[selectedId];
+  }
 );
 
 export const getStockPileCardEntityByStockPileIdCardId = createSelector(
   getAllStockPileCards,
-  (entities: StockPileCardsEntity[], props) =>
-    props.stockPileId &&
-    props.cardId &&
+  (
+    entities: StockPileCardsEntity[],
+    props: { stockPileId: string; cardId: string }
+  ) =>
     entities.find(
       (entity) =>
         entity.stockPileId === props.stockPileId &&
