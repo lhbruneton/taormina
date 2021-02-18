@@ -1,14 +1,9 @@
 {
   "npmScope": "taormina",
-  "affected": {
-    "defaultBase": "master"
-  },
+  "affected": { "defaultBase": "master" },
   "implicitDependencies": {
     "angular.json": "*",
-    "package.json": {
-      "dependencies": "*",
-      "devDependencies": "*"
-    },
+    "package.json": { "dependencies": "*", "devDependencies": "*" },
     "tsconfig.base.json": "*",
     "tslint.json": "*",
     ".eslintrc.json": "*",
@@ -26,21 +21,15 @@
     }
   },
   "projects": {
-    "taormina-duel": {
-      "tags": []
-    },
+    "taormina-duel": { "tags": [] },
     "taormina-duel-e2e": {
       "tags": [],
       "implicitDependencies": ["taormina-duel"]
     },
-    "ui-card": {
-      "tags": []
-    },
-    "data-access-game": {
-      "tags": []
-    },
-    "shared-models": {
-      "tags": []
-    }
+    "ui-card": { "tags": [] },
+    "data-access-game": { "tags": [] },
+    "shared-models": { "tags": [] },
+    "shared-constants": { "tags": [] },
+    "feature-engine": { "tags": [] }
   }
 }

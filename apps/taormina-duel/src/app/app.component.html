@@ -3,78 +3,138 @@
 <button type="button" (click)="onThrow()">throw</button>
 <p *ngFor="let die of getDice() | async">{{ die.id }} - {{ die.value }}</p>
 <hr />
-<p *ngFor="let land of getLandCards() | async">
-  {{ land.type }} - {{ land.die }}
-</p>
+<div *ngFor="let pivot of getLandsPileCards() | async">
+  <div *ngIf="getLandCard(pivot.cardId) as land">
+    {{ land.type }} - {{ land.die }}
+  </div>
+</div>
 <hr />
-<p *ngFor="let event of getEventCards() | async">
-  {{ event.name }}
-</p>
-<div *ngFor="let pile of getStockPiles() | async">
+<div *ngFor="let pivot of getEventsPileCards() | async">
+  <div *ngIf="getEventCard(pivot.cardId) as event">
+    {{ event.name }}
+  </div>
+</div>
+<div *ngFor="let pile of getStockPiles()">
   <hr />
-  <button type="button" (click)="drawInitialTopHand(pile.id)">
-    Draw 3 cards to top hand
+  <button type="button" (click)="drawInitialRedHand(pile)">
+    Draw 3 cards to red hand
   </button>
-  <button type="button" (click)="drawInitialBottomHand(pile.id)">
-    Draw 3 cards to bottom hand
+  <button type="button" (click)="drawInitialBlueHand(pile)">
+    Draw 3 cards to blue hand
   </button>
-  <div *ngFor="let pivot of getStockPileCards(pile.id) | async">
-    <div *ngIf="getNamedCard(pivot.cardId) | async as card">
-      {{ card.name }}
+  <div
+    *ngFor="let pivot of getStockPilesCards(pile) | async"
+    [ngSwitch]="pivot.cardType"
+  >
+    <div *ngSwitchCase="ACTION_CARD_INTERFACE_NAME">
+      <div *ngIf="getActionCard(pivot.cardId) as action">
+        {{ action.name }}
+      </div>
+    </div>
+    <div *ngSwitchCase="DEVELOPMENT_CARD_INTERFACE_NAME">
+      <div *ngIf="getDevelopmentCard(pivot.cardId) as development">
+        {{ development.name }}
+      </div>
     </div>
   </div>
 </div>
 <hr />
-<div *ngIf="getTopHand() | async as hand">
+<div *ngIf="getRedHand() as hand">
   <div>{{ hand.color }}</div>
-  <div *ngFor="let pivot of getHandCards(hand.id) | async">
-    <div *ngIf="getNamedCard(pivot.cardId) | async as card">
-      {{ card.name }}
+  <div
+    *ngFor="let pivot of getHandsCards(hand.id) | async"
+    [ngSwitch]="pivot.cardType"
+  >
+    <div *ngSwitchCase="ACTION_CARD_INTERFACE_NAME">
+      <div *ngIf="getActionCard(pivot.cardId) as action">
+        {{ action.name }}
+      </div>
+    </div>
+    <div *ngSwitchCase="DEVELOPMENT_CARD_INTERFACE_NAME">
+      <div *ngIf="getDevelopmentCard(pivot.cardId) as development">
+        {{ development.name }}
+      </div>
     </div>
   </div>
 </div>
 <hr />
-<div *ngIf="getTopDomain() | async as domain">
+<div *ngIf="getRedDomain() as domain">
   <div>{{ domain.color }}</div>
   <div class="grid-container">
     <div
-      *ngFor="let pivot of getDomainCards(domain.id) | async"
+      *ngFor="let pivot of getDomainsCards(domain.id) | async"
+      [ngSwitch]="pivot.cardType"
       class="grid-cell"
       [ngStyle]="{
         'grid-column-start': 'col' + pivot.col,
         'grid-row-start': 'row' + pivot.row
       }"
     >
-      <div *ngIf="getPrintableCard(pivot.cardId) | async as card">
-        {{ card.print() }}
+      <div *ngSwitchCase="DEVELOPMENT_CARD_INTERFACE_NAME">
+        <div *ngIf="getDevelopmentCard(pivot.cardId) as development">
+          {{ development.name }}
+        </div>
+      </div>
+      <div *ngSwitchCase="AGGLOMERATION_CARD_INTERFACE_NAME">
+        <div *ngIf="getAgglomerationCard(pivot.cardId) as agglomeration">
+          {{ agglomeration.type }}
+        </div>
+      </div>
+      <div *ngSwitchCase="LAND_CARD_INTERFACE_NAME">
+        <div *ngIf="getLandCard(pivot.cardId) as land">
+          {{ land.type }}<br />{{ land.die }}<br />VAL: {{ pivot.value }}
+        </div>
       </div>
     </div>
   </div>
 </div>
 <hr />
-<div *ngIf="getBottomDomain() | async as domain">
+<div *ngIf="getBlueDomain() as domain">
   <div>{{ domain.color }}</div>
   <div class="grid-container">
     <div
-      *ngFor="let pivot of getDomainCards(domain.id) | async"
+      *ngFor="let pivot of getDomainsCards(domain.id) | async"
+      [ngSwitch]="pivot.cardType"
       class="grid-cell"
       [ngStyle]="{
         'grid-column-start': 'col' + pivot.col,
         'grid-row-start': 'row' + pivot.row
       }"
     >
-      <div *ngIf="getPrintableCard(pivot.cardId) | async as card">
-        {{ card.print() }}
+      <div *ngSwitchCase="DEVELOPMENT_CARD_INTERFACE_NAME">
+        <div *ngIf="getDevelopmentCard(pivot.cardId) as development">
+          {{ development.name }}
+        </div>
+      </div>
+      <div *ngSwitchCase="AGGLOMERATION_CARD_INTERFACE_NAME">
+        <div *ngIf="getAgglomerationCard(pivot.cardId) as agglomeration">
+          {{ agglomeration.type }}
+        </div>
+      </div>
+      <div *ngSwitchCase="LAND_CARD_INTERFACE_NAME">
+        <div *ngIf="getLandCard(pivot.cardId) as land">
+          {{ land.type }}<br />{{ land.die }}<br />VAL: {{ pivot.value }}
+        </div>
       </div>
     </div>
   </div>
 </div>
 <hr />
-<div *ngIf="getBottomHand() | async as hand">
+<div *ngIf="getBlueHand() as hand">
   <div>{{ hand.color }}</div>
-  <div *ngFor="let pivot of getHandCards(hand.id) | async">
-    <div *ngIf="getNamedCard(pivot.cardId) | async as card">
-      {{ card.name }}
+  <div
+    *ngFor="let pivot of getHandsCards(hand.id) | async"
+    [ngSwitch]="pivot.cardType"
+  >
+    <div *ngSwitchCase="ACTION_CARD_INTERFACE_NAME">
+      <div *ngIf="getActionCard(pivot.cardId) as action">
+        {{ action.name }}
+      </div>
+    </div>
+    <div *ngSwitchCase="DEVELOPMENT_CARD_INTERFACE_NAME">
+      <div *ngIf="getDevelopmentCard(pivot.cardId) as development">
+        {{ development.name }}
+      </div>
     </div>
   </div>
 </div>

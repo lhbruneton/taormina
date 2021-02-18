@@ -2,11 +2,12 @@ import { createReducer, on } from '@ngrx/store';
 import { EntityState, EntityAdapter, createEntityAdapter } from '@ngrx/entity';
 
 import * as EventsPileCardsActions from './events-pile-cards.actions';
-import { EventCardsEntity } from '../cards/models/event';
+import { EventsPileCardsEntity } from './events-pile-cards.models';
 
 export const EVENTS_PILE_CARDS_FEATURE_KEY = 'eventsPileCards';
 
-export interface EventsPileCardsState extends EntityState<EventCardsEntity> {
+export interface EventsPileCardsState
+  extends EntityState<EventsPileCardsEntity> {
   selectedId?: string; // which EventsPileCards record has been selected
   initialized: boolean;
   loaded: boolean; // has the EventsPileCards list been loaded
@@ -17,7 +18,7 @@ export interface EventsPileCardsPartialState {
   readonly [EVENTS_PILE_CARDS_FEATURE_KEY]: EventsPileCardsState;
 }
 
-export const eventsPileCardsAdapter: EntityAdapter<EventCardsEntity> = createEntityAdapter<EventCardsEntity>();
+export const eventsPileCardsAdapter: EntityAdapter<EventsPileCardsEntity> = createEntityAdapter<EventsPileCardsEntity>();
 
 export const initialEventsPileCardsState: EventsPileCardsState = eventsPileCardsAdapter.getInitialState(
   {

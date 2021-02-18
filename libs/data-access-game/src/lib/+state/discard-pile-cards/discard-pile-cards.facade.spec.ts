@@ -5,10 +5,10 @@ import { Store, StoreModule } from '@ngrx/store';
 import { NxModule } from '@nrwl/angular';
 import { readFirst } from '@nrwl/angular/testing';
 
-import { createCardsEntity } from '../cards/cards.models';
 import * as DiscardPileCardsActions from './discard-pile-cards.actions';
 import { DiscardPileCardsEffects } from './discard-pile-cards.effects';
 import { DiscardPileCardsFacade } from './discard-pile-cards.facade';
+import { createDiscardPileCardsEntity } from './discard-pile-cards.models';
 import {
   discardPileCardsReducer,
   DiscardPileCardsState,
@@ -91,8 +91,8 @@ describe('DiscardPileCardsFacade', () => {
         store.dispatch(
           DiscardPileCardsActions.loadDiscardPileCardsSuccess({
             discardPileCards: [
-              createCardsEntity('AAA'),
-              createCardsEntity('BBB'),
+              createDiscardPileCardsEntity('AAA', 'TYPE-A', 'A'),
+              createDiscardPileCardsEntity('BBB', 'TYPE-B', 'B'),
             ],
           })
         );

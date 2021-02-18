@@ -1,5 +1,5 @@
 import { createAction, props } from '@ngrx/store';
-import { CardsEntity } from '../cards/cards.models';
+import { DiscardPileCardsEntity } from './discard-pile-cards.models';
 
 export const initDiscardPileCardsNewGame = createAction(
   '[Start Page] Init DiscardPileCards New Game'
@@ -11,7 +11,7 @@ export const initDiscardPileCardsSavedGame = createAction(
 
 export const loadDiscardPileCardsSuccess = createAction(
   '[DiscardPileCards/API] Load DiscardPileCards Success',
-  props<{ discardPileCards: CardsEntity[] }>()
+  props<{ discardPileCards: DiscardPileCardsEntity[] }>()
 );
 
 export const loadDiscardPileCardsFailure = createAction(
@@ -21,5 +21,5 @@ export const loadDiscardPileCardsFailure = createAction(
 
 export const setDiscardPileCardsInitialized = createAction(
   '[DiscardPileCards] Set DiscardPileCards On Init',
-  props<{ discardPileCards: CardsEntity[] }>()
+  props<{ discardPileCards: DiscardPileCardsEntity[] }>()
 );

@@ -9,10 +9,10 @@ import { Observable } from 'rxjs';
 import * as EventsPileCardsActions from './events-pile-cards.actions';
 import { EventsPileCardsEffects } from './events-pile-cards.effects';
 
-jest.mock('../cards/models/event', () => {
+jest.mock('./events-pile-cards.models', () => {
   return {
     __esModule: true,
-    getShuffledInitialEventCards: jest.fn(() => []),
+    createInitialEventsPileCards: jest.fn(() => []),
   };
 });
 

@@ -1,7 +1,7 @@
 import {
-  createEventCardsEntity,
-  EventCardsEntity,
-} from '../cards/models/event';
+  createEventsPileCardsEntity,
+  EventsPileCardsEntity,
+} from './events-pile-cards.models';
 import {
   eventsPileCardsAdapter,
   EventsPileCardsPartialState,
@@ -11,7 +11,7 @@ import * as EventsPileCardsSelectors from './events-pile-cards.selectors';
 
 describe('EventsPileCards Selectors', () => {
   const ERROR_MSG = 'No Error Available';
-  const getEventsPileCardsId = (it: EventCardsEntity | undefined) => {
+  const getEventsPileCardsId = (it: EventsPileCardsEntity | undefined) => {
     if (it === undefined) return undefined;
     return it['id'];
   };
@@ -22,9 +22,9 @@ describe('EventsPileCards Selectors', () => {
     state = {
       eventsPileCards: eventsPileCardsAdapter.setAll(
         [
-          createEventCardsEntity('PRODUCT-AAA', 'Some name', []),
-          createEventCardsEntity('PRODUCT-BBB', 'Some other name', []),
-          createEventCardsEntity('PRODUCT-CCC', 'Some third name', []),
+          createEventsPileCardsEntity('PRODUCT-AAA', 'A'),
+          createEventsPileCardsEntity('PRODUCT-BBB', 'B'),
+          createEventsPileCardsEntity('PRODUCT-CCC', 'C'),
         ],
         {
           ...initialEventsPileCardsState,

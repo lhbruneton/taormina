@@ -1,10 +1,9 @@
 import { Injectable } from '@angular/core';
-import { createEffect, Actions, ofType } from '@ngrx/effects';
+import { Actions, createEffect, ofType } from '@ngrx/effects';
 import { fetch } from '@nrwl/angular';
 import { map } from 'rxjs/operators';
-
 import * as EventsPileCardsActions from './events-pile-cards.actions';
-import { getShuffledInitialEventCards } from '../cards/models/event';
+import { createInitialEventsPileCards } from './events-pile-cards.models';
 
 @Injectable()
 export class EventsPileCardsEffects {
@@ -13,7 +12,7 @@ export class EventsPileCardsEffects {
       ofType(EventsPileCardsActions.initEventsPileCardsNewGame),
       map(() =>
         EventsPileCardsActions.setEventsPileCardsInitialized({
-          eventsPileCards: getShuffledInitialEventCards(),
+          eventsPileCards: createInitialEventsPileCards(),
         })
       )
     )
