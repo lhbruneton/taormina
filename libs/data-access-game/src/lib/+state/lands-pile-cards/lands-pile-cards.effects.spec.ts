@@ -9,10 +9,10 @@ import { Observable } from 'rxjs';
 import * as LandsPileCardsActions from './lands-pile-cards.actions';
 import { LandsPileCardsEffects } from './lands-pile-cards.effects';
 
-jest.mock('../cards/models/land', () => {
+jest.mock('./lands-pile-cards.models', () => {
   return {
     __esModule: true,
-    getShuffledInitialLandCards: jest.fn(() => []),
+    createInitialLandsPileCards: jest.fn(() => []),
   };
 });
 

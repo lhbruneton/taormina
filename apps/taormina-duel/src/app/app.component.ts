@@ -1,17 +1,34 @@
 import { Component } from '@angular/core';
 import {
-  CardsFacade,
   DiceFacade,
-  DomainCardsFacade,
-  DomainsFacade,
+  DomainsCardsFacade,
   EventsPileCardsFacade,
-  HandCardsFacade,
-  HandsFacade,
+  HandsCardsFacade,
   LandsPileCardsFacade,
-  StockPileCardsFacade,
-  StockPilesFacade,
+  StockPilesCardsFacade,
 } from '@taormina/data-access-game';
-import { filter, map, take } from 'rxjs/operators';
+import { GameRulesService } from '@taormina/feature-engine';
+import {
+  actionCards,
+  agglomerationCards,
+  developmentCards,
+  domains,
+  eventCards,
+  hands,
+  ID_DOMAIN_BLUE,
+  ID_DOMAIN_RED,
+  ID_HAND_BLUE,
+  ID_HAND_RED,
+  landCards,
+  stockPiles,
+} from '@taormina/shared-constants';
+import {
+  ACTION_CARD_INTERFACE_NAME,
+  AGGLOMERATION_CARD_INTERFACE_NAME,
+  DEVELOPMENT_CARD_INTERFACE_NAME,
+  LAND_CARD_INTERFACE_NAME,
+} from '@taormina/shared-models';
+import { map } from 'rxjs/operators';
 
 @Component({
   selector: 'taormina-root',
@@ -19,30 +36,24 @@ import { filter, map, take } from 'rxjs/operators';
   styleUrls: ['./app.component.css'],
 })
 export class AppComponent {
+  ACTION_CARD_INTERFACE_NAME = ACTION_CARD_INTERFACE_NAME;
+  AGGLOMERATION_CARD_INTERFACE_NAME = AGGLOMERATION_CARD_INTERFACE_NAME;
+  DEVELOPMENT_CARD_INTERFACE_NAME = DEVELOPMENT_CARD_INTERFACE_NAME;
+  LAND_CARD_INTERFACE_NAME = LAND_CARD_INTERFACE_NAME;
+
   constructor(
     private dice: DiceFacade,
-    private cards: CardsFacade,
-    private domains: DomainsFacade,
-    private domainCards: DomainCardsFacade,
-    private landCards: LandsPileCardsFacade,
-    private eventCards: EventsPileCardsFacade,
-    private stockPiles: StockPilesFacade,
-    private stockPileCards: StockPileCardsFacade,
-    private hands: HandsFacade,
-    private handCards: HandCardsFacade
+    private DomainsCards: DomainsCardsFacade,
+    private landsPileCards: LandsPileCardsFacade,
+    private eventsPileCards: EventsPileCardsFacade,
+    private stockPilesCards: StockPilesCardsFacade,
+    private handsCards: HandsCardsFacade,
+    private gameRules: GameRulesService
   ) {}
 
   startNewGame() {
     this.dice.initNewGame();
-    this.cards.initNewGame();
-    this.domains.initNewGame();
-    this.domainCards.initNewGame();
-    this.landCards.initNewGame();
-    this.eventCards.initNewGame();
-    this.stockPiles.initNewGame();
-    this.stockPileCards.initNewGame();
-    this.hands.initNewGame();
-    this.handCards.initNewGame();
+    this.gameRules.initNewGame();
   }
 
   onThrow() {
@@ -53,93 +64,85 @@ export class AppComponent {
     return this.dice.allDice$;
   }
 
-  getTopDomain() {
-    return this.domains.allDomains$.pipe(
-      filter((domains) => domains.length > 0),
-      map((domains) => domains[0])
-    );
+  getRedDomain() {
+    return domains.get(ID_DOMAIN_RED);
   }
 
-  getBottomDomain() {
-    return this.domains.allDomains$.pipe(
-      filter((domains) => domains.length > 1),
-      map((domains) => domains[1])
-    );
+  getBlueDomain() {
+    return domains.get(ID_DOMAIN_BLUE);
   }
 
-  getDomainCards(domainId: string) {
-    return this.domainCards.allDomainCards$.pipe(
-      map((domainCards) =>
-        domainCards.filter((domainCard) => domainCard.domainId === domainId)
+  getDomainsCards(domainId: string) {
+    return this.DomainsCards.allDomainsCards$.pipe(
+      map((DomainsCards) =>
+        DomainsCards.filter((domainCard) => domainCard.domainId === domainId)
       )
     );
   }
 
-  getNamedCard(cardId: string) {
-    return this.cards.getNamedCardById(cardId);
+  getLandsPileCards() {
+    return this.landsPileCards.allLandsPileCards$;
   }
 
-  getPrintableCard(cardId: string) {
-    return this.cards.getPrintableCardById(cardId);
+  getEventsPileCards() {
+    return this.eventsPileCards.allEventsPileCards$;
   }
 
-  getLandCards() {
-    return this.landCards.allLandsPileCards$;
-  }
-
-  getEventCards() {
-    return this.eventCards.allEventsPileCards$;
+  getEventCard(cardId: string) {
+    return eventCards.get(cardId);
   }
 
   getStockPiles() {
-    return this.stockPiles.allStockPiles$;
+    return stockPiles;
   }
 
-  getStockPileCards(stockPileId: string) {
-    return this.stockPileCards.allStockPileCards$.pipe(
-      map((stockPileCards) =>
-        stockPileCards.filter(
+  getStockPilesCards(stockPileId: string) {
+    return this.stockPilesCards.allStockPilesCards$.pipe(
+      map((stockPilesCards) =>
+        stockPilesCards.filter(
           (stockPileCard) => stockPileCard.stockPileId === stockPileId
         )
       )
     );
   }
 
-  getTopHand() {
-    return this.hands.allHands$.pipe(
-      filter((hands) => hands.length > 0),
-      map((hands) => hands[0])
-    );
+  getRedHand() {
+    return hands.get(ID_HAND_RED);
   }
 
-  getBottomHand() {
-    return this.hands.allHands$.pipe(
-      filter((hands) => hands.length > 1),
-      map((hands) => hands[1])
-    );
+  getBlueHand() {
+    return hands.get(ID_HAND_BLUE);
   }
 
-  getHandCards(handId: string) {
-    return this.handCards.allHandCards$.pipe(
-      map((handCards) =>
-        handCards.filter((handCard) => handCard.handId === handId)
+  getHandsCards(handId: string) {
+    return this.handsCards.allHandsCards$.pipe(
+      map((handsCards) =>
+        handsCards.filter((handCard) => handCard.handId === handId)
       )
     );
   }
 
-  drawInitialTopHand(stockPileId: string) {
-    this.getTopHand()
-      .pipe(take(1))
-      .subscribe((hand) =>
-        this.cards.drawFromStockToHand(stockPileId, 3, hand.id)
-      );
+  drawInitialRedHand(stockPileId: string) {
+    this.gameRules.drawFromStockToHand(stockPileId, 3, ID_HAND_RED);
   }
 
-  drawInitialBottomHand(stockPileId: string) {
-    this.getBottomHand()
-      .pipe(take(1))
-      .subscribe((hand) =>
-        this.cards.drawFromStockToHand(stockPileId, 3, hand.id)
-      );
+  drawInitialBlueHand(stockPileId: string) {
+    this.gameRules.drawFromStockToHand(stockPileId, 3, ID_HAND_BLUE);
+  }
+
+  getActionCard(cardId: string) {
+    return actionCards.get(cardId);
+  }
+
+  getAgglomerationCard(cardId: string) {
+    return agglomerationCards.get(cardId);
+  }
+
+  getDevelopmentCard(cardId: string) {
+    return developmentCards.get(cardId);
+  }
+
+  getLandCard(cardId: string) {
+    return landCards.get(cardId);
   }
 }

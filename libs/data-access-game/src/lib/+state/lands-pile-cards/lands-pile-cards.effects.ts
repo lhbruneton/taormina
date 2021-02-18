@@ -1,10 +1,10 @@
 import { Injectable } from '@angular/core';
-import { createEffect, Actions, ofType } from '@ngrx/effects';
+import { Actions, createEffect, ofType } from '@ngrx/effects';
 import { fetch } from '@nrwl/angular';
 import { map } from 'rxjs/operators';
 
 import * as LandsPileCardsActions from './lands-pile-cards.actions';
-import { getShuffledInitialLandCards } from '../cards/models/land';
+import { createInitialLandsPileCards } from './lands-pile-cards.models';
 
 @Injectable()
 export class LandsPileCardsEffects {
@@ -13,7 +13,7 @@ export class LandsPileCardsEffects {
       ofType(LandsPileCardsActions.initLandsPileCardsNewGame),
       map(() =>
         LandsPileCardsActions.setLandsPileCardsInitialized({
-          landsPileCards: getShuffledInitialLandCards(),
+          landsPileCards: createInitialLandsPileCards(),
         })
       )
     )

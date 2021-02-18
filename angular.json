@@ -189,6 +189,56 @@
           }
         }
       }
+    },
+    "shared-constants": {
+      "projectType": "library",
+      "root": "libs/shared-constants",
+      "sourceRoot": "libs/shared-constants/src",
+      "prefix": "taormina",
+      "architect": {
+        "lint": {
+          "builder": "@nrwl/linter:eslint",
+          "options": {
+            "lintFilePatterns": [
+              "libs/shared-constants/src/**/*.ts",
+              "libs/shared-constants/src/**/*.html"
+            ]
+          }
+        },
+        "test": {
+          "builder": "@nrwl/jest:jest",
+          "outputs": ["coverage/libs/shared-constants"],
+          "options": {
+            "jestConfig": "libs/shared-constants/jest.config.js",
+            "passWithNoTests": true
+          }
+        }
+      }
+    },
+    "feature-engine": {
+      "projectType": "library",
+      "root": "libs/feature-engine",
+      "sourceRoot": "libs/feature-engine/src",
+      "prefix": "taormina",
+      "architect": {
+        "lint": {
+          "builder": "@nrwl/linter:eslint",
+          "options": {
+            "lintFilePatterns": [
+              "libs/feature-engine/src/**/*.ts",
+              "libs/feature-engine/src/**/*.html"
+            ]
+          }
+        },
+        "test": {
+          "builder": "@nrwl/jest:jest",
+          "outputs": ["coverage/libs/feature-engine"],
+          "options": {
+            "jestConfig": "libs/feature-engine/jest.config.js",
+            "passWithNoTests": true
+          }
+        }
+      }
     }
   },
   "cli": {
@@ -207,10 +257,14 @@
       }
     },
     "@nrwl/angular:application": {
+      "style": "css",
+      "linter": "eslint",
       "unitTestRunner": "jest",
       "e2eTestRunner": "cypress"
     },
     "@nrwl/angular:library": {
+      "style": "css",
+      "linter": "eslint",
       "unitTestRunner": "jest"
     },
     "@nrwl/angular:component": {

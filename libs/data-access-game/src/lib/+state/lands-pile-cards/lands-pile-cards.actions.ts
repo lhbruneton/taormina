@@ -1,5 +1,5 @@
 import { createAction, props } from '@ngrx/store';
-import { LandCardsEntity } from '../cards/models/land';
+import { LandsPileCardsEntity } from './lands-pile-cards.models';
 
 export const initLandsPileCardsNewGame = createAction(
   '[Start Page] Init LandsPileCards New Game'
@@ -11,7 +11,7 @@ export const initLandsPileCardsSavedGame = createAction(
 
 export const loadLandsPileCardsSuccess = createAction(
   '[LandsPileCards/API] Load LandsPileCards Success',
-  props<{ landsPileCards: LandCardsEntity[] }>()
+  props<{ landsPileCards: LandsPileCardsEntity[] }>()
 );
 
 export const loadLandsPileCardsFailure = createAction(
@@ -21,5 +21,5 @@ export const loadLandsPileCardsFailure = createAction(
 
 export const setLandsPileCardsInitialized = createAction(
   '[LandsPileCards] Set LandsPileCards On Init',
-  props<{ landsPileCards: LandCardsEntity[] }>()
+  props<{ landsPileCards: LandsPileCardsEntity[] }>()
 );

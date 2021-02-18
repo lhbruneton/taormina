@@ -4,12 +4,11 @@ import { EffectsModule } from '@ngrx/effects';
 import { Store, StoreModule } from '@ngrx/store';
 import { NxModule } from '@nrwl/angular';
 import { readFirst } from '@nrwl/angular/testing';
-import { LandType } from '@taormina/shared-models';
 
-import { createLandCardsEntity } from '../cards/models/land';
 import * as LandsPileCardsActions from './lands-pile-cards.actions';
 import { LandsPileCardsEffects } from './lands-pile-cards.effects';
 import { LandsPileCardsFacade } from './lands-pile-cards.facade';
+import { createLandsPileCardsEntity } from './lands-pile-cards.models';
 import {
   landsPileCardsReducer,
   LandsPileCardsState,
@@ -92,8 +91,8 @@ describe('LandsPileCardsFacade', () => {
         store.dispatch(
           LandsPileCardsActions.loadLandsPileCardsSuccess({
             landsPileCards: [
-              createLandCardsEntity('AAA', LandType.ClayPit, 0, 1),
-              createLandCardsEntity('BBB', LandType.Field, 3, 3),
+              createLandsPileCardsEntity('AAA', 'A'),
+              createLandsPileCardsEntity('BBB', 'B'),
             ],
           })
         );

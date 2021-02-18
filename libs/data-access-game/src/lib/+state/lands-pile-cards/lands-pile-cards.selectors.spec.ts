@@ -1,6 +1,7 @@
-import { LandType } from '@taormina/shared-models';
-
-import { createLandCardsEntity, LandCardsEntity } from '../cards/models/land';
+import {
+  createLandsPileCardsEntity,
+  LandsPileCardsEntity,
+} from './lands-pile-cards.models';
 import {
   initialLandsPileCardsState,
   landsPileCardsAdapter,
@@ -10,7 +11,7 @@ import * as LandsPileCardsSelectors from './lands-pile-cards.selectors';
 
 describe('LandsPileCards Selectors', () => {
   const ERROR_MSG = 'No Error Available';
-  const getLandsPileCardsId = (it: LandCardsEntity | undefined) => {
+  const getLandsPileCardsId = (it: LandsPileCardsEntity | undefined) => {
     if (it === undefined) return undefined;
     return it['id'];
   };
@@ -21,9 +22,9 @@ describe('LandsPileCards Selectors', () => {
     state = {
       landsPileCards: landsPileCardsAdapter.setAll(
         [
-          createLandCardsEntity('PRODUCT-AAA', LandType.ClayPit, 0, 1),
-          createLandCardsEntity('PRODUCT-BBB', LandType.Forest, 1, 4),
-          createLandCardsEntity('PRODUCT-CCC', LandType.GoldMine, 2, 2),
+          createLandsPileCardsEntity('PRODUCT-AAA', 'A'),
+          createLandsPileCardsEntity('PRODUCT-BBB', 'B'),
+          createLandsPileCardsEntity('PRODUCT-CCC', 'C'),
         ],
         {
           ...initialLandsPileCardsState,

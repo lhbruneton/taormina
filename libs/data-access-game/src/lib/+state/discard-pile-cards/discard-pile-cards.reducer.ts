@@ -1,12 +1,13 @@
+import { createEntityAdapter, EntityAdapter, EntityState } from '@ngrx/entity';
 import { createReducer, on } from '@ngrx/store';
-import { EntityState, EntityAdapter, createEntityAdapter } from '@ngrx/entity';
 
 import * as DiscardPileCardsActions from './discard-pile-cards.actions';
-import { CardsEntity } from '../cards/cards.models';
+import { DiscardPileCardsEntity } from './discard-pile-cards.models';
 
 export const DISCARD_PILE_CARDS_FEATURE_KEY = 'discardPileCards';
 
-export interface DiscardPileCardsState extends EntityState<CardsEntity> {
+export interface DiscardPileCardsState
+  extends EntityState<DiscardPileCardsEntity> {
   selectedId?: string; // which DiscardPileCards record has been selected
   initialized: boolean;
   loaded: boolean; // has the DiscardPileCards list been loaded
@@ -17,7 +18,7 @@ export interface DiscardPileCardsPartialState {
   readonly [DISCARD_PILE_CARDS_FEATURE_KEY]: DiscardPileCardsState;
 }
 
-export const discardPileCardsAdapter: EntityAdapter<CardsEntity> = createEntityAdapter<CardsEntity>();
+export const discardPileCardsAdapter: EntityAdapter<DiscardPileCardsEntity> = createEntityAdapter<DiscardPileCardsEntity>();
 
 export const initialDiscardPileCardsState: DiscardPileCardsState = discardPileCardsAdapter.getInitialState(
   {

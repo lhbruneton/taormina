@@ -1,12 +1,12 @@
+import { createEntityAdapter, EntityAdapter, EntityState } from '@ngrx/entity';
 import { createReducer, on } from '@ngrx/store';
-import { EntityState, EntityAdapter, createEntityAdapter } from '@ngrx/entity';
 
 import * as LandsPileCardsActions from './lands-pile-cards.actions';
-import { LandCardsEntity } from '../cards/models/land';
+import { LandsPileCardsEntity } from './lands-pile-cards.models';
 
 export const LANDS_PILE_CARDS_FEATURE_KEY = 'landsPileCards';
 
-export interface LandsPileCardsState extends EntityState<LandCardsEntity> {
+export interface LandsPileCardsState extends EntityState<LandsPileCardsEntity> {
   selectedId?: string; // which LandsPileCards record has been selected
   initialized: boolean;
   loaded: boolean; // has the LandsPileCards list been loaded
@@ -17,7 +17,7 @@ export interface LandsPileCardsPartialState {
   readonly [LANDS_PILE_CARDS_FEATURE_KEY]: LandsPileCardsState;
 }
 
-export const landsPileCardsAdapter: EntityAdapter<LandCardsEntity> = createEntityAdapter<LandCardsEntity>();
+export const landsPileCardsAdapter: EntityAdapter<LandsPileCardsEntity> = createEntityAdapter<LandsPileCardsEntity>();
 
 export const initialLandsPileCardsState: LandsPileCardsState = landsPileCardsAdapter.getInitialState(
   {

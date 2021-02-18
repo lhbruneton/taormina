@@ -1,16 +1,12 @@
 import { TestBed } from '@angular/core/testing';
 import { StoreModule } from '@ngrx/store';
 import {
-  CardsFacade,
   DiceFacade,
-  DomainCardsFacade,
-  DomainsFacade,
+  DomainsCardsFacade,
   EventsPileCardsFacade,
-  HandCardsFacade,
-  HandsFacade,
+  HandsCardsFacade,
   LandsPileCardsFacade,
-  StockPileCardsFacade,
-  StockPilesFacade,
+  StockPilesCardsFacade,
 } from '@taormina/data-access-game';
 import { AppComponent } from './app.component';
 
@@ -21,15 +17,11 @@ describe('AppComponent', () => {
       imports: [StoreModule.forRoot({})],
       providers: [
         DiceFacade,
-        CardsFacade,
-        DomainsFacade,
-        DomainCardsFacade,
+        DomainsCardsFacade,
         LandsPileCardsFacade,
         EventsPileCardsFacade,
-        StockPilesFacade,
-        StockPileCardsFacade,
-        HandsFacade,
-        HandCardsFacade,
+        StockPilesCardsFacade,
+        HandsCardsFacade,
       ],
     }).compileComponents();
   });

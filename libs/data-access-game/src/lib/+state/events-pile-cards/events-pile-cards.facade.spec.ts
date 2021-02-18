@@ -5,10 +5,10 @@ import { Store, StoreModule } from '@ngrx/store';
 import { NxModule } from '@nrwl/angular';
 import { readFirst } from '@nrwl/angular/testing';
 
-import { createEventCardsEntity } from '../cards/models/event';
 import * as EventsPileCardsActions from './events-pile-cards.actions';
 import { EventsPileCardsEffects } from './events-pile-cards.effects';
 import { EventsPileCardsFacade } from './events-pile-cards.facade';
+import { createEventsPileCardsEntity } from './events-pile-cards.models';
 import {
   eventsPileCardsReducer,
   EventsPileCardsState,
@@ -91,8 +91,8 @@ describe('EventsPileCardsFacade', () => {
         store.dispatch(
           EventsPileCardsActions.loadEventsPileCardsSuccess({
             eventsPileCards: [
-              createEventCardsEntity('AAA', 'Some name', []),
-              createEventCardsEntity('BBB', 'Some other name', []),
+              createEventsPileCardsEntity('AAA', 'A'),
+              createEventsPileCardsEntity('BBB', 'B'),
             ],
           })
         );
