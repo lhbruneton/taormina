@@ -49,5 +49,8 @@ export const domainsCardsReducer = createReducer(
     DomainsCardsActions.setDomainsCardsInitialized,
     (state, { domainsCards }) =>
       domainsCardsAdapter.setAll(domainsCards, { ...state, initialized: true })
+  ),
+  on(DomainsCardsActions.updateDomainsCards, (state, { updates }) =>
+    domainsCardsAdapter.updateMany(updates, state)
   )
 );

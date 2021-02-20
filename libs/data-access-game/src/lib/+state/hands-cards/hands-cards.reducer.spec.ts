@@ -24,6 +24,26 @@ describe('HandsCards Reducer', () => {
 
   describe('loadHandsCardsSuccess', () => {
     it('should set the list of known HandsCards and loaded', () => {
+      const newState: HandsCardsState = {
+        ids: ['PRODUCT-AAA', 'PRODUCT-zzz'],
+        entities: {
+          'PRODUCT-AAA': {
+            id: 'PRODUCT-AAA',
+            handId: 'A',
+            cardType: ACTION_CARD_INTERFACE_NAME,
+            cardId: 'A',
+          },
+          'PRODUCT-zzz': {
+            id: 'PRODUCT-zzz',
+            handId: 'z',
+            cardType: DEVELOPMENT_CARD_INTERFACE_NAME,
+            cardId: 'z',
+          },
+        },
+        initialized: false,
+        loaded: true,
+      };
+
       const handsCards = [
         createHandsCardsEntity(
           'PRODUCT-AAA',
@@ -40,13 +60,12 @@ describe('HandsCards Reducer', () => {
       ];
       const action = HandsCardsActions.loadHandsCardsSuccess({ handsCards });
 
-      const result: HandsCardsState = handsCardsReducer(
+      const state: HandsCardsState = handsCardsReducer(
         initialHandsCardsState,
         action
       );
 
-      expect(result.loaded).toBe(true);
-      expect(result.ids.length).toBe(2);
+      expect(state).toEqual(newState);
     });
   });
 

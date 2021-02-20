@@ -1,4 +1,10 @@
 import { createFeatureSelector, createSelector } from '@ngrx/store';
+import { landCards } from '@taormina/shared-constants';
+import {
+  LAND_CARD_INTERFACE_NAME,
+  ResourceValue,
+} from '@taormina/shared-models';
+import { DomainsCardsEntity } from './domains-cards.models';
 import {
   DOMAINS_CARDS_FEATURE_KEY,
   DomainsCardsState,
@@ -46,4 +52,16 @@ export const getDomainsCardsSelected = createSelector(
     if (selectedId === undefined) return undefined;
     return entities[selectedId];
   }
+);
+
+export const getLandCardsPivotsForDie = createSelector(
+  getAllDomainsCards,
+  (entities: DomainsCardsEntity[], props: { die: ResourceValue }) =>
+    entities.filter((pivot) => {
+      if (pivot.cardType === LAND_CARD_INTERFACE_NAME) {
+        const land = landCards.get(pivot.cardId);
+        if (land && land.die === props.die) return true;
+      }
+      return false;
+    })
 );

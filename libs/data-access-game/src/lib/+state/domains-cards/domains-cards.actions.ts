@@ -1,4 +1,7 @@
+import { UpdateStr } from '@ngrx/entity/src/models';
 import { createAction, props } from '@ngrx/store';
+import { ResourceValue } from '@taormina/shared-models';
+
 import { DomainsCardsEntity } from './domains-cards.models';
 
 export const initDomainsCardsNewGame = createAction(
@@ -22,4 +25,14 @@ export const loadDomainsCardsFailure = createAction(
 export const setDomainsCardsInitialized = createAction(
   '[DomainsCards] Set DomainsCards On Init',
   props<{ domainsCards: DomainsCardsEntity[] }>()
+);
+
+export const increaseLandValueForDie = createAction(
+  '[DomainsCards] Increase Land Value For Die',
+  props<{ die: ResourceValue }>()
+);
+
+export const updateDomainsCards = createAction(
+  '[DomainsCards] Update DomainsCards',
+  props<{ updates: UpdateStr<DomainsCardsEntity>[] }>()
 );
