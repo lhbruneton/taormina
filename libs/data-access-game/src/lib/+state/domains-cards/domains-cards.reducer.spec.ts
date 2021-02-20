@@ -12,8 +12,42 @@ import {
 } from './domains-cards.reducer';
 
 describe('DomainsCards Reducer', () => {
-  describe('valid DomainsCards actions', () => {
-    it('loadDomainsCardsSuccess should set the list of known DomainsCards', () => {
+  describe('unknown action', () => {
+    it('should return the previous state', () => {
+      const action = {} as Action;
+
+      const result = domainsCardsReducer(initialDomainsCardsState, action);
+
+      expect(result).toBe(initialDomainsCardsState);
+    });
+  });
+
+  describe('loadDomainsCardsSuccess', () => {
+    it('should set the list of known DomainsCards and loaded', () => {
+      const newState: DomainsCardsState = {
+        ids: ['PRODUCT-AAA', 'PRODUCT-zzz'],
+        entities: {
+          'PRODUCT-AAA': {
+            id: 'PRODUCT-AAA',
+            domainId: 'A',
+            cardType: DEVELOPMENT_CARD_INTERFACE_NAME,
+            cardId: 'A',
+            col: 0,
+            row: 0,
+          },
+          'PRODUCT-zzz': {
+            id: 'PRODUCT-zzz',
+            domainId: 'z',
+            cardType: AGGLOMERATION_CARD_INTERFACE_NAME,
+            cardId: 'z',
+            col: 0,
+            row: 0,
+          },
+        },
+        initialized: false,
+        loaded: true,
+      };
+
       const domainsCards = [
         createDomainsCardsEntity(
           'PRODUCT-AAA',
@@ -36,23 +70,86 @@ describe('DomainsCards Reducer', () => {
         domainsCards,
       });
 
-      const result: DomainsCardsState = domainsCardsReducer(
+      const state: DomainsCardsState = domainsCardsReducer(
         initialDomainsCardsState,
         action
       );
 
-      expect(result.loaded).toBe(true);
-      expect(result.ids.length).toBe(2);
+      expect(state).toEqual(newState);
     });
   });
 
-  describe('unknown action', () => {
-    it('should return the previous state', () => {
-      const action = {} as Action;
+  describe('updateDomainsCards', () => {
+    it('should update the right DomainsCards in the list', () => {
+      const newState: DomainsCardsState = {
+        ids: ['PRODUCT-AAA', 'PRODUCT-zzz'],
+        entities: {
+          'PRODUCT-AAA': {
+            id: 'PRODUCT-AAA',
+            domainId: 'A',
+            cardType: AGGLOMERATION_CARD_INTERFACE_NAME,
+            cardId: 'A',
+            col: 0,
+            row: 0,
+            value: 1,
+          },
+          'PRODUCT-zzz': {
+            id: 'PRODUCT-zzz',
+            domainId: 'z',
+            cardType: DEVELOPMENT_CARD_INTERFACE_NAME,
+            cardId: 'z',
+            col: 0,
+            row: 0,
+            value: 0,
+          },
+        },
+        initialized: true,
+        loaded: false,
+      };
 
-      const result = domainsCardsReducer(initialDomainsCardsState, action);
+      const initialState: DomainsCardsState = {
+        ids: ['PRODUCT-AAA', 'PRODUCT-zzz'],
+        entities: {
+          'PRODUCT-AAA': {
+            id: 'PRODUCT-AAA',
+            domainId: 'A',
+            cardType: AGGLOMERATION_CARD_INTERFACE_NAME,
+            cardId: 'A',
+            col: 0,
+            row: 0,
+            value: 0,
+          },
+          'PRODUCT-zzz': {
+            id: 'PRODUCT-zzz',
+            domainId: 'z',
+            cardType: DEVELOPMENT_CARD_INTERFACE_NAME,
+            cardId: 'z',
+            col: 0,
+            row: 0,
+            value: 0,
+          },
+        },
+        initialized: true,
+        loaded: false,
+      };
 
-      expect(result).toBe(initialDomainsCardsState);
+      const action = DomainsCardsActions.updateDomainsCards({
+        updates: [
+          {
+            id: 'PRODUCT-AAA',
+            changes: {
+              value: 1,
+            },
+          },
+        ],
+      });
+
+      const state: DomainsCardsState = domainsCardsReducer(
+        initialState,
+        action
+      );
+
+      expect(state).toEqual(newState);
     });
   });
 });

@@ -1,7 +1,9 @@
+import { ID_DOMAIN_BLUE, ID_DOMAIN_RED } from '@taormina/shared-constants';
 import {
   AGGLOMERATION_CARD_INTERFACE_NAME,
-  DEVELOPMENT_CARD_INTERFACE_NAME,
+  LAND_CARD_INTERFACE_NAME,
 } from '@taormina/shared-models';
+
 import {
   createDomainsCardsEntity,
   DomainsCardsEntity,
@@ -28,25 +30,25 @@ describe('DomainsCards Selectors', () => {
         [
           createDomainsCardsEntity(
             'PRODUCT-AAA',
-            'A',
+            ID_DOMAIN_RED,
             AGGLOMERATION_CARD_INTERFACE_NAME,
-            'A',
+            'ROAD_1',
             0,
             0
           ),
           createDomainsCardsEntity(
             'PRODUCT-BBB',
-            'B',
-            DEVELOPMENT_CARD_INTERFACE_NAME,
-            'B',
+            ID_DOMAIN_BLUE,
+            LAND_CARD_INTERFACE_NAME,
+            'LAND_1',
             0,
             0
           ),
           createDomainsCardsEntity(
             'PRODUCT-CCC',
-            'C',
-            AGGLOMERATION_CARD_INTERFACE_NAME,
-            'C',
+            ID_DOMAIN_BLUE,
+            LAND_CARD_INTERFACE_NAME,
+            'LAND_3',
             0,
             0
           ),
@@ -87,6 +89,15 @@ describe('DomainsCards Selectors', () => {
       const result = DomainsCardsSelectors.getDomainsCardsError(state);
 
       expect(result).toBe(ERROR_MSG);
+    });
+
+    it('getLandCardsPivotsForDie({ die }) should return the pivot for the land card with the right die', () => {
+      const result = DomainsCardsSelectors.getLandCardsPivotsForDie(state, {
+        die: 1,
+      });
+      const selId = getDomainsCardsId(result[0]);
+
+      expect(selId).toBe('PRODUCT-BBB');
     });
   });
 });

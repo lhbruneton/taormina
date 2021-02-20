@@ -59,5 +59,5 @@ function eventFromValue(value: DiceValue): EventValue {
 export function createRandomDice() {
   const resource = createResourceDiceEntity(randomDiceValue());
   const event = createEventDiceEntity(eventFromValue(randomDiceValue()));
-  return [resource, event];
+  return { resource, event };
 }
