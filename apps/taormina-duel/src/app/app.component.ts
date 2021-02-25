@@ -1,8 +1,8 @@
 import { Component } from '@angular/core';
 import {
-  DiceFacade,
   DomainsCardsFacade,
   EventsPileCardsFacade,
+  GameFacade,
   HandsCardsFacade,
   LandsPileCardsFacade,
   StockPilesCardsFacade,
@@ -26,8 +26,11 @@ import {
   ACTION_CARD_INTERFACE_NAME,
   AGGLOMERATION_CARD_INTERFACE_NAME,
   DEVELOPMENT_CARD_INTERFACE_NAME,
+  DomainColor,
+  GamePhase,
   LAND_CARD_INTERFACE_NAME,
 } from '@taormina/shared-models';
+import { combineLatest } from 'rxjs';
 import { map } from 'rxjs/operators';
 
 @Component({
@@ -36,13 +39,16 @@ import { map } from 'rxjs/operators';
   styleUrls: ['./app.component.css'],
 })
 export class AppComponent {
+  GamePhase = GamePhase;
+  DomainColor = DomainColor;
+
   ACTION_CARD_INTERFACE_NAME = ACTION_CARD_INTERFACE_NAME;
   AGGLOMERATION_CARD_INTERFACE_NAME = AGGLOMERATION_CARD_INTERFACE_NAME;
   DEVELOPMENT_CARD_INTERFACE_NAME = DEVELOPMENT_CARD_INTERFACE_NAME;
   LAND_CARD_INTERFACE_NAME = LAND_CARD_INTERFACE_NAME;
 
   constructor(
-    private dice: DiceFacade,
+    private game: GameFacade,
     private DomainsCards: DomainsCardsFacade,
     private landsPileCards: LandsPileCardsFacade,
     private eventsPileCards: EventsPileCardsFacade,
@@ -52,16 +58,44 @@ export class AppComponent {
   ) {}
 
   startNewGame() {
-    this.dice.initNewGame();
     this.gameRules.initNewGame();
   }
 
-  onThrow() {
-    this.dice.throw();
+  getPhase() {
+    return this.game.phase$;
   }
 
-  getDice() {
-    return this.dice.allDice$;
+  setPhase(phase: GamePhase) {
+    this.game.setPhase(phase);
+  }
+
+  getPlayer() {
+    return this.game.player$;
+  }
+
+  setPlayer(player: DomainColor) {
+    this.game.setPlayer(player);
+  }
+
+  throwDisabled() {
+    return this.game.phase$.pipe(
+      map(
+        (phase) =>
+          phase !== GamePhase.InitialThrow && phase !== GamePhase.LoopThrow
+      )
+    );
+  }
+
+  onThrow() {
+    this.game.throwDice();
+  }
+
+  getProductionDie() {
+    return this.game.productionDie$;
+  }
+
+  getEventDie() {
+    return this.game.eventDie$;
   }
 
   getRedDomain() {
@@ -122,8 +156,24 @@ export class AppComponent {
     );
   }
 
+  drawInitialRedHandAvailable() {
+    return combineLatest([this.game.phase$, this.game.player$]).pipe(
+      map(([phase, player]) => {
+        return phase === GamePhase.InitialDraw && player === DomainColor.Red;
+      })
+    );
+  }
+
   drawInitialRedHand(stockPileId: string) {
     this.gameRules.drawFromStockToHand(stockPileId, 3, ID_HAND_RED);
+  }
+
+  drawInitialBlueHandAvailable() {
+    return combineLatest([this.game.phase$, this.game.player$]).pipe(
+      map(([phase, player]) => {
+        return phase === GamePhase.InitialDraw && player === DomainColor.Blue;
+      })
+    );
   }
 
   drawInitialBlueHand(stockPileId: string) {

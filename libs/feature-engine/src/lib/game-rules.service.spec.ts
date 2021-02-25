@@ -3,6 +3,7 @@ import { StoreModule } from '@ngrx/store';
 import {
   DomainsCardsFacade,
   EventsPileCardsFacade,
+  GameFacade,
   HandsCardsFacade,
   LandsPileCardsFacade,
   StockPilesCardsFacade,
@@ -17,6 +18,7 @@ describe('GameRulesService', () => {
     TestBed.configureTestingModule({
       imports: [StoreModule.forRoot({})],
       providers: [
+        GameFacade,
         DomainsCardsFacade,
         LandsPileCardsFacade,
         EventsPileCardsFacade,

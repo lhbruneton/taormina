@@ -1,13 +1,14 @@
 import { TestBed } from '@angular/core/testing';
 import { StoreModule } from '@ngrx/store';
 import {
-  DiceFacade,
   DomainsCardsFacade,
   EventsPileCardsFacade,
+  GameFacade,
   HandsCardsFacade,
   LandsPileCardsFacade,
   StockPilesCardsFacade,
 } from '@taormina/data-access-game';
+import { GameRulesService } from '@taormina/feature-engine';
 import { AppComponent } from './app.component';
 
 describe('AppComponent', () => {
@@ -16,12 +17,13 @@ describe('AppComponent', () => {
       declarations: [AppComponent],
       imports: [StoreModule.forRoot({})],
       providers: [
-        DiceFacade,
+        GameFacade,
         DomainsCardsFacade,
         LandsPileCardsFacade,
         EventsPileCardsFacade,
         StockPilesCardsFacade,
         HandsCardsFacade,
+        GameRulesService,
       ],
     }).compileComponents();
   });
