@@ -2,10 +2,6 @@ import { CommonModule } from '@angular/common';
 import { NgModule } from '@angular/core';
 import { EffectsModule } from '@ngrx/effects';
 import { StoreModule } from '@ngrx/store';
-
-import { DiceEffects } from './+state/dice/dice.effects';
-import { DiceFacade } from './+state/dice/dice.facade';
-import * as fromDice from './+state/dice/dice.reducer';
 import { DiscardPileCardsEffects } from './+state/discard-pile-cards/discard-pile-cards.effects';
 import { DiscardPileCardsFacade } from './+state/discard-pile-cards/discard-pile-cards.facade';
 import * as fromDiscardPileCards from './+state/discard-pile-cards/discard-pile-cards.reducer';
@@ -18,6 +14,9 @@ import * as fromEventsPileCards from './+state/events-pile-cards/events-pile-car
 import { FaceUpPilesCardsEffects } from './+state/face-up-piles-cards/face-up-piles-cards.effects';
 import { FaceUpPilesCardsFacade } from './+state/face-up-piles-cards/face-up-piles-cards.facade';
 import * as fromFaceUpPilesCards from './+state/face-up-piles-cards/face-up-piles-cards.reducer';
+import { GameEffects } from './+state/game/game.effects';
+import { GameFacade } from './+state/game/game.facade';
+import * as fromGame from './+state/game/game.reducer';
 import { HandsCardsEffects } from './+state/hands-cards/hands-cards.effects';
 import { HandsCardsFacade } from './+state/hands-cards/hands-cards.facade';
 import * as fromHandsCards from './+state/hands-cards/hands-cards.reducer';
@@ -31,13 +30,8 @@ import * as fromStockPilesCards from './+state/stock-piles-cards/stock-piles-car
 @NgModule({
   imports: [
     CommonModule,
-    StoreModule.forFeature(fromDice.DICE_FEATURE_KEY, fromDice.diceReducer),
-    EffectsModule.forFeature([DiceEffects]),
-    StoreModule.forFeature(
-      fromFaceUpPilesCards.FACE_UP_PILES_CARDS_FEATURE_KEY,
-      fromFaceUpPilesCards.faceUpPilesCardsReducer
-    ),
-    EffectsModule.forFeature([FaceUpPilesCardsEffects]),
+    StoreModule.forFeature(fromGame.GAME_FEATURE_KEY, fromGame.gameReducer),
+    EffectsModule.forFeature([GameEffects]),
     StoreModule.forFeature(
       fromDomainsCards.DOMAINS_CARDS_FEATURE_KEY,
       fromDomainsCards.domainsCardsReducer
@@ -49,35 +43,40 @@ import * as fromStockPilesCards from './+state/stock-piles-cards/stock-piles-car
     ),
     EffectsModule.forFeature([HandsCardsEffects]),
     StoreModule.forFeature(
-      fromStockPilesCards.STOCK_PILES_CARDS_FEATURE_KEY,
-      fromStockPilesCards.stockPilesCardsReducer
-    ),
-    EffectsModule.forFeature([StockPilesCardsEffects]),
-    StoreModule.forFeature(
-      fromDiscardPileCards.DISCARD_PILE_CARDS_FEATURE_KEY,
-      fromDiscardPileCards.discardPileCardsReducer
-    ),
-    EffectsModule.forFeature([DiscardPileCardsEffects]),
-    StoreModule.forFeature(
-      fromEventsPileCards.EVENTS_PILE_CARDS_FEATURE_KEY,
-      fromEventsPileCards.eventsPileCardsReducer
+      fromFaceUpPilesCards.FACE_UP_PILES_CARDS_FEATURE_KEY,
+      fromFaceUpPilesCards.faceUpPilesCardsReducer
     ),
     EffectsModule.forFeature([EventsPileCardsEffects]),
     StoreModule.forFeature(
       fromLandsPileCards.LANDS_PILE_CARDS_FEATURE_KEY,
       fromLandsPileCards.landsPileCardsReducer
     ),
+    EffectsModule.forFeature([FaceUpPilesCardsEffects]),
+    StoreModule.forFeature(
+      fromStockPilesCards.STOCK_PILES_CARDS_FEATURE_KEY,
+      fromStockPilesCards.stockPilesCardsReducer
+    ),
+    EffectsModule.forFeature([StockPilesCardsEffects]),
+    StoreModule.forFeature(
+      fromEventsPileCards.EVENTS_PILE_CARDS_FEATURE_KEY,
+      fromEventsPileCards.eventsPileCardsReducer
+    ),
     EffectsModule.forFeature([LandsPileCardsEffects]),
+    StoreModule.forFeature(
+      fromDiscardPileCards.DISCARD_PILE_CARDS_FEATURE_KEY,
+      fromDiscardPileCards.discardPileCardsReducer
+    ),
+    EffectsModule.forFeature([DiscardPileCardsEffects]),
   ],
   providers: [
-    DiceFacade,
-    FaceUpPilesCardsFacade,
+    GameFacade,
     DomainsCardsFacade,
     HandsCardsFacade,
-    StockPilesCardsFacade,
-    DiscardPileCardsFacade,
-    EventsPileCardsFacade,
+    FaceUpPilesCardsFacade,
     LandsPileCardsFacade,
+    StockPilesCardsFacade,
+    EventsPileCardsFacade,
+    DiscardPileCardsFacade,
   ],
 })
 export class DataAccessGameModule {}

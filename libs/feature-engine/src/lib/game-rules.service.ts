@@ -2,6 +2,7 @@ import { Injectable } from '@angular/core';
 import {
   DomainsCardsFacade,
   EventsPileCardsFacade,
+  GameFacade,
   HandsCardsFacade,
   LandsPileCardsFacade,
   StockPilesCardsFacade,
@@ -13,6 +14,7 @@ import { map, take } from 'rxjs/operators';
 })
 export class GameRulesService {
   constructor(
+    private game: GameFacade,
     private DomainsCards: DomainsCardsFacade,
     private landCards: LandsPileCardsFacade,
     private eventCards: EventsPileCardsFacade,
@@ -21,6 +23,7 @@ export class GameRulesService {
   ) {}
 
   initNewGame() {
+    this.game.initNewGame();
     this.DomainsCards.initNewGame();
     this.landCards.initNewGame();
     this.eventCards.initNewGame();

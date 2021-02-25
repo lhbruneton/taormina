@@ -19,7 +19,8 @@
       "@taormina/data-access-game": ["libs/data-access-game/src/index.ts"],
       "@taormina/shared-models": ["libs/shared-models/src/index.ts"],
       "@taormina/shared-constants": ["libs/shared-constants/src/index.ts"],
-      "@taormina/feature-engine": ["libs/feature-engine/src/index.ts"]
+      "@taormina/feature-engine": ["libs/feature-engine/src/index.ts"],
+      "@taormina/shared-utils": ["libs/shared-utils/src/index.ts"]
     },
     "allowSyntheticDefaultImports": true,
     "strict": true,

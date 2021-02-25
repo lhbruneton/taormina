@@ -1,7 +1,33 @@
 <button type="button" (click)="startNewGame()">New Game !</button>
 <hr />
-<button type="button" (click)="onThrow()">throw</button>
-<p *ngFor="let die of getDice() | async">{{ die.id }} - {{ die.value }}</p>
+<p>
+  <label *ngFor="let phase of GamePhase | keyvalue">
+    <input
+      type="radio"
+      [value]="phase.value"
+      name="phase"
+      [ngModel]="getPhase() | async"
+      (ngModelChange)="setPhase($event)"
+    />{{ phase.key }}</label
+  >
+</p>
+<p>
+  <label *ngFor="let player of DomainColor | keyvalue">
+    <input
+      type="radio"
+      [value]="player.value"
+      name="player"
+      [ngModel]="getPlayer() | async"
+      (ngModelChange)="setPlayer($event)"
+    />{{ player.key }}</label
+  >
+</p>
+<hr />
+<button type="button" [disabled]="throwDisabled() | async" (click)="onThrow()">
+  throw
+</button>
+<p *ngIf="getProductionDie() | async as value">Production: {{ value }}</p>
+<p *ngIf="getEventDie() | async as value">Event: {{ value }}</p>
 <hr />
 <div *ngFor="let pivot of getLandsPileCards() | async">
   <div *ngIf="getLandCard(pivot.cardId) as land">
@@ -16,10 +42,18 @@
 </div>
 <div *ngFor="let pile of getStockPiles()">
   <hr />
-  <button type="button" (click)="drawInitialRedHand(pile)">
+  <button
+    *ngIf="drawInitialRedHandAvailable() | async"
+    type="button"
+    (click)="drawInitialRedHand(pile)"
+  >
     Draw 3 cards to red hand
   </button>
-  <button type="button" (click)="drawInitialBlueHand(pile)">
+  <button
+    *ngIf="drawInitialBlueHandAvailable() | async"
+    type="button"
+    (click)="drawInitialBlueHand(pile)"
+  >
     Draw 3 cards to blue hand
   </button>
   <div
