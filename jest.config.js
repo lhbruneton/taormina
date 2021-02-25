@@ -6,5 +6,6 @@ module.exports = {
     '<rootDir>/libs/shared-models',
     '<rootDir>/libs/shared-constants',
     '<rootDir>/libs/feature-engine',
+    '<rootDir>/libs/shared-utils',
   ],
 };

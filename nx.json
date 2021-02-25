@@ -30,6 +30,7 @@
     "data-access-game": { "tags": [] },
     "shared-models": { "tags": [] },
     "shared-constants": { "tags": [] },
-    "feature-engine": { "tags": [] }
+    "feature-engine": { "tags": [] },
+    "shared-utils": { "tags": [] }
   }
 }
