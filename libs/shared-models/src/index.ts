@@ -15,4 +15,5 @@ export * from './lib/types/agglomeration';
 export * from './lib/types/development';
 export * from './lib/types/dice';
 export * from './lib/types/domain';
+export * from './lib/types/phase';
 export * from './lib/types/resources';
