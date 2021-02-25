@@ -7,4 +7,3 @@ export * from './lib/domain';
 export * from './lib/hand';
 export * from './lib/piles/face-up';
 export * from './lib/piles/stock';
-export * from './lib/shared-constants.module';

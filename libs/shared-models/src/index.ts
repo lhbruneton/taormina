@@ -4,7 +4,6 @@ export * from './lib/interfaces/name';
 export * from './lib/interfaces/print';
 export * from './lib/interfaces/rules';
 export * from './lib/interfaces/victory';
-export * from './lib/shared-models.module';
 export * from './lib/structures/action';
 export * from './lib/structures/agglomeration';
 export * from './lib/structures/development';
