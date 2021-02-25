@@ -1,4 +1,5 @@
 import { TestBed } from '@angular/core/testing';
+import { FormsModule } from '@angular/forms';
 import { StoreModule } from '@ngrx/store';
 import {
   DomainsCardsFacade,
@@ -15,7 +16,7 @@ describe('AppComponent', () => {
   beforeEach(async () => {
     await TestBed.configureTestingModule({
       declarations: [AppComponent],
-      imports: [StoreModule.forRoot({})],
+      imports: [FormsModule, StoreModule.forRoot({})],
       providers: [
         GameFacade,
         DomainsCardsFacade,
