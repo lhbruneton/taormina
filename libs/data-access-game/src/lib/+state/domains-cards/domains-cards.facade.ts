@@ -29,11 +29,11 @@ export class DomainsCardsFacade {
    * Use the initialization action to perform one
    * or more tasks in your Effects.
    */
-  initNewGame() {
+  initNewGame(): void {
     this.store.dispatch(DomainsCardsActions.initDomainsCardsNewGame());
   }
 
-  initSavedGame() {
+  initSavedGame(): void {
     this.store.dispatch(DomainsCardsActions.initDomainsCardsSavedGame());
   }
 }

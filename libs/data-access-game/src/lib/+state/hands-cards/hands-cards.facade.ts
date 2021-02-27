@@ -29,11 +29,11 @@ export class HandsCardsFacade {
    * Use the initialization action to perform one
    * or more tasks in your Effects.
    */
-  initNewGame() {
+  initNewGame(): void {
     this.store.dispatch(HandsCardsActions.initHandsCardsNewGame());
   }
 
-  initSavedGame() {
+  initSavedGame(): void {
     this.store.dispatch(HandsCardsActions.initHandsCardsSavedGame());
   }
 
@@ -45,7 +45,7 @@ export class HandsCardsFacade {
         | typeof DEVELOPMENT_CARD_INTERFACE_NAME;
       id: string;
     }>
-  ) {
+  ): void {
     this.store.dispatch(HandsCardsActions.addCardsToHand({ handId, cards }));
   }
 }

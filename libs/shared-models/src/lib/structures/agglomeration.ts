@@ -32,17 +32,17 @@ export const createAgglomerationCard = (
   type: AgglomerationType,
   victoryPoints?: number,
   color?: DomainColor
-) =>
-  ({
-    interface: AGGLOMERATION_CARD_INTERFACE_NAME,
-    id,
-    cost,
-    type,
-    victoryPoints,
-    color,
-  } as AgglomerationCard);
+): AgglomerationCard => ({
+  interface: AGGLOMERATION_CARD_INTERFACE_NAME,
+  id,
+  cost,
+  type,
+  victoryPoints,
+  color,
+  print: (): string => `type: ${type}`,
+});
 
-export function createRoad(id: string, color?: DomainColor) {
+export function createRoad(id: string, color?: DomainColor): AgglomerationCard {
   return createAgglomerationCard(
     id,
     new Map([
@@ -55,7 +55,10 @@ export function createRoad(id: string, color?: DomainColor) {
   );
 }
 
-export function createHamlet(id: string, color?: DomainColor) {
+export function createHamlet(
+  id: string,
+  color?: DomainColor
+): AgglomerationCard {
   return createAgglomerationCard(
     id,
     new Map([
@@ -70,7 +73,7 @@ export function createHamlet(id: string, color?: DomainColor) {
   );
 }
 
-export function createTown(id: string, color?: DomainColor) {
+export function createTown(id: string, color?: DomainColor): AgglomerationCard {
   return createAgglomerationCard(
     id,
     new Map([

@@ -11,7 +11,9 @@ import * as LandsPileCardsSelectors from './lands-pile-cards.selectors';
 
 describe('LandsPileCards Selectors', () => {
   const ERROR_MSG = 'No Error Available';
-  const getLandsPileCardsId = (it: LandsPileCardsEntity | undefined) => {
+  const getLandsPileCardsId = (
+    it: LandsPileCardsEntity | undefined
+  ): string | undefined => {
     if (it === undefined) return undefined;
     return it['id'];
   };

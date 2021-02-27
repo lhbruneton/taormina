@@ -22,10 +22,9 @@ export const createHandsCardsEntity = (
     | typeof ACTION_CARD_INTERFACE_NAME
     | typeof DEVELOPMENT_CARD_INTERFACE_NAME,
   cardId: string
-) =>
-  ({
-    id,
-    handId,
-    cardType,
-    cardId,
-  } as HandsCardsEntity);
+): HandsCardsEntity => ({
+  id,
+  handId,
+  cardType,
+  cardId,
+});

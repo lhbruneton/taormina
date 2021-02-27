@@ -23,8 +23,14 @@ export const createLandCard = (
   type: LandType,
   die: ResourceValue,
   color?: DomainColor
-) =>
-  ({ interface: LAND_CARD_INTERFACE_NAME, id, type, die, color } as LandCard);
+): LandCard => ({
+  interface: LAND_CARD_INTERFACE_NAME,
+  id,
+  type,
+  die,
+  color,
+  print: (): string => `${type}`,
+});
 
 // eslint-disable-next-line @typescript-eslint/no-explicit-any
 export function isLandCard(obj: any): obj is LandCard {

@@ -23,27 +23,27 @@ export class GameFacade {
    * Use the initialization action to perform one
    * or more tasks in your Effects.
    */
-  initNewGame() {
+  initNewGame(): void {
     this.store.dispatch(GameActions.initNewGame());
   }
 
-  throwDice() {
+  throwDice(): void {
     this.store.dispatch(GameActions.throwDice());
   }
 
-  throwProductionDie() {
+  throwProductionDie(): void {
     this.store.dispatch(GameActions.throwProductionDie());
   }
 
-  throwEventDie() {
+  throwEventDie(): void {
     this.store.dispatch(GameActions.throwEventDie());
   }
 
-  setPhase(phase: GamePhase) {
+  setPhase(phase: GamePhase): void {
     this.store.dispatch(GameActions.setPhase({ phase }));
   }
 
-  setPlayer(player: DomainColor) {
+  setPlayer(player: DomainColor): void {
     this.store.dispatch(GameActions.setPlayer({ player }));
   }
 }

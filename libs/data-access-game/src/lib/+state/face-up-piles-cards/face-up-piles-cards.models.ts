@@ -20,14 +20,13 @@ export const createFaceUpPilesCardsEntity = (
   id: string,
   pileId: string,
   cardId: string
-) =>
-  ({
-    id,
-    pileId,
-    cardId,
-  } as FaceUpPilesCardsEntity);
+): FaceUpPilesCardsEntity => ({
+  id,
+  pileId,
+  cardId,
+});
 
-export const createInitialFaceUpPilesCards = () => {
+export const createInitialFaceUpPilesCards = (): FaceUpPilesCardsEntity[] => {
   const roadEntities = Array.from(agglomerationCards.values())
     .filter(
       (agglomerationCard) =>

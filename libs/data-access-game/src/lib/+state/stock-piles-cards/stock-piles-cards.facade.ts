@@ -33,11 +33,11 @@ export class StockPilesCardsFacade {
    * Use the initialization action to perform one
    * or more tasks in your Effects.
    */
-  initNewGame() {
+  initNewGame(): void {
     this.store.dispatch(StockPilesCardsActions.initStockPilesCardsNewGame());
   }
 
-  initSavedGame() {
+  initSavedGame(): void {
     this.store.dispatch(StockPilesCardsActions.initStockPilesCardsSavedGame());
   }
 
@@ -49,7 +49,7 @@ export class StockPilesCardsFacade {
         | typeof DEVELOPMENT_CARD_INTERFACE_NAME;
       id: string;
     }>
-  ) {
+  ): void {
     this.store.dispatch(
       StockPilesCardsActions.removeCardsFromStockPile({ stockPileId, cards })
     );

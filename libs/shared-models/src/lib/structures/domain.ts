@@ -9,8 +9,7 @@ export interface Domain extends HasColor {
   color: DomainColor;
 }
 
-export const createDomain = (id: string, color: DomainColor) =>
-  ({
-    id,
-    color,
-  } as Domain);
+export const createDomain = (id: string, color: DomainColor): Domain => ({
+  id,
+  color,
+});

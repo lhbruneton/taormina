@@ -11,7 +11,9 @@ import * as DiscardPileCardsSelectors from './discard-pile-cards.selectors';
 
 describe('DiscardPileCards Selectors', () => {
   const ERROR_MSG = 'No Error Available';
-  const getDiscardPileCardsId = (it: DiscardPileCardsEntity | undefined) => {
+  const getDiscardPileCardsId = (
+    it: DiscardPileCardsEntity | undefined
+  ): string | undefined => {
     if (it === undefined) return undefined;
     return it['id'];
   };
