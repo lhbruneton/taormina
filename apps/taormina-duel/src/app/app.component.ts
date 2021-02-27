@@ -63,7 +63,7 @@ export class AppComponent {
 
   constructor(
     private game: GameFacade,
-    private DomainsCards: DomainsCardsFacade,
+    private domainsCards: DomainsCardsFacade,
     private landsPileCards: LandsPileCardsFacade,
     private eventsPileCards: EventsPileCardsFacade,
     private stockPilesCards: StockPilesCardsFacade,
@@ -121,9 +121,9 @@ export class AppComponent {
   }
 
   getDomainsCards(domainId: string): Observable<DomainsCardsEntity[]> {
-    return this.DomainsCards.allDomainsCards$.pipe(
-      map((DomainsCards) =>
-        DomainsCards.filter((domainCard) => domainCard.domainId === domainId)
+    return this.domainsCards.allDomainsCards$.pipe(
+      map((domainsCards) =>
+        domainsCards.filter((domainCard) => domainCard.domainId === domainId)
       )
     );
   }
