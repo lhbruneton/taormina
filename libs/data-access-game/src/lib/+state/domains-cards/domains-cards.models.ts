@@ -55,18 +55,17 @@ export const createDomainsCardsEntity = (
   col: number,
   row: number,
   value?: LandValue
-) =>
-  ({
-    id,
-    domainId,
-    cardType,
-    cardId,
-    col,
-    row,
-    value,
-  } as DomainsCardsEntity);
+): DomainsCardsEntity => ({
+  id,
+  domainId,
+  cardType,
+  cardId,
+  col,
+  row,
+  value,
+});
 
-export const createInitialDomainsCards = () => {
+export const createInitialDomainsCards = (): DomainsCardsEntity[] => {
   const initialDomainsCards: DomainsCardsEntity[] = [
     createDomainsCardsEntity(
       uuidv4(),

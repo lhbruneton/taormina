@@ -14,8 +14,11 @@ export interface ActionCard extends HasId, HasName, HasRules {
   ruleIds: string[];
 }
 
-export const createActionCard = (id: string, name: string, ruleIds: string[]) =>
-  ({ interface: ACTION_CARD_INTERFACE_NAME, id, name, ruleIds } as ActionCard);
+export const createActionCard = (
+  id: string,
+  name: string,
+  ruleIds: string[]
+): ActionCard => ({ interface: ACTION_CARD_INTERFACE_NAME, id, name, ruleIds });
 
 // eslint-disable-next-line @typescript-eslint/no-explicit-any
 export function isActionCard(obj: any): obj is ActionCard {

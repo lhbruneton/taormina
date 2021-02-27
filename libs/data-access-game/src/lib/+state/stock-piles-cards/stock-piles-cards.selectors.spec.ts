@@ -15,7 +15,9 @@ import * as StockPilesCardsSelectors from './stock-piles-cards.selectors';
 
 describe('StockPilesCards Selectors', () => {
   const ERROR_MSG = 'No Error Available';
-  const getStockPilesCardsId = (it: StockPilesCardsEntity | undefined) => {
+  const getStockPilesCardsId = (
+    it: StockPilesCardsEntity | undefined
+  ): string | undefined => {
     if (it === undefined) return undefined;
     return it['id'];
   };

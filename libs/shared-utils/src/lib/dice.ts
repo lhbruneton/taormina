@@ -1,4 +1,4 @@
-import { DiceValue, EventValue } from '@taormina/shared-models';
+import { DiceValue, EventValue, ResourceValue } from '@taormina/shared-models';
 
 function randomDiceValue(): DiceValue {
   const min = 1;
@@ -23,10 +23,10 @@ function eventFromValue(value: DiceValue): EventValue {
   }
 }
 
-export function getRandomProductionDieValue() {
+export function getRandomProductionDieValue(): ResourceValue {
   return randomDiceValue();
 }
 
-export function getRandomEventDieValue() {
+export function getRandomEventDieValue(): EventValue {
   return eventFromValue(randomDiceValue());
 }

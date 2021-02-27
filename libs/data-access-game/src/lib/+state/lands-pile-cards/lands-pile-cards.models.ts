@@ -10,13 +10,15 @@ export interface LandsPileCardsEntity {
   cardId: string;
 }
 
-export const createLandsPileCardsEntity = (id: string, cardId: string) =>
-  ({
-    id,
-    cardId,
-  } as LandsPileCardsEntity);
+export const createLandsPileCardsEntity = (
+  id: string,
+  cardId: string
+): LandsPileCardsEntity => ({
+  id,
+  cardId,
+});
 
-export const createInitialLandsPileCards = () => {
+export const createInitialLandsPileCards = (): LandsPileCardsEntity[] => {
   const shuffled = arrayShuffle(Array.from(landCards.keys()));
   const entities = shuffled.map((cardId) =>
     createLandsPileCardsEntity(uuidv4(), cardId)

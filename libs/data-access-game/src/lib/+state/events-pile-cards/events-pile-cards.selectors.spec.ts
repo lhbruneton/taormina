@@ -11,7 +11,9 @@ import * as EventsPileCardsSelectors from './events-pile-cards.selectors';
 
 describe('EventsPileCards Selectors', () => {
   const ERROR_MSG = 'No Error Available';
-  const getEventsPileCardsId = (it: EventsPileCardsEntity | undefined) => {
+  const getEventsPileCardsId = (
+    it: EventsPileCardsEntity | undefined
+  ): string | undefined => {
     if (it === undefined) return undefined;
     return it['id'];
   };

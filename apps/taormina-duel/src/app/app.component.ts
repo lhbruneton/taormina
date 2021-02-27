@@ -1,10 +1,15 @@
 import { Component } from '@angular/core';
 import {
+  DomainsCardsEntity,
   DomainsCardsFacade,
+  EventsPileCardsEntity,
   EventsPileCardsFacade,
   GameFacade,
+  HandsCardsEntity,
   HandsCardsFacade,
+  LandsPileCardsEntity,
   LandsPileCardsFacade,
+  StockPilesCardsEntity,
   StockPilesCardsFacade,
 } from '@taormina/data-access-game';
 import { GameRulesService } from '@taormina/feature-engine';
@@ -23,14 +28,23 @@ import {
   stockPiles,
 } from '@taormina/shared-constants';
 import {
+  ActionCard,
   ACTION_CARD_INTERFACE_NAME,
+  AgglomerationCard,
   AGGLOMERATION_CARD_INTERFACE_NAME,
+  DevelopmentCard,
   DEVELOPMENT_CARD_INTERFACE_NAME,
+  Domain,
   DomainColor,
+  EventCard,
+  EventValue,
   GamePhase,
+  Hand,
+  LandCard,
   LAND_CARD_INTERFACE_NAME,
+  ResourceValue,
 } from '@taormina/shared-models';
-import { combineLatest } from 'rxjs';
+import { combineLatest, Observable } from 'rxjs';
 import { map } from 'rxjs/operators';
 
 @Component({
@@ -57,27 +71,27 @@ export class AppComponent {
     private gameRules: GameRulesService
   ) {}
 
-  startNewGame() {
+  startNewGame(): void {
     this.gameRules.initNewGame();
   }
 
-  getPhase() {
+  getPhase(): Observable<GamePhase> {
     return this.game.phase$;
   }
 
-  setPhase(phase: GamePhase) {
+  setPhase(phase: GamePhase): void {
     this.game.setPhase(phase);
   }
 
-  getPlayer() {
+  getPlayer(): Observable<DomainColor> {
     return this.game.player$;
   }
 
-  setPlayer(player: DomainColor) {
+  setPlayer(player: DomainColor): void {
     this.game.setPlayer(player);
   }
 
-  throwDisabled() {
+  throwDisabled(): Observable<boolean> {
     return this.game.phase$.pipe(
       map(
         (phase) =>
@@ -86,27 +100,27 @@ export class AppComponent {
     );
   }
 
-  onThrow() {
+  onThrow(): void {
     this.game.throwDice();
   }
 
-  getProductionDie() {
+  getProductionDie(): Observable<ResourceValue | undefined> {
     return this.game.productionDie$;
   }
 
-  getEventDie() {
+  getEventDie(): Observable<EventValue | undefined> {
     return this.game.eventDie$;
   }
 
-  getRedDomain() {
+  getRedDomain(): Domain | undefined {
     return domains.get(ID_DOMAIN_RED);
   }
 
-  getBlueDomain() {
+  getBlueDomain(): Domain | undefined {
     return domains.get(ID_DOMAIN_BLUE);
   }
 
-  getDomainsCards(domainId: string) {
+  getDomainsCards(domainId: string): Observable<DomainsCardsEntity[]> {
     return this.DomainsCards.allDomainsCards$.pipe(
       map((DomainsCards) =>
         DomainsCards.filter((domainCard) => domainCard.domainId === domainId)
@@ -114,23 +128,23 @@ export class AppComponent {
     );
   }
 
-  getLandsPileCards() {
+  getLandsPileCards(): Observable<LandsPileCardsEntity[]> {
     return this.landsPileCards.allLandsPileCards$;
   }
 
-  getEventsPileCards() {
+  getEventsPileCards(): Observable<EventsPileCardsEntity[]> {
     return this.eventsPileCards.allEventsPileCards$;
   }
 
-  getEventCard(cardId: string) {
+  getEventCard(cardId: string): EventCard | undefined {
     return eventCards.get(cardId);
   }
 
-  getStockPiles() {
+  getStockPiles(): string[] {
     return stockPiles;
   }
 
-  getStockPilesCards(stockPileId: string) {
+  getStockPilesCards(stockPileId: string): Observable<StockPilesCardsEntity[]> {
     return this.stockPilesCards.allStockPilesCards$.pipe(
       map((stockPilesCards) =>
         stockPilesCards.filter(
@@ -140,15 +154,15 @@ export class AppComponent {
     );
   }
 
-  getRedHand() {
+  getRedHand(): Hand | undefined {
     return hands.get(ID_HAND_RED);
   }
 
-  getBlueHand() {
+  getBlueHand(): Hand | undefined {
     return hands.get(ID_HAND_BLUE);
   }
 
-  getHandsCards(handId: string) {
+  getHandsCards(handId: string): Observable<HandsCardsEntity[]> {
     return this.handsCards.allHandsCards$.pipe(
       map((handsCards) =>
         handsCards.filter((handCard) => handCard.handId === handId)
@@ -156,7 +170,7 @@ export class AppComponent {
     );
   }
 
-  drawInitialRedHandAvailable() {
+  drawInitialRedHandAvailable(): Observable<boolean> {
     return combineLatest([this.game.phase$, this.game.player$]).pipe(
       map(([phase, player]) => {
         return phase === GamePhase.InitialDraw && player === DomainColor.Red;
@@ -164,11 +178,11 @@ export class AppComponent {
     );
   }
 
-  drawInitialRedHand(stockPileId: string) {
+  drawInitialRedHand(stockPileId: string): void {
     this.gameRules.drawFromStockToHand(stockPileId, 3, ID_HAND_RED);
   }
 
-  drawInitialBlueHandAvailable() {
+  drawInitialBlueHandAvailable(): Observable<boolean> {
     return combineLatest([this.game.phase$, this.game.player$]).pipe(
       map(([phase, player]) => {
         return phase === GamePhase.InitialDraw && player === DomainColor.Blue;
@@ -176,23 +190,23 @@ export class AppComponent {
     );
   }
 
-  drawInitialBlueHand(stockPileId: string) {
+  drawInitialBlueHand(stockPileId: string): void {
     this.gameRules.drawFromStockToHand(stockPileId, 3, ID_HAND_BLUE);
   }
 
-  getActionCard(cardId: string) {
+  getActionCard(cardId: string): ActionCard | undefined {
     return actionCards.get(cardId);
   }
 
-  getAgglomerationCard(cardId: string) {
+  getAgglomerationCard(cardId: string): AgglomerationCard | undefined {
     return agglomerationCards.get(cardId);
   }
 
-  getDevelopmentCard(cardId: string) {
+  getDevelopmentCard(cardId: string): DevelopmentCard | undefined {
     return developmentCards.get(cardId);
   }
 
-  getLandCard(cardId: string) {
+  getLandCard(cardId: string): LandCard | undefined {
     return landCards.get(cardId);
   }
 }

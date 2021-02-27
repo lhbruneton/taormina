@@ -11,7 +11,9 @@ import * as FaceUpPilesCardsSelectors from './face-up-piles-cards.selectors';
 
 describe('FaceUpPilesCards Selectors', () => {
   const ERROR_MSG = 'No Error Available';
-  const getFaceUpPilesCardsId = (it: FaceUpPilesCardsEntity | undefined) => {
+  const getFaceUpPilesCardsId = (
+    it: FaceUpPilesCardsEntity | undefined
+  ): string | undefined => {
     if (it === undefined) return undefined;
     return it['id'];
   };

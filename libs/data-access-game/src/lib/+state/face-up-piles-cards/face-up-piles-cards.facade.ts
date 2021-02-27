@@ -29,11 +29,11 @@ export class FaceUpPilesCardsFacade {
    * Use the initialization action to perform one
    * or more tasks in your Effects.
    */
-  initNewGame() {
+  initNewGame(): void {
     this.store.dispatch(FaceUpPilesCardsActions.initFaceUpNewGame());
   }
 
-  initSavedGame() {
+  initSavedGame(): void {
     this.store.dispatch(FaceUpPilesCardsActions.initFaceUpSavedGame());
   }
 }

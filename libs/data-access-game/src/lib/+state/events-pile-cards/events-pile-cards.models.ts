@@ -10,13 +10,15 @@ export interface EventsPileCardsEntity {
   cardId: string;
 }
 
-export const createEventsPileCardsEntity = (id: string, cardId: string) =>
-  ({
-    id,
-    cardId,
-  } as EventsPileCardsEntity);
+export const createEventsPileCardsEntity = (
+  id: string,
+  cardId: string
+): EventsPileCardsEntity => ({
+  id,
+  cardId,
+});
 
-export const createInitialEventsPileCards = () => {
+export const createInitialEventsPileCards = (): EventsPileCardsEntity[] => {
   const shuffled = arrayShuffle(Array.from(eventCards.keys()).slice(1));
   shuffled.splice(-3, 0, 'EVENT_0');
   const entities = shuffled.map((cardId) =>

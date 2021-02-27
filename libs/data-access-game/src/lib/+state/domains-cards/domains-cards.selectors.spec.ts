@@ -17,7 +17,9 @@ import * as DomainsCardsSelectors from './domains-cards.selectors';
 
 describe('DomainsCards Selectors', () => {
   const ERROR_MSG = 'No Error Available';
-  const getDomainsCardsId = (it: DomainsCardsEntity | undefined) => {
+  const getDomainsCardsId = (
+    it: DomainsCardsEntity | undefined
+  ): string | undefined => {
     if (it === undefined) return undefined;
     return it['id'];
   };

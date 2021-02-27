@@ -11,9 +11,8 @@ export const createDiscardPileCardsEntity = (
   id: string,
   cardType: string,
   cardId: string
-) =>
-  ({
-    id,
-    cardType,
-    cardId,
-  } as DiscardPileCardsEntity);
+): DiscardPileCardsEntity => ({
+  id,
+  cardType,
+  cardId,
+});

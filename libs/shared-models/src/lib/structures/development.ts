@@ -34,14 +34,13 @@ export const createDevelopmentCard = (
   name: string,
   cost: Map<ResourceType, number>,
   type: DevelopmentType
-) =>
-  ({
-    interface: DEVELOPMENT_CARD_INTERFACE_NAME,
-    id,
-    name,
-    cost,
-    type,
-  } as DevelopmentCard);
+): DevelopmentCard => ({
+  interface: DEVELOPMENT_CARD_INTERFACE_NAME,
+  id,
+  name,
+  cost,
+  type,
+});
 
 export function createBuilding(
   id: string,
@@ -51,7 +50,7 @@ export function createBuilding(
   givesKnowledge?: boolean,
   noDuplicate?: boolean,
   victoryPoints?: number
-) {
+): DevelopmentCard {
   const building = createDevelopmentCard(
     id,
     name,
@@ -65,7 +64,7 @@ export function createBuilding(
   return building;
 }
 
-export function createShip(id: string, type: ResourceType) {
+export function createShip(id: string, type: ResourceType): DevelopmentCard {
   const ship = createDevelopmentCard(
     id,
     `Merchant ship - ${type}`,
@@ -85,7 +84,7 @@ export function createWarrior(
   cost: Map<ResourceType, number>,
   strengthPoints?: number,
   celebrationPoints?: number
-) {
+): DevelopmentCard {
   const warrior = createDevelopmentCard(
     id,
     name,

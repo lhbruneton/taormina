@@ -29,7 +29,7 @@ export const createStockPilesCardsEntity = (
     | typeof ACTION_CARD_INTERFACE_NAME
     | typeof DEVELOPMENT_CARD_INTERFACE_NAME,
   cardId: string
-) =>
+): StockPilesCardsEntity =>
   ({
     id,
     stockPileId,
@@ -37,7 +37,7 @@ export const createStockPilesCardsEntity = (
     cardId,
   } as StockPilesCardsEntity);
 
-export const createInitialStockPilesCards = () => {
+export const createInitialStockPilesCards = (): StockPilesCardsEntity[] => {
   const stockPilesCards: StockPilesCardsEntity[] = [];
 
   const shuffledCards = arrayShuffle([

@@ -12,7 +12,9 @@ import * as HandsCardsSelectors from './hands-cards.selectors';
 
 describe('HandsCards Selectors', () => {
   const ERROR_MSG = 'No Error Available';
-  const getHandsCardsId = (it: HandsCardsEntity | undefined) => {
+  const getHandsCardsId = (
+    it: HandsCardsEntity | undefined
+  ): string | undefined => {
     if (it === undefined) return undefined;
     return it['id'];
   };

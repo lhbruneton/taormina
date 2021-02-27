@@ -14,8 +14,11 @@ export interface EventCard extends HasId, HasName, HasRules {
   ruleIds: string[];
 }
 
-export const createEventCard = (id: string, name: string, ruleIds: string[]) =>
-  ({ interface: EVENT_CARD_INTERFACE_NAME, id, name, ruleIds } as EventCard);
+export const createEventCard = (
+  id: string,
+  name: string,
+  ruleIds: string[]
+): EventCard => ({ interface: EVENT_CARD_INTERFACE_NAME, id, name, ruleIds });
 
 // eslint-disable-next-line @typescript-eslint/no-explicit-any
 export function isEventCard(obj: any): obj is EventCard {

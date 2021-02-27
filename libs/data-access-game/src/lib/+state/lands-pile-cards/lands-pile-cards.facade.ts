@@ -29,11 +29,11 @@ export class LandsPileCardsFacade {
    * Use the initialization action to perform one
    * or more tasks in your Effects.
    */
-  initNewGame() {
+  initNewGame(): void {
     this.store.dispatch(LandsPileCardsActions.initLandsPileCardsNewGame());
   }
 
-  initSavedGame() {
+  initSavedGame(): void {
     this.store.dispatch(LandsPileCardsActions.initLandsPileCardsSavedGame());
   }
 }

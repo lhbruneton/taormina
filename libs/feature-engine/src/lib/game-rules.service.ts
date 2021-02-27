@@ -22,7 +22,7 @@ export class GameRulesService {
     private handsCards: HandsCardsFacade
   ) {}
 
-  initNewGame() {
+  initNewGame(): void {
     this.game.initNewGame();
     this.DomainsCards.initNewGame();
     this.landCards.initNewGame();
@@ -31,7 +31,11 @@ export class GameRulesService {
     this.handsCards.initNewGame();
   }
 
-  drawFromStockToHand(stockPileId: string, cardsCount: number, handId: string) {
+  drawFromStockToHand(
+    stockPileId: string,
+    cardsCount: number,
+    handId: string
+  ): void {
     this.stockPilesCards.allStockPilesCards$
       .pipe(
         take(1),

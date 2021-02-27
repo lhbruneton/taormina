@@ -9,8 +9,7 @@ export interface Hand extends HasColor {
   color: DomainColor;
 }
 
-export const createHand = (id: string, color: DomainColor) =>
-  ({
-    id,
-    color,
-  } as Hand);
+export const createHand = (id: string, color: DomainColor): Hand => ({
+  id,
+  color,
+});
