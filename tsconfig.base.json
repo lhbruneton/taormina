@@ -30,7 +30,8 @@
   },
   "angularCompilerOptions": {
     "strictInjectionParameters": true,
-    "strictTemplates": true
+    "strictTemplates": true,
+    "strictInputAccessModifiers": true
   },
   "exclude": ["node_modules", "tmp"]
 }
