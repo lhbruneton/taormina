@@ -15,20 +15,20 @@ import { map, take } from 'rxjs/operators';
 export class GameRulesService {
   constructor(
     private game: GameFacade,
-    private DomainsCards: DomainsCardsFacade,
-    private landCards: LandsPileCardsFacade,
-    private eventCards: EventsPileCardsFacade,
+    private domainsCards: DomainsCardsFacade,
+    private handsCards: HandsCardsFacade,
+    private landsPileCards: LandsPileCardsFacade,
     private stockPilesCards: StockPilesCardsFacade,
-    private handsCards: HandsCardsFacade
+    private eventsPileCards: EventsPileCardsFacade
   ) {}
 
   initNewGame(): void {
     this.game.initNewGame();
-    this.DomainsCards.initNewGame();
-    this.landCards.initNewGame();
-    this.eventCards.initNewGame();
-    this.stockPilesCards.initNewGame();
+    this.domainsCards.initNewGame();
     this.handsCards.initNewGame();
+    this.landsPileCards.initNewGame();
+    this.stockPilesCards.initNewGame();
+    this.eventsPileCards.initNewGame();
   }
 
   drawFromStockToHand(
