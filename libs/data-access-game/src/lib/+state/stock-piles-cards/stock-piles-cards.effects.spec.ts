@@ -1,7 +1,8 @@
+import { Injector } from '@angular/core';
 import { TestBed } from '@angular/core/testing';
 import { provideMockActions } from '@ngrx/effects/testing';
 import { Action } from '@ngrx/store';
-import { provideMockStore } from '@ngrx/store/testing';
+import { MockStore, provideMockStore } from '@ngrx/store/testing';
 import { DataPersistence, NxModule } from '@nrwl/angular';
 import { hot } from '@nrwl/angular/testing';
 import { ACTION_CARD_INTERFACE_NAME } from '@taormina/shared-models';
@@ -19,6 +20,7 @@ jest.mock('./stock-piles-cards.models', () => {
 });
 
 describe('StockPilesCardsEffects', () => {
+  let injector: Injector;
   let actions: Observable<Action>;
   let effects: StockPilesCardsEffects;
 
@@ -29,19 +31,7 @@ describe('StockPilesCardsEffects', () => {
         StockPilesCardsEffects,
         DataPersistence,
         provideMockActions(() => actions),
-        provideMockStore({
-          selectors: [
-            {
-              selector: StockPilesCardsSelectors.getStockPileCardEntityByPivot,
-              value: {
-                id: 'AAA',
-                stockPileId: 'A',
-                cardType: ACTION_CARD_INTERFACE_NAME,
-                cardId: 'A',
-              },
-            },
-          ],
-        }),
+        provideMockStore(),
       ],
     });
 
@@ -81,6 +71,28 @@ describe('StockPilesCardsEffects', () => {
   });
 
   describe('removeCards$', () => {
+    beforeEach(() => {
+      injector = Injector.create({
+        providers: [
+          provideMockStore({
+            selectors: [
+              {
+                selector:
+                  StockPilesCardsSelectors.getStockPileCardEntityByPivot,
+                value: {
+                  id: 'AAA',
+                  stockPileId: 'A',
+                  cardType: ACTION_CARD_INTERFACE_NAME,
+                  cardId: 'A',
+                },
+              },
+            ],
+          }),
+        ],
+      });
+      injector.get(MockStore);
+    });
+
     it('should dispatch removeStockPilesCards', () => {
       actions = hot('-a-|', {
         a: StockPilesCardsActions.removeCardsFromStockPile({
