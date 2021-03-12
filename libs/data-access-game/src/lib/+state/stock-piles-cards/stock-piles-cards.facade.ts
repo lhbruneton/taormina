@@ -42,7 +42,7 @@ export class StockPilesCardsFacade {
   }
 
   removeCardsFromStockPile(
-    stockPileId: string,
+    pileId: string,
     cards: Array<{
       type:
         | typeof ACTION_CARD_INTERFACE_NAME
@@ -51,7 +51,7 @@ export class StockPilesCardsFacade {
     }>
   ): void {
     this.store.dispatch(
-      StockPilesCardsActions.removeCardsFromStockPile({ stockPileId, cards })
+      StockPilesCardsActions.removeCardsFromStockPile({ pileId, cards })
     );
   }
 }

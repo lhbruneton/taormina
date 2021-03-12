@@ -31,7 +31,7 @@ export const setStockPilesCardsInitialized = createAction(
 export const removeCardsFromStockPile = createAction(
   '[StockPilesCards] Remove Cards From Stock Pile',
   props<{
-    stockPileId: string;
+    pileId: string;
     cards: Array<{
       type:
         | typeof ACTION_CARD_INTERFACE_NAME
@@ -43,5 +43,5 @@ export const removeCardsFromStockPile = createAction(
 
 export const removeStockPilesCards = createAction(
   '[StockPilesCards] Remove StockPilesCards',
-  props<{ stockPileCardIds: string[] }>()
+  props<{ ids: string[] }>()
 );

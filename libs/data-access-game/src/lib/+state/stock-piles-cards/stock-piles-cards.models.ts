@@ -15,7 +15,7 @@ import { v4 as uuidv4 } from 'uuid';
  */
 export interface StockPilesCardsEntity {
   id: string; // Primary ID
-  stockPileId: string; // Foreign key to stock piles
+  pileId: string; // Foreign key to stock piles
   cardType:
     | typeof ACTION_CARD_INTERFACE_NAME
     | typeof DEVELOPMENT_CARD_INTERFACE_NAME;
@@ -24,7 +24,7 @@ export interface StockPilesCardsEntity {
 
 export const createStockPilesCardsEntity = (
   id: string,
-  stockPileId: string,
+  pileId: string,
   cardType:
     | typeof ACTION_CARD_INTERFACE_NAME
     | typeof DEVELOPMENT_CARD_INTERFACE_NAME,
@@ -32,7 +32,7 @@ export const createStockPilesCardsEntity = (
 ): StockPilesCardsEntity =>
   ({
     id,
-    stockPileId,
+    pileId,
     cardType,
     cardId,
   } as StockPilesCardsEntity);

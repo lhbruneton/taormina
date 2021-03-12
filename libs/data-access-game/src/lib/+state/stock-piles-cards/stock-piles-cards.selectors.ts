@@ -53,11 +53,11 @@ export const getStockPileCardEntityByPivot = createSelector(
   getAllStockPilesCards,
   (
     entities: StockPilesCardsEntity[],
-    props: { stockPileId: string; cardType: string; cardId: string }
+    props: { pileId: string; cardType: string; cardId: string }
   ) =>
     entities.find(
       (entity) =>
-        entity.stockPileId === props.stockPileId &&
+        entity.pileId === props.pileId &&
         entity.cardType === props.cardType &&
         entity.cardId === props.cardId
     )

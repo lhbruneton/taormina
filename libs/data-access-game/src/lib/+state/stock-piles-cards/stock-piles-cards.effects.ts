@@ -53,7 +53,7 @@ export class StockPilesCardsEffects {
           action.cards.map(({ type: cardType, id: cardId }) =>
             this.stockPilesCardsStore.pipe(
               select(StockPilesCardsSelectors.getStockPileCardEntityByPivot, {
-                stockPileId: action.stockPileId,
+                pileId: action.pileId,
                 cardType,
                 cardId,
               }),
@@ -71,9 +71,7 @@ export class StockPilesCardsEffects {
           )
           .map((stockPileCard) => stockPileCard.id)
       ),
-      map((stockPileCardIds) =>
-        StockPilesCardsActions.removeStockPilesCards({ stockPileCardIds })
-      )
+      map((ids) => StockPilesCardsActions.removeStockPilesCards({ ids }))
     )
   );
 

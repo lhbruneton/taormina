@@ -81,7 +81,7 @@ describe('StockPilesCardsEffects', () => {
                   StockPilesCardsSelectors.getStockPileCardEntityByPivot,
                 value: {
                   id: 'AAA',
-                  stockPileId: 'A',
+                  pileId: 'A',
                   cardType: ACTION_CARD_INTERFACE_NAME,
                   cardId: 'A',
                 },
@@ -96,14 +96,14 @@ describe('StockPilesCardsEffects', () => {
     it('should dispatch removeStockPilesCards', () => {
       actions = hot('-a-|', {
         a: StockPilesCardsActions.removeCardsFromStockPile({
-          stockPileId: 'A',
+          pileId: 'A',
           cards: [{ type: ACTION_CARD_INTERFACE_NAME, id: 'A' }],
         }),
       });
 
       const expected = hot('-a-|', {
         a: StockPilesCardsActions.removeStockPilesCards({
-          stockPileCardIds: ['AAA'],
+          ids: ['AAA'],
         }),
       });
 
