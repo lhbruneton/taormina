@@ -11,7 +11,7 @@ export const initFaceUpSavedGame = createAction(
 
 export const loadFaceUpPilesCardsSuccess = createAction(
   '[FaceUpPilesCards/API] Load FaceUpPilesCards Success',
-  props<{ agglomerationCards: FaceUpPilesCardsEntity[] }>()
+  props<{ faceUpPilesCards: FaceUpPilesCardsEntity[] }>()
 );
 
 export const loadFaceUpPilesCardsFailure = createAction(
@@ -21,5 +21,5 @@ export const loadFaceUpPilesCardsFailure = createAction(
 
 export const setFaceUpPilesCardsInitialized = createAction(
   '[FaceUpPilesCards] Set FaceUpPilesCards On Init',
-  props<{ agglomerationCards: FaceUpPilesCardsEntity[] }>()
+  props<{ faceUpPilesCards: FaceUpPilesCardsEntity[] }>()
 );

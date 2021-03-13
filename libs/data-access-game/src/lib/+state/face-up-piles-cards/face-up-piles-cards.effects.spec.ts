@@ -40,7 +40,7 @@ describe('FaceUpPilesCardsEffects', () => {
 
       const expected = hot('-a-|', {
         a: FaceUpPilesCardsActions.setFaceUpPilesCardsInitialized({
-          agglomerationCards: [],
+          faceUpPilesCards: [],
         }),
       });
 
@@ -56,7 +56,7 @@ describe('FaceUpPilesCardsEffects', () => {
 
       const expected = hot('-a-|', {
         a: FaceUpPilesCardsActions.loadFaceUpPilesCardsSuccess({
-          agglomerationCards: [],
+          faceUpPilesCards: [],
         }),
       });
 

@@ -7,10 +7,10 @@ import { FaceUpPilesCardsEntity } from './face-up-piles-cards.models';
 export const FACE_UP_PILES_CARDS_FEATURE_KEY = 'faceUpPilesCards';
 
 export interface FaceUpState extends EntityState<FaceUpPilesCardsEntity> {
-  selectedId?: string; // which AgglomerationCards record has been selected
+  selectedId?: string;
   initialized: boolean;
-  loaded: boolean; // has the AgglomerationCards list been loaded
-  error?: unknown | null; // last known error (if any)
+  loaded: boolean;
+  error?: unknown | null;
 }
 
 export interface FaceUpPilesCardsPartialState {
@@ -40,8 +40,8 @@ export const faceUpPilesCardsReducer = createReducer(
   })),
   on(
     FaceUpPilesCardsActions.loadFaceUpPilesCardsSuccess,
-    (state, { agglomerationCards }) =>
-      faceUpPilesCardsAdapter.setAll(agglomerationCards, {
+    (state, { faceUpPilesCards }) =>
+      faceUpPilesCardsAdapter.setAll(faceUpPilesCards, {
         ...state,
         loaded: true,
       })
@@ -55,8 +55,8 @@ export const faceUpPilesCardsReducer = createReducer(
   ),
   on(
     FaceUpPilesCardsActions.setFaceUpPilesCardsInitialized,
-    (state, { agglomerationCards }) =>
-      faceUpPilesCardsAdapter.setAll(agglomerationCards, {
+    (state, { faceUpPilesCards }) =>
+      faceUpPilesCardsAdapter.setAll(faceUpPilesCards, {
         ...state,
         initialized: true,
       })

@@ -13,7 +13,7 @@ export class FaceUpPilesCardsEffects {
       ofType(FaceUpPilesCardsActions.initFaceUpNewGame),
       map(() =>
         FaceUpPilesCardsActions.setFaceUpPilesCardsInitialized({
-          agglomerationCards: createInitialFaceUpPilesCards(),
+          faceUpPilesCards: createInitialFaceUpPilesCards(),
         })
       )
     )
@@ -26,7 +26,7 @@ export class FaceUpPilesCardsEffects {
         run: () => {
           // Your custom service 'load' logic goes here. For now just return a success action...
           return FaceUpPilesCardsActions.loadFaceUpPilesCardsSuccess({
-            agglomerationCards: [],
+            faceUpPilesCards: [],
           });
         },
 

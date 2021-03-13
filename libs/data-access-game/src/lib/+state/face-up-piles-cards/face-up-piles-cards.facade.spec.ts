@@ -90,7 +90,7 @@ describe('FaceUpPilesCardsFacade', () => {
 
         store.dispatch(
           FaceUpPilesCardsActions.loadFaceUpPilesCardsSuccess({
-            agglomerationCards: [
+            faceUpPilesCards: [
               createFaceUpPilesCardsEntity('AAA', 'A', 'A'),
               createFaceUpPilesCardsEntity('BBB', 'B', 'B'),
             ],

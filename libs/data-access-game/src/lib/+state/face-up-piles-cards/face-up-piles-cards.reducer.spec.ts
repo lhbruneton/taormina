@@ -10,13 +10,13 @@ import {
 
 describe('FaceUpPilesCards Reducer', () => {
   describe('valid FaceUpPilesCards actions', () => {
-    it('loadFaceUpPilesCardsSuccess should set the list of known AgglomerationCards', () => {
-      const agglomerationCards = [
+    it('loadFaceUpPilesCardsSuccess should set the list of known FaceUpPilesCards', () => {
+      const faceUpPilesCards = [
         createFaceUpPilesCardsEntity('PRODUCT-AAA', 'A', 'A'),
         createFaceUpPilesCardsEntity('PRODUCT-zzz', 'z', 'z'),
       ];
       const action = FaceUpPilesCardsActions.loadFaceUpPilesCardsSuccess({
-        agglomerationCards,
+        faceUpPilesCards,
       });
 
       const result: FaceUpState = faceUpPilesCardsReducer(
