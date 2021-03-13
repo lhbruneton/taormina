@@ -4,6 +4,7 @@ import { StoreModule } from '@ngrx/store';
 import {
   DomainsCardsFacade,
   EventsPileCardsFacade,
+  FaceUpPilesCardsFacade,
   GameFacade,
   HandsCardsFacade,
   LandsPileCardsFacade,
@@ -20,10 +21,11 @@ describe('AppComponent', () => {
       providers: [
         GameFacade,
         DomainsCardsFacade,
-        LandsPileCardsFacade,
-        EventsPileCardsFacade,
-        StockPilesCardsFacade,
         HandsCardsFacade,
+        FaceUpPilesCardsFacade,
+        LandsPileCardsFacade,
+        StockPilesCardsFacade,
+        EventsPileCardsFacade,
         GameRulesService,
       ],
     }).compileComponents();

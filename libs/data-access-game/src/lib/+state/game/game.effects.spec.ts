@@ -26,6 +26,7 @@ jest.mock('@taormina/shared-utils', () => {
 });
 
 describe('GameEffects', () => {
+  let injector: Injector;
   let actions: Observable<Action>;
   let effects: GameEffects;
 
@@ -57,8 +58,6 @@ describe('GameEffects', () => {
   });
 
   describe('throwProduction$', () => {
-    let injector: Injector;
-
     describe('InitialThrow', () => {
       beforeEach(() => {
         injector = Injector.create({
