@@ -4,8 +4,8 @@ import * as FaceUpPilesCardsActions from './face-up-piles-cards.actions';
 import { createFaceUpPilesCardsEntity } from './face-up-piles-cards.models';
 import {
   faceUpPilesCardsReducer,
-  FaceUpState,
-  initialFaceUpState,
+  FaceUpPilesCardsState,
+  initialFaceUpPilesCardsState,
 } from './face-up-piles-cards.reducer';
 
 describe('FaceUpPilesCards Reducer', () => {
@@ -19,8 +19,8 @@ describe('FaceUpPilesCards Reducer', () => {
         faceUpPilesCards,
       });
 
-      const result: FaceUpState = faceUpPilesCardsReducer(
-        initialFaceUpState,
+      const result: FaceUpPilesCardsState = faceUpPilesCardsReducer(
+        initialFaceUpPilesCardsState,
         action
       );
 
@@ -33,9 +33,12 @@ describe('FaceUpPilesCards Reducer', () => {
     it('should return the previous state', () => {
       const action = {} as Action;
 
-      const result = faceUpPilesCardsReducer(initialFaceUpState, action);
+      const result = faceUpPilesCardsReducer(
+        initialFaceUpPilesCardsState,
+        action
+      );
 
-      expect(result).toBe(initialFaceUpState);
+      expect(result).toBe(initialFaceUpPilesCardsState);
     });
   });
 });

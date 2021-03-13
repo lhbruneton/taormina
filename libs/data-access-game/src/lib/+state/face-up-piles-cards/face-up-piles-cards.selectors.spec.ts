@@ -5,7 +5,7 @@ import {
 import {
   faceUpPilesCardsAdapter,
   FaceUpPilesCardsPartialState,
-  initialFaceUpState,
+  initialFaceUpPilesCardsState,
 } from './face-up-piles-cards.reducer';
 import * as FaceUpPilesCardsSelectors from './face-up-piles-cards.selectors';
 
@@ -29,7 +29,7 @@ describe('FaceUpPilesCards Selectors', () => {
           createFaceUpPilesCardsEntity('PRODUCT-CCC', 'C', 'C'),
         ],
         {
-          ...initialFaceUpState,
+          ...initialFaceUpPilesCardsState,
           selectedId: 'PRODUCT-BBB',
           error: ERROR_MSG,
           loaded: true,

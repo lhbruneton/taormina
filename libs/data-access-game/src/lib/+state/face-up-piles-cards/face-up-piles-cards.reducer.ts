@@ -6,7 +6,8 @@ import { FaceUpPilesCardsEntity } from './face-up-piles-cards.models';
 
 export const FACE_UP_PILES_CARDS_FEATURE_KEY = 'faceUpPilesCards';
 
-export interface FaceUpState extends EntityState<FaceUpPilesCardsEntity> {
+export interface FaceUpPilesCardsState
+  extends EntityState<FaceUpPilesCardsEntity> {
   selectedId?: string;
   initialized: boolean;
   loaded: boolean;
@@ -14,12 +15,12 @@ export interface FaceUpState extends EntityState<FaceUpPilesCardsEntity> {
 }
 
 export interface FaceUpPilesCardsPartialState {
-  readonly [FACE_UP_PILES_CARDS_FEATURE_KEY]: FaceUpState;
+  readonly [FACE_UP_PILES_CARDS_FEATURE_KEY]: FaceUpPilesCardsState;
 }
 
 export const faceUpPilesCardsAdapter: EntityAdapter<FaceUpPilesCardsEntity> = createEntityAdapter<FaceUpPilesCardsEntity>();
 
-export const initialFaceUpState: FaceUpState = faceUpPilesCardsAdapter.getInitialState(
+export const initialFaceUpPilesCardsState: FaceUpPilesCardsState = faceUpPilesCardsAdapter.getInitialState(
   {
     // set initial required properties
     initialized: false,
@@ -28,7 +29,7 @@ export const initialFaceUpState: FaceUpState = faceUpPilesCardsAdapter.getInitia
 );
 
 export const faceUpPilesCardsReducer = createReducer(
-  initialFaceUpState,
+  initialFaceUpPilesCardsState,
   on(FaceUpPilesCardsActions.initFaceUpNewGame, (state) => ({
     ...state,
     initialized: false,

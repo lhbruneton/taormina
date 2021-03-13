@@ -11,12 +11,12 @@ import { FaceUpPilesCardsFacade } from './face-up-piles-cards.facade';
 import { createFaceUpPilesCardsEntity } from './face-up-piles-cards.models';
 import {
   faceUpPilesCardsReducer,
-  FaceUpState,
+  FaceUpPilesCardsState,
   FACE_UP_PILES_CARDS_FEATURE_KEY,
 } from './face-up-piles-cards.reducer';
 
 interface TestSchema {
-  faceUpPilesCards: FaceUpState;
+  faceUpPilesCards: FaceUpPilesCardsState;
 }
 
 describe('FaceUpPilesCardsFacade', () => {
