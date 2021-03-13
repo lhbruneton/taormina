@@ -11,7 +11,7 @@ export const initFaceUpSavedGame = createAction(
 
 export const loadFaceUpPilesCardsSuccess = createAction(
   '[FaceUpPilesCards/API] Load FaceUpPilesCards Success',
-  props<{ agglomerationCards: FaceUpPilesCardsEntity[] }>()
+  props<{ faceUpPilesCards: FaceUpPilesCardsEntity[] }>()
 );
 
 export const loadFaceUpPilesCardsFailure = createAction(
@@ -21,5 +21,29 @@ export const loadFaceUpPilesCardsFailure = createAction(
 
 export const setFaceUpPilesCardsInitialized = createAction(
   '[FaceUpPilesCards] Set FaceUpPilesCards On Init',
-  props<{ agglomerationCards: FaceUpPilesCardsEntity[] }>()
+  props<{ faceUpPilesCards: FaceUpPilesCardsEntity[] }>()
+);
+
+export const removeFaceUpPileCard = createAction(
+  '[FaceUpPilesCards] Remove FaceUpPileCard',
+  props<{ id: string }>()
+);
+
+export const selectFirstCardFromFaceUpPile = createAction(
+  '[FaceUpPilesCards] Select FirstCardFromFaceUpPile',
+  props<{ pileId: string }>()
+);
+
+export const selectFaceUpPileCard = createAction(
+  '[FaceUpPilesCards] Select Face Up Pile Card',
+  props<{ id: string }>()
+);
+
+export const unselectFaceUpPileCard = createAction(
+  '[FaceUpPilesCards] Unselect Face Up Pile Card'
+);
+
+export const setFaceUpPilesCardsError = createAction(
+  '[FaceUpPilesCards] Set FaceUpPilesCards Error',
+  props<{ error: unknown }>()
 );

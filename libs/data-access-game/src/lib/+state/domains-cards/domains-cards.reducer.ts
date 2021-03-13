@@ -7,10 +7,10 @@ import { DomainsCardsEntity } from './domains-cards.models';
 export const DOMAINS_CARDS_FEATURE_KEY = 'domainsCards';
 
 export interface DomainsCardsState extends EntityState<DomainsCardsEntity> {
-  selectedId?: string; // which DomainsCards record has been selected
+  selectedId?: string;
   initialized: boolean;
-  loaded: boolean; // has the DomainsCards list been loaded
-  error?: unknown | null; // last known error (if any)
+  loaded: boolean;
+  error?: unknown | null;
 }
 
 export interface DomainsCardsPartialState {
@@ -50,7 +50,21 @@ export const domainsCardsReducer = createReducer(
     (state, { domainsCards }) =>
       domainsCardsAdapter.setAll(domainsCards, { ...state, initialized: true })
   ),
+  on(DomainsCardsActions.updateDomainCard, (state, { update }) =>
+    domainsCardsAdapter.updateOne(update, state)
+  ),
   on(DomainsCardsActions.updateDomainsCards, (state, { updates }) =>
     domainsCardsAdapter.updateMany(updates, state)
-  )
+  ),
+  on(DomainsCardsActions.addDomainCard, (state, { domainCard }) =>
+    domainsCardsAdapter.addOne(domainCard, state)
+  ),
+  on(DomainsCardsActions.selectDomainCard, (state, { id }) => ({
+    ...state,
+    selectedId: id,
+  })),
+  on(DomainsCardsActions.unselectDomainCard, (state) => ({
+    ...state,
+    selectedId: undefined,
+  }))
 );

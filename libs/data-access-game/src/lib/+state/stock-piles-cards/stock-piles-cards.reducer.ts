@@ -56,9 +56,7 @@ export const stockPilesCardsReducer = createReducer(
         initialized: true,
       })
   ),
-  on(
-    StockPilesCardsActions.removeStockPilesCards,
-    (state, { stockPileCardIds }) =>
-      stockPilesCardsAdapter.removeMany(stockPileCardIds, state)
+  on(StockPilesCardsActions.removeStockPilesCards, (state, { ids }) =>
+    stockPilesCardsAdapter.removeMany(ids, state)
   )
 );

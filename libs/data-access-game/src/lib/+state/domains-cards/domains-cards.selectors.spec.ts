@@ -44,7 +44,9 @@ describe('DomainsCards Selectors', () => {
             LAND_CARD_INTERFACE_NAME,
             'LAND_1',
             0,
-            0
+            0,
+            0,
+            1
           ),
           createDomainsCardsEntity(
             'PRODUCT-CCC',
@@ -97,6 +99,24 @@ describe('DomainsCards Selectors', () => {
       const result = DomainsCardsSelectors.getLandCardsPivotsForDie(state, {
         die: 1,
       });
+      const selId = getDomainsCardsId(result[0]);
+
+      expect(selId).toBe('PRODUCT-BBB');
+    });
+
+    it('getLandCardPivotById({ id }) should return the pivot for the id', () => {
+      const result = DomainsCardsSelectors.getLandCardPivotById(state, {
+        id: 'PRODUCT-BBB',
+      });
+      const selId = getDomainsCardsId(result);
+
+      expect(selId).toBe('PRODUCT-BBB');
+    });
+
+    it('getLandCardPivotWithLockedResources() should return the pivot for the id', () => {
+      const result = DomainsCardsSelectors.getLandCardPivotWithLockedResources(
+        state
+      );
       const selId = getDomainsCardsId(result[0]);
 
       expect(selId).toBe('PRODUCT-BBB');

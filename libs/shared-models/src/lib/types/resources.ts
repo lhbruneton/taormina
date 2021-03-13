@@ -16,4 +16,4 @@ export enum LandType {
   Pasture = 'PASTURE',
 }
 
-export type LandValue = 0 | 1 | 2 | 3;
+export type ResourceCount = 0 | 1 | 2 | 3;

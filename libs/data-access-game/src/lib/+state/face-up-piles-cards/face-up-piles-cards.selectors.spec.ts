@@ -5,7 +5,7 @@ import {
 import {
   faceUpPilesCardsAdapter,
   FaceUpPilesCardsPartialState,
-  initialFaceUpState,
+  initialFaceUpPilesCardsState,
 } from './face-up-piles-cards.reducer';
 import * as FaceUpPilesCardsSelectors from './face-up-piles-cards.selectors';
 
@@ -26,10 +26,11 @@ describe('FaceUpPilesCards Selectors', () => {
         [
           createFaceUpPilesCardsEntity('PRODUCT-AAA', 'A', 'A'),
           createFaceUpPilesCardsEntity('PRODUCT-BBB', 'B', 'B'),
+          createFaceUpPilesCardsEntity('PRODUCT-BBD', 'B', 'D'),
           createFaceUpPilesCardsEntity('PRODUCT-CCC', 'C', 'C'),
         ],
         {
-          ...initialFaceUpState,
+          ...initialFaceUpPilesCardsState,
           selectedId: 'PRODUCT-BBB',
           error: ERROR_MSG,
           loaded: true,
@@ -43,7 +44,7 @@ describe('FaceUpPilesCards Selectors', () => {
       const results = FaceUpPilesCardsSelectors.getAllFaceUpPilesCards(state);
       const selId = getFaceUpPilesCardsId(results[1]);
 
-      expect(results.length).toBe(3);
+      expect(results.length).toBe(4);
       expect(selId).toBe('PRODUCT-BBB');
     });
 
@@ -64,6 +65,38 @@ describe('FaceUpPilesCards Selectors', () => {
       const result = FaceUpPilesCardsSelectors.getFaceUpPilesCardsError(state);
 
       expect(result).toBe(ERROR_MSG);
+    });
+
+    it('getFaceUpPileCardEntityByPivot({ pileId, cardId }) should return the pivot for the pileId and cardId', () => {
+      const result = FaceUpPilesCardsSelectors.getFaceUpPileCardEntityByPivot(
+        state,
+        {
+          pileId: 'B',
+          cardId: 'B',
+        }
+      );
+      const selId = getFaceUpPilesCardsId(result);
+
+      expect(selId).toBe('PRODUCT-BBB');
+    });
+
+    it('getCardPivotsForPile({ pileId }) should return the pivots for the pileId', () => {
+      const results = FaceUpPilesCardsSelectors.getCardPivotsForPile(state, {
+        pileId: 'B',
+      });
+      const selId = getFaceUpPilesCardsId(results[1]);
+
+      expect(results.length).toBe(2);
+      expect(selId).toBe('PRODUCT-BBD');
+    });
+
+    it('getFirstCardPivotForPile({ pileId }) should return the first pivot for the pileId', () => {
+      const result = FaceUpPilesCardsSelectors.getFirstCardPivotForPile(state, {
+        pileId: 'B',
+      });
+      const selId = getFaceUpPilesCardsId(result);
+
+      expect(selId).toBe('PRODUCT-BBB');
     });
   });
 });

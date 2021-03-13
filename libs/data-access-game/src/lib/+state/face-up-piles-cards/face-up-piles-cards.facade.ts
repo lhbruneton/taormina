@@ -1,5 +1,10 @@
 import { Injectable } from '@angular/core';
 import { select, Store } from '@ngrx/store';
+import {
+  ID_FACE_UP_HAMLET,
+  ID_FACE_UP_ROAD,
+  ID_FACE_UP_TOWN,
+} from '@taormina/shared-constants';
 
 import * as FaceUpPilesCardsActions from './face-up-piles-cards.actions';
 import * as FaceUpPilesCardsFeature from './face-up-piles-cards.reducer';
@@ -20,6 +25,21 @@ export class FaceUpPilesCardsFacade {
   selectedFaceUpPilesCards$ = this.store.pipe(
     select(FaceUpPilesCardsSelectors.getFaceUpSelected)
   );
+  allRoadPivots$ = this.store.pipe(
+    select(FaceUpPilesCardsSelectors.getCardPivotsForPile, {
+      pileId: ID_FACE_UP_ROAD,
+    })
+  );
+  allHamletPivots$ = this.store.pipe(
+    select(FaceUpPilesCardsSelectors.getCardPivotsForPile, {
+      pileId: ID_FACE_UP_HAMLET,
+    })
+  );
+  allTownPivots$ = this.store.pipe(
+    select(FaceUpPilesCardsSelectors.getCardPivotsForPile, {
+      pileId: ID_FACE_UP_TOWN,
+    })
+  );
 
   constructor(
     private store: Store<FaceUpPilesCardsFeature.FaceUpPilesCardsPartialState>
@@ -35,5 +55,15 @@ export class FaceUpPilesCardsFacade {
 
   initSavedGame(): void {
     this.store.dispatch(FaceUpPilesCardsActions.initFaceUpSavedGame());
+  }
+
+  removeFaceUpPileCard(id: string): void {
+    this.store.dispatch(FaceUpPilesCardsActions.removeFaceUpPileCard({ id }));
+  }
+
+  selectFirstCardFromFaceUpPile(pileId: string): void {
+    this.store.dispatch(
+      FaceUpPilesCardsActions.selectFirstCardFromFaceUpPile({ pileId })
+    );
   }
 }

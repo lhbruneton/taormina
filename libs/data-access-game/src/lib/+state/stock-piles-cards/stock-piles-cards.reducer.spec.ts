@@ -32,13 +32,13 @@ describe('StockPilesCards Reducer', () => {
         entities: {
           'PRODUCT-AAA': {
             id: 'PRODUCT-AAA',
-            stockPileId: 'A',
+            pileId: 'A',
             cardType: DEVELOPMENT_CARD_INTERFACE_NAME,
             cardId: 'A',
           },
           'PRODUCT-zzz': {
             id: 'PRODUCT-zzz',
-            stockPileId: 'z',
+            pileId: 'z',
             cardType: ACTION_CARD_INTERFACE_NAME,
             cardId: 'z',
           },
@@ -81,13 +81,13 @@ describe('StockPilesCards Reducer', () => {
         entities: {
           'PRODUCT-AAA': {
             id: 'PRODUCT-AAA',
-            stockPileId: 'A',
+            pileId: 'A',
             cardType: DEVELOPMENT_CARD_INTERFACE_NAME,
             cardId: 'A',
           },
           'PRODUCT-zzz': {
             id: 'PRODUCT-zzz',
-            stockPileId: 'z',
+            pileId: 'z',
             cardType: ACTION_CARD_INTERFACE_NAME,
             cardId: 'z',
           },
@@ -101,25 +101,25 @@ describe('StockPilesCards Reducer', () => {
         entities: {
           'PRODUCT-AAA': {
             id: 'PRODUCT-AAA',
-            stockPileId: 'A',
+            pileId: 'A',
             cardType: DEVELOPMENT_CARD_INTERFACE_NAME,
             cardId: 'A',
           },
           'PRODUCT-BBB': {
             id: 'PRODUCT-BBB',
-            stockPileId: 'B',
+            pileId: 'B',
             cardType: DEVELOPMENT_CARD_INTERFACE_NAME,
             cardId: 'B',
           },
           'PRODUCT-CCC': {
             id: 'PRODUCT-CCC',
-            stockPileId: 'C',
+            pileId: 'C',
             cardType: ACTION_CARD_INTERFACE_NAME,
             cardId: 'C',
           },
           'PRODUCT-zzz': {
             id: 'PRODUCT-zzz',
-            stockPileId: 'z',
+            pileId: 'z',
             cardType: ACTION_CARD_INTERFACE_NAME,
             cardId: 'z',
           },
@@ -129,7 +129,7 @@ describe('StockPilesCards Reducer', () => {
       };
 
       const action = StockPilesCardsActions.removeStockPilesCards({
-        stockPileCardIds: ['PRODUCT-BBB', 'PRODUCT-CCC'],
+        ids: ['PRODUCT-BBB', 'PRODUCT-CCC'],
       });
 
       const state: StockPilesCardsState = stockPilesCardsReducer(

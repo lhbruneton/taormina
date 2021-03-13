@@ -14,6 +14,7 @@ export * from './lib/+state/events-pile-cards/events-pile-cards.reducer';
 export * from './lib/+state/events-pile-cards/events-pile-cards.selectors';
 export * from './lib/+state/face-up-piles-cards/face-up-piles-cards.actions';
 export * from './lib/+state/face-up-piles-cards/face-up-piles-cards.facade';
+export * from './lib/+state/face-up-piles-cards/face-up-piles-cards.models';
 export * from './lib/+state/face-up-piles-cards/face-up-piles-cards.reducer';
 export * from './lib/+state/face-up-piles-cards/face-up-piles-cards.selectors';
 export * from './lib/+state/game/game.actions';

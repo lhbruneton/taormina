@@ -85,13 +85,13 @@ describe('StockPilesCards Selectors', () => {
       expect(result).toBe(ERROR_MSG);
     });
 
-    it('getStockPileCardEntityByPivot({ stockPileId, cardType, cardId }) should return the Entity for the ids', () => {
-      const stockPileId = 'D';
+    it('getStockPileCardEntityByPivot({ pileId, cardType, cardId }) should return the Entity for the ids', () => {
+      const pileId = 'D';
       const cardType = ACTION_CARD_INTERFACE_NAME;
       const cardId = 'F';
       const result = StockPilesCardsSelectors.getStockPileCardEntityByPivot(
         state,
-        { stockPileId, cardType, cardId }
+        { pileId, cardType, cardId }
       );
       const selId = getStockPilesCardsId(result);
 

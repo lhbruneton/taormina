@@ -1,7 +1,12 @@
+.flex-container {
+  display: flex;
+  column-gap: 20px;
+}
+
 .grid-container {
   display: grid;
-  grid-template-columns: [col-2] 100px [col-1] 100px [col0] 100px [col1] 100px [col2] 100px;
-  grid-template-rows: [row-1] 100px [row0] 100px [row1] 100px;
+  grid-template-columns: [col-2] 150px [col-1] 150px [col0] 150px [col1] 150px [col2] 150px;
+  grid-template-rows: [row-1] 150px [row0] 150px [row1] 150px;
   grid-gap: 20px;
 }
 

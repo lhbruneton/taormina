@@ -2,11 +2,14 @@ import { Injectable } from '@angular/core';
 import {
   DomainsCardsFacade,
   EventsPileCardsFacade,
+  FaceUpPilesCardsFacade,
   GameFacade,
   HandsCardsFacade,
   LandsPileCardsFacade,
   StockPilesCardsFacade,
 } from '@taormina/data-access-game';
+import { AGGLOMERATION_CARD_INTERFACE_NAME } from '@taormina/shared-models';
+import { combineLatest } from 'rxjs';
 import { map, take } from 'rxjs/operators';
 
 @Injectable({
@@ -15,24 +18,26 @@ import { map, take } from 'rxjs/operators';
 export class GameRulesService {
   constructor(
     private game: GameFacade,
-    private DomainsCards: DomainsCardsFacade,
-    private landCards: LandsPileCardsFacade,
-    private eventCards: EventsPileCardsFacade,
+    private domainsCards: DomainsCardsFacade,
+    private handsCards: HandsCardsFacade,
+    private faceUpPilesCards: FaceUpPilesCardsFacade,
+    private landsPileCards: LandsPileCardsFacade,
     private stockPilesCards: StockPilesCardsFacade,
-    private handsCards: HandsCardsFacade
+    private eventsPileCards: EventsPileCardsFacade
   ) {}
 
   initNewGame(): void {
     this.game.initNewGame();
-    this.DomainsCards.initNewGame();
-    this.landCards.initNewGame();
-    this.eventCards.initNewGame();
-    this.stockPilesCards.initNewGame();
+    this.domainsCards.initNewGame();
     this.handsCards.initNewGame();
+    this.faceUpPilesCards.initNewGame();
+    this.landsPileCards.initNewGame();
+    this.stockPilesCards.initNewGame();
+    this.eventsPileCards.initNewGame();
   }
 
   drawFromStockToHand(
-    stockPileId: string,
+    pileId: string,
     cardsCount: number,
     handId: string
   ): void {
@@ -40,26 +45,49 @@ export class GameRulesService {
       .pipe(
         take(1),
         map((stockPilesCards) => {
+          return stockPilesCards
+            .filter((stockPileCard) => stockPileCard.pileId === pileId)
+            .slice(0, cardsCount)
+            .map((stockPileCard) => {
+              return {
+                type: stockPileCard.cardType,
+                id: stockPileCard.cardId,
+              };
+            });
+        })
+      )
+      .subscribe((cards) => {
+        this.stockPilesCards.removeCardsFromStockPile(pileId, cards);
+        this.handsCards.addCardsToHand(handId, cards);
+      });
+  }
+
+  useResourcesToPutFaceUpPileCardInSlot(): void {
+    this.domainsCards.useLockedResources();
+
+    combineLatest([
+      this.faceUpPilesCards.selectedFaceUpPilesCards$,
+      this.domainsCards.selectedDomainsCards$,
+    ])
+      .pipe(
+        map(([faceUpPileCard, domainCard]) => {
+          if (faceUpPileCard === undefined)
+            throw new Error(`Can't put card in slot if no card selected.`);
+          if (domainCard === undefined)
+            throw new Error(`Can't put card in slot if no slot selected.`);
+
           return {
-            stockPileId: stockPileId,
-            cards: stockPilesCards
-              .filter(
-                (stockPileCard) => stockPileCard.stockPileId === stockPileId
-              )
-              .slice(0, cardsCount)
-              .map((stockPileCard) => {
-                return {
-                  type: stockPileCard.cardType,
-                  id: stockPileCard.cardId,
-                };
-              }),
-            handId: handId,
+            faceUpPileCardId: faceUpPileCard.id,
+            domainCardId: domainCard.id,
+            cardType: AGGLOMERATION_CARD_INTERFACE_NAME as typeof AGGLOMERATION_CARD_INTERFACE_NAME,
+            cardId: faceUpPileCard.cardId,
           };
         })
       )
-      .subscribe(({ stockPileId, cards, handId }) => {
-        this.stockPilesCards.removeCardsFromStockPile(stockPileId, cards);
-        this.handsCards.addCardsToHand(handId, cards);
+      .subscribe(({ faceUpPileCardId, domainCardId, cardType, cardId }) => {
+        this.faceUpPilesCards.removeFaceUpPileCard(faceUpPileCardId);
+        this.domainsCards.putCardInSlot(domainCardId, cardType, cardId);
+        this.domainsCards.unselectDomainCard();
       });
   }
 }

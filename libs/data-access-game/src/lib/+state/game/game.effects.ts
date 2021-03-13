@@ -35,7 +35,7 @@ export class GameEffects {
         actions.push(GameActions.setProductionDie({ value }));
         if (phase !== GamePhase.InitialThrow) {
           actions.push(
-            DomainsCardsActions.increaseLandValueForDie({
+            DomainsCardsActions.increaseAvailableResourcesForDie({
               die: value,
             })
           );

@@ -7,6 +7,8 @@ import { LandType } from '../types/resources';
 
 export const LAND_CARD_INTERFACE_NAME = 'LandCard';
 
+export const AVAILABLE_LAND_SLOT = 'AvailableLandSlot';
+
 /**
  * Interface for the Land Cards
  */

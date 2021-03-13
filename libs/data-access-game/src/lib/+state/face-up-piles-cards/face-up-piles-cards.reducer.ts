@@ -6,20 +6,21 @@ import { FaceUpPilesCardsEntity } from './face-up-piles-cards.models';
 
 export const FACE_UP_PILES_CARDS_FEATURE_KEY = 'faceUpPilesCards';
 
-export interface FaceUpState extends EntityState<FaceUpPilesCardsEntity> {
-  selectedId?: string; // which AgglomerationCards record has been selected
+export interface FaceUpPilesCardsState
+  extends EntityState<FaceUpPilesCardsEntity> {
+  selectedId?: string;
   initialized: boolean;
-  loaded: boolean; // has the AgglomerationCards list been loaded
-  error?: unknown | null; // last known error (if any)
+  loaded: boolean;
+  error?: unknown | null;
 }
 
 export interface FaceUpPilesCardsPartialState {
-  readonly [FACE_UP_PILES_CARDS_FEATURE_KEY]: FaceUpState;
+  readonly [FACE_UP_PILES_CARDS_FEATURE_KEY]: FaceUpPilesCardsState;
 }
 
 export const faceUpPilesCardsAdapter: EntityAdapter<FaceUpPilesCardsEntity> = createEntityAdapter<FaceUpPilesCardsEntity>();
 
-export const initialFaceUpState: FaceUpState = faceUpPilesCardsAdapter.getInitialState(
+export const initialFaceUpPilesCardsState: FaceUpPilesCardsState = faceUpPilesCardsAdapter.getInitialState(
   {
     // set initial required properties
     initialized: false,
@@ -28,7 +29,7 @@ export const initialFaceUpState: FaceUpState = faceUpPilesCardsAdapter.getInitia
 );
 
 export const faceUpPilesCardsReducer = createReducer(
-  initialFaceUpState,
+  initialFaceUpPilesCardsState,
   on(FaceUpPilesCardsActions.initFaceUpNewGame, (state) => ({
     ...state,
     initialized: false,
@@ -40,8 +41,8 @@ export const faceUpPilesCardsReducer = createReducer(
   })),
   on(
     FaceUpPilesCardsActions.loadFaceUpPilesCardsSuccess,
-    (state, { agglomerationCards }) =>
-      faceUpPilesCardsAdapter.setAll(agglomerationCards, {
+    (state, { faceUpPilesCards }) =>
+      faceUpPilesCardsAdapter.setAll(faceUpPilesCards, {
         ...state,
         loaded: true,
       })
@@ -55,10 +56,21 @@ export const faceUpPilesCardsReducer = createReducer(
   ),
   on(
     FaceUpPilesCardsActions.setFaceUpPilesCardsInitialized,
-    (state, { agglomerationCards }) =>
-      faceUpPilesCardsAdapter.setAll(agglomerationCards, {
+    (state, { faceUpPilesCards }) =>
+      faceUpPilesCardsAdapter.setAll(faceUpPilesCards, {
         ...state,
         initialized: true,
       })
+  ),
+  on(FaceUpPilesCardsActions.selectFaceUpPileCard, (state, { id }) => ({
+    ...state,
+    selectedId: id,
+  })),
+  on(FaceUpPilesCardsActions.unselectFaceUpPileCard, (state) => ({
+    ...state,
+    selectedId: undefined,
+  })),
+  on(FaceUpPilesCardsActions.removeFaceUpPileCard, (state, { id }) =>
+    faceUpPilesCardsAdapter.removeOne(id, state)
   )
 );

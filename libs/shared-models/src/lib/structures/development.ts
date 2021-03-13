@@ -7,6 +7,8 @@ import { ResourceType } from '../types/resources';
 
 export const DEVELOPMENT_CARD_INTERFACE_NAME = 'DevelopmentCard';
 
+export const AVAILABLE_DEVELOPMENT_SLOT = 'AvailableDevelopmentSlot';
+
 /**
  * Interface for the Development Cards
  */

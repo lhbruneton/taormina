@@ -1,42 +1,44 @@
 import { createFeatureSelector, createSelector } from '@ngrx/store';
+
+import { FaceUpPilesCardsEntity } from './face-up-piles-cards.models';
 import {
-  FACE_UP_PILES_CARDS_FEATURE_KEY,
-  FaceUpState,
-  FaceUpPilesCardsPartialState,
   faceUpPilesCardsAdapter,
+  FaceUpPilesCardsPartialState,
+  FaceUpPilesCardsState,
+  FACE_UP_PILES_CARDS_FEATURE_KEY,
 } from './face-up-piles-cards.reducer';
 
 // Lookup the 'FaceUpPilesCards' feature state managed by NgRx
 export const getFaceUpPilesCardsState = createFeatureSelector<
   FaceUpPilesCardsPartialState,
-  FaceUpState
+  FaceUpPilesCardsState
 >(FACE_UP_PILES_CARDS_FEATURE_KEY);
 
 const { selectAll, selectEntities } = faceUpPilesCardsAdapter.getSelectors();
 
 export const getFaceUpPilesCardsLoaded = createSelector(
   getFaceUpPilesCardsState,
-  (state: FaceUpState) => state.loaded
+  (state: FaceUpPilesCardsState) => state.loaded
 );
 
 export const getFaceUpPilesCardsError = createSelector(
   getFaceUpPilesCardsState,
-  (state: FaceUpState) => state.error
+  (state: FaceUpPilesCardsState) => state.error
 );
 
 export const getAllFaceUpPilesCards = createSelector(
   getFaceUpPilesCardsState,
-  (state: FaceUpState) => selectAll(state)
+  (state: FaceUpPilesCardsState) => selectAll(state)
 );
 
 export const getFaceUpPilesCardsEntities = createSelector(
   getFaceUpPilesCardsState,
-  (state: FaceUpState) => selectEntities(state)
+  (state: FaceUpPilesCardsState) => selectEntities(state)
 );
 
 export const getFaceUpSelectedId = createSelector(
   getFaceUpPilesCardsState,
-  (state: FaceUpState) => state.selectedId
+  (state: FaceUpPilesCardsState) => state.selectedId
 );
 
 export const getFaceUpSelected = createSelector(
@@ -46,4 +48,28 @@ export const getFaceUpSelected = createSelector(
     if (selectedId === undefined) return undefined;
     return entities[selectedId];
   }
+);
+
+export const getFaceUpPileCardEntityByPivot = createSelector(
+  getAllFaceUpPilesCards,
+  (
+    entities: FaceUpPilesCardsEntity[],
+    props: { pileId: string; cardId: string }
+  ) =>
+    entities.find(
+      (entity) =>
+        entity.pileId === props.pileId && entity.cardId === props.cardId
+    )
+);
+
+export const getCardPivotsForPile = createSelector(
+  getAllFaceUpPilesCards,
+  (entities: FaceUpPilesCardsEntity[], props: { pileId: string }) =>
+    entities.filter((pivot) => pivot.pileId === props.pileId)
+);
+
+export const getFirstCardPivotForPile = createSelector(
+  getAllFaceUpPilesCards,
+  (entities: FaceUpPilesCardsEntity[], props: { pileId: string }) =>
+    entities.find((pivot) => pivot.pileId === props.pileId)
 );
