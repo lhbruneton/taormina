@@ -44,7 +44,9 @@ describe('DomainsCards Selectors', () => {
             LAND_CARD_INTERFACE_NAME,
             'LAND_1',
             0,
-            0
+            0,
+            0,
+            1
           ),
           createDomainsCardsEntity(
             'PRODUCT-CCC',

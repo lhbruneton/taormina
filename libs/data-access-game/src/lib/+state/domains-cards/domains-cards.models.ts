@@ -23,8 +23,8 @@ import {
 import {
   AGGLOMERATION_CARD_INTERFACE_NAME,
   DEVELOPMENT_CARD_INTERFACE_NAME,
-  LandValue,
   LAND_CARD_INTERFACE_NAME,
+  ResourceCount,
 } from '@taormina/shared-models';
 import { v4 as uuidv4 } from 'uuid';
 
@@ -41,7 +41,8 @@ export interface DomainsCardsEntity {
   cardId: string; // Foreign key to cards
   col: number;
   row: number;
-  value?: LandValue;
+  availableResources: ResourceCount;
+  lockedResources: ResourceCount;
 }
 
 export const createDomainsCardsEntity = (
@@ -54,7 +55,8 @@ export const createDomainsCardsEntity = (
   cardId: string,
   col: number,
   row: number,
-  value?: LandValue
+  availableResources = 0 as ResourceCount,
+  lockedResources = 0 as ResourceCount
 ): DomainsCardsEntity => ({
   id,
   domainId,
@@ -62,7 +64,8 @@ export const createDomainsCardsEntity = (
   cardId,
   col,
   row,
-  value,
+  availableResources,
+  lockedResources,
 });
 
 export const createInitialDomainsCards = (): DomainsCardsEntity[] => {

@@ -92,14 +92,14 @@ describe('DomainsCardsEffects', () => {
                     domainId: ID_DOMAIN_BLUE,
                     cardType: LAND_CARD_INTERFACE_NAME,
                     cardId: 'LAND_1',
-                    value: 0,
+                    availableResources: 0,
                   },
                   {
                     id: 'CCC',
                     domainId: ID_DOMAIN_RED,
                     cardType: LAND_CARD_INTERFACE_NAME,
                     cardId: 'LAND_2',
-                    value: 3,
+                    availableResources: 3,
                   },
                   {
                     id: 'DDD',
@@ -116,9 +116,9 @@ describe('DomainsCardsEffects', () => {
       injector.get(MockStore);
     });
 
-    it('should work', () => {
+    it('should dispatch updateDomainsCards with availableResources + 1 when availableResources < 3', () => {
       actions = hot('-a-|', {
-        a: DomainsCardsActions.increaseLandValueForDie({ die: 1 }),
+        a: DomainsCardsActions.increaseAvailableResourcesForDie({ die: 1 }),
       });
 
       const expected = hot('-a-|', {
@@ -126,7 +126,7 @@ describe('DomainsCardsEffects', () => {
           updates: [
             {
               id: 'BBB',
-              changes: { value: 1 },
+              changes: { availableResources: 1 },
             },
           ],
         }),

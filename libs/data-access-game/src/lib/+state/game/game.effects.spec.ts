@@ -104,12 +104,12 @@ describe('GameEffects', () => {
         injector.get(MockStore);
       });
 
-      it('should dispatch setProductionDie and increaseLandValueForDie when phase is not InitialThrow', () => {
+      it('should dispatch setProductionDie and increaseResourceCountForDie when phase is not InitialThrow', () => {
         actions = hot('-a', { a: GameActions.throwProductionDie() });
 
         const expected = hot('-(ab)', {
           a: GameActions.setProductionDie({ value: 1 }),
-          b: DomainsCardsActions.increaseLandValueForDie({ die: 1 }),
+          b: DomainsCardsActions.increaseAvailableResourcesForDie({ die: 1 }),
         });
 
         expect(effects.throwProduction$).toBeObservable(expected);

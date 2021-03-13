@@ -27,8 +27,8 @@ export const setDomainsCardsInitialized = createAction(
   props<{ domainsCards: DomainsCardsEntity[] }>()
 );
 
-export const increaseLandValueForDie = createAction(
-  '[DomainsCards] Increase Land Value For Die',
+export const increaseAvailableResourcesForDie = createAction(
+  '[DomainsCards] Increase Available Resources For Die',
   props<{ die: ResourceValue }>()
 );
 

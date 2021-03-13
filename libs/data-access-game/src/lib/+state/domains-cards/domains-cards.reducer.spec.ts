@@ -34,6 +34,8 @@ describe('DomainsCards Reducer', () => {
             cardId: 'A',
             col: 0,
             row: 0,
+            availableResources: 0,
+            lockedResources: 0,
           },
           'PRODUCT-zzz': {
             id: 'PRODUCT-zzz',
@@ -42,6 +44,8 @@ describe('DomainsCards Reducer', () => {
             cardId: 'z',
             col: 0,
             row: 0,
+            availableResources: 0,
+            lockedResources: 0,
           },
         },
         initialized: false,
@@ -91,7 +95,8 @@ describe('DomainsCards Reducer', () => {
             cardId: 'A',
             col: 0,
             row: 0,
-            value: 1,
+            availableResources: 1,
+            lockedResources: 0,
           },
           'PRODUCT-zzz': {
             id: 'PRODUCT-zzz',
@@ -100,7 +105,8 @@ describe('DomainsCards Reducer', () => {
             cardId: 'z',
             col: 0,
             row: 0,
-            value: 0,
+            availableResources: 0,
+            lockedResources: 1,
           },
         },
         initialized: true,
@@ -117,7 +123,8 @@ describe('DomainsCards Reducer', () => {
             cardId: 'A',
             col: 0,
             row: 0,
-            value: 0,
+            availableResources: 0,
+            lockedResources: 0,
           },
           'PRODUCT-zzz': {
             id: 'PRODUCT-zzz',
@@ -126,7 +133,8 @@ describe('DomainsCards Reducer', () => {
             cardId: 'z',
             col: 0,
             row: 0,
-            value: 0,
+            availableResources: 0,
+            lockedResources: 0,
           },
         },
         initialized: true,
@@ -138,7 +146,13 @@ describe('DomainsCards Reducer', () => {
           {
             id: 'PRODUCT-AAA',
             changes: {
-              value: 1,
+              availableResources: 1,
+            },
+          },
+          {
+            id: 'PRODUCT-zzz',
+            changes: {
+              lockedResources: 1,
             },
           },
         ],
