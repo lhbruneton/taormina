@@ -9,6 +9,9 @@ import { ResourceType } from '../types/resources';
 
 export const AGGLOMERATION_CARD_INTERFACE_NAME = 'AgglomerationCard';
 
+export const AVAILABLE_ROAD_SLOT = 'AvailableRoadSlot';
+export const AVAILABLE_HAMLET_SLOT = 'AvailableHamletSlot';
+
 /**
  * Interface for the Agglomeration Cards
  */

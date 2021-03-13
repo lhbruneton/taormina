@@ -22,7 +22,7 @@ import {
 } from '@taormina/shared-constants';
 import {
   AGGLOMERATION_CARD_INTERFACE_NAME,
-  DEVELOPMENT_CARD_INTERFACE_NAME,
+  DomainCardType,
   LAND_CARD_INTERFACE_NAME,
   ResourceCount,
 } from '@taormina/shared-models';
@@ -34,11 +34,8 @@ import { v4 as uuidv4 } from 'uuid';
 export interface DomainsCardsEntity {
   id: string; // Primary ID
   domainId: string; // Foreign key to domains
-  cardType:
-    | typeof AGGLOMERATION_CARD_INTERFACE_NAME
-    | typeof DEVELOPMENT_CARD_INTERFACE_NAME
-    | typeof LAND_CARD_INTERFACE_NAME;
   cardId: string; // Foreign key to cards
+  cardType: DomainCardType;
   col: number;
   row: number;
   availableResources: ResourceCount;
@@ -48,11 +45,8 @@ export interface DomainsCardsEntity {
 export const createDomainsCardsEntity = (
   id: string,
   domainId: string,
-  cardType:
-    | typeof AGGLOMERATION_CARD_INTERFACE_NAME
-    | typeof DEVELOPMENT_CARD_INTERFACE_NAME
-    | typeof LAND_CARD_INTERFACE_NAME,
   cardId: string,
+  cardType: DomainCardType,
   col: number,
   row: number,
   availableResources = 0 as ResourceCount,
