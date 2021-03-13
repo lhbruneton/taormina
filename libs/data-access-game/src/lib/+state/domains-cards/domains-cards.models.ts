@@ -22,6 +22,7 @@ import {
 } from '@taormina/shared-constants';
 import {
   AGGLOMERATION_CARD_INTERFACE_NAME,
+  AVAILABLE_ROAD_SLOT,
   DomainCardType,
   LAND_CARD_INTERFACE_NAME,
   ResourceCount,
@@ -34,8 +35,8 @@ import { v4 as uuidv4 } from 'uuid';
 export interface DomainsCardsEntity {
   id: string; // Primary ID
   domainId: string; // Foreign key to domains
-  cardId: string; // Foreign key to cards
   cardType: DomainCardType;
+  cardId: string | undefined; // Foreign key to cards
   col: number;
   row: number;
   availableResources: ResourceCount;
@@ -45,8 +46,8 @@ export interface DomainsCardsEntity {
 export const createDomainsCardsEntity = (
   id: string,
   domainId: string,
-  cardId: string,
   cardType: DomainCardType,
+  cardId: string | undefined,
   col: number,
   row: number,
   availableResources = 0 as ResourceCount,
@@ -83,9 +84,25 @@ export const createInitialDomainsCards = (): DomainsCardsEntity[] => {
     createDomainsCardsEntity(
       uuidv4(),
       ID_DOMAIN_RED,
+      AVAILABLE_ROAD_SLOT,
+      undefined,
+      -2,
+      0
+    ),
+    createDomainsCardsEntity(
+      uuidv4(),
+      ID_DOMAIN_RED,
       AGGLOMERATION_CARD_INTERFACE_NAME,
       ID_HAMLET_RED_2,
       1,
+      0
+    ),
+    createDomainsCardsEntity(
+      uuidv4(),
+      ID_DOMAIN_RED,
+      AVAILABLE_ROAD_SLOT,
+      undefined,
+      2,
       0
     ),
     createDomainsCardsEntity(
@@ -161,9 +178,25 @@ export const createInitialDomainsCards = (): DomainsCardsEntity[] => {
     createDomainsCardsEntity(
       uuidv4(),
       ID_DOMAIN_BLUE,
+      AVAILABLE_ROAD_SLOT,
+      undefined,
+      -2,
+      0
+    ),
+    createDomainsCardsEntity(
+      uuidv4(),
+      ID_DOMAIN_BLUE,
       AGGLOMERATION_CARD_INTERFACE_NAME,
       ID_HAMLET_BLUE_2,
       1,
+      0
+    ),
+    createDomainsCardsEntity(
+      uuidv4(),
+      ID_DOMAIN_BLUE,
+      AVAILABLE_ROAD_SLOT,
+      undefined,
+      2,
       0
     ),
     createDomainsCardsEntity(

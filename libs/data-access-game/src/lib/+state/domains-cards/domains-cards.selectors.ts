@@ -58,7 +58,10 @@ export const getLandCardsPivotsForDie = createSelector(
   getAllDomainsCards,
   (entities: DomainsCardsEntity[], props: { die: ResourceValue }) =>
     entities.filter((pivot) => {
-      if (pivot.cardType === LAND_CARD_INTERFACE_NAME) {
+      if (
+        pivot.cardType === LAND_CARD_INTERFACE_NAME &&
+        pivot.cardId !== undefined
+      ) {
         const land = landCards.get(pivot.cardId);
         if (land && land.die === props.die) return true;
       }
