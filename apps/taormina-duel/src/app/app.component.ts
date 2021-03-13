@@ -4,6 +4,8 @@ import {
   DomainsCardsFacade,
   EventsPileCardsEntity,
   EventsPileCardsFacade,
+  FaceUpPilesCardsEntity,
+  FaceUpPilesCardsFacade,
   GameFacade,
   HandsCardsEntity,
   HandsCardsFacade,
@@ -19,9 +21,13 @@ import {
   developmentCards,
   domains,
   eventCards,
+  faceUpPiles,
   hands,
   ID_DOMAIN_BLUE,
   ID_DOMAIN_RED,
+  ID_FACE_UP_HAMLET,
+  ID_FACE_UP_ROAD,
+  ID_FACE_UP_TOWN,
   ID_HAND_BLUE,
   ID_HAND_RED,
   landCards,
@@ -32,6 +38,10 @@ import {
   ACTION_CARD_INTERFACE_NAME,
   AgglomerationCard,
   AGGLOMERATION_CARD_INTERFACE_NAME,
+  AVAILABLE_DEVELOPMENT_SLOT,
+  AVAILABLE_HAMLET_SLOT,
+  AVAILABLE_LAND_SLOT,
+  AVAILABLE_ROAD_SLOT,
   DevelopmentCard,
   DEVELOPMENT_CARD_INTERFACE_NAME,
   Domain,
@@ -58,16 +68,21 @@ export class AppComponent {
 
   ACTION_CARD_INTERFACE_NAME = ACTION_CARD_INTERFACE_NAME;
   AGGLOMERATION_CARD_INTERFACE_NAME = AGGLOMERATION_CARD_INTERFACE_NAME;
+  AVAILABLE_DEVELOPMENT_SLOT = AVAILABLE_DEVELOPMENT_SLOT;
+  AVAILABLE_HAMLET_SLOT = AVAILABLE_HAMLET_SLOT;
+  AVAILABLE_LAND_SLOT = AVAILABLE_LAND_SLOT;
+  AVAILABLE_ROAD_SLOT = AVAILABLE_ROAD_SLOT;
   DEVELOPMENT_CARD_INTERFACE_NAME = DEVELOPMENT_CARD_INTERFACE_NAME;
   LAND_CARD_INTERFACE_NAME = LAND_CARD_INTERFACE_NAME;
 
   constructor(
     private game: GameFacade,
     private domainsCards: DomainsCardsFacade,
-    private landsPileCards: LandsPileCardsFacade,
-    private eventsPileCards: EventsPileCardsFacade,
-    private stockPilesCards: StockPilesCardsFacade,
     private handsCards: HandsCardsFacade,
+    private faceUpPilesCards: FaceUpPilesCardsFacade,
+    private landsPileCards: LandsPileCardsFacade,
+    private stockPilesCards: StockPilesCardsFacade,
+    private eventsPileCards: EventsPileCardsFacade,
     private gameRules: GameRulesService
   ) {}
 
@@ -112,6 +127,12 @@ export class AppComponent {
     return this.game.eventDie$;
   }
 
+  buyDisabled(): Observable<boolean> {
+    return this.game.phase$.pipe(
+      map((phase) => phase !== GamePhase.LoopActions)
+    );
+  }
+
   getRedDomain(): Domain | undefined {
     return domains.get(ID_DOMAIN_RED);
   }
@@ -128,8 +149,65 @@ export class AppComponent {
     );
   }
 
+  selectDomainCard(pivotId: string): void {
+    this.domainsCards.selectDomainCard(pivotId);
+  }
+
+  lockResource(pivotId: string): void {
+    this.domainsCards.lockResource(pivotId);
+  }
+
+  unlockResources(pivotId: string): void {
+    this.domainsCards.unlockResources(pivotId);
+  }
+
+  buyDomainCard(pivot: DomainsCardsEntity): void {
+    console.log(pivot);
+  }
+
+  getFaceUpPiles(): string[] {
+    return faceUpPiles;
+  }
+
+  selectFirst(pileId: string): void {
+    this.faceUpPilesCards.selectFirstCardFromFaceUpPile(pileId);
+  }
+
+  getFaceUpPileCount(pileId: string): Observable<number> {
+    switch (pileId) {
+      case ID_FACE_UP_ROAD:
+        return this.faceUpPilesCards.allRoadPivots$.pipe(
+          map((pivots) => pivots.length)
+        );
+      case ID_FACE_UP_HAMLET:
+        return this.faceUpPilesCards.allHamletPivots$.pipe(
+          map((pivots) => pivots.length)
+        );
+      case ID_FACE_UP_TOWN:
+        return this.faceUpPilesCards.allTownPivots$.pipe(
+          map((pivots) => pivots.length)
+        );
+      default:
+        throw new Error(`Can't get count for pile with id ${pileId}.`);
+    }
+  }
+
   getLandsPileCards(): Observable<LandsPileCardsEntity[]> {
     return this.landsPileCards.allLandsPileCards$;
+  }
+
+  getStockPiles(): string[] {
+    return stockPiles;
+  }
+
+  getStockPilesCards(pileId: string): Observable<StockPilesCardsEntity[]> {
+    return this.stockPilesCards.allStockPilesCards$.pipe(
+      map((stockPilesCards) =>
+        stockPilesCards.filter(
+          (stockPileCard) => stockPileCard.pileId === pileId
+        )
+      )
+    );
   }
 
   getEventsPileCards(): Observable<EventsPileCardsEntity[]> {
@@ -138,20 +216,6 @@ export class AppComponent {
 
   getEventCard(cardId: string): EventCard | undefined {
     return eventCards.get(cardId);
-  }
-
-  getStockPiles(): string[] {
-    return stockPiles;
-  }
-
-  getStockPilesCards(stockPileId: string): Observable<StockPilesCardsEntity[]> {
-    return this.stockPilesCards.allStockPilesCards$.pipe(
-      map((stockPilesCards) =>
-        stockPilesCards.filter(
-          (stockPileCard) => stockPileCard.stockPileId === stockPileId
-        )
-      )
-    );
   }
 
   getRedHand(): Hand | undefined {
@@ -178,8 +242,8 @@ export class AppComponent {
     );
   }
 
-  drawInitialRedHand(stockPileId: string): void {
-    this.gameRules.drawFromStockToHand(stockPileId, 3, ID_HAND_RED);
+  drawInitialRedHand(pileId: string): void {
+    this.gameRules.drawFromStockToHand(pileId, 3, ID_HAND_RED);
   }
 
   drawInitialBlueHandAvailable(): Observable<boolean> {
@@ -190,8 +254,8 @@ export class AppComponent {
     );
   }
 
-  drawInitialBlueHand(stockPileId: string): void {
-    this.gameRules.drawFromStockToHand(stockPileId, 3, ID_HAND_BLUE);
+  drawInitialBlueHand(pileId: string): void {
+    this.gameRules.drawFromStockToHand(pileId, 3, ID_HAND_BLUE);
   }
 
   getActionCard(cardId: string): ActionCard | undefined {
@@ -208,5 +272,17 @@ export class AppComponent {
 
   getLandCard(cardId: string): LandCard | undefined {
     return landCards.get(cardId);
+  }
+
+  buy(): void {
+    this.gameRules.useResourcesToPutFaceUpPileCardInSlot();
+  }
+
+  getSelectedFaceUpPileCard(): Observable<FaceUpPilesCardsEntity | undefined> {
+    return this.faceUpPilesCards.selectedFaceUpPilesCards$;
+  }
+
+  getSelectedDomainCard(): Observable<DomainsCardsEntity | undefined> {
+    return this.domainsCards.selectedDomainsCards$;
   }
 }
