@@ -9,26 +9,6 @@ import {
 } from './face-up-piles-cards.reducer';
 
 describe('FaceUpPilesCards Reducer', () => {
-  describe('valid FaceUpPilesCards actions', () => {
-    it('loadFaceUpPilesCardsSuccess should set the list of known FaceUpPilesCards', () => {
-      const faceUpPilesCards = [
-        createFaceUpPilesCardsEntity('PRODUCT-AAA', 'A', 'A'),
-        createFaceUpPilesCardsEntity('PRODUCT-zzz', 'z', 'z'),
-      ];
-      const action = FaceUpPilesCardsActions.loadFaceUpPilesCardsSuccess({
-        faceUpPilesCards,
-      });
-
-      const result: FaceUpPilesCardsState = faceUpPilesCardsReducer(
-        initialFaceUpPilesCardsState,
-        action
-      );
-
-      expect(result.loaded).toBe(true);
-      expect(result.ids.length).toBe(2);
-    });
-  });
-
   describe('unknown action', () => {
     it('should return the previous state', () => {
       const action = {} as Action;
@@ -39,6 +19,171 @@ describe('FaceUpPilesCards Reducer', () => {
       );
 
       expect(result).toBe(initialFaceUpPilesCardsState);
+    });
+  });
+
+  describe('loadFaceUpPilesCardsSuccess', () => {
+    it('should set the list of known FaceUpPilesCards and loaded', () => {
+      const newState: FaceUpPilesCardsState = {
+        ids: ['PRODUCT-AAA', 'PRODUCT-zzz'],
+        entities: {
+          'PRODUCT-AAA': {
+            id: 'PRODUCT-AAA',
+            pileId: 'A',
+            cardId: 'A',
+          },
+          'PRODUCT-zzz': {
+            id: 'PRODUCT-zzz',
+            pileId: 'z',
+            cardId: 'z',
+          },
+        },
+        initialized: false,
+        loaded: true,
+      };
+
+      const faceUpPilesCards = [
+        createFaceUpPilesCardsEntity('PRODUCT-AAA', 'A', 'A'),
+        createFaceUpPilesCardsEntity('PRODUCT-zzz', 'z', 'z'),
+      ];
+      const action = FaceUpPilesCardsActions.loadFaceUpPilesCardsSuccess({
+        faceUpPilesCards,
+      });
+
+      const state: FaceUpPilesCardsState = faceUpPilesCardsReducer(
+        initialFaceUpPilesCardsState,
+        action
+      );
+
+      expect(state).toEqual(newState);
+    });
+  });
+
+  describe('selectFaceUpPileCard', () => {
+    it('should select the FaceUpPileCard', () => {
+      const newState: FaceUpPilesCardsState = {
+        ids: ['PRODUCT-AAA'],
+        entities: {
+          'PRODUCT-AAA': {
+            id: 'PRODUCT-AAA',
+            pileId: 'A',
+            cardId: 'A',
+          },
+        },
+        selectedId: 'PRODUCT-AAA',
+        initialized: true,
+        loaded: false,
+      };
+
+      const initialState: FaceUpPilesCardsState = {
+        ids: ['PRODUCT-AAA'],
+        entities: {
+          'PRODUCT-AAA': {
+            id: 'PRODUCT-AAA',
+            pileId: 'A',
+            cardId: 'A',
+          },
+        },
+        initialized: true,
+        loaded: false,
+      };
+
+      const action = FaceUpPilesCardsActions.selectFaceUpPileCard({
+        id: 'PRODUCT-AAA',
+      });
+
+      const state: FaceUpPilesCardsState = faceUpPilesCardsReducer(
+        initialState,
+        action
+      );
+
+      expect(state).toEqual(newState);
+    });
+  });
+
+  describe('unselectFaceUpPileCard', () => {
+    it('should unselect the FaceUpPileCard', () => {
+      const newState: FaceUpPilesCardsState = {
+        ids: ['PRODUCT-AAA'],
+        entities: {
+          'PRODUCT-AAA': {
+            id: 'PRODUCT-AAA',
+            pileId: 'A',
+            cardId: 'A',
+          },
+        },
+        initialized: true,
+        loaded: false,
+      };
+
+      const initialState: FaceUpPilesCardsState = {
+        ids: ['PRODUCT-AAA'],
+        entities: {
+          'PRODUCT-AAA': {
+            id: 'PRODUCT-AAA',
+            pileId: 'A',
+            cardId: 'A',
+          },
+        },
+        selectedId: 'PRODUCT-AAA',
+        initialized: true,
+        loaded: false,
+      };
+
+      const action = FaceUpPilesCardsActions.unselectFaceUpPileCard();
+
+      const state: FaceUpPilesCardsState = faceUpPilesCardsReducer(
+        initialState,
+        action
+      );
+
+      expect(state).toEqual(newState);
+    });
+  });
+
+  describe('removeFaceUpPileCard', () => {
+    it('should remove the DomainCard from the list', () => {
+      const newState: FaceUpPilesCardsState = {
+        ids: ['PRODUCT-AAA'],
+        entities: {
+          'PRODUCT-AAA': {
+            id: 'PRODUCT-AAA',
+            pileId: 'A',
+            cardId: 'A',
+          },
+        },
+        initialized: true,
+        loaded: false,
+      };
+
+      const initialState: FaceUpPilesCardsState = {
+        ids: ['PRODUCT-AAA', 'PRODUCT-BBB'],
+        entities: {
+          'PRODUCT-AAA': {
+            id: 'PRODUCT-AAA',
+            pileId: 'A',
+            cardId: 'A',
+          },
+          'PRODUCT-BBB': {
+            id: 'PRODUCT-BBB',
+            pileId: 'B',
+            cardId: 'B',
+          },
+        },
+        initialized: true,
+        loaded: false,
+      };
+
+      const action = FaceUpPilesCardsActions.removeFaceUpPileCard({
+        id: 'PRODUCT-BBB',
+      });
+
+      const state: FaceUpPilesCardsState = faceUpPilesCardsReducer(
+        initialState,
+        action
+      );
+
+      expect(state).toEqual(newState);
     });
   });
 });

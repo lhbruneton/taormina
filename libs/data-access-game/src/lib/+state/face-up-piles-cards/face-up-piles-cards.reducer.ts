@@ -61,5 +61,16 @@ export const faceUpPilesCardsReducer = createReducer(
         ...state,
         initialized: true,
       })
+  ),
+  on(FaceUpPilesCardsActions.selectFaceUpPileCard, (state, { id }) => ({
+    ...state,
+    selectedId: id,
+  })),
+  on(FaceUpPilesCardsActions.unselectFaceUpPileCard, (state) => ({
+    ...state,
+    selectedId: undefined,
+  })),
+  on(FaceUpPilesCardsActions.removeFaceUpPileCard, (state, { id }) =>
+    faceUpPilesCardsAdapter.removeOne(id, state)
   )
 );

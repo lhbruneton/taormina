@@ -103,5 +103,23 @@ describe('DomainsCards Selectors', () => {
 
       expect(selId).toBe('PRODUCT-BBB');
     });
+
+    it('getLandCardPivotById({ id }) should return the pivot for the id', () => {
+      const result = DomainsCardsSelectors.getLandCardPivotById(state, {
+        id: 'PRODUCT-BBB',
+      });
+      const selId = getDomainsCardsId(result);
+
+      expect(selId).toBe('PRODUCT-BBB');
+    });
+
+    it('getLandCardPivotWithLockedResources() should return the pivot for the id', () => {
+      const result = DomainsCardsSelectors.getLandCardPivotWithLockedResources(
+        state
+      );
+      const selId = getDomainsCardsId(result[0]);
+
+      expect(selId).toBe('PRODUCT-BBB');
+    });
   });
 });

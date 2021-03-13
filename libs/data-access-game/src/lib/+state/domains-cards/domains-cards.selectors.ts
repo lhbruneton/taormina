@@ -68,3 +68,21 @@ export const getLandCardsPivotsForDie = createSelector(
       return false;
     })
 );
+
+export const getLandCardPivotById = createSelector(
+  getAllDomainsCards,
+  (entities: DomainsCardsEntity[], props: { id: string }) =>
+    entities.find(
+      (pivot) =>
+        pivot.cardType === LAND_CARD_INTERFACE_NAME && pivot.id === props.id
+    )
+);
+
+export const getLandCardPivotWithLockedResources = createSelector(
+  getAllDomainsCards,
+  (entities: DomainsCardsEntity[]) =>
+    entities.filter(
+      (pivot) =>
+        pivot.cardType === LAND_CARD_INTERFACE_NAME && pivot.lockedResources > 0
+    )
+);

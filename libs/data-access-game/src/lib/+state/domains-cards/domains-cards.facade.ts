@@ -1,5 +1,6 @@
 import { Injectable } from '@angular/core';
 import { select, Store } from '@ngrx/store';
+import { DomainCardType } from '@taormina/shared-models';
 
 import * as DomainsCardsActions from './domains-cards.actions';
 import * as DomainsCardsFeature from './domains-cards.reducer';
@@ -35,5 +36,39 @@ export class DomainsCardsFacade {
 
   initSavedGame(): void {
     this.store.dispatch(DomainsCardsActions.initDomainsCardsSavedGame());
+  }
+
+  lockResource(pivotId: string): void {
+    this.store.dispatch(DomainsCardsActions.lockResource({ id: pivotId }));
+  }
+
+  unlockResources(pivotId: string): void {
+    this.store.dispatch(DomainsCardsActions.unlockResources({ id: pivotId }));
+  }
+
+  useLockedResources(): void {
+    this.store.dispatch(DomainsCardsActions.useLockedResources());
+  }
+
+  selectDomainCard(pivotId: string): void {
+    this.store.dispatch(DomainsCardsActions.selectDomainCard({ id: pivotId }));
+  }
+
+  unselectDomainCard(): void {
+    this.store.dispatch(DomainsCardsActions.unselectDomainCard());
+  }
+
+  putCardInSlot(
+    pivotId: string,
+    cardType: DomainCardType,
+    cardId: string
+  ): void {
+    this.store.dispatch(
+      DomainsCardsActions.putCardInPivot({
+        id: pivotId,
+        cardType,
+        cardId,
+      })
+    );
   }
 }

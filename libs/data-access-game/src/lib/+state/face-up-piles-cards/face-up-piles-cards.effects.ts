@@ -1,10 +1,14 @@
 import { Injectable } from '@angular/core';
 import { Actions, createEffect, ofType } from '@ngrx/effects';
+import { select, Store } from '@ngrx/store';
 import { fetch } from '@nrwl/angular';
-import { map } from 'rxjs/operators';
+import { of } from 'rxjs';
+import { catchError, concatMap, map, take } from 'rxjs/operators';
 
 import * as FaceUpPilesCardsActions from './face-up-piles-cards.actions';
 import { createInitialFaceUpPilesCards } from './face-up-piles-cards.models';
+import * as FaceUpPilesCardsFeature from './face-up-piles-cards.reducer';
+import * as FaceUpPilesCardsSelectors from './face-up-piles-cards.selectors';
 
 @Injectable()
 export class FaceUpPilesCardsEffects {
@@ -38,5 +42,35 @@ export class FaceUpPilesCardsEffects {
     )
   );
 
-  constructor(private actions$: Actions) {}
+  selectFirst$ = createEffect(() =>
+    this.actions$.pipe(
+      ofType(FaceUpPilesCardsActions.selectFirstCardFromFaceUpPile),
+      concatMap((action) =>
+        this.faceUpPilesCardsStore.pipe(
+          select(FaceUpPilesCardsSelectors.getFirstCardPivotForPile, {
+            pileId: action.pileId,
+          }),
+          map((pivot) => {
+            if (pivot === undefined)
+              throw new Error(`Can't get first card in empty face up pile.`);
+            return pivot;
+          }),
+          take(1)
+        )
+      ),
+      map((pivot) =>
+        FaceUpPilesCardsActions.selectFaceUpPileCard({
+          id: pivot.id,
+        })
+      ),
+      catchError((error) =>
+        of(FaceUpPilesCardsActions.setFaceUpPilesCardsError({ error }))
+      )
+    )
+  );
+
+  constructor(
+    private actions$: Actions,
+    private faceUpPilesCardsStore: Store<FaceUpPilesCardsFeature.FaceUpPilesCardsPartialState>
+  ) {}
 }

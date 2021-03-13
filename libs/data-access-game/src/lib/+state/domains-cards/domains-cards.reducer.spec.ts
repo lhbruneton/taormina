@@ -84,7 +84,7 @@ describe('DomainsCards Reducer', () => {
   });
 
   describe('updateDomainsCards', () => {
-    it('should update the right DomainsCards in the list', () => {
+    it('should update the DomainsCards in the list', () => {
       const newState: DomainsCardsState = {
         ids: ['PRODUCT-AAA', 'PRODUCT-zzz'],
         entities: {
@@ -157,6 +157,235 @@ describe('DomainsCards Reducer', () => {
           },
         ],
       });
+
+      const state: DomainsCardsState = domainsCardsReducer(
+        initialState,
+        action
+      );
+
+      expect(state).toEqual(newState);
+    });
+  });
+
+  describe('updateDomainCard', () => {
+    it('should update the DomainCard', () => {
+      const newState: DomainsCardsState = {
+        ids: ['PRODUCT-AAA'],
+        entities: {
+          'PRODUCT-AAA': {
+            id: 'PRODUCT-AAA',
+            domainId: 'A',
+            cardType: AGGLOMERATION_CARD_INTERFACE_NAME,
+            cardId: 'A',
+            col: 0,
+            row: 0,
+            availableResources: 0,
+            lockedResources: 1,
+          },
+        },
+        initialized: true,
+        loaded: false,
+      };
+
+      const initialState: DomainsCardsState = {
+        ids: ['PRODUCT-AAA'],
+        entities: {
+          'PRODUCT-AAA': {
+            id: 'PRODUCT-AAA',
+            domainId: 'A',
+            cardType: AGGLOMERATION_CARD_INTERFACE_NAME,
+            cardId: 'A',
+            col: 0,
+            row: 0,
+            availableResources: 1,
+            lockedResources: 0,
+          },
+        },
+        initialized: true,
+        loaded: false,
+      };
+
+      const action = DomainsCardsActions.updateDomainCard({
+        update: {
+          id: 'PRODUCT-AAA',
+          changes: {
+            availableResources: 0,
+            lockedResources: 1,
+          },
+        },
+      });
+
+      const state: DomainsCardsState = domainsCardsReducer(
+        initialState,
+        action
+      );
+
+      expect(state).toEqual(newState);
+    });
+  });
+
+  describe('addDomainCard', () => {
+    it('should add the DomainCard to the list', () => {
+      const newState: DomainsCardsState = {
+        ids: ['PRODUCT-AAA', 'PRODUCT-BBB'],
+        entities: {
+          'PRODUCT-AAA': {
+            id: 'PRODUCT-AAA',
+            domainId: 'A',
+            cardType: AGGLOMERATION_CARD_INTERFACE_NAME,
+            cardId: 'A',
+            col: 0,
+            row: 0,
+            availableResources: 0,
+            lockedResources: 0,
+          },
+          'PRODUCT-BBB': {
+            id: 'PRODUCT-BBB',
+            domainId: 'B',
+            cardType: AGGLOMERATION_CARD_INTERFACE_NAME,
+            cardId: 'B',
+            col: 0,
+            row: 0,
+            availableResources: 0,
+            lockedResources: 0,
+          },
+        },
+        initialized: true,
+        loaded: false,
+      };
+
+      const initialState: DomainsCardsState = {
+        ids: ['PRODUCT-AAA'],
+        entities: {
+          'PRODUCT-AAA': {
+            id: 'PRODUCT-AAA',
+            domainId: 'A',
+            cardType: AGGLOMERATION_CARD_INTERFACE_NAME,
+            cardId: 'A',
+            col: 0,
+            row: 0,
+            availableResources: 0,
+            lockedResources: 0,
+          },
+        },
+        initialized: true,
+        loaded: false,
+      };
+
+      const action = DomainsCardsActions.addDomainCard({
+        domainCard: {
+          id: 'PRODUCT-BBB',
+          domainId: 'B',
+          cardType: AGGLOMERATION_CARD_INTERFACE_NAME,
+          cardId: 'B',
+          col: 0,
+          row: 0,
+          availableResources: 0,
+          lockedResources: 0,
+        },
+      });
+
+      const state: DomainsCardsState = domainsCardsReducer(
+        initialState,
+        action
+      );
+
+      expect(state).toEqual(newState);
+    });
+  });
+
+  describe('selectDomainCard', () => {
+    it('should select the DomainCard', () => {
+      const newState: DomainsCardsState = {
+        ids: ['PRODUCT-AAA'],
+        entities: {
+          'PRODUCT-AAA': {
+            id: 'PRODUCT-AAA',
+            domainId: 'A',
+            cardType: AGGLOMERATION_CARD_INTERFACE_NAME,
+            cardId: 'A',
+            col: 0,
+            row: 0,
+            availableResources: 0,
+            lockedResources: 0,
+          },
+        },
+        selectedId: 'PRODUCT-AAA',
+        initialized: true,
+        loaded: false,
+      };
+
+      const initialState: DomainsCardsState = {
+        ids: ['PRODUCT-AAA'],
+        entities: {
+          'PRODUCT-AAA': {
+            id: 'PRODUCT-AAA',
+            domainId: 'A',
+            cardType: AGGLOMERATION_CARD_INTERFACE_NAME,
+            cardId: 'A',
+            col: 0,
+            row: 0,
+            availableResources: 0,
+            lockedResources: 0,
+          },
+        },
+        initialized: true,
+        loaded: false,
+      };
+
+      const action = DomainsCardsActions.selectDomainCard({
+        id: 'PRODUCT-AAA',
+      });
+
+      const state: DomainsCardsState = domainsCardsReducer(
+        initialState,
+        action
+      );
+
+      expect(state).toEqual(newState);
+    });
+  });
+
+  describe('unselectDomainCard', () => {
+    it('should unselect the DomainCard', () => {
+      const newState: DomainsCardsState = {
+        ids: ['PRODUCT-AAA'],
+        entities: {
+          'PRODUCT-AAA': {
+            id: 'PRODUCT-AAA',
+            domainId: 'A',
+            cardType: AGGLOMERATION_CARD_INTERFACE_NAME,
+            cardId: 'A',
+            col: 0,
+            row: 0,
+            availableResources: 0,
+            lockedResources: 0,
+          },
+        },
+        initialized: true,
+        loaded: false,
+      };
+
+      const initialState: DomainsCardsState = {
+        ids: ['PRODUCT-AAA'],
+        entities: {
+          'PRODUCT-AAA': {
+            id: 'PRODUCT-AAA',
+            domainId: 'A',
+            cardType: AGGLOMERATION_CARD_INTERFACE_NAME,
+            cardId: 'A',
+            col: 0,
+            row: 0,
+            availableResources: 0,
+            lockedResources: 0,
+          },
+        },
+        selectedId: 'PRODUCT-AAA',
+        initialized: true,
+        loaded: false,
+      };
+
+      const action = DomainsCardsActions.unselectDomainCard();
 
       const state: DomainsCardsState = domainsCardsReducer(
         initialState,

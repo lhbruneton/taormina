@@ -1,4 +1,6 @@
 import { createFeatureSelector, createSelector } from '@ngrx/store';
+
+import { FaceUpPilesCardsEntity } from './face-up-piles-cards.models';
 import {
   faceUpPilesCardsAdapter,
   FaceUpPilesCardsPartialState,
@@ -46,4 +48,28 @@ export const getFaceUpSelected = createSelector(
     if (selectedId === undefined) return undefined;
     return entities[selectedId];
   }
+);
+
+export const getFaceUpPileCardEntityByPivot = createSelector(
+  getAllFaceUpPilesCards,
+  (
+    entities: FaceUpPilesCardsEntity[],
+    props: { pileId: string; cardId: string }
+  ) =>
+    entities.find(
+      (entity) =>
+        entity.pileId === props.pileId && entity.cardId === props.cardId
+    )
+);
+
+export const getCardPivotsForPile = createSelector(
+  getAllFaceUpPilesCards,
+  (entities: FaceUpPilesCardsEntity[], props: { pileId: string }) =>
+    entities.filter((pivot) => pivot.pileId === props.pileId)
+);
+
+export const getFirstCardPivotForPile = createSelector(
+  getAllFaceUpPilesCards,
+  (entities: FaceUpPilesCardsEntity[], props: { pileId: string }) =>
+    entities.find((pivot) => pivot.pileId === props.pileId)
 );
