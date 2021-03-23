@@ -50,7 +50,7 @@ describe('StockPilesCards Selectors', () => {
         {
           ...initialStockPilesCardsState,
           selectedId: 'PRODUCT-BBB',
-          error: ERROR_MSG,
+          errorMsg: ERROR_MSG,
           loaded: true,
         }
       ),

@@ -12,6 +12,8 @@ import {
 } from '@taormina/shared-models';
 
 describe('StockPilesCards Reducer', () => {
+  const ERROR_MSG = 'No Error Available';
+
   describe('unknown action', () => {
     it('should return the previous state', () => {
       const action = {} as Action;
@@ -130,6 +132,36 @@ describe('StockPilesCards Reducer', () => {
 
       const action = StockPilesCardsActions.removeStockPilesCards({
         ids: ['PRODUCT-BBB', 'PRODUCT-CCC'],
+      });
+
+      const state: StockPilesCardsState = stockPilesCardsReducer(
+        initialState,
+        action
+      );
+
+      expect(state).toEqual(newState);
+    });
+  });
+
+  describe('setStockPilesCardsError', () => {
+    it('should set the error', () => {
+      const newState: StockPilesCardsState = {
+        ids: [],
+        entities: {},
+        initialized: false,
+        loaded: false,
+        errorMsg: ERROR_MSG,
+      };
+
+      const initialState: StockPilesCardsState = {
+        ids: [],
+        entities: {},
+        initialized: false,
+        loaded: false,
+      };
+
+      const action = StockPilesCardsActions.setStockPilesCardsError({
+        error: ERROR_MSG,
       });
 
       const state: StockPilesCardsState = stockPilesCardsReducer(
