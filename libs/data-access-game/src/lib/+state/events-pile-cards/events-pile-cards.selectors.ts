@@ -21,7 +21,7 @@ export const getEventsPileCardsLoaded = createSelector(
 
 export const getEventsPileCardsError = createSelector(
   getEventsPileCardsState,
-  (state: EventsPileCardsState) => state.error
+  (state: EventsPileCardsState) => state.errorMsg
 );
 
 export const getAllEventsPileCards = createSelector(

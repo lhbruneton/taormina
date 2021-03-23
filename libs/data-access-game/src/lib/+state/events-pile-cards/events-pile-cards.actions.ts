@@ -16,10 +16,15 @@ export const loadEventsPileCardsSuccess = createAction(
 
 export const loadEventsPileCardsFailure = createAction(
   '[EventsPileCards/API] Load EventsPileCards Failure',
-  props<{ error: unknown }>()
+  props<{ error: string }>()
 );
 
 export const setEventsPileCardsInitialized = createAction(
   '[EventsPileCards] Set EventsPileCards On Init',
   props<{ eventsPileCards: EventsPileCardsEntity[] }>()
+);
+
+export const setEventsPileCardsError = createAction(
+  '[EventsPileCards] Set EventsPileCards Error',
+  props<{ error: string }>()
 );
