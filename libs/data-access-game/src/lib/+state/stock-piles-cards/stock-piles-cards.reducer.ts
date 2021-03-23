@@ -8,10 +8,10 @@ export const STOCK_PILES_CARDS_FEATURE_KEY = 'stockPilesCards';
 
 export interface StockPilesCardsState
   extends EntityState<StockPilesCardsEntity> {
-  selectedId?: string; // which StockPilesCards record has been selected
+  selectedId?: string;
   initialized: boolean;
-  loaded: boolean; // has the StockPilesCards list been loaded
-  error?: unknown | null; // last known error (if any)
+  loaded: boolean;
+  errorMsg?: string;
 }
 
 export interface StockPilesCardsPartialState {
@@ -37,7 +37,7 @@ export const stockPilesCardsReducer = createReducer(
   on(StockPilesCardsActions.initStockPilesCardsSavedGame, (state) => ({
     ...state,
     loaded: false,
-    error: null,
+    errorMsg: undefined,
   })),
   on(
     StockPilesCardsActions.loadStockPilesCardsSuccess,
@@ -46,7 +46,7 @@ export const stockPilesCardsReducer = createReducer(
   ),
   on(StockPilesCardsActions.loadStockPilesCardsFailure, (state, { error }) => ({
     ...state,
-    error,
+    errorMsg: error,
   })),
   on(
     StockPilesCardsActions.setStockPilesCardsInitialized,
@@ -58,5 +58,9 @@ export const stockPilesCardsReducer = createReducer(
   ),
   on(StockPilesCardsActions.removeStockPilesCards, (state, { ids }) =>
     stockPilesCardsAdapter.removeMany(ids, state)
-  )
+  ),
+  on(StockPilesCardsActions.setStockPilesCardsError, (state, { error }) => ({
+    ...state,
+    errorMsg: error,
+  }))
 );

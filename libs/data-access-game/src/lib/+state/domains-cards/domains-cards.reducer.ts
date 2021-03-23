@@ -10,7 +10,7 @@ export interface DomainsCardsState extends EntityState<DomainsCardsEntity> {
   selectedId?: string;
   initialized: boolean;
   loaded: boolean;
-  error?: unknown | null;
+  errorMsg?: string;
 }
 
 export interface DomainsCardsPartialState {
@@ -36,14 +36,14 @@ export const domainsCardsReducer = createReducer(
   on(DomainsCardsActions.initDomainsCardsSavedGame, (state) => ({
     ...state,
     loaded: false,
-    error: null,
+    errorMsg: undefined,
   })),
   on(DomainsCardsActions.loadDomainsCardsSuccess, (state, { domainsCards }) =>
     domainsCardsAdapter.setAll(domainsCards, { ...state, loaded: true })
   ),
   on(DomainsCardsActions.loadDomainsCardsFailure, (state, { error }) => ({
     ...state,
-    error,
+    errorMsg: error,
   })),
   on(
     DomainsCardsActions.setDomainsCardsInitialized,
@@ -66,5 +66,9 @@ export const domainsCardsReducer = createReducer(
   on(DomainsCardsActions.unselectDomainCard, (state) => ({
     ...state,
     selectedId: undefined,
+  })),
+  on(DomainsCardsActions.setDomainsCardsError, (state, { error }) => ({
+    ...state,
+    errorMsg: error,
   }))
 );

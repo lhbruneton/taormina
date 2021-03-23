@@ -20,7 +20,7 @@ export const loadStockPilesCardsSuccess = createAction(
 
 export const loadStockPilesCardsFailure = createAction(
   '[StockPilesCards/API] Load StockPilesCards Failure',
-  props<{ error: unknown }>()
+  props<{ error: string }>()
 );
 
 export const setStockPilesCardsInitialized = createAction(
@@ -44,4 +44,9 @@ export const removeCardsFromStockPile = createAction(
 export const removeStockPilesCards = createAction(
   '[StockPilesCards] Remove StockPilesCards',
   props<{ ids: string[] }>()
+);
+
+export const setStockPilesCardsError = createAction(
+  '[StockPilesCards] Set StockPilesCards Error',
+  props<{ error: string }>()
 );

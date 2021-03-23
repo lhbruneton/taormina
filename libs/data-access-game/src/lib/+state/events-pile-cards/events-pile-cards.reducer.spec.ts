@@ -8,25 +8,7 @@ import {
 } from './events-pile-cards.reducer';
 
 describe('EventsPileCards Reducer', () => {
-  describe('valid EventsPileCards actions', () => {
-    it('loadEventsPileCardsSuccess should set the list of known EventsPileCards', () => {
-      const eventsPileCards = [
-        createEventsPileCardsEntity('PRODUCT-AAA', 'A'),
-        createEventsPileCardsEntity('PRODUCT-zzz', 'z'),
-      ];
-      const action = EventsPileCardsActions.loadEventsPileCardsSuccess({
-        eventsPileCards,
-      });
-
-      const result: EventsPileCardsState = eventsPileCardsReducer(
-        initialEventsPileCardsState,
-        action
-      );
-
-      expect(result.loaded).toBe(true);
-      expect(result.ids.length).toBe(2);
-    });
-  });
+  const ERROR_MSG = 'No Error Available';
 
   describe('unknown action', () => {
     it('should return the previous state', () => {
@@ -38,6 +20,71 @@ describe('EventsPileCards Reducer', () => {
       );
 
       expect(result).toBe(initialEventsPileCardsState);
+    });
+  });
+
+  describe('loadEventsPileCardsSuccess', () => {
+    it('should set the list of known EventsPileCards and loaded', () => {
+      const newState: EventsPileCardsState = {
+        ids: ['PRODUCT-AAA', 'PRODUCT-zzz'],
+        entities: {
+          'PRODUCT-AAA': {
+            id: 'PRODUCT-AAA',
+            cardId: 'A',
+          },
+          'PRODUCT-zzz': {
+            id: 'PRODUCT-zzz',
+            cardId: 'z',
+          },
+        },
+        initialized: false,
+        loaded: true,
+      };
+
+      const eventsPileCards = [
+        createEventsPileCardsEntity('PRODUCT-AAA', 'A'),
+        createEventsPileCardsEntity('PRODUCT-zzz', 'z'),
+      ];
+      const action = EventsPileCardsActions.loadEventsPileCardsSuccess({
+        eventsPileCards,
+      });
+
+      const state: EventsPileCardsState = eventsPileCardsReducer(
+        initialEventsPileCardsState,
+        action
+      );
+
+      expect(state).toEqual(newState);
+    });
+  });
+
+  describe('setEventsPileCardsError', () => {
+    it('should set the error', () => {
+      const newState: EventsPileCardsState = {
+        ids: [],
+        entities: {},
+        initialized: false,
+        loaded: false,
+        errorMsg: ERROR_MSG,
+      };
+
+      const initialState: EventsPileCardsState = {
+        ids: [],
+        entities: {},
+        initialized: false,
+        loaded: false,
+      };
+
+      const action = EventsPileCardsActions.setEventsPileCardsError({
+        error: ERROR_MSG,
+      });
+
+      const state: EventsPileCardsState = eventsPileCardsReducer(
+        initialState,
+        action
+      );
+
+      expect(state).toEqual(newState);
     });
   });
 });

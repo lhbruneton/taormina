@@ -16,10 +16,15 @@ export const loadDiscardPileCardsSuccess = createAction(
 
 export const loadDiscardPileCardsFailure = createAction(
   '[DiscardPileCards/API] Load DiscardPileCards Failure',
-  props<{ error: unknown }>()
+  props<{ error: string }>()
 );
 
 export const setDiscardPileCardsInitialized = createAction(
   '[DiscardPileCards] Set DiscardPileCards On Init',
   props<{ discardPileCards: DiscardPileCardsEntity[] }>()
+);
+
+export const setDiscardPileCardsError = createAction(
+  '[DiscardPileCards] Set DiscardPileCards Error',
+  props<{ error: string }>()
 );

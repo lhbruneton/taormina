@@ -27,7 +27,7 @@ export const getDomainsCardsLoaded = createSelector(
 
 export const getDomainsCardsError = createSelector(
   getDomainsCardsState,
-  (state: DomainsCardsState) => state.error
+  (state: DomainsCardsState) => state.errorMsg
 );
 
 export const getAllDomainsCards = createSelector(

@@ -22,7 +22,7 @@ export const getStockPilesCardsLoaded = createSelector(
 
 export const getStockPilesCardsError = createSelector(
   getStockPilesCardsState,
-  (state: StockPilesCardsState) => state.error
+  (state: StockPilesCardsState) => state.errorMsg
 );
 
 export const getAllStockPilesCards = createSelector(

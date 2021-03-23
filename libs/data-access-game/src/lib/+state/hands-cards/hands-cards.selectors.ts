@@ -21,7 +21,7 @@ export const getHandsCardsLoaded = createSelector(
 
 export const getHandsCardsError = createSelector(
   getHandsCardsState,
-  (state: HandsCardsState) => state.error
+  (state: HandsCardsState) => state.errorMsg
 );
 
 export const getAllHandsCards = createSelector(

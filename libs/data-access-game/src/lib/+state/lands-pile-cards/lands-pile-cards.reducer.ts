@@ -7,10 +7,10 @@ import { LandsPileCardsEntity } from './lands-pile-cards.models';
 export const LANDS_PILE_CARDS_FEATURE_KEY = 'landsPileCards';
 
 export interface LandsPileCardsState extends EntityState<LandsPileCardsEntity> {
-  selectedId?: string; // which LandsPileCards record has been selected
+  selectedId?: string;
   initialized: boolean;
-  loaded: boolean; // has the LandsPileCards list been loaded
-  error?: unknown | null; // last known error (if any)
+  loaded: boolean;
+  errorMsg?: string;
 }
 
 export interface LandsPileCardsPartialState {
@@ -36,7 +36,7 @@ export const landsPileCardsReducer = createReducer(
   on(LandsPileCardsActions.initLandsPileCardsSavedGame, (state) => ({
     ...state,
     loaded: false,
-    error: null,
+    errorMsg: undefined,
   })),
   on(
     LandsPileCardsActions.loadLandsPileCardsSuccess,
@@ -45,7 +45,7 @@ export const landsPileCardsReducer = createReducer(
   ),
   on(LandsPileCardsActions.loadLandsPileCardsFailure, (state, { error }) => ({
     ...state,
-    error,
+    errorMsg: error,
   })),
   on(
     LandsPileCardsActions.setLandsPileCardsInitialized,
@@ -54,5 +54,9 @@ export const landsPileCardsReducer = createReducer(
         ...state,
         initialized: true,
       })
-  )
+  ),
+  on(LandsPileCardsActions.setLandsPileCardsError, (state, { error }) => ({
+    ...state,
+    errorMsg: error,
+  }))
 );

@@ -11,7 +11,7 @@ export interface FaceUpPilesCardsState
   selectedId?: string;
   initialized: boolean;
   loaded: boolean;
-  error?: unknown | null;
+  errorMsg?: string;
 }
 
 export interface FaceUpPilesCardsPartialState {
@@ -37,7 +37,7 @@ export const faceUpPilesCardsReducer = createReducer(
   on(FaceUpPilesCardsActions.initFaceUpSavedGame, (state) => ({
     ...state,
     loaded: false,
-    error: null,
+    errorMsg: undefined,
   })),
   on(
     FaceUpPilesCardsActions.loadFaceUpPilesCardsSuccess,
@@ -51,7 +51,7 @@ export const faceUpPilesCardsReducer = createReducer(
     FaceUpPilesCardsActions.loadFaceUpPilesCardsFailure,
     (state, { error }) => ({
       ...state,
-      error,
+      errorMsg: error,
     })
   ),
   on(
@@ -72,5 +72,9 @@ export const faceUpPilesCardsReducer = createReducer(
   })),
   on(FaceUpPilesCardsActions.removeFaceUpPileCard, (state, { id }) =>
     faceUpPilesCardsAdapter.removeOne(id, state)
-  )
+  ),
+  on(FaceUpPilesCardsActions.setFaceUpPilesCardsError, (state, { error }) => ({
+    ...state,
+    errorMsg: error,
+  }))
 );

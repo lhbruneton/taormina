@@ -12,6 +12,8 @@ import {
 } from './domains-cards.reducer';
 
 describe('DomainsCards Reducer', () => {
+  const ERROR_MSG = 'No Error Available';
+
   describe('unknown action', () => {
     it('should return the previous state', () => {
       const action = {} as Action;
@@ -386,6 +388,36 @@ describe('DomainsCards Reducer', () => {
       };
 
       const action = DomainsCardsActions.unselectDomainCard();
+
+      const state: DomainsCardsState = domainsCardsReducer(
+        initialState,
+        action
+      );
+
+      expect(state).toEqual(newState);
+    });
+  });
+
+  describe('setDomainsCardsError', () => {
+    it('should set the error', () => {
+      const newState: DomainsCardsState = {
+        ids: [],
+        entities: {},
+        initialized: false,
+        loaded: false,
+        errorMsg: ERROR_MSG,
+      };
+
+      const initialState: DomainsCardsState = {
+        ids: [],
+        entities: {},
+        initialized: false,
+        loaded: false,
+      };
+
+      const action = DomainsCardsActions.setDomainsCardsError({
+        error: ERROR_MSG,
+      });
 
       const state: DomainsCardsState = domainsCardsReducer(
         initialState,

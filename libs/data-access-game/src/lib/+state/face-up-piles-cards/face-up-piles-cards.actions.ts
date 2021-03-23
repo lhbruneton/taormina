@@ -16,7 +16,7 @@ export const loadFaceUpPilesCardsSuccess = createAction(
 
 export const loadFaceUpPilesCardsFailure = createAction(
   '[FaceUpPilesCards/API] Load FaceUpPilesCards Failure',
-  props<{ error: unknown }>()
+  props<{ error: string }>()
 );
 
 export const setFaceUpPilesCardsInitialized = createAction(
@@ -45,5 +45,5 @@ export const unselectFaceUpPileCard = createAction(
 
 export const setFaceUpPilesCardsError = createAction(
   '[FaceUpPilesCards] Set FaceUpPilesCards Error',
-  props<{ error: unknown }>()
+  props<{ error: string }>()
 );

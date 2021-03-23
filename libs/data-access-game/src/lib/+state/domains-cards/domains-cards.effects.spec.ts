@@ -203,7 +203,7 @@ describe('DomainsCardsEffects', () => {
 
         const expected = hot('-(a|)', {
           a: DomainsCardsActions.setDomainsCardsError({
-            error: new Error(`Couldn't find land card pivot for id.`),
+            error: `Couldn't find land card pivot for id.`,
           }),
         });
 
@@ -242,7 +242,7 @@ describe('DomainsCardsEffects', () => {
 
         const expected = hot('-(a|)', {
           a: DomainsCardsActions.setDomainsCardsError({
-            error: new Error(`Can't lock unavailable resource for pivot AAA.`),
+            error: `Can't lock unavailable resource for pivot AAA.`,
           }),
         });
 
@@ -281,7 +281,7 @@ describe('DomainsCardsEffects', () => {
 
         const expected = hot('-(a|)', {
           a: DomainsCardsActions.setDomainsCardsError({
-            error: new Error(`Can't lock more resources for pivot AAA.`),
+            error: `Can't lock more resources for pivot AAA.`,
           }),
         });
 
@@ -357,7 +357,7 @@ describe('DomainsCardsEffects', () => {
 
         const expected = hot('-(a|)', {
           a: DomainsCardsActions.setDomainsCardsError({
-            error: new Error(`Couldn't find land card pivot for id.`),
+            error: `Couldn't find land card pivot for id.`,
           }),
         });
 
@@ -396,9 +396,7 @@ describe('DomainsCardsEffects', () => {
 
         const expected = hot('-(a|)', {
           a: DomainsCardsActions.setDomainsCardsError({
-            error: new Error(
-              `Shouldn't have been able to lock so many resources for pivot AAA.`
-            ),
+            error: `Shouldn't have been able to lock so many resources for pivot AAA.`,
           }),
         });
 
