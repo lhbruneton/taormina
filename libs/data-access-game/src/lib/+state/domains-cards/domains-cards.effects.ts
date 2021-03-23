@@ -84,28 +84,35 @@ export class DomainsCardsEffects {
   lockResource$ = createEffect(() =>
     this.actions$.pipe(
       ofType(DomainsCardsActions.lockResource),
-      concatMap((action) => this.takeOneDefinedPivotOrThrow(action.id)),
-      map((pivot) => {
-        if (pivot.availableResources === 0)
-          throw new Error(
-            `Can't lock unavailable resource for pivot ${pivot.id}.`
-          );
-        if (pivot.lockedResources === 3)
-          throw new Error(`Can't lock more resources for pivot ${pivot.id}.`);
+      concatMap((action) =>
+        this.takeOneDefinedPivotOrThrow(action.id).pipe(
+          map((pivot) => {
+            if (pivot.availableResources === 0)
+              throw new Error(
+                `Can't lock unavailable resource for pivot ${pivot.id}.`
+              );
+            if (pivot.lockedResources === 3)
+              throw new Error(
+                `Can't lock more resources for pivot ${pivot.id}.`
+              );
 
-        const update = {
-          id: pivot.id,
-          changes: {
-            // prettier-ignore
-            availableResources: (pivot.availableResources - 1) as ResourceCount,
-            // prettier-ignore
-            lockedResources: (pivot.lockedResources + 1) as ResourceCount,
-          },
-        };
-        return DomainsCardsActions.updateDomainCard({ update });
-      }),
-      catchError((error) =>
-        of(DomainsCardsActions.setDomainsCardsError({ error: error.message }))
+            const update = {
+              id: pivot.id,
+              changes: {
+                // prettier-ignore
+                availableResources: (pivot.availableResources - 1) as ResourceCount,
+                // prettier-ignore
+                lockedResources: (pivot.lockedResources + 1) as ResourceCount,
+              },
+            };
+            return DomainsCardsActions.updateDomainCard({ update });
+          }),
+          catchError((error) =>
+            of(
+              DomainsCardsActions.setDomainsCardsError({ error: error.message })
+            )
+          )
+        )
       )
     )
   );
@@ -113,25 +120,30 @@ export class DomainsCardsEffects {
   unlockResources$ = createEffect(() =>
     this.actions$.pipe(
       ofType(DomainsCardsActions.unlockResources),
-      concatMap((action) => this.takeOneDefinedPivotOrThrow(action.id)),
-      map((pivot) => {
-        if (pivot.availableResources + pivot.lockedResources > 3)
-          throw new Error(
-            `Shouldn't have been able to lock so many resources for pivot ${pivot.id}.`
-          );
+      concatMap((action) =>
+        this.takeOneDefinedPivotOrThrow(action.id).pipe(
+          map((pivot) => {
+            if (pivot.availableResources + pivot.lockedResources > 3)
+              throw new Error(
+                `Shouldn't have been able to lock so many resources for pivot ${pivot.id}.`
+              );
 
-        const update = {
-          id: pivot.id,
-          changes: {
-            availableResources: (pivot.availableResources +
-              pivot.lockedResources) as ResourceCount,
-            lockedResources: 0 as ResourceCount,
-          },
-        };
-        return DomainsCardsActions.updateDomainCard({ update });
-      }),
-      catchError((error) =>
-        of(DomainsCardsActions.setDomainsCardsError({ error: error.message }))
+            const update = {
+              id: pivot.id,
+              changes: {
+                availableResources: (pivot.availableResources +
+                  pivot.lockedResources) as ResourceCount,
+                lockedResources: 0 as ResourceCount,
+              },
+            };
+            return DomainsCardsActions.updateDomainCard({ update });
+          }),
+          catchError((error) =>
+            of(
+              DomainsCardsActions.setDomainsCardsError({ error: error.message })
+            )
+          )
+        )
       )
     )
   );
