@@ -32,6 +32,11 @@ export const increaseAvailableResourcesForDie = createAction(
   props<{ die: ResourceValue }>()
 );
 
+export const increaseAvailableResources = createAction(
+  '[DomainsCards] Increase Available Resources',
+  props<{ id: string }>()
+);
+
 export const updateDomainCard = createAction(
   '[DomainsCards] Update DomainCard',
   props<{ update: UpdateStr<DomainsCardsEntity> }>()

@@ -161,6 +161,10 @@ export class AppComponent {
     this.domainsCards.unlockResources(pivotId);
   }
 
+  increaseResources(pivotId: string): void {
+    this.domainsCards.increaseResources(pivotId);
+  }
+
   buyDomainCard(pivot: DomainsCardsEntity): void {
     console.log(pivot);
   }

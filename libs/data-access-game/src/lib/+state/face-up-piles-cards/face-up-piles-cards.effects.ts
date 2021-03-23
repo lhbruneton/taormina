@@ -55,19 +55,19 @@ export class FaceUpPilesCardsEffects {
               throw new Error(`Can't get first card in empty face up pile.`);
             return pivot;
           }),
-          take(1)
-        )
-      ),
-      map((pivot) =>
-        FaceUpPilesCardsActions.selectFaceUpPileCard({
-          id: pivot.id,
-        })
-      ),
-      catchError((error) =>
-        of(
-          FaceUpPilesCardsActions.setFaceUpPilesCardsError({
-            error: error.message,
-          })
+          take(1),
+          map((pivot) =>
+            FaceUpPilesCardsActions.selectFaceUpPileCard({
+              id: pivot.id,
+            })
+          ),
+          catchError((error) =>
+            of(
+              FaceUpPilesCardsActions.setFaceUpPilesCardsError({
+                error: error.message,
+              })
+            )
+          )
         )
       )
     )

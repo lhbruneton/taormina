@@ -179,7 +179,10 @@
           Locked: {{ pivot.lockedResources }}<br />
           <button type="button" (click)="lockResource(pivot.id)">Lock</button
           ><button type="button" (click)="unlockResources(pivot.id)">
-            Unlock
+            Unlock</button
+          ><br />
+          <button type="button" (click)="increaseResources(pivot.id)">
+            Increase
           </button>
         </div>
       </div>
@@ -236,7 +239,10 @@
           locked: {{ pivot.lockedResources }}<br />
           <button type="button" (click)="lockResource(pivot.id)">Lock</button>
           <button type="button" (click)="unlockResources(pivot.id)">
-            Unlock
+            Unlock</button
+          ><br />
+          <button type="button" (click)="increaseResources(pivot.id)">
+            Increase
           </button>
         </div>
       </div>
