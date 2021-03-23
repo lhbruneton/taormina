@@ -105,7 +105,7 @@ export class DomainsCardsEffects {
         return DomainsCardsActions.updateDomainCard({ update });
       }),
       catchError((error) =>
-        of(DomainsCardsActions.setDomainsCardsError({ error }))
+        of(DomainsCardsActions.setDomainsCardsError({ error: error.message }))
       )
     )
   );
@@ -131,7 +131,7 @@ export class DomainsCardsEffects {
         return DomainsCardsActions.updateDomainCard({ update });
       }),
       catchError((error) =>
-        of(DomainsCardsActions.setDomainsCardsError({ error }))
+        of(DomainsCardsActions.setDomainsCardsError({ error: error.message }))
       )
     )
   );

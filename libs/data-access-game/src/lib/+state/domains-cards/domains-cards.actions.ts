@@ -19,7 +19,7 @@ export const loadDomainsCardsSuccess = createAction(
 
 export const loadDomainsCardsFailure = createAction(
   '[DomainsCards/API] Load DomainsCards Failure',
-  props<{ error: unknown }>()
+  props<{ error: string }>()
 );
 
 export const setDomainsCardsInitialized = createAction(
@@ -81,5 +81,5 @@ export const putCardInPivot = createAction(
 
 export const setDomainsCardsError = createAction(
   '[DomainsCards] Set DomainsCards Error',
-  props<{ error: unknown }>()
+  props<{ error: string }>()
 );
