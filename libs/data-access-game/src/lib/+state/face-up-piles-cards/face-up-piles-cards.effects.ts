@@ -64,7 +64,11 @@ export class FaceUpPilesCardsEffects {
         })
       ),
       catchError((error) =>
-        of(FaceUpPilesCardsActions.setFaceUpPilesCardsError({ error }))
+        of(
+          FaceUpPilesCardsActions.setFaceUpPilesCardsError({
+            error: error.message,
+          })
+        )
       )
     )
   );

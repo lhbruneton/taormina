@@ -131,7 +131,7 @@ describe('FaceUpPilesCardsEffects', () => {
 
         const expected = hot('-(a|)', {
           a: FaceUpPilesCardsActions.setFaceUpPilesCardsError({
-            error: new Error(`Can't get first card in empty face up pile.`),
+            error: `Can't get first card in empty face up pile.`,
           }),
         });
 

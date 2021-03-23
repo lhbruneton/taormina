@@ -23,7 +23,7 @@ export const getFaceUpPilesCardsLoaded = createSelector(
 
 export const getFaceUpPilesCardsError = createSelector(
   getFaceUpPilesCardsState,
-  (state: FaceUpPilesCardsState) => state.error
+  (state: FaceUpPilesCardsState) => state.errorMsg
 );
 
 export const getAllFaceUpPilesCards = createSelector(

@@ -9,6 +9,8 @@ import {
 } from './face-up-piles-cards.reducer';
 
 describe('FaceUpPilesCards Reducer', () => {
+  const ERROR_MSG = 'No Error Available';
+
   describe('unknown action', () => {
     it('should return the previous state', () => {
       const action = {} as Action;
@@ -176,6 +178,36 @@ describe('FaceUpPilesCards Reducer', () => {
 
       const action = FaceUpPilesCardsActions.removeFaceUpPileCard({
         id: 'PRODUCT-BBB',
+      });
+
+      const state: FaceUpPilesCardsState = faceUpPilesCardsReducer(
+        initialState,
+        action
+      );
+
+      expect(state).toEqual(newState);
+    });
+  });
+
+  describe('setFaceUpPilesCardsError', () => {
+    it('should set the error', () => {
+      const newState: FaceUpPilesCardsState = {
+        ids: [],
+        entities: {},
+        initialized: false,
+        loaded: false,
+        errorMsg: ERROR_MSG,
+      };
+
+      const initialState: FaceUpPilesCardsState = {
+        ids: [],
+        entities: {},
+        initialized: false,
+        loaded: false,
+      };
+
+      const action = FaceUpPilesCardsActions.setFaceUpPilesCardsError({
+        error: ERROR_MSG,
       });
 
       const state: FaceUpPilesCardsState = faceUpPilesCardsReducer(
