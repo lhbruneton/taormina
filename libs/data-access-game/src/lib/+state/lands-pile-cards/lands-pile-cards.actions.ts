@@ -16,10 +16,15 @@ export const loadLandsPileCardsSuccess = createAction(
 
 export const loadLandsPileCardsFailure = createAction(
   '[LandsPileCards/API] Load LandsPileCards Failure',
-  props<{ error: unknown }>()
+  props<{ error: string }>()
 );
 
 export const setLandsPileCardsInitialized = createAction(
   '[LandsPileCards] Set LandsPileCards On Init',
   props<{ landsPileCards: LandsPileCardsEntity[] }>()
+);
+
+export const setLandsPileCardsError = createAction(
+  '[LandsPileCards] Set LandsPileCards Error',
+  props<{ error: string }>()
 );

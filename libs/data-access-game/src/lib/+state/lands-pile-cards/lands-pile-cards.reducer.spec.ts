@@ -9,25 +9,7 @@ import {
 } from './lands-pile-cards.reducer';
 
 describe('LandsPileCards Reducer', () => {
-  describe('valid LandsPileCards actions', () => {
-    it('loadLandsPileCardsSuccess should set the list of known LandsPileCards', () => {
-      const landsPileCards = [
-        createLandsPileCardsEntity('PRODUCT-AAA', 'A'),
-        createLandsPileCardsEntity('PRODUCT-zzz', 'z'),
-      ];
-      const action = LandsPileCardsActions.loadLandsPileCardsSuccess({
-        landsPileCards,
-      });
-
-      const result: LandsPileCardsState = landsPileCardsReducer(
-        initialLandsPileCardsState,
-        action
-      );
-
-      expect(result.loaded).toBe(true);
-      expect(result.ids.length).toBe(2);
-    });
-  });
+  const ERROR_MSG = 'No Error Available';
 
   describe('unknown action', () => {
     it('should return the previous state', () => {
@@ -36,6 +18,71 @@ describe('LandsPileCards Reducer', () => {
       const result = landsPileCardsReducer(initialLandsPileCardsState, action);
 
       expect(result).toBe(initialLandsPileCardsState);
+    });
+  });
+
+  describe('loadLandsPileCardsSuccess', () => {
+    it('should set the list of known LandsPileCards and loaded', () => {
+      const newState: LandsPileCardsState = {
+        ids: ['PRODUCT-AAA', 'PRODUCT-zzz'],
+        entities: {
+          'PRODUCT-AAA': {
+            id: 'PRODUCT-AAA',
+            cardId: 'A',
+          },
+          'PRODUCT-zzz': {
+            id: 'PRODUCT-zzz',
+            cardId: 'z',
+          },
+        },
+        initialized: false,
+        loaded: true,
+      };
+
+      const landsPileCards = [
+        createLandsPileCardsEntity('PRODUCT-AAA', 'A'),
+        createLandsPileCardsEntity('PRODUCT-zzz', 'z'),
+      ];
+      const action = LandsPileCardsActions.loadLandsPileCardsSuccess({
+        landsPileCards,
+      });
+
+      const state: LandsPileCardsState = landsPileCardsReducer(
+        initialLandsPileCardsState,
+        action
+      );
+
+      expect(state).toEqual(newState);
+    });
+  });
+
+  describe('setLandsPileCardsError', () => {
+    it('should set the error', () => {
+      const newState: LandsPileCardsState = {
+        ids: [],
+        entities: {},
+        initialized: false,
+        loaded: false,
+        errorMsg: ERROR_MSG,
+      };
+
+      const initialState: LandsPileCardsState = {
+        ids: [],
+        entities: {},
+        initialized: false,
+        loaded: false,
+      };
+
+      const action = LandsPileCardsActions.setLandsPileCardsError({
+        error: ERROR_MSG,
+      });
+
+      const state: LandsPileCardsState = landsPileCardsReducer(
+        initialState,
+        action
+      );
+
+      expect(state).toEqual(newState);
     });
   });
 });

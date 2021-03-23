@@ -21,7 +21,7 @@ export const getLandsPileCardsLoaded = createSelector(
 
 export const getLandsPileCardsError = createSelector(
   getLandsPileCardsState,
-  (state: LandsPileCardsState) => state.error
+  (state: LandsPileCardsState) => state.errorMsg
 );
 
 export const getAllLandsPileCards = createSelector(
