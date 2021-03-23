@@ -46,6 +46,12 @@ export class DomainsCardsFacade {
     this.store.dispatch(DomainsCardsActions.unlockResources({ id: pivotId }));
   }
 
+  increaseResources(pivotId: string): void {
+    this.store.dispatch(
+      DomainsCardsActions.increaseAvailableResources({ id: pivotId })
+    );
+  }
+
   useLockedResources(): void {
     this.store.dispatch(DomainsCardsActions.useLockedResources());
   }

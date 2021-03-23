@@ -52,7 +52,7 @@ export class DomainsCardsEffects {
     )
   );
 
-  increaseResourceValue$ = createEffect(() =>
+  increaseResourcesForDie$ = createEffect(() =>
     this.actions$.pipe(
       ofType(DomainsCardsActions.increaseAvailableResourcesForDie),
       concatMap((action) =>
@@ -168,6 +168,36 @@ export class DomainsCardsEffects {
         });
         return DomainsCardsActions.updateDomainsCards({ updates });
       })
+    )
+  );
+
+  increaseResources$ = createEffect(() =>
+    this.actions$.pipe(
+      ofType(DomainsCardsActions.increaseAvailableResources),
+      concatMap((action) =>
+        this.takeOneDefinedPivotOrThrow(action.id).pipe(
+          map((pivot) => {
+            if (pivot.availableResources === 3)
+              throw new Error(
+                `Can't increase available resources beyond maximum for pivot ${pivot.id}.`
+              );
+
+            const update = {
+              id: pivot.id,
+              changes: {
+                // prettier-ignore
+                availableResources: (pivot.availableResources + 1) as ResourceCount,
+              },
+            };
+            return DomainsCardsActions.updateDomainCard({ update });
+          }),
+          catchError((error) =>
+            of(
+              DomainsCardsActions.setDomainsCardsError({ error: error.message })
+            )
+          )
+        )
+      )
     )
   );
 

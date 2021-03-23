@@ -72,7 +72,7 @@ describe('DomainsCardsEffects', () => {
     });
   });
 
-  describe('increaseResourceValue$', () => {
+  describe('increaseResourcesForDie$', () => {
     beforeEach(() => {
       injector = Injector.create({
         providers: [
@@ -132,7 +132,7 @@ describe('DomainsCardsEffects', () => {
         }),
       });
 
-      expect(effects.increaseResourceValue$).toBeObservable(expected);
+      expect(effects.increaseResourcesForDie$).toBeObservable(expected);
     });
   });
 
@@ -461,6 +461,121 @@ describe('DomainsCardsEffects', () => {
       });
 
       expect(effects.useLockedResources$).toBeObservable(expected);
+    });
+  });
+
+  describe('increaseResources$', () => {
+    describe('OK', () => {
+      beforeEach(() => {
+        injector = Injector.create({
+          providers: [
+            provideMockStore({
+              selectors: [
+                {
+                  selector: DomainsCardsSelectors.getLandCardPivotById,
+                  value: {
+                    id: 'AAA',
+                    domainId: ID_DOMAIN_RED,
+                    cardType: LAND_CARD_INTERFACE_NAME,
+                    cardId: 'LAND_1',
+                    availableResources: 0,
+                    lockedResources: 0,
+                  },
+                },
+              ],
+            }),
+          ],
+        });
+        injector.get(MockStore);
+      });
+
+      it('should dispatch updateDomainCard with availableResources + 1', () => {
+        actions = hot('-a-|', {
+          a: DomainsCardsActions.increaseAvailableResources({ id: 'AAA' }),
+        });
+
+        const expected = hot('-a-|', {
+          a: DomainsCardsActions.updateDomainCard({
+            update: {
+              id: 'AAA',
+              changes: { availableResources: 1 },
+            },
+          }),
+        });
+
+        expect(effects.increaseResources$).toBeObservable(expected);
+      });
+    });
+
+    describe('KO pivot undefined', () => {
+      beforeEach(() => {
+        injector = Injector.create({
+          providers: [
+            provideMockStore({
+              selectors: [
+                {
+                  selector: DomainsCardsSelectors.getLandCardPivotById,
+                  value: undefined,
+                },
+              ],
+            }),
+          ],
+        });
+        injector.get(MockStore);
+      });
+
+      it('should dispatch setDomainsCardsError with pivot error', () => {
+        actions = hot('-a-|', {
+          a: DomainsCardsActions.increaseAvailableResources({ id: 'AAA' }),
+        });
+
+        const expected = hot('-a-|', {
+          a: DomainsCardsActions.setDomainsCardsError({
+            error: `Couldn't find land card pivot for id.`,
+          }),
+        });
+
+        expect(effects.increaseResources$).toBeObservable(expected);
+      });
+    });
+
+    describe('KO too many available resources', () => {
+      beforeEach(() => {
+        injector = Injector.create({
+          providers: [
+            provideMockStore({
+              selectors: [
+                {
+                  selector: DomainsCardsSelectors.getLandCardPivotById,
+                  value: {
+                    id: 'AAA',
+                    domainId: ID_DOMAIN_RED,
+                    cardType: LAND_CARD_INTERFACE_NAME,
+                    cardId: 'LAND_1',
+                    availableResources: 3,
+                    lockedResources: 0,
+                  },
+                },
+              ],
+            }),
+          ],
+        });
+        injector.get(MockStore);
+      });
+
+      it('should dispatch setDomainsCardsError with too many available resources error', () => {
+        actions = hot('-a-|', {
+          a: DomainsCardsActions.increaseAvailableResources({ id: 'AAA' }),
+        });
+
+        const expected = hot('-a-|', {
+          a: DomainsCardsActions.setDomainsCardsError({
+            error: `Can't increase available resources beyond maximum for pivot AAA.`,
+          }),
+        });
+
+        expect(effects.increaseResources$).toBeObservable(expected);
+      });
     });
   });
 
