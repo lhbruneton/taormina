@@ -21,7 +21,7 @@ export const getDiscardPileCardsLoaded = createSelector(
 
 export const getDiscardPileCardsError = createSelector(
   getDiscardPileCardsState,
-  (state: DiscardPileCardsState) => state.error
+  (state: DiscardPileCardsState) => state.errorMsg
 );
 
 export const getAllDiscardPileCards = createSelector(

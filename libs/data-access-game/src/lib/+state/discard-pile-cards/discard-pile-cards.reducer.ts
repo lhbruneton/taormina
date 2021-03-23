@@ -8,10 +8,10 @@ export const DISCARD_PILE_CARDS_FEATURE_KEY = 'discardPileCards';
 
 export interface DiscardPileCardsState
   extends EntityState<DiscardPileCardsEntity> {
-  selectedId?: string; // which DiscardPileCards record has been selected
+  selectedId?: string;
   initialized: boolean;
-  loaded: boolean; // has the DiscardPileCards list been loaded
-  error?: unknown | null; // last known error (if any)
+  loaded: boolean;
+  errorMsg?: string;
 }
 
 export interface DiscardPileCardsPartialState {
@@ -37,7 +37,7 @@ export const discardPileCardsReducer = createReducer(
   on(DiscardPileCardsActions.initDiscardPileCardsSavedGame, (state) => ({
     ...state,
     loaded: false,
-    error: null,
+    errorMsg: undefined,
   })),
   on(
     DiscardPileCardsActions.loadDiscardPileCardsSuccess,
@@ -49,7 +49,7 @@ export const discardPileCardsReducer = createReducer(
   ),
   on(
     DiscardPileCardsActions.loadDiscardPileCardsFailure,
-    (state, { error }) => ({ ...state, error })
+    (state, { error }) => ({ ...state, errorMsg: error })
   ),
   on(
     DiscardPileCardsActions.setDiscardPileCardsInitialized,
@@ -58,5 +58,9 @@ export const discardPileCardsReducer = createReducer(
         ...state,
         initialized: true,
       })
-  )
+  ),
+  on(DiscardPileCardsActions.setDiscardPileCardsError, (state, { error }) => ({
+    ...state,
+    errorMsg: error,
+  }))
 );
