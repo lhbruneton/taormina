@@ -12,6 +12,8 @@ import {
 } from '@taormina/shared-models';
 
 describe('HandsCards Reducer', () => {
+  const ERROR_MSG = 'No Error Available';
+
   describe('unknown action', () => {
     it('should return the previous state', () => {
       const action = {} as Action;
@@ -138,6 +140,33 @@ describe('HandsCards Reducer', () => {
             cardId: 'C',
           },
         ],
+      });
+
+      const state: HandsCardsState = handsCardsReducer(initialState, action);
+
+      expect(state).toEqual(newState);
+    });
+  });
+
+  describe('setHandsCardsError', () => {
+    it('should set the error', () => {
+      const newState: HandsCardsState = {
+        ids: [],
+        entities: {},
+        initialized: false,
+        loaded: false,
+        errorMsg: ERROR_MSG,
+      };
+
+      const initialState: HandsCardsState = {
+        ids: [],
+        entities: {},
+        initialized: false,
+        loaded: false,
+      };
+
+      const action = HandsCardsActions.setHandsCardsError({
+        error: ERROR_MSG,
       });
 
       const state: HandsCardsState = handsCardsReducer(initialState, action);

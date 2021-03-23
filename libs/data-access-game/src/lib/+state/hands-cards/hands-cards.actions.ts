@@ -20,7 +20,7 @@ export const loadHandsCardsSuccess = createAction(
 
 export const loadHandsCardsFailure = createAction(
   '[HandsCards/API] Load HandsCards Failure',
-  props<{ error: unknown }>()
+  props<{ error: string }>()
 );
 
 export const setHandsCardsInitialized = createAction(
@@ -44,4 +44,9 @@ export const addCardsToHand = createAction(
 export const addHandsCards = createAction(
   '[HandsCards] Add HandsCards',
   props<{ handsCards: HandsCardsEntity[] }>()
+);
+
+export const setHandsCardsError = createAction(
+  '[HandsCards] Set HandsCards Error',
+  props<{ error: string }>()
 );

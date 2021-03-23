@@ -7,10 +7,10 @@ import { HandsCardsEntity } from './hands-cards.models';
 export const HANDS_CARDS_FEATURE_KEY = 'handsCards';
 
 export interface HandsCardsState extends EntityState<HandsCardsEntity> {
-  selectedId?: string; // which HandsCards record has been selected
+  selectedId?: string;
   initialized: boolean;
-  loaded: boolean; // has the HandsCards list been loaded
-  error?: unknown | null; // last known error (if any)
+  loaded: boolean;
+  errorMsg?: string;
 }
 
 export interface HandsCardsPartialState {
@@ -36,19 +36,23 @@ export const handsCardsReducer = createReducer(
   on(HandsCardsActions.initHandsCardsSavedGame, (state) => ({
     ...state,
     loaded: false,
-    error: null,
+    errorMsg: undefined,
   })),
   on(HandsCardsActions.loadHandsCardsSuccess, (state, { handsCards }) =>
     handsCardsAdapter.setAll(handsCards, { ...state, loaded: true })
   ),
   on(HandsCardsActions.loadHandsCardsFailure, (state, { error }) => ({
     ...state,
-    error,
+    errorMsg: error,
   })),
   on(HandsCardsActions.setHandsCardsInitialized, (state, { handsCards }) =>
     handsCardsAdapter.setAll(handsCards, { ...state, initialized: true })
   ),
   on(HandsCardsActions.addHandsCards, (state, { handsCards }) =>
     handsCardsAdapter.addMany(handsCards, state)
-  )
+  ),
+  on(HandsCardsActions.setHandsCardsError, (state, { error }) => ({
+    ...state,
+    errorMsg: error,
+  }))
 );
