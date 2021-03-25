@@ -144,7 +144,7 @@ describe('FaceUpPilesCards Reducer', () => {
   });
 
   describe('removeFaceUpPileCard', () => {
-    it('should remove the DomainCard from the list', () => {
+    it('should remove the FaceUpPileCard from the list', () => {
       const newState: FaceUpPilesCardsState = {
         ids: ['PRODUCT-AAA'],
         entities: {
