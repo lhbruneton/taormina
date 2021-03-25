@@ -174,4 +174,91 @@ describe('HandsCards Reducer', () => {
       expect(state).toEqual(newState);
     });
   });
+
+  describe('selectHandCard', () => {
+    it('should select the HandCard', () => {
+      const newState: HandsCardsState = {
+        ids: ['PRODUCT-AAA'],
+        entities: {
+          'PRODUCT-AAA': {
+            id: 'PRODUCT-AAA',
+            handId: 'A',
+            cardType: DEVELOPMENT_CARD_INTERFACE_NAME,
+            cardId: 'A',
+          },
+        },
+        selectedId: 'PRODUCT-AAA',
+        initialized: true,
+        loaded: false,
+      };
+
+      const initialState: HandsCardsState = {
+        ids: ['PRODUCT-AAA'],
+        entities: {
+          'PRODUCT-AAA': {
+            id: 'PRODUCT-AAA',
+            handId: 'A',
+            cardType: DEVELOPMENT_CARD_INTERFACE_NAME,
+            cardId: 'A',
+          },
+        },
+        initialized: true,
+        loaded: false,
+      };
+
+      const action = HandsCardsActions.selectHandCard({
+        id: 'PRODUCT-AAA',
+      });
+
+      const state: HandsCardsState = handsCardsReducer(initialState, action);
+
+      expect(state).toEqual(newState);
+    });
+  });
+
+  describe('removeHandCard', () => {
+    it('should remove the HandCard from the list', () => {
+      const newState: HandsCardsState = {
+        ids: ['PRODUCT-AAA'],
+        entities: {
+          'PRODUCT-AAA': {
+            id: 'PRODUCT-AAA',
+            handId: 'A',
+            cardType: DEVELOPMENT_CARD_INTERFACE_NAME,
+            cardId: 'A',
+          },
+        },
+        initialized: true,
+        loaded: false,
+      };
+
+      const initialState: HandsCardsState = {
+        ids: ['PRODUCT-AAA', 'PRODUCT-BBB'],
+        entities: {
+          'PRODUCT-AAA': {
+            id: 'PRODUCT-AAA',
+            handId: 'A',
+            cardType: DEVELOPMENT_CARD_INTERFACE_NAME,
+            cardId: 'A',
+          },
+          'PRODUCT-BBB': {
+            id: 'PRODUCT-BBB',
+            handId: 'B',
+            cardType: ACTION_CARD_INTERFACE_NAME,
+            cardId: 'B',
+          },
+        },
+        initialized: true,
+        loaded: false,
+      };
+
+      const action = HandsCardsActions.removeHandCard({
+        id: 'PRODUCT-BBB',
+      });
+
+      const state: HandsCardsState = handsCardsReducer(initialState, action);
+
+      expect(state).toEqual(newState);
+    });
+  });
 });

@@ -48,4 +48,12 @@ export class HandsCardsFacade {
   ): void {
     this.store.dispatch(HandsCardsActions.addCardsToHand({ handId, cards }));
   }
+
+  selectHandCard(pivotId: string): void {
+    this.store.dispatch(HandsCardsActions.selectHandCard({ id: pivotId }));
+  }
+
+  removeHandCard(id: string): void {
+    this.store.dispatch(HandsCardsActions.removeHandCard({ id }));
+  }
 }

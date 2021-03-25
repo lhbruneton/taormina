@@ -22,6 +22,7 @@ import {
 } from '@taormina/shared-constants';
 import {
   AGGLOMERATION_CARD_INTERFACE_NAME,
+  AVAILABLE_DEVELOPMENT_SLOT,
   AVAILABLE_ROAD_SLOT,
   DomainCardType,
   LAND_CARD_INTERFACE_NAME,
@@ -126,11 +127,27 @@ export const createInitialDomainsCards = (): DomainsCardsEntity[] => {
     createDomainsCardsEntity(
       uuidv4(),
       ID_DOMAIN_RED,
+      AVAILABLE_DEVELOPMENT_SLOT,
+      undefined,
+      -1,
+      1
+    ),
+    createDomainsCardsEntity(
+      uuidv4(),
+      ID_DOMAIN_RED,
       LAND_CARD_INTERFACE_NAME,
       ID_GOLD_MINE_RED,
       0,
       1,
       0
+    ),
+    createDomainsCardsEntity(
+      uuidv4(),
+      ID_DOMAIN_RED,
+      AVAILABLE_DEVELOPMENT_SLOT,
+      undefined,
+      1,
+      1
     ),
     createDomainsCardsEntity(
       uuidv4(),
@@ -153,11 +170,27 @@ export const createInitialDomainsCards = (): DomainsCardsEntity[] => {
     createDomainsCardsEntity(
       uuidv4(),
       ID_DOMAIN_RED,
+      AVAILABLE_DEVELOPMENT_SLOT,
+      undefined,
+      1,
+      -1
+    ),
+    createDomainsCardsEntity(
+      uuidv4(),
+      ID_DOMAIN_RED,
       LAND_CARD_INTERFACE_NAME,
       ID_PASTURE_RED,
       0,
       -1,
       1
+    ),
+    createDomainsCardsEntity(
+      uuidv4(),
+      ID_DOMAIN_RED,
+      AVAILABLE_DEVELOPMENT_SLOT,
+      undefined,
+      -1,
+      -1
     ),
     createDomainsCardsEntity(
       uuidv4(),
@@ -220,11 +253,27 @@ export const createInitialDomainsCards = (): DomainsCardsEntity[] => {
     createDomainsCardsEntity(
       uuidv4(),
       ID_DOMAIN_BLUE,
+      AVAILABLE_DEVELOPMENT_SLOT,
+      undefined,
+      -1,
+      1
+    ),
+    createDomainsCardsEntity(
+      uuidv4(),
+      ID_DOMAIN_BLUE,
       LAND_CARD_INTERFACE_NAME,
       ID_GOLD_MINE_BLUE,
       0,
       1,
       0
+    ),
+    createDomainsCardsEntity(
+      uuidv4(),
+      ID_DOMAIN_BLUE,
+      AVAILABLE_DEVELOPMENT_SLOT,
+      undefined,
+      1,
+      1
     ),
     createDomainsCardsEntity(
       uuidv4(),
@@ -247,11 +296,27 @@ export const createInitialDomainsCards = (): DomainsCardsEntity[] => {
     createDomainsCardsEntity(
       uuidv4(),
       ID_DOMAIN_BLUE,
+      AVAILABLE_DEVELOPMENT_SLOT,
+      undefined,
+      1,
+      -1
+    ),
+    createDomainsCardsEntity(
+      uuidv4(),
+      ID_DOMAIN_BLUE,
       LAND_CARD_INTERFACE_NAME,
       ID_PASTURE_BLUE,
       0,
       -1,
       1
+    ),
+    createDomainsCardsEntity(
+      uuidv4(),
+      ID_DOMAIN_BLUE,
+      AVAILABLE_DEVELOPMENT_SLOT,
+      undefined,
+      -1,
+      -1
     ),
   ];
   return initialDomainsCards;

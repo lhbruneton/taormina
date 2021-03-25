@@ -238,6 +238,10 @@ export class AppComponent {
     );
   }
 
+  selectHandCard(pivotId: string): void {
+    this.handsCards.selectHandCard(pivotId);
+  }
+
   drawInitialRedHandAvailable(): Observable<boolean> {
     return combineLatest([this.game.phase$, this.game.player$]).pipe(
       map(([phase, player]) => {
@@ -278,12 +282,20 @@ export class AppComponent {
     return landCards.get(cardId);
   }
 
-  buy(): void {
+  buyAgglomeration(): void {
     this.gameRules.useResourcesToPutFaceUpPileCardInSlot();
+  }
+
+  buyDevelopment(): void {
+    this.gameRules.useResourcesToPutHandCardInSlot();
   }
 
   getSelectedFaceUpPileCard(): Observable<FaceUpPilesCardsEntity | undefined> {
     return this.faceUpPilesCards.selectedFaceUpPilesCards$;
+  }
+
+  getSelectedHandCard(): Observable<HandsCardsEntity | undefined> {
+    return this.handsCards.selectedHandsCards$;
   }
 
   getSelectedDomainCard(): Observable<DomainsCardsEntity | undefined> {

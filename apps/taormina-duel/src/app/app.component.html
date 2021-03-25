@@ -44,17 +44,45 @@
 </div>
 <hr />
 <div class="flex-container">
-  <button type="button" [disabled]="buyDisabled() | async" (click)="buy()">
-    buy
+  <button
+    type="button"
+    [disabled]="buyDisabled() | async"
+    (click)="buyAgglomeration()"
+  >
+    buy agglomeration
   </button>
   <div>
-    <p>Selected Face Up Pile Card:</p>
+    <p>Selected Agglomeration Card:</p>
     <p *ngIf="getSelectedFaceUpPileCard() | async as pivot">
       {{ pivot.pileId }}
     </p>
   </div>
   <div>
-    <p>Selected Domain Card:</p>
+    <p>Selected Agglomeration Available Slot:</p>
+    <p *ngIf="getSelectedDomainCard() | async as pivot">
+      {{ pivot.domainId }}<br />
+      {{ pivot.col }}<br />
+      {{ pivot.row }}
+    </p>
+  </div>
+</div>
+<hr />
+<div class="flex-container">
+  <button
+    type="button"
+    [disabled]="buyDisabled() | async"
+    (click)="buyDevelopment()"
+  >
+    buy development
+  </button>
+  <div>
+    <p>Selected Development Card:</p>
+    <p *ngIf="getSelectedHandCard() | async as pivot">
+      {{ pivot.cardId }}
+    </p>
+  </div>
+  <div>
+    <p>Selected Development Available Slot:</p>
     <p *ngIf="getSelectedDomainCard() | async as pivot">
       {{ pivot.domainId }}<br />
       {{ pivot.col }}<br />
@@ -130,6 +158,7 @@
     <div *ngSwitchCase="DEVELOPMENT_CARD_INTERFACE_NAME">
       <div *ngIf="getDevelopmentCard(pivot.cardId) as development">
         {{ development.name }}
+        <button type="button" (click)="selectHandCard(pivot.id)">Select</button>
       </div>
     </div>
   </div>
@@ -187,6 +216,11 @@
         </div>
       </div>
       <div *ngSwitchCase="AVAILABLE_ROAD_SLOT">
+        <button type="button" (click)="selectDomainCard(pivot.id)">
+          Select
+        </button>
+      </div>
+      <div *ngSwitchCase="AVAILABLE_DEVELOPMENT_SLOT">
         <button type="button" (click)="selectDomainCard(pivot.id)">
           Select
         </button>
@@ -251,6 +285,11 @@
           Select
         </button>
       </div>
+      <div *ngSwitchCase="AVAILABLE_DEVELOPMENT_SLOT">
+        <button type="button" (click)="selectDomainCard(pivot.id)">
+          Select
+        </button>
+      </div>
     </div>
   </div>
 </div>
@@ -269,6 +308,7 @@
     <div *ngSwitchCase="DEVELOPMENT_CARD_INTERFACE_NAME">
       <div *ngIf="getDevelopmentCard(pivot.cardId) as development">
         {{ development.name }}
+        <button type="button" (click)="selectHandCard(pivot.id)">Select</button>
       </div>
     </div>
   </div>
