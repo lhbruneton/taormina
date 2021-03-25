@@ -8,7 +8,10 @@ import {
   LandsPileCardsFacade,
   StockPilesCardsFacade,
 } from '@taormina/data-access-game';
-import { AGGLOMERATION_CARD_INTERFACE_NAME } from '@taormina/shared-models';
+import {
+  AGGLOMERATION_CARD_INTERFACE_NAME,
+  DEVELOPMENT_CARD_INTERFACE_NAME,
+} from '@taormina/shared-models';
 import { combineLatest } from 'rxjs';
 import { map, take } from 'rxjs/operators';
 
@@ -86,6 +89,35 @@ export class GameRulesService {
       )
       .subscribe(({ faceUpPileCardId, domainCardId, cardType, cardId }) => {
         this.faceUpPilesCards.removeFaceUpPileCard(faceUpPileCardId);
+        this.domainsCards.putCardInSlot(domainCardId, cardType, cardId);
+        this.domainsCards.unselectDomainCard();
+      });
+  }
+
+  useResourcesToPutHandCardInSlot(): void {
+    this.domainsCards.useLockedResources();
+
+    combineLatest([
+      this.handsCards.selectedHandsCards$,
+      this.domainsCards.selectedDomainsCards$,
+    ])
+      .pipe(
+        map(([handCard, domainCard]) => {
+          if (handCard === undefined)
+            throw new Error(`Can't put card in slot if no card selected.`);
+          if (domainCard === undefined)
+            throw new Error(`Can't put card in slot if no slot selected.`);
+
+          return {
+            handCardId: handCard.id,
+            domainCardId: domainCard.id,
+            cardType: DEVELOPMENT_CARD_INTERFACE_NAME as typeof DEVELOPMENT_CARD_INTERFACE_NAME,
+            cardId: handCard.cardId,
+          };
+        })
+      )
+      .subscribe(({ handCardId, domainCardId, cardType, cardId }) => {
+        this.handsCards.removeHandCard(handCardId);
         this.domainsCards.putCardInSlot(domainCardId, cardType, cardId);
         this.domainsCards.unselectDomainCard();
       });
