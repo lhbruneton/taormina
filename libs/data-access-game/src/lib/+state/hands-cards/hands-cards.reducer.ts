@@ -54,5 +54,12 @@ export const handsCardsReducer = createReducer(
   on(HandsCardsActions.setHandsCardsError, (state, { error }) => ({
     ...state,
     errorMsg: error,
-  }))
+  })),
+  on(HandsCardsActions.selectHandCard, (state, { id }) => ({
+    ...state,
+    selectedId: id,
+  })),
+  on(HandsCardsActions.removeHandCard, (state, { id }) =>
+    handsCardsAdapter.removeOne(id, state)
+  )
 );

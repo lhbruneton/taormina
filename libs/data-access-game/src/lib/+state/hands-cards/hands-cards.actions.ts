@@ -50,3 +50,13 @@ export const setHandsCardsError = createAction(
   '[HandsCards] Set HandsCards Error',
   props<{ error: string }>()
 );
+
+export const selectHandCard = createAction(
+  '[HandsCards] Select Hand Card',
+  props<{ id: string }>()
+);
+
+export const removeHandCard = createAction(
+  '[HandsCards] Remove HandCard',
+  props<{ id: string }>()
+);
