@@ -1,6 +1,7 @@
 import { Injectable } from '@angular/core';
 import { select, Store } from '@ngrx/store';
 import { DomainCardType } from '@taormina/shared-models';
+import { Observable } from 'rxjs';
 
 import * as DomainsCardsActions from './domains-cards.actions';
 import * as DomainsCardsFeature from './domains-cards.reducer';
@@ -92,6 +93,18 @@ export class DomainsCardsFacade {
         col,
         row,
       })
+    );
+  }
+
+  getDomainMinCol(domainId: string): Observable<number> {
+    return this.store.pipe(
+      select(DomainsCardsSelectors.getDomainMinCol, { domainId })
+    );
+  }
+
+  getDomainMaxCol(domainId: string): Observable<number> {
+    return this.store.pipe(
+      select(DomainsCardsSelectors.getDomainMaxCol, { domainId })
     );
   }
 }
