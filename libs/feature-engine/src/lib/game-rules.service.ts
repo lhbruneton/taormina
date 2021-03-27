@@ -73,6 +73,7 @@ export class GameRulesService {
       this.domainsCards.selectedDomainsCards$,
     ])
       .pipe(
+        take(1),
         map(([faceUpPileCard, domainCard]) => {
           if (faceUpPileCard === undefined)
             throw new Error(`Can't put card in slot if no card selected.`);
@@ -102,6 +103,7 @@ export class GameRulesService {
       this.domainsCards.selectedDomainsCards$,
     ])
       .pipe(
+        take(1),
         map(([handCard, domainCard]) => {
           if (handCard === undefined)
             throw new Error(`Can't put card in slot if no card selected.`);
