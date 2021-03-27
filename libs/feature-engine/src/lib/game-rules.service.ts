@@ -10,7 +10,7 @@ import {
 } from '@taormina/data-access-game';
 import {
   AGGLOMERATION_CARD_INTERFACE_NAME,
-  AVAILABLE_DEVELOPMENT_SLOT,
+  AVAILABLE_AGGLOMERATION_SLOT,
   DEVELOPMENT_CARD_INTERFACE_NAME,
 } from '@taormina/shared-models';
 import { combineLatest } from 'rxjs';
@@ -89,7 +89,7 @@ export class GameRulesService {
           );
           this.domainsCards.createAvailableDomainCard(
             domainCard.domainId,
-            AVAILABLE_DEVELOPMENT_SLOT,
+            AVAILABLE_AGGLOMERATION_SLOT,
             domainCard.col < 0 ? domainCard.col - 1 : domainCard.col + 1,
             0
           );
