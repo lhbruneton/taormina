@@ -8,7 +8,7 @@ import { hot } from '@nrwl/angular/testing';
 import { ID_DOMAIN_BLUE, ID_DOMAIN_RED } from '@taormina/shared-constants';
 import {
   AGGLOMERATION_CARD_INTERFACE_NAME,
-  AVAILABLE_HAMLET_SLOT,
+  AVAILABLE_AGGLOMERATION_SLOT,
   LAND_CARD_INTERFACE_NAME,
 } from '@taormina/shared-models';
 import { Observable } from 'rxjs';
@@ -613,7 +613,7 @@ describe('DomainsCardsEffects', () => {
       actions = hot('-a-|', {
         a: DomainsCardsActions.createDomainCard({
           domainId: 'A',
-          cardType: AVAILABLE_HAMLET_SLOT,
+          cardType: AVAILABLE_AGGLOMERATION_SLOT,
           cardId: undefined,
           col: -2,
           row: 0,
@@ -625,7 +625,7 @@ describe('DomainsCardsEffects', () => {
           domainCard: {
             id: 'aaaa',
             domainId: 'A',
-            cardType: AVAILABLE_HAMLET_SLOT,
+            cardType: AVAILABLE_AGGLOMERATION_SLOT,
             cardId: undefined,
             col: -2,
             row: 0,
