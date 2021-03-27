@@ -8,10 +8,13 @@ import {
   LandsPileCardsFacade,
   StockPilesCardsFacade,
 } from '@taormina/data-access-game';
+import { ID_FACE_UP_HAMLET } from '@taormina/shared-constants';
 import {
   AGGLOMERATION_CARD_INTERFACE_NAME,
   AVAILABLE_AGGLOMERATION_SLOT,
+  AVAILABLE_LAND_SLOT,
   DEVELOPMENT_CARD_INTERFACE_NAME,
+  LAND_CARD_INTERFACE_NAME,
 } from '@taormina/shared-models';
 import { combineLatest } from 'rxjs';
 import { map, take, tap } from 'rxjs/operators';
@@ -87,12 +90,30 @@ export class GameRulesService {
             AGGLOMERATION_CARD_INTERFACE_NAME,
             faceUpPileCard.cardId
           );
+
+          const availableCol =
+            domainCard.col < 0 ? domainCard.col - 1 : domainCard.col + 1;
           this.domainsCards.createAvailableDomainCard(
             domainCard.domainId,
             AVAILABLE_AGGLOMERATION_SLOT,
-            domainCard.col < 0 ? domainCard.col - 1 : domainCard.col + 1,
+            availableCol,
             0
           );
+          if (faceUpPileCard.pileId === ID_FACE_UP_HAMLET) {
+            this.domainsCards.createAvailableDomainCard(
+              domainCard.domainId,
+              AVAILABLE_LAND_SLOT,
+              availableCol,
+              -1
+            );
+            this.domainsCards.createAvailableDomainCard(
+              domainCard.domainId,
+              AVAILABLE_LAND_SLOT,
+              availableCol,
+              1
+            );
+          }
+
           this.domainsCards.unselectDomainCard();
         })
       )
@@ -119,6 +140,31 @@ export class GameRulesService {
             domainCard.id,
             DEVELOPMENT_CARD_INTERFACE_NAME,
             handCard.cardId
+          );
+          this.domainsCards.unselectDomainCard();
+        })
+      )
+      .subscribe();
+  }
+
+  putLandsPileCardInSlot(): void {
+    combineLatest([
+      this.landsPileCards.selectedLandsPileCards$,
+      this.domainsCards.selectedDomainsCards$,
+    ])
+      .pipe(
+        take(1),
+        tap(([landsPileCard, domainCard]) => {
+          if (landsPileCard === undefined)
+            throw new Error(`Can't put card in slot if no card selected.`);
+          if (domainCard === undefined)
+            throw new Error(`Can't put card in slot if no slot selected.`);
+
+          this.landsPileCards.removeLandsPileCard(landsPileCard.id);
+          this.domainsCards.putCardInSlot(
+            domainCard.id,
+            LAND_CARD_INTERFACE_NAME,
+            landsPileCard.cardId
           );
           this.domainsCards.unselectDomainCard();
         })

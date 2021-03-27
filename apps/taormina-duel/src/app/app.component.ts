@@ -213,6 +213,10 @@ export class AppComponent {
     return this.landsPileCards.allLandsPileCards$;
   }
 
+  selectLandsPileCard(pivotId: string): void {
+    this.landsPileCards.selectLandsPileCard(pivotId);
+  }
+
   getStockPiles(): string[] {
     return stockPiles;
   }
@@ -303,12 +307,20 @@ export class AppComponent {
     this.gameRules.useResourcesToPutHandCardInSlot();
   }
 
+  putLand(): void {
+    this.gameRules.putLandsPileCardInSlot();
+  }
+
   getSelectedFaceUpPileCard(): Observable<FaceUpPilesCardsEntity | undefined> {
     return this.faceUpPilesCards.selectedFaceUpPilesCards$;
   }
 
   getSelectedHandCard(): Observable<HandsCardsEntity | undefined> {
     return this.handsCards.selectedHandsCards$;
+  }
+
+  getSelectedLandsPileCard(): Observable<LandsPileCardsEntity | undefined> {
+    return this.landsPileCards.selectedLandsPileCards$;
   }
 
   getSelectedDomainCard(): Observable<DomainsCardsEntity | undefined> {
