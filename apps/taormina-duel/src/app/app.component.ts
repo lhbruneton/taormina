@@ -141,6 +141,21 @@ export class AppComponent {
     return domains.get(ID_DOMAIN_BLUE);
   }
 
+  getColumnsTemplate(domainId: string): Observable<string> {
+    return combineLatest([
+      this.domainsCards.getDomainMinCol(domainId),
+      this.domainsCards.getDomainMaxCol(domainId),
+    ]).pipe(
+      map(([min, max]) => {
+        let template = '';
+        for (let i = min; i < max + 1; i++) {
+          template += `[col${i}] 150px `;
+        }
+        return template;
+      })
+    );
+  }
+
   getDomainsCards(domainId: string): Observable<DomainsCardsEntity[]> {
     return this.domainsCards.allDomainsCards$.pipe(
       map((domainsCards) =>

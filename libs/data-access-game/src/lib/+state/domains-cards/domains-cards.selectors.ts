@@ -86,3 +86,23 @@ export const getLandCardPivotWithLockedResources = createSelector(
         pivot.cardType === LAND_CARD_INTERFACE_NAME && pivot.lockedResources > 0
     )
 );
+
+export const getDomainMinCol = createSelector(
+  getAllDomainsCards,
+  (entities: DomainsCardsEntity[], props: { domainId: string }) =>
+    Math.min(
+      ...entities
+        .filter((pivot) => pivot.domainId === props.domainId)
+        .map((pivot) => pivot.col)
+    )
+);
+
+export const getDomainMaxCol = createSelector(
+  getAllDomainsCards,
+  (entities: DomainsCardsEntity[], props: { domainId: string }) =>
+    Math.max(
+      ...entities
+        .filter((pivot) => pivot.domainId === props.domainId)
+        .map((pivot) => pivot.col)
+    )
+);

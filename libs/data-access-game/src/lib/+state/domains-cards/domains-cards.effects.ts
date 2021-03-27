@@ -11,9 +11,11 @@ import {
   take,
   withLatestFrom,
 } from 'rxjs/operators';
+import { v4 as uuidv4 } from 'uuid';
 
 import * as DomainsCardsActions from './domains-cards.actions';
 import {
+  createDomainsCardsEntity,
   createInitialDomainsCards,
   DomainsCardsEntity,
 } from './domains-cards.models';
@@ -213,6 +215,23 @@ export class DomainsCardsEffects {
           },
         };
         return DomainsCardsActions.updateDomainCard({ update });
+      })
+    )
+  );
+
+  createCard$ = createEffect(() =>
+    this.actions$.pipe(
+      ofType(DomainsCardsActions.createDomainCard),
+      map(({ domainId, cardType, cardId, col, row }) => {
+        const domainCard = createDomainsCardsEntity(
+          uuidv4(),
+          domainId,
+          cardType,
+          cardId,
+          col,
+          row
+        );
+        return DomainsCardsActions.addDomainCard({ domainCard });
       })
     )
   );

@@ -8,18 +8,20 @@ import { hot } from '@nrwl/angular/testing';
 import { ID_DOMAIN_BLUE, ID_DOMAIN_RED } from '@taormina/shared-constants';
 import {
   AGGLOMERATION_CARD_INTERFACE_NAME,
+  AVAILABLE_HAMLET_SLOT,
   LAND_CARD_INTERFACE_NAME,
 } from '@taormina/shared-models';
 import { Observable } from 'rxjs';
 
 import * as DomainsCardsActions from './domains-cards.actions';
 import { DomainsCardsEffects } from './domains-cards.effects';
+import * as DomainsCardsModels from './domains-cards.models';
 import * as DomainsCardsSelectors from './domains-cards.selectors';
 
-jest.mock('./domains-cards.models', () => {
+jest.mock('uuid', () => {
   return {
     __esModule: true,
-    createInitialDomainsCards: jest.fn(() => []),
+    v4: jest.fn(() => 'aaaa'),
   };
 });
 
@@ -43,7 +45,11 @@ describe('DomainsCardsEffects', () => {
   });
 
   describe('initNewGame$', () => {
-    it('should work', () => {
+    it('should dispatch setDomainsCardsInitialized with mocked empty initial domains cards', () => {
+      jest
+        .spyOn(DomainsCardsModels, 'createInitialDomainsCards')
+        .mockReturnValue([]);
+
       actions = hot('-a-|', {
         a: DomainsCardsActions.initDomainsCardsNewGame(),
       });
@@ -59,7 +65,7 @@ describe('DomainsCardsEffects', () => {
   });
 
   describe('initSavedGame$', () => {
-    it('should work', () => {
+    it('should dispatch loadDomainsCardsSuccess with empty domains cards', () => {
       actions = hot('-a-|', {
         a: DomainsCardsActions.initDomainsCardsSavedGame(),
       });
@@ -599,6 +605,37 @@ describe('DomainsCardsEffects', () => {
       });
 
       expect(effects.putCardInPivot$).toBeObservable(expected);
+    });
+  });
+
+  describe('createCard$', () => {
+    it('should dispatch addDomainCard with mocked uuid', () => {
+      actions = hot('-a-|', {
+        a: DomainsCardsActions.createDomainCard({
+          domainId: 'A',
+          cardType: AVAILABLE_HAMLET_SLOT,
+          cardId: undefined,
+          col: -2,
+          row: 0,
+        }),
+      });
+
+      const expected = hot('-a-|', {
+        a: DomainsCardsActions.addDomainCard({
+          domainCard: {
+            id: 'aaaa',
+            domainId: 'A',
+            cardType: AVAILABLE_HAMLET_SLOT,
+            cardId: undefined,
+            col: -2,
+            row: 0,
+            availableResources: 0,
+            lockedResources: 0,
+          },
+        }),
+      });
+
+      expect(effects.createCard$).toBeObservable(expected);
     });
   });
 });

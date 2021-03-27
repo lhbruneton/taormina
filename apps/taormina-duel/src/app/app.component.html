@@ -166,7 +166,12 @@
 <hr />
 <div *ngIf="getRedDomain() as domain">
   <div>{{ domain.color }}</div>
-  <div class="grid-container">
+  <div
+    class="grid-container"
+    [ngStyle]="{
+      'grid-template-columns': getColumnsTemplate(domain.id) | async
+    }"
+  >
     <div
       *ngFor="let pivot of getDomainsCards(domain.id) | async"
       [ngSwitch]="pivot.cardType"
@@ -231,7 +236,12 @@
 <hr />
 <div *ngIf="getBlueDomain() as domain">
   <div>{{ domain.color }}</div>
-  <div class="grid-container">
+  <div
+    class="grid-container"
+    [ngStyle]="{
+      'grid-template-columns': getColumnsTemplate(domain.id) | async
+    }"
+  >
     <div
       *ngFor="let pivot of getDomainsCards(domain.id) | async"
       [ngSwitch]="pivot.cardType"
