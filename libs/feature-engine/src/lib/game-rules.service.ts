@@ -13,7 +13,7 @@ import {
   DEVELOPMENT_CARD_INTERFACE_NAME,
 } from '@taormina/shared-models';
 import { combineLatest } from 'rxjs';
-import { map, take } from 'rxjs/operators';
+import { map, take, tap } from 'rxjs/operators';
 
 @Injectable({
   providedIn: 'root',
@@ -74,25 +74,22 @@ export class GameRulesService {
     ])
       .pipe(
         take(1),
-        map(([faceUpPileCard, domainCard]) => {
+        tap(([faceUpPileCard, domainCard]) => {
           if (faceUpPileCard === undefined)
             throw new Error(`Can't put card in slot if no card selected.`);
           if (domainCard === undefined)
             throw new Error(`Can't put card in slot if no slot selected.`);
 
-          return {
-            faceUpPileCardId: faceUpPileCard.id,
-            domainCardId: domainCard.id,
-            cardType: AGGLOMERATION_CARD_INTERFACE_NAME as typeof AGGLOMERATION_CARD_INTERFACE_NAME,
-            cardId: faceUpPileCard.cardId,
-          };
+          this.faceUpPilesCards.removeFaceUpPileCard(faceUpPileCard.id);
+          this.domainsCards.putCardInSlot(
+            domainCard.id,
+            AGGLOMERATION_CARD_INTERFACE_NAME,
+            faceUpPileCard.cardId
+          );
+          this.domainsCards.unselectDomainCard();
         })
       )
-      .subscribe(({ faceUpPileCardId, domainCardId, cardType, cardId }) => {
-        this.faceUpPilesCards.removeFaceUpPileCard(faceUpPileCardId);
-        this.domainsCards.putCardInSlot(domainCardId, cardType, cardId);
-        this.domainsCards.unselectDomainCard();
-      });
+      .subscribe();
   }
 
   useResourcesToPutHandCardInSlot(): void {
@@ -104,24 +101,21 @@ export class GameRulesService {
     ])
       .pipe(
         take(1),
-        map(([handCard, domainCard]) => {
+        tap(([handCard, domainCard]) => {
           if (handCard === undefined)
             throw new Error(`Can't put card in slot if no card selected.`);
           if (domainCard === undefined)
             throw new Error(`Can't put card in slot if no slot selected.`);
 
-          return {
-            handCardId: handCard.id,
-            domainCardId: domainCard.id,
-            cardType: DEVELOPMENT_CARD_INTERFACE_NAME as typeof DEVELOPMENT_CARD_INTERFACE_NAME,
-            cardId: handCard.cardId,
-          };
+          this.handsCards.removeHandCard(handCard.id);
+          this.domainsCards.putCardInSlot(
+            domainCard.id,
+            DEVELOPMENT_CARD_INTERFACE_NAME,
+            handCard.cardId
+          );
+          this.domainsCards.unselectDomainCard();
         })
       )
-      .subscribe(({ handCardId, domainCardId, cardType, cardId }) => {
-        this.handsCards.removeHandCard(handCardId);
-        this.domainsCards.putCardInSlot(domainCardId, cardType, cardId);
-        this.domainsCards.unselectDomainCard();
-      });
+      .subscribe();
   }
 }
