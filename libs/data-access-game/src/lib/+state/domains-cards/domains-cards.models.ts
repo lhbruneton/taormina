@@ -22,8 +22,8 @@ import {
 } from '@taormina/shared-constants';
 import {
   AGGLOMERATION_CARD_INTERFACE_NAME,
+  AVAILABLE_AGGLOMERATION_SLOT,
   AVAILABLE_DEVELOPMENT_SLOT,
-  AVAILABLE_ROAD_SLOT,
   DomainCardType,
   LAND_CARD_INTERFACE_NAME,
   ResourceCount,
@@ -85,7 +85,7 @@ export const createInitialDomainsCards = (): DomainsCardsEntity[] => {
     createDomainsCardsEntity(
       uuidv4(),
       ID_DOMAIN_RED,
-      AVAILABLE_ROAD_SLOT,
+      AVAILABLE_AGGLOMERATION_SLOT,
       undefined,
       -2,
       0
@@ -101,7 +101,7 @@ export const createInitialDomainsCards = (): DomainsCardsEntity[] => {
     createDomainsCardsEntity(
       uuidv4(),
       ID_DOMAIN_RED,
-      AVAILABLE_ROAD_SLOT,
+      AVAILABLE_AGGLOMERATION_SLOT,
       undefined,
       2,
       0
@@ -211,7 +211,7 @@ export const createInitialDomainsCards = (): DomainsCardsEntity[] => {
     createDomainsCardsEntity(
       uuidv4(),
       ID_DOMAIN_BLUE,
-      AVAILABLE_ROAD_SLOT,
+      AVAILABLE_AGGLOMERATION_SLOT,
       undefined,
       -2,
       0
@@ -227,7 +227,7 @@ export const createInitialDomainsCards = (): DomainsCardsEntity[] => {
     createDomainsCardsEntity(
       uuidv4(),
       ID_DOMAIN_BLUE,
-      AVAILABLE_ROAD_SLOT,
+      AVAILABLE_AGGLOMERATION_SLOT,
       undefined,
       2,
       0

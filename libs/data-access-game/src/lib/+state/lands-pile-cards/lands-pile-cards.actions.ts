@@ -28,3 +28,13 @@ export const setLandsPileCardsError = createAction(
   '[LandsPileCards] Set LandsPileCards Error',
   props<{ error: string }>()
 );
+
+export const selectLandsPileCard = createAction(
+  '[LandsPileCards] Select LandsPileCard',
+  props<{ id: string }>()
+);
+
+export const removeLandsPileCard = createAction(
+  '[LandsPileCards] Remove LandsPileCard',
+  props<{ id: string }>()
+);

@@ -39,9 +39,8 @@ import {
   AgglomerationCard,
   AGGLOMERATION_CARD_INTERFACE_NAME,
   AVAILABLE_DEVELOPMENT_SLOT,
-  AVAILABLE_HAMLET_SLOT,
   AVAILABLE_LAND_SLOT,
-  AVAILABLE_ROAD_SLOT,
+  AVAILABLE_AGGLOMERATION_SLOT,
   DevelopmentCard,
   DEVELOPMENT_CARD_INTERFACE_NAME,
   Domain,
@@ -68,12 +67,11 @@ export class AppComponent {
 
   ACTION_CARD_INTERFACE_NAME = ACTION_CARD_INTERFACE_NAME;
   AGGLOMERATION_CARD_INTERFACE_NAME = AGGLOMERATION_CARD_INTERFACE_NAME;
-  AVAILABLE_DEVELOPMENT_SLOT = AVAILABLE_DEVELOPMENT_SLOT;
-  AVAILABLE_HAMLET_SLOT = AVAILABLE_HAMLET_SLOT;
-  AVAILABLE_LAND_SLOT = AVAILABLE_LAND_SLOT;
-  AVAILABLE_ROAD_SLOT = AVAILABLE_ROAD_SLOT;
   DEVELOPMENT_CARD_INTERFACE_NAME = DEVELOPMENT_CARD_INTERFACE_NAME;
   LAND_CARD_INTERFACE_NAME = LAND_CARD_INTERFACE_NAME;
+  AVAILABLE_AGGLOMERATION_SLOT = AVAILABLE_AGGLOMERATION_SLOT;
+  AVAILABLE_DEVELOPMENT_SLOT = AVAILABLE_DEVELOPMENT_SLOT;
+  AVAILABLE_LAND_SLOT = AVAILABLE_LAND_SLOT;
 
   constructor(
     private game: GameFacade,
@@ -215,6 +213,10 @@ export class AppComponent {
     return this.landsPileCards.allLandsPileCards$;
   }
 
+  selectLandsPileCard(pivotId: string): void {
+    this.landsPileCards.selectLandsPileCard(pivotId);
+  }
+
   getStockPiles(): string[] {
     return stockPiles;
   }
@@ -305,12 +307,20 @@ export class AppComponent {
     this.gameRules.useResourcesToPutHandCardInSlot();
   }
 
+  putLand(): void {
+    this.gameRules.putLandsPileCardInSlot();
+  }
+
   getSelectedFaceUpPileCard(): Observable<FaceUpPilesCardsEntity | undefined> {
     return this.faceUpPilesCards.selectedFaceUpPilesCards$;
   }
 
   getSelectedHandCard(): Observable<HandsCardsEntity | undefined> {
     return this.handsCards.selectedHandsCards$;
+  }
+
+  getSelectedLandsPileCard(): Observable<LandsPileCardsEntity | undefined> {
+    return this.landsPileCards.selectedLandsPileCards$;
   }
 
   getSelectedDomainCard(): Observable<DomainsCardsEntity | undefined> {

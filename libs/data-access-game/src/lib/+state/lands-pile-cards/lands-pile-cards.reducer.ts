@@ -58,5 +58,12 @@ export const landsPileCardsReducer = createReducer(
   on(LandsPileCardsActions.setLandsPileCardsError, (state, { error }) => ({
     ...state,
     errorMsg: error,
-  }))
+  })),
+  on(LandsPileCardsActions.selectLandsPileCard, (state, { id }) => ({
+    ...state,
+    selectedId: id,
+  })),
+  on(LandsPileCardsActions.removeLandsPileCard, (state, { id }) =>
+    landsPileCardsAdapter.removeOne(id, state)
+  )
 );

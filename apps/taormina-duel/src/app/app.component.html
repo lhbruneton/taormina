@@ -92,15 +92,40 @@
 </div>
 <hr />
 <div class="flex-container">
+  <button type="button" (click)="putLand()">put land</button>
+  <div>
+    <p>Selected Land Card:</p>
+    <p *ngIf="getSelectedLandsPileCard() | async as pivot">
+      {{ pivot.cardId }}
+    </p>
+  </div>
+  <div>
+    <p>Selected Land Available Slot:</p>
+    <p *ngIf="getSelectedDomainCard() | async as pivot">
+      {{ pivot.domainId }}<br />
+      {{ pivot.col }}<br />
+      {{ pivot.row }}
+    </p>
+  </div>
+</div>
+<hr />
+<div class="flex-container">
   <div *ngFor="let pile of getFaceUpPiles()">
     <p>{{ pile }}</p>
     <button type="button" (click)="selectFirst(pile)">Select</button>
     <p>Remaining: {{ getFaceUpPileCount(pile) | async }}</p>
   </div>
   <div>
-    <div *ngFor="let pivot of getLandsPileCards() | async">
+    <div *ngFor="let pivot of getLandsPileCards() | async; index as i">
       <div *ngIf="getLandCard(pivot.cardId) as land">
         {{ land.type }} - {{ land.die }}
+        <button
+          *ngIf="i < 2"
+          type="button"
+          (click)="selectLandsPileCard(pivot.id)"
+        >
+          Select
+        </button>
       </div>
     </div>
   </div>
@@ -220,12 +245,17 @@
           </button>
         </div>
       </div>
-      <div *ngSwitchCase="AVAILABLE_ROAD_SLOT">
+      <div *ngSwitchCase="AVAILABLE_AGGLOMERATION_SLOT">
         <button type="button" (click)="selectDomainCard(pivot.id)">
           Select
         </button>
       </div>
       <div *ngSwitchCase="AVAILABLE_DEVELOPMENT_SLOT">
+        <button type="button" (click)="selectDomainCard(pivot.id)">
+          Select
+        </button>
+      </div>
+      <div *ngSwitchCase="AVAILABLE_LAND_SLOT">
         <button type="button" (click)="selectDomainCard(pivot.id)">
           Select
         </button>
@@ -290,12 +320,17 @@
           </button>
         </div>
       </div>
-      <div *ngSwitchCase="AVAILABLE_ROAD_SLOT">
+      <div *ngSwitchCase="AVAILABLE_AGGLOMERATION_SLOT">
         <button type="button" (click)="selectDomainCard(pivot.id)">
           Select
         </button>
       </div>
       <div *ngSwitchCase="AVAILABLE_DEVELOPMENT_SLOT">
+        <button type="button" (click)="selectDomainCard(pivot.id)">
+          Select
+        </button>
+      </div>
+      <div *ngSwitchCase="AVAILABLE_LAND_SLOT">
         <button type="button" (click)="selectDomainCard(pivot.id)">
           Select
         </button>
