@@ -35,7 +35,7 @@ describe('DomainsCards Selectors', () => {
             ID_DOMAIN_RED,
             AGGLOMERATION_CARD_INTERFACE_NAME,
             'ROAD_1',
-            0,
+            -1,
             0
           ),
           createDomainsCardsEntity(
@@ -53,7 +53,7 @@ describe('DomainsCards Selectors', () => {
             ID_DOMAIN_BLUE,
             LAND_CARD_INTERFACE_NAME,
             'LAND_3',
-            0,
+            1,
             0
           ),
         ],
@@ -120,6 +120,22 @@ describe('DomainsCards Selectors', () => {
       const selId = getDomainsCardsId(result[0]);
 
       expect(selId).toBe('PRODUCT-BBB');
+    });
+
+    it('getDomainMinCol({ domainId }) should return the lowest column number for the domain', () => {
+      const result = DomainsCardsSelectors.getDomainMinCol(state, {
+        domainId: ID_DOMAIN_BLUE,
+      });
+
+      expect(result).toBe(0);
+    });
+
+    it('getDomainMaxCol({ domainId }) should return the highest column number for the domain', () => {
+      const result = DomainsCardsSelectors.getDomainMaxCol(state, {
+        domainId: ID_DOMAIN_BLUE,
+      });
+
+      expect(result).toBe(1);
     });
   });
 });
