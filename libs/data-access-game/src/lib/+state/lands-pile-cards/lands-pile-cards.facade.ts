@@ -36,4 +36,14 @@ export class LandsPileCardsFacade {
   initSavedGame(): void {
     this.store.dispatch(LandsPileCardsActions.initLandsPileCardsSavedGame());
   }
+
+  selectLandsPileCard(pivotId: string): void {
+    this.store.dispatch(
+      LandsPileCardsActions.selectLandsPileCard({ id: pivotId })
+    );
+  }
+
+  removeLandsPileCard(id: string): void {
+    this.store.dispatch(LandsPileCardsActions.removeLandsPileCard({ id }));
+  }
 }

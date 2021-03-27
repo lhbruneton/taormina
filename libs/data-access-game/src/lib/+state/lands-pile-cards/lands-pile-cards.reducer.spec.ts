@@ -85,4 +85,87 @@ describe('LandsPileCards Reducer', () => {
       expect(state).toEqual(newState);
     });
   });
+
+  describe('selectLandsPileCard', () => {
+    it('should select the LandsPileCard', () => {
+      const newState: LandsPileCardsState = {
+        ids: ['PRODUCT-AAA'],
+        entities: {
+          'PRODUCT-AAA': {
+            id: 'PRODUCT-AAA',
+            cardId: 'A',
+          },
+        },
+        selectedId: 'PRODUCT-AAA',
+        initialized: true,
+        loaded: false,
+      };
+
+      const initialState: LandsPileCardsState = {
+        ids: ['PRODUCT-AAA'],
+        entities: {
+          'PRODUCT-AAA': {
+            id: 'PRODUCT-AAA',
+            cardId: 'A',
+          },
+        },
+        initialized: true,
+        loaded: false,
+      };
+
+      const action = LandsPileCardsActions.selectLandsPileCard({
+        id: 'PRODUCT-AAA',
+      });
+
+      const state: LandsPileCardsState = landsPileCardsReducer(
+        initialState,
+        action
+      );
+
+      expect(state).toEqual(newState);
+    });
+  });
+
+  describe('removeLandsPileCard', () => {
+    it('should remove the LandsPileCard from the list', () => {
+      const newState: LandsPileCardsState = {
+        ids: ['PRODUCT-AAA'],
+        entities: {
+          'PRODUCT-AAA': {
+            id: 'PRODUCT-AAA',
+            cardId: 'A',
+          },
+        },
+        initialized: true,
+        loaded: false,
+      };
+
+      const initialState: LandsPileCardsState = {
+        ids: ['PRODUCT-AAA', 'PRODUCT-BBB'],
+        entities: {
+          'PRODUCT-AAA': {
+            id: 'PRODUCT-AAA',
+            cardId: 'A',
+          },
+          'PRODUCT-BBB': {
+            id: 'PRODUCT-BBB',
+            cardId: 'B',
+          },
+        },
+        initialized: true,
+        loaded: false,
+      };
+
+      const action = LandsPileCardsActions.removeLandsPileCard({
+        id: 'PRODUCT-BBB',
+      });
+
+      const state: LandsPileCardsState = landsPileCardsReducer(
+        initialState,
+        action
+      );
+
+      expect(state).toEqual(newState);
+    });
+  });
 });
