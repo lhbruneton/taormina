@@ -77,4 +77,21 @@ export class DomainsCardsFacade {
       })
     );
   }
+
+  createAvailableDomainCard(
+    domainId: string,
+    cardType: DomainCardType,
+    col: number,
+    row: number
+  ): void {
+    this.store.dispatch(
+      DomainsCardsActions.createDomainCard({
+        domainId,
+        cardType,
+        cardId: undefined,
+        col,
+        row,
+      })
+    );
+  }
 }
