@@ -88,3 +88,14 @@ export const setDomainsCardsError = createAction(
   '[DomainsCards] Set DomainsCards Error',
   props<{ error: string }>()
 );
+
+export const createDomainCard = createAction(
+  '[DomainsCards] Create DomainCard',
+  props<{
+    domainId: string;
+    cardType: DomainCardType;
+    cardId: string | undefined;
+    col: number;
+    row: number;
+  }>()
+);
