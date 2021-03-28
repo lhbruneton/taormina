@@ -1,7 +1,15 @@
 import { createFeatureSelector, createSelector } from '@ngrx/store';
-import { landCards } from '@taormina/shared-constants';
 import {
+  developmentCards,
+  ID_DOMAIN_BLUE,
+  ID_DOMAIN_RED,
+  landCards,
+} from '@taormina/shared-constants';
+import {
+  DevelopmentCard,
+  DEVELOPMENT_CARD_INTERFACE_NAME,
   LAND_CARD_INTERFACE_NAME,
+  masteryPointsType,
   ResourceValue,
 } from '@taormina/shared-models';
 import { DomainsCardsEntity } from './domains-cards.models';
@@ -106,3 +114,68 @@ export const getDomainMaxCol = createSelector(
         .map((pivot) => pivot.col)
     )
 );
+
+export const getMasteryDomainForType = createSelector(
+  getAllDomainsCards,
+  (entities: DomainsCardsEntity[], props: { type: masteryPointsType }) => {
+    const redDomainCards = entities.filter(
+      (pivot) => pivot.domainId === ID_DOMAIN_RED
+    );
+    const blueDomainCards = entities.filter(
+      (pivot) => pivot.domainId === ID_DOMAIN_BLUE
+    );
+
+    const redTradePoints = accPointsForType(redDomainCards, props.type);
+    const blueTradePoints = accPointsForType(blueDomainCards, props.type);
+
+    return fromPointsToMastery(redTradePoints, blueTradePoints);
+  }
+);
+
+const getDevelopmentCardPointsForType = (
+  developmentCard: DevelopmentCard,
+  type: masteryPointsType
+): number => {
+  switch (type) {
+    case 'trade':
+      return developmentCard.tradePoints || 0;
+    case 'strength':
+      return developmentCard.strengthPoints || 0;
+    default:
+      return 0;
+  }
+};
+
+const accPointsForType = (
+  pivots: DomainsCardsEntity[],
+  type: masteryPointsType
+): number =>
+  pivots
+    .filter(
+      (pivot) =>
+        pivot.cardType === DEVELOPMENT_CARD_INTERFACE_NAME &&
+        pivot.cardId !== undefined
+    )
+    // eslint-disable-next-line @typescript-eslint/no-non-null-assertion
+    .map((pivot) => developmentCards.get(pivot.cardId!))
+    .filter(
+      (developmentCard): developmentCard is DevelopmentCard =>
+        developmentCard !== undefined
+    )
+    .map((developmentCard) =>
+      getDevelopmentCardPointsForType(developmentCard, type)
+    )
+    .reduce((accumulator, currentValue) => accumulator + currentValue, 0);
+
+const fromPointsToMastery = (
+  redPoints: number,
+  bluePoints: number
+): string | undefined => {
+  if (redPoints > bluePoints && redPoints > 2) {
+    return ID_DOMAIN_RED;
+  } else if (bluePoints > redPoints && bluePoints > 2) {
+    return ID_DOMAIN_BLUE;
+  } else {
+    return undefined;
+  }
+};
