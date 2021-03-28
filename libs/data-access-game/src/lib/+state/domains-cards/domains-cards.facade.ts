@@ -1,6 +1,6 @@
 import { Injectable } from '@angular/core';
 import { select, Store } from '@ngrx/store';
-import { DomainCardType } from '@taormina/shared-models';
+import { DomainCardType, masteryPointsType } from '@taormina/shared-models';
 import { Observable } from 'rxjs';
 
 import * as DomainsCardsActions from './domains-cards.actions';
@@ -105,6 +105,14 @@ export class DomainsCardsFacade {
   getDomainMaxCol(domainId: string): Observable<number> {
     return this.store.pipe(
       select(DomainsCardsSelectors.getDomainMaxCol, { domainId })
+    );
+  }
+
+  getMasteryDomainForType(
+    type: masteryPointsType
+  ): Observable<string | undefined> {
+    return this.store.pipe(
+      select(DomainsCardsSelectors.getMasteryDomainForType, { type })
     );
   }
 }
