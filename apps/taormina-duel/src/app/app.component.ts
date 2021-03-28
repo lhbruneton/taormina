@@ -139,6 +139,18 @@ export class AppComponent {
     return domains.get(ID_DOMAIN_BLUE);
   }
 
+  getTradeMastery(domainId: string): Observable<boolean> {
+    return this.domainsCards
+      .getMasteryDomainForType('trade')
+      .pipe(map((masteryDomainId) => domainId === masteryDomainId));
+  }
+
+  getStrengthMastery(domainId: string): Observable<boolean> {
+    return this.domainsCards
+      .getMasteryDomainForType('strength')
+      .pipe(map((masteryDomainId) => domainId === masteryDomainId));
+  }
+
   getColumnsTemplate(domainId: string): Observable<string> {
     return combineLatest([
       this.domainsCards.getDomainMinCol(domainId),

@@ -9,6 +9,8 @@ export const DEVELOPMENT_CARD_INTERFACE_NAME = 'DevelopmentCard';
 
 export const AVAILABLE_DEVELOPMENT_SLOT = 'AvailableDevelopmentSlot';
 
+export type masteryPointsType = 'trade' | 'strength';
+
 /**
  * Interface for the Development Cards
  */
