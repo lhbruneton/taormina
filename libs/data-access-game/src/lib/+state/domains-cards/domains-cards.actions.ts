@@ -99,3 +99,7 @@ export const createDomainCard = createAction(
     row: number;
   }>()
 );
+
+export const stealUnprotectedGoldAndWool = createAction(
+  '[DomainsCards] Steal Unprotected Gold And Wool'
+);
