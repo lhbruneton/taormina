@@ -69,6 +69,12 @@ export class GameRulesService {
       });
   }
 
+  throwDice(): void {
+    this.game.throwEventDie();
+    this.domainsCards.stealUnprotectedGoldAndWool();
+    this.game.throwProductionDie();
+  }
+
   useResourcesToPutFaceUpPileCardInSlot(): void {
     this.domainsCards.useLockedResources();
 

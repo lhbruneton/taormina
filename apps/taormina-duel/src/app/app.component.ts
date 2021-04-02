@@ -114,7 +114,7 @@ export class AppComponent {
   }
 
   onThrow(): void {
-    this.game.throwDice();
+    this.gameRules.throwDice();
   }
 
   getProductionDie(): Observable<ResourceValue | undefined> {
