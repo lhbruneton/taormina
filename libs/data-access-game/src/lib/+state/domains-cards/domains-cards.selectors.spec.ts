@@ -1,4 +1,12 @@
-import { ID_DOMAIN_BLUE, ID_DOMAIN_RED } from '@taormina/shared-constants';
+import {
+  ID_CLAY_PIT_BLUE,
+  ID_CLAY_PIT_RED,
+  ID_DOMAIN_BLUE,
+  ID_DOMAIN_RED,
+  ID_FOREST_BLUE,
+  ID_GOLD_MINE_BLUE,
+  ID_PASTURE_BLUE,
+} from '@taormina/shared-constants';
 import {
   AGGLOMERATION_CARD_INTERFACE_NAME,
   DEVELOPMENT_CARD_INTERFACE_NAME,
@@ -672,6 +680,163 @@ describe('DomainsCards Selectors', () => {
           expect(result).toBe(ID_DOMAIN_BLUE);
         });
       });
+    });
+  });
+
+  describe('getDomainResourceCountSeenByThieves', () => {
+    beforeEach(() => {
+      state = {
+        domainsCards: domainsCardsAdapter.setAll(
+          [
+            createDomainsCardsEntity(
+              'aaaa',
+              ID_DOMAIN_RED,
+              LAND_CARD_INTERFACE_NAME,
+              ID_CLAY_PIT_RED,
+              -2,
+              -1,
+              1
+            ),
+            createDomainsCardsEntity(
+              'bbbb',
+              ID_DOMAIN_BLUE,
+              LAND_CARD_INTERFACE_NAME,
+              ID_CLAY_PIT_BLUE,
+              -2,
+              -1,
+              1
+            ),
+            createDomainsCardsEntity(
+              'cccc',
+              ID_DOMAIN_BLUE,
+              LAND_CARD_INTERFACE_NAME,
+              ID_FOREST_BLUE,
+              -2,
+              1,
+              1
+            ),
+            createDomainsCardsEntity(
+              'dddd',
+              ID_DOMAIN_BLUE,
+              DEVELOPMENT_CARD_INTERFACE_NAME,
+              'BUILDING_6',
+              -1,
+              1
+            ),
+            createDomainsCardsEntity(
+              'eeee',
+              ID_DOMAIN_BLUE,
+              LAND_CARD_INTERFACE_NAME,
+              ID_GOLD_MINE_BLUE,
+              0,
+              1,
+              0
+            ),
+            createDomainsCardsEntity(
+              'ffff',
+              ID_DOMAIN_BLUE,
+              LAND_CARD_INTERFACE_NAME,
+              ID_PASTURE_BLUE,
+              2,
+              1,
+              1
+            ),
+          ],
+          {
+            ...initialDomainsCardsState,
+          }
+        ),
+      };
+    });
+
+    it('should return resource count seen by thieves', () => {
+      const result = DomainsCardsSelectors.getDomainResourceCountSeenByThieves(
+        state,
+        {
+          domainId: ID_DOMAIN_BLUE,
+        }
+      );
+      expect(result).toBe(2);
+    });
+  });
+
+  describe('getDomainUnprotectedGoldMinesAndPastures', () => {
+    beforeEach(() => {
+      state = {
+        domainsCards: domainsCardsAdapter.setAll(
+          [
+            createDomainsCardsEntity(
+              'aaaa',
+              ID_DOMAIN_RED,
+              LAND_CARD_INTERFACE_NAME,
+              ID_CLAY_PIT_RED,
+              -2,
+              -1,
+              1
+            ),
+            createDomainsCardsEntity(
+              'bbbb',
+              ID_DOMAIN_BLUE,
+              LAND_CARD_INTERFACE_NAME,
+              ID_CLAY_PIT_BLUE,
+              -2,
+              -1,
+              1
+            ),
+            createDomainsCardsEntity(
+              'cccc',
+              ID_DOMAIN_BLUE,
+              LAND_CARD_INTERFACE_NAME,
+              ID_FOREST_BLUE,
+              -2,
+              1,
+              1
+            ),
+            createDomainsCardsEntity(
+              'dddd',
+              ID_DOMAIN_BLUE,
+              DEVELOPMENT_CARD_INTERFACE_NAME,
+              'BUILDING_6',
+              -1,
+              1
+            ),
+            createDomainsCardsEntity(
+              'eeee',
+              ID_DOMAIN_BLUE,
+              LAND_CARD_INTERFACE_NAME,
+              ID_GOLD_MINE_BLUE,
+              0,
+              1,
+              0
+            ),
+            createDomainsCardsEntity(
+              'ffff',
+              ID_DOMAIN_BLUE,
+              LAND_CARD_INTERFACE_NAME,
+              ID_PASTURE_BLUE,
+              2,
+              1,
+              1
+            ),
+          ],
+          {
+            ...initialDomainsCardsState,
+          }
+        ),
+      };
+    });
+
+    it('should return unprotected gold mines and pastures', () => {
+      const results = DomainsCardsSelectors.getDomainUnprotectedGoldMinesAndPastures(
+        state,
+        {
+          domainId: ID_DOMAIN_BLUE,
+        }
+      );
+      const id = getDomainsCardsId(results[0]);
+
+      expect(results.length).toBe(1);
+      expect(id).toBe('ffff');
     });
   });
 });
