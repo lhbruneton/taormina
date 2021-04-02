@@ -49,8 +49,8 @@ describe('GameEffects', () => {
       actions = hot('-a', { a: GameActions.throwDice() });
 
       const expected = hot('-(ab)', {
-        a: GameActions.throwProductionDie(),
-        b: GameActions.throwEventDie(),
+        a: GameActions.throwEventDie(),
+        b: GameActions.throwProductionDie(),
       });
 
       expect(effects.throwDice$).toBeObservable(expected);
