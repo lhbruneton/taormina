@@ -2,6 +2,7 @@ import { Injectable } from '@angular/core';
 import { Actions, createEffect, ofType } from '@ngrx/effects';
 import { select, Store } from '@ngrx/store';
 import { fetch } from '@nrwl/angular';
+import { ID_DOMAIN_BLUE, ID_DOMAIN_RED } from '@taormina/shared-constants';
 import { ResourceCount } from '@taormina/shared-models';
 import { Observable, of } from 'rxjs';
 import {
@@ -232,6 +233,60 @@ export class DomainsCardsEffects {
           row
         );
         return DomainsCardsActions.addDomainCard({ domainCard });
+      })
+    )
+  );
+
+  stealResources$ = createEffect(() =>
+    this.actions$.pipe(
+      ofType(DomainsCardsActions.stealUnprotectedGoldAndWool),
+      withLatestFrom(
+        this.domainsCardsStore.select(
+          DomainsCardsSelectors.getDomainResourceCountSeenByThieves,
+          { domainId: ID_DOMAIN_RED }
+        ),
+        this.domainsCardsStore.select(
+          DomainsCardsSelectors.getDomainResourceCountSeenByThieves,
+          { domainId: ID_DOMAIN_BLUE }
+        ),
+        this.domainsCardsStore.select(
+          DomainsCardsSelectors.getDomainUnprotectedGoldMinesAndPastures,
+          { domainId: ID_DOMAIN_RED }
+        ),
+        this.domainsCardsStore.select(
+          DomainsCardsSelectors.getDomainUnprotectedGoldMinesAndPastures,
+          { domainId: ID_DOMAIN_BLUE }
+        )
+      ),
+      map(
+        ([
+          // eslint-disable-next-line @typescript-eslint/no-unused-vars
+          _action,
+          redResourceCount,
+          blueResourceCount,
+          redGoldMinesAndPastures,
+          blueGoldMinesAndPastures,
+        ]) => {
+          let pivots: DomainsCardsEntity[] = [];
+          if (redResourceCount > 7) {
+            pivots = [...pivots, ...redGoldMinesAndPastures];
+          }
+          if (blueResourceCount > 7) {
+            pivots = [...pivots, ...blueGoldMinesAndPastures];
+          }
+          return pivots;
+        }
+      ),
+      map((pivots) => {
+        const updates = pivots.map((pivot) => {
+          return {
+            id: pivot.id,
+            changes: {
+              availableResources: 0 as ResourceCount,
+            },
+          };
+        });
+        return DomainsCardsActions.updateDomainsCards({ updates });
       })
     )
   );

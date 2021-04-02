@@ -5,7 +5,12 @@ import { Action } from '@ngrx/store';
 import { MockStore, provideMockStore } from '@ngrx/store/testing';
 import { DataPersistence, NxModule } from '@nrwl/angular';
 import { hot } from '@nrwl/angular/testing';
-import { ID_DOMAIN_BLUE, ID_DOMAIN_RED } from '@taormina/shared-constants';
+import {
+  ID_DOMAIN_BLUE,
+  ID_DOMAIN_RED,
+  ID_GOLD_MINE_RED,
+  ID_PASTURE_BLUE,
+} from '@taormina/shared-constants';
 import {
   AGGLOMERATION_CARD_INTERFACE_NAME,
   AVAILABLE_AGGLOMERATION_SLOT,
@@ -636,6 +641,134 @@ describe('DomainsCardsEffects', () => {
       });
 
       expect(effects.createCard$).toBeObservable(expected);
+    });
+  });
+
+  describe('stealResources$', () => {
+    describe('not enough resources', () => {
+      beforeEach(() => {
+        injector = Injector.create({
+          providers: [
+            provideMockStore({
+              selectors: [
+                {
+                  selector:
+                    DomainsCardsSelectors.getDomainResourceCountSeenByThieves,
+                  value: 7,
+                },
+                {
+                  selector:
+                    DomainsCardsSelectors.getDomainUnprotectedGoldMinesAndPastures,
+                  value: [
+                    {
+                      id: 'aaaa',
+                      domainId: ID_DOMAIN_RED,
+                      cardType: LAND_CARD_INTERFACE_NAME,
+                      cardId: ID_GOLD_MINE_RED,
+                      availableResources: 1,
+                      lockedResources: 0,
+                    },
+                    {
+                      id: 'bbbb',
+                      domainId: ID_DOMAIN_BLUE,
+                      cardType: LAND_CARD_INTERFACE_NAME,
+                      cardId: ID_PASTURE_BLUE,
+                      availableResources: 1,
+                      lockedResources: 0,
+                    },
+                  ],
+                },
+              ],
+            }),
+          ],
+        });
+        injector.get(MockStore);
+      });
+
+      it('should dispatch updateDomainsCards with empty array', () => {
+        actions = hot('-a-|', {
+          a: DomainsCardsActions.stealUnprotectedGoldAndWool(),
+        });
+
+        const expected = hot('-a-|', {
+          a: DomainsCardsActions.updateDomainsCards({ updates: [] }),
+        });
+
+        expect(effects.stealResources$).toBeObservable(expected);
+      });
+    });
+
+    describe('enough resources', () => {
+      beforeEach(() => {
+        injector = Injector.create({
+          providers: [
+            provideMockStore({
+              selectors: [
+                {
+                  selector:
+                    DomainsCardsSelectors.getDomainResourceCountSeenByThieves,
+                  value: 8,
+                },
+                {
+                  selector:
+                    DomainsCardsSelectors.getDomainUnprotectedGoldMinesAndPastures,
+                  value: [
+                    {
+                      id: 'aaaa',
+                      domainId: ID_DOMAIN_RED,
+                      cardType: LAND_CARD_INTERFACE_NAME,
+                      cardId: ID_GOLD_MINE_RED,
+                      availableResources: 1,
+                      lockedResources: 0,
+                    },
+                    {
+                      id: 'bbbb',
+                      domainId: ID_DOMAIN_BLUE,
+                      cardType: LAND_CARD_INTERFACE_NAME,
+                      cardId: ID_PASTURE_BLUE,
+                      availableResources: 1,
+                      lockedResources: 0,
+                    },
+                  ],
+                },
+              ],
+            }),
+          ],
+        });
+        injector.get(MockStore);
+      });
+
+      it('should dispatch updateDomainsCards with array of changes', () => {
+        actions = hot('-a-|', {
+          a: DomainsCardsActions.stealUnprotectedGoldAndWool(),
+        });
+
+        const expected = hot('-a-|', {
+          a: DomainsCardsActions.updateDomainsCards({
+            updates: [
+              {
+                id: 'aaaa',
+                changes: { availableResources: 0 },
+              },
+              {
+                id: 'bbbb',
+                changes: { availableResources: 0 },
+              },
+              // FIXME: https://github.com/ngrx/platform/issues/2176
+              {
+                id: 'aaaa',
+                changes: { availableResources: 0 },
+              },
+              {
+                id: 'bbbb',
+                changes: { availableResources: 0 },
+              },
+            ],
+          }),
+        });
+
+        expect(effects.stealResources$).toBeObservable(expected);
+      });
     });
   });
 });

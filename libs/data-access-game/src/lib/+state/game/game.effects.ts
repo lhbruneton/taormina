@@ -19,8 +19,8 @@ export class GameEffects {
     this.actions$.pipe(
       ofType(GameActions.throwDice),
       switchMap(() => [
-        GameActions.throwProductionDie(),
         GameActions.throwEventDie(),
+        GameActions.throwProductionDie(),
       ])
     )
   );

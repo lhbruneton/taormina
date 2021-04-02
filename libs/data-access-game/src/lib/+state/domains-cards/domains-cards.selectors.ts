@@ -8,16 +8,17 @@ import {
 import {
   DevelopmentCard,
   DEVELOPMENT_CARD_INTERFACE_NAME,
+  LandType,
   LAND_CARD_INTERFACE_NAME,
   masteryPointsType,
   ResourceValue,
 } from '@taormina/shared-models';
 import { DomainsCardsEntity } from './domains-cards.models';
 import {
-  DOMAINS_CARDS_FEATURE_KEY,
-  DomainsCardsState,
-  DomainsCardsPartialState,
   domainsCardsAdapter,
+  DomainsCardsPartialState,
+  DomainsCardsState,
+  DOMAINS_CARDS_FEATURE_KEY,
 } from './domains-cards.reducer';
 
 // Lookup the 'DomainsCards' feature state managed by NgRx
@@ -165,7 +166,10 @@ const accPointsForType = (
     .map((developmentCard) =>
       getDevelopmentCardPointsForType(developmentCard, type)
     )
-    .reduce((accumulator, currentValue) => accumulator + currentValue, 0);
+    .reduce(
+      (accumulator, currentMasteryPoints) => accumulator + currentMasteryPoints,
+      0
+    );
 
 const fromPointsToMastery = (
   redPoints: number,
@@ -179,3 +183,58 @@ const fromPointsToMastery = (
     return undefined;
   }
 };
+
+export const getDomainResourceCountSeenByThieves = createSelector(
+  getAllDomainsCards,
+  (entities: DomainsCardsEntity[], props: { domainId: string }) =>
+    entities
+      .filter(
+        (pivot) =>
+          pivot.domainId === props.domainId &&
+          pivot.cardType === LAND_CARD_INTERFACE_NAME &&
+          isNextToAWarehouse(pivot, entities)
+      )
+      .reduce(
+        (accumulator, domainCard) =>
+          accumulator + domainCard.availableResources,
+        0
+      )
+);
+
+export const getDomainUnprotectedGoldMinesAndPastures = createSelector(
+  getAllDomainsCards,
+  (entities: DomainsCardsEntity[], props: { domainId: string }) =>
+    entities.filter(
+      (pivot) =>
+        pivot.domainId === props.domainId &&
+        pivot.cardType === LAND_CARD_INTERFACE_NAME &&
+        pivot.cardId !== undefined &&
+        (landCards.get(pivot.cardId)?.type === LandType.GoldMine ||
+          landCards.get(pivot.cardId)?.type === LandType.Pasture) &&
+        isNextToAWarehouse(pivot, entities)
+    )
+);
+
+const isNextToAWarehouse = (
+  pivot: DomainsCardsEntity,
+  entities: DomainsCardsEntity[]
+): boolean => {
+  const neighbors = getDevelopmentCardNeighbors(pivot, entities);
+  return (
+    neighbors.find(
+      (neighbor) =>
+        neighbor.cardId === 'BUILDING_6' || neighbor.cardId === 'BUILDING_7'
+    ) === undefined
+  );
+};
+
+const getDevelopmentCardNeighbors = (
+  pivot: DomainsCardsEntity,
+  entities: DomainsCardsEntity[]
+): DomainsCardsEntity[] =>
+  entities.filter(
+    (domainCard) =>
+      domainCard.domainId === pivot.domainId &&
+      (domainCard.col === pivot.col - 1 || domainCard.col === pivot.col + 1) &&
+      domainCard.row === pivot.row
+  );
