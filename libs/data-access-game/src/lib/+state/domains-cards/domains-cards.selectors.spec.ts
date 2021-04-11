@@ -737,7 +737,7 @@ describe('DomainsCards Selectors', () => {
               DEVELOPMENT_CARD_INTERFACE_NAME,
               'BUILDING_6',
               -1,
-              1
+              2
             ),
             createDomainsCardsEntity(
               'eeee',
