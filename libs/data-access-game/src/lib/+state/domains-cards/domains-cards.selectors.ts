@@ -116,6 +116,26 @@ export const getDomainMaxCol = createSelector(
     )
 );
 
+export const getDomainMinRow = createSelector(
+  getAllDomainsCards,
+  (entities: DomainsCardsEntity[], props: { domainId: string }) =>
+    Math.min(
+      ...entities
+        .filter((pivot) => pivot.domainId === props.domainId)
+        .map((pivot) => pivot.row)
+    )
+);
+
+export const getDomainMaxRow = createSelector(
+  getAllDomainsCards,
+  (entities: DomainsCardsEntity[], props: { domainId: string }) =>
+    Math.max(
+      ...entities
+        .filter((pivot) => pivot.domainId === props.domainId)
+        .map((pivot) => pivot.row)
+    )
+);
+
 export const getMasteryDomainForType = createSelector(
   getAllDomainsCards,
   (entities: DomainsCardsEntity[], props: { type: masteryPointsType }) => {

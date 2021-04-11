@@ -5,7 +5,6 @@
 
 .grid-container {
   display: grid;
-  grid-template-rows: [row-1] 150px [row0] 150px [row1] 150px;
   grid-gap: 20px;
 }
 
