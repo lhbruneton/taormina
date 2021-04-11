@@ -46,7 +46,7 @@ describe('DomainsCards Selectors', () => {
               AGGLOMERATION_CARD_INTERFACE_NAME,
               'ROAD_1',
               -1,
-              0
+              2
             ),
             createDomainsCardsEntity(
               'PRODUCT-BBB',
@@ -54,7 +54,7 @@ describe('DomainsCards Selectors', () => {
               LAND_CARD_INTERFACE_NAME,
               'LAND_1',
               0,
-              0,
+              -2,
               0,
               1
             ),
@@ -145,6 +145,22 @@ describe('DomainsCards Selectors', () => {
       });
 
       expect(result).toBe(1);
+    });
+
+    it('getDomainMinRow({ domainId }) should return the lowest row number for the domain', () => {
+      const result = DomainsCardsSelectors.getDomainMinRow(state, {
+        domainId: ID_DOMAIN_BLUE,
+      });
+
+      expect(result).toBe(-2);
+    });
+
+    it('getDomainMaxRow({ domainId }) should return the highest row number for the domain', () => {
+      const result = DomainsCardsSelectors.getDomainMaxRow(state, {
+        domainId: ID_DOMAIN_BLUE,
+      });
+
+      expect(result).toBe(0);
     });
   });
 

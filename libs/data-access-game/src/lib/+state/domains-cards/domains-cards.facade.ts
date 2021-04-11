@@ -112,6 +112,18 @@ export class DomainsCardsFacade {
     );
   }
 
+  getDomainMinRow(domainId: string): Observable<number> {
+    return this.store.pipe(
+      select(DomainsCardsSelectors.getDomainMinRow, { domainId })
+    );
+  }
+
+  getDomainMaxRow(domainId: string): Observable<number> {
+    return this.store.pipe(
+      select(DomainsCardsSelectors.getDomainMaxRow, { domainId })
+    );
+  }
+
   getMasteryDomainForType(
     type: masteryPointsType
   ): Observable<string | undefined> {
