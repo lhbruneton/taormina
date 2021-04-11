@@ -200,7 +200,8 @@
   <div
     class="grid-container"
     [ngStyle]="{
-      'grid-template-columns': getColumnsTemplate(domain.id) | async
+      'grid-template-columns': getColumnsTemplate(domain.id) | async,
+      'grid-template-rows': getRowsTemplate(domain.id) | async
     }"
   >
     <div
@@ -281,7 +282,8 @@
   <div
     class="grid-container"
     [ngStyle]="{
-      'grid-template-columns': getColumnsTemplate(domain.id) | async
+      'grid-template-columns': getColumnsTemplate(domain.id) | async,
+      'grid-template-rows': getRowsTemplate(domain.id) | async
     }"
   >
     <div

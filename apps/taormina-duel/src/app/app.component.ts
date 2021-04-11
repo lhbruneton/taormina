@@ -166,6 +166,21 @@ export class AppComponent {
     );
   }
 
+  getRowsTemplate(domainId: string): Observable<string> {
+    return combineLatest([
+      this.domainsCards.getDomainMinRow(domainId),
+      this.domainsCards.getDomainMaxRow(domainId),
+    ]).pipe(
+      map(([min, max]) => {
+        let template = '';
+        for (let i = min; i < max + 1; i++) {
+          template += `[row${i}] 150px `;
+        }
+        return template;
+      })
+    );
+  }
+
   getDomainsCards(domainId: string): Observable<DomainsCardsEntity[]> {
     return this.domainsCards.allDomainsCards$.pipe(
       map((domainsCards) =>
