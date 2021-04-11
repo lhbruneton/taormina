@@ -239,7 +239,7 @@ const isNextToAWarehouse = (
   pivot: DomainsCardsEntity,
   entities: DomainsCardsEntity[]
 ): boolean => {
-  const neighbors = getDevelopmentCardNeighbors(pivot, entities);
+  const neighbors = getCardSideNeighbors(pivot, entities);
   return (
     neighbors.find(
       (neighbor) =>
@@ -248,7 +248,7 @@ const isNextToAWarehouse = (
   );
 };
 
-const getDevelopmentCardNeighbors = (
+const getCardSideNeighbors = (
   pivot: DomainsCardsEntity,
   entities: DomainsCardsEntity[]
 ): DomainsCardsEntity[] =>
@@ -256,5 +256,7 @@ const getDevelopmentCardNeighbors = (
     (domainCard) =>
       domainCard.domainId === pivot.domainId &&
       (domainCard.col === pivot.col - 1 || domainCard.col === pivot.col + 1) &&
-      domainCard.row === pivot.row
+      (pivot.row < 0
+        ? domainCard.row === -1 || domainCard.row === -2
+        : domainCard.row === 1 || domainCard.row === 2)
   );
