@@ -8,10 +8,11 @@ import {
   LandsPileCardsFacade,
   StockPilesCardsFacade,
 } from '@taormina/data-access-game';
-import { ID_FACE_UP_HAMLET } from '@taormina/shared-constants';
+import { ID_FACE_UP_HAMLET, ID_FACE_UP_TOWN } from '@taormina/shared-constants';
 import {
   AGGLOMERATION_CARD_INTERFACE_NAME,
   AVAILABLE_AGGLOMERATION_SLOT,
+  AVAILABLE_DEVELOPMENT_SLOT,
   AVAILABLE_LAND_SLOT,
   DEVELOPMENT_CARD_INTERFACE_NAME,
   LAND_CARD_INTERFACE_NAME,
@@ -97,27 +98,42 @@ export class GameRulesService {
             faceUpPileCard.cardId
           );
 
-          const availableCol =
-            domainCard.col < 0 ? domainCard.col - 1 : domainCard.col + 1;
-          this.domainsCards.createAvailableDomainCard(
-            domainCard.domainId,
-            AVAILABLE_AGGLOMERATION_SLOT,
-            availableCol,
-            0
-          );
-          if (faceUpPileCard.pileId === ID_FACE_UP_HAMLET) {
+          if (faceUpPileCard.pileId === ID_FACE_UP_TOWN) {
             this.domainsCards.createAvailableDomainCard(
               domainCard.domainId,
-              AVAILABLE_LAND_SLOT,
-              availableCol,
-              -1
+              AVAILABLE_DEVELOPMENT_SLOT,
+              domainCard.col,
+              -2
             );
             this.domainsCards.createAvailableDomainCard(
               domainCard.domainId,
-              AVAILABLE_LAND_SLOT,
-              availableCol,
-              1
+              AVAILABLE_DEVELOPMENT_SLOT,
+              domainCard.col,
+              2
             );
+          } else {
+            const availableCol =
+              domainCard.col < 0 ? domainCard.col - 1 : domainCard.col + 1;
+            this.domainsCards.createAvailableDomainCard(
+              domainCard.domainId,
+              AVAILABLE_AGGLOMERATION_SLOT,
+              availableCol,
+              0
+            );
+            if (faceUpPileCard.pileId === ID_FACE_UP_HAMLET) {
+              this.domainsCards.createAvailableDomainCard(
+                domainCard.domainId,
+                AVAILABLE_LAND_SLOT,
+                availableCol,
+                -1
+              );
+              this.domainsCards.createAvailableDomainCard(
+                domainCard.domainId,
+                AVAILABLE_LAND_SLOT,
+                availableCol,
+                1
+              );
+            }
           }
 
           this.domainsCards.unselectDomainCard();

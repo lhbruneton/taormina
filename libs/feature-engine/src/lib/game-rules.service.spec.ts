@@ -13,6 +13,7 @@ import {
   ID_DOMAIN_RED,
   ID_FACE_UP_HAMLET,
   ID_FACE_UP_ROAD,
+  ID_FACE_UP_TOWN,
   ID_HAND_RED,
 } from '@taormina/shared-constants';
 import {
@@ -354,6 +355,81 @@ describe('GameRulesService', () => {
         expect(
           domainsCardsFacadeMock.createAvailableDomainCard
         ).toHaveBeenNthCalledWith(3, ID_DOMAIN_RED, AVAILABLE_LAND_SLOT, -4, 1);
+        expect(domainsCardsFacadeMock.unselectDomainCard).toHaveBeenCalledTimes(
+          1
+        );
+      });
+    });
+
+    describe('OK town', () => {
+      const domainsCardsFacadeMock = {
+        selectedDomainsCards$: of({
+          id: 'aaaa',
+          domainId: ID_DOMAIN_RED,
+          cartType: AGGLOMERATION_CARD_INTERFACE_NAME,
+          cardId: 'aaaa',
+          col: -1,
+          row: 0,
+        }),
+        createAvailableDomainCard: jest.fn(),
+        putCardInSlot: jest.fn(),
+        unselectDomainCard: jest.fn(),
+        useLockedResources: jest.fn(),
+      };
+      const faceUpPilesCardsFacadeMock = {
+        selectedFaceUpPilesCards$: of({
+          id: 'aaaa',
+          pileId: ID_FACE_UP_TOWN,
+          cardId: 'TOWN_1',
+        }),
+        removeFaceUpPileCard: jest.fn(),
+      };
+
+      beforeEach(() => {
+        TestBed.configureTestingModule({
+          providers: [
+            { provide: DomainsCardsFacade, useValue: domainsCardsFacadeMock },
+            {
+              provide: FaceUpPilesCardsFacade,
+              useValue: faceUpPilesCardsFacadeMock,
+            },
+          ],
+        });
+        service = TestBed.inject(GameRulesService);
+      });
+
+      it('should call useLockedResources, removeFaceUpPileCard, putCardInSlot, createAvailableDomainCard x2, unselectDomainCard', () => {
+        service.useResourcesToPutFaceUpPileCardInSlot();
+
+        expect(domainsCardsFacadeMock.useLockedResources).toHaveBeenCalledTimes(
+          1
+        );
+        expect(
+          faceUpPilesCardsFacadeMock.removeFaceUpPileCard
+        ).toHaveBeenCalledWith('aaaa');
+        expect(domainsCardsFacadeMock.putCardInSlot).toHaveBeenCalledWith(
+          'aaaa',
+          AGGLOMERATION_CARD_INTERFACE_NAME,
+          'TOWN_1'
+        );
+        expect(
+          domainsCardsFacadeMock.createAvailableDomainCard
+        ).toHaveBeenNthCalledWith(
+          1,
+          ID_DOMAIN_RED,
+          AVAILABLE_DEVELOPMENT_SLOT,
+          -1,
+          -2
+        );
+        expect(
+          domainsCardsFacadeMock.createAvailableDomainCard
+        ).toHaveBeenNthCalledWith(
+          2,
+          ID_DOMAIN_RED,
+          AVAILABLE_DEVELOPMENT_SLOT,
+          -1,
+          2
+        );
         expect(domainsCardsFacadeMock.unselectDomainCard).toHaveBeenCalledTimes(
           1
         );

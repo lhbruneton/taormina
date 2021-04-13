@@ -231,6 +231,9 @@
           "
         >
           {{ agglomeration.type }}
+          <button type="button" (click)="selectDomainCard(pivot.id)">
+            Select
+          </button>
         </div>
       </div>
       <div *ngSwitchCase="LAND_CARD_INTERFACE_NAME">
@@ -313,6 +316,9 @@
           "
         >
           {{ agglomeration.type }}
+          <button type="button" (click)="selectDomainCard(pivot.id)">
+            Select
+          </button>
         </div>
       </div>
       <div *ngSwitchCase="LAND_CARD_INTERFACE_NAME">
