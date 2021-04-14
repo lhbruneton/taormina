@@ -1,18 +1,28 @@
-name: CD
+name: CI
+
 on:
   push:
     branches:
       - master
+  # Allows you to run this workflow manually from the Actions tab
+  workflow_dispatch:
+
 jobs:
-  build:
-
+  build-and-deploy:
     runs-on: ubuntu-latest
-
     steps:
-    - uses: actions/checkout@v2
-    - name: Build and Deploy
-      uses: AhsanAyaz/angular-deploy-gh-pages-actions@v1.3.1
-      with:
-        github_access_token: ${{ secrets.GITHUB_TOKEN }}
-        base_href: /taormina/
-        angular_dist_build_folder: docs
+      - name: Checkout
+        uses: actions/checkout@v2
+
+      - name: Install
+        run: npm install
+
+      - name: Build
+        run: npm run build:gh-pages
+
+      - name: Deploy
+        uses: JamesIves/github-pages-deploy-action@releases/v3
+        with:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+          BRANCH: gh-pages
+          FOLDER: docs

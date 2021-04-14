@@ -10,7 +10,7 @@
         "build": {
           "builder": "@angular-devkit/build-angular:browser",
           "options": {
-            "outputPath": "docs",
+            "outputPath": "dist/apps/taormina-duel",
             "index": "apps/taormina-duel/src/index.html",
             "main": "apps/taormina-duel/src/main.ts",
             "polyfills": "apps/taormina-duel/src/polyfills.ts",
@@ -267,6 +267,7 @@
     }
   },
   "cli": {
+    "analytics": false,
     "defaultCollection": "@nrwl/angular"
   },
   "schematics": {

@@ -8,6 +8,7 @@
     "nx": "nx",
     "start": "ng serve",
     "build": "ng build",
+    "build:gh-pages": "ng build --prod --output-path docs --base-href /taormina/",
     "test": "ng test",
     "lint": "nx workspace-lint && ng lint",
     "lint:styles": "stylelint \"apps/**/*.css\"",
