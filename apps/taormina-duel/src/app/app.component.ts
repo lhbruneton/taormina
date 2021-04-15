@@ -298,6 +298,18 @@ export class AppComponent {
     this.gameRules.drawFromStockToHand(pileId, 3, ID_HAND_RED);
   }
 
+  drawFirstCardRedHandAvailable(): Observable<boolean> {
+    return combineLatest([this.game.phase$, this.game.player$]).pipe(
+      map(([phase, player]) => {
+        return phase === GamePhase.LoopDraw && player === DomainColor.Red;
+      })
+    );
+  }
+
+  drawFirstCardRedHand(pileId: string): void {
+    this.gameRules.drawFromStockToHand(pileId, 1, ID_HAND_RED);
+  }
+
   drawInitialBlueHandAvailable(): Observable<boolean> {
     return combineLatest([this.game.phase$, this.game.player$]).pipe(
       map(([phase, player]) => {
@@ -308,6 +320,18 @@ export class AppComponent {
 
   drawInitialBlueHand(pileId: string): void {
     this.gameRules.drawFromStockToHand(pileId, 3, ID_HAND_BLUE);
+  }
+
+  drawFirstCardBlueHandAvailable(): Observable<boolean> {
+    return combineLatest([this.game.phase$, this.game.player$]).pipe(
+      map(([phase, player]) => {
+        return phase === GamePhase.LoopDraw && player === DomainColor.Blue;
+      })
+    );
+  }
+
+  drawFirstCardBlueHand(pileId: string): void {
+    this.gameRules.drawFromStockToHand(pileId, 1, ID_HAND_BLUE);
   }
 
   getActionCard(cardId: string): ActionCard | undefined {
