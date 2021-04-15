@@ -138,11 +138,25 @@
       Draw 3 cards to red hand
     </button>
     <button
+      *ngIf="drawFirstCardRedHandAvailable() | async"
+      type="button"
+      (click)="drawFirstCardRedHand(pile)"
+    >
+      Draw first card to red hand
+    </button>
+    <button
       *ngIf="drawInitialBlueHandAvailable() | async"
       type="button"
       (click)="drawInitialBlueHand(pile)"
     >
       Draw 3 cards to blue hand
+    </button>
+    <button
+      *ngIf="drawFirstCardBlueHandAvailable() | async"
+      type="button"
+      (click)="drawFirstCardBlueHand(pile)"
+    >
+      Draw first card to blue hand
     </button>
     <div
       *ngFor="let pivot of getStockPilesCards(pile) | async"
