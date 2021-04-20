@@ -1,3 +1,4 @@
+![documentation badge](https://img.shields.io/github/workflow/status/lhbruneton/taormina/Documentation?label=documentation)
 ![test badge](https://img.shields.io/github/workflow/status/lhbruneton/taormina/CI?label=test)
 ![build badge](https://img.shields.io/github/workflow/status/lhbruneton/taormina/CD)
 
