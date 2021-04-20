@@ -14,7 +14,7 @@
     "lint:styles": "stylelint \"apps/**/*.css\"",
     "e2e": "ng e2e",
     "todo": "leasot '**/*.ts' --ignore 'node_modules'",
-    "todo:cd": "leasot '**/*.ts' --ignore 'node_modules' -x --reporter markdown > TODO.md",
+    "todo:gh-actions": "leasot '**/*.ts' --ignore 'node_modules' -x --reporter markdown > TODO.md",
     "affected:apps": "nx affected:apps",
     "affected:libs": "nx affected:libs",
     "affected:build": "nx affected:build",
