@@ -1,3 +1,6 @@
+![test badge](https://img.shields.io/github/workflow/status/lhbruneton/taormina/CI?label=test)
+![build badge](https://img.shields.io/github/workflow/status/lhbruneton/taormina/CD)
+
 # Taormina
 
 This project was generated using [Nx](https://nx.dev).
