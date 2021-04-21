@@ -18,13 +18,14 @@ jobs:
         run: npm install
 
       - name: Generate TODO
-        run: npm run todo:gh-actions
+        run: |
+          npm run todo:gh-actions
+          git add TODO.md
 
       - name: Save auto-generated files
         run: |
           git config --global user.name "github-actions[bot]"
           git config --global user.email "41898282+github-actions[bot]@users.noreply.github.com"
 
-          git add -A
           git diff-index --quiet HEAD || git commit -m "chore: save auto-generated files"
           git push origin HEAD:master
