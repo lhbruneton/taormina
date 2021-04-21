@@ -100,6 +100,6 @@ export const createDomainCard = createAction(
   }>()
 );
 
-export const stealUnprotectedGoldAndWool = createAction(
-  '[DomainsCards] Steal Unprotected Gold And Wool'
+export const countAndStealUnprotectedGoldAndWool = createAction(
+  '[DomainsCards] Count And Steal Unprotected Gold And Wool'
 );

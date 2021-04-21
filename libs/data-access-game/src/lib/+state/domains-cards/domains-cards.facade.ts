@@ -96,8 +96,10 @@ export class DomainsCardsFacade {
     );
   }
 
-  stealUnprotectedGoldAndWool(): void {
-    this.store.dispatch(DomainsCardsActions.stealUnprotectedGoldAndWool());
+  countAndStealUnprotectedGoldAndWool(): void {
+    this.store.dispatch(
+      DomainsCardsActions.countAndStealUnprotectedGoldAndWool()
+    );
   }
 
   getDomainMinCol(domainId: string): Observable<number> {

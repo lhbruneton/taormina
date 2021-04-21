@@ -237,9 +237,9 @@ export class DomainsCardsEffects {
     )
   );
 
-  stealResources$ = createEffect(() =>
+  countStealResources$ = createEffect(() =>
     this.actions$.pipe(
-      ofType(DomainsCardsActions.stealUnprotectedGoldAndWool),
+      ofType(DomainsCardsActions.countAndStealUnprotectedGoldAndWool),
       withLatestFrom(
         this.domainsCardsStore.select(
           DomainsCardsSelectors.getDomainResourceCountSeenByThieves,
