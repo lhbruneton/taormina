@@ -644,7 +644,7 @@ describe('DomainsCardsEffects', () => {
     });
   });
 
-  describe('stealResources$', () => {
+  describe('countStealResources$', () => {
     describe('not enough resources', () => {
       beforeEach(() => {
         injector = Injector.create({
@@ -687,14 +687,14 @@ describe('DomainsCardsEffects', () => {
 
       it('should dispatch updateDomainsCards with empty array', () => {
         actions = hot('-a-|', {
-          a: DomainsCardsActions.stealUnprotectedGoldAndWool(),
+          a: DomainsCardsActions.countAndStealUnprotectedGoldAndWool(),
         });
 
         const expected = hot('-a-|', {
           a: DomainsCardsActions.updateDomainsCards({ updates: [] }),
         });
 
-        expect(effects.stealResources$).toBeObservable(expected);
+        expect(effects.countStealResources$).toBeObservable(expected);
       });
     });
 
@@ -740,7 +740,7 @@ describe('DomainsCardsEffects', () => {
 
       it('should dispatch updateDomainsCards with array of changes', () => {
         actions = hot('-a-|', {
-          a: DomainsCardsActions.stealUnprotectedGoldAndWool(),
+          a: DomainsCardsActions.countAndStealUnprotectedGoldAndWool(),
         });
 
         const expected = hot('-a-|', {
@@ -767,7 +767,7 @@ describe('DomainsCardsEffects', () => {
           }),
         });
 
-        expect(effects.stealResources$).toBeObservable(expected);
+        expect(effects.countStealResources$).toBeObservable(expected);
       });
     });
   });
