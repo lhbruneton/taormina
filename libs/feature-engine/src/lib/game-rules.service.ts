@@ -15,15 +15,29 @@ import {
   AVAILABLE_DEVELOPMENT_SLOT,
   AVAILABLE_LAND_SLOT,
   DEVELOPMENT_CARD_INTERFACE_NAME,
+  EventValue,
   LAND_CARD_INTERFACE_NAME,
 } from '@taormina/shared-models';
-import { combineLatest } from 'rxjs';
-import { map, take, tap } from 'rxjs/operators';
+import { combineLatest, Subject } from 'rxjs';
+import { filter, map, take, takeUntil, tap } from 'rxjs/operators';
 
 @Injectable({
   providedIn: 'root',
 })
 export class GameRulesService {
+  gameEnded$ = new Subject();
+
+  thieves$ = this.game.eventDie$.pipe(
+    filter((die) => die === EventValue.Thieves)
+  );
+
+  countAndSteal$ = this.thieves$.pipe(
+    takeUntil(this.gameEnded$),
+    tap(() => {
+      this.domainsCards.countAndStealUnprotectedGoldAndWool();
+    })
+  );
+
   constructor(
     private game: GameFacade,
     private domainsCards: DomainsCardsFacade,
@@ -35,6 +49,9 @@ export class GameRulesService {
   ) {}
 
   initNewGame(): void {
+    this.gameEnded$.next();
+    this.countAndSteal$.subscribe();
+
     this.game.initNewGame();
     this.domainsCards.initNewGame();
     this.handsCards.initNewGame();
@@ -72,7 +89,6 @@ export class GameRulesService {
 
   throwDice(): void {
     this.game.throwEventDie();
-    this.domainsCards.stealUnprotectedGoldAndWool();
     this.game.throwProductionDie();
   }
 

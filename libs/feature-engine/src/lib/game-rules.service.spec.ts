@@ -22,9 +22,11 @@ import {
   AVAILABLE_DEVELOPMENT_SLOT,
   AVAILABLE_LAND_SLOT,
   DEVELOPMENT_CARD_INTERFACE_NAME,
+  EventValue,
   LAND_CARD_INTERFACE_NAME,
 } from '@taormina/shared-models';
 import { of } from 'rxjs';
+import { tap } from 'rxjs/operators';
 
 import { GameRulesService } from './game-rules.service';
 
@@ -58,7 +60,9 @@ describe('GameRulesService', () => {
   ));
 
   describe('initNewGame', () => {
+    // TODO: marble test thieves$ subscription
     const gameFacadeMock = {
+      eventDie$: of(),
       initNewGame: jest.fn(),
     };
     const domainsCardsFacadeMock = {
@@ -188,32 +192,77 @@ describe('GameRulesService', () => {
   });
 
   describe('throwDice', () => {
-    const gameFacadeMock = {
-      throwEventDie: jest.fn(),
-      throwProductionDie: jest.fn(),
-    };
-    const domainsCardsFacadeMock = {
-      stealUnprotectedGoldAndWool: jest.fn(),
-    };
+    describe('thieves event', () => {
+      const gameFacadeMock = {
+        eventDie$: of(EventValue.Thieves),
+        throwEventDie: jest.fn(),
+        throwProductionDie: jest.fn(),
+      };
+      const domainsCardsFacadeMock = {
+        countAndStealUnprotectedGoldAndWool: jest.fn(),
+      };
 
-    beforeEach(() => {
-      TestBed.configureTestingModule({
-        providers: [
-          { provide: GameFacade, useValue: gameFacadeMock },
-          { provide: DomainsCardsFacade, useValue: domainsCardsFacadeMock },
-        ],
+      beforeEach(() => {
+        TestBed.configureTestingModule({
+          providers: [
+            { provide: GameFacade, useValue: gameFacadeMock },
+            { provide: DomainsCardsFacade, useValue: domainsCardsFacadeMock },
+          ],
+        });
+        service = TestBed.inject(GameRulesService);
       });
-      service = TestBed.inject(GameRulesService);
+
+      it('should call throwEventDie, throwProductionDie and countAndStealUnprotectedGoldAndWool', () => {
+        // TODO: test actions order: event > steal on thieves > production
+        service.throwDice();
+
+        expect(gameFacadeMock.throwEventDie).toHaveBeenCalledTimes(1);
+        expect(gameFacadeMock.throwProductionDie).toHaveBeenCalledTimes(1);
+
+        service.countAndSteal$.pipe(
+          tap(() => {
+            expect(
+              domainsCardsFacadeMock.countAndStealUnprotectedGoldAndWool
+            ).toHaveBeenCalledTimes(1);
+          })
+        );
+      });
     });
 
-    it('should call throwEventDie, then stealUnprotectedGoldAndWool, then throwProductionDie', () => {
-      service.throwDice();
+    describe('other event', () => {
+      const gameFacadeMock = {
+        eventDie$: of(EventValue.Event),
+        throwEventDie: jest.fn(),
+        throwProductionDie: jest.fn(),
+      };
+      const domainsCardsFacadeMock = {
+        countAndStealUnprotectedGoldAndWool: jest.fn(),
+      };
 
-      expect(gameFacadeMock.throwEventDie).toHaveBeenCalledTimes(1);
-      expect(
-        domainsCardsFacadeMock.stealUnprotectedGoldAndWool
-      ).toHaveBeenCalledTimes(1);
-      expect(gameFacadeMock.throwProductionDie).toHaveBeenCalledTimes(1);
+      beforeEach(() => {
+        TestBed.configureTestingModule({
+          providers: [
+            { provide: GameFacade, useValue: gameFacadeMock },
+            { provide: DomainsCardsFacade, useValue: domainsCardsFacadeMock },
+          ],
+        });
+        service = TestBed.inject(GameRulesService);
+      });
+
+      it('should call throwEventDie and throwProductionDie', () => {
+        service.throwDice();
+
+        expect(gameFacadeMock.throwEventDie).toHaveBeenCalledTimes(1);
+        expect(gameFacadeMock.throwProductionDie).toHaveBeenCalledTimes(1);
+
+        service.countAndSteal$.pipe(
+          tap(() => {
+            expect(
+              domainsCardsFacadeMock.countAndStealUnprotectedGoldAndWool
+            ).not.toHaveBeenCalled();
+          })
+        );
+      });
     });
   });
 
