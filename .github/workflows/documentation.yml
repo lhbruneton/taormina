@@ -22,6 +22,11 @@ jobs:
           npm run todo:gh-actions
           git add TODO.md
 
+      - name: Generate CompoDoc
+        run: |
+          npm run compodoc
+          git add --force documentation
+
       - name: Save auto-generated files
         run: |
           git config --global user.name "github-actions[bot]"
