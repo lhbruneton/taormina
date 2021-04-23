@@ -27,5 +27,5 @@ jobs:
           git config --global user.name "github-actions[bot]"
           git config --global user.email "41898282+github-actions[bot]@users.noreply.github.com"
 
-          git diff-index --quiet HEAD || git commit -m "chore: save auto-generated files"
+          git diff --staged --quiet HEAD || git commit -m "chore: save auto-generated files"
           git push origin HEAD:master
