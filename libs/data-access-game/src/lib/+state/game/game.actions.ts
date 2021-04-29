@@ -27,6 +27,10 @@ export const setProductionDie = createAction(
   '[Dice] Set Production Die',
   props<{ value: ResourceValue }>()
 );
+export const setNextProductionDie = createAction(
+  '[Dice] Set Next Production Die',
+  props<{ value: ResourceValue | undefined }>()
+);
 export const setEventDie = createAction(
   '[Dice] Set Event Die',
   props<{ value: EventValue }>()

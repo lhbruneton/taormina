@@ -12,6 +12,7 @@ export const GAME_FEATURE_KEY = 'game';
 
 export interface GameState {
   productionDie: ResourceValue | undefined;
+  nextProductionDie: ResourceValue | undefined;
   eventDie: EventValue | undefined;
   phase: GamePhase;
   player: DomainColor;
@@ -23,6 +24,7 @@ export interface GamePartialState {
 
 export const initialGameState: GameState = {
   productionDie: undefined,
+  nextProductionDie: undefined,
   eventDie: undefined,
   phase: GamePhase.InitialThrow,
   player: DomainColor.Red,
@@ -34,6 +36,10 @@ export const gameReducer = createReducer(
   on(GameActions.setProductionDie, (state, { value }) => ({
     ...state,
     productionDie: value,
+  })),
+  on(GameActions.setNextProductionDie, (state, { value }) => ({
+    ...state,
+    nextProductionDie: value,
   })),
   on(GameActions.setEventDie, (state, { value }) => ({
     ...state,

@@ -1,6 +1,6 @@
 import { Injectable } from '@angular/core';
 import { select, Store } from '@ngrx/store';
-import { DomainColor, GamePhase } from '@taormina/shared-models';
+import { DomainColor, GamePhase, ResourceValue } from '@taormina/shared-models';
 
 import * as GameActions from './game.actions';
 import { GamePartialState } from './game.reducer';
@@ -13,6 +13,9 @@ export class GameFacade {
    * and expose them as observables through the facade.
    */
   productionDie$ = this.store.pipe(select(GameSelectors.getGameProductionDie));
+  nextProductionDie$ = this.store.pipe(
+    select(GameSelectors.getGameNextProductionDie)
+  );
   eventDie$ = this.store.pipe(select(GameSelectors.getGameEventDie));
   phase$ = this.store.pipe(select(GameSelectors.getGamePhase));
   player$ = this.store.pipe(select(GameSelectors.getGamePlayer));
@@ -33,6 +36,10 @@ export class GameFacade {
 
   throwProductionDie(): void {
     this.store.dispatch(GameActions.throwProductionDie());
+  }
+
+  setNextProductionDie(value: ResourceValue): void {
+    this.store.dispatch(GameActions.setNextProductionDie({ value }));
   }
 
   throwEventDie(): void {

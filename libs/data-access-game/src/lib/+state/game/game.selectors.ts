@@ -11,6 +11,11 @@ export const getGameProductionDie = createSelector(
   (state: GameState) => state.productionDie
 );
 
+export const getGameNextProductionDie = createSelector(
+  getGameState,
+  (state: GameState) => state.nextProductionDie
+);
+
 export const getGameEventDie = createSelector(
   getGameState,
   (state: GameState) => state.eventDie

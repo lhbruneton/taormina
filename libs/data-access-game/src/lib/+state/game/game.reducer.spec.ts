@@ -19,6 +19,7 @@ describe('Game Reducer', () => {
     it('should set back the initial game state', () => {
       const initialState: GameState = {
         productionDie: 2,
+        nextProductionDie: 5,
         eventDie: EventValue.Thieves,
         phase: GamePhase.InitialDraw,
         player: DomainColor.Blue,
@@ -36,6 +37,7 @@ describe('Game Reducer', () => {
     it('should set the production die value', () => {
       const newState: GameState = {
         productionDie: 2,
+        nextProductionDie: undefined,
         eventDie: undefined,
         phase: GamePhase.InitialThrow,
         player: DomainColor.Red,
@@ -49,10 +51,29 @@ describe('Game Reducer', () => {
     });
   });
 
+  describe('setNextProductionDie', () => {
+    it('should set the next production die value', () => {
+      const newState: GameState = {
+        productionDie: undefined,
+        nextProductionDie: 5,
+        eventDie: undefined,
+        phase: GamePhase.InitialThrow,
+        player: DomainColor.Red,
+      };
+
+      const action = GameActions.setNextProductionDie({ value: 5 });
+
+      const state: GameState = gameReducer(initialGameState, action);
+
+      expect(state).toEqual(newState);
+    });
+  });
+
   describe('setEventDie', () => {
     it('should set the event die value', () => {
       const newState: GameState = {
         productionDie: undefined,
+        nextProductionDie: undefined,
         eventDie: EventValue.Thieves,
         phase: GamePhase.InitialThrow,
         player: DomainColor.Red,
@@ -70,6 +91,7 @@ describe('Game Reducer', () => {
     it('should set the current phase', () => {
       const newState: GameState = {
         productionDie: undefined,
+        nextProductionDie: undefined,
         eventDie: undefined,
         phase: GamePhase.InitialDraw,
         player: DomainColor.Red,
@@ -87,6 +109,7 @@ describe('Game Reducer', () => {
     it('should set the current player', () => {
       const newState: GameState = {
         productionDie: undefined,
+        nextProductionDie: undefined,
         eventDie: undefined,
         phase: GamePhase.InitialThrow,
         player: DomainColor.Blue,
