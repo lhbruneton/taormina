@@ -5,10 +5,9 @@ import { Action } from '@ngrx/store';
 import { MockStore, provideMockStore } from '@ngrx/store/testing';
 import { DataPersistence, NxModule } from '@nrwl/angular';
 import { hot } from '@nrwl/angular/testing';
-import { EventValue, GamePhase } from '@taormina/shared-models';
+import { EventValue } from '@taormina/shared-models';
 import { Observable } from 'rxjs';
 
-import * as DomainsCardsActions from '../domains-cards/domains-cards.actions';
 import * as GameActions from './game.actions';
 import { GameEffects } from './game.effects';
 import * as GameSelectors from './game.selectors';
@@ -58,15 +57,15 @@ describe('GameEffects', () => {
   });
 
   describe('throwProduction$', () => {
-    describe('InitialThrow', () => {
+    describe('when nextProductionDie is defined', () => {
       beforeEach(() => {
         injector = Injector.create({
           providers: [
             provideMockStore({
               selectors: [
                 {
-                  selector: GameSelectors.getGamePhase,
-                  value: GamePhase.InitialThrow,
+                  selector: GameSelectors.getGameNextProductionDie,
+                  value: 3,
                 },
               ],
             }),
@@ -75,26 +74,27 @@ describe('GameEffects', () => {
         injector.get(MockStore);
       });
 
-      it('should dispatch setProductionDie only when phase is InitialThrow', () => {
-        actions = hot('-a-|', { a: GameActions.throwProductionDie() });
+      it('should dispatch setProductionDie with nextProductionDie value, and reset nextProductionDie', () => {
+        actions = hot('-a', { a: GameActions.throwProductionDie() });
 
-        const expected = hot('-a-|', {
-          a: GameActions.setProductionDie({ value: 1 }),
+        const expected = hot('-(ab)', {
+          a: GameActions.setProductionDie({ value: 3 }),
+          b: GameActions.setNextProductionDie({ value: undefined }),
         });
 
         expect(effects.throwProduction$).toBeObservable(expected);
       });
     });
 
-    describe('Not InitialThrow', () => {
+    describe('when nextProductionDie is undefined', () => {
       beforeEach(() => {
         injector = Injector.create({
           providers: [
             provideMockStore({
               selectors: [
                 {
-                  selector: GameSelectors.getGamePhase,
-                  value: GamePhase.LoopThrow,
+                  selector: GameSelectors.getGameNextProductionDie,
+                  value: undefined,
                 },
               ],
             }),
@@ -103,12 +103,12 @@ describe('GameEffects', () => {
         injector.get(MockStore);
       });
 
-      it('should dispatch setProductionDie and increaseResourceCountForDie when phase is not InitialThrow', () => {
+      it('should dispatch setProductionDie with random value, and reset nextProductionDie', () => {
         actions = hot('-a', { a: GameActions.throwProductionDie() });
 
         const expected = hot('-(ab)', {
           a: GameActions.setProductionDie({ value: 1 }),
-          b: DomainsCardsActions.increaseAvailableResourcesForDie({ die: 1 }),
+          b: GameActions.setNextProductionDie({ value: undefined }),
         });
 
         expect(effects.throwProduction$).toBeObservable(expected);

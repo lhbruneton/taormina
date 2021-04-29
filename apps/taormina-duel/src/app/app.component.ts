@@ -73,6 +73,8 @@ export class AppComponent {
   AVAILABLE_DEVELOPMENT_SLOT = AVAILABLE_DEVELOPMENT_SLOT;
   AVAILABLE_LAND_SLOT = AVAILABLE_LAND_SLOT;
 
+  resourceValues: ResourceValue[] = [1, 2, 3, 4, 5, 6];
+
   constructor(
     private game: GameFacade,
     private domainsCards: DomainsCardsFacade,
@@ -102,6 +104,14 @@ export class AppComponent {
 
   setPlayer(player: DomainColor): void {
     this.game.setPlayer(player);
+  }
+
+  getNextProductionDie(): Observable<ResourceValue | undefined> {
+    return this.game.nextProductionDie$;
+  }
+
+  setNextProductionDie(value: ResourceValue): void {
+    this.game.setNextProductionDie(value);
   }
 
   throwDisabled(): Observable<boolean> {

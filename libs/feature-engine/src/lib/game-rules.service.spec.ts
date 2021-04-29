@@ -23,9 +23,11 @@ import {
   AVAILABLE_LAND_SLOT,
   DEVELOPMENT_CARD_INTERFACE_NAME,
   EventValue,
+  GamePhase,
   LAND_CARD_INTERFACE_NAME,
 } from '@taormina/shared-models';
 import { of } from 'rxjs';
+import { marbles } from 'rxjs-marbles/jest';
 import { tap } from 'rxjs/operators';
 
 import { GameRulesService } from './game-rules.service';
@@ -59,10 +61,104 @@ describe('GameRulesService', () => {
     }
   ));
 
+  describe('thieves$', () => {
+    it(
+      'should filter events other than thieves',
+      marbles((m) => {
+        // Given a stream of events
+        const eventDie$ = m.hot('^-a-b-c-|', {
+          a: EventValue.Event,
+          b: EventValue.Thieves,
+          c: EventValue.Trade,
+        });
+        // When the thieves$ stream is build on it
+        const gameFacadeMock = {
+          eventDie$,
+          productionDie$: of(),
+        };
+        TestBed.configureTestingModule({
+          providers: [{ provide: GameFacade, useValue: gameFacadeMock }],
+        });
+        service = TestBed.inject(GameRulesService);
+        // Then only thieves events should remain
+        const expected$ = m.cold('----a---|', {
+          a: EventValue.Thieves,
+        });
+        m.expect(service.thieves$).toBeObservable(expected$);
+      })
+    );
+  });
+
+  describe('countAndSteal$', () => {
+    it(
+      'should call countAndStealUnprotectedGoldAndWool on thieves and complete on gameEnded',
+      marbles((m) => {
+        // Given a stream of thieves events
+        const eventDie$ = m.hot('^-a-a-|', {
+          a: EventValue.Thieves,
+        });
+        // Given a countAndSteal$ stream build on it
+        const gameFacadeMock = {
+          eventDie$,
+          productionDie$: of(),
+        };
+        const domainsCardsFacadeMock = {
+          countAndStealUnprotectedGoldAndWool: jest.fn(),
+        };
+        TestBed.configureTestingModule({
+          providers: [
+            { provide: GameFacade, useValue: gameFacadeMock },
+            { provide: DomainsCardsFacade, useValue: domainsCardsFacadeMock },
+          ],
+        });
+        service = TestBed.inject(GameRulesService);
+        // When the gameEnded$ subject emits
+        m.cold('---a-|').subscribe(() => service.gameEnded$.next());
+        // Then the countAndSteal$ stream completes
+        const expected$ = m.cold('--a|', { a: undefined });
+        m.expect(service.countAndSteal$).toBeObservable(expected$);
+        // Then call countAndStealUnprotectedGoldAndWool on thieves before completion
+        service.countAndSteal$.pipe(
+          tap(() => {
+            expect(
+              domainsCardsFacadeMock.countAndStealUnprotectedGoldAndWool
+            ).toHaveBeenCalledTimes(1);
+          })
+        );
+      })
+    );
+  });
+
+  describe('increaseResources$', () => {
+    it(
+      'should complete on gameEnded',
+      marbles((m) => {
+        // Given a stream of productions and an increaseResources$ stream build on it
+        const productionDie$ = m.hot('^-a-b-|', {
+          a: 5,
+          b: 3,
+        });
+        const gameFacadeMock = {
+          eventDie$: of(),
+          productionDie$,
+        };
+        TestBed.configureTestingModule({
+          providers: [{ provide: GameFacade, useValue: gameFacadeMock }],
+        });
+        service = TestBed.inject(GameRulesService);
+        // When the gameEnded$ subject emits
+        m.cold('---a-|').subscribe(() => service.gameEnded$.next());
+        // Then the increaseResources$ stream completes
+        const expected$ = m.cold('--a|', { a: undefined });
+        m.expect(service.increaseResources$).toBeObservable(expected$);
+      })
+    );
+  });
+
   describe('initNewGame', () => {
-    // TODO: marble test thieves$ subscription
     const gameFacadeMock = {
       eventDie$: of(),
+      productionDie$: of(),
       initNewGame: jest.fn(),
     };
     const domainsCardsFacadeMock = {
@@ -109,7 +205,21 @@ describe('GameRulesService', () => {
     });
 
     it('should call all the facades initNewGame functions', () => {
+      const gameEndedNextSpy = jest.spyOn(service.gameEnded$, 'next');
+      const countAndStealSubscribeSpy = jest.spyOn(
+        service.countAndSteal$,
+        'subscribe'
+      );
+      const increaseResourcesSubscribeSpy = jest.spyOn(
+        service.increaseResources$,
+        'subscribe'
+      );
+
       service.initNewGame();
+
+      expect(gameEndedNextSpy).toHaveBeenCalledTimes(1);
+      expect(countAndStealSubscribeSpy).toHaveBeenCalledTimes(1);
+      expect(increaseResourcesSubscribeSpy).toHaveBeenCalledTimes(1);
 
       expect(gameFacadeMock.initNewGame).toHaveBeenCalledTimes(1);
       expect(domainsCardsFacadeMock.initNewGame).toHaveBeenCalledTimes(1);
@@ -192,9 +302,35 @@ describe('GameRulesService', () => {
   });
 
   describe('throwDice', () => {
+    describe('initial throw', () => {
+      const gameFacadeMock = {
+        eventDie$: of(EventValue.Event),
+        productionDie$: of(),
+        phase$: of(GamePhase.InitialThrow),
+        throwEventDie: jest.fn(),
+        throwProductionDie: jest.fn(),
+      };
+
+      beforeEach(() => {
+        TestBed.configureTestingModule({
+          providers: [{ provide: GameFacade, useValue: gameFacadeMock }],
+        });
+        service = TestBed.inject(GameRulesService);
+      });
+
+      it('should call throwEventDie only', () => {
+        service.throwDice();
+
+        expect(gameFacadeMock.throwEventDie).toHaveBeenCalledTimes(1);
+        expect(gameFacadeMock.throwProductionDie).not.toHaveBeenCalled();
+      });
+    });
+
     describe('thieves event', () => {
       const gameFacadeMock = {
         eventDie$: of(EventValue.Thieves),
+        productionDie$: of(),
+        phase$: of(GamePhase.LoopThrow),
         throwEventDie: jest.fn(),
         throwProductionDie: jest.fn(),
       };
@@ -232,6 +368,8 @@ describe('GameRulesService', () => {
     describe('other event', () => {
       const gameFacadeMock = {
         eventDie$: of(EventValue.Event),
+        productionDie$: of(),
+        phase$: of(GamePhase.LoopThrow),
         throwEventDie: jest.fn(),
         throwProductionDie: jest.fn(),
       };

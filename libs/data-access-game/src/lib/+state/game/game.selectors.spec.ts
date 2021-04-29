@@ -11,6 +11,7 @@ describe('Game Selectors', () => {
       game: {
         ...initialGameState,
         productionDie: 1,
+        nextProductionDie: 6,
         eventDie: EventValue.Event,
       },
     };
@@ -21,6 +22,12 @@ describe('Game Selectors', () => {
       const result = GameSelectors.getGameProductionDie(state);
 
       expect(result).toBe(1);
+    });
+
+    it('getGameNextProductionDie() should return the next production die value', () => {
+      const result = GameSelectors.getGameNextProductionDie(state);
+
+      expect(result).toBe(6);
     });
 
     it('getGameEventDie() should return the event die value', () => {

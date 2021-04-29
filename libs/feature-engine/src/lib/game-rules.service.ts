@@ -15,11 +15,13 @@ import {
   AVAILABLE_DEVELOPMENT_SLOT,
   AVAILABLE_LAND_SLOT,
   DEVELOPMENT_CARD_INTERFACE_NAME,
+  DiceValue,
   EventValue,
+  GamePhase,
   LAND_CARD_INTERFACE_NAME,
 } from '@taormina/shared-models';
 import { combineLatest, Subject } from 'rxjs';
-import { filter, map, take, takeUntil, tap } from 'rxjs/operators';
+import { filter, map, take, takeUntil } from 'rxjs/operators';
 
 @Injectable({
   providedIn: 'root',
@@ -33,9 +35,15 @@ export class GameRulesService {
 
   countAndSteal$ = this.thieves$.pipe(
     takeUntil(this.gameEnded$),
-    tap(() => {
+    map(() => {
       this.domainsCards.countAndStealUnprotectedGoldAndWool();
     })
+  );
+
+  increaseResources$ = this.game.productionDie$.pipe(
+    takeUntil(this.gameEnded$),
+    filter((value): value is DiceValue => value !== undefined),
+    map((value) => this.domainsCards.increaseResourcesForDie(value))
   );
 
   constructor(
@@ -51,6 +59,7 @@ export class GameRulesService {
   initNewGame(): void {
     this.gameEnded$.next();
     this.countAndSteal$.subscribe();
+    this.increaseResources$.subscribe();
 
     this.game.initNewGame();
     this.domainsCards.initNewGame();
@@ -89,7 +98,11 @@ export class GameRulesService {
 
   throwDice(): void {
     this.game.throwEventDie();
-    this.game.throwProductionDie();
+    this.game.phase$.pipe(take(1)).subscribe((phase) => {
+      if (phase !== GamePhase.InitialThrow) {
+        this.game.throwProductionDie();
+      }
+    });
   }
 
   useResourcesToPutFaceUpPileCardInSlot(): void {
@@ -101,7 +114,7 @@ export class GameRulesService {
     ])
       .pipe(
         take(1),
-        tap(([faceUpPileCard, domainCard]) => {
+        map(([faceUpPileCard, domainCard]) => {
           if (faceUpPileCard === undefined)
             throw new Error(`Can't put card in slot if no card selected.`);
           if (domainCard === undefined)
@@ -167,7 +180,7 @@ export class GameRulesService {
     ])
       .pipe(
         take(1),
-        tap(([handCard, domainCard]) => {
+        map(([handCard, domainCard]) => {
           if (handCard === undefined)
             throw new Error(`Can't put card in slot if no card selected.`);
           if (domainCard === undefined)
@@ -192,7 +205,7 @@ export class GameRulesService {
     ])
       .pipe(
         take(1),
-        tap(([landsPileCard, domainCard]) => {
+        map(([landsPileCard, domainCard]) => {
           if (landsPileCard === undefined)
             throw new Error(`Can't put card in slot if no card selected.`);
           if (domainCard === undefined)
