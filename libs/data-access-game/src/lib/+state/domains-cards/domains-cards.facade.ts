@@ -1,6 +1,10 @@
 import { Injectable } from '@angular/core';
 import { select, Store } from '@ngrx/store';
-import { DomainCardType, masteryPointsType } from '@taormina/shared-models';
+import {
+  DiceValue,
+  DomainCardType,
+  masteryPointsType,
+} from '@taormina/shared-models';
 import { Observable } from 'rxjs';
 
 import * as DomainsCardsActions from './domains-cards.actions';
@@ -50,6 +54,12 @@ export class DomainsCardsFacade {
   increaseResources(pivotId: string): void {
     this.store.dispatch(
       DomainsCardsActions.increaseAvailableResources({ id: pivotId })
+    );
+  }
+
+  increaseResourcesForDie(value: DiceValue): void {
+    this.store.dispatch(
+      DomainsCardsActions.increaseAvailableResourcesForDie({ die: value })
     );
   }
 
