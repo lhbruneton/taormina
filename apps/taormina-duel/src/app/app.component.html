@@ -29,6 +29,20 @@
       >
     </div>
   </div>
+  <div>
+    <p>Next Production Die:</p>
+    <div *ngFor="let value of resourceValues">
+      <label>
+        <input
+          type="radio"
+          [value]="value"
+          name="nextProductionDie"
+          [ngModel]="getNextProductionDie() | async"
+          (ngModelChange)="setNextProductionDie($event)"
+        />{{ value }}</label
+      >
+    </div>
+  </div>
 </div>
 <hr />
 <div class="flex-container">
