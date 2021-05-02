@@ -13,4 +13,4 @@
 | [libs/feature-engine/src/lib/game-rules.service.spec.ts](libs/feature-engine/src/lib/game-rules.service.spec.ts#L825) | 825 | should test error thrown
 | [libs/feature-engine/src/lib/game-rules.service.spec.ts](libs/feature-engine/src/lib/game-rules.service.spec.ts#L917) | 917 | should test error thrown
 | [libs/feature-engine/src/lib/game-rules.service.spec.ts](libs/feature-engine/src/lib/game-rules.service.spec.ts#L952) | 952 | should test error thrown
-| [libs/data-access-game/src/lib/+state/domains-cards/domains-cards.effects.spec.ts](libs/data-access-game/src/lib/+state/domains-cards/domains-cards.effects.spec.ts#L757) | 757 | https://github.com/ngrx/platform/issues/2176
+| [libs/data-access-game/src/lib/+state/domains-cards/domains-cards.effects.spec.ts](libs/data-access-game/src/lib/+state/domains-cards/domains-cards.effects.spec.ts#L782) | 782 | https://github.com/ngrx/platform/issues/2176
