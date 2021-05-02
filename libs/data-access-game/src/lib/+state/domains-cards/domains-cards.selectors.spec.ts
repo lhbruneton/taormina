@@ -104,15 +104,6 @@ describe('DomainsCards Selectors', () => {
       expect(result).toBe(ERROR_MSG);
     });
 
-    it('getLandCardsPivotsForDie({ die }) should return the pivot for the land card with the right die', () => {
-      const result = DomainsCardsSelectors.getLandCardsPivotsForDie(state, {
-        die: 1,
-      });
-      const selId = getDomainsCardsId(result[0]);
-
-      expect(selId).toBe('PRODUCT-BBB');
-    });
-
     it('getLandCardPivotById({ id }) should return the pivot for the id', () => {
       const result = DomainsCardsSelectors.getLandCardPivotById(state, {
         id: 'PRODUCT-BBB',
@@ -123,10 +114,10 @@ describe('DomainsCards Selectors', () => {
     });
 
     it('getLandCardPivotWithLockedResources() should return the pivot for the id', () => {
-      const result = DomainsCardsSelectors.getLandCardPivotWithLockedResources(
+      const results = DomainsCardsSelectors.getLandCardPivotWithLockedResources(
         state
       );
-      const selId = getDomainsCardsId(result[0]);
+      const selId = getDomainsCardsId(results[0]);
 
       expect(selId).toBe('PRODUCT-BBB');
     });
@@ -161,6 +152,68 @@ describe('DomainsCards Selectors', () => {
       });
 
       expect(result).toBe(0);
+    });
+  });
+
+  describe('getLandCardsPivotsIncreaseOneProduction({ die })', () => {
+    beforeEach(() => {
+      state = {
+        domainsCards: domainsCardsAdapter.setAll(
+          [
+            createDomainsCardsEntity(
+              'aaaa',
+              ID_DOMAIN_RED,
+              LAND_CARD_INTERFACE_NAME,
+              ID_CLAY_PIT_RED,
+              -2,
+              1
+            ),
+            createDomainsCardsEntity(
+              'bbbb',
+              ID_DOMAIN_BLUE,
+              LAND_CARD_INTERFACE_NAME,
+              ID_FOREST_BLUE,
+              -2,
+              -1
+            ),
+            createDomainsCardsEntity(
+              'cccc',
+              ID_DOMAIN_BLUE,
+              DEVELOPMENT_CARD_INTERFACE_NAME,
+              'BUILDING_2', // Sawmill
+              -1,
+              -1
+            ),
+          ],
+          {
+            ...initialDomainsCardsState,
+          }
+        ),
+      };
+    });
+
+    it('should return the red clay pit', () => {
+      const results = DomainsCardsSelectors.getLandCardsPivotsIncreaseOneProduction(
+        state,
+        {
+          die: 3,
+        }
+      );
+      const selId = getDomainsCardsId(results[0]);
+
+      expect(selId).toBe('aaaa');
+    });
+
+    it('should return the blue forest', () => {
+      const results = DomainsCardsSelectors.getLandCardsPivotsIncreaseTwoProduction(
+        state,
+        {
+          die: 3,
+        }
+      );
+      const selId = getDomainsCardsId(results[0]);
+
+      expect(selId).toBe('bbbb');
     });
   });
 

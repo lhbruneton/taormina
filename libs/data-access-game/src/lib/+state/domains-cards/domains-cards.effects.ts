@@ -4,7 +4,7 @@ import { select, Store } from '@ngrx/store';
 import { fetch } from '@nrwl/angular';
 import { ID_DOMAIN_BLUE, ID_DOMAIN_RED } from '@taormina/shared-constants';
 import { ResourceCount } from '@taormina/shared-models';
-import { Observable, of } from 'rxjs';
+import { forkJoin, Observable, of } from 'rxjs';
 import {
   catchError,
   concatMap,
@@ -58,17 +58,31 @@ export class DomainsCardsEffects {
   increaseResourcesForDie$ = createEffect(() =>
     this.actions$.pipe(
       ofType(DomainsCardsActions.increaseAvailableResourcesForDie),
-      concatMap((action) =>
-        this.domainsCardsStore.pipe(
-          select(DomainsCardsSelectors.getLandCardsPivotsForDie, {
-            die: action.die,
-          }),
-          take(1)
-        )
-      ),
-      map((pivots) => {
-        const updates = pivots
-          // Don't update land cards already at max available resources
+      concatMap((action) => {
+        return forkJoin({
+          increaseOne: this.domainsCardsStore.pipe(
+            select(
+              DomainsCardsSelectors.getLandCardsPivotsIncreaseOneProduction,
+              {
+                die: action.die,
+              }
+            ),
+            take(1)
+          ),
+          increaseTwo: this.domainsCardsStore.pipe(
+            select(
+              DomainsCardsSelectors.getLandCardsPivotsIncreaseTwoProduction,
+              {
+                die: action.die,
+              }
+            ),
+            take(1)
+          ),
+        });
+      }),
+      map(({ increaseOne, increaseTwo }) => {
+        const updatesOne = increaseOne
+          // Update land cards with available resources below max by 1
           .filter((pivot) => (pivot.availableResources as ResourceCount) < 3)
           .map((pivot) => {
             return {
@@ -79,7 +93,33 @@ export class DomainsCardsEffects {
               },
             };
           });
-        return DomainsCardsActions.updateDomainsCards({ updates });
+        const updatesTwoOne = increaseTwo
+          // Update land cards with available resources at (max - 1) by only 1
+          .filter((pivot) => (pivot.availableResources as ResourceCount) == 2)
+          .map((pivot) => {
+            return {
+              id: pivot.id,
+              changes: {
+                // prettier-ignore
+                availableResources: (pivot.availableResources + 1) as ResourceCount,
+              },
+            };
+          });
+        const updatesTwoTwo = increaseTwo
+          // Update land cards with available resources below (max - 1) by 2
+          .filter((pivot) => (pivot.availableResources as ResourceCount) < 2)
+          .map((pivot) => {
+            return {
+              id: pivot.id,
+              changes: {
+                // prettier-ignore
+                availableResources: (pivot.availableResources + 2) as ResourceCount,
+              },
+            };
+          });
+        return DomainsCardsActions.updateDomainsCards({
+          updates: [...updatesOne, ...updatesTwoOne, ...updatesTwoTwo],
+        });
       })
     )
   );

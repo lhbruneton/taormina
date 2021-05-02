@@ -6,13 +6,14 @@ import { MockStore, provideMockStore } from '@ngrx/store/testing';
 import { DataPersistence, NxModule } from '@nrwl/angular';
 import { hot } from '@nrwl/angular/testing';
 import {
+  ID_CLAY_PIT_RED,
   ID_DOMAIN_BLUE,
   ID_DOMAIN_RED,
+  ID_FOREST_BLUE,
   ID_GOLD_MINE_RED,
   ID_PASTURE_BLUE,
 } from '@taormina/shared-constants';
 import {
-  AGGLOMERATION_CARD_INTERFACE_NAME,
   AVAILABLE_AGGLOMERATION_SLOT,
   LAND_CARD_INTERFACE_NAME,
 } from '@taormina/shared-models';
@@ -90,33 +91,49 @@ describe('DomainsCardsEffects', () => {
           provideMockStore({
             selectors: [
               {
-                selector: DomainsCardsSelectors.getLandCardsPivotsForDie,
+                selector:
+                  DomainsCardsSelectors.getLandCardsPivotsIncreaseOneProduction,
                 value: [
                   {
                     id: 'AAA',
                     domainId: ID_DOMAIN_RED,
-                    cardType: AGGLOMERATION_CARD_INTERFACE_NAME,
-                    cardId: 'ROAD_1',
-                  },
-                  {
-                    id: 'BBB',
-                    domainId: ID_DOMAIN_BLUE,
                     cardType: LAND_CARD_INTERFACE_NAME,
-                    cardId: 'LAND_1',
+                    cardId: ID_CLAY_PIT_RED,
                     availableResources: 0,
                   },
                   {
-                    id: 'CCC',
+                    id: 'BBB',
                     domainId: ID_DOMAIN_RED,
                     cardType: LAND_CARD_INTERFACE_NAME,
-                    cardId: 'LAND_2',
+                    cardId: ID_CLAY_PIT_RED,
                     availableResources: 3,
+                  },
+                ],
+              },
+              {
+                selector:
+                  DomainsCardsSelectors.getLandCardsPivotsIncreaseTwoProduction,
+                value: [
+                  {
+                    id: 'CCC',
+                    domainId: ID_DOMAIN_BLUE,
+                    cardType: LAND_CARD_INTERFACE_NAME,
+                    cardId: ID_FOREST_BLUE,
+                    availableResources: 0,
                   },
                   {
                     id: 'DDD',
                     domainId: ID_DOMAIN_BLUE,
                     cardType: LAND_CARD_INTERFACE_NAME,
-                    cardId: 'LAND_3',
+                    cardId: ID_FOREST_BLUE,
+                    availableResources: 2,
+                  },
+                  {
+                    id: 'EEE',
+                    domainId: ID_DOMAIN_BLUE,
+                    cardType: LAND_CARD_INTERFACE_NAME,
+                    cardId: ID_FOREST_BLUE,
+                    availableResources: 3,
                   },
                 ],
               },
@@ -127,17 +144,25 @@ describe('DomainsCardsEffects', () => {
       injector.get(MockStore);
     });
 
-    it('should dispatch updateDomainsCards with availableResources + 1 when availableResources < 3', () => {
+    it('should dispatch updateDomainsCards with availableResources + 1 when not next to a production building and availableResources < 3', () => {
       actions = hot('-a-|', {
-        a: DomainsCardsActions.increaseAvailableResourcesForDie({ die: 1 }),
+        a: DomainsCardsActions.increaseAvailableResourcesForDie({ die: 3 }),
       });
 
       const expected = hot('-a-|', {
         a: DomainsCardsActions.updateDomainsCards({
           updates: [
             {
-              id: 'BBB',
+              id: 'AAA',
               changes: { availableResources: 1 },
+            },
+            {
+              id: 'DDD',
+              changes: { availableResources: 3 },
+            },
+            {
+              id: 'CCC',
+              changes: { availableResources: 2 },
             },
           ],
         }),
