@@ -8,6 +8,8 @@ import {
 import {
   DevelopmentCard,
   DEVELOPMENT_CARD_INTERFACE_NAME,
+  DiceValue,
+  LandCard,
   LandType,
   LAND_CARD_INTERFACE_NAME,
   masteryPointsType,
@@ -63,20 +65,45 @@ export const getDomainsCardsSelected = createSelector(
   }
 );
 
-export const getLandCardsPivotsForDie = createSelector(
+export const getLandCardsPivotsIncreaseOneProduction = createSelector(
   getAllDomainsCards,
   (entities: DomainsCardsEntity[], props: { die: ResourceValue }) =>
     entities.filter((pivot) => {
-      if (
-        pivot.cardType === LAND_CARD_INTERFACE_NAME &&
-        pivot.cardId !== undefined
-      ) {
-        const land = landCards.get(pivot.cardId);
-        if (land && land.die === props.die) return true;
-      }
-      return false;
+      const land = getLandCardFilterByDie(pivot, props.die);
+      return (
+        land !== undefined &&
+        !isNextToAProductionBuilding(pivot, entities, land.type)
+      );
     })
 );
+
+export const getLandCardsPivotsIncreaseTwoProduction = createSelector(
+  getAllDomainsCards,
+  (entities: DomainsCardsEntity[], props: { die: ResourceValue }) =>
+    entities.filter((pivot) => {
+      const land = getLandCardFilterByDie(pivot, props.die);
+      return (
+        land !== undefined &&
+        isNextToAProductionBuilding(pivot, entities, land.type)
+      );
+    })
+);
+
+const getLandCardFilterByDie = (
+  pivot: DomainsCardsEntity,
+  die: DiceValue
+): LandCard | undefined => {
+  if (
+    pivot.cardType === LAND_CARD_INTERFACE_NAME &&
+    pivot.cardId !== undefined
+  ) {
+    const land = landCards.get(pivot.cardId);
+    if (land !== undefined && land.die === die) {
+      return land;
+    }
+  }
+  return undefined;
+};
 
 export const getLandCardPivotById = createSelector(
   getAllDomainsCards,
@@ -234,6 +261,42 @@ export const getDomainUnprotectedGoldMinesAndPastures = createSelector(
         isNextToAWarehouse(pivot, entities)
     )
 );
+
+const isNextToAProductionBuilding = (
+  pivot: DomainsCardsEntity,
+  entities: DomainsCardsEntity[],
+  landType: LandType
+): boolean => {
+  const neighbors = getCardSideNeighbors(pivot, entities);
+  return (
+    neighbors
+      .filter((neighbor) => neighbor.cardId !== undefined)
+      .find((neighbor) =>
+        // eslint-disable-next-line @typescript-eslint/no-non-null-assertion
+        isProductionBuildingForResourceType(neighbor.cardId!, landType)
+      ) !== undefined
+  );
+};
+
+const isProductionBuildingForResourceType = (
+  cardId: string,
+  landType: LandType
+): boolean => {
+  switch (landType) {
+    case LandType.ClayPit:
+      return cardId === 'BUILDING_1'; // Brickyard
+    case LandType.Forest:
+      return cardId === 'BUILDING_2'; // Sawmill
+    case LandType.Field:
+      return cardId === 'BUILDING_3'; // Mill
+    case LandType.StoneQuarry:
+      return cardId === 'BUILDING_4'; // Foundry
+    case LandType.Pasture:
+      return cardId === 'BUILDING_5'; // Weaving
+    default:
+      return false;
+  }
+};
 
 const isNextToAWarehouse = (
   pivot: DomainsCardsEntity,
