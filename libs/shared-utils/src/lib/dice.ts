@@ -21,6 +21,7 @@ function eventFromValue(value: DiceValue): EventValue {
       return EventValue.Celebration;
     case 6:
       return EventValue.Harvest;
+    // no default
   }
 }
 /* eslint-enable no-magic-numbers */

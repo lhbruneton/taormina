@@ -189,8 +189,7 @@ const getDevelopmentCardPointsForType = (
       return developmentCard.tradePoints || 0;
     case MasteryPointsType.Strength:
       return developmentCard.strengthPoints || 0;
-    default:
-      return 0;
+    // no default
   }
 };
 
@@ -293,8 +292,9 @@ const isProductionBuildingForResourceType = (
       return cardId === 'BUILDING_4'; // Foundry
     case LandType.Pasture:
       return cardId === 'BUILDING_5'; // Weaving
-    default:
+    case LandType.GoldMine:
       return false;
+    // no default
   }
 };
 
