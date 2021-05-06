@@ -1,3 +1,4 @@
+/* eslint-disable no-magic-numbers */
 import { inject, TestBed } from '@angular/core/testing';
 import { StoreModule } from '@ngrx/store';
 import {

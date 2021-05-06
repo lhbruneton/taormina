@@ -1,3 +1,4 @@
+/* eslint-disable no-magic-numbers */
 import {
   ID_CLAY_PIT_BLUE,
   ID_CLAY_PIT_RED,

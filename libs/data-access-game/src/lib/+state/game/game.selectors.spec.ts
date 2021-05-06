@@ -1,3 +1,4 @@
+/* eslint-disable no-magic-numbers */
 import { DomainColor, EventValue, GamePhase } from '@taormina/shared-models';
 
 import { GamePartialState, initialGameState } from './game.reducer';

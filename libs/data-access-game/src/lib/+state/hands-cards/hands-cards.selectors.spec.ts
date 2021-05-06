@@ -1,3 +1,4 @@
+/* eslint-disable no-magic-numbers */
 import {
   ACTION_CARD_INTERFACE_NAME,
   DEVELOPMENT_CARD_INTERFACE_NAME,
