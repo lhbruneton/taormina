@@ -1,6 +1,10 @@
 import { UpdateStr } from '@ngrx/entity/src/models';
 import { createAction, props } from '@ngrx/store';
-import { DomainCardType, ResourceValue } from '@taormina/shared-models';
+import {
+  DomainCardType,
+  ResourceValue,
+  RowValue,
+} from '@taormina/shared-models';
 
 import { DomainsCardsEntity } from './domains-cards.models';
 
@@ -96,7 +100,7 @@ export const createDomainCard = createAction(
     cardType: DomainCardType;
     cardId: string | undefined;
     col: number;
-    row: number;
+    row: RowValue;
   }>()
 );
 

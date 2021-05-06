@@ -19,6 +19,7 @@ import {
   EventValue,
   GamePhase,
   LAND_CARD_INTERFACE_NAME,
+  RowValue,
 } from '@taormina/shared-models';
 import { combineLatest, Subject } from 'rxjs';
 import { filter, map, take, takeUntil } from 'rxjs/operators';
@@ -132,13 +133,13 @@ export class GameRulesService {
               domainCard.domainId,
               AVAILABLE_DEVELOPMENT_SLOT,
               domainCard.col,
-              -2
+              RowValue.Lower
             );
             this.domainsCards.createAvailableDomainCard(
               domainCard.domainId,
               AVAILABLE_DEVELOPMENT_SLOT,
               domainCard.col,
-              2
+              RowValue.Upper
             );
           } else {
             const availableCol =
@@ -147,20 +148,20 @@ export class GameRulesService {
               domainCard.domainId,
               AVAILABLE_AGGLOMERATION_SLOT,
               availableCol,
-              0
+              RowValue.Middle
             );
             if (faceUpPileCard.pileId === ID_FACE_UP_HAMLET) {
               this.domainsCards.createAvailableDomainCard(
                 domainCard.domainId,
                 AVAILABLE_LAND_SLOT,
                 availableCol,
-                -1
+                RowValue.Low
               );
               this.domainsCards.createAvailableDomainCard(
                 domainCard.domainId,
                 AVAILABLE_LAND_SLOT,
                 availableCol,
-                1
+                RowValue.Up
               );
             }
           }
