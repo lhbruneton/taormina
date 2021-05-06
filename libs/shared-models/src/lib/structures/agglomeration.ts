@@ -44,6 +44,7 @@ export const createAgglomerationCard = (
   print: (): string => `type: ${type}`,
 });
 
+/* eslint-disable no-magic-numbers */
 export function createRoad(id: string, color?: DomainColor): AgglomerationCard {
   return createAgglomerationCard(
     id,
@@ -56,6 +57,7 @@ export function createRoad(id: string, color?: DomainColor): AgglomerationCard {
     color
   );
 }
+/* eslint-enable no-magic-numbers */
 
 export function createHamlet(
   id: string,
@@ -75,6 +77,7 @@ export function createHamlet(
   );
 }
 
+/* eslint-disable no-magic-numbers */
 export function createTown(id: string, color?: DomainColor): AgglomerationCard {
   return createAgglomerationCard(
     id,
@@ -87,6 +90,7 @@ export function createTown(id: string, color?: DomainColor): AgglomerationCard {
     color
   );
 }
+/* eslint-enable no-magic-numbers */
 
 // eslint-disable-next-line @typescript-eslint/no-explicit-any
 export function isAgglomerationCard(obj: any): obj is AgglomerationCard {

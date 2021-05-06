@@ -7,6 +7,7 @@ import {
   ResourceType,
 } from '@taormina/shared-models';
 
+/* eslint-disable no-magic-numbers */
 export const developmentCards = new Map<string, DevelopmentCard>([
   // Building
   [
@@ -290,3 +291,4 @@ export const developmentCards = new Map<string, DevelopmentCard>([
     ),
   ],
 ]);
+/* eslint-enable no-magic-numbers */

@@ -64,6 +64,7 @@ export const createDomainsCardsEntity = (
   lockedResources,
 });
 
+/* eslint-disable no-magic-numbers */
 export const createInitialDomainsCards = (): DomainsCardsEntity[] => {
   const initialDomainsCards: DomainsCardsEntity[] = [
     createDomainsCardsEntity(
@@ -321,3 +322,4 @@ export const createInitialDomainsCards = (): DomainsCardsEntity[] => {
   ];
   return initialDomainsCards;
 };
+/* eslint-enable no-magic-numbers */
