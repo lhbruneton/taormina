@@ -81,48 +81,81 @@ export class DomainsCardsEffects {
         });
       }),
       map(({ increaseOne, increaseTwo }) => {
-        const updatesOne = increaseOne
-          // Update land cards with available resources below max by 1
-          .filter((pivot) => (pivot.availableResources as ResourceCount) < 3)
-          .map((pivot) => {
-            return {
-              id: pivot.id,
-              changes: {
-                // prettier-ignore
-                availableResources: (pivot.availableResources + 1) as ResourceCount,
-              },
-            };
-          });
-        const updatesTwoOne = increaseTwo
-          // Update land cards with available resources at (max - 1) by only 1
-          .filter((pivot) => (pivot.availableResources as ResourceCount) == 2)
-          .map((pivot) => {
-            return {
-              id: pivot.id,
-              changes: {
-                // prettier-ignore
-                availableResources: (pivot.availableResources + 1) as ResourceCount,
-              },
-            };
-          });
-        const updatesTwoTwo = increaseTwo
-          // Update land cards with available resources below (max - 1) by 2
-          .filter((pivot) => (pivot.availableResources as ResourceCount) < 2)
-          .map((pivot) => {
-            return {
-              id: pivot.id,
-              changes: {
-                // prettier-ignore
-                availableResources: (pivot.availableResources + 2) as ResourceCount,
-              },
-            };
-          });
+        const updatesOneOne = this.updatesByOneWhenOneOK(increaseOne);
+        const updatesTwoOne = this.updatesByOneWhenTwoNOK(increaseTwo);
+        const updatesTwoTwo = this.updatesByTwoWhenTwoOK(increaseTwo);
         return DomainsCardsActions.updateDomainsCards({
-          updates: [...updatesOne, ...updatesTwoOne, ...updatesTwoTwo],
+          updates: [...updatesOneOne, ...updatesTwoOne, ...updatesTwoTwo],
         });
       })
     )
   );
+
+  updatesByOneWhenOneOK = (
+    domainsCards: DomainsCardsEntity[]
+  ): {
+    id: string;
+    changes: {
+      availableResources: ResourceCount;
+    };
+  }[] => {
+    const resourceIncrement = 1;
+    return domainsCards
+      .filter((pivot) => (pivot.availableResources as ResourceCount) < 3)
+      .map((pivot) => {
+        return {
+          id: pivot.id,
+          changes: {
+            availableResources: (pivot.availableResources +
+              resourceIncrement) as ResourceCount,
+          },
+        };
+      });
+  };
+
+  updatesByOneWhenTwoNOK = (
+    domainsCards: DomainsCardsEntity[]
+  ): {
+    id: string;
+    changes: {
+      availableResources: ResourceCount;
+    };
+  }[] => {
+    const resourceIncrement = 1;
+    return domainsCards
+      .filter((pivot) => (pivot.availableResources as ResourceCount) === 3 - 1)
+      .map((pivot) => {
+        return {
+          id: pivot.id,
+          changes: {
+            availableResources: (pivot.availableResources +
+              resourceIncrement) as ResourceCount,
+          },
+        };
+      });
+  };
+
+  updatesByTwoWhenTwoOK = (
+    domainsCards: DomainsCardsEntity[]
+  ): {
+    id: string;
+    changes: {
+      availableResources: ResourceCount;
+    };
+  }[] => {
+    const resourceDoubleIncrement = 2;
+    return domainsCards
+      .filter((pivot) => (pivot.availableResources as ResourceCount) < 3 - 1)
+      .map((pivot) => {
+        return {
+          id: pivot.id,
+          changes: {
+            availableResources: (pivot.availableResources +
+              resourceDoubleIncrement) as ResourceCount,
+          },
+        };
+      });
+  };
 
   lockResource$ = createEffect(() =>
     this.actions$.pipe(
