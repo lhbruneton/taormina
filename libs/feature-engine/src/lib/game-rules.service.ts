@@ -116,10 +116,12 @@ export class GameRulesService {
       .pipe(
         take(1),
         map(([faceUpPileCard, domainCard]) => {
-          if (faceUpPileCard === undefined)
+          if (faceUpPileCard === undefined) {
             throw new Error(`Can't put card in slot if no card selected.`);
-          if (domainCard === undefined)
+          }
+          if (domainCard === undefined) {
             throw new Error(`Can't put card in slot if no slot selected.`);
+          }
 
           this.faceUpPilesCards.removeFaceUpPileCard(faceUpPileCard.id);
           this.domainsCards.putCardInSlot(
@@ -182,10 +184,12 @@ export class GameRulesService {
       .pipe(
         take(1),
         map(([handCard, domainCard]) => {
-          if (handCard === undefined)
+          if (handCard === undefined) {
             throw new Error(`Can't put card in slot if no card selected.`);
-          if (domainCard === undefined)
+          }
+          if (domainCard === undefined) {
             throw new Error(`Can't put card in slot if no slot selected.`);
+          }
 
           this.handsCards.removeHandCard(handCard.id);
           this.domainsCards.putCardInSlot(
@@ -207,10 +211,12 @@ export class GameRulesService {
       .pipe(
         take(1),
         map(([landsPileCard, domainCard]) => {
-          if (landsPileCard === undefined)
+          if (landsPileCard === undefined) {
             throw new Error(`Can't put card in slot if no card selected.`);
-          if (domainCard === undefined)
+          }
+          if (domainCard === undefined) {
             throw new Error(`Can't put card in slot if no slot selected.`);
+          }
 
           this.landsPileCards.removeLandsPileCard(landsPileCard.id);
           this.domainsCards.putCardInSlot(

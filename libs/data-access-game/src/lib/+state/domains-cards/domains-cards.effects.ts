@@ -130,14 +130,16 @@ export class DomainsCardsEffects {
       concatMap((action) =>
         this.takeOneDefinedPivotOrThrow(action.id).pipe(
           map((pivot) => {
-            if (pivot.availableResources === 0)
+            if (pivot.availableResources === 0) {
               throw new Error(
                 `Can't lock unavailable resource for pivot ${pivot.id}.`
               );
-            if (pivot.lockedResources === 3)
+            }
+            if (pivot.lockedResources === 3) {
               throw new Error(
                 `Can't lock more resources for pivot ${pivot.id}.`
               );
+            }
 
             const update = {
               id: pivot.id,
@@ -166,10 +168,11 @@ export class DomainsCardsEffects {
       concatMap((action) =>
         this.takeOneDefinedPivotOrThrow(action.id).pipe(
           map((pivot) => {
-            if (pivot.availableResources + pivot.lockedResources > 3)
+            if (pivot.availableResources + pivot.lockedResources > 3) {
               throw new Error(
                 `Shouldn't have been able to lock so many resources for pivot ${pivot.id}.`
               );
+            }
 
             const update = {
               id: pivot.id,
@@ -220,10 +223,11 @@ export class DomainsCardsEffects {
       concatMap((action) =>
         this.takeOneDefinedPivotOrThrow(action.id).pipe(
           map((pivot) => {
-            if (pivot.availableResources === 3)
+            if (pivot.availableResources === 3) {
               throw new Error(
                 `Can't increase available resources beyond maximum for pivot ${pivot.id}.`
               );
+            }
 
             const update = {
               id: pivot.id,
@@ -345,8 +349,9 @@ export class DomainsCardsEffects {
         id,
       }),
       map((pivot) => {
-        if (pivot === undefined)
+        if (pivot === undefined) {
           throw new Error(`Couldn't find land card pivot for id.`);
+        }
         return pivot;
       }),
       take(1)

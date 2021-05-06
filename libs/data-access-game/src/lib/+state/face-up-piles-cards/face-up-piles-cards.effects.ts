@@ -51,8 +51,9 @@ export class FaceUpPilesCardsEffects {
             pileId: action.pileId,
           }),
           map((pivot) => {
-            if (pivot === undefined)
+            if (pivot === undefined) {
               throw new Error(`Can't get first card in empty face up pile.`);
+            }
             return pivot;
           }),
           take(1),
