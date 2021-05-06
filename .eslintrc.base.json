@@ -1,0 +1,22 @@
+{
+  "overrides": [
+    {
+      "files": ["*.ts"],
+      "rules": {
+        "@typescript-eslint/no-shadow": "error",
+        "block-scoped-var": "error",
+        "curly": ["error", "multi-line", "consistent"],
+        "default-case": "error",
+        "default-case-last": "error",
+        "dot-location": ["error", "property"],
+        "eqeqeq": "error",
+        "no-implicit-coercion": [
+          "error",
+          { "boolean": true, "number": true, "string": true }
+        ],
+        "no-magic-numbers": ["error", { "ignore": [0, 1] }],
+        "no-return-assign": ["error", "always"]
+      }
+    }
+  ]
+}
