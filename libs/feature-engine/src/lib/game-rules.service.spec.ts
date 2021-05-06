@@ -57,8 +57,8 @@ describe('GameRulesService', () => {
 
   it('should be created', inject(
     [GameRulesService],
-    (service: GameRulesService) => {
-      expect(service).toBeTruthy();
+    (injectedService: GameRulesService) => {
+      expect(injectedService).toBeTruthy();
     }
   ));
 
