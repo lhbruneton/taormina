@@ -19,8 +19,9 @@ export const createEventsPileCardsEntity = (
 });
 
 export const createInitialEventsPileCards = (): EventsPileCardsEntity[] => {
+  const numberOfCardsBelowFestival = 3;
   const shuffled = arrayShuffle(Array.from(eventCards.keys()).slice(1));
-  shuffled.splice(-3, 0, 'EVENT_0');
+  shuffled.splice(-numberOfCardsBelowFestival, 0, 'EVENT_0');
   const entities = shuffled.map((cardId) =>
     createEventsPileCardsEntity(uuidv4(), cardId)
   );

@@ -307,11 +307,12 @@ export class DomainsCardsEffects {
           redGoldMinesAndPastures,
           blueGoldMinesAndPastures,
         ]) => {
+          const thievesResourceCountThreshold = 7;
           let pivots: DomainsCardsEntity[] = [];
-          if (redResourceCount > 7) {
+          if (redResourceCount > thievesResourceCountThreshold) {
             pivots = [...pivots, ...redGoldMinesAndPastures];
           }
-          if (blueResourceCount > 7) {
+          if (blueResourceCount > thievesResourceCountThreshold) {
             pivots = [...pivots, ...blueGoldMinesAndPastures];
           }
           return pivots;

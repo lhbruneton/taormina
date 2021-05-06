@@ -221,9 +221,10 @@ const fromPointsToMastery = (
   redPoints: number,
   bluePoints: number
 ): string | undefined => {
-  if (redPoints > bluePoints && redPoints > 2) {
+  const masteryThreshold = 2;
+  if (redPoints > bluePoints && redPoints > masteryThreshold) {
     return ID_DOMAIN_RED;
-  } else if (bluePoints > redPoints && bluePoints > 2) {
+  } else if (bluePoints > redPoints && bluePoints > masteryThreshold) {
     return ID_DOMAIN_BLUE;
   } else {
     return undefined;

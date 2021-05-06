@@ -307,7 +307,8 @@ export class AppComponent {
   }
 
   drawInitialRedHand(pileId: string): void {
-    this.gameRules.drawFromStockToHand(pileId, 3, ID_HAND_RED);
+    const initialHandCount = 3;
+    this.gameRules.drawFromStockToHand(pileId, initialHandCount, ID_HAND_RED);
   }
 
   drawFirstCardRedHandAvailable(): Observable<boolean> {
@@ -331,7 +332,8 @@ export class AppComponent {
   }
 
   drawInitialBlueHand(pileId: string): void {
-    this.gameRules.drawFromStockToHand(pileId, 3, ID_HAND_BLUE);
+    const initialHandCount = 3;
+    this.gameRules.drawFromStockToHand(pileId, initialHandCount, ID_HAND_BLUE);
   }
 
   drawFirstCardBlueHandAvailable(): Observable<boolean> {
