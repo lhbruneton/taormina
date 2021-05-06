@@ -53,6 +53,7 @@ import {
   LAND_CARD_INTERFACE_NAME,
   MasteryPointsType,
   ResourceValue,
+  RESOURCE_VALUES,
 } from '@taormina/shared-models';
 import { combineLatest, Observable } from 'rxjs';
 import { map } from 'rxjs/operators';
@@ -74,7 +75,7 @@ export class AppComponent {
   AVAILABLE_DEVELOPMENT_SLOT = AVAILABLE_DEVELOPMENT_SLOT;
   AVAILABLE_LAND_SLOT = AVAILABLE_LAND_SLOT;
 
-  resourceValues: ResourceValue[] = [1, 2, 3, 4, 5, 6];
+  RESOURCE_VALUES = RESOURCE_VALUES;
 
   constructor(
     private game: GameFacade,
