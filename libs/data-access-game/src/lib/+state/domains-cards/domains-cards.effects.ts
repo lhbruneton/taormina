@@ -3,7 +3,7 @@ import { Actions, createEffect, ofType } from '@ngrx/effects';
 import { select, Store } from '@ngrx/store';
 import { fetch } from '@nrwl/angular';
 import { ID_DOMAIN_BLUE, ID_DOMAIN_RED } from '@taormina/shared-constants';
-import { ResourceCount } from '@taormina/shared-models';
+import { ResourceCount, RESOURCE_COUNTS } from '@taormina/shared-models';
 import { forkJoin, Observable, of } from 'rxjs';
 import {
   catchError,
@@ -101,7 +101,11 @@ export class DomainsCardsEffects {
   }[] => {
     const resourceIncrement = 1;
     return domainsCards
-      .filter((pivot) => (pivot.availableResources as ResourceCount) < 3)
+      .filter(
+        (pivot) =>
+          (pivot.availableResources as ResourceCount) <
+          Math.max(...RESOURCE_COUNTS)
+      )
       .map((pivot) => {
         return {
           id: pivot.id,
@@ -123,7 +127,11 @@ export class DomainsCardsEffects {
   }[] => {
     const resourceIncrement = 1;
     return domainsCards
-      .filter((pivot) => (pivot.availableResources as ResourceCount) === 3 - 1)
+      .filter(
+        (pivot) =>
+          (pivot.availableResources as ResourceCount) ===
+          Math.max(...RESOURCE_COUNTS) - 1
+      )
       .map((pivot) => {
         return {
           id: pivot.id,
@@ -145,7 +153,11 @@ export class DomainsCardsEffects {
   }[] => {
     const resourceDoubleIncrement = 2;
     return domainsCards
-      .filter((pivot) => (pivot.availableResources as ResourceCount) < 3 - 1)
+      .filter(
+        (pivot) =>
+          (pivot.availableResources as ResourceCount) <
+          Math.max(...RESOURCE_COUNTS) - 1
+      )
       .map((pivot) => {
         return {
           id: pivot.id,
@@ -168,7 +180,7 @@ export class DomainsCardsEffects {
                 `Can't lock unavailable resource for pivot ${pivot.id}.`
               );
             }
-            if (pivot.lockedResources === 3) {
+            if (pivot.lockedResources === Math.max(...RESOURCE_COUNTS)) {
               throw new Error(
                 `Can't lock more resources for pivot ${pivot.id}.`
               );
@@ -201,7 +213,10 @@ export class DomainsCardsEffects {
       concatMap((action) =>
         this.takeOneDefinedPivotOrThrow(action.id).pipe(
           map((pivot) => {
-            if (pivot.availableResources + pivot.lockedResources > 3) {
+            if (
+              pivot.availableResources + pivot.lockedResources >
+              Math.max(...RESOURCE_COUNTS)
+            ) {
               throw new Error(
                 `Shouldn't have been able to lock so many resources for pivot ${pivot.id}.`
               );
@@ -256,7 +271,7 @@ export class DomainsCardsEffects {
       concatMap((action) =>
         this.takeOneDefinedPivotOrThrow(action.id).pipe(
           map((pivot) => {
-            if (pivot.availableResources === 3) {
+            if (pivot.availableResources === Math.max(...RESOURCE_COUNTS)) {
               throw new Error(
                 `Can't increase available resources beyond maximum for pivot ${pivot.id}.`
               );
