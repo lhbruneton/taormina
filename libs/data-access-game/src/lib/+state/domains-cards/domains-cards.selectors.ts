@@ -12,7 +12,7 @@ import {
   LandCard,
   LandType,
   LAND_CARD_INTERFACE_NAME,
-  masteryPointsType,
+  MasteryPointsType,
   ResourceValue,
 } from '@taormina/shared-models';
 import { DomainsCardsEntity } from './domains-cards.models';
@@ -165,7 +165,7 @@ export const getDomainMaxRow = createSelector(
 
 export const getMasteryDomainForType = createSelector(
   getAllDomainsCards,
-  (entities: DomainsCardsEntity[], props: { type: masteryPointsType }) => {
+  (entities: DomainsCardsEntity[], props: { type: MasteryPointsType }) => {
     const redDomainCards = entities.filter(
       (pivot) => pivot.domainId === ID_DOMAIN_RED
     );
@@ -182,12 +182,12 @@ export const getMasteryDomainForType = createSelector(
 
 const getDevelopmentCardPointsForType = (
   developmentCard: DevelopmentCard,
-  type: masteryPointsType
+  type: MasteryPointsType
 ): number => {
   switch (type) {
-    case 'trade':
+    case MasteryPointsType.Trade:
       return developmentCard.tradePoints || 0;
-    case 'strength':
+    case MasteryPointsType.Strength:
       return developmentCard.strengthPoints || 0;
     default:
       return 0;
@@ -196,7 +196,7 @@ const getDevelopmentCardPointsForType = (
 
 const accPointsForType = (
   pivots: DomainsCardsEntity[],
-  type: masteryPointsType
+  type: MasteryPointsType
 ): number =>
   pivots
     .filter(

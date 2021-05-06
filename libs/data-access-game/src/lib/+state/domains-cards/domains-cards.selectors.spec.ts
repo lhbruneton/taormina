@@ -12,6 +12,7 @@ import {
   AGGLOMERATION_CARD_INTERFACE_NAME,
   DEVELOPMENT_CARD_INTERFACE_NAME,
   LAND_CARD_INTERFACE_NAME,
+  MasteryPointsType,
 } from '@taormina/shared-models';
 
 import {
@@ -259,7 +260,7 @@ describe('DomainsCards Selectors', () => {
 
         it('should return undefined', () => {
           const result = DomainsCardsSelectors.getMasteryDomainForType(state, {
-            type: 'trade',
+            type: MasteryPointsType.Trade,
           });
           expect(result).toBe(undefined);
         });
@@ -344,7 +345,7 @@ describe('DomainsCards Selectors', () => {
 
         it('should return undefined', () => {
           const result = DomainsCardsSelectors.getMasteryDomainForType(state, {
-            type: 'trade',
+            type: MasteryPointsType.Trade,
           });
           expect(result).toBe(undefined);
         });
@@ -438,7 +439,7 @@ describe('DomainsCards Selectors', () => {
 
         it('should return red', () => {
           const result = DomainsCardsSelectors.getMasteryDomainForType(state, {
-            type: 'trade',
+            type: MasteryPointsType.Trade,
           });
           expect(result).toBe(ID_DOMAIN_RED);
         });
@@ -531,7 +532,7 @@ describe('DomainsCards Selectors', () => {
 
         it('should return blue', () => {
           const result = DomainsCardsSelectors.getMasteryDomainForType(state, {
-            type: 'trade',
+            type: MasteryPointsType.Trade,
           });
           expect(result).toBe(ID_DOMAIN_BLUE);
         });
@@ -570,7 +571,7 @@ describe('DomainsCards Selectors', () => {
 
         it('should return undefined', () => {
           const result = DomainsCardsSelectors.getMasteryDomainForType(state, {
-            type: 'strength',
+            type: MasteryPointsType.Strength,
           });
           expect(result).toBe(undefined);
         });
@@ -623,7 +624,7 @@ describe('DomainsCards Selectors', () => {
 
         it('should return undefined', () => {
           const result = DomainsCardsSelectors.getMasteryDomainForType(state, {
-            type: 'strength',
+            type: MasteryPointsType.Strength,
           });
           expect(result).toBe(undefined);
         });
@@ -684,7 +685,7 @@ describe('DomainsCards Selectors', () => {
 
         it('should return red', () => {
           const result = DomainsCardsSelectors.getMasteryDomainForType(state, {
-            type: 'strength',
+            type: MasteryPointsType.Strength,
           });
           expect(result).toBe(ID_DOMAIN_RED);
         });
@@ -745,7 +746,7 @@ describe('DomainsCards Selectors', () => {
 
         it('should return blue', () => {
           const result = DomainsCardsSelectors.getMasteryDomainForType(state, {
-            type: 'strength',
+            type: MasteryPointsType.Strength,
           });
           expect(result).toBe(ID_DOMAIN_BLUE);
         });

@@ -3,7 +3,7 @@ import { select, Store } from '@ngrx/store';
 import {
   DiceValue,
   DomainCardType,
-  masteryPointsType,
+  MasteryPointsType,
 } from '@taormina/shared-models';
 import { Observable } from 'rxjs';
 
@@ -137,7 +137,7 @@ export class DomainsCardsFacade {
   }
 
   getMasteryDomainForType(
-    type: masteryPointsType
+    type: MasteryPointsType
   ): Observable<string | undefined> {
     return this.store.pipe(
       select(DomainsCardsSelectors.getMasteryDomainForType, { type })
