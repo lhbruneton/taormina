@@ -18,6 +18,7 @@ export interface FaceUpPilesCardsPartialState {
   readonly [FACE_UP_PILES_CARDS_FEATURE_KEY]: FaceUpPilesCardsState;
 }
 
+// eslint-disable-next-line max-len
 export const faceUpPilesCardsAdapter: EntityAdapter<FaceUpPilesCardsEntity> = createEntityAdapter<FaceUpPilesCardsEntity>();
 
 export const initialFaceUpPilesCardsState: FaceUpPilesCardsState = faceUpPilesCardsAdapter.getInitialState(
