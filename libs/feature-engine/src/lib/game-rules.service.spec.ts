@@ -92,7 +92,8 @@ describe('GameRulesService', () => {
 
   describe('countAndSteal$', () => {
     it(
-      'should call countAndStealUnprotectedGoldAndWool on thieves and complete on gameEnded',
+      `should call countAndStealUnprotectedGoldAndWool
+       on thieves and complete on gameEnded`,
       marbles((m) => {
         // Given a stream of thieves events
         const eventDie$ = m.hot('^-a-a-|', {
@@ -349,7 +350,8 @@ describe('GameRulesService', () => {
         service = TestBed.inject(GameRulesService);
       });
 
-      it('should call throwEventDie, throwProductionDie and countAndStealUnprotectedGoldAndWool', () => {
+      it(`should call throwEventDie, throwProductionDie
+          and countAndStealUnprotectedGoldAndWool`, () => {
         // TODO: test actions order: event > steal on thieves > production
         service.throwDice();
 
@@ -443,7 +445,8 @@ describe('GameRulesService', () => {
         service = TestBed.inject(GameRulesService);
       });
 
-      it('should call useLockedResources, removeFaceUpPileCard, putCardInSlot, createAvailableDomainCard, unselectDomainCard', () => {
+      it(`should call useLockedResources, removeFaceUpPileCard,
+          putCardInSlot, createAvailableDomainCard, unselectDomainCard`, () => {
         service.useResourcesToPutFaceUpPileCardInSlot();
 
         expect(domainsCardsFacadeMock.useLockedResources).toHaveBeenCalledTimes(
@@ -508,7 +511,8 @@ describe('GameRulesService', () => {
         service = TestBed.inject(GameRulesService);
       });
 
-      it('should call useLockedResources, removeFaceUpPileCard, putCardInSlot, createAvailableDomainCard x3, unselectDomainCard', () => {
+      it(`should call useLockedResources, removeFaceUpPileCard,
+          putCardInSlot, createAvailableDomainCard x3, unselectDomainCard`, () => {
         service.useResourcesToPutFaceUpPileCardInSlot();
 
         expect(domainsCardsFacadeMock.useLockedResources).toHaveBeenCalledTimes(
@@ -586,7 +590,8 @@ describe('GameRulesService', () => {
         service = TestBed.inject(GameRulesService);
       });
 
-      it('should call useLockedResources, removeFaceUpPileCard, putCardInSlot, createAvailableDomainCard x2, unselectDomainCard', () => {
+      it(`should call useLockedResources, removeFaceUpPileCard,
+          putCardInSlot, createAvailableDomainCard x2, unselectDomainCard`, () => {
         service.useResourcesToPutFaceUpPileCardInSlot();
 
         expect(domainsCardsFacadeMock.useLockedResources).toHaveBeenCalledTimes(
@@ -738,7 +743,8 @@ describe('GameRulesService', () => {
         service = TestBed.inject(GameRulesService);
       });
 
-      it('should call useLockedResources, removeHandCard, putCardInSlot, unselectDomainCard', () => {
+      it(`should call useLockedResources, removeHandCard,
+          putCardInSlot, unselectDomainCard`, () => {
         service.useResourcesToPutHandCardInSlot();
 
         expect(domainsCardsFacadeMock.useLockedResources).toHaveBeenCalledTimes(
@@ -869,7 +875,8 @@ describe('GameRulesService', () => {
         service = TestBed.inject(GameRulesService);
       });
 
-      it('should call removeLandsPileCard, putCardInSlot, unselectDomainCard', () => {
+      it(`should call removeLandsPileCard,
+          putCardInSlot, unselectDomainCard`, () => {
         service.putLandsPileCardInSlot();
 
         expect(

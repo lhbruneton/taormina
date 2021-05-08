@@ -51,7 +51,8 @@ describe('DomainsCardsEffects', () => {
   });
 
   describe('initNewGame$', () => {
-    it('should dispatch setDomainsCardsInitialized with mocked empty initial domains cards', () => {
+    it(`should dispatch setDomainsCardsInitialized
+        with mocked empty initial domains cards`, () => {
       jest
         .spyOn(DomainsCardsModels, 'createInitialDomainsCards')
         .mockReturnValue([]);
@@ -71,7 +72,8 @@ describe('DomainsCardsEffects', () => {
   });
 
   describe('initSavedGame$', () => {
-    it('should dispatch loadDomainsCardsSuccess with empty domains cards', () => {
+    it(`should dispatch loadDomainsCardsSuccess
+        with empty domains cards`, () => {
       actions = hot('-a-|', {
         a: DomainsCardsActions.initDomainsCardsSavedGame(),
       });
@@ -144,7 +146,10 @@ describe('DomainsCardsEffects', () => {
       injector.get(MockStore);
     });
 
-    it('should dispatch updateDomainsCards with availableResources + 1 when not next to a production building and availableResources < 3', () => {
+    it(`should dispatch updateDomainsCards
+        with availableResources + 1
+        when not next to a production building
+        and availableResources < 3`, () => {
       actions = hot('-a-|', {
         a: DomainsCardsActions.increaseAvailableResourcesForDie({ die: 3 }),
       });
@@ -197,7 +202,8 @@ describe('DomainsCardsEffects', () => {
         injector.get(MockStore);
       });
 
-      it('should dispatch updateDomainCard with availableResources - 1 and lockedResources + 1', () => {
+      it(`should dispatch updateDomainCard
+          with availableResources - 1 and lockedResources + 1`, () => {
         actions = hot('-a-|', {
           a: DomainsCardsActions.lockResource({ id: 'AAA' }),
         });
@@ -271,7 +277,8 @@ describe('DomainsCardsEffects', () => {
         injector.get(MockStore);
       });
 
-      it('should dispatch setDomainsCardsError with unavailable resource error', () => {
+      it(`should dispatch setDomainsCardsError
+          with unavailable resource error`, () => {
         actions = hot('-a-|', {
           a: DomainsCardsActions.lockResource({ id: 'AAA' }),
         });
@@ -310,7 +317,8 @@ describe('DomainsCardsEffects', () => {
         injector.get(MockStore);
       });
 
-      it('should dispatch setDomainsCardsError with too many locked resources error', () => {
+      it(`should dispatch setDomainsCardsError
+          with too many locked resources error`, () => {
         actions = hot('-a-|', {
           a: DomainsCardsActions.lockResource({ id: 'AAA' }),
         });
@@ -351,7 +359,9 @@ describe('DomainsCardsEffects', () => {
         injector.get(MockStore);
       });
 
-      it('should dispatch updateDomainCard with availableResources += lockedResources and lockedResources = 0', () => {
+      it(`should dispatch updateDomainCard
+          with availableResources += lockedResources
+          and lockedResources = 0`, () => {
         actions = hot('-a-|', {
           a: DomainsCardsActions.unlockResources({ id: 'AAA' }),
         });
@@ -425,7 +435,8 @@ describe('DomainsCardsEffects', () => {
         injector.get(MockStore);
       });
 
-      it('should dispatch setDomainsCardsError with too many locked resources error', () => {
+      it(`should dispatch setDomainsCardsError
+          with too many locked resources error`, () => {
         actions = hot('-a-|', {
           a: DomainsCardsActions.unlockResources({ id: 'AAA' }),
         });
@@ -599,7 +610,8 @@ describe('DomainsCardsEffects', () => {
         injector.get(MockStore);
       });
 
-      it('should dispatch setDomainsCardsError with too many available resources error', () => {
+      it(`should dispatch setDomainsCardsError
+          with too many available resources error`, () => {
         actions = hot('-a-|', {
           a: DomainsCardsActions.increaseAvailableResources({ id: 'AAA' }),
         });
