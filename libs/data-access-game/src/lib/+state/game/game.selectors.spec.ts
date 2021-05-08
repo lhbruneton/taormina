@@ -1,3 +1,4 @@
+/* eslint-disable no-magic-numbers */
 import { DomainColor, EventValue, GamePhase } from '@taormina/shared-models';
 
 import { GamePartialState, initialGameState } from './game.reducer';
@@ -17,32 +18,40 @@ describe('Game Selectors', () => {
     };
   });
 
-  describe('Game Selectors', () => {
-    it('getGameProductionDie() should return the production die value', () => {
+  describe('getGameProductionDie()', () => {
+    it('should return the production die value', () => {
       const result = GameSelectors.getGameProductionDie(state);
 
       expect(result).toBe(1);
     });
+  });
 
-    it('getGameNextProductionDie() should return the next production die value', () => {
+  describe('getGameNextProductionDie()', () => {
+    it('should return the next production die value', () => {
       const result = GameSelectors.getGameNextProductionDie(state);
 
       expect(result).toBe(6);
     });
+  });
 
-    it('getGameEventDie() should return the event die value', () => {
+  describe('getGameEventDie()', () => {
+    it('should return the event die value', () => {
       const result = GameSelectors.getGameEventDie(state);
 
       expect(result).toBe(EventValue.Event);
     });
+  });
 
-    it('getGamePhase() should return the current phase', () => {
+  describe('getGamePhase()', () => {
+    it('should return the current phase', () => {
       const result = GameSelectors.getGamePhase(state);
 
       expect(result).toBe(GamePhase.InitialThrow);
     });
+  });
 
-    it('getGamePlayer() should return the current player', () => {
+  describe('getGamePlayer()', () => {
+    it('should return the current player', () => {
       const result = GameSelectors.getGamePlayer(state);
 
       expect(result).toBe(DomainColor.Red);

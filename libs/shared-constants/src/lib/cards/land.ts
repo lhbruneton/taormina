@@ -18,6 +18,7 @@ export const ID_FIELD_BLUE = 'FIELD_BLUE';
 export const ID_STONE_QUARRY_BLUE = 'STONE_QUARRY_BLUE';
 export const ID_PASTURE_BLUE = 'PASTURE_BLUE';
 
+/* eslint-disable no-magic-numbers */
 export const landCards = new Map<string, LandCard>([
   [
     ID_CLAY_PIT_RED,
@@ -90,3 +91,4 @@ export const landCards = new Map<string, LandCard>([
   ['LAND_11', createLandCard('LAND_11', LandType.Forest, 6)],
   ['LAND_12', createLandCard('LAND_12', LandType.Pasture, 6)],
 ]);
+/* eslint-enable no-magic-numbers */

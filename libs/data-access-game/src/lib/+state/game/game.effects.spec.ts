@@ -74,7 +74,9 @@ describe('GameEffects', () => {
         injector.get(MockStore);
       });
 
-      it('should dispatch setProductionDie with nextProductionDie value, and reset nextProductionDie', () => {
+      it(`should dispatch setProductionDie
+          with nextProductionDie value
+          and reset nextProductionDie`, () => {
         actions = hot('-a', { a: GameActions.throwProductionDie() });
 
         const expected = hot('-(ab)', {
@@ -103,7 +105,8 @@ describe('GameEffects', () => {
         injector.get(MockStore);
       });
 
-      it('should dispatch setProductionDie with random value, and reset nextProductionDie', () => {
+      it(`should dispatch setProductionDie
+          with random value, and reset nextProductionDie`, () => {
         actions = hot('-a', { a: GameActions.throwProductionDie() });
 
         const expected = hot('-(ab)', {

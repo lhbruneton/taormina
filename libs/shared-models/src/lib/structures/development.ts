@@ -9,7 +9,10 @@ export const DEVELOPMENT_CARD_INTERFACE_NAME = 'DevelopmentCard';
 
 export const AVAILABLE_DEVELOPMENT_SLOT = 'AvailableDevelopmentSlot';
 
-export type masteryPointsType = 'trade' | 'strength';
+export enum MasteryPointsType {
+  Trade = 'TRADE',
+  Strength = 'STRENGTH',
+}
 
 /**
  * Interface for the Development Cards

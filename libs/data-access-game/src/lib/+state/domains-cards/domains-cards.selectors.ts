@@ -12,7 +12,7 @@ import {
   LandCard,
   LandType,
   LAND_CARD_INTERFACE_NAME,
-  masteryPointsType,
+  MasteryPointsType,
   ResourceValue,
 } from '@taormina/shared-models';
 import { DomainsCardsEntity } from './domains-cards.models';
@@ -165,7 +165,7 @@ export const getDomainMaxRow = createSelector(
 
 export const getMasteryDomainForType = createSelector(
   getAllDomainsCards,
-  (entities: DomainsCardsEntity[], props: { type: masteryPointsType }) => {
+  (entities: DomainsCardsEntity[], props: { type: MasteryPointsType }) => {
     const redDomainCards = entities.filter(
       (pivot) => pivot.domainId === ID_DOMAIN_RED
     );
@@ -182,21 +182,20 @@ export const getMasteryDomainForType = createSelector(
 
 const getDevelopmentCardPointsForType = (
   developmentCard: DevelopmentCard,
-  type: masteryPointsType
+  type: MasteryPointsType
 ): number => {
   switch (type) {
-    case 'trade':
+    case MasteryPointsType.Trade:
       return developmentCard.tradePoints || 0;
-    case 'strength':
+    case MasteryPointsType.Strength:
       return developmentCard.strengthPoints || 0;
-    default:
-      return 0;
+    // no default
   }
 };
 
 const accPointsForType = (
   pivots: DomainsCardsEntity[],
-  type: masteryPointsType
+  type: MasteryPointsType
 ): number =>
   pivots
     .filter(
@@ -222,9 +221,10 @@ const fromPointsToMastery = (
   redPoints: number,
   bluePoints: number
 ): string | undefined => {
-  if (redPoints > bluePoints && redPoints > 2) {
+  const masteryThreshold = 2;
+  if (redPoints > bluePoints && redPoints > masteryThreshold) {
     return ID_DOMAIN_RED;
-  } else if (bluePoints > redPoints && bluePoints > 2) {
+  } else if (bluePoints > redPoints && bluePoints > masteryThreshold) {
     return ID_DOMAIN_BLUE;
   } else {
     return undefined;
@@ -293,8 +293,9 @@ const isProductionBuildingForResourceType = (
       return cardId === 'BUILDING_4'; // Foundry
     case LandType.Pasture:
       return cardId === 'BUILDING_5'; // Weaving
-    default:
+    case LandType.GoldMine:
       return false;
+    // no default
   }
 };
 
@@ -319,7 +320,5 @@ const getCardSideNeighbors = (
     (domainCard) =>
       domainCard.domainId === pivot.domainId &&
       (domainCard.col === pivot.col - 1 || domainCard.col === pivot.col + 1) &&
-      (pivot.row < 0
-        ? domainCard.row === -1 || domainCard.row === -2
-        : domainCard.row === 1 || domainCard.row === 2)
+      (pivot.row < 0 ? domainCard.row < 0 : domainCard.row >= 0)
   );

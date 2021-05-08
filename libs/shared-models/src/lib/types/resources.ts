@@ -16,4 +16,6 @@ export enum LandType {
   Pasture = 'PASTURE',
 }
 
-export type ResourceCount = 0 | 1 | 2 | 3;
+// eslint-disable-next-line no-magic-numbers
+export const RESOURCE_COUNTS = [0, 1, 2, 3] as const;
+export type ResourceCount = typeof RESOURCE_COUNTS[number];

@@ -18,6 +18,7 @@ export interface StockPilesCardsPartialState {
   readonly [STOCK_PILES_CARDS_FEATURE_KEY]: StockPilesCardsState;
 }
 
+// eslint-disable-next-line max-len
 export const stockPilesCardsAdapter: EntityAdapter<StockPilesCardsEntity> = createEntityAdapter<StockPilesCardsEntity>();
 
 export const initialStockPilesCardsState: StockPilesCardsState = stockPilesCardsAdapter.getInitialState(

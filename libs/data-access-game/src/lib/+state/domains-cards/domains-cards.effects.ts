@@ -3,7 +3,7 @@ import { Actions, createEffect, ofType } from '@ngrx/effects';
 import { select, Store } from '@ngrx/store';
 import { fetch } from '@nrwl/angular';
 import { ID_DOMAIN_BLUE, ID_DOMAIN_RED } from '@taormina/shared-constants';
-import { ResourceCount } from '@taormina/shared-models';
+import { ResourceCount, RESOURCE_COUNTS } from '@taormina/shared-models';
 import { forkJoin, Observable, of } from 'rxjs';
 import {
   catchError,
@@ -81,48 +81,93 @@ export class DomainsCardsEffects {
         });
       }),
       map(({ increaseOne, increaseTwo }) => {
-        const updatesOne = increaseOne
-          // Update land cards with available resources below max by 1
-          .filter((pivot) => (pivot.availableResources as ResourceCount) < 3)
-          .map((pivot) => {
-            return {
-              id: pivot.id,
-              changes: {
-                // prettier-ignore
-                availableResources: (pivot.availableResources + 1) as ResourceCount,
-              },
-            };
-          });
-        const updatesTwoOne = increaseTwo
-          // Update land cards with available resources at (max - 1) by only 1
-          .filter((pivot) => (pivot.availableResources as ResourceCount) == 2)
-          .map((pivot) => {
-            return {
-              id: pivot.id,
-              changes: {
-                // prettier-ignore
-                availableResources: (pivot.availableResources + 1) as ResourceCount,
-              },
-            };
-          });
-        const updatesTwoTwo = increaseTwo
-          // Update land cards with available resources below (max - 1) by 2
-          .filter((pivot) => (pivot.availableResources as ResourceCount) < 2)
-          .map((pivot) => {
-            return {
-              id: pivot.id,
-              changes: {
-                // prettier-ignore
-                availableResources: (pivot.availableResources + 2) as ResourceCount,
-              },
-            };
-          });
+        const updatesOneOne = this.updatesByOneWhenOneOK(increaseOne);
+        const updatesTwoOne = this.updatesByOneWhenTwoNOK(increaseTwo);
+        const updatesTwoTwo = this.updatesByTwoWhenTwoOK(increaseTwo);
         return DomainsCardsActions.updateDomainsCards({
-          updates: [...updatesOne, ...updatesTwoOne, ...updatesTwoTwo],
+          updates: [...updatesOneOne, ...updatesTwoOne, ...updatesTwoTwo],
         });
       })
     )
   );
+
+  updatesByOneWhenOneOK = (
+    domainsCards: DomainsCardsEntity[]
+  ): {
+    id: string;
+    changes: {
+      availableResources: ResourceCount;
+    };
+  }[] => {
+    const resourceIncrement = 1;
+    return domainsCards
+      .filter(
+        (pivot) =>
+          (pivot.availableResources as ResourceCount) <
+          Math.max(...RESOURCE_COUNTS)
+      )
+      .map((pivot) => {
+        return {
+          id: pivot.id,
+          changes: {
+            availableResources: (pivot.availableResources +
+              resourceIncrement) as ResourceCount,
+          },
+        };
+      });
+  };
+
+  updatesByOneWhenTwoNOK = (
+    domainsCards: DomainsCardsEntity[]
+  ): {
+    id: string;
+    changes: {
+      availableResources: ResourceCount;
+    };
+  }[] => {
+    const resourceIncrement = 1;
+    return domainsCards
+      .filter(
+        (pivot) =>
+          (pivot.availableResources as ResourceCount) ===
+          Math.max(...RESOURCE_COUNTS) - 1
+      )
+      .map((pivot) => {
+        return {
+          id: pivot.id,
+          changes: {
+            availableResources: (pivot.availableResources +
+              resourceIncrement) as ResourceCount,
+          },
+        };
+      });
+  };
+
+  updatesByTwoWhenTwoOK = (
+    domainsCards: DomainsCardsEntity[]
+  ): {
+    id: string;
+    changes: {
+      availableResources: ResourceCount;
+    };
+  }[] => {
+    const resourceDoubleIncrement = 2;
+    return domainsCards
+      .filter(
+        (pivot) =>
+          (pivot.availableResources as ResourceCount) <
+          Math.max(...RESOURCE_COUNTS) - 1
+      )
+      .map((pivot) => {
+        return {
+          id: pivot.id,
+          changes: {
+            availableResources: (pivot.availableResources +
+              resourceDoubleIncrement) as ResourceCount,
+          },
+        };
+      });
+  };
 
   lockResource$ = createEffect(() =>
     this.actions$.pipe(
@@ -130,14 +175,16 @@ export class DomainsCardsEffects {
       concatMap((action) =>
         this.takeOneDefinedPivotOrThrow(action.id).pipe(
           map((pivot) => {
-            if (pivot.availableResources === 0)
+            if (pivot.availableResources === 0) {
               throw new Error(
                 `Can't lock unavailable resource for pivot ${pivot.id}.`
               );
-            if (pivot.lockedResources === 3)
+            }
+            if (pivot.lockedResources === Math.max(...RESOURCE_COUNTS)) {
               throw new Error(
                 `Can't lock more resources for pivot ${pivot.id}.`
               );
+            }
 
             const update = {
               id: pivot.id,
@@ -166,10 +213,14 @@ export class DomainsCardsEffects {
       concatMap((action) =>
         this.takeOneDefinedPivotOrThrow(action.id).pipe(
           map((pivot) => {
-            if (pivot.availableResources + pivot.lockedResources > 3)
+            if (
+              pivot.availableResources + pivot.lockedResources >
+              Math.max(...RESOURCE_COUNTS)
+            ) {
               throw new Error(
                 `Shouldn't have been able to lock so many resources for pivot ${pivot.id}.`
               );
+            }
 
             const update = {
               id: pivot.id,
@@ -220,10 +271,11 @@ export class DomainsCardsEffects {
       concatMap((action) =>
         this.takeOneDefinedPivotOrThrow(action.id).pipe(
           map((pivot) => {
-            if (pivot.availableResources === 3)
+            if (pivot.availableResources === Math.max(...RESOURCE_COUNTS)) {
               throw new Error(
                 `Can't increase available resources beyond maximum for pivot ${pivot.id}.`
               );
+            }
 
             const update = {
               id: pivot.id,
@@ -307,11 +359,12 @@ export class DomainsCardsEffects {
           redGoldMinesAndPastures,
           blueGoldMinesAndPastures,
         ]) => {
+          const thievesResourceCountThreshold = 7;
           let pivots: DomainsCardsEntity[] = [];
-          if (redResourceCount > 7) {
+          if (redResourceCount > thievesResourceCountThreshold) {
             pivots = [...pivots, ...redGoldMinesAndPastures];
           }
-          if (blueResourceCount > 7) {
+          if (blueResourceCount > thievesResourceCountThreshold) {
             pivots = [...pivots, ...blueGoldMinesAndPastures];
           }
           return pivots;
@@ -344,8 +397,9 @@ export class DomainsCardsEffects {
         id,
       }),
       map((pivot) => {
-        if (pivot === undefined)
+        if (pivot === undefined) {
           throw new Error(`Couldn't find land card pivot for id.`);
+        }
         return pivot;
       }),
       take(1)

@@ -1,3 +1,4 @@
+/* eslint-disable no-magic-numbers */
 import {
   ID_CLAY_PIT_BLUE,
   ID_CLAY_PIT_RED,
@@ -11,6 +12,7 @@ import {
   AGGLOMERATION_CARD_INTERFACE_NAME,
   DEVELOPMENT_CARD_INTERFACE_NAME,
   LAND_CARD_INTERFACE_NAME,
+  MasteryPointsType,
 } from '@taormina/shared-models';
 
 import {
@@ -35,76 +37,84 @@ describe('DomainsCards Selectors', () => {
 
   let state: DomainsCardsPartialState;
 
-  describe('DomainsCards Selectors', () => {
-    beforeEach(() => {
-      state = {
-        domainsCards: domainsCardsAdapter.setAll(
-          [
-            createDomainsCardsEntity(
-              'PRODUCT-AAA',
-              ID_DOMAIN_RED,
-              AGGLOMERATION_CARD_INTERFACE_NAME,
-              'ROAD_1',
-              -1,
-              2
-            ),
-            createDomainsCardsEntity(
-              'PRODUCT-BBB',
-              ID_DOMAIN_BLUE,
-              LAND_CARD_INTERFACE_NAME,
-              'LAND_1',
-              0,
-              -2,
-              0,
-              1
-            ),
-            createDomainsCardsEntity(
-              'PRODUCT-CCC',
-              ID_DOMAIN_BLUE,
-              LAND_CARD_INTERFACE_NAME,
-              'LAND_3',
-              1,
-              0
-            ),
-          ],
-          {
-            ...initialDomainsCardsState,
-            selectedId: 'PRODUCT-BBB',
-            errorMsg: ERROR_MSG,
-            loaded: true,
-          }
-        ),
-      };
-    });
+  beforeEach(() => {
+    state = {
+      domainsCards: domainsCardsAdapter.setAll(
+        [
+          createDomainsCardsEntity(
+            'PRODUCT-AAA',
+            ID_DOMAIN_RED,
+            AGGLOMERATION_CARD_INTERFACE_NAME,
+            'ROAD_1',
+            -1,
+            2
+          ),
+          createDomainsCardsEntity(
+            'PRODUCT-BBB',
+            ID_DOMAIN_BLUE,
+            LAND_CARD_INTERFACE_NAME,
+            'LAND_1',
+            0,
+            -2,
+            0,
+            1
+          ),
+          createDomainsCardsEntity(
+            'PRODUCT-CCC',
+            ID_DOMAIN_BLUE,
+            LAND_CARD_INTERFACE_NAME,
+            'LAND_3',
+            1,
+            0
+          ),
+        ],
+        {
+          ...initialDomainsCardsState,
+          selectedId: 'PRODUCT-BBB',
+          errorMsg: ERROR_MSG,
+          loaded: true,
+        }
+      ),
+    };
+  });
 
-    it('getAllDomainsCards() should return the list of DomainsCards', () => {
+  describe('getAllDomainsCards()', () => {
+    it('should return the list of DomainsCards', () => {
       const results = DomainsCardsSelectors.getAllDomainsCards(state);
       const selId = getDomainsCardsId(results[1]);
 
       expect(results.length).toBe(3);
       expect(selId).toBe('PRODUCT-BBB');
     });
+  });
 
-    it('getDomainsCardsSelected() should return the selected Entity', () => {
+  describe('getDomainsCardsSelected()', () => {
+    it('should return the selected Entity', () => {
       const result = DomainsCardsSelectors.getDomainsCardsSelected(state);
       const selId = getDomainsCardsId(result);
 
       expect(selId).toBe('PRODUCT-BBB');
     });
+  });
 
-    it("getDomainsCardsLoaded() should return the current 'loaded' status", () => {
+  describe('getDomainsCardsLoaded()', () => {
+    it("should return the current 'loaded' status", () => {
       const result = DomainsCardsSelectors.getDomainsCardsLoaded(state);
 
       expect(result).toBe(true);
     });
+  });
 
-    it("getDomainsCardsError() should return the current 'error' state", () => {
+  describe('getDomainsCardsError()', () => {
+    it("should return the current 'error' state", () => {
       const result = DomainsCardsSelectors.getDomainsCardsError(state);
 
       expect(result).toBe(ERROR_MSG);
     });
+  });
 
-    it('getLandCardPivotById({ id }) should return the pivot for the id', () => {
+  describe('getLandCardPivotById({ id })', () => {
+    it('should return the pivot for the id', () => {
       const result = DomainsCardsSelectors.getLandCardPivotById(state, {
         id: 'PRODUCT-BBB',
       });
@@ -112,8 +122,10 @@ describe('DomainsCards Selectors', () => {
 
       expect(selId).toBe('PRODUCT-BBB');
     });
+  });
 
-    it('getLandCardPivotWithLockedResources() should return the pivot for the id', () => {
+  describe('getLandCardPivotWithLockedResources()', () => {
+    it('should return the pivot for the id', () => {
       const results = DomainsCardsSelectors.getLandCardPivotWithLockedResources(
         state
       );
@@ -121,32 +133,40 @@ describe('DomainsCards Selectors', () => {
 
       expect(selId).toBe('PRODUCT-BBB');
     });
+  });
 
-    it('getDomainMinCol({ domainId }) should return the lowest column number for the domain', () => {
+  describe('getDomainMinCol({ domainId })', () => {
+    it('should return the lowest column number for the domain', () => {
       const result = DomainsCardsSelectors.getDomainMinCol(state, {
         domainId: ID_DOMAIN_BLUE,
       });
 
       expect(result).toBe(0);
     });
+  });
 
-    it('getDomainMaxCol({ domainId }) should return the highest column number for the domain', () => {
+  describe('getDomainMaxCol({ domainId })', () => {
+    it('should return the highest column number for the domain', () => {
       const result = DomainsCardsSelectors.getDomainMaxCol(state, {
         domainId: ID_DOMAIN_BLUE,
       });
 
       expect(result).toBe(1);
     });
+  });
 
-    it('getDomainMinRow({ domainId }) should return the lowest row number for the domain', () => {
+  describe('getDomainMinRow({ domainId })', () => {
+    it('should return the lowest row number for the domain', () => {
       const result = DomainsCardsSelectors.getDomainMinRow(state, {
         domainId: ID_DOMAIN_BLUE,
       });
 
       expect(result).toBe(-2);
     });
+  });
 
-    it('getDomainMaxRow({ domainId }) should return the highest row number for the domain', () => {
+  describe('getDomainMaxRow({ domainId })', () => {
+    it('should return the highest row number for the domain', () => {
       const result = DomainsCardsSelectors.getDomainMaxRow(state, {
         domainId: ID_DOMAIN_BLUE,
       });
@@ -258,7 +278,7 @@ describe('DomainsCards Selectors', () => {
 
         it('should return undefined', () => {
           const result = DomainsCardsSelectors.getMasteryDomainForType(state, {
-            type: 'trade',
+            type: MasteryPointsType.Trade,
           });
           expect(result).toBe(undefined);
         });
@@ -343,7 +363,7 @@ describe('DomainsCards Selectors', () => {
 
         it('should return undefined', () => {
           const result = DomainsCardsSelectors.getMasteryDomainForType(state, {
-            type: 'trade',
+            type: MasteryPointsType.Trade,
           });
           expect(result).toBe(undefined);
         });
@@ -437,7 +457,7 @@ describe('DomainsCards Selectors', () => {
 
         it('should return red', () => {
           const result = DomainsCardsSelectors.getMasteryDomainForType(state, {
-            type: 'trade',
+            type: MasteryPointsType.Trade,
           });
           expect(result).toBe(ID_DOMAIN_RED);
         });
@@ -530,7 +550,7 @@ describe('DomainsCards Selectors', () => {
 
         it('should return blue', () => {
           const result = DomainsCardsSelectors.getMasteryDomainForType(state, {
-            type: 'trade',
+            type: MasteryPointsType.Trade,
           });
           expect(result).toBe(ID_DOMAIN_BLUE);
         });
@@ -569,7 +589,7 @@ describe('DomainsCards Selectors', () => {
 
         it('should return undefined', () => {
           const result = DomainsCardsSelectors.getMasteryDomainForType(state, {
-            type: 'strength',
+            type: MasteryPointsType.Strength,
           });
           expect(result).toBe(undefined);
         });
@@ -622,7 +642,7 @@ describe('DomainsCards Selectors', () => {
 
         it('should return undefined', () => {
           const result = DomainsCardsSelectors.getMasteryDomainForType(state, {
-            type: 'strength',
+            type: MasteryPointsType.Strength,
           });
           expect(result).toBe(undefined);
         });
@@ -683,7 +703,7 @@ describe('DomainsCards Selectors', () => {
 
         it('should return red', () => {
           const result = DomainsCardsSelectors.getMasteryDomainForType(state, {
-            type: 'strength',
+            type: MasteryPointsType.Strength,
           });
           expect(result).toBe(ID_DOMAIN_RED);
         });
@@ -744,7 +764,7 @@ describe('DomainsCards Selectors', () => {
 
         it('should return blue', () => {
           const result = DomainsCardsSelectors.getMasteryDomainForType(state, {
-            type: 'strength',
+            type: MasteryPointsType.Strength,
           });
           expect(result).toBe(ID_DOMAIN_BLUE);
         });

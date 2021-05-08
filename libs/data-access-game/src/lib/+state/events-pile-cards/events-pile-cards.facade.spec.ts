@@ -1,3 +1,4 @@
+/* eslint-disable no-magic-numbers */
 import { NgModule } from '@angular/core';
 import { TestBed } from '@angular/core/testing';
 import { EffectsModule } from '@ngrx/effects';

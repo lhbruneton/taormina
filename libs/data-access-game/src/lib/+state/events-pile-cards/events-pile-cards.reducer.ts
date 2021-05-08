@@ -18,6 +18,7 @@ export interface EventsPileCardsPartialState {
   readonly [EVENTS_PILE_CARDS_FEATURE_KEY]: EventsPileCardsState;
 }
 
+// eslint-disable-next-line max-len
 export const eventsPileCardsAdapter: EntityAdapter<EventsPileCardsEntity> = createEntityAdapter<EventsPileCardsEntity>();
 
 export const initialEventsPileCardsState: EventsPileCardsState = eventsPileCardsAdapter.getInitialState(

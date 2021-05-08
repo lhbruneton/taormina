@@ -18,6 +18,7 @@ export interface DiscardPileCardsPartialState {
   readonly [DISCARD_PILE_CARDS_FEATURE_KEY]: DiscardPileCardsState;
 }
 
+// eslint-disable-next-line max-len
 export const discardPileCardsAdapter: EntityAdapter<DiscardPileCardsEntity> = createEntityAdapter<DiscardPileCardsEntity>();
 
 export const initialDiscardPileCardsState: DiscardPileCardsState = discardPileCardsAdapter.getInitialState(

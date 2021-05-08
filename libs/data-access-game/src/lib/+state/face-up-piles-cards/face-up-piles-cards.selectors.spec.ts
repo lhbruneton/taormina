@@ -1,3 +1,4 @@
+/* eslint-disable no-magic-numbers */
 import {
   createFaceUpPilesCardsEntity,
   FaceUpPilesCardsEntity,
@@ -39,35 +40,43 @@ describe('FaceUpPilesCards Selectors', () => {
     };
   });
 
-  describe('FaceUpPilesCards Selectors', () => {
-    it('getAllFaceUpPilesCards() should return the list of FaceUpPilesCards', () => {
+  describe('getAllFaceUpPilesCards()', () => {
+    it('should return the list of FaceUpPilesCards', () => {
       const results = FaceUpPilesCardsSelectors.getAllFaceUpPilesCards(state);
       const selId = getFaceUpPilesCardsId(results[1]);
 
       expect(results.length).toBe(4);
       expect(selId).toBe('PRODUCT-BBB');
     });
+  });
 
-    it('getFaceUpSelected() should return the selected Entity', () => {
+  describe('getFaceUpSelected()', () => {
+    it('should return the selected Entity', () => {
       const result = FaceUpPilesCardsSelectors.getFaceUpSelected(state);
       const selId = getFaceUpPilesCardsId(result);
 
       expect(selId).toBe('PRODUCT-BBB');
     });
+  });
 
-    it("getFaceUpPilesCardsLoaded() should return the current 'loaded' status", () => {
+  describe('getFaceUpPilesCardsLoaded()', () => {
+    it("should return the current 'loaded' status", () => {
       const result = FaceUpPilesCardsSelectors.getFaceUpPilesCardsLoaded(state);
 
       expect(result).toBe(true);
     });
+  });
 
-    it("getFaceUpPilesCardsError() should return the current 'error' state", () => {
+  describe('getFaceUpPilesCardsError()', () => {
+    it("should return the current 'error' state", () => {
       const result = FaceUpPilesCardsSelectors.getFaceUpPilesCardsError(state);
 
       expect(result).toBe(ERROR_MSG);
     });
+  });
 
-    it('getFaceUpPileCardEntityByPivot({ pileId, cardId }) should return the pivot for the pileId and cardId', () => {
+  describe('getFaceUpPileCardEntityByPivot({ pileId, cardId })', () => {
+    it('should return the pivot for the pileId and cardId', () => {
       const result = FaceUpPilesCardsSelectors.getFaceUpPileCardEntityByPivot(
         state,
         {
@@ -79,8 +88,10 @@ describe('FaceUpPilesCards Selectors', () => {
 
       expect(selId).toBe('PRODUCT-BBB');
     });
+  });
 
-    it('getCardPivotsForPile({ pileId }) should return the pivots for the pileId', () => {
+  describe('getCardPivotsForPile({ pileId })', () => {
+    it('should return the pivots for the pileId', () => {
       const results = FaceUpPilesCardsSelectors.getCardPivotsForPile(state, {
         pileId: 'B',
       });
@@ -89,8 +100,10 @@ describe('FaceUpPilesCards Selectors', () => {
       expect(results.length).toBe(2);
       expect(selId).toBe('PRODUCT-BBD');
     });
+  });
 
-    it('getFirstCardPivotForPile({ pileId }) should return the first pivot for the pileId', () => {
+  describe('getFirstCardPivotForPile({ pileId })', () => {
+    it('should return the first pivot for the pileId', () => {
       const result = FaceUpPilesCardsSelectors.getFirstCardPivotForPile(state, {
         pileId: 'B',
       });

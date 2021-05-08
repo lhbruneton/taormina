@@ -1,3 +1,4 @@
+/* eslint-disable no-magic-numbers */
 import {
   createLandsPileCardsEntity,
   LandsPileCardsEntity,
@@ -38,29 +39,35 @@ describe('LandsPileCards Selectors', () => {
     };
   });
 
-  describe('LandsPileCards Selectors', () => {
-    it('getAllLandsPileCards() should return the list of LandsPileCards', () => {
+  describe('getAllLandsPileCards()', () => {
+    it('should return the list of LandsPileCards', () => {
       const results = LandsPileCardsSelectors.getAllLandsPileCards(state);
       const selId = getLandsPileCardsId(results[1]);
 
       expect(results.length).toBe(3);
       expect(selId).toBe('PRODUCT-BBB');
     });
+  });
 
-    it('getLandsPileCardsSelected() should return the selected Entity', () => {
+  describe('getLandsPileCardsSelected()', () => {
+    it('should return the selected Entity', () => {
       const result = LandsPileCardsSelectors.getLandsPileCardsSelected(state);
       const selId = getLandsPileCardsId(result);
 
       expect(selId).toBe('PRODUCT-BBB');
     });
+  });
 
-    it("getLandsPileCardsLoaded() should return the current 'loaded' status", () => {
+  describe('getLandsPileCardsLoaded()', () => {
+    it("should return the current 'loaded' status", () => {
       const result = LandsPileCardsSelectors.getLandsPileCardsLoaded(state);
 
       expect(result).toBe(true);
     });
+  });
 
-    it("getLandsPileCardsError() should return the current 'error' state", () => {
+  describe('getLandsPileCardsError()', () => {
+    it("should return the current 'error' state", () => {
       const result = LandsPileCardsSelectors.getLandsPileCardsError(state);
 
       expect(result).toBe(ERROR_MSG);

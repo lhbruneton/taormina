@@ -51,7 +51,9 @@ import {
   Hand,
   LandCard,
   LAND_CARD_INTERFACE_NAME,
+  MasteryPointsType,
   ResourceValue,
+  RESOURCE_VALUES,
 } from '@taormina/shared-models';
 import { combineLatest, Observable } from 'rxjs';
 import { map } from 'rxjs/operators';
@@ -73,7 +75,7 @@ export class AppComponent {
   AVAILABLE_DEVELOPMENT_SLOT = AVAILABLE_DEVELOPMENT_SLOT;
   AVAILABLE_LAND_SLOT = AVAILABLE_LAND_SLOT;
 
-  resourceValues: ResourceValue[] = [1, 2, 3, 4, 5, 6];
+  RESOURCE_VALUES = RESOURCE_VALUES;
 
   constructor(
     private game: GameFacade,
@@ -151,13 +153,13 @@ export class AppComponent {
 
   getTradeMastery(domainId: string): Observable<boolean> {
     return this.domainsCards
-      .getMasteryDomainForType('trade')
+      .getMasteryDomainForType(MasteryPointsType.Trade)
       .pipe(map((masteryDomainId) => domainId === masteryDomainId));
   }
 
   getStrengthMastery(domainId: string): Observable<boolean> {
     return this.domainsCards
-      .getMasteryDomainForType('strength')
+      .getMasteryDomainForType(MasteryPointsType.Strength)
       .pipe(map((masteryDomainId) => domainId === masteryDomainId));
   }
 
@@ -305,7 +307,8 @@ export class AppComponent {
   }
 
   drawInitialRedHand(pileId: string): void {
-    this.gameRules.drawFromStockToHand(pileId, 3, ID_HAND_RED);
+    const initialHandCount = 3;
+    this.gameRules.drawFromStockToHand(pileId, initialHandCount, ID_HAND_RED);
   }
 
   drawFirstCardRedHandAvailable(): Observable<boolean> {
@@ -329,7 +332,8 @@ export class AppComponent {
   }
 
   drawInitialBlueHand(pileId: string): void {
-    this.gameRules.drawFromStockToHand(pileId, 3, ID_HAND_BLUE);
+    const initialHandCount = 3;
+    this.gameRules.drawFromStockToHand(pileId, initialHandCount, ID_HAND_BLUE);
   }
 
   drawFirstCardBlueHandAvailable(): Observable<boolean> {

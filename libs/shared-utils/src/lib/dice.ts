@@ -7,6 +7,7 @@ function randomDiceValue(): DiceValue {
   return Math.floor(Math.random() * (max - min + 1) + min) as DiceValue;
 }
 
+/* eslint-disable no-magic-numbers */
 function eventFromValue(value: DiceValue): EventValue {
   switch (value) {
     case 1:
@@ -20,8 +21,10 @@ function eventFromValue(value: DiceValue): EventValue {
       return EventValue.Celebration;
     case 6:
       return EventValue.Harvest;
+    // no default
   }
 }
+/* eslint-enable no-magic-numbers */
 
 export function getRandomProductionDieValue(): ResourceValue {
   return randomDiceValue();

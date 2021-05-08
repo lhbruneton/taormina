@@ -1,3 +1,4 @@
+/* eslint-disable no-magic-numbers */
 import {
   ACTION_CARD_INTERFACE_NAME,
   DEVELOPMENT_CARD_INTERFACE_NAME,
@@ -57,35 +58,43 @@ describe('StockPilesCards Selectors', () => {
     };
   });
 
-  describe('StockPilesCards Selectors', () => {
-    it('getAllStockPilesCards() should return the list of StockPilesCards', () => {
+  describe('getAllStockPilesCards()', () => {
+    it('should return the list of StockPilesCards', () => {
       const results = StockPilesCardsSelectors.getAllStockPilesCards(state);
       const selId = getStockPilesCardsId(results[1]);
 
       expect(results.length).toBe(3);
       expect(selId).toBe('PRODUCT-BBB');
     });
+  });
 
-    it('getStockPilesCardsSelected() should return the selected Entity', () => {
+  describe('getStockPilesCardsSelected()', () => {
+    it('should return the selected Entity', () => {
       const result = StockPilesCardsSelectors.getStockPilesCardsSelected(state);
       const selId = getStockPilesCardsId(result);
 
       expect(selId).toBe('PRODUCT-BBB');
     });
+  });
 
-    it("getStockPilesCardsLoaded() should return the current 'loaded' status", () => {
+  describe('getStockPilesCardsLoaded()', () => {
+    it("should return the current 'loaded' status", () => {
       const result = StockPilesCardsSelectors.getStockPilesCardsLoaded(state);
 
       expect(result).toBe(true);
     });
+  });
 
-    it("getStockPilesCardsError() should return the current 'error' state", () => {
+  describe('getStockPilesCardsError()', () => {
+    it("should return the current 'error' state", () => {
       const result = StockPilesCardsSelectors.getStockPilesCardsError(state);
 
       expect(result).toBe(ERROR_MSG);
     });
+  });
 
-    it('getStockPileCardEntityByPivot({ pileId, cardType, cardId }) should return the Entity for the ids', () => {
+  describe('getStockPileCardEntityByPivot({ pileId, cardType, cardId })', () => {
+    it('should return the Entity for the ids', () => {
       const pileId = 'D';
       const cardType = ACTION_CARD_INTERFACE_NAME;
       const cardId = 'F';

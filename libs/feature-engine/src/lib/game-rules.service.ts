@@ -19,6 +19,7 @@ import {
   EventValue,
   GamePhase,
   LAND_CARD_INTERFACE_NAME,
+  RowValue,
 } from '@taormina/shared-models';
 import { combineLatest, Subject } from 'rxjs';
 import { filter, map, take, takeUntil } from 'rxjs/operators';
@@ -115,10 +116,12 @@ export class GameRulesService {
       .pipe(
         take(1),
         map(([faceUpPileCard, domainCard]) => {
-          if (faceUpPileCard === undefined)
+          if (faceUpPileCard === undefined) {
             throw new Error(`Can't put card in slot if no card selected.`);
-          if (domainCard === undefined)
+          }
+          if (domainCard === undefined) {
             throw new Error(`Can't put card in slot if no slot selected.`);
+          }
 
           this.faceUpPilesCards.removeFaceUpPileCard(faceUpPileCard.id);
           this.domainsCards.putCardInSlot(
@@ -132,13 +135,13 @@ export class GameRulesService {
               domainCard.domainId,
               AVAILABLE_DEVELOPMENT_SLOT,
               domainCard.col,
-              -2
+              RowValue.Lower
             );
             this.domainsCards.createAvailableDomainCard(
               domainCard.domainId,
               AVAILABLE_DEVELOPMENT_SLOT,
               domainCard.col,
-              2
+              RowValue.Upper
             );
           } else {
             const availableCol =
@@ -147,20 +150,20 @@ export class GameRulesService {
               domainCard.domainId,
               AVAILABLE_AGGLOMERATION_SLOT,
               availableCol,
-              0
+              RowValue.Middle
             );
             if (faceUpPileCard.pileId === ID_FACE_UP_HAMLET) {
               this.domainsCards.createAvailableDomainCard(
                 domainCard.domainId,
                 AVAILABLE_LAND_SLOT,
                 availableCol,
-                -1
+                RowValue.Low
               );
               this.domainsCards.createAvailableDomainCard(
                 domainCard.domainId,
                 AVAILABLE_LAND_SLOT,
                 availableCol,
-                1
+                RowValue.Up
               );
             }
           }
@@ -181,10 +184,12 @@ export class GameRulesService {
       .pipe(
         take(1),
         map(([handCard, domainCard]) => {
-          if (handCard === undefined)
+          if (handCard === undefined) {
             throw new Error(`Can't put card in slot if no card selected.`);
-          if (domainCard === undefined)
+          }
+          if (domainCard === undefined) {
             throw new Error(`Can't put card in slot if no slot selected.`);
+          }
 
           this.handsCards.removeHandCard(handCard.id);
           this.domainsCards.putCardInSlot(
@@ -206,10 +211,12 @@ export class GameRulesService {
       .pipe(
         take(1),
         map(([landsPileCard, domainCard]) => {
-          if (landsPileCard === undefined)
+          if (landsPileCard === undefined) {
             throw new Error(`Can't put card in slot if no card selected.`);
-          if (domainCard === undefined)
+          }
+          if (domainCard === undefined) {
             throw new Error(`Can't put card in slot if no slot selected.`);
+          }
 
           this.landsPileCards.removeLandsPileCard(landsPileCard.id);
           this.domainsCards.putCardInSlot(
