@@ -39,16 +39,18 @@ describe('DiscardPileCards Selectors', () => {
     };
   });
 
-  describe('DiscardPileCards Selectors', () => {
-    it('getAllDiscardPileCards() should return the list of DiscardPileCards', () => {
+  describe('getAllDiscardPileCards()', () => {
+    it('should return the list of DiscardPileCards', () => {
       const results = DiscardPileCardsSelectors.getAllDiscardPileCards(state);
       const selId = getDiscardPileCardsId(results[1]);
 
       expect(results.length).toBe(3);
       expect(selId).toBe('PRODUCT-BBB');
     });
+  });
 
-    it('getDiscardPileCardsSelected() should return the selected Entity', () => {
+  describe('getDiscardPileCardsSelected()', () => {
+    it('should return the selected Entity', () => {
       const result = DiscardPileCardsSelectors.getDiscardPileCardsSelected(
         state
       );
@@ -56,14 +58,18 @@ describe('DiscardPileCards Selectors', () => {
 
       expect(selId).toBe('PRODUCT-BBB');
     });
+  });
 
-    it("getDiscardPileCardsLoaded() should return the current 'loaded' status", () => {
+  describe('getDiscardPileCardsLoaded()', () => {
+    it("should return the current 'loaded' status", () => {
       const result = DiscardPileCardsSelectors.getDiscardPileCardsLoaded(state);
 
       expect(result).toBe(true);
     });
+  });
 
-    it("getDiscardPileCardsError() should return the current 'error' state", () => {
+  describe('getDiscardPileCardsError()', () => {
+    it("should return the current 'error' state", () => {
       const result = DiscardPileCardsSelectors.getDiscardPileCardsError(state);
 
       expect(result).toBe(ERROR_MSG);

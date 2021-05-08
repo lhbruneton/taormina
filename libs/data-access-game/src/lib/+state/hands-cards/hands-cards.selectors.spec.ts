@@ -55,29 +55,35 @@ describe('HandsCards Selectors', () => {
     };
   });
 
-  describe('HandsCards Selectors', () => {
-    it('getAllHandsCards() should return the list of HandsCards', () => {
+  describe('getAllHandsCards()', () => {
+    it('should return the list of HandsCards', () => {
       const results = HandsCardsSelectors.getAllHandsCards(state);
       const selId = getHandsCardsId(results[1]);
 
       expect(results.length).toBe(3);
       expect(selId).toBe('PRODUCT-BBB');
     });
+  });
 
-    it('getHandsCardsSelected() should return the selected Entity', () => {
+  describe('getHandsCardsSelected()', () => {
+    it('should return the selected Entity', () => {
       const result = HandsCardsSelectors.getHandsCardsSelected(state);
       const selId = getHandsCardsId(result);
 
       expect(selId).toBe('PRODUCT-BBB');
     });
+  });
 
-    it("getHandsCardsLoaded() should return the current 'loaded' status", () => {
+  describe('getHandsCardsLoaded()', () => {
+    it("should return the current 'loaded' status", () => {
       const result = HandsCardsSelectors.getHandsCardsLoaded(state);
 
       expect(result).toBe(true);
     });
+  });
 
-    it("getHandsCardsError() should return the current 'error' state", () => {
+  describe('getHandsCardsError()', () => {
+    it("should return the current 'error' state", () => {
       const result = HandsCardsSelectors.getHandsCardsError(state);
 
       expect(result).toBe(ERROR_MSG);
