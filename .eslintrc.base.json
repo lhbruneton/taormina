@@ -5,14 +5,31 @@
       "rules": {
         "@typescript-eslint/no-shadow": "error",
         "block-scoped-var": "error",
+        "comma-dangle": [
+          "error",
+          {
+            "arrays": "always-multiline",
+            "objects": "always-multiline",
+            "imports": "always-multiline",
+            "exports": "always-multiline",
+            "functions": "never"
+          }
+        ],
+        "comma-spacing": "error",
         "curly": ["error", "multi-line", "consistent"],
         "default-case": "error",
         "default-case-last": "error",
         "dot-location": ["error", "property"],
         "eqeqeq": "error",
+        "indent": ["error", 2, { "SwitchCase": 1 }],
+        "max-len": ["error", { "code": 120 }],
         "no-implicit-coercion": [
           "error",
-          { "boolean": true, "number": true, "string": true }
+          {
+            "boolean": true,
+            "number": true,
+            "string": true
+          }
         ],
         "no-magic-numbers": ["error", { "ignore": [0, 1] }],
         "no-return-assign": ["error", "always"]
