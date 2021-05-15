@@ -60,5 +60,16 @@ export const eventsPileCardsReducer = createReducer(
   on(EventsPileCardsActions.setEventsPileCardsError, (state, { error }) => ({
     ...state,
     errorMsg: error,
-  }))
+  })),
+  on(EventsPileCardsActions.selectEventsPileCard, (state, { id }) => ({
+    ...state,
+    selectedId: id,
+  })),
+  on(EventsPileCardsActions.unselectEventsPileCard, (state) => ({
+    ...state,
+    selectedId: undefined,
+  })),
+  on(EventsPileCardsActions.removeEventsPileCard, (state, { id }) =>
+    eventsPileCardsAdapter.removeOne(id, state)
+  )
 );

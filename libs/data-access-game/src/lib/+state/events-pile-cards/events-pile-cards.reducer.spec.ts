@@ -87,4 +87,107 @@ describe('EventsPileCards Reducer', () => {
       expect(state).toEqual(newState);
     });
   });
+
+  describe('selectEventsPileCard', () => {
+    it('should set the selectedId', () => {
+      const newState: EventsPileCardsState = {
+        ids: [],
+        entities: {},
+        initialized: false,
+        loaded: true,
+        selectedId: 'PRODUCT-AAA',
+      };
+
+      const initialState: EventsPileCardsState = {
+        ids: [],
+        entities: {},
+        initialized: false,
+        loaded: true,
+      };
+
+      const action = EventsPileCardsActions.selectEventsPileCard({
+        id: 'PRODUCT-AAA',
+      });
+
+      const state: EventsPileCardsState = eventsPileCardsReducer(
+        initialState,
+        action
+      );
+
+      expect(state).toEqual(newState);
+    });
+  });
+
+  describe('unselectEventsPileCard', () => {
+    it('should unset the selectedId', () => {
+      const newState: EventsPileCardsState = {
+        ids: [],
+        entities: {},
+        initialized: false,
+        loaded: true,
+      };
+
+      const initialState: EventsPileCardsState = {
+        ids: [],
+        entities: {},
+        initialized: false,
+        loaded: true,
+        selectedId: 'PRODUCT-AAA',
+      };
+
+      const action = EventsPileCardsActions.unselectEventsPileCard();
+
+      const state: EventsPileCardsState = eventsPileCardsReducer(
+        initialState,
+        action
+      );
+
+      expect(state).toEqual(newState);
+    });
+  });
+
+  describe('removeEventsPileCard', () => {
+    it('should remove the pivot with the selectedId', () => {
+      const newState: EventsPileCardsState = {
+        ids: ['PRODUCT-zzz'],
+        entities: {
+          'PRODUCT-zzz': {
+            id: 'PRODUCT-zzz',
+            cardId: 'z',
+          },
+        },
+        initialized: false,
+        loaded: true,
+        selectedId: 'PRODUCT-AAA',
+      };
+
+      const initialState: EventsPileCardsState = {
+        ids: ['PRODUCT-AAA', 'PRODUCT-zzz'],
+        entities: {
+          'PRODUCT-AAA': {
+            id: 'PRODUCT-AAA',
+            cardId: 'A',
+          },
+          'PRODUCT-zzz': {
+            id: 'PRODUCT-zzz',
+            cardId: 'z',
+          },
+        },
+        initialized: false,
+        loaded: true,
+        selectedId: 'PRODUCT-AAA',
+      };
+
+      const action = EventsPileCardsActions.removeEventsPileCard({
+        id: 'PRODUCT-AAA',
+      });
+
+      const state: EventsPileCardsState = eventsPileCardsReducer(
+        initialState,
+        action
+      );
+
+      expect(state).toEqual(newState);
+    });
+  });
 });

@@ -36,4 +36,12 @@ export class EventsPileCardsFacade {
   initSavedGame(): void {
     this.store.dispatch(EventsPileCardsActions.initEventsPileCardsSavedGame());
   }
+
+  selectFirst(): void {
+    this.store.dispatch(EventsPileCardsActions.selectFirstEventsPileCard());
+  }
+
+  removeSelected(): void {
+    this.store.dispatch(EventsPileCardsActions.removeSelectedEventsPileCard());
+  }
 }
