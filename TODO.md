@@ -32,6 +32,10 @@
 | [libs/data-access-game/src/lib/+state/domains-cards/domains-cards.effects.ts](libs/data-access-game/src/lib/+state/domains-cards/domains-cards.effects.ts#L355) | 355 | @typescript-eslint/no-unused-vars
 | [libs/data-access-game/src/lib/+state/domains-cards/domains-cards.selectors.ts](libs/data-access-game/src/lib/+state/domains-cards/domains-cards.selectors.ts#L206) | 206 | @typescript-eslint/no-non-null-assertion
 | [libs/data-access-game/src/lib/+state/domains-cards/domains-cards.selectors.ts](libs/data-access-game/src/lib/+state/domains-cards/domains-cards.selectors.ts#L275) | 275 | @typescript-eslint/no-non-null-assertion
+| [libs/data-access-game/src/lib/+state/events-pile-cards/events-pile-cards.effects.ts](libs/data-access-game/src/lib/+state/events-pile-cards/events-pile-cards.effects.ts#L51) | 51 | @typescript-eslint/no-unused-vars
+| [libs/data-access-game/src/lib/+state/events-pile-cards/events-pile-cards.effects.ts](libs/data-access-game/src/lib/+state/events-pile-cards/events-pile-cards.effects.ts#L68) | 68 | @typescript-eslint/no-unused-vars
+| [libs/data-access-game/src/lib/+state/events-pile-cards/events-pile-cards.effects.ts](libs/data-access-game/src/lib/+state/events-pile-cards/events-pile-cards.effects.ts#L70) | 70 | @typescript-eslint/no-unused-vars
+| [libs/data-access-game/src/lib/+state/events-pile-cards/events-pile-cards.effects.ts](libs/data-access-game/src/lib/+state/events-pile-cards/events-pile-cards.effects.ts#L73) | 73 | @typescript-eslint/no-non-null-assertion
 | [libs/data-access-game/src/lib/+state/events-pile-cards/events-pile-cards.reducer.ts](libs/data-access-game/src/lib/+state/events-pile-cards/events-pile-cards.reducer.ts#L21) | 21 | max-len
 | [libs/data-access-game/src/lib/+state/face-up-piles-cards/face-up-piles-cards.reducer.ts](libs/data-access-game/src/lib/+state/face-up-piles-cards/face-up-piles-cards.reducer.ts#L21) | 21 | max-len
 | [libs/data-access-game/src/lib/+state/game/game.effects.ts](libs/data-access-game/src/lib/+state/game/game.effects.ts#L32) | 32 | @typescript-eslint/no-unused-vars
