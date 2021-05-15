@@ -45,9 +45,9 @@ describe('GameEffects', () => {
 
   describe('throwDice$', () => {
     it('should dispatch throwProductionDie and throwEventDie', () => {
-      actions = hot('-a', { a: GameActions.throwDice() });
+      actions = hot('-a----|', { a: GameActions.throwDice() });
 
-      const expected = hot('-(ab)', {
+      const expected = hot('-(ab)-|', {
         a: GameActions.throwEventDie(),
         b: GameActions.throwProductionDie(),
       });
@@ -77,9 +77,9 @@ describe('GameEffects', () => {
       it(`should dispatch setProductionDie
           with nextProductionDie value
           and reset nextProductionDie`, () => {
-        actions = hot('-a', { a: GameActions.throwProductionDie() });
+        actions = hot('-a----|', { a: GameActions.throwProductionDie() });
 
-        const expected = hot('-(ab)', {
+        const expected = hot('-(ab)-|', {
           a: GameActions.setProductionDie({ value: 3 }),
           b: GameActions.setNextProductionDie({ value: undefined }),
         });
@@ -107,9 +107,9 @@ describe('GameEffects', () => {
 
       it(`should dispatch setProductionDie
           with random value, and reset nextProductionDie`, () => {
-        actions = hot('-a', { a: GameActions.throwProductionDie() });
+        actions = hot('-a----|', { a: GameActions.throwProductionDie() });
 
-        const expected = hot('-(ab)', {
+        const expected = hot('-(ab)-|', {
           a: GameActions.setProductionDie({ value: 1 }),
           b: GameActions.setNextProductionDie({ value: undefined }),
         });
