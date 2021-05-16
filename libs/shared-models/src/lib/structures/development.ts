@@ -2,17 +2,18 @@ import { HasCost } from '../interfaces/cost';
 import { HasId } from '../interfaces/entity';
 import { HasName } from '../interfaces/name';
 import { HasVictoryPoints } from '../interfaces/victory';
-import { DevelopmentType } from '../types/development';
+import {
+  BuildingName,
+  DevelopmentType,
+  ShipName,
+  ShipNameKey,
+  WarriorName,
+} from '../types/development';
 import { ResourceType } from '../types/resources';
 
 export const DEVELOPMENT_CARD_INTERFACE_NAME = 'DevelopmentCard';
 
 export const AVAILABLE_DEVELOPMENT_SLOT = 'AvailableDevelopmentSlot';
-
-export enum MasteryPointsType {
-  Trade = 'TRADE',
-  Strength = 'STRENGTH',
-}
 
 /**
  * Interface for the Development Cards
@@ -36,7 +37,7 @@ export interface DevelopmentCard
   victoryPoints?: number;
 }
 
-export const createDevelopmentCard = (
+const createDevelopmentCard = (
   id: string,
   name: string,
   cost: Map<ResourceType, number>,
@@ -51,7 +52,7 @@ export const createDevelopmentCard = (
 
 export function createBuilding(
   id: string,
-  name: string,
+  name: BuildingName,
   cost: Map<ResourceType, number>,
   tradePoints?: number,
   givesKnowledge?: boolean,
@@ -71,10 +72,14 @@ export function createBuilding(
   return building;
 }
 
-export function createShip(id: string, type: ResourceType): DevelopmentCard {
+export function createShip(id: string, type: ShipNameKey): DevelopmentCard {
+  const name = ShipName.get(type);
+  if (name === undefined) {
+    throw new Error(`Can't find ship name for type ${type}`);
+  }
   const ship = createDevelopmentCard(
     id,
-    `Merchant ship - ${type}`,
+    name,
     new Map([
       [ResourceType.Wood, 1],
       [ResourceType.Wool, 1],
@@ -87,7 +92,7 @@ export function createShip(id: string, type: ResourceType): DevelopmentCard {
 
 export function createWarrior(
   id: string,
-  name: string,
+  name: WarriorName,
   cost: Map<ResourceType, number>,
   strengthPoints?: number,
   celebrationPoints?: number

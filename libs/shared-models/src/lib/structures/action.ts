@@ -1,6 +1,7 @@
 import { HasId } from '../interfaces/entity';
 import { HasName } from '../interfaces/name';
 import { HasRules } from '../interfaces/rules';
+import { ActionName } from '../types/action';
 
 export const ACTION_CARD_INTERFACE_NAME = 'ActionCard';
 
@@ -10,13 +11,13 @@ export const ACTION_CARD_INTERFACE_NAME = 'ActionCard';
 export interface ActionCard extends HasId, HasName, HasRules {
   interface: typeof ACTION_CARD_INTERFACE_NAME;
   id: string;
-  name: string;
+  name: ActionName;
   ruleIds: string[];
 }
 
 export const createActionCard = (
   id: string,
-  name: string,
+  name: ActionName,
   ruleIds: string[]
 ): ActionCard => ({ interface: ACTION_CARD_INTERFACE_NAME, id, name, ruleIds });
 
