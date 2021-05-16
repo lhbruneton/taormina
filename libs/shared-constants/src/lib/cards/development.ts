@@ -1,10 +1,12 @@
 import {
+  AnyType,
+  BuildingName,
   createBuilding,
   createShip,
   createWarrior,
   DevelopmentCard,
-  DevelopmentType,
   ResourceType,
+  WarriorName,
 } from '@taormina/shared-models';
 
 /* eslint-disable no-magic-numbers */
@@ -14,7 +16,7 @@ export const developmentCards = new Map<string, DevelopmentCard>([
     'BUILDING_1',
     createBuilding(
       'BUILDING_1',
-      'Brickyard',
+      BuildingName.Brickyard,
       new Map([
         [ResourceType.Clay, 1],
         [ResourceType.Stone, 1],
@@ -25,7 +27,7 @@ export const developmentCards = new Map<string, DevelopmentCard>([
     'BUILDING_2',
     createBuilding(
       'BUILDING_2',
-      'Sawmill',
+      BuildingName.Sawmill,
       new Map([
         [ResourceType.Wood, 1],
         [ResourceType.Stone, 1],
@@ -36,7 +38,7 @@ export const developmentCards = new Map<string, DevelopmentCard>([
     'BUILDING_3',
     createBuilding(
       'BUILDING_3',
-      'Mill',
+      BuildingName.Mill,
       new Map([
         [ResourceType.Wood, 1],
         [ResourceType.Wheat, 1],
@@ -47,7 +49,7 @@ export const developmentCards = new Map<string, DevelopmentCard>([
     'BUILDING_4',
     createBuilding(
       'BUILDING_4',
-      'Foundry',
+      BuildingName.Foundry,
       new Map([
         [ResourceType.Clay, 1],
         [ResourceType.Stone, 1],
@@ -58,7 +60,7 @@ export const developmentCards = new Map<string, DevelopmentCard>([
     'BUILDING_5',
     createBuilding(
       'BUILDING_5',
-      'Weaving',
+      BuildingName.Weaving,
       new Map([
         [ResourceType.Wood, 1],
         [ResourceType.Wool, 1],
@@ -69,7 +71,7 @@ export const developmentCards = new Map<string, DevelopmentCard>([
     'BUILDING_6',
     createBuilding(
       'BUILDING_6',
-      'Warehouse',
+      BuildingName.Warehouse,
       new Map([
         [ResourceType.Wood, 1],
         [ResourceType.Wool, 1],
@@ -80,7 +82,7 @@ export const developmentCards = new Map<string, DevelopmentCard>([
     'BUILDING_7',
     createBuilding(
       'BUILDING_7',
-      'Warehouse',
+      BuildingName.Warehouse,
       new Map([
         [ResourceType.Wood, 1],
         [ResourceType.Wool, 1],
@@ -91,7 +93,7 @@ export const developmentCards = new Map<string, DevelopmentCard>([
     'BUILDING_8',
     createBuilding(
       'BUILDING_8',
-      'Market',
+      BuildingName.Market,
       new Map([
         [ResourceType.Wheat, 1],
         [ResourceType.Wool, 1],
@@ -105,7 +107,7 @@ export const developmentCards = new Map<string, DevelopmentCard>([
     'BUILDING_9',
     createBuilding(
       'BUILDING_9',
-      'Market',
+      BuildingName.Market,
       new Map([
         [ResourceType.Wheat, 1],
         [ResourceType.Wool, 1],
@@ -119,7 +121,7 @@ export const developmentCards = new Map<string, DevelopmentCard>([
     'BUILDING_10',
     createBuilding(
       'BUILDING_10',
-      'Toll bridge',
+      BuildingName.TollBridge,
       new Map([
         [ResourceType.Wool, 1],
         [ResourceType.Clay, 1],
@@ -131,7 +133,7 @@ export const developmentCards = new Map<string, DevelopmentCard>([
     'BUILDING_11',
     createBuilding(
       'BUILDING_11',
-      'Monastery',
+      BuildingName.Monastery,
       new Map([
         [ResourceType.Clay, 1],
         [ResourceType.Wheat, 1],
@@ -146,7 +148,7 @@ export const developmentCards = new Map<string, DevelopmentCard>([
     'BUILDING_12',
     createBuilding(
       'BUILDING_12',
-      'Monastery',
+      BuildingName.Monastery,
       new Map([
         [ResourceType.Clay, 1],
         [ResourceType.Wheat, 1],
@@ -161,7 +163,7 @@ export const developmentCards = new Map<string, DevelopmentCard>([
     'BUILDING_13',
     createBuilding(
       'BUILDING_13',
-      'Community center',
+      BuildingName.CommunityCenter,
       new Map([
         [ResourceType.Clay, 1],
         [ResourceType.Wheat, 1],
@@ -175,7 +177,7 @@ export const developmentCards = new Map<string, DevelopmentCard>([
     'BUILDING_14',
     createBuilding(
       'BUILDING_14',
-      'Community center',
+      BuildingName.CommunityCenter,
       new Map([
         [ResourceType.Clay, 1],
         [ResourceType.Wheat, 1],
@@ -192,27 +194,13 @@ export const developmentCards = new Map<string, DevelopmentCard>([
   ['SHIP_4', createShip('SHIP_4', ResourceType.Wheat)],
   ['SHIP_5', createShip('SHIP_5', ResourceType.Stone)],
   ['SHIP_6', createShip('SHIP_6', ResourceType.Wool)],
-  [
-    'SHIP_7',
-    {
-      ...createBuilding(
-        'SHIP_7',
-        'Great merchant ship',
-        new Map([
-          [ResourceType.Wood, 1],
-          [ResourceType.Wool, 1],
-        ]),
-        1
-      ),
-      type: DevelopmentType.Ship,
-    },
-  ],
+  ['SHIP_7', createShip('SHIP_7', AnyType)],
   // Warrior
   [
     'WARRIOR_1',
     createWarrior(
       'WARRIOR_1',
-      'Altaïr',
+      WarriorName.Altair,
       new Map([
         [ResourceType.Wheat, 1],
         [ResourceType.Stone, 1],
@@ -225,7 +213,7 @@ export const developmentCards = new Map<string, DevelopmentCard>([
     'WARRIOR_2',
     createWarrior(
       'WARRIOR_2',
-      'Ezio',
+      WarriorName.Ezio,
       new Map([
         [ResourceType.Wheat, 1],
         [ResourceType.Stone, 1],
@@ -238,7 +226,7 @@ export const developmentCards = new Map<string, DevelopmentCard>([
     'WARRIOR_3',
     createWarrior(
       'WARRIOR_3',
-      'Evie',
+      WarriorName.Evie,
       new Map([
         [ResourceType.Wheat, 1],
         [ResourceType.Wool, 1],
@@ -252,7 +240,7 @@ export const developmentCards = new Map<string, DevelopmentCard>([
     'WARRIOR_4',
     createWarrior(
       'WARRIOR_4',
-      'Jacob',
+      WarriorName.Jacob,
       new Map([
         [ResourceType.Wheat, 1],
         [ResourceType.Wool, 1],
@@ -266,7 +254,7 @@ export const developmentCards = new Map<string, DevelopmentCard>([
     'WARRIOR_5',
     createWarrior(
       'WARRIOR_5',
-      'Kassandra',
+      WarriorName.Kassandra,
       new Map([
         [ResourceType.Wool, 2],
         [ResourceType.Wheat, 1],
@@ -280,7 +268,7 @@ export const developmentCards = new Map<string, DevelopmentCard>([
     'WARRIOR_6',
     createWarrior(
       'WARRIOR_6',
-      'Alexios',
+      WarriorName.Alexios,
       new Map([
         [ResourceType.Wool, 2],
         [ResourceType.Wheat, 1],
