@@ -20,10 +20,10 @@
 |:------|:------:|:------
 | [libs/shared-models/src/lib/interfaces/name.ts](libs/shared-models/src/lib/interfaces/name.ts#L5) | 5 | @typescript-eslint/no-explicit-any
 | [libs/shared-models/src/lib/interfaces/print.ts](libs/shared-models/src/lib/interfaces/print.ts#L5) | 5 | @typescript-eslint/no-explicit-any
-| [libs/shared-models/src/lib/structures/action.ts](libs/shared-models/src/lib/structures/action.ts#L23) | 23 | @typescript-eslint/no-explicit-any
+| [libs/shared-models/src/lib/structures/action.ts](libs/shared-models/src/lib/structures/action.ts#L24) | 24 | @typescript-eslint/no-explicit-any
 | [libs/shared-models/src/lib/structures/agglomeration.ts](libs/shared-models/src/lib/structures/agglomeration.ts#L95) | 95 | @typescript-eslint/no-explicit-any
-| [libs/shared-models/src/lib/structures/development.ts](libs/shared-models/src/lib/structures/development.ts#L106) | 106 | @typescript-eslint/no-explicit-any
-| [libs/shared-models/src/lib/structures/event.ts](libs/shared-models/src/lib/structures/event.ts#L23) | 23 | @typescript-eslint/no-explicit-any
+| [libs/shared-models/src/lib/structures/development.ts](libs/shared-models/src/lib/structures/development.ts#L111) | 111 | @typescript-eslint/no-explicit-any
+| [libs/shared-models/src/lib/structures/event.ts](libs/shared-models/src/lib/structures/event.ts#L24) | 24 | @typescript-eslint/no-explicit-any
 | [libs/shared-models/src/lib/structures/land.ts](libs/shared-models/src/lib/structures/land.ts#L37) | 37 | @typescript-eslint/no-explicit-any
 | [libs/shared-models/src/lib/types/dice.ts](libs/shared-models/src/lib/types/dice.ts#L1) | 1 | no-magic-numbers
 | [libs/shared-models/src/lib/types/resources.ts](libs/shared-models/src/lib/types/resources.ts#L19) | 19 | no-magic-numbers
