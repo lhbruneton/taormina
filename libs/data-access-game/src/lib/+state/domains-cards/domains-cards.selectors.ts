@@ -6,6 +6,7 @@ import {
   landCards,
 } from '@taormina/shared-constants';
 import {
+  BuildingName,
   DevelopmentCard,
   DEVELOPMENT_CARD_INTERFACE_NAME,
   DiceValue,
@@ -239,7 +240,7 @@ export const getDomainResourceCountSeenByThieves = createSelector(
         (pivot) =>
           pivot.domainId === props.domainId &&
           pivot.cardType === LAND_CARD_INTERFACE_NAME &&
-          isNextToAWarehouse(pivot, entities)
+          !isNextToAWarehouse(pivot, entities)
       )
       .reduce(
         (accumulator, domainCard) =>
@@ -258,7 +259,7 @@ export const getDomainUnprotectedGoldMinesAndPastures = createSelector(
         pivot.cardId !== undefined &&
         (landCards.get(pivot.cardId)?.type === LandType.GoldMine ||
           landCards.get(pivot.cardId)?.type === LandType.Pasture) &&
-        isNextToAWarehouse(pivot, entities)
+        !isNextToAWarehouse(pivot, entities)
     )
 );
 
@@ -269,12 +270,11 @@ const isNextToAProductionBuilding = (
 ): boolean => {
   const neighbors = getCardSideNeighbors(pivot, entities);
   return (
-    neighbors
-      .filter((neighbor) => neighbor.cardId !== undefined)
-      .find((neighbor) =>
-        // eslint-disable-next-line @typescript-eslint/no-non-null-assertion
-        isProductionBuildingForResourceType(neighbor.cardId!, landType)
-      ) !== undefined
+    neighbors.find(
+      (neighbor) =>
+        neighbor.cardId !== undefined &&
+        isProductionBuildingForResourceType(neighbor.cardId, landType)
+    ) !== undefined
   );
 };
 
@@ -282,17 +282,18 @@ const isProductionBuildingForResourceType = (
   cardId: string,
   landType: LandType
 ): boolean => {
+  const name = developmentCards.get(cardId)?.name;
   switch (landType) {
     case LandType.ClayPit:
-      return cardId === 'BUILDING_1'; // Brickyard
+      return name === BuildingName.Brickyard;
     case LandType.Forest:
-      return cardId === 'BUILDING_2'; // Sawmill
+      return name === BuildingName.Sawmill;
     case LandType.Field:
-      return cardId === 'BUILDING_3'; // Mill
+      return name === BuildingName.Mill;
     case LandType.StoneQuarry:
-      return cardId === 'BUILDING_4'; // Foundry
+      return name === BuildingName.Foundry;
     case LandType.Pasture:
-      return cardId === 'BUILDING_5'; // Weaving
+      return name === BuildingName.Weaving;
     case LandType.GoldMine:
       return false;
     // no default
@@ -307,8 +308,9 @@ const isNextToAWarehouse = (
   return (
     neighbors.find(
       (neighbor) =>
-        neighbor.cardId === 'BUILDING_6' || neighbor.cardId === 'BUILDING_7'
-    ) === undefined
+        neighbor.cardId !== undefined &&
+        developmentCards.get(neighbor.cardId)?.name === BuildingName.Warehouse
+    ) !== undefined
   );
 };
 
