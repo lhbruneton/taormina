@@ -1,41 +1,77 @@
+/* eslint-disable no-magic-numbers */
+import { ID_DOMAIN_BLUE, ID_DOMAIN_RED } from '@taormina/shared-constants';
+import { DEVELOPMENT_CARD_INTERFACE_NAME } from '@taormina/shared-models';
+import {
+  createDomainsCardsEntity,
+  DomainsCardsEntity,
+} from '../../lib/+state/domains-cards/domains-cards.models';
 import { DomainsCardsState } from '../../lib/+state/domains-cards/domains-cards.reducer';
+
+export const someId = '7a1e11aa-47bb-4b4e-94ab-4c91c19e6a62';
+export const blueForestId = 'fb675e2e-ee40-4e07-b29c-d6dbd823ca53';
+export const redClayPitId = '9ed2d3b8-1d98-4331-969e-09b7f1ba046e';
+const nextToBlueForestId = '762a3af1-c807-4fd6-b0f5-c5ec52c1c619';
+const redAvailableDevelopmentSlotOneId = '83bada45-309e-4ca6-b59f-e499fdc01b6e';
+const redAvailableDevelopmentSlotTwoId = '82ef1e96-e9d2-4e35-9014-2b825e3c2904';
+const redAvailableDevelopmentSlotThreeId =
+  '66d9fc21-e2c0-40ab-88b1-1d87b32022af';
+const redAvailableDevelopmentSlotFourId =
+  '444bebc9-2521-49f0-b790-2668a4baa182';
+const blueAvailableDevelopmentSlotOneId = nextToBlueForestId;
+const blueAvailableDevelopmentSlotTwoId =
+  '17dc5ec7-8351-4b0c-8797-688cbafb9a2f';
+const blueAvailableDevelopmentSlotThreeId =
+  'e9c49a18-8b78-4027-817d-0201dc992982';
+const blueAvailableDevelopmentSlotFourId =
+  'c2fa4cc2-adac-4a2e-a3d2-751edefb07d0';
+
+export const redClayPitDomainCard: DomainsCardsEntity = {
+  id: redClayPitId,
+  domainId: 'DOMAIN_RED',
+  cardType: 'LandCard',
+  cardId: 'CLAY_PIT_RED',
+  col: -2,
+  row: -1,
+  availableResources: 1,
+  lockedResources: 0,
+};
 
 export const domainsCardsNewGameState: DomainsCardsState = {
   ids: [
-    '7a1e11aa-47bb-4b4e-94ab-4c91c19e6a62',
+    someId,
     '8641399b-c626-4e64-8b66-5ea20e580690',
     '283dc5b6-bcef-4050-b6f7-63bfd8df5442',
     '537144b6-b0ca-4e7e-885c-9d6aa2056a72',
     'd5d7a7c4-b8d7-4784-b9fa-690028af57e0',
-    '9ed2d3b8-1d98-4331-969e-09b7f1ba046e',
+    redClayPitId,
     '4c6ae71d-6c3e-4f7a-a8fc-bbede5c4156d',
-    '83bada45-309e-4ca6-b59f-e499fdc01b6e',
+    redAvailableDevelopmentSlotOneId,
     'fa10183d-4fd2-48ac-a38a-1af131f250c8',
-    '82ef1e96-e9d2-4e35-9014-2b825e3c2904',
+    redAvailableDevelopmentSlotTwoId,
     'edbe4e44-3977-466a-8b4a-a3f39eff415a',
     '9c9eac6c-f1c8-42a7-92b9-4d6ac4067310',
-    '66d9fc21-e2c0-40ab-88b1-1d87b32022af',
+    redAvailableDevelopmentSlotThreeId,
     '25ee1175-17c7-4f4e-8c35-ea99ee9f1751',
-    '444bebc9-2521-49f0-b790-2668a4baa182',
+    redAvailableDevelopmentSlotFourId,
     '3eb0bc9f-23cc-4e61-a53d-95b60da4dd1e',
     '77c56483-29b6-49d2-b332-18536aeb6ae3',
     '4d84a04a-3048-4ffc-9d53-c07ed61a9fe9',
     'e0b83d8e-6e9d-4c80-b408-ff1dfc369f8b',
     '9477ff34-8ee0-4b65-acfe-4bdca0fc5e8f',
     '090d71e8-bad7-485a-a0a3-fd0efc5004c3',
-    'fb675e2e-ee40-4e07-b29c-d6dbd823ca53',
-    '762a3af1-c807-4fd6-b0f5-c5ec52c1c619',
+    blueForestId,
+    nextToBlueForestId,
     '9eebdfc8-93e9-42b7-8ff6-7bca8d9de9a5',
-    '17dc5ec7-8351-4b0c-8797-688cbafb9a2f',
+    blueAvailableDevelopmentSlotTwoId,
     '69d04bf3-3435-4d36-9ae8-4a28b3c21eb2',
     '31d0844a-463d-4308-a852-4093d80bfd7b',
-    'e9c49a18-8b78-4027-817d-0201dc992982',
+    blueAvailableDevelopmentSlotThreeId,
     '1afeb805-20ea-4751-b307-f6090cc3115c',
-    'c2fa4cc2-adac-4a2e-a3d2-751edefb07d0',
+    blueAvailableDevelopmentSlotFourId,
   ],
   entities: {
-    '7a1e11aa-47bb-4b4e-94ab-4c91c19e6a62': {
-      id: '7a1e11aa-47bb-4b4e-94ab-4c91c19e6a62',
+    [someId]: {
+      id: someId,
       domainId: 'DOMAIN_RED',
       cardType: 'AgglomerationCard',
       cardId: 'ROAD_RED',
@@ -82,16 +118,7 @@ export const domainsCardsNewGameState: DomainsCardsState = {
       availableResources: 0,
       lockedResources: 0,
     },
-    '9ed2d3b8-1d98-4331-969e-09b7f1ba046e': {
-      id: '9ed2d3b8-1d98-4331-969e-09b7f1ba046e',
-      domainId: 'DOMAIN_RED',
-      cardType: 'LandCard',
-      cardId: 'CLAY_PIT_RED',
-      col: -2,
-      row: -1,
-      availableResources: 1,
-      lockedResources: 0,
-    },
+    [redClayPitId]: redClayPitDomainCard,
     '4c6ae71d-6c3e-4f7a-a8fc-bbede5c4156d': {
       id: '4c6ae71d-6c3e-4f7a-a8fc-bbede5c4156d',
       domainId: 'DOMAIN_RED',
@@ -102,8 +129,8 @@ export const domainsCardsNewGameState: DomainsCardsState = {
       availableResources: 1,
       lockedResources: 0,
     },
-    '83bada45-309e-4ca6-b59f-e499fdc01b6e': {
-      id: '83bada45-309e-4ca6-b59f-e499fdc01b6e',
+    [redAvailableDevelopmentSlotOneId]: {
+      id: redAvailableDevelopmentSlotOneId,
       domainId: 'DOMAIN_RED',
       cardType: 'AvailableDevelopmentSlot',
       col: -1,
@@ -121,8 +148,8 @@ export const domainsCardsNewGameState: DomainsCardsState = {
       availableResources: 0,
       lockedResources: 0,
     },
-    '82ef1e96-e9d2-4e35-9014-2b825e3c2904': {
-      id: '82ef1e96-e9d2-4e35-9014-2b825e3c2904',
+    [redAvailableDevelopmentSlotTwoId]: {
+      id: redAvailableDevelopmentSlotTwoId,
       domainId: 'DOMAIN_RED',
       cardType: 'AvailableDevelopmentSlot',
       col: 1,
@@ -150,8 +177,8 @@ export const domainsCardsNewGameState: DomainsCardsState = {
       availableResources: 1,
       lockedResources: 0,
     },
-    '66d9fc21-e2c0-40ab-88b1-1d87b32022af': {
-      id: '66d9fc21-e2c0-40ab-88b1-1d87b32022af',
+    [redAvailableDevelopmentSlotThreeId]: {
+      id: redAvailableDevelopmentSlotThreeId,
       domainId: 'DOMAIN_RED',
       cardType: 'AvailableDevelopmentSlot',
       col: 1,
@@ -169,8 +196,8 @@ export const domainsCardsNewGameState: DomainsCardsState = {
       availableResources: 1,
       lockedResources: 0,
     },
-    '444bebc9-2521-49f0-b790-2668a4baa182': {
-      id: '444bebc9-2521-49f0-b790-2668a4baa182',
+    [redAvailableDevelopmentSlotFourId]: {
+      id: redAvailableDevelopmentSlotFourId,
       domainId: 'DOMAIN_RED',
       cardType: 'AvailableDevelopmentSlot',
       col: -1,
@@ -236,8 +263,8 @@ export const domainsCardsNewGameState: DomainsCardsState = {
       availableResources: 1,
       lockedResources: 0,
     },
-    'fb675e2e-ee40-4e07-b29c-d6dbd823ca53': {
-      id: 'fb675e2e-ee40-4e07-b29c-d6dbd823ca53',
+    [blueForestId]: {
+      id: blueForestId,
       domainId: 'DOMAIN_BLUE',
       cardType: 'LandCard',
       cardId: 'FOREST_BLUE',
@@ -246,8 +273,8 @@ export const domainsCardsNewGameState: DomainsCardsState = {
       availableResources: 1,
       lockedResources: 0,
     },
-    '762a3af1-c807-4fd6-b0f5-c5ec52c1c619': {
-      id: '762a3af1-c807-4fd6-b0f5-c5ec52c1c619',
+    [nextToBlueForestId]: {
+      id: nextToBlueForestId,
       domainId: 'DOMAIN_BLUE',
       cardType: 'AvailableDevelopmentSlot',
       col: -1,
@@ -265,8 +292,8 @@ export const domainsCardsNewGameState: DomainsCardsState = {
       availableResources: 0,
       lockedResources: 0,
     },
-    '17dc5ec7-8351-4b0c-8797-688cbafb9a2f': {
-      id: '17dc5ec7-8351-4b0c-8797-688cbafb9a2f',
+    [blueAvailableDevelopmentSlotTwoId]: {
+      id: blueAvailableDevelopmentSlotTwoId,
       domainId: 'DOMAIN_BLUE',
       cardType: 'AvailableDevelopmentSlot',
       col: 1,
@@ -294,8 +321,8 @@ export const domainsCardsNewGameState: DomainsCardsState = {
       availableResources: 1,
       lockedResources: 0,
     },
-    'e9c49a18-8b78-4027-817d-0201dc992982': {
-      id: 'e9c49a18-8b78-4027-817d-0201dc992982',
+    [blueAvailableDevelopmentSlotThreeId]: {
+      id: blueAvailableDevelopmentSlotThreeId,
       domainId: 'DOMAIN_BLUE',
       cardType: 'AvailableDevelopmentSlot',
       col: 1,
@@ -313,8 +340,8 @@ export const domainsCardsNewGameState: DomainsCardsState = {
       availableResources: 1,
       lockedResources: 0,
     },
-    'c2fa4cc2-adac-4a2e-a3d2-751edefb07d0': {
-      id: 'c2fa4cc2-adac-4a2e-a3d2-751edefb07d0',
+    [blueAvailableDevelopmentSlotFourId]: {
+      id: blueAvailableDevelopmentSlotFourId,
       domainId: 'DOMAIN_BLUE',
       cardType: 'AvailableDevelopmentSlot',
       col: -1,
@@ -325,4 +352,347 @@ export const domainsCardsNewGameState: DomainsCardsState = {
   },
   initialized: true,
   loaded: false,
+};
+
+export const domainsCardsSawmillNextToBlueForestState = (): DomainsCardsState => {
+  const newIds = (domainsCardsNewGameState.ids as string[]).filter(
+    (id) => id !== nextToBlueForestId
+  );
+  const newEntities = { ...domainsCardsNewGameState.entities };
+  delete newEntities[nextToBlueForestId];
+
+  const domainsCards = {
+    ...domainsCardsNewGameState,
+    ids: [...newIds, 'aaaa'],
+    entities: {
+      ...newEntities,
+      aaaa: createDomainsCardsEntity(
+        'aaaa',
+        ID_DOMAIN_BLUE,
+        DEVELOPMENT_CARD_INTERFACE_NAME,
+        'BUILDING_2', // Sawmill
+        -1,
+        1
+      ),
+    },
+  };
+  return domainsCards;
+};
+
+export const domainsCardsOneTradeRedTwoTradeBlueState = (): DomainsCardsState => {
+  const newIds = (domainsCardsNewGameState.ids as string[]).filter(
+    (id) =>
+      id !== redAvailableDevelopmentSlotOneId &&
+      id !== blueAvailableDevelopmentSlotOneId &&
+      id !== blueAvailableDevelopmentSlotTwoId
+  );
+  const newEntities = { ...domainsCardsNewGameState.entities };
+  delete newEntities[redAvailableDevelopmentSlotOneId];
+  delete newEntities[blueAvailableDevelopmentSlotOneId];
+  delete newEntities[blueAvailableDevelopmentSlotTwoId];
+
+  const domainsCards = {
+    ...domainsCardsNewGameState,
+    ids: [...newIds, 'aaaa', 'bbbb', 'cccc'],
+    entities: {
+      ...newEntities,
+      aaaa: createDomainsCardsEntity(
+        'aaaa',
+        ID_DOMAIN_RED,
+        DEVELOPMENT_CARD_INTERFACE_NAME,
+        'BUILDING_8', // Market
+        -1,
+        1
+      ),
+      bbbb: createDomainsCardsEntity(
+        'bbbb',
+        ID_DOMAIN_BLUE,
+        DEVELOPMENT_CARD_INTERFACE_NAME,
+        'BUILDING_9', // Market
+        -1,
+        1
+      ),
+      cccc: createDomainsCardsEntity(
+        'cccc',
+        ID_DOMAIN_BLUE,
+        DEVELOPMENT_CARD_INTERFACE_NAME,
+        'BUILDING_10', // Toll bridge
+        1,
+        1
+      ),
+    },
+  };
+  return domainsCards;
+};
+
+export const domainsCardsThreeTradeRedThreeTradeBlueState = (): DomainsCardsState => {
+  const newIds = (domainsCardsOneTradeRedTwoTradeBlueState()
+    .ids as string[]).filter(
+    (id) =>
+      id !== redAvailableDevelopmentSlotTwoId &&
+      id !== redAvailableDevelopmentSlotThreeId &&
+      id !== blueAvailableDevelopmentSlotThreeId
+  );
+  const newEntities = {
+    ...domainsCardsOneTradeRedTwoTradeBlueState().entities,
+  };
+  delete newEntities[redAvailableDevelopmentSlotTwoId];
+  delete newEntities[redAvailableDevelopmentSlotThreeId];
+  delete newEntities[blueAvailableDevelopmentSlotThreeId];
+
+  const domainsCards = {
+    ...domainsCardsOneTradeRedTwoTradeBlueState(),
+    ids: [...newIds, 'dddd', 'eeee', 'ffff'],
+    entities: {
+      ...newEntities,
+      dddd: createDomainsCardsEntity(
+        'dddd',
+        ID_DOMAIN_RED,
+        DEVELOPMENT_CARD_INTERFACE_NAME,
+        'SHIP_1',
+        1,
+        1
+      ),
+      eeee: createDomainsCardsEntity(
+        'eeee',
+        ID_DOMAIN_RED,
+        DEVELOPMENT_CARD_INTERFACE_NAME,
+        'SHIP_2',
+        1,
+        -1
+      ),
+      ffff: createDomainsCardsEntity(
+        'ffff',
+        ID_DOMAIN_BLUE,
+        DEVELOPMENT_CARD_INTERFACE_NAME,
+        'SHIP_3',
+        1,
+        -1
+      ),
+    },
+  };
+  return domainsCards;
+};
+
+export const domainsCardsFourTradeRedThreeTradeBlueState = (): DomainsCardsState => {
+  const newIds = (domainsCardsThreeTradeRedThreeTradeBlueState()
+    .ids as string[]).filter((id) => id !== redAvailableDevelopmentSlotFourId);
+  const newEntities = {
+    ...domainsCardsThreeTradeRedThreeTradeBlueState().entities,
+  };
+  delete newEntities[redAvailableDevelopmentSlotFourId];
+
+  const domainsCards = {
+    ...domainsCardsThreeTradeRedThreeTradeBlueState(),
+    ids: [...newIds, 'gggg'],
+    entities: {
+      ...newEntities,
+      gggg: createDomainsCardsEntity(
+        'gggg',
+        ID_DOMAIN_RED,
+        DEVELOPMENT_CARD_INTERFACE_NAME,
+        'SHIP_4',
+        -1,
+        -1
+      ),
+    },
+  };
+  return domainsCards;
+};
+
+export const domainsCardsThreeTradeRedFourTradeBlueState = (): DomainsCardsState => {
+  const newIds = (domainsCardsThreeTradeRedThreeTradeBlueState()
+    .ids as string[]).filter((id) => id !== blueAvailableDevelopmentSlotFourId);
+  const newEntities = {
+    ...domainsCardsThreeTradeRedThreeTradeBlueState().entities,
+  };
+  delete newEntities[blueAvailableDevelopmentSlotFourId];
+
+  const domainsCards = {
+    ...domainsCardsThreeTradeRedThreeTradeBlueState(),
+    ids: [...newIds, 'gggg'],
+    entities: {
+      ...newEntities,
+      gggg: createDomainsCardsEntity(
+        'gggg',
+        ID_DOMAIN_BLUE,
+        DEVELOPMENT_CARD_INTERFACE_NAME,
+        'SHIP_4',
+        -1,
+        -1
+      ),
+    },
+  };
+  return domainsCards;
+};
+
+export const domainsCardsOneStrengthRedTwoStrengthBlueState = (): DomainsCardsState => {
+  const newIds = (domainsCardsNewGameState.ids as string[]).filter(
+    (id) =>
+      id !== redAvailableDevelopmentSlotOneId &&
+      id !== blueAvailableDevelopmentSlotOneId
+  );
+  const newEntities = { ...domainsCardsNewGameState.entities };
+  delete newEntities[redAvailableDevelopmentSlotOneId];
+  delete newEntities[blueAvailableDevelopmentSlotOneId];
+
+  const domainsCards = {
+    ...domainsCardsNewGameState,
+    ids: [...newIds, 'aaaa', 'bbbb'],
+    entities: {
+      ...newEntities,
+      aaaa: createDomainsCardsEntity(
+        'aaaa',
+        ID_DOMAIN_RED,
+        DEVELOPMENT_CARD_INTERFACE_NAME,
+        'WARRIOR_1', // Strength 1
+        -1,
+        1
+      ),
+      bbbb: createDomainsCardsEntity(
+        'bbbb',
+        ID_DOMAIN_BLUE,
+        DEVELOPMENT_CARD_INTERFACE_NAME,
+        'WARRIOR_2', // Strength 2
+        -1,
+        1
+      ),
+    },
+  };
+  return domainsCards;
+};
+
+export const domainsCardsThreeStrengthRedThreeStrengthBlueState = (): DomainsCardsState => {
+  const newIds = (domainsCardsNewGameState.ids as string[]).filter(
+    (id) =>
+      id !== redAvailableDevelopmentSlotOneId &&
+      id !== redAvailableDevelopmentSlotTwoId &&
+      id !== blueAvailableDevelopmentSlotOneId &&
+      id !== blueAvailableDevelopmentSlotTwoId
+  );
+  const newEntities = { ...domainsCardsNewGameState.entities };
+  delete newEntities[redAvailableDevelopmentSlotOneId];
+  delete newEntities[redAvailableDevelopmentSlotTwoId];
+  delete newEntities[blueAvailableDevelopmentSlotOneId];
+  delete newEntities[blueAvailableDevelopmentSlotTwoId];
+
+  const domainsCards = {
+    ...domainsCardsNewGameState,
+    ids: [...newIds, 'aaaa', 'bbbb', 'cccc', 'dddd'],
+    entities: {
+      ...newEntities,
+      aaaa: createDomainsCardsEntity(
+        'aaaa',
+        ID_DOMAIN_RED,
+        DEVELOPMENT_CARD_INTERFACE_NAME,
+        'WARRIOR_1', // Strength 1
+        -1,
+        1
+      ),
+      bbbb: createDomainsCardsEntity(
+        'bbbb',
+        ID_DOMAIN_RED,
+        DEVELOPMENT_CARD_INTERFACE_NAME,
+        'WARRIOR_2', // Strength 2
+        1,
+        1
+      ),
+      cccc: createDomainsCardsEntity(
+        'cccc',
+        ID_DOMAIN_BLUE,
+        DEVELOPMENT_CARD_INTERFACE_NAME,
+        'WARRIOR_3', // Strength 1
+        -1,
+        1
+      ),
+      dddd: createDomainsCardsEntity(
+        'dddd',
+        ID_DOMAIN_BLUE,
+        DEVELOPMENT_CARD_INTERFACE_NAME,
+        'WARRIOR_4', // Strength 2
+        1,
+        1
+      ),
+    },
+  };
+  return domainsCards;
+};
+
+export const domainsCardsSevenStrengthRedThreeStrengthBlueState = (): DomainsCardsState => {
+  const newIds = (domainsCardsThreeStrengthRedThreeStrengthBlueState()
+    .ids as string[]).filter((id) => id !== redAvailableDevelopmentSlotThreeId);
+  const newEntities = {
+    ...domainsCardsThreeStrengthRedThreeStrengthBlueState().entities,
+  };
+  delete newEntities[redAvailableDevelopmentSlotThreeId];
+
+  const domainsCards = {
+    ...domainsCardsThreeStrengthRedThreeStrengthBlueState(),
+    ids: [...newIds, 'eeee'],
+    entities: {
+      ...newEntities,
+      eeee: createDomainsCardsEntity(
+        'eeee',
+        ID_DOMAIN_RED,
+        DEVELOPMENT_CARD_INTERFACE_NAME,
+        'WARRIOR_6', // Strength 4
+        1,
+        -1
+      ),
+    },
+  };
+  return domainsCards;
+};
+
+export const domainsCardsThreeStrengthRedSevenStrengthBlueState = (): DomainsCardsState => {
+  const newIds = (domainsCardsThreeStrengthRedThreeStrengthBlueState()
+    .ids as string[]).filter(
+    (id) => id !== blueAvailableDevelopmentSlotThreeId
+  );
+  const newEntities = {
+    ...domainsCardsThreeStrengthRedThreeStrengthBlueState().entities,
+  };
+  delete newEntities[blueAvailableDevelopmentSlotThreeId];
+
+  const domainsCards = {
+    ...domainsCardsThreeStrengthRedThreeStrengthBlueState(),
+    ids: [...newIds, 'eeee'],
+    entities: {
+      ...newEntities,
+      eeee: createDomainsCardsEntity(
+        'eeee',
+        ID_DOMAIN_BLUE,
+        DEVELOPMENT_CARD_INTERFACE_NAME,
+        'WARRIOR_6', // Strength 4
+        1,
+        -1
+      ),
+    },
+  };
+  return domainsCards;
+};
+
+export const domainsCardsWarehouseNextToBlueForestState = (): DomainsCardsState => {
+  const newIds = (domainsCardsNewGameState.ids as string[]).filter(
+    (id) => id !== nextToBlueForestId
+  );
+  const newEntities = { ...domainsCardsNewGameState.entities };
+  delete newEntities[nextToBlueForestId];
+
+  const domainsCards = {
+    ...domainsCardsNewGameState,
+    ids: [...newIds, 'aaaa'],
+    entities: {
+      ...newEntities,
+      aaaa: createDomainsCardsEntity(
+        'aaaa',
+        ID_DOMAIN_BLUE,
+        DEVELOPMENT_CARD_INTERFACE_NAME,
+        'BUILDING_6', // Warehouse
+        -1,
+        1
+      ),
+    },
+  };
+  return domainsCards;
 };
