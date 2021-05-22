@@ -38,7 +38,7 @@ export interface DomainsCardsEntity {
   id: string; // Primary ID
   domainId: string; // Foreign key to domains
   cardType: DomainCardType;
-  cardId: string | undefined; // Foreign key to cards
+  cardId?: string; // Foreign key to cards
   col: number;
   row: RowValue;
   availableResources: ResourceCount;
