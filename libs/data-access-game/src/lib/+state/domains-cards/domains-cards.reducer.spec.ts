@@ -1,10 +1,16 @@
 import { Action } from '@ngrx/store';
+
 import {
-  AGGLOMERATION_CARD_INTERFACE_NAME,
-  DEVELOPMENT_CARD_INTERFACE_NAME,
-} from '@taormina/shared-models';
+  aaaaWarehouseNextToBlueForestDomainCard,
+  blueForestDomainCard,
+  blueForestId,
+  domainsCardsNewGameState,
+  domainsCardsNewGameStateEntities,
+  redClayPitDomainCard,
+  redClayPitId,
+  someId,
+} from '../../../test';
 import * as DomainsCardsActions from './domains-cards.actions';
-import { createDomainsCardsEntity } from './domains-cards.models';
 import {
   domainsCardsReducer,
   DomainsCardsState,
@@ -24,56 +30,10 @@ describe('DomainsCards Reducer', () => {
     });
   });
 
-  describe('loadDomainsCardsSuccess', () => {
-    it('should set the list of known DomainsCards and loaded', () => {
-      const newState: DomainsCardsState = {
-        ids: ['PRODUCT-AAA', 'PRODUCT-zzz'],
-        entities: {
-          'PRODUCT-AAA': {
-            id: 'PRODUCT-AAA',
-            domainId: 'A',
-            cardType: DEVELOPMENT_CARD_INTERFACE_NAME,
-            cardId: 'A',
-            col: 0,
-            row: 0,
-            availableResources: 0,
-            lockedResources: 0,
-          },
-          'PRODUCT-zzz': {
-            id: 'PRODUCT-zzz',
-            domainId: 'z',
-            cardType: AGGLOMERATION_CARD_INTERFACE_NAME,
-            cardId: 'z',
-            col: 0,
-            row: 0,
-            availableResources: 0,
-            lockedResources: 0,
-          },
-        },
-        initialized: false,
-        loaded: true,
-      };
-
-      const domainsCards = [
-        createDomainsCardsEntity(
-          'PRODUCT-AAA',
-          'A',
-          DEVELOPMENT_CARD_INTERFACE_NAME,
-          'A',
-          0,
-          0
-        ),
-        createDomainsCardsEntity(
-          'PRODUCT-zzz',
-          'z',
-          AGGLOMERATION_CARD_INTERFACE_NAME,
-          'z',
-          0,
-          0
-        ),
-      ];
-      const action = DomainsCardsActions.loadDomainsCardsSuccess({
-        domainsCards,
+  describe('setDomainsCardsInitialized', () => {
+    it('should set the list of known DomainsCards and initialized', () => {
+      const action = DomainsCardsActions.setDomainsCardsInitialized({
+        domainsCards: Object.values(domainsCardsNewGameStateEntities),
       });
 
       const state: DomainsCardsState = domainsCardsReducer(
@@ -81,79 +41,40 @@ describe('DomainsCards Reducer', () => {
         action
       );
 
-      expect(state).toEqual(newState);
+      expect(state).toEqual(domainsCardsNewGameState);
     });
   });
 
   describe('updateDomainsCards', () => {
     it('should update the DomainsCards in the list', () => {
-      const newState: DomainsCardsState = {
-        ids: ['PRODUCT-AAA', 'PRODUCT-zzz'],
+      const newState = {
+        ...domainsCardsNewGameState,
         entities: {
-          'PRODUCT-AAA': {
-            id: 'PRODUCT-AAA',
-            domainId: 'A',
-            cardType: AGGLOMERATION_CARD_INTERFACE_NAME,
-            cardId: 'A',
-            col: 0,
-            row: 0,
-            availableResources: 1,
-            lockedResources: 0,
+          ...domainsCardsNewGameState.entities,
+          [redClayPitId]: {
+            ...redClayPitDomainCard,
+            availableResources: 2,
           },
-          'PRODUCT-zzz': {
-            id: 'PRODUCT-zzz',
-            domainId: 'z',
-            cardType: DEVELOPMENT_CARD_INTERFACE_NAME,
-            cardId: 'z',
-            col: 0,
-            row: 0,
+          [blueForestId]: {
+            ...blueForestDomainCard,
             availableResources: 0,
             lockedResources: 1,
           },
         },
-        initialized: true,
-        loaded: false,
-      };
-
-      const initialState: DomainsCardsState = {
-        ids: ['PRODUCT-AAA', 'PRODUCT-zzz'],
-        entities: {
-          'PRODUCT-AAA': {
-            id: 'PRODUCT-AAA',
-            domainId: 'A',
-            cardType: AGGLOMERATION_CARD_INTERFACE_NAME,
-            cardId: 'A',
-            col: 0,
-            row: 0,
-            availableResources: 0,
-            lockedResources: 0,
-          },
-          'PRODUCT-zzz': {
-            id: 'PRODUCT-zzz',
-            domainId: 'z',
-            cardType: DEVELOPMENT_CARD_INTERFACE_NAME,
-            cardId: 'z',
-            col: 0,
-            row: 0,
-            availableResources: 0,
-            lockedResources: 0,
-          },
-        },
-        initialized: true,
-        loaded: false,
       };
 
       const action = DomainsCardsActions.updateDomainsCards({
         updates: [
           {
-            id: 'PRODUCT-AAA',
+            id: redClayPitId,
             changes: {
-              availableResources: 1,
+              availableResources: 2,
             },
           },
           {
-            id: 'PRODUCT-zzz',
+            id: blueForestId,
             changes: {
+              availableResources: 0,
               lockedResources: 1,
             },
           },
@@ -161,7 +82,7 @@ describe('DomainsCards Reducer', () => {
       });
 
       const state: DomainsCardsState = domainsCardsReducer(
-        initialState,
+        domainsCardsNewGameState,
         action
       );
 
@@ -171,45 +92,21 @@ describe('DomainsCards Reducer', () => {
 
   describe('updateDomainCard', () => {
     it('should update the DomainCard', () => {
-      const newState: DomainsCardsState = {
-        ids: ['PRODUCT-AAA'],
+      const newState = {
+        ...domainsCardsNewGameState,
         entities: {
-          'PRODUCT-AAA': {
-            id: 'PRODUCT-AAA',
-            domainId: 'A',
-            cardType: AGGLOMERATION_CARD_INTERFACE_NAME,
-            cardId: 'A',
-            col: 0,
-            row: 0,
+          ...domainsCardsNewGameState.entities,
+          [blueForestId]: {
+            ...blueForestDomainCard,
             availableResources: 0,
             lockedResources: 1,
           },
         },
-        initialized: true,
-        loaded: false,
-      };
-
-      const initialState: DomainsCardsState = {
-        ids: ['PRODUCT-AAA'],
-        entities: {
-          'PRODUCT-AAA': {
-            id: 'PRODUCT-AAA',
-            domainId: 'A',
-            cardType: AGGLOMERATION_CARD_INTERFACE_NAME,
-            cardId: 'A',
-            col: 0,
-            row: 0,
-            availableResources: 1,
-            lockedResources: 0,
-          },
-        },
-        initialized: true,
-        loaded: false,
       };
 
       const action = DomainsCardsActions.updateDomainCard({
         update: {
-          id: 'PRODUCT-AAA',
+          id: blueForestId,
           changes: {
             availableResources: 0,
             lockedResources: 1,
@@ -218,7 +115,7 @@ describe('DomainsCards Reducer', () => {
       });
 
       const state: DomainsCardsState = domainsCardsReducer(
-        initialState,
+        domainsCardsNewGameState,
         action
       );
 
@@ -228,67 +125,21 @@ describe('DomainsCards Reducer', () => {
 
   describe('addDomainCard', () => {
     it('should add the DomainCard to the list', () => {
-      const newState: DomainsCardsState = {
-        ids: ['PRODUCT-AAA', 'PRODUCT-BBB'],
+      const newState = {
+        ...domainsCardsNewGameState,
+        ids: [...domainsCardsNewGameState.ids, 'aaaa'],
         entities: {
-          'PRODUCT-AAA': {
-            id: 'PRODUCT-AAA',
-            domainId: 'A',
-            cardType: AGGLOMERATION_CARD_INTERFACE_NAME,
-            cardId: 'A',
-            col: 0,
-            row: 0,
-            availableResources: 0,
-            lockedResources: 0,
-          },
-          'PRODUCT-BBB': {
-            id: 'PRODUCT-BBB',
-            domainId: 'B',
-            cardType: AGGLOMERATION_CARD_INTERFACE_NAME,
-            cardId: 'B',
-            col: 0,
-            row: 0,
-            availableResources: 0,
-            lockedResources: 0,
-          },
+          ...domainsCardsNewGameState.entities,
+          aaaa: aaaaWarehouseNextToBlueForestDomainCard,
         },
-        initialized: true,
-        loaded: false,
-      };
-
-      const initialState: DomainsCardsState = {
-        ids: ['PRODUCT-AAA'],
-        entities: {
-          'PRODUCT-AAA': {
-            id: 'PRODUCT-AAA',
-            domainId: 'A',
-            cardType: AGGLOMERATION_CARD_INTERFACE_NAME,
-            cardId: 'A',
-            col: 0,
-            row: 0,
-            availableResources: 0,
-            lockedResources: 0,
-          },
-        },
-        initialized: true,
-        loaded: false,
       };
 
       const action = DomainsCardsActions.addDomainCard({
-        domainCard: {
-          id: 'PRODUCT-BBB',
-          domainId: 'B',
-          cardType: AGGLOMERATION_CARD_INTERFACE_NAME,
-          cardId: 'B',
-          col: 0,
-          row: 0,
-          availableResources: 0,
-          lockedResources: 0,
-        },
+        domainCard: aaaaWarehouseNextToBlueForestDomainCard,
       });
 
       const state: DomainsCardsState = domainsCardsReducer(
-        initialState,
+        domainsCardsNewGameState,
         action
       );
 
@@ -298,49 +149,17 @@ describe('DomainsCards Reducer', () => {
 
   describe('selectDomainCard', () => {
     it('should select the DomainCard', () => {
-      const newState: DomainsCardsState = {
-        ids: ['PRODUCT-AAA'],
-        entities: {
-          'PRODUCT-AAA': {
-            id: 'PRODUCT-AAA',
-            domainId: 'A',
-            cardType: AGGLOMERATION_CARD_INTERFACE_NAME,
-            cardId: 'A',
-            col: 0,
-            row: 0,
-            availableResources: 0,
-            lockedResources: 0,
-          },
-        },
-        selectedId: 'PRODUCT-AAA',
-        initialized: true,
-        loaded: false,
-      };
-
-      const initialState: DomainsCardsState = {
-        ids: ['PRODUCT-AAA'],
-        entities: {
-          'PRODUCT-AAA': {
-            id: 'PRODUCT-AAA',
-            domainId: 'A',
-            cardType: AGGLOMERATION_CARD_INTERFACE_NAME,
-            cardId: 'A',
-            col: 0,
-            row: 0,
-            availableResources: 0,
-            lockedResources: 0,
-          },
-        },
-        initialized: true,
-        loaded: false,
+      const newState = {
+        ...domainsCardsNewGameState,
+        selectedId: someId,
       };
 
       const action = DomainsCardsActions.selectDomainCard({
-        id: 'PRODUCT-AAA',
+        id: someId,
       });
 
       const state: DomainsCardsState = domainsCardsReducer(
-        initialState,
+        domainsCardsNewGameState,
         action
       );
 
@@ -350,41 +169,9 @@ describe('DomainsCards Reducer', () => {
 
   describe('unselectDomainCard', () => {
     it('should unselect the DomainCard', () => {
-      const newState: DomainsCardsState = {
-        ids: ['PRODUCT-AAA'],
-        entities: {
-          'PRODUCT-AAA': {
-            id: 'PRODUCT-AAA',
-            domainId: 'A',
-            cardType: AGGLOMERATION_CARD_INTERFACE_NAME,
-            cardId: 'A',
-            col: 0,
-            row: 0,
-            availableResources: 0,
-            lockedResources: 0,
-          },
-        },
-        initialized: true,
-        loaded: false,
-      };
-
-      const initialState: DomainsCardsState = {
-        ids: ['PRODUCT-AAA'],
-        entities: {
-          'PRODUCT-AAA': {
-            id: 'PRODUCT-AAA',
-            domainId: 'A',
-            cardType: AGGLOMERATION_CARD_INTERFACE_NAME,
-            cardId: 'A',
-            col: 0,
-            row: 0,
-            availableResources: 0,
-            lockedResources: 0,
-          },
-        },
-        selectedId: 'PRODUCT-AAA',
-        initialized: true,
-        loaded: false,
+      const initialState = {
+        ...domainsCardsNewGameState,
+        selectedId: 'aaaa',
       };
 
       const action = DomainsCardsActions.unselectDomainCard();
@@ -394,25 +181,15 @@ describe('DomainsCards Reducer', () => {
         action
       );
 
-      expect(state).toEqual(newState);
+      expect(state).toEqual(domainsCardsNewGameState);
     });
   });
 
   describe('setDomainsCardsError', () => {
     it('should set the error', () => {
-      const newState: DomainsCardsState = {
-        ids: [],
-        entities: {},
-        initialized: false,
-        loaded: false,
+      const newState = {
+        ...domainsCardsNewGameState,
         errorMsg: ERROR_MSG,
-      };
-
-      const initialState: DomainsCardsState = {
-        ids: [],
-        entities: {},
-        initialized: false,
-        loaded: false,
       };
 
       const action = DomainsCardsActions.setDomainsCardsError({
@@ -420,7 +197,7 @@ describe('DomainsCards Reducer', () => {
       });
 
       const state: DomainsCardsState = domainsCardsReducer(
-        initialState,
+        domainsCardsNewGameState,
         action
       );
 
