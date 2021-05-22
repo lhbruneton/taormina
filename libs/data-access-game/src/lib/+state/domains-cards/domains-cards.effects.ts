@@ -81,30 +81,30 @@ export class DomainsCardsEffects {
         });
       }),
       map(({ increaseOne, increaseTwo }) => {
-        const updatesOneOne = this.updatesByOneWhenOneOK(increaseOne);
-        const updatesTwoOne = this.updatesByOneWhenTwoNOK(increaseTwo);
-        const updatesTwoTwo = this.updatesByTwoWhenTwoOK(increaseTwo);
+        const updatesOne = this.updatesAvailableResources(increaseOne, 1);
+        // eslint-disable-next-line no-magic-numbers
+        const updatesTwo = this.updatesAvailableResources(increaseTwo, 2);
         return DomainsCardsActions.updateDomainsCards({
-          updates: [...updatesOneOne, ...updatesTwoOne, ...updatesTwoTwo],
+          updates: [...updatesOne, ...updatesTwo],
         });
       })
     )
   );
 
-  updatesByOneWhenOneOK = (
-    domainsCards: DomainsCardsEntity[]
+  updatesAvailableResources = (
+    domainsCards: DomainsCardsEntity[],
+    resourceIncrement: number
   ): {
     id: string;
     changes: {
       availableResources: ResourceCount;
     };
   }[] => {
-    const resourceIncrement = 1;
-    return domainsCards
+    const belowMax = domainsCards
       .filter(
         (pivot) =>
-          (pivot.availableResources as ResourceCount) <
-          Math.max(...RESOURCE_COUNTS)
+          pivot.availableResources <
+          Math.max(...RESOURCE_COUNTS) - resourceIncrement
       )
       .map((pivot) => {
         return {
@@ -115,58 +115,24 @@ export class DomainsCardsEffects {
           },
         };
       });
-  };
 
-  updatesByOneWhenTwoNOK = (
-    domainsCards: DomainsCardsEntity[]
-  ): {
-    id: string;
-    changes: {
-      availableResources: ResourceCount;
-    };
-  }[] => {
-    const resourceIncrement = 1;
-    return domainsCards
+    const atMax = domainsCards
       .filter(
         (pivot) =>
-          (pivot.availableResources as ResourceCount) ===
-          Math.max(...RESOURCE_COUNTS) - 1
+          pivot.availableResources >=
+            Math.max(...RESOURCE_COUNTS) - resourceIncrement &&
+          pivot.availableResources < Math.max(...RESOURCE_COUNTS)
       )
       .map((pivot) => {
         return {
           id: pivot.id,
           changes: {
-            availableResources: (pivot.availableResources +
-              resourceIncrement) as ResourceCount,
+            availableResources: Math.max(...RESOURCE_COUNTS) as ResourceCount,
           },
         };
       });
-  };
 
-  updatesByTwoWhenTwoOK = (
-    domainsCards: DomainsCardsEntity[]
-  ): {
-    id: string;
-    changes: {
-      availableResources: ResourceCount;
-    };
-  }[] => {
-    const resourceDoubleIncrement = 2;
-    return domainsCards
-      .filter(
-        (pivot) =>
-          (pivot.availableResources as ResourceCount) <
-          Math.max(...RESOURCE_COUNTS) - 1
-      )
-      .map((pivot) => {
-        return {
-          id: pivot.id,
-          changes: {
-            availableResources: (pivot.availableResources +
-              resourceDoubleIncrement) as ResourceCount,
-          },
-        };
-      });
+    return [...belowMax, ...atMax];
   };
 
   lockResource$ = createEffect(() =>

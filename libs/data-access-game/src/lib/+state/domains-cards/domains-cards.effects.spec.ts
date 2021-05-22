@@ -162,12 +162,12 @@ describe('DomainsCardsEffects', () => {
               changes: { availableResources: 1 },
             },
             {
-              id: 'DDD',
-              changes: { availableResources: 3 },
-            },
-            {
               id: 'CCC',
               changes: { availableResources: 2 },
+            },
+            {
+              id: 'DDD',
+              changes: { availableResources: 3 },
             },
           ],
         }),
