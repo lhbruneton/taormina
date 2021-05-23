@@ -131,11 +131,11 @@ describe('GameRulesService', () => {
     );
   });
 
-  describe('increaseResources$', () => {
+  describe('increaseResourcesForDie$', () => {
     it(
       'should complete on gameEnded',
       marbles((m) => {
-        // Given a stream of productions and an increaseResources$ stream build on it
+        // Given a stream of productions and an increaseResourcesForDie$ stream build on it
         const productionDie$ = m.hot('^-a-b-|', {
           a: 5,
           b: 3,
@@ -150,9 +150,9 @@ describe('GameRulesService', () => {
         service = TestBed.inject(GameRulesService);
         // When the gameEnded$ subject emits
         m.cold('---a-|').subscribe(() => service.gameEnded$.next());
-        // Then the increaseResources$ stream completes
+        // Then the increaseResourcesForDie$ stream completes
         const expected$ = m.cold('--a|', { a: undefined });
-        m.expect(service.increaseResources$).toBeObservable(expected$);
+        m.expect(service.increaseResourcesForDie$).toBeObservable(expected$);
       })
     );
   });
@@ -212,8 +212,8 @@ describe('GameRulesService', () => {
         service.countAndSteal$,
         'subscribe'
       );
-      const increaseResourcesSubscribeSpy = jest.spyOn(
-        service.increaseResources$,
+      const increaseResourcesForDieSubscribeSpy = jest.spyOn(
+        service.increaseResourcesForDie$,
         'subscribe'
       );
 
@@ -221,7 +221,7 @@ describe('GameRulesService', () => {
 
       expect(gameEndedNextSpy).toHaveBeenCalledTimes(1);
       expect(countAndStealSubscribeSpy).toHaveBeenCalledTimes(1);
-      expect(increaseResourcesSubscribeSpy).toHaveBeenCalledTimes(1);
+      expect(increaseResourcesForDieSubscribeSpy).toHaveBeenCalledTimes(1);
 
       expect(gameFacadeMock.initNewGame).toHaveBeenCalledTimes(1);
       expect(domainsCardsFacadeMock.initNewGame).toHaveBeenCalledTimes(1);

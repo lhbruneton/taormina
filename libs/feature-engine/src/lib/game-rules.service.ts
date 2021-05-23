@@ -41,7 +41,7 @@ export class GameRulesService {
     })
   );
 
-  increaseResources$ = this.game.productionDie$.pipe(
+  increaseResourcesForDie$ = this.game.productionDie$.pipe(
     takeUntil(this.gameEnded$),
     filter((value): value is DiceValue => value !== undefined),
     map((value) => this.domainsCards.increaseResourcesForDie(value))
@@ -60,7 +60,7 @@ export class GameRulesService {
   initNewGame(): void {
     this.gameEnded$.next();
     this.countAndSteal$.subscribe();
-    this.increaseResources$.subscribe();
+    this.increaseResourcesForDie$.subscribe();
 
     this.game.initNewGame();
     this.domainsCards.initNewGame();
