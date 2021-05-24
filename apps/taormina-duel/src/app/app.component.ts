@@ -116,6 +116,14 @@ export class AppComponent {
     this.game.setNextProductionDie(value);
   }
 
+  getSelectedEventsPileCard(): Observable<EventsPileCardsEntity | undefined> {
+    return this.eventsPileCards.selectedEventsPileCards$;
+  }
+
+  removeSelectedEventsPileCard(): void {
+    this.eventsPileCards.removeSelected();
+  }
+
   throwDisabled(): Observable<boolean> {
     return this.game.phase$.pipe(
       map(

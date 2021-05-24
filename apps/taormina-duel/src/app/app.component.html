@@ -43,6 +43,18 @@
       >
     </div>
   </div>
+  <div>
+    <p>Selected event:</p>
+    <div *ngIf="getSelectedEventsPileCard() | async as pivot">
+      <div *ngIf="getEventCard(pivot.cardId) as event">
+        {{ event.name }}
+      </div>
+    </div>
+    <hr />
+    <button type="button" (click)="removeSelectedEventsPileCard()">
+      Discard event
+    </button>
+  </div>
 </div>
 <hr />
 <div class="flex-container">
