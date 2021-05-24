@@ -63,6 +63,12 @@ export class DomainsCardsFacade {
     );
   }
 
+  increaseResourcesForAuspiciousYear(): void {
+    this.store.dispatch(
+      DomainsCardsActions.increaseAvailableResourcesForAuspiciousYear()
+    );
+  }
+
   useLockedResources(): void {
     this.store.dispatch(DomainsCardsActions.useLockedResources());
   }

@@ -808,4 +808,63 @@ describe('DomainsCardsEffects', () => {
       });
     });
   });
+
+  describe('increaseResourcesAuspiciousYear$', () => {
+    beforeEach(() => {
+      injector = Injector.create({
+        providers: [
+          provideMockStore({
+            selectors: [
+              {
+                selector:
+                  // FIXME: https://github.com/ngrx/platform/issues/2176
+                  DomainsCardsSelectors.getLandCardsPivotsIncreaseAuspiciousYear,
+                value: [
+                  {
+                    id: 'aaaa',
+                    domainId: ID_DOMAIN_RED,
+                    cardType: LAND_CARD_INTERFACE_NAME,
+                    cardId: ID_CLAY_PIT_RED,
+                    availableResources: 0,
+                  },
+                ],
+              },
+            ],
+          }),
+        ],
+      });
+      injector.get(MockStore);
+    });
+
+    it('should dispatch updateDomainsCards with array of changes', () => {
+      actions = hot('-a-|', {
+        a: DomainsCardsActions.increaseAvailableResourcesForAuspiciousYear(),
+      });
+
+      const expected = hot('-a-|', {
+        a: DomainsCardsActions.updateDomainsCards({
+          updates: [
+            {
+              id: 'aaaa',
+              changes: { availableResources: 1 },
+            },
+            {
+              id: 'aaaa',
+              changes: { availableResources: 2 },
+            },
+            {
+              id: 'aaaa',
+              changes: { availableResources: 3 },
+            },
+            {
+              id: 'aaaa',
+              changes: { availableResources: 3 },
+            },
+          ],
+        }),
+      });
+
+      expect(effects.increaseResourcesAuspiciousYear$).toBeObservable(expected);
+    });
+  });
 });

@@ -135,6 +135,49 @@ export class DomainsCardsEffects {
     return [...belowMax, ...atMax];
   };
 
+  increaseResourcesAuspiciousYear$ = createEffect(() =>
+    this.actions$.pipe(
+      ofType(DomainsCardsActions.increaseAvailableResourcesForAuspiciousYear),
+      withLatestFrom(
+        this.domainsCardsStore.select(
+          DomainsCardsSelectors.getLandCardsPivotsIncreaseAuspiciousYear,
+          { count: 1 }
+        ),
+        this.domainsCardsStore.select(
+          DomainsCardsSelectors.getLandCardsPivotsIncreaseAuspiciousYear,
+          { count: 2 }
+        ),
+        this.domainsCardsStore.select(
+          DomainsCardsSelectors.getLandCardsPivotsIncreaseAuspiciousYear,
+          { count: 3 }
+        ),
+        this.domainsCardsStore.select(
+          DomainsCardsSelectors.getLandCardsPivotsIncreaseAuspiciousYear,
+          { count: 4 }
+        )
+      ),
+      map(
+        // eslint-disable-next-line @typescript-eslint/no-unused-vars
+        ([_action, increaseOne, increaseTwo, increaseThree, increaseFour]) => {
+          const updatesOne = this.updatesAvailableResources(increaseOne, 1);
+          /* eslint-disable no-magic-numbers */
+          const updatesTwo = this.updatesAvailableResources(increaseTwo, 2);
+          const updatesThree = this.updatesAvailableResources(increaseThree, 3);
+          const updatesFour = this.updatesAvailableResources(increaseFour, 4);
+          /* eslint-enable no-magic-numbers */
+          return DomainsCardsActions.updateDomainsCards({
+            updates: [
+              ...updatesOne,
+              ...updatesTwo,
+              ...updatesThree,
+              ...updatesFour,
+            ],
+          });
+        }
+      )
+    )
+  );
+
   lockResource$ = createEffect(() =>
     this.actions$.pipe(
       ofType(DomainsCardsActions.lockResource),

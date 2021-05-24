@@ -106,6 +106,24 @@ const getLandCardFilterByDie = (
   return undefined;
 };
 
+export const getLandCardsPivotsIncreaseAuspiciousYear = createSelector(
+  getAllDomainsCards,
+  (entities: DomainsCardsEntity[], props: { count: number }) =>
+    entities.filter((pivot) => {
+      if (
+        pivot.cardType === LAND_CARD_INTERFACE_NAME &&
+        pivot.cardId !== undefined
+      ) {
+        const land = landCards.get(pivot.cardId);
+        return (
+          land !== undefined &&
+          isNextToCountWarehouseOrMonastery(pivot, entities, props.count)
+        );
+      }
+      return false;
+    })
+);
+
 export const getLandCardPivotById = createSelector(
   getAllDomainsCards,
   (entities: DomainsCardsEntity[], props: { id: string }) =>
@@ -311,6 +329,24 @@ const isNextToAWarehouse = (
         neighbor.cardId !== undefined &&
         developmentCards.get(neighbor.cardId)?.name === BuildingName.Warehouse
     ) !== undefined
+  );
+};
+
+const isNextToCountWarehouseOrMonastery = (
+  pivot: DomainsCardsEntity,
+  entities: DomainsCardsEntity[],
+  count: number
+): boolean => {
+  const neighbors = getCardSideNeighbors(pivot, entities);
+  return (
+    neighbors.filter(
+      (neighbor) =>
+        neighbor.cardId !== undefined &&
+        (developmentCards.get(neighbor.cardId)?.name ===
+          BuildingName.Warehouse ||
+          developmentCards.get(neighbor.cardId)?.name ===
+            BuildingName.Monastery)
+    ).length === count
   );
 };
 
