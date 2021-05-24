@@ -1,6 +1,7 @@
 import { Injectable } from '@angular/core';
 import {
   DomainsCardsFacade,
+  EventsPileCardsEntity,
   EventsPileCardsFacade,
   FaceUpPilesCardsFacade,
   GameFacade,
@@ -8,7 +9,11 @@ import {
   LandsPileCardsFacade,
   StockPilesCardsFacade,
 } from '@taormina/data-access-game';
-import { ID_FACE_UP_HAMLET, ID_FACE_UP_TOWN } from '@taormina/shared-constants';
+import {
+  eventCards,
+  ID_FACE_UP_HAMLET,
+  ID_FACE_UP_TOWN,
+} from '@taormina/shared-constants';
 import {
   AGGLOMERATION_CARD_INTERFACE_NAME,
   AVAILABLE_AGGLOMERATION_SLOT,
@@ -16,6 +21,7 @@ import {
   AVAILABLE_LAND_SLOT,
   DEVELOPMENT_CARD_INTERFACE_NAME,
   DiceValue,
+  EventName,
   EventValue,
   GamePhase,
   LAND_CARD_INTERFACE_NAME,
@@ -30,6 +36,8 @@ import { filter, map, take, takeUntil } from 'rxjs/operators';
 export class GameRulesService {
   gameEnded$ = new Subject();
 
+  event$ = this.game.eventDie$.pipe(filter((die) => die === EventValue.Event));
+
   thieves$ = this.game.eventDie$.pipe(
     filter((die) => die === EventValue.Thieves)
   );
@@ -41,10 +49,29 @@ export class GameRulesService {
     })
   );
 
-  increaseResources$ = this.game.productionDie$.pipe(
+  selectFirstEvent$ = this.event$.pipe(
+    takeUntil(this.gameEnded$),
+    map(() => {
+      this.eventsPileCards.selectFirst();
+    })
+  );
+
+  auspiciousYear$ = this.eventsPileCards.selectedEventsPileCards$.pipe(
+    filter((pivot): pivot is EventsPileCardsEntity => pivot !== undefined),
+    filter(
+      (pivot) => eventCards.get(pivot.cardId)?.name === EventName.AuspiciousYear
+    )
+  );
+
+  increaseResourcesForDie$ = this.game.productionDie$.pipe(
     takeUntil(this.gameEnded$),
     filter((value): value is DiceValue => value !== undefined),
     map((value) => this.domainsCards.increaseResourcesForDie(value))
+  );
+
+  increaseResourcesForAuspiciousYear$ = this.auspiciousYear$.pipe(
+    takeUntil(this.gameEnded$),
+    map(() => this.domainsCards.increaseResourcesForAuspiciousYear())
   );
 
   constructor(
@@ -60,7 +87,9 @@ export class GameRulesService {
   initNewGame(): void {
     this.gameEnded$.next();
     this.countAndSteal$.subscribe();
-    this.increaseResources$.subscribe();
+    this.selectFirstEvent$.subscribe();
+    this.increaseResourcesForDie$.subscribe();
+    this.increaseResourcesForAuspiciousYear$.subscribe();
 
     this.game.initNewGame();
     this.domainsCards.initNewGame();

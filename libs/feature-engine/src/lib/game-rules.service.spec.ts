@@ -62,32 +62,62 @@ describe('GameRulesService', () => {
     }
   ));
 
-  describe('thieves$', () => {
-    it(
-      'should filter events other than thieves',
-      marbles((m) => {
-        // Given a stream of events
-        const eventDie$ = m.hot('^-a-b-c-|', {
-          a: EventValue.Event,
-          b: EventValue.Thieves,
-          c: EventValue.Trade,
-        });
-        // When the thieves$ stream is build on it
-        const gameFacadeMock = {
-          eventDie$,
-          productionDie$: of(),
-        };
-        TestBed.configureTestingModule({
-          providers: [{ provide: GameFacade, useValue: gameFacadeMock }],
-        });
-        service = TestBed.inject(GameRulesService);
-        // Then only thieves events should remain
-        const expected$ = m.cold('----a---|', {
-          a: EventValue.Thieves,
-        });
-        m.expect(service.thieves$).toBeObservable(expected$);
-      })
-    );
+  describe('eventDie$', () => {
+    describe('event$', () => {
+      it(
+        'should filter events other than event',
+        marbles((m) => {
+          // Given a stream of events
+          const eventDie$ = m.hot('^-a-b-c-|', {
+            a: EventValue.Event,
+            b: EventValue.Thieves,
+            c: EventValue.Trade,
+          });
+          // When the event$ stream is build on it
+          const gameFacadeMock = {
+            eventDie$,
+            productionDie$: of(),
+          };
+          TestBed.configureTestingModule({
+            providers: [{ provide: GameFacade, useValue: gameFacadeMock }],
+          });
+          service = TestBed.inject(GameRulesService);
+          // Then only event events should remain
+          const expected$ = m.cold('--a-----|', {
+            a: EventValue.Event,
+          });
+          m.expect(service.event$).toBeObservable(expected$);
+        })
+      );
+    });
+
+    describe('thieves$', () => {
+      it(
+        'should filter events other than thieves',
+        marbles((m) => {
+          // Given a stream of events
+          const eventDie$ = m.hot('^-a-b-c-|', {
+            a: EventValue.Event,
+            b: EventValue.Thieves,
+            c: EventValue.Trade,
+          });
+          // When the thieves$ stream is build on it
+          const gameFacadeMock = {
+            eventDie$,
+            productionDie$: of(),
+          };
+          TestBed.configureTestingModule({
+            providers: [{ provide: GameFacade, useValue: gameFacadeMock }],
+          });
+          service = TestBed.inject(GameRulesService);
+          // Then only thieves events should remain
+          const expected$ = m.cold('----a---|', {
+            a: EventValue.Thieves,
+          });
+          m.expect(service.thieves$).toBeObservable(expected$);
+        })
+      );
+    });
   });
 
   describe('countAndSteal$', () => {
@@ -131,11 +161,87 @@ describe('GameRulesService', () => {
     );
   });
 
-  describe('increaseResources$', () => {
+  describe('selectFirstEvent$', () => {
+    it(
+      `should call selectFirst on event and complete on gameEnded`,
+      marbles((m) => {
+        // Given a stream of event events
+        const eventDie$ = m.hot('^-a-a-|', {
+          a: EventValue.Event,
+        });
+        // Given a selectFirstEvent$ stream build on it
+        const gameFacadeMock = {
+          eventDie$,
+          productionDie$: of(),
+        };
+        const eventsPileCardsFacadeMock = {
+          selectedEventsPileCards$: of(),
+          selectFirst: jest.fn(),
+        };
+        TestBed.configureTestingModule({
+          providers: [
+            { provide: GameFacade, useValue: gameFacadeMock },
+            {
+              provide: EventsPileCardsFacade,
+              useValue: eventsPileCardsFacadeMock,
+            },
+          ],
+        });
+        service = TestBed.inject(GameRulesService);
+        // When the gameEnded$ subject emits
+        m.cold('---a-|').subscribe(() => service.gameEnded$.next());
+        // Then the selectFirstEvent$ stream completes
+        const expected$ = m.cold('--a|', { a: undefined });
+        m.expect(service.selectFirstEvent$).toBeObservable(expected$);
+        // Then call selectFirst on event before completion
+        service.selectFirstEvent$.pipe(
+          tap(() => {
+            expect(eventsPileCardsFacadeMock.selectFirst).toHaveBeenCalledTimes(
+              1
+            );
+          })
+        );
+      })
+    );
+  });
+
+  describe('auspiciousYear$', () => {
+    it(
+      'should filter events other than thieves',
+      marbles((m) => {
+        // Given a stream of selected events pile cards
+        const selectedEventsPileCards$ = m.hot('^-a-b-c-|', {
+          a: undefined,
+          b: { id: 'aaaa', cardId: 'EVENT_1' },
+          c: { id: 'bbbb', cardId: 'EVENT_0' },
+        });
+        // When the auspiciousYear$ stream is build on it
+        const eventsPileCardsFacadeMock = {
+          selectedEventsPileCards$,
+        };
+        TestBed.configureTestingModule({
+          providers: [
+            {
+              provide: EventsPileCardsFacade,
+              useValue: eventsPileCardsFacadeMock,
+            },
+          ],
+        });
+        service = TestBed.inject(GameRulesService);
+        // Then only auspicious year events should remain
+        const expected$ = m.cold('----a---|', {
+          a: { id: 'aaaa', cardId: 'EVENT_1' },
+        });
+        m.expect(service.auspiciousYear$).toBeObservable(expected$);
+      })
+    );
+  });
+
+  describe('increaseResourcesForDie$', () => {
     it(
       'should complete on gameEnded',
       marbles((m) => {
-        // Given a stream of productions and an increaseResources$ stream build on it
+        // Given a stream of productions and an increaseResourcesForDie$ stream build on it
         const productionDie$ = m.hot('^-a-b-|', {
           a: 5,
           b: 3,
@@ -150,9 +256,57 @@ describe('GameRulesService', () => {
         service = TestBed.inject(GameRulesService);
         // When the gameEnded$ subject emits
         m.cold('---a-|').subscribe(() => service.gameEnded$.next());
-        // Then the increaseResources$ stream completes
+        // Then the increaseResourcesForDie$ stream completes
         const expected$ = m.cold('--a|', { a: undefined });
-        m.expect(service.increaseResources$).toBeObservable(expected$);
+        m.expect(service.increaseResourcesForDie$).toBeObservable(expected$);
+      })
+    );
+  });
+
+  describe('increaseResourcesForAuspiciousYear$', () => {
+    it(
+      `should call increaseResourcesForAuspiciousYear on event and complete on gameEnded`,
+      marbles((m) => {
+        // Given a stream of auspicious year events
+        const selectedEventsPileCards$ = m.hot('^-a-b-|', {
+          a: { id: 'aaaa', cardId: 'EVENT_1' },
+          b: { id: 'bbbb', cardId: 'EVENT_2' },
+        });
+        // Given a increaseResourcesForAuspiciousYear$ stream build on it
+        const domainsCardsFacadeMock = {
+          increaseResourcesForAuspiciousYear: jest.fn(),
+        };
+        const eventsPileCardsFacadeMock = {
+          selectedEventsPileCards$,
+        };
+        TestBed.configureTestingModule({
+          providers: [
+            {
+              provide: DomainsCardsFacade,
+              useValue: domainsCardsFacadeMock,
+            },
+            {
+              provide: EventsPileCardsFacade,
+              useValue: eventsPileCardsFacadeMock,
+            },
+          ],
+        });
+        service = TestBed.inject(GameRulesService);
+        // When the gameEnded$ subject emits
+        m.cold('---a-|').subscribe(() => service.gameEnded$.next());
+        // Then the increaseResourcesForAuspiciousYear$ stream completes
+        const expected$ = m.cold('--a|', { a: undefined });
+        m.expect(service.increaseResourcesForAuspiciousYear$).toBeObservable(
+          expected$
+        );
+        // Then call increaseResourcesForAuspiciousYear on event before completion
+        service.increaseResourcesForAuspiciousYear$.pipe(
+          tap(() => {
+            expect(
+              domainsCardsFacadeMock.increaseResourcesForAuspiciousYear
+            ).toHaveBeenCalledTimes(1);
+          })
+        );
       })
     );
   });
@@ -179,6 +333,7 @@ describe('GameRulesService', () => {
       initNewGame: jest.fn(),
     };
     const eventsPileCardsFacadeMock = {
+      selectedEventsPileCards$: of(),
       initNewGame: jest.fn(),
     };
 
@@ -212,8 +367,16 @@ describe('GameRulesService', () => {
         service.countAndSteal$,
         'subscribe'
       );
-      const increaseResourcesSubscribeSpy = jest.spyOn(
-        service.increaseResources$,
+      const selectFirstEventSubscribeSpy = jest.spyOn(
+        service.selectFirstEvent$,
+        'subscribe'
+      );
+      const increaseResourcesForDieSubscribeSpy = jest.spyOn(
+        service.increaseResourcesForDie$,
+        'subscribe'
+      );
+      const increaseResourcesForAuspiciousYearSubscribeSpy = jest.spyOn(
+        service.increaseResourcesForAuspiciousYear$,
         'subscribe'
       );
 
@@ -221,7 +384,11 @@ describe('GameRulesService', () => {
 
       expect(gameEndedNextSpy).toHaveBeenCalledTimes(1);
       expect(countAndStealSubscribeSpy).toHaveBeenCalledTimes(1);
-      expect(increaseResourcesSubscribeSpy).toHaveBeenCalledTimes(1);
+      expect(selectFirstEventSubscribeSpy).toHaveBeenCalledTimes(1);
+      expect(increaseResourcesForDieSubscribeSpy).toHaveBeenCalledTimes(1);
+      expect(
+        increaseResourcesForAuspiciousYearSubscribeSpy
+      ).toHaveBeenCalledTimes(1);
 
       expect(gameFacadeMock.initNewGame).toHaveBeenCalledTimes(1);
       expect(domainsCardsFacadeMock.initNewGame).toHaveBeenCalledTimes(1);

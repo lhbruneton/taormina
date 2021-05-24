@@ -36,6 +36,10 @@ export const increaseAvailableResourcesForDie = createAction(
   props<{ die: ResourceValue }>()
 );
 
+export const increaseAvailableResourcesForAuspiciousYear = createAction(
+  '[DomainsCards] Increase Available Resources For Auspicious Year'
+);
+
 export const increaseAvailableResources = createAction(
   '[DomainsCards] Increase Available Resources',
   props<{ id: string }>()

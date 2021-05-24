@@ -1,7 +1,10 @@
 /* eslint-disable no-magic-numbers */
 import {
+  ID_CLAY_PIT_RED,
   ID_DOMAIN_BLUE,
   ID_DOMAIN_RED,
+  ID_FOREST_BLUE,
+  ID_GOLD_MINE_BLUE,
   ID_GOLD_MINE_RED,
   ID_PASTURE_BLUE,
   ID_PASTURE_RED,
@@ -10,6 +13,7 @@ import { MasteryPointsType } from '@taormina/shared-models';
 
 import {
   blueForestId,
+  domainsCardsAuspiciousYearTwoRedOneBlueState,
   domainsCardsFourTradeRedThreeTradeBlueState,
   domainsCardsNewGameState,
   domainsCardsOneStrengthRedTwoStrengthBlueState,
@@ -386,11 +390,48 @@ describe('DomainsCards Selectors', () => {
             domainId: ID_DOMAIN_BLUE,
           }
         );
-        const cardId = results[0]?.cardId;
+        const cardIdPastureBlue = results[0]?.cardId;
 
         expect(results.length).toBe(1);
-        expect(cardId).toBe(ID_PASTURE_BLUE);
+        expect(cardIdPastureBlue).toBe(ID_PASTURE_BLUE);
       });
+    });
+  });
+
+  describe('getLandCardsPivotsIncreaseAuspiciousYear', () => {
+    beforeEach(() => {
+      state = {
+        domainsCards: domainsCardsAuspiciousYearTwoRedOneBlueState(),
+      };
+    });
+    it('should return the clay pit and the pasture for the red domain with count 2', () => {
+      const results = DomainsCardsSelectors.getLandCardsPivotsIncreaseAuspiciousYear(
+        state,
+        {
+          count: 2,
+        }
+      );
+      const cardIdClayPitRed = results[0]?.cardId;
+      const cardIdPastureRed = results[1]?.cardId;
+
+      expect(results.length).toBe(2);
+      expect(cardIdClayPitRed).toBe(ID_CLAY_PIT_RED);
+      expect(cardIdPastureRed).toBe(ID_PASTURE_RED);
+    });
+
+    it('should return the forest and the gold mine for the blue domain with count 1', () => {
+      const results = DomainsCardsSelectors.getLandCardsPivotsIncreaseAuspiciousYear(
+        state,
+        {
+          count: 1,
+        }
+      );
+      const cardIdForestBlue = results[0]?.cardId;
+      const cardIdGoldMineBlue = results[1]?.cardId;
+
+      expect(results.length).toBe(2);
+      expect(cardIdForestBlue).toBe(ID_FOREST_BLUE);
+      expect(cardIdGoldMineBlue).toBe(ID_GOLD_MINE_BLUE);
     });
   });
 });
