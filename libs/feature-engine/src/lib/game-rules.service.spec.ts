@@ -207,7 +207,7 @@ describe('GameRulesService', () => {
 
   describe('auspiciousYear$', () => {
     it(
-      'should filter events other than thieves',
+      'should filter selected events pile cards other than auspicious year',
       marbles((m) => {
         // Given a stream of selected events pile cards
         const selectedEventsPileCards$ = m.hot('^-a-b-c-|', {
@@ -233,6 +233,38 @@ describe('GameRulesService', () => {
           a: { id: 'aaaa', cardId: 'EVENT_1' },
         });
         m.expect(service.auspiciousYear$).toBeObservable(expected$);
+      })
+    );
+  });
+
+  describe('festival$', () => {
+    it(
+      'should filter selected events pile cards other than festival',
+      marbles((m) => {
+        // Given a stream of selected events pile cards
+        const selectedEventsPileCards$ = m.hot('^-a-b-c-|', {
+          a: undefined,
+          b: { id: 'aaaa', cardId: 'EVENT_1' },
+          c: { id: 'bbbb', cardId: 'EVENT_0' },
+        });
+        // When the festival$ stream is build on it
+        const eventsPileCardsFacadeMock = {
+          selectedEventsPileCards$,
+        };
+        TestBed.configureTestingModule({
+          providers: [
+            {
+              provide: EventsPileCardsFacade,
+              useValue: eventsPileCardsFacadeMock,
+            },
+          ],
+        });
+        service = TestBed.inject(GameRulesService);
+        // Then only festival events should remain
+        const expected$ = m.cold('------a-|', {
+          a: { id: 'bbbb', cardId: 'EVENT_0' },
+        });
+        m.expect(service.festival$).toBeObservable(expected$);
       })
     );
   });
@@ -265,7 +297,8 @@ describe('GameRulesService', () => {
 
   describe('increaseResourcesForAuspiciousYear$', () => {
     it(
-      `should call increaseResourcesForAuspiciousYear on event and complete on gameEnded`,
+      `should call increaseResourcesForAuspiciousYear on auspicious year event
+       and complete on gameEnded`,
       marbles((m) => {
         // Given a stream of auspicious year events
         const selectedEventsPileCards$ = m.hot('^-a-b-|', {
@@ -304,6 +337,47 @@ describe('GameRulesService', () => {
           tap(() => {
             expect(
               domainsCardsFacadeMock.increaseResourcesForAuspiciousYear
+            ).toHaveBeenCalledTimes(1);
+          })
+        );
+      })
+    );
+  });
+
+  describe('resetEventsPileOnFestival$', () => {
+    it(
+      `should call resetEventsPileOnFestival on festival event
+       and complete on gameEnded`,
+      marbles((m) => {
+        // Given a stream of festival events
+        const selectedEventsPileCards$ = m.hot('^-a-b-|', {
+          a: { id: 'aaaa', cardId: 'EVENT_0' },
+          b: { id: 'bbbb', cardId: 'EVENT_0' },
+        });
+        // Given a resetEventsPileOnFestival$ stream build on it
+        const eventsPileCardsFacadeMock = {
+          selectedEventsPileCards$,
+          resetEventsPile: jest.fn(),
+        };
+        TestBed.configureTestingModule({
+          providers: [
+            {
+              provide: EventsPileCardsFacade,
+              useValue: eventsPileCardsFacadeMock,
+            },
+          ],
+        });
+        service = TestBed.inject(GameRulesService);
+        // When the gameEnded$ subject emits
+        m.cold('---a-|').subscribe(() => service.gameEnded$.next());
+        // Then the resetEventsPileOnFestival$ stream completes
+        const expected$ = m.cold('--a|', { a: undefined });
+        m.expect(service.resetEventsPileOnFestival$).toBeObservable(expected$);
+        // Then call resetEventsPile on event before completion
+        service.increaseResourcesForAuspiciousYear$.pipe(
+          tap(() => {
+            expect(
+              eventsPileCardsFacadeMock.resetEventsPile
             ).toHaveBeenCalledTimes(1);
           })
         );
@@ -379,6 +453,10 @@ describe('GameRulesService', () => {
         service.increaseResourcesForAuspiciousYear$,
         'subscribe'
       );
+      const resetEventsPileOnFestivalSubscribeSpy = jest.spyOn(
+        service.resetEventsPileOnFestival$,
+        'subscribe'
+      );
 
       service.initNewGame();
 
@@ -389,6 +467,7 @@ describe('GameRulesService', () => {
       expect(
         increaseResourcesForAuspiciousYearSubscribeSpy
       ).toHaveBeenCalledTimes(1);
+      expect(resetEventsPileOnFestivalSubscribeSpy).toHaveBeenCalledTimes(1);
 
       expect(gameFacadeMock.initNewGame).toHaveBeenCalledTimes(1);
       expect(domainsCardsFacadeMock.initNewGame).toHaveBeenCalledTimes(1);

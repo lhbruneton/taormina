@@ -19,15 +19,7 @@ export const loadEventsPileCardsFailure = createAction(
   props<{ error: string }>()
 );
 
-export const setEventsPileCardsInitialized = createAction(
-  '[EventsPileCards] Set EventsPileCards On Init',
-  props<{ eventsPileCards: EventsPileCardsEntity[] }>()
-);
-
-export const setEventsPileCardsError = createAction(
-  '[EventsPileCards] Set EventsPileCards Error',
-  props<{ error: string }>()
-);
+export const resetEventsPile = createAction('[Game Rules] Reset Events Pile');
 
 export const selectFirstEventsPileCard = createAction(
   '[EventsPileCards] Select First Events Pile Card'
@@ -35,6 +27,21 @@ export const selectFirstEventsPileCard = createAction(
 
 export const removeSelectedEventsPileCard = createAction(
   '[EventsPileCards] Remove Selected Events Pile Card'
+);
+
+export const setEntitiesSelectFirstEventsPileCards = createAction(
+  '[EventsPileCards] Set Entities Select First EventsPileCards',
+  props<{ eventsPileCards: EventsPileCardsEntity[] }>()
+);
+
+export const setEntitiesInitializedEventsPileCards = createAction(
+  '[EventsPileCards] Set EventsPileCards Initialized Status',
+  props<{ eventsPileCards: EventsPileCardsEntity[] }>()
+);
+
+export const setEventsPileCardsError = createAction(
+  '[EventsPileCards] Set EventsPileCards Error',
+  props<{ error: string }>()
 );
 
 export const selectEventsPileCard = createAction(

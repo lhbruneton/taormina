@@ -38,6 +38,8 @@ export class GameEffects {
         }
       }),
       switchMap((value) => [
+        // Set undefined to force a change if same value as previous
+        GameActions.setProductionDie({ value: undefined }),
         GameActions.setProductionDie({ value }),
         GameActions.setNextProductionDie({ value: undefined }),
       ])
@@ -48,7 +50,11 @@ export class GameEffects {
     this.actions$.pipe(
       ofType(GameActions.throwEventDie),
       map(() => getRandomEventDieValue()),
-      map((value) => GameActions.setEventDie({ value }))
+      switchMap((value) => [
+        // Set undefined to force a change if same value as previous
+        GameActions.setEventDie({ value: undefined }),
+        GameActions.setEventDie({ value }),
+      ])
     )
   );
 

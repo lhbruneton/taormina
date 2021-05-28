@@ -27,7 +27,7 @@ import {
   domainsCardsWarehouseNextToBlueForestState,
   redClayPitDomainCard,
   redClayPitId,
-  someId,
+  someDomainsCardsId,
 } from '../../../test';
 import { DomainsCardsEntity } from './domains-cards.models';
 import { DomainsCardsPartialState } from './domains-cards.reducer';
@@ -62,7 +62,7 @@ describe('DomainsCards Selectors', () => {
       state = {
         domainsCards: {
           ...domainsCardsNewGameState,
-          selectedId: someId,
+          selectedId: someDomainsCardsId,
         },
       };
     });
@@ -70,7 +70,7 @@ describe('DomainsCards Selectors', () => {
       const result = DomainsCardsSelectors.getDomainsCardsSelected(state);
       const selId = getDomainsCardsId(result);
 
-      expect(selId).toBe(someId);
+      expect(selId).toBe(someDomainsCardsId);
     });
   });
 

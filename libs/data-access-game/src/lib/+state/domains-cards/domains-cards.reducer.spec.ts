@@ -8,7 +8,7 @@ import {
   domainsCardsNewGameStateEntities,
   redClayPitDomainCard,
   redClayPitId,
-  someId,
+  someDomainsCardsId,
 } from '../../../test';
 import * as DomainsCardsActions from './domains-cards.actions';
 import {
@@ -151,11 +151,11 @@ describe('DomainsCards Reducer', () => {
     it('should select the DomainCard', () => {
       const newState = {
         ...domainsCardsNewGameState,
-        selectedId: someId,
+        selectedId: someDomainsCardsId,
       };
 
       const action = DomainsCardsActions.selectDomainCard({
-        id: someId,
+        id: someDomainsCardsId,
       });
 
       const state: DomainsCardsState = domainsCardsReducer(

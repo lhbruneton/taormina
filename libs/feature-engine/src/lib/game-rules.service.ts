@@ -63,6 +63,11 @@ export class GameRulesService {
     )
   );
 
+  festival$ = this.eventsPileCards.selectedEventsPileCards$.pipe(
+    filter((pivot): pivot is EventsPileCardsEntity => pivot !== undefined),
+    filter((pivot) => eventCards.get(pivot.cardId)?.name === EventName.Festival)
+  );
+
   increaseResourcesForDie$ = this.game.productionDie$.pipe(
     takeUntil(this.gameEnded$),
     filter((value): value is DiceValue => value !== undefined),
@@ -72,6 +77,11 @@ export class GameRulesService {
   increaseResourcesForAuspiciousYear$ = this.auspiciousYear$.pipe(
     takeUntil(this.gameEnded$),
     map(() => this.domainsCards.increaseResourcesForAuspiciousYear())
+  );
+
+  resetEventsPileOnFestival$ = this.festival$.pipe(
+    takeUntil(this.gameEnded$),
+    map(() => this.eventsPileCards.resetEventsPile())
   );
 
   constructor(
@@ -90,6 +100,7 @@ export class GameRulesService {
     this.selectFirstEvent$.subscribe();
     this.increaseResourcesForDie$.subscribe();
     this.increaseResourcesForAuspiciousYear$.subscribe();
+    this.resetEventsPileOnFestival$.subscribe();
 
     this.game.initNewGame();
     this.domainsCards.initNewGame();
