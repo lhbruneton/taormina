@@ -7,7 +7,7 @@ import {
 } from '../../lib/+state/domains-cards/domains-cards.models';
 import { DomainsCardsState } from '../../lib/+state/domains-cards/domains-cards.reducer';
 
-export const someId = '7a1e11aa-47bb-4b4e-94ab-4c91c19e6a62';
+export const someDomainsCardsId = '7a1e11aa-47bb-4b4e-94ab-4c91c19e6a62';
 export const redClayPitId = '9ed2d3b8-1d98-4331-969e-09b7f1ba046e';
 export const blueForestId = 'fb675e2e-ee40-4e07-b29c-d6dbd823ca53';
 const nextToRedClayPit = '444bebc9-2521-49f0-b790-2668a4baa182';
@@ -57,7 +57,7 @@ export const aaaaWarehouseNextToBlueForestDomainCard: DomainsCardsEntity = creat
 );
 
 const domainsCardsNewGameStateIds = [
-  someId,
+  someDomainsCardsId,
   '8641399b-c626-4e64-8b66-5ea20e580690',
   '283dc5b6-bcef-4050-b6f7-63bfd8df5442',
   '537144b6-b0ca-4e7e-885c-9d6aa2056a72',
@@ -90,8 +90,8 @@ const domainsCardsNewGameStateIds = [
 ];
 
 export const domainsCardsNewGameStateEntities = {
-  [someId]: {
-    id: someId,
+  [someDomainsCardsId]: {
+    id: someDomainsCardsId,
     domainId: 'DOMAIN_RED',
     cardType: 'AgglomerationCard',
     cardId: 'ROAD_RED',
