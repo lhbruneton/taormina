@@ -37,6 +37,10 @@ export class EventsPileCardsFacade {
     this.store.dispatch(EventsPileCardsActions.initEventsPileCardsSavedGame());
   }
 
+  resetEventsPile(): void {
+    this.store.dispatch(EventsPileCardsActions.resetEventsPile());
+  }
+
   selectFirst(): void {
     this.store.dispatch(EventsPileCardsActions.selectFirstEventsPileCard());
   }

@@ -1,15 +1,13 @@
-import { Injector } from '@angular/core';
 import { TestBed } from '@angular/core/testing';
 import { provideMockActions } from '@ngrx/effects/testing';
 import { Action } from '@ngrx/store';
-import { MockStore, provideMockStore } from '@ngrx/store/testing';
+import { provideMockStore } from '@ngrx/store/testing';
 import { DataPersistence, NxModule } from '@nrwl/angular';
 import { hot } from '@nrwl/angular/testing';
 import { Observable } from 'rxjs';
 
 import * as EventsPileCardsActions from './events-pile-cards.actions';
 import { EventsPileCardsEffects } from './events-pile-cards.effects';
-import * as EventsPileCardsSelectors from './events-pile-cards.selectors';
 
 jest.mock('./events-pile-cards.models', () => {
   return {
@@ -19,7 +17,6 @@ jest.mock('./events-pile-cards.models', () => {
 });
 
 describe('EventsPileCardsEffects', () => {
-  let injector: Injector;
   let actions: Observable<Action>;
   let effects: EventsPileCardsEffects;
 
@@ -38,13 +35,14 @@ describe('EventsPileCardsEffects', () => {
   });
 
   describe('initNewGame$', () => {
-    it('should work', () => {
+    it(`should call setEntitiesInitializedEventsPileCards
+        with a mocked empty array of entities`, () => {
       actions = hot('-a-|', {
         a: EventsPileCardsActions.initEventsPileCardsNewGame(),
       });
 
       const expected = hot('-a-|', {
-        a: EventsPileCardsActions.setEventsPileCardsInitialized({
+        a: EventsPileCardsActions.setEntitiesInitializedEventsPileCards({
           eventsPileCards: [],
         }),
       });
@@ -69,77 +67,20 @@ describe('EventsPileCardsEffects', () => {
     });
   });
 
-  describe('selectFirst$', () => {
-    beforeEach(() => {
-      injector = Injector.create({
-        providers: [
-          provideMockStore({
-            selectors: [
-              {
-                selector: EventsPileCardsSelectors.getAllEventsPileCards,
-                value: [
-                  {
-                    id: 'aaaa',
-                    cardId: 'EVENT_0',
-                  },
-                  {
-                    id: 'bbbb',
-                    cardId: 'EVENT_1',
-                  },
-                ],
-              },
-            ],
-          }),
-        ],
-      });
-      injector.get(MockStore);
-    });
-
-    it('should select the first events pile card', () => {
+  describe('resetPileAndSelectFirst$', () => {
+    it(`should call setEntitiesSelectFirstEventsPileCards
+        with a mocked empty array of entities`, () => {
       actions = hot('-a-|', {
-        a: EventsPileCardsActions.selectFirstEventsPileCard(),
+        a: EventsPileCardsActions.resetEventsPile(),
       });
 
       const expected = hot('-a-|', {
-        a: EventsPileCardsActions.selectEventsPileCard({
-          id: 'aaaa',
+        a: EventsPileCardsActions.setEntitiesSelectFirstEventsPileCards({
+          eventsPileCards: [],
         }),
       });
 
-      expect(effects.selectFirst$).toBeObservable(expected);
-    });
-  });
-
-  describe('removeSelected$', () => {
-    beforeEach(() => {
-      injector = Injector.create({
-        providers: [
-          provideMockStore({
-            selectors: [
-              {
-                selector: EventsPileCardsSelectors.getEventsPileCardsSelectedId,
-                value: 'aaaa',
-              },
-            ],
-          }),
-        ],
-      });
-      injector.get(MockStore);
-    });
-
-    it('should remove the selected events pile card', () => {
-      actions = hot('-a----|', {
-        a: EventsPileCardsActions.removeSelectedEventsPileCard(),
-      });
-
-      const expected = hot('-(ab)-|', {
-        a: EventsPileCardsActions.removeEventsPileCard({
-          id: 'aaaa',
-        }),
-        b: EventsPileCardsActions.unselectEventsPileCard(),
-      });
-
-      expect(effects.removeSelected$).toBeObservable(expected);
+      expect(effects.resetPileAndSelectFirst$).toBeObservable(expected);
     });
   });
 });

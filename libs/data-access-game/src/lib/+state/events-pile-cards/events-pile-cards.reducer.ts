@@ -34,6 +34,7 @@ export const eventsPileCardsReducer = createReducer(
   on(EventsPileCardsActions.initEventsPileCardsNewGame, (state) => ({
     ...state,
     initialized: false,
+    selectedId: undefined,
   })),
   on(EventsPileCardsActions.initEventsPileCardsSavedGame, (state) => ({
     ...state,
@@ -49,27 +50,42 @@ export const eventsPileCardsReducer = createReducer(
     ...state,
     errorMsg: error,
   })),
+  on(EventsPileCardsActions.setEventsPileCardsError, (state, { error }) => ({
+    ...state,
+    errorMsg: error,
+  })),
   on(
-    EventsPileCardsActions.setEventsPileCardsInitialized,
+    EventsPileCardsActions.setEntitiesInitializedEventsPileCards,
     (state, { eventsPileCards }) =>
       eventsPileCardsAdapter.setAll(eventsPileCards, {
         ...state,
         initialized: true,
       })
   ),
-  on(EventsPileCardsActions.setEventsPileCardsError, (state, { error }) => ({
+  on(
+    EventsPileCardsActions.setEntitiesSelectFirstEventsPileCards,
+    (state, { eventsPileCards }) =>
+      eventsPileCardsAdapter.setAll(eventsPileCards, {
+        ...state,
+        selectedId: eventsPileCards[0].id,
+      })
+  ),
+  on(EventsPileCardsActions.selectFirstEventsPileCard, (state) => ({
     ...state,
-    errorMsg: error,
+    selectedId: state.ids[0] as string,
   })),
-  on(EventsPileCardsActions.selectEventsPileCard, (state, { id }) => ({
-    ...state,
-    selectedId: id,
-  })),
-  on(EventsPileCardsActions.unselectEventsPileCard, (state) => ({
-    ...state,
-    selectedId: undefined,
-  })),
-  on(EventsPileCardsActions.removeEventsPileCard, (state, { id }) =>
-    eventsPileCardsAdapter.removeOne(id, state)
-  )
+  on(EventsPileCardsActions.removeSelectedEventsPileCard, (state) => {
+    const unselectedState = {
+      ...state,
+      selectedId: undefined,
+    };
+    if (state.selectedId !== undefined) {
+      return eventsPileCardsAdapter.removeOne(
+        state.selectedId,
+        unselectedState
+      );
+    } else {
+      return unselectedState;
+    }
+  })
 );
