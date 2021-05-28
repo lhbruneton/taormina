@@ -75,13 +75,14 @@ describe('GameEffects', () => {
       });
 
       it(`should dispatch setProductionDie
-          with nextProductionDie value
+          with undefined then nextProductionDie value
           and reset nextProductionDie`, () => {
-        actions = hot('-a----|', { a: GameActions.throwProductionDie() });
+        actions = hot('-a-----|', { a: GameActions.throwProductionDie() });
 
-        const expected = hot('-(ab)-|', {
-          a: GameActions.setProductionDie({ value: 3 }),
-          b: GameActions.setNextProductionDie({ value: undefined }),
+        const expected = hot('-(abc)-|', {
+          a: GameActions.setProductionDie({ value: undefined }),
+          b: GameActions.setProductionDie({ value: 3 }),
+          c: GameActions.setNextProductionDie({ value: undefined }),
         });
 
         expect(effects.throwProduction$).toBeObservable(expected);
@@ -106,12 +107,14 @@ describe('GameEffects', () => {
       });
 
       it(`should dispatch setProductionDie
-          with random value, and reset nextProductionDie`, () => {
-        actions = hot('-a----|', { a: GameActions.throwProductionDie() });
+          with undefined then mocked random value
+          and reset nextProductionDie`, () => {
+        actions = hot('-a-----|', { a: GameActions.throwProductionDie() });
 
-        const expected = hot('-(ab)-|', {
-          a: GameActions.setProductionDie({ value: 1 }),
-          b: GameActions.setNextProductionDie({ value: undefined }),
+        const expected = hot('-(abc)-|', {
+          a: GameActions.setProductionDie({ value: undefined }),
+          b: GameActions.setProductionDie({ value: 1 }),
+          c: GameActions.setNextProductionDie({ value: undefined }),
         });
 
         expect(effects.throwProduction$).toBeObservable(expected);
@@ -120,11 +123,12 @@ describe('GameEffects', () => {
   });
 
   describe('throwEvent$', () => {
-    it('should dispatch setEventDie', () => {
-      actions = hot('-a-|', { a: GameActions.throwEventDie() });
+    it('should dispatch setEventDie with undefined then mocked random value', () => {
+      actions = hot('-a----|', { a: GameActions.throwEventDie() });
 
-      const expected = hot('-a-|', {
-        a: GameActions.setEventDie({ value: EventValue.Event }),
+      const expected = hot('-(ab)-|', {
+        a: GameActions.setEventDie({ value: undefined }),
+        b: GameActions.setEventDie({ value: EventValue.Event }),
       });
 
       expect(effects.throwEvent$).toBeObservable(expected);

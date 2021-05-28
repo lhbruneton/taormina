@@ -25,7 +25,7 @@ export const throwProductionDie = createAction(
 export const throwEventDie = createAction('[Dice Component] Throw Event Die');
 export const setProductionDie = createAction(
   '[Dice] Set Production Die',
-  props<{ value: ResourceValue }>()
+  props<{ value: ResourceValue | undefined }>()
 );
 export const setNextProductionDie = createAction(
   '[Dice] Set Next Production Die',
@@ -33,5 +33,5 @@ export const setNextProductionDie = createAction(
 );
 export const setEventDie = createAction(
   '[Dice] Set Event Die',
-  props<{ value: EventValue }>()
+  props<{ value: EventValue | undefined }>()
 );
