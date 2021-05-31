@@ -1,15 +1,17 @@
-import { createHandsCardsEntity } from './hands-cards.models';
-import * as HandsCardsActions from './hands-cards.actions';
-import {
-  HandsCardsState,
-  initialHandsCardsState,
-  handsCardsReducer,
-} from './hands-cards.reducer';
 import { Action } from '@ngrx/store';
 import {
   ACTION_CARD_INTERFACE_NAME,
   DEVELOPMENT_CARD_INTERFACE_NAME,
 } from '@taormina/shared-models';
+
+import { handsCardsInitialDrawState, someHandsCardsId } from '../../../test';
+import * as HandsCardsActions from './hands-cards.actions';
+import { createHandsCardsEntity } from './hands-cards.models';
+import {
+  handsCardsReducer,
+  HandsCardsState,
+  initialHandsCardsState,
+} from './hands-cards.reducer';
 
 describe('HandsCards Reducer', () => {
   const ERROR_MSG = 'No Error Available';
@@ -213,6 +215,19 @@ describe('HandsCards Reducer', () => {
       const state: HandsCardsState = handsCardsReducer(initialState, action);
 
       expect(state).toEqual(newState);
+    });
+  });
+
+  describe('unselectHandCard', () => {
+    it('should unselect the HandCard', () => {
+      const action = HandsCardsActions.unselectHandCard();
+
+      const state: HandsCardsState = handsCardsReducer(
+        { ...handsCardsInitialDrawState, selectedId: someHandsCardsId },
+        action
+      );
+
+      expect(state).toEqual(handsCardsInitialDrawState);
     });
   });
 

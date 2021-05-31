@@ -10,12 +10,13 @@ import { Observable } from 'rxjs';
 
 import * as StockPilesCardsActions from './stock-piles-cards.actions';
 import { StockPilesCardsEffects } from './stock-piles-cards.effects';
+import * as StockPilesCardsModels from './stock-piles-cards.models';
 import * as StockPilesCardsSelectors from './stock-piles-cards.selectors';
 
-jest.mock('./stock-piles-cards.models', () => {
+jest.mock('uuid', () => {
   return {
     __esModule: true,
-    createInitialStockPilesCards: jest.fn(() => []),
+    v4: jest.fn(() => 'AAA'),
   };
 });
 
@@ -40,6 +41,10 @@ describe('StockPilesCardsEffects', () => {
 
   describe('initNewGame$', () => {
     it('should work', () => {
+      jest
+        .spyOn(StockPilesCardsModels, 'createInitialStockPilesCards')
+        .mockReturnValue([]);
+
       actions = hot('-a-|', {
         a: StockPilesCardsActions.initStockPilesCardsNewGame(),
       });
@@ -95,7 +100,7 @@ describe('StockPilesCardsEffects', () => {
 
     it('should dispatch removeStockPilesCards', () => {
       actions = hot('-a-|', {
-        a: StockPilesCardsActions.removeCardsFromStockPile({
+        a: StockPilesCardsActions.removeCardsFromStockPileTop({
           pileId: 'A',
           cards: [{ type: ACTION_CARD_INTERFACE_NAME, id: 'A' }],
         }),
@@ -108,6 +113,32 @@ describe('StockPilesCardsEffects', () => {
       });
 
       expect(effects.removeCards$).toBeObservable(expected);
+    });
+  });
+
+  describe('addCards$', () => {
+    it('should dispatch addStockPilesCards', () => {
+      actions = hot('-a-|', {
+        a: StockPilesCardsActions.addCardsToStockPileBottom({
+          pileId: 'A',
+          cards: [{ type: ACTION_CARD_INTERFACE_NAME, id: 'A' }],
+        }),
+      });
+
+      const expected = hot('-a-|', {
+        a: StockPilesCardsActions.addStockPilesCards({
+          stockPilesCards: [
+            {
+              id: 'AAA',
+              pileId: 'A',
+              cardType: ACTION_CARD_INTERFACE_NAME,
+              cardId: 'A',
+            },
+          ],
+        }),
+      });
+
+      expect(effects.addCards$).toBeObservable(expected);
     });
   });
 });

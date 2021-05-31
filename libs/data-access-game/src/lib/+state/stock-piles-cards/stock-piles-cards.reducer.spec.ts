@@ -1,15 +1,22 @@
-import { createStockPilesCardsEntity } from './stock-piles-cards.models';
-import * as StockPilesCardsActions from './stock-piles-cards.actions';
-import {
-  StockPilesCardsState,
-  initialStockPilesCardsState,
-  stockPilesCardsReducer,
-} from './stock-piles-cards.reducer';
 import { Action } from '@ngrx/store';
 import {
   ACTION_CARD_INTERFACE_NAME,
   DEVELOPMENT_CARD_INTERFACE_NAME,
 } from '@taormina/shared-models';
+
+import {
+  someStockPilesCardsId,
+  stockPilesCardsFirstPileFirstCardDrawnState,
+  stockPilesCardsFirstPileLastCardPutBackState,
+  stockPilesCardsNewGameStateEntities,
+} from '../../../test';
+import * as StockPilesCardsActions from './stock-piles-cards.actions';
+import { createStockPilesCardsEntity } from './stock-piles-cards.models';
+import {
+  initialStockPilesCardsState,
+  stockPilesCardsReducer,
+  StockPilesCardsState,
+} from './stock-piles-cards.reducer';
 
 describe('StockPilesCards Reducer', () => {
   const ERROR_MSG = 'No Error Available';
@@ -140,6 +147,23 @@ describe('StockPilesCards Reducer', () => {
       );
 
       expect(state).toEqual(newState);
+    });
+  });
+
+  describe('addStockPilesCards', () => {
+    it('should add StockPilesCards to the list', () => {
+      const action = StockPilesCardsActions.addStockPilesCards({
+        stockPilesCards: [
+          stockPilesCardsNewGameStateEntities[someStockPilesCardsId],
+        ],
+      });
+
+      const state: StockPilesCardsState = stockPilesCardsReducer(
+        stockPilesCardsFirstPileFirstCardDrawnState(),
+        action
+      );
+
+      expect(state).toEqual(stockPilesCardsFirstPileLastCardPutBackState());
     });
   });
 

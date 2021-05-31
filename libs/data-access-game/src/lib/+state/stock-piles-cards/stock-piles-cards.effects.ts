@@ -4,10 +4,12 @@ import { select, Store } from '@ngrx/store';
 import { fetch } from '@nrwl/angular';
 import { forkJoin } from 'rxjs';
 import { map, mergeMap, take } from 'rxjs/operators';
+import { v4 as uuidv4 } from 'uuid';
 
 import * as StockPilesCardsActions from './stock-piles-cards.actions';
 import {
   createInitialStockPilesCards,
+  createStockPilesCardsEntity,
   StockPilesCardsEntity,
 } from './stock-piles-cards.models';
 import * as StockPilesCardsFeature from './stock-piles-cards.reducer';
@@ -47,7 +49,7 @@ export class StockPilesCardsEffects {
 
   removeCards$ = createEffect(() =>
     this.actions$.pipe(
-      ofType(StockPilesCardsActions.removeCardsFromStockPile),
+      ofType(StockPilesCardsActions.removeCardsFromStockPileTop),
       mergeMap((action) =>
         forkJoin(
           action.cards.map(({ type: cardType, id: cardId }) =>
@@ -72,6 +74,20 @@ export class StockPilesCardsEffects {
           .map((stockPileCard) => stockPileCard.id)
       ),
       map((ids) => StockPilesCardsActions.removeStockPilesCards({ ids }))
+    )
+  );
+
+  addCards$ = createEffect(() =>
+    this.actions$.pipe(
+      ofType(StockPilesCardsActions.addCardsToStockPileBottom),
+      map(({ pileId, cards }) =>
+        cards.map((card) =>
+          createStockPilesCardsEntity(uuidv4(), pileId, card.type, card.id)
+        )
+      ),
+      map((stockPilesCards) =>
+        StockPilesCardsActions.addStockPilesCards({ stockPilesCards })
+      )
     )
   );
 

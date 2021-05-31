@@ -28,8 +28,21 @@ export const setStockPilesCardsInitialized = createAction(
   props<{ stockPilesCards: StockPilesCardsEntity[] }>()
 );
 
-export const removeCardsFromStockPile = createAction(
-  '[StockPilesCards] Remove Cards From Stock Pile',
+export const removeCardsFromStockPileTop = createAction(
+  '[StockPilesCards] Remove Cards From Stock Pile Top',
+  props<{
+    pileId: string;
+    cards: Array<{
+      type:
+        | typeof ACTION_CARD_INTERFACE_NAME
+        | typeof DEVELOPMENT_CARD_INTERFACE_NAME;
+      id: string;
+    }>;
+  }>()
+);
+
+export const addCardsToStockPileBottom = createAction(
+  '[StockPilesCards] Add Cards To Stock Pile Bottom',
   props<{
     pileId: string;
     cards: Array<{
@@ -44,6 +57,11 @@ export const removeCardsFromStockPile = createAction(
 export const removeStockPilesCards = createAction(
   '[StockPilesCards] Remove StockPilesCards',
   props<{ ids: string[] }>()
+);
+
+export const addStockPilesCards = createAction(
+  '[StockPilesCards] Add StockPilesCards',
+  props<{ stockPilesCards: StockPilesCardsEntity[] }>()
 );
 
 export const setStockPilesCardsError = createAction(

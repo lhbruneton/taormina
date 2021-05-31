@@ -356,6 +356,18 @@ export class AppComponent {
     this.gameRules.drawFromStockToHand(pileId, 1, ID_HAND_BLUE);
   }
 
+  putBackSelectedHandCardAvailable(): Observable<boolean> {
+    return this.game.phase$.pipe(
+      map((phase) => {
+        return phase === GamePhase.LoopExchange;
+      })
+    );
+  }
+
+  putBackSelectedHandCard(pileId: string): void {
+    this.gameRules.putBackFromHandToStock(pileId);
+  }
+
   getActionCard(cardId: string): ActionCard | undefined {
     return actionCards.get(cardId);
   }

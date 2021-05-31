@@ -41,7 +41,7 @@ export class StockPilesCardsFacade {
     this.store.dispatch(StockPilesCardsActions.initStockPilesCardsSavedGame());
   }
 
-  removeCardsFromStockPile(
+  removeCardsFromStockPileTop(
     pileId: string,
     cards: Array<{
       type:
@@ -51,7 +51,21 @@ export class StockPilesCardsFacade {
     }>
   ): void {
     this.store.dispatch(
-      StockPilesCardsActions.removeCardsFromStockPile({ pileId, cards })
+      StockPilesCardsActions.removeCardsFromStockPileTop({ pileId, cards })
+    );
+  }
+
+  addCardsToStockPileBottom(
+    pileId: string,
+    cards: Array<{
+      type:
+        | typeof ACTION_CARD_INTERFACE_NAME
+        | typeof DEVELOPMENT_CARD_INTERFACE_NAME;
+      id: string;
+    }>
+  ): void {
+    this.store.dispatch(
+      StockPilesCardsActions.addCardsToStockPileBottom({ pileId, cards })
     );
   }
 }
