@@ -53,6 +53,10 @@ export class HandsCardsFacade {
     this.store.dispatch(HandsCardsActions.selectHandCard({ id: pivotId }));
   }
 
+  unselectHandCard(): void {
+    this.store.dispatch(HandsCardsActions.unselectHandCard());
+  }
+
   removeHandCard(id: string): void {
     this.store.dispatch(HandsCardsActions.removeHandCard({ id }));
   }

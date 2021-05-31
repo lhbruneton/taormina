@@ -59,6 +59,10 @@ export const handsCardsReducer = createReducer(
     ...state,
     selectedId: id,
   })),
+  on(HandsCardsActions.unselectHandCard, (state) => ({
+    ...state,
+    selectedId: undefined,
+  })),
   on(HandsCardsActions.removeHandCard, (state, { id }) =>
     handsCardsAdapter.removeOne(id, state)
   )

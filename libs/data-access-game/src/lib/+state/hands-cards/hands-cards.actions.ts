@@ -56,6 +56,8 @@ export const selectHandCard = createAction(
   props<{ id: string }>()
 );
 
+export const unselectHandCard = createAction('[HandsCards] Unselect Hand Card');
+
 export const removeHandCard = createAction(
   '[HandsCards] Remove HandCard',
   props<{ id: string }>()
