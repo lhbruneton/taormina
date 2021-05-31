@@ -132,7 +132,7 @@ export class GameRulesService {
         })
       )
       .subscribe((cards) => {
-        this.stockPilesCards.removeCardsFromStockPile(pileId, cards);
+        this.stockPilesCards.removeCardsFromStockPileTop(pileId, cards);
         this.handsCards.addCardsToHand(handId, cards);
       });
   }

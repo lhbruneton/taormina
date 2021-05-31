@@ -504,7 +504,7 @@ describe('GameRulesService', () => {
           cardId: 'BUILDING_3',
         },
       ]),
-      removeCardsFromStockPile: jest.fn(),
+      removeCardsFromStockPileTop: jest.fn(),
     };
 
     beforeEach(() => {
@@ -521,7 +521,7 @@ describe('GameRulesService', () => {
       service = TestBed.inject(GameRulesService);
     });
 
-    it('should call removeCardsFromStockPile, then addCardsToHand', () => {
+    it('should call removeCardsFromStockPileTop, then addCardsToHand', () => {
       service.drawFromStockToHand('STOCK_1', 3, ID_HAND_RED);
 
       const cards = [
@@ -540,7 +540,7 @@ describe('GameRulesService', () => {
       ];
 
       expect(
-        stockPilesCardsFacadeMock.removeCardsFromStockPile
+        stockPilesCardsFacadeMock.removeCardsFromStockPileTop
       ).toHaveBeenCalledWith('STOCK_1', cards);
       expect(handsCardsFacadeMock.addCardsToHand).toHaveBeenCalledWith(
         ID_HAND_RED,

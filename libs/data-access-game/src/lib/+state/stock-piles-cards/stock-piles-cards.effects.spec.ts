@@ -95,7 +95,7 @@ describe('StockPilesCardsEffects', () => {
 
     it('should dispatch removeStockPilesCards', () => {
       actions = hot('-a-|', {
-        a: StockPilesCardsActions.removeCardsFromStockPile({
+        a: StockPilesCardsActions.removeCardsFromStockPileTop({
           pileId: 'A',
           cards: [{ type: ACTION_CARD_INTERFACE_NAME, id: 'A' }],
         }),

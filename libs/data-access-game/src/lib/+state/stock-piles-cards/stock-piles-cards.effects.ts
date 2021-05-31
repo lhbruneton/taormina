@@ -47,7 +47,7 @@ export class StockPilesCardsEffects {
 
   removeCards$ = createEffect(() =>
     this.actions$.pipe(
-      ofType(StockPilesCardsActions.removeCardsFromStockPile),
+      ofType(StockPilesCardsActions.removeCardsFromStockPileTop),
       mergeMap((action) =>
         forkJoin(
           action.cards.map(({ type: cardType, id: cardId }) =>

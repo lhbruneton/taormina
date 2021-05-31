@@ -28,8 +28,8 @@ export const setStockPilesCardsInitialized = createAction(
   props<{ stockPilesCards: StockPilesCardsEntity[] }>()
 );
 
-export const removeCardsFromStockPile = createAction(
-  '[StockPilesCards] Remove Cards From Stock Pile',
+export const removeCardsFromStockPileTop = createAction(
+  '[StockPilesCards] Remove Cards From Stock Pile Top',
   props<{
     pileId: string;
     cards: Array<{
