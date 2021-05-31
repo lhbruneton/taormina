@@ -41,9 +41,27 @@ export const removeCardsFromStockPileTop = createAction(
   }>()
 );
 
+export const addCardsToStockPileBottom = createAction(
+  '[StockPilesCards] Add Cards To Stock Pile Bottom',
+  props<{
+    pileId: string;
+    cards: Array<{
+      type:
+        | typeof ACTION_CARD_INTERFACE_NAME
+        | typeof DEVELOPMENT_CARD_INTERFACE_NAME;
+      id: string;
+    }>;
+  }>()
+);
+
 export const removeStockPilesCards = createAction(
   '[StockPilesCards] Remove StockPilesCards',
   props<{ ids: string[] }>()
+);
+
+export const addStockPilesCards = createAction(
+  '[StockPilesCards] Add StockPilesCards',
+  props<{ stockPilesCards: StockPilesCardsEntity[] }>()
 );
 
 export const setStockPilesCardsError = createAction(

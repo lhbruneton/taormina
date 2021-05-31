@@ -54,4 +54,18 @@ export class StockPilesCardsFacade {
       StockPilesCardsActions.removeCardsFromStockPileTop({ pileId, cards })
     );
   }
+
+  addCardsToStockPileBottom(
+    pileId: string,
+    cards: Array<{
+      type:
+        | typeof ACTION_CARD_INTERFACE_NAME
+        | typeof DEVELOPMENT_CARD_INTERFACE_NAME;
+      id: string;
+    }>
+  ): void {
+    this.store.dispatch(
+      StockPilesCardsActions.addCardsToStockPileBottom({ pileId, cards })
+    );
+  }
 }

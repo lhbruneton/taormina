@@ -60,6 +60,9 @@ export const stockPilesCardsReducer = createReducer(
   on(StockPilesCardsActions.removeStockPilesCards, (state, { ids }) =>
     stockPilesCardsAdapter.removeMany(ids, state)
   ),
+  on(StockPilesCardsActions.addStockPilesCards, (state, { stockPilesCards }) =>
+    stockPilesCardsAdapter.addMany(stockPilesCards, state)
+  ),
   on(StockPilesCardsActions.setStockPilesCardsError, (state, { error }) => ({
     ...state,
     errorMsg: error,
