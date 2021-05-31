@@ -10,14 +10,8 @@ import { Observable } from 'rxjs';
 
 import * as StockPilesCardsActions from './stock-piles-cards.actions';
 import { StockPilesCardsEffects } from './stock-piles-cards.effects';
+import * as StockPilesCardsModels from './stock-piles-cards.models';
 import * as StockPilesCardsSelectors from './stock-piles-cards.selectors';
-
-jest.mock('./stock-piles-cards.models', () => {
-  return {
-    __esModule: true,
-    createInitialStockPilesCards: jest.fn(() => []),
-  };
-});
 
 describe('StockPilesCardsEffects', () => {
   let injector: Injector;
@@ -40,6 +34,10 @@ describe('StockPilesCardsEffects', () => {
 
   describe('initNewGame$', () => {
     it('should work', () => {
+      jest
+        .spyOn(StockPilesCardsModels, 'createInitialStockPilesCards')
+        .mockReturnValue([]);
+
       actions = hot('-a-|', {
         a: StockPilesCardsActions.initStockPilesCardsNewGame(),
       });
