@@ -15,6 +15,7 @@ import {
   ID_FACE_UP_HAMLET,
   ID_FACE_UP_ROAD,
   ID_FACE_UP_TOWN,
+  ID_HAND_BLUE,
   ID_HAND_RED,
 } from '@taormina/shared-constants';
 import {
@@ -1209,6 +1210,92 @@ describe('GameRulesService', () => {
 
         expect(
           landsPileCardsFacadeMock.removeLandsPileCard
+        ).not.toHaveBeenCalled();
+      });
+    });
+  });
+
+  describe('putBackFromHandToStock', () => {
+    describe('OK', () => {
+      const handsCardsFacadeMock = {
+        selectedHandsCards$: of({
+          id: 'aaaa',
+          handId: ID_HAND_BLUE,
+          cardType: DEVELOPMENT_CARD_INTERFACE_NAME,
+          cardId: 'BUILDING_1',
+        }),
+        removeHandCard: jest.fn(),
+        unselectHandCard: jest.fn(),
+      };
+      const stockPilesCardsFacadeMock = {
+        addCardsToStockPileBottom: jest.fn(),
+      };
+
+      beforeEach(() => {
+        TestBed.configureTestingModule({
+          imports: [StoreModule.forRoot({})],
+          providers: [
+            { provide: HandsCardsFacade, useValue: handsCardsFacadeMock },
+            {
+              provide: StockPilesCardsFacade,
+              useValue: stockPilesCardsFacadeMock,
+            },
+          ],
+        });
+        service = TestBed.inject(GameRulesService);
+      });
+
+      it(`should call removeHandCard and unselectHandCard,
+        then addCardsToStockPileBottom`, () => {
+        service.putBackFromHandToStock('STOCK_1');
+
+        expect(handsCardsFacadeMock.removeHandCard).toHaveBeenCalledWith(
+          'aaaa'
+        );
+        expect(handsCardsFacadeMock.unselectHandCard).toHaveBeenCalledTimes(1);
+        expect(
+          stockPilesCardsFacadeMock.addCardsToStockPileBottom
+        ).toHaveBeenCalledWith('STOCK_1', [
+          {
+            type: DEVELOPMENT_CARD_INTERFACE_NAME,
+            id: 'BUILDING_1',
+          },
+        ]);
+      });
+    });
+
+    describe('NOK undefined selectedHandsCards', () => {
+      const handsCardsFacadeMock = {
+        selectedHandsCards$: of(undefined),
+        removeHandCard: jest.fn(),
+        unselectHandCard: jest.fn(),
+      };
+      const stockPilesCardsFacadeMock = {
+        addCardsToStockPileBottom: jest.fn(),
+      };
+
+      beforeEach(() => {
+        TestBed.configureTestingModule({
+          imports: [StoreModule.forRoot({})],
+          providers: [
+            { provide: HandsCardsFacade, useValue: handsCardsFacadeMock },
+            {
+              provide: StockPilesCardsFacade,
+              useValue: stockPilesCardsFacadeMock,
+            },
+          ],
+        });
+        service = TestBed.inject(GameRulesService);
+      });
+
+      // FIXME: should test error thrown
+      it('should not call', () => {
+        service.putBackFromHandToStock('STOCK_1');
+
+        expect(handsCardsFacadeMock.removeHandCard).not.toHaveBeenCalled();
+        expect(handsCardsFacadeMock.unselectHandCard).not.toHaveBeenCalled();
+        expect(
+          stockPilesCardsFacadeMock.addCardsToStockPileBottom
         ).not.toHaveBeenCalled();
       });
     });

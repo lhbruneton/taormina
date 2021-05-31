@@ -269,4 +269,25 @@ export class GameRulesService {
       )
       .subscribe();
   }
+
+  putBackFromHandToStock(pileId: string): void {
+    this.handsCards.selectedHandsCards$
+      .pipe(
+        take(1),
+        map((handCard) => {
+          if (handCard === undefined) {
+            throw new Error(`Can't put card in slot if no card selected.`);
+          }
+          this.handsCards.removeHandCard(handCard.id);
+          this.handsCards.unselectHandCard();
+          this.stockPilesCards.addCardsToStockPileBottom(pileId, [
+            {
+              type: handCard.cardType,
+              id: handCard.cardId,
+            },
+          ]);
+        })
+      )
+      .subscribe();
+  }
 }
