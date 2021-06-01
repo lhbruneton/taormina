@@ -1,18 +1,19 @@
 ### TODOs
 | Filename | line # | TODO
 |:------|:------:|:------
-| [libs/feature-engine/src/lib/game-rules.service.spec.ts](libs/feature-engine/src/lib/game-rules.service.spec.ts#L601) | 601 | test actions order: event > steal on thieves > production
-| [libs/data-access-game/src/lib/+state/stock-piles-cards/stock-piles-cards.effects.ts](libs/data-access-game/src/lib/+state/stock-piles-cards/stock-piles-cards.effects.ts#L67) | 67 | throw error instead of filtering out undefined ?
+| [libs/feature-engine/src/lib/game-rules.service.spec.ts](libs/feature-engine/src/lib/game-rules.service.spec.ts#L602) | 602 | test actions order: event > steal on thieves > production
+| [libs/data-access-game/src/lib/+state/stock-piles-cards/stock-piles-cards.effects.ts](libs/data-access-game/src/lib/+state/stock-piles-cards/stock-piles-cards.effects.ts#L69) | 69 | throw error instead of filtering out undefined ?
 
 ### FIXMEs
 | Filename | line # | FIXME
 |:------|:------:|:------
-| [libs/feature-engine/src/lib/game-rules.service.spec.ts](libs/feature-engine/src/lib/game-rules.service.spec.ts#L907) | 907 | should test error thrown
-| [libs/feature-engine/src/lib/game-rules.service.spec.ts](libs/feature-engine/src/lib/game-rules.service.spec.ts#L943) | 943 | should test error thrown
-| [libs/feature-engine/src/lib/game-rules.service.spec.ts](libs/feature-engine/src/lib/game-rules.service.spec.ts#L1042) | 1042 | should test error thrown
-| [libs/feature-engine/src/lib/game-rules.service.spec.ts](libs/feature-engine/src/lib/game-rules.service.spec.ts#L1078) | 1078 | should test error thrown
-| [libs/feature-engine/src/lib/game-rules.service.spec.ts](libs/feature-engine/src/lib/game-rules.service.spec.ts#L1171) | 1171 | should test error thrown
-| [libs/feature-engine/src/lib/game-rules.service.spec.ts](libs/feature-engine/src/lib/game-rules.service.spec.ts#L1206) | 1206 | should test error thrown
+| [libs/feature-engine/src/lib/game-rules.service.spec.ts](libs/feature-engine/src/lib/game-rules.service.spec.ts#L908) | 908 | should test error thrown
+| [libs/feature-engine/src/lib/game-rules.service.spec.ts](libs/feature-engine/src/lib/game-rules.service.spec.ts#L944) | 944 | should test error thrown
+| [libs/feature-engine/src/lib/game-rules.service.spec.ts](libs/feature-engine/src/lib/game-rules.service.spec.ts#L1043) | 1043 | should test error thrown
+| [libs/feature-engine/src/lib/game-rules.service.spec.ts](libs/feature-engine/src/lib/game-rules.service.spec.ts#L1079) | 1079 | should test error thrown
+| [libs/feature-engine/src/lib/game-rules.service.spec.ts](libs/feature-engine/src/lib/game-rules.service.spec.ts#L1172) | 1172 | should test error thrown
+| [libs/feature-engine/src/lib/game-rules.service.spec.ts](libs/feature-engine/src/lib/game-rules.service.spec.ts#L1207) | 1207 | should test error thrown
+| [libs/feature-engine/src/lib/game-rules.service.spec.ts](libs/feature-engine/src/lib/game-rules.service.spec.ts#L1291) | 1291 | should test error thrown
 | [libs/data-access-game/src/lib/+state/domains-cards/domains-cards.effects.spec.ts](libs/data-access-game/src/lib/+state/domains-cards/domains-cards.effects.spec.ts#L794) | 794 | https://github.com/ngrx/platform/issues/2176
 | [libs/data-access-game/src/lib/+state/domains-cards/domains-cards.effects.spec.ts](libs/data-access-game/src/lib/+state/domains-cards/domains-cards.effects.spec.ts#L820) | 820 | https://github.com/ngrx/platform/issues/2176
 
