@@ -31,9 +31,9 @@
 | [libs/shared-models/src/lib/types/resources.ts](libs/shared-models/src/lib/types/resources.ts#L19) | 19 | no-magic-numbers
 | [libs/data-access-game/src/lib/+state/discard-pile-cards/discard-pile-cards.reducer.ts](libs/data-access-game/src/lib/+state/discard-pile-cards/discard-pile-cards.reducer.ts#L21) | 21 | max-len
 | [libs/data-access-game/src/lib/+state/domains-cards/domains-cards.effects.ts](libs/data-access-game/src/lib/+state/domains-cards/domains-cards.effects.ts#L85) | 85 | no-magic-numbers
-| [libs/data-access-game/src/lib/+state/domains-cards/domains-cards.effects.ts](libs/data-access-game/src/lib/+state/domains-cards/domains-cards.effects.ts#L160) | 160 | @typescript-eslint/no-unused-vars
-| [libs/data-access-game/src/lib/+state/domains-cards/domains-cards.effects.ts](libs/data-access-game/src/lib/+state/domains-cards/domains-cards.effects.ts#L262) | 262 | @typescript-eslint/no-unused-vars
-| [libs/data-access-game/src/lib/+state/domains-cards/domains-cards.effects.ts](libs/data-access-game/src/lib/+state/domains-cards/domains-cards.effects.ts#L364) | 364 | @typescript-eslint/no-unused-vars
+| [libs/data-access-game/src/lib/+state/domains-cards/domains-cards.effects.ts](libs/data-access-game/src/lib/+state/domains-cards/domains-cards.effects.ts#L116) | 116 | @typescript-eslint/no-unused-vars
+| [libs/data-access-game/src/lib/+state/domains-cards/domains-cards.effects.ts](libs/data-access-game/src/lib/+state/domains-cards/domains-cards.effects.ts#L218) | 218 | @typescript-eslint/no-unused-vars
+| [libs/data-access-game/src/lib/+state/domains-cards/domains-cards.effects.ts](libs/data-access-game/src/lib/+state/domains-cards/domains-cards.effects.ts#L320) | 320 | @typescript-eslint/no-unused-vars
 | [libs/data-access-game/src/lib/+state/domains-cards/domains-cards.selectors.ts](libs/data-access-game/src/lib/+state/domains-cards/domains-cards.selectors.ts#L225) | 225 | @typescript-eslint/no-non-null-assertion
 | [libs/data-access-game/src/lib/+state/events-pile-cards/events-pile-cards.reducer.ts](libs/data-access-game/src/lib/+state/events-pile-cards/events-pile-cards.reducer.ts#L21) | 21 | max-len
 | [libs/data-access-game/src/lib/+state/face-up-piles-cards/face-up-piles-cards.reducer.ts](libs/data-access-game/src/lib/+state/face-up-piles-cards/face-up-piles-cards.reducer.ts#L21) | 21 | max-len
@@ -43,6 +43,6 @@
 ### PRETTIER-IGNOREs
 | Filename | line # | PRETTIER-IGNORE
 |:------|:------:|:------
-| [libs/data-access-game/src/lib/+state/domains-cards/domains-cards.effects.ts](libs/data-access-game/src/lib/+state/domains-cards/domains-cards.effects.ts#L201) | 201 | 
-| [libs/data-access-game/src/lib/+state/domains-cards/domains-cards.effects.ts](libs/data-access-game/src/lib/+state/domains-cards/domains-cards.effects.ts#L203) | 203 | 
-| [libs/data-access-game/src/lib/+state/domains-cards/domains-cards.effects.ts](libs/data-access-game/src/lib/+state/domains-cards/domains-cards.effects.ts#L292) | 292 | 
+| [libs/data-access-game/src/lib/+state/domains-cards/domains-cards.effects.ts](libs/data-access-game/src/lib/+state/domains-cards/domains-cards.effects.ts#L157) | 157 | 
+| [libs/data-access-game/src/lib/+state/domains-cards/domains-cards.effects.ts](libs/data-access-game/src/lib/+state/domains-cards/domains-cards.effects.ts#L159) | 159 | 
+| [libs/data-access-game/src/lib/+state/domains-cards/domains-cards.effects.ts](libs/data-access-game/src/lib/+state/domains-cards/domains-cards.effects.ts#L248) | 248 | 
