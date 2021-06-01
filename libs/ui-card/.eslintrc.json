@@ -9,15 +9,25 @@
         "plugin:@angular-eslint/template/process-inline-templates",
         "../../.eslintrc.base.json"
       ],
-      "parserOptions": { "project": ["libs/ui-card/tsconfig.*?.json"] },
+      "parserOptions": {
+        "project": ["libs/ui-card/tsconfig.*?.json"]
+      },
       "rules": {
         "@angular-eslint/directive-selector": [
           "error",
-          { "type": "attribute", "prefix": "taormina", "style": "camelCase" }
+          {
+            "type": "attribute",
+            "prefix": "taormina",
+            "style": "camelCase"
+          }
         ],
         "@angular-eslint/component-selector": [
           "error",
-          { "type": "element", "prefix": "taormina", "style": "kebab-case" }
+          {
+            "type": "element",
+            "prefix": "taormina",
+            "style": "kebab-case"
+          }
         ]
       }
     },

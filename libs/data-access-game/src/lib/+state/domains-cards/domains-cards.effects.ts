@@ -91,50 +91,6 @@ export class DomainsCardsEffects {
     )
   );
 
-  updatesAvailableResources = (
-    domainsCards: DomainsCardsEntity[],
-    resourceIncrement: number
-  ): {
-    id: string;
-    changes: {
-      availableResources: ResourceCount;
-    };
-  }[] => {
-    const belowMax = domainsCards
-      .filter(
-        (pivot) =>
-          pivot.availableResources <
-          Math.max(...RESOURCE_COUNTS) - resourceIncrement
-      )
-      .map((pivot) => {
-        return {
-          id: pivot.id,
-          changes: {
-            availableResources: (pivot.availableResources +
-              resourceIncrement) as ResourceCount,
-          },
-        };
-      });
-
-    const atMax = domainsCards
-      .filter(
-        (pivot) =>
-          pivot.availableResources >=
-            Math.max(...RESOURCE_COUNTS) - resourceIncrement &&
-          pivot.availableResources < Math.max(...RESOURCE_COUNTS)
-      )
-      .map((pivot) => {
-        return {
-          id: pivot.id,
-          changes: {
-            availableResources: Math.max(...RESOURCE_COUNTS) as ResourceCount,
-          },
-        };
-      });
-
-    return [...belowMax, ...atMax];
-  };
-
   increaseResourcesAuspiciousYear$ = createEffect(() =>
     this.actions$.pipe(
       ofType(DomainsCardsActions.increaseAvailableResourcesForAuspiciousYear),
@@ -414,4 +370,48 @@ export class DomainsCardsEffects {
       take(1)
     );
   }
+
+  private updatesAvailableResources = (
+    domainsCards: DomainsCardsEntity[],
+    resourceIncrement: number
+  ): {
+    id: string;
+    changes: {
+      availableResources: ResourceCount;
+    };
+  }[] => {
+    const belowMax = domainsCards
+      .filter(
+        (pivot) =>
+          pivot.availableResources <
+          Math.max(...RESOURCE_COUNTS) - resourceIncrement
+      )
+      .map((pivot) => {
+        return {
+          id: pivot.id,
+          changes: {
+            availableResources: (pivot.availableResources +
+              resourceIncrement) as ResourceCount,
+          },
+        };
+      });
+
+    const atMax = domainsCards
+      .filter(
+        (pivot) =>
+          pivot.availableResources >=
+            Math.max(...RESOURCE_COUNTS) - resourceIncrement &&
+          pivot.availableResources < Math.max(...RESOURCE_COUNTS)
+      )
+      .map((pivot) => {
+        return {
+          id: pivot.id,
+          changes: {
+            availableResources: Math.max(...RESOURCE_COUNTS) as ResourceCount,
+          },
+        };
+      });
+
+    return [...belowMax, ...atMax];
+  };
 }

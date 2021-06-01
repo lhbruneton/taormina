@@ -15,13 +15,20 @@
             "main": "apps/taormina-duel/src/main.ts",
             "polyfills": "apps/taormina-duel/src/polyfills.ts",
             "tsConfig": "apps/taormina-duel/tsconfig.app.json",
-            "aot": true,
             "assets": [
               "apps/taormina-duel/src/favicon.ico",
               "apps/taormina-duel/src/assets"
             ],
-            "styles": ["apps/taormina-duel/src/styles.css"],
-            "scripts": []
+            "styles": [
+              "apps/taormina-duel/src/styles.css"
+            ],
+            "scripts": [],
+            "vendorChunk": true,
+            "extractLicenses": false,
+            "buildOptimizer": false,
+            "sourceMap": true,
+            "optimization": false,
+            "namedChunks": true
           },
           "configurations": {
             "production": {
@@ -81,7 +88,9 @@
         },
         "test": {
           "builder": "@nrwl/jest:jest",
-          "outputs": ["coverage/apps/taormina-duel"],
+          "outputs": [
+            "coverage/apps/taormina-duel"
+          ],
           "options": {
             "jestConfig": "apps/taormina-duel/jest.config.js",
             "passWithNoTests": true
@@ -110,7 +119,9 @@
         "lint": {
           "builder": "@nrwl/linter:eslint",
           "options": {
-            "lintFilePatterns": ["apps/taormina-duel-e2e/**/*.{js,ts}"]
+            "lintFilePatterns": [
+              "apps/taormina-duel-e2e/**/*.{js,ts}"
+            ]
           }
         }
       }
@@ -132,7 +143,9 @@
         },
         "test": {
           "builder": "@nrwl/jest:jest",
-          "outputs": ["coverage/libs/ui-card"],
+          "outputs": [
+            "coverage/libs/ui-card"
+          ],
           "options": {
             "jestConfig": "libs/ui-card/jest.config.js",
             "passWithNoTests": true
@@ -157,7 +170,9 @@
         },
         "test": {
           "builder": "@nrwl/jest:jest",
-          "outputs": ["coverage/libs/data-access-game"],
+          "outputs": [
+            "coverage/libs/data-access-game"
+          ],
           "options": {
             "jestConfig": "libs/data-access-game/jest.config.js",
             "passWithNoTests": true
@@ -182,7 +197,9 @@
         },
         "test": {
           "builder": "@nrwl/jest:jest",
-          "outputs": ["coverage/libs/shared-models"],
+          "outputs": [
+            "coverage/libs/shared-models"
+          ],
           "options": {
             "jestConfig": "libs/shared-models/jest.config.js",
             "passWithNoTests": true
@@ -207,7 +224,9 @@
         },
         "test": {
           "builder": "@nrwl/jest:jest",
-          "outputs": ["coverage/libs/shared-constants"],
+          "outputs": [
+            "coverage/libs/shared-constants"
+          ],
           "options": {
             "jestConfig": "libs/shared-constants/jest.config.js",
             "passWithNoTests": true
@@ -232,7 +251,9 @@
         },
         "test": {
           "builder": "@nrwl/jest:jest",
-          "outputs": ["coverage/libs/feature-engine"],
+          "outputs": [
+            "coverage/libs/feature-engine"
+          ],
           "options": {
             "jestConfig": "libs/feature-engine/jest.config.js",
             "passWithNoTests": true
@@ -257,7 +278,9 @@
         },
         "test": {
           "builder": "@nrwl/jest:jest",
-          "outputs": ["coverage/libs/shared-utils"],
+          "outputs": [
+            "coverage/libs/shared-utils"
+          ],
           "options": {
             "jestConfig": "libs/shared-utils/jest.config.js",
             "passWithNoTests": true
