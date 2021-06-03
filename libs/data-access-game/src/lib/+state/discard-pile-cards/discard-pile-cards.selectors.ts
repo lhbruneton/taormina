@@ -29,6 +29,11 @@ export const getAllDiscardPileCards = createSelector(
   (state: DiscardPileCardsState) => selectAll(state)
 );
 
+export const getAllDiscardPileCardsReverse = createSelector(
+  getDiscardPileCardsState,
+  (state: DiscardPileCardsState) => [...selectAll(state)].reverse()
+);
+
 export const getDiscardPileCardsEntities = createSelector(
   getDiscardPileCardsState,
   (state: DiscardPileCardsState) => selectEntities(state)

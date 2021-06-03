@@ -1,5 +1,9 @@
 import { Injectable } from '@angular/core';
 import { select, Store } from '@ngrx/store';
+import {
+  ACTION_CARD_INTERFACE_NAME,
+  DEVELOPMENT_CARD_INTERFACE_NAME,
+} from '@taormina/shared-models';
 
 import * as DiscardPileCardsActions from './discard-pile-cards.actions';
 import * as DiscardPileCardsFeature from './discard-pile-cards.reducer';
@@ -16,6 +20,9 @@ export class DiscardPileCardsFacade {
   );
   allDiscardPileCards$ = this.store.pipe(
     select(DiscardPileCardsSelectors.getAllDiscardPileCards)
+  );
+  allDiscardPileCardsReverse$ = this.store.pipe(
+    select(DiscardPileCardsSelectors.getAllDiscardPileCardsReverse)
   );
   selectedDiscardPileCards$ = this.store.pipe(
     select(DiscardPileCardsSelectors.getDiscardPileCardsSelected)
@@ -37,5 +44,14 @@ export class DiscardPileCardsFacade {
     this.store.dispatch(
       DiscardPileCardsActions.initDiscardPileCardsSavedGame()
     );
+  }
+
+  addCardToDiscardPile(card: {
+    type:
+      | typeof ACTION_CARD_INTERFACE_NAME
+      | typeof DEVELOPMENT_CARD_INTERFACE_NAME;
+    id: string;
+  }): void {
+    this.store.dispatch(DiscardPileCardsActions.addCardToDiscardPile({ card }));
   }
 }

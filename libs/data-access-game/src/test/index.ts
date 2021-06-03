@@ -1,3 +1,4 @@
+export * from './fixtures/discard-pile-cards';
 export * from './fixtures/domains-cards';
 export * from './fixtures/events-pile-cards';
 export * from './fixtures/hands-cards';

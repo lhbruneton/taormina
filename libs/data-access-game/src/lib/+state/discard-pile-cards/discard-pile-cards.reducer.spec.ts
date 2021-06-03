@@ -1,4 +1,11 @@
 import { Action } from '@ngrx/store';
+
+import {
+  discardPileCardsMinusLastCardState,
+  discardPileCardsState,
+  discardPileCardsStateEntities,
+  someDiscardPileCardsId,
+} from '../../../test';
 import * as DiscardPileCardsActions from './discard-pile-cards.actions';
 import { createDiscardPileCardsEntity } from './discard-pile-cards.models';
 import {
@@ -57,6 +64,21 @@ describe('DiscardPileCards Reducer', () => {
       );
 
       expect(state).toEqual(newState);
+    });
+  });
+
+  describe('addDiscardPileCard', () => {
+    it('should add StockPilesCards to the list', () => {
+      const action = DiscardPileCardsActions.addDiscardPileCard({
+        discardPileCard: discardPileCardsStateEntities[someDiscardPileCardsId],
+      });
+
+      const state: DiscardPileCardsState = discardPileCardsReducer(
+        discardPileCardsMinusLastCardState(),
+        action
+      );
+
+      expect(state).toEqual(discardPileCardsState);
     });
   });
 

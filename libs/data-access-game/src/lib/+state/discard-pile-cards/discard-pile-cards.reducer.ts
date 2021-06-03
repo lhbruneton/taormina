@@ -60,6 +60,9 @@ export const discardPileCardsReducer = createReducer(
         initialized: true,
       })
   ),
+  on(DiscardPileCardsActions.addDiscardPileCard, (state, { discardPileCard }) =>
+    discardPileCardsAdapter.addOne(discardPileCard, state)
+  ),
   on(DiscardPileCardsActions.setDiscardPileCardsError, (state, { error }) => ({
     ...state,
     errorMsg: error,

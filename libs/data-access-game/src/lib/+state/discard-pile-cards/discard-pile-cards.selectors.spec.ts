@@ -42,10 +42,29 @@ describe('DiscardPileCards Selectors', () => {
   describe('getAllDiscardPileCards()', () => {
     it('should return the list of DiscardPileCards', () => {
       const results = DiscardPileCardsSelectors.getAllDiscardPileCards(state);
-      const selId = getDiscardPileCardsId(results[1]);
+      const id0 = getDiscardPileCardsId(results[0]);
+      const id1 = getDiscardPileCardsId(results[1]);
+      const id2 = getDiscardPileCardsId(results[2]);
 
       expect(results.length).toBe(3);
-      expect(selId).toBe('PRODUCT-BBB');
+      expect(id0).toBe('PRODUCT-AAA');
+      expect(id1).toBe('PRODUCT-BBB');
+      expect(id2).toBe('PRODUCT-CCC');
+    });
+  });
+
+  describe('getAllDiscardPileCardsReverse()', () => {
+    it('should return the reversed list of DiscardPileCards', () => {
+      const results =
+        DiscardPileCardsSelectors.getAllDiscardPileCardsReverse(state);
+      const id0 = getDiscardPileCardsId(results[0]);
+      const id1 = getDiscardPileCardsId(results[1]);
+      const id2 = getDiscardPileCardsId(results[2]);
+
+      expect(results.length).toBe(3);
+      expect(id0).toBe('PRODUCT-CCC');
+      expect(id1).toBe('PRODUCT-BBB');
+      expect(id2).toBe('PRODUCT-AAA');
     });
   });
 
