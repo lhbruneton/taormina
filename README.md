@@ -12,7 +12,7 @@ This project was generated using [Nx](Nx.md).
 
 ```
 ├── @angular/cli@11.0.4<br>
-├── npm@7.6.0<br>
+├── npm@7.15.1<br>
 ├── nx@11.0.4<br>
 └── updtr@3.1.0
 ```
