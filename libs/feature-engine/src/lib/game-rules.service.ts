@@ -270,7 +270,7 @@ export class GameRulesService {
       .subscribe();
   }
 
-  putBackFromHandToStock(pileId: string): void {
+  putBackFromHandToStockPile(pileId: string): void {
     this.handsCards.selectedHandsCards$
       .pipe(
         take(1),

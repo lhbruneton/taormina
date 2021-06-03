@@ -365,7 +365,7 @@ export class AppComponent {
   }
 
   putBackSelectedHandCard(pileId: string): void {
-    this.gameRules.putBackFromHandToStock(pileId);
+    this.gameRules.putBackFromHandToStockPile(pileId);
   }
 
   getActionCard(cardId: string): ActionCard | undefined {

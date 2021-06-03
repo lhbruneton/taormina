@@ -1215,7 +1215,7 @@ describe('GameRulesService', () => {
     });
   });
 
-  describe('putBackFromHandToStock', () => {
+  describe('putBackFromHandToStockPile', () => {
     describe('OK', () => {
       const handsCardsFacadeMock = {
         selectedHandsCards$: of({
@@ -1246,8 +1246,8 @@ describe('GameRulesService', () => {
       });
 
       it(`should call removeHandCard and unselectHandCard,
-        then addCardsToStockPileBottom`, () => {
-        service.putBackFromHandToStock('STOCK_1');
+          then addCardsToStockPileBottom`, () => {
+        service.putBackFromHandToStockPile('STOCK_1');
 
         expect(handsCardsFacadeMock.removeHandCard).toHaveBeenCalledWith(
           'aaaa'
@@ -1290,7 +1290,7 @@ describe('GameRulesService', () => {
 
       // FIXME: should test error thrown
       it('should not call', () => {
-        service.putBackFromHandToStock('STOCK_1');
+        service.putBackFromHandToStockPile('STOCK_1');
 
         expect(handsCardsFacadeMock.removeHandCard).not.toHaveBeenCalled();
         expect(handsCardsFacadeMock.unselectHandCard).not.toHaveBeenCalled();
