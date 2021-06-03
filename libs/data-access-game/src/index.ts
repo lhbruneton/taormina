@@ -1,5 +1,6 @@
 export * from './lib/+state/discard-pile-cards/discard-pile-cards.actions';
 export * from './lib/+state/discard-pile-cards/discard-pile-cards.facade';
+export * from './lib/+state/discard-pile-cards/discard-pile-cards.models';
 export * from './lib/+state/discard-pile-cards/discard-pile-cards.reducer';
 export * from './lib/+state/discard-pile-cards/discard-pile-cards.selectors';
 export * from './lib/+state/domains-cards/domains-cards.actions';

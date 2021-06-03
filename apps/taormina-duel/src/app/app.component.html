@@ -142,6 +142,7 @@
     <p>Remaining: {{ getFaceUpPileCount(pile) | async }}</p>
   </div>
   <div>
+    LANDS PILE
     <div *ngFor="let pivot of getLandsPileCards() | async; index as i">
       <div *ngIf="getLandCard(pivot.cardId) as land">
         {{ land.type }} - {{ land.die }}
@@ -155,7 +156,8 @@
       </div>
     </div>
   </div>
-  <div *ngFor="let pile of getStockPiles()">
+  <div *ngFor="let pile of getStockPiles(); index as i">
+    STOCK PILE {{ i }}
     <button
       *ngIf="drawInitialRedHandAvailable() | async"
       type="button"
@@ -208,11 +210,37 @@
     </button>
   </div>
   <div>
+    EVENTS PILE
     <div *ngFor="let pivot of getEventsPileCards() | async">
       <div *ngIf="getEventCard(pivot.cardId) as event">
         {{ event.name }}
       </div>
     </div>
+  </div>
+  <div>
+    DISCARD PILE
+    <div
+      *ngFor="let pivot of getDiscardPileCardsReverse() | async"
+      [ngSwitch]="pivot.cardType"
+    >
+      <div *ngSwitchCase="ACTION_CARD_INTERFACE_NAME">
+        <div *ngIf="getActionCard(pivot.cardId) as action">
+          {{ action.name }}
+        </div>
+      </div>
+      <div *ngSwitchCase="DEVELOPMENT_CARD_INTERFACE_NAME">
+        <div *ngIf="getDevelopmentCard(pivot.cardId) as development">
+          {{ development.name }}
+        </div>
+      </div>
+    </div>
+    <button
+      *ngIf="putSelectedHandCardToDiscardPileAvailable() | async"
+      type="button"
+      (click)="putSelectedHandCardToDiscardPile()"
+    >
+      Put selected hand card on top
+    </button>
   </div>
 </div>
 <hr />

@@ -1,5 +1,7 @@
 import { Component } from '@angular/core';
 import {
+  DiscardPileCardsEntity,
+  DiscardPileCardsFacade,
   DomainsCardsEntity,
   DomainsCardsFacade,
   EventsPileCardsEntity,
@@ -85,6 +87,7 @@ export class AppComponent {
     private landsPileCards: LandsPileCardsFacade,
     private stockPilesCards: StockPilesCardsFacade,
     private eventsPileCards: EventsPileCardsFacade,
+    private discardPileCards: DiscardPileCardsFacade,
     private gameRules: GameRulesService
   ) {}
 
@@ -286,6 +289,22 @@ export class AppComponent {
     return eventCards.get(cardId);
   }
 
+  getDiscardPileCardsReverse(): Observable<DiscardPileCardsEntity[]> {
+    return this.discardPileCards.allDiscardPileCardsReverse$;
+  }
+
+  putSelectedHandCardToDiscardPileAvailable(): Observable<boolean> {
+    return this.game.phase$.pipe(
+      map((phase) => {
+        return phase === GamePhase.LoopActions;
+      })
+    );
+  }
+
+  putSelectedHandCardToDiscardPile(): void {
+    this.gameRules.putFromHandToDiscardPile();
+  }
+
   getRedHand(): Hand | undefined {
     return hands.get(ID_HAND_RED);
   }
@@ -365,7 +384,7 @@ export class AppComponent {
   }
 
   putBackSelectedHandCard(pileId: string): void {
-    this.gameRules.putBackFromHandToStock(pileId);
+    this.gameRules.putBackFromHandToStockPile(pileId);
   }
 
   getActionCard(cardId: string): ActionCard | undefined {

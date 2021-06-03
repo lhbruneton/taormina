@@ -19,15 +19,15 @@ export interface DiscardPileCardsPartialState {
 }
 
 // eslint-disable-next-line max-len
-export const discardPileCardsAdapter: EntityAdapter<DiscardPileCardsEntity> = createEntityAdapter<DiscardPileCardsEntity>();
+export const discardPileCardsAdapter: EntityAdapter<DiscardPileCardsEntity> =
+  createEntityAdapter<DiscardPileCardsEntity>();
 
-export const initialDiscardPileCardsState: DiscardPileCardsState = discardPileCardsAdapter.getInitialState(
-  {
+export const initialDiscardPileCardsState: DiscardPileCardsState =
+  discardPileCardsAdapter.getInitialState({
     // set initial required properties
     initialized: false,
     loaded: false,
-  }
-);
+  });
 
 export const discardPileCardsReducer = createReducer(
   initialDiscardPileCardsState,
@@ -59,6 +59,9 @@ export const discardPileCardsReducer = createReducer(
         ...state,
         initialized: true,
       })
+  ),
+  on(DiscardPileCardsActions.addDiscardPileCard, (state, { discardPileCard }) =>
+    discardPileCardsAdapter.addOne(discardPileCard, state)
   ),
   on(DiscardPileCardsActions.setDiscardPileCardsError, (state, { error }) => ({
     ...state,

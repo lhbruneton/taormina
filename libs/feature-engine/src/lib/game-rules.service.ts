@@ -1,5 +1,6 @@
 import { Injectable } from '@angular/core';
 import {
+  DiscardPileCardsFacade,
   DomainsCardsFacade,
   EventsPileCardsEntity,
   EventsPileCardsFacade,
@@ -91,7 +92,8 @@ export class GameRulesService {
     private faceUpPilesCards: FaceUpPilesCardsFacade,
     private landsPileCards: LandsPileCardsFacade,
     private stockPilesCards: StockPilesCardsFacade,
-    private eventsPileCards: EventsPileCardsFacade
+    private eventsPileCards: EventsPileCardsFacade,
+    private discardPileCards: DiscardPileCardsFacade
   ) {}
 
   initNewGame(): void {
@@ -109,6 +111,7 @@ export class GameRulesService {
     this.landsPileCards.initNewGame();
     this.stockPilesCards.initNewGame();
     this.eventsPileCards.initNewGame();
+    this.discardPileCards.initNewGame();
   }
 
   drawFromStockToHand(
@@ -270,13 +273,13 @@ export class GameRulesService {
       .subscribe();
   }
 
-  putBackFromHandToStock(pileId: string): void {
+  putBackFromHandToStockPile(pileId: string): void {
     this.handsCards.selectedHandsCards$
       .pipe(
         take(1),
         map((handCard) => {
           if (handCard === undefined) {
-            throw new Error(`Can't put card in slot if no card selected.`);
+            throw new Error(`Can't put card in pile if no card selected.`);
           }
           this.handsCards.removeHandCard(handCard.id);
           this.handsCards.unselectHandCard();
@@ -286,6 +289,25 @@ export class GameRulesService {
               id: handCard.cardId,
             },
           ]);
+        })
+      )
+      .subscribe();
+  }
+
+  putFromHandToDiscardPile(): void {
+    this.handsCards.selectedHandsCards$
+      .pipe(
+        take(1),
+        map((handCard) => {
+          if (handCard === undefined) {
+            throw new Error(`Can't put card in pile if no card selected.`);
+          }
+          this.handsCards.removeHandCard(handCard.id);
+          this.handsCards.unselectHandCard();
+          this.discardPileCards.addCardToDiscardPile({
+            type: handCard.cardType,
+            id: handCard.cardId,
+          });
         })
       )
       .subscribe();
