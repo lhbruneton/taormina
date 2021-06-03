@@ -2,6 +2,7 @@ import { TestBed } from '@angular/core/testing';
 import { FormsModule } from '@angular/forms';
 import { StoreModule } from '@ngrx/store';
 import {
+  DiscardPileCardsFacade,
   DomainsCardsFacade,
   EventsPileCardsFacade,
   FaceUpPilesCardsFacade,
@@ -26,6 +27,7 @@ describe('AppComponent', () => {
         LandsPileCardsFacade,
         StockPilesCardsFacade,
         EventsPileCardsFacade,
+        DiscardPileCardsFacade,
         GameRulesService,
       ],
     }).compileComponents();

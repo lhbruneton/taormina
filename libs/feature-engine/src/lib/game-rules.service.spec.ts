@@ -20,6 +20,7 @@ import {
   ID_HAND_RED,
 } from '@taormina/shared-constants';
 import {
+  ACTION_CARD_INTERFACE_NAME,
   AGGLOMERATION_CARD_INTERFACE_NAME,
   AVAILABLE_AGGLOMERATION_SLOT,
   AVAILABLE_DEVELOPMENT_SLOT,
@@ -1306,6 +1307,90 @@ describe('GameRulesService', () => {
         expect(handsCardsFacadeMock.unselectHandCard).not.toHaveBeenCalled();
         expect(
           stockPilesCardsFacadeMock.addCardsToStockPileBottom
+        ).not.toHaveBeenCalled();
+      });
+    });
+  });
+
+  describe('putFromHandToDiscardPile', () => {
+    describe('OK', () => {
+      const handsCardsFacadeMock = {
+        selectedHandsCards$: of({
+          id: 'aaaa',
+          handId: ID_HAND_BLUE,
+          cardType: ACTION_CARD_INTERFACE_NAME,
+          cardId: 'ACTION_1',
+        }),
+        removeHandCard: jest.fn(),
+        unselectHandCard: jest.fn(),
+      };
+      const discardPileCardsFacadeMock = {
+        addCardToDiscardPile: jest.fn(),
+      };
+
+      beforeEach(() => {
+        TestBed.configureTestingModule({
+          imports: [StoreModule.forRoot({})],
+          providers: [
+            { provide: HandsCardsFacade, useValue: handsCardsFacadeMock },
+            {
+              provide: DiscardPileCardsFacade,
+              useValue: discardPileCardsFacadeMock,
+            },
+          ],
+        });
+        service = TestBed.inject(GameRulesService);
+      });
+
+      it(`should call removeHandCard and unselectHandCard,
+          then addCardToDiscardPile`, () => {
+        service.putFromHandToDiscardPile();
+
+        expect(handsCardsFacadeMock.removeHandCard).toHaveBeenCalledWith(
+          'aaaa'
+        );
+        expect(handsCardsFacadeMock.unselectHandCard).toHaveBeenCalledTimes(1);
+        expect(
+          discardPileCardsFacadeMock.addCardToDiscardPile
+        ).toHaveBeenCalledWith({
+          type: ACTION_CARD_INTERFACE_NAME,
+          id: 'ACTION_1',
+        });
+      });
+    });
+
+    describe('NOK undefined selectedHandsCards', () => {
+      const handsCardsFacadeMock = {
+        selectedHandsCards$: of(undefined),
+        removeHandCard: jest.fn(),
+        unselectHandCard: jest.fn(),
+      };
+      const discardPileCardsFacadeMock = {
+        addCardToDiscardPile: jest.fn(),
+      };
+
+      beforeEach(() => {
+        TestBed.configureTestingModule({
+          imports: [StoreModule.forRoot({})],
+          providers: [
+            { provide: HandsCardsFacade, useValue: handsCardsFacadeMock },
+            {
+              provide: DiscardPileCardsFacade,
+              useValue: discardPileCardsFacadeMock,
+            },
+          ],
+        });
+        service = TestBed.inject(GameRulesService);
+      });
+
+      // FIXME: should test error thrown
+      it('should not call', () => {
+        service.putFromHandToDiscardPile();
+
+        expect(handsCardsFacadeMock.removeHandCard).not.toHaveBeenCalled();
+        expect(handsCardsFacadeMock.unselectHandCard).not.toHaveBeenCalled();
+        expect(
+          discardPileCardsFacadeMock.addCardToDiscardPile
         ).not.toHaveBeenCalled();
       });
     });

@@ -293,4 +293,23 @@ export class GameRulesService {
       )
       .subscribe();
   }
+
+  putFromHandToDiscardPile(): void {
+    this.handsCards.selectedHandsCards$
+      .pipe(
+        take(1),
+        map((handCard) => {
+          if (handCard === undefined) {
+            throw new Error(`Can't put card in pile if no card selected.`);
+          }
+          this.handsCards.removeHandCard(handCard.id);
+          this.handsCards.unselectHandCard();
+          this.discardPileCards.addCardToDiscardPile({
+            type: handCard.cardType,
+            id: handCard.cardId,
+          });
+        })
+      )
+      .subscribe();
+  }
 }
