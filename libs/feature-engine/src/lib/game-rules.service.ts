@@ -276,7 +276,7 @@ export class GameRulesService {
         take(1),
         map((handCard) => {
           if (handCard === undefined) {
-            throw new Error(`Can't put card in slot if no card selected.`);
+            throw new Error(`Can't put card in pile if no card selected.`);
           }
           this.handsCards.removeHandCard(handCard.id);
           this.handsCards.unselectHandCard();
