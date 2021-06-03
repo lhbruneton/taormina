@@ -51,9 +51,8 @@ describe('DiscardPileCards Selectors', () => {
 
   describe('getDiscardPileCardsSelected()', () => {
     it('should return the selected Entity', () => {
-      const result = DiscardPileCardsSelectors.getDiscardPileCardsSelected(
-        state
-      );
+      const result =
+        DiscardPileCardsSelectors.getDiscardPileCardsSelected(state);
       const selId = getDiscardPileCardsId(result);
 
       expect(selId).toBe('PRODUCT-BBB');
