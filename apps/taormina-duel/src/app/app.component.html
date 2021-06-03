@@ -142,6 +142,7 @@
     <p>Remaining: {{ getFaceUpPileCount(pile) | async }}</p>
   </div>
   <div>
+    LANDS PILE
     <div *ngFor="let pivot of getLandsPileCards() | async; index as i">
       <div *ngIf="getLandCard(pivot.cardId) as land">
         {{ land.type }} - {{ land.die }}
@@ -155,7 +156,8 @@
       </div>
     </div>
   </div>
-  <div *ngFor="let pile of getStockPiles()">
+  <div *ngFor="let pile of getStockPiles(); index as i">
+    STOCK PILE {{ i }}
     <button
       *ngIf="drawInitialRedHandAvailable() | async"
       type="button"
@@ -208,6 +210,7 @@
     </button>
   </div>
   <div>
+    EVENTS PILE
     <div *ngFor="let pivot of getEventsPileCards() | async">
       <div *ngIf="getEventCard(pivot.cardId) as event">
         {{ event.name }}
