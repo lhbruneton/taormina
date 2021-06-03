@@ -1,5 +1,6 @@
 import { Injectable } from '@angular/core';
 import {
+  DiscardPileCardsFacade,
   DomainsCardsFacade,
   EventsPileCardsEntity,
   EventsPileCardsFacade,
@@ -91,7 +92,8 @@ export class GameRulesService {
     private faceUpPilesCards: FaceUpPilesCardsFacade,
     private landsPileCards: LandsPileCardsFacade,
     private stockPilesCards: StockPilesCardsFacade,
-    private eventsPileCards: EventsPileCardsFacade
+    private eventsPileCards: EventsPileCardsFacade,
+    private discardPileCards: DiscardPileCardsFacade
   ) {}
 
   initNewGame(): void {
@@ -109,6 +111,7 @@ export class GameRulesService {
     this.landsPileCards.initNewGame();
     this.stockPilesCards.initNewGame();
     this.eventsPileCards.initNewGame();
+    this.discardPileCards.initNewGame();
   }
 
   drawFromStockToHand(

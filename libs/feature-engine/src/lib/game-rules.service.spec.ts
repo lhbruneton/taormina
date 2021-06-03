@@ -2,6 +2,7 @@
 import { inject, TestBed } from '@angular/core/testing';
 import { StoreModule } from '@ngrx/store';
 import {
+  DiscardPileCardsFacade,
   DomainsCardsFacade,
   EventsPileCardsFacade,
   FaceUpPilesCardsFacade,
@@ -48,6 +49,7 @@ describe('GameRulesService', () => {
         LandsPileCardsFacade,
         StockPilesCardsFacade,
         EventsPileCardsFacade,
+        DiscardPileCardsFacade,
       ],
     });
   });
@@ -411,6 +413,9 @@ describe('GameRulesService', () => {
       selectedEventsPileCards$: of(),
       initNewGame: jest.fn(),
     };
+    const discardPileCardsFacadeMock = {
+      initNewGame: jest.fn(),
+    };
 
     beforeEach(() => {
       TestBed.configureTestingModule({
@@ -430,6 +435,10 @@ describe('GameRulesService', () => {
           {
             provide: EventsPileCardsFacade,
             useValue: eventsPileCardsFacadeMock,
+          },
+          {
+            provide: DiscardPileCardsFacade,
+            useValue: discardPileCardsFacadeMock,
           },
         ],
       });
@@ -477,6 +486,7 @@ describe('GameRulesService', () => {
       expect(landsPileCardsFacadeMock.initNewGame).toHaveBeenCalledTimes(1);
       expect(stockPilesCardsFacadeMock.initNewGame).toHaveBeenCalledTimes(1);
       expect(eventsPileCardsFacadeMock.initNewGame).toHaveBeenCalledTimes(1);
+      expect(discardPileCardsFacadeMock.initNewGame).toHaveBeenCalledTimes(1);
     });
   });
 
