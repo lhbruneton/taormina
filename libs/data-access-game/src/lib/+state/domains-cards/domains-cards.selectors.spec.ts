@@ -127,9 +127,8 @@ describe('DomainsCards Selectors', () => {
       };
     });
     it('should return the red clay pit domain card', () => {
-      const results = DomainsCardsSelectors.getLandCardPivotWithLockedResources(
-        state
-      );
+      const results =
+        DomainsCardsSelectors.getLandCardPivotWithLockedResources(state);
       const selId = getDomainsCardsId(results[0]);
 
       expect(selId).toBe(redClayPitId);
@@ -185,12 +184,10 @@ describe('DomainsCards Selectors', () => {
 
     describe('getLandCardsPivotsIncreaseOneProduction({ die })', () => {
       it('should return the red clay pit for die 3', () => {
-        const results = DomainsCardsSelectors.getLandCardsPivotsIncreaseOneProduction(
-          state,
-          {
+        const results =
+          DomainsCardsSelectors.getLandCardsPivotsIncreaseOneProduction(state, {
             die: 3,
-          }
-        );
+          });
         const selId = getDomainsCardsId(results[0]);
 
         expect(selId).toBe(redClayPitId);
@@ -199,12 +196,10 @@ describe('DomainsCards Selectors', () => {
 
     describe('getLandCardsPivotsIncreaseTwoProduction({ die })', () => {
       it('should return the blue forest for die 3', () => {
-        const results = DomainsCardsSelectors.getLandCardsPivotsIncreaseTwoProduction(
-          state,
-          {
+        const results =
+          DomainsCardsSelectors.getLandCardsPivotsIncreaseTwoProduction(state, {
             die: 3,
-          }
-        );
+          });
         const selId = getDomainsCardsId(results[0]);
 
         expect(selId).toBe(blueForestId);
@@ -347,34 +342,31 @@ describe('DomainsCards Selectors', () => {
 
     describe('getDomainResourceCountSeenByThieves', () => {
       it('should return 5 resources seen by thieves for the red domain', () => {
-        const result = DomainsCardsSelectors.getDomainResourceCountSeenByThieves(
-          state,
-          {
+        const result =
+          DomainsCardsSelectors.getDomainResourceCountSeenByThieves(state, {
             domainId: ID_DOMAIN_RED,
-          }
-        );
+          });
         expect(result).toBe(5);
       });
 
       it('should return 4 resources seen by thieves for the blue domain', () => {
-        const result = DomainsCardsSelectors.getDomainResourceCountSeenByThieves(
-          state,
-          {
+        const result =
+          DomainsCardsSelectors.getDomainResourceCountSeenByThieves(state, {
             domainId: ID_DOMAIN_BLUE,
-          }
-        );
+          });
         expect(result).toBe(4);
       });
     });
 
     describe('getDomainUnprotectedGoldMinesAndPastures', () => {
       it('should return the gold mine and the pasture for the red domain', () => {
-        const results = DomainsCardsSelectors.getDomainUnprotectedGoldMinesAndPastures(
-          state,
-          {
-            domainId: ID_DOMAIN_RED,
-          }
-        );
+        const results =
+          DomainsCardsSelectors.getDomainUnprotectedGoldMinesAndPastures(
+            state,
+            {
+              domainId: ID_DOMAIN_RED,
+            }
+          );
         const cardIdGoldMineRed = results[0]?.cardId;
         const cardIdPastureRed = results[1]?.cardId;
 
@@ -384,12 +376,13 @@ describe('DomainsCards Selectors', () => {
       });
 
       it('should return only the pasture for the blue domain', () => {
-        const results = DomainsCardsSelectors.getDomainUnprotectedGoldMinesAndPastures(
-          state,
-          {
-            domainId: ID_DOMAIN_BLUE,
-          }
-        );
+        const results =
+          DomainsCardsSelectors.getDomainUnprotectedGoldMinesAndPastures(
+            state,
+            {
+              domainId: ID_DOMAIN_BLUE,
+            }
+          );
         const cardIdPastureBlue = results[0]?.cardId;
 
         expect(results.length).toBe(1);
@@ -405,12 +398,10 @@ describe('DomainsCards Selectors', () => {
       };
     });
     it('should return the clay pit and the pasture for the red domain with count 2', () => {
-      const results = DomainsCardsSelectors.getLandCardsPivotsIncreaseAuspiciousYear(
-        state,
-        {
+      const results =
+        DomainsCardsSelectors.getLandCardsPivotsIncreaseAuspiciousYear(state, {
           count: 2,
-        }
-      );
+        });
       const cardIdClayPitRed = results[0]?.cardId;
       const cardIdPastureRed = results[1]?.cardId;
 
@@ -420,12 +411,10 @@ describe('DomainsCards Selectors', () => {
     });
 
     it('should return the forest and the gold mine for the blue domain with count 1', () => {
-      const results = DomainsCardsSelectors.getLandCardsPivotsIncreaseAuspiciousYear(
-        state,
-        {
+      const results =
+        DomainsCardsSelectors.getLandCardsPivotsIncreaseAuspiciousYear(state, {
           count: 1,
-        }
-      );
+        });
       const cardIdForestBlue = results[0]?.cardId;
       const cardIdGoldMineBlue = results[1]?.cardId;
 
