@@ -272,6 +272,7 @@
     <span *ngIf="getStrengthMastery(domain.id) | async">
       - Strength Mastery</span
     >
+    <span> - Victory points: {{ getVictoryPoints(domain.id) | async }}</span>
   </div>
   <div
     class="grid-container"
@@ -357,6 +358,7 @@
     <span *ngIf="getStrengthMastery(domain.id) | async">
       - Strength Mastery</span
     >
+    <span> - Victory points: {{ getVictoryPoints(domain.id) | async }}</span>
   </div>
   <div
     class="grid-container"
