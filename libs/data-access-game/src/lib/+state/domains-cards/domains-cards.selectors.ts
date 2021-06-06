@@ -1,11 +1,14 @@
+/* eslint-disable @typescript-eslint/explicit-function-return-type */
 import { createFeatureSelector, createSelector } from '@ngrx/store';
 import {
+  agglomerationCards,
   developmentCards,
   ID_DOMAIN_BLUE,
   ID_DOMAIN_RED,
   landCards,
 } from '@taormina/shared-constants';
 import {
+  AGGLOMERATION_CARD_INTERFACE_NAME,
   BuildingName,
   DevelopmentCard,
   DEVELOPMENT_CARD_INTERFACE_NAME,
@@ -360,3 +363,27 @@ const getCardSideNeighbors = (
       (domainCard.col === pivot.col - 1 || domainCard.col === pivot.col + 1) &&
       (pivot.row < 0 ? domainCard.row < 0 : domainCard.row >= 0)
   );
+
+export const getCardsVictoryPointsForDomain = (domainId: string) =>
+  createSelector(getAllDomainsCards, (entities) => {
+    return entities
+      .filter(
+        (domainCard) =>
+          domainCard.domainId === domainId && domainCard.cardId !== undefined
+      )
+      .map((domainCard) => {
+        switch (domainCard.cardType) {
+          case AGGLOMERATION_CARD_INTERFACE_NAME:
+            return (
+              // eslint-disable-next-line @typescript-eslint/no-non-null-assertion
+              agglomerationCards.get(domainCard.cardId!)?.victoryPoints || 0
+            );
+          case DEVELOPMENT_CARD_INTERFACE_NAME:
+            // eslint-disable-next-line @typescript-eslint/no-non-null-assertion
+            return developmentCards.get(domainCard.cardId!)?.victoryPoints || 0;
+          default:
+            return 0;
+        }
+      })
+      .reduce((accumulator, currentValue) => accumulator + currentValue, 0);
+  });

@@ -149,4 +149,10 @@ export class DomainsCardsFacade {
       select(DomainsCardsSelectors.getMasteryDomainForType, { type })
     );
   }
+
+  getCardsVictoryPointsForDomain(domainId: string): Observable<number> {
+    return this.store.select(
+      DomainsCardsSelectors.getCardsVictoryPointsForDomain(domainId)
+    );
+  }
 }

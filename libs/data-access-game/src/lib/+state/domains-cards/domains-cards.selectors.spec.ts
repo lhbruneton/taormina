@@ -423,4 +423,20 @@ describe('DomainsCards Selectors', () => {
       expect(cardIdGoldMineBlue).toBe(ID_GOLD_MINE_BLUE);
     });
   });
+
+  describe('getCardsVictoryPointsForDomain()', () => {
+    beforeEach(() => {
+      state = {
+        domainsCards: domainsCardsNewGameState,
+      };
+    });
+    it('should return two victory points for the two initial hamlets', () => {
+      const result =
+        DomainsCardsSelectors.getCardsVictoryPointsForDomain(ID_DOMAIN_RED)(
+          state
+        );
+
+      expect(result).toBe(2);
+    });
+  });
 });
