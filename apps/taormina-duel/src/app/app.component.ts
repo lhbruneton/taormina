@@ -174,6 +174,10 @@ export class AppComponent {
       .pipe(map((masteryDomainId) => domainId === masteryDomainId));
   }
 
+  getVictoryPoints(domainId: string): Observable<number> {
+    return this.gameRules.getVictoryPointsForDomain(domainId);
+  }
+
   getColumnsTemplate(domainId: string): Observable<string> {
     return combineLatest([
       this.domainsCards.getDomainMinCol(domainId),
