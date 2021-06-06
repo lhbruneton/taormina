@@ -29,6 +29,7 @@ import {
   EventValue,
   GamePhase,
   LAND_CARD_INTERFACE_NAME,
+  MasteryPointsType,
 } from '@taormina/shared-models';
 import { of } from 'rxjs';
 import { marbles } from 'rxjs-marbles/jest';
@@ -1392,6 +1393,118 @@ describe('GameRulesService', () => {
         expect(
           discardPileCardsFacadeMock.addCardToDiscardPile
         ).not.toHaveBeenCalled();
+      });
+    });
+  });
+
+  describe('getVictoryPointsForDomain', () => {
+    describe('no mastery', () => {
+      const domainsCardsFacadeMock = {
+        getCardsVictoryPointsForDomain: jest.fn(() => of(2)),
+        getMasteryDomainForType: jest.fn(() => of(undefined)),
+      };
+
+      beforeEach(() => {
+        TestBed.configureTestingModule({
+          imports: [StoreModule.forRoot({})],
+          providers: [
+            { provide: DomainsCardsFacade, useValue: domainsCardsFacadeMock },
+          ],
+        });
+        service = TestBed.inject(GameRulesService);
+      });
+
+      it(`should combine cards victory points
+          and neither trade nor strength victory points`, () => {
+        const victoryPoints$ = service.getVictoryPointsForDomain(ID_DOMAIN_RED);
+
+        victoryPoints$.subscribe((victoryPoints) => {
+          expect(victoryPoints).toEqual(2);
+        });
+      });
+    });
+
+    describe('trade mastery', () => {
+      const domainsCardsFacadeMock = {
+        getCardsVictoryPointsForDomain: jest.fn(() => of(2)),
+        getMasteryDomainForType: jest.fn((type) =>
+          type === MasteryPointsType.Trade ? of(ID_DOMAIN_RED) : of(undefined)
+        ),
+      };
+
+      beforeEach(() => {
+        TestBed.configureTestingModule({
+          imports: [StoreModule.forRoot({})],
+          providers: [
+            { provide: DomainsCardsFacade, useValue: domainsCardsFacadeMock },
+          ],
+        });
+        service = TestBed.inject(GameRulesService);
+      });
+
+      it(`should combine cards victory points
+          and trade but not strength victory points`, () => {
+        const victoryPoints$ = service.getVictoryPointsForDomain(ID_DOMAIN_RED);
+
+        victoryPoints$.subscribe((victoryPoints) => {
+          expect(victoryPoints).toEqual(3);
+        });
+      });
+    });
+
+    describe('strength mastery', () => {
+      const domainsCardsFacadeMock = {
+        getCardsVictoryPointsForDomain: jest.fn(() => of(2)),
+        getMasteryDomainForType: jest.fn((type) =>
+          type === MasteryPointsType.Strength
+            ? of(ID_DOMAIN_RED)
+            : of(undefined)
+        ),
+      };
+
+      beforeEach(() => {
+        TestBed.configureTestingModule({
+          imports: [StoreModule.forRoot({})],
+          providers: [
+            { provide: DomainsCardsFacade, useValue: domainsCardsFacadeMock },
+          ],
+        });
+        service = TestBed.inject(GameRulesService);
+      });
+
+      it(`should combine cards victory points
+          and not trade but strength victory points`, () => {
+        const victoryPoints$ = service.getVictoryPointsForDomain(ID_DOMAIN_RED);
+
+        victoryPoints$.subscribe((victoryPoints) => {
+          expect(victoryPoints).toEqual(3);
+        });
+      });
+    });
+
+    describe('both mastery', () => {
+      const domainsCardsFacadeMock = {
+        getCardsVictoryPointsForDomain: jest.fn(() => of(2)),
+        getMasteryDomainForType: jest.fn(() => of(ID_DOMAIN_RED)),
+      };
+
+      beforeEach(() => {
+        TestBed.configureTestingModule({
+          imports: [StoreModule.forRoot({})],
+          providers: [
+            { provide: DomainsCardsFacade, useValue: domainsCardsFacadeMock },
+          ],
+        });
+        service = TestBed.inject(GameRulesService);
+      });
+
+      it(`should combine cards victory points
+          and trade and strength victory points`, () => {
+        const victoryPoints$ = service.getVictoryPointsForDomain(ID_DOMAIN_RED);
+
+        victoryPoints$.subscribe((victoryPoints) => {
+          expect(victoryPoints).toEqual(4);
+        });
       });
     });
   });

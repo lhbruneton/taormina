@@ -26,9 +26,10 @@ import {
   EventValue,
   GamePhase,
   LAND_CARD_INTERFACE_NAME,
+  MasteryPointsType,
   RowValue,
 } from '@taormina/shared-models';
-import { combineLatest, Subject } from 'rxjs';
+import { combineLatest, Observable, Subject } from 'rxjs';
 import { filter, map, take, takeUntil } from 'rxjs/operators';
 
 @Injectable({
@@ -112,6 +113,28 @@ export class GameRulesService {
     this.stockPilesCards.initNewGame();
     this.eventsPileCards.initNewGame();
     this.discardPileCards.initNewGame();
+  }
+
+  getVictoryPointsForDomain(domainId: string): Observable<number> {
+    return combineLatest([
+      this.domainsCards.getCardsVictoryPointsForDomain(domainId),
+      this.domainsCards.getMasteryDomainForType(MasteryPointsType.Trade),
+      this.domainsCards.getMasteryDomainForType(MasteryPointsType.Strength),
+    ]).pipe(
+      map(
+        ([
+          cardsVictoryPoints,
+          tradeMasteryDomainId,
+          strengthMasteryDomainId,
+        ]) => {
+          return (
+            cardsVictoryPoints +
+            (tradeMasteryDomainId === domainId ? 1 : 0) +
+            (strengthMasteryDomainId === domainId ? 1 : 0)
+          );
+        }
+      )
+    );
   }
 
   drawFromStockToHand(
