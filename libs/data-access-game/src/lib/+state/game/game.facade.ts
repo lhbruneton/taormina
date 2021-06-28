@@ -1,6 +1,11 @@
 import { Injectable } from '@angular/core';
 import { select, Store } from '@ngrx/store';
-import { DomainColor, GamePhase, ResourceValue } from '@taormina/shared-models';
+import {
+  ActionName,
+  DomainColor,
+  GamePhase,
+  ResourceValue,
+} from '@taormina/shared-models';
 
 import * as GameActions from './game.actions';
 import { GamePartialState } from './game.reducer';
@@ -19,6 +24,7 @@ export class GameFacade {
   eventDie$ = this.store.pipe(select(GameSelectors.getGameEventDie));
   phase$ = this.store.pipe(select(GameSelectors.getGamePhase));
   player$ = this.store.pipe(select(GameSelectors.getGamePlayer));
+  action$ = this.store.pipe(select(GameSelectors.getGameAction));
 
   constructor(private store: Store<GamePartialState>) {}
 
@@ -52,5 +58,9 @@ export class GameFacade {
 
   setPlayer(player: DomainColor): void {
     this.store.dispatch(GameActions.setPlayer({ player }));
+  }
+
+  setAction(action: ActionName | undefined): void {
+    this.store.dispatch(GameActions.setAction({ action }));
   }
 }

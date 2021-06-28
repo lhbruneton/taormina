@@ -56,9 +56,10 @@ import {
   MasteryPointsType,
   ResourceValue,
   RESOURCE_VALUES,
+  ActionName,
 } from '@taormina/shared-models';
 import { combineLatest, Observable } from 'rxjs';
-import { map } from 'rxjs/operators';
+import { filter, map } from 'rxjs/operators';
 
 @Component({
   selector: 'taormina-root',
@@ -125,6 +126,14 @@ export class AppComponent {
 
   removeSelectedEventsPileCard(): void {
     this.eventsPileCards.removeSelected();
+  }
+
+  getAction(): Observable<ActionName | undefined> {
+    return this.game.action$;
+  }
+
+  unsetAction(): void {
+    this.game.setAction(undefined);
   }
 
   throwDisabled(): Observable<boolean> {
@@ -267,6 +276,12 @@ export class AppComponent {
     return this.landsPileCards.allLandsPileCards$;
   }
 
+  canSelectAnyLandCard(): Observable<boolean> {
+    return this.game.action$.pipe(
+      map((action) => action === ActionName.Pathfinder)
+    );
+  }
+
   selectLandsPileCard(pivotId: string): void {
     this.landsPileCards.selectLandsPileCard(pivotId);
   }
@@ -297,16 +312,16 @@ export class AppComponent {
     return this.discardPileCards.allDiscardPileCardsReverse$;
   }
 
-  putSelectedHandCardToDiscardPileAvailable(): Observable<boolean> {
+  useActionCardDisabled(): Observable<boolean> {
     return this.game.phase$.pipe(
       map((phase) => {
-        return phase === GamePhase.LoopActions;
+        return phase !== GamePhase.LoopActions;
       })
     );
   }
 
-  putSelectedHandCardToDiscardPile(): void {
-    this.gameRules.putFromHandToDiscardPile();
+  useActionCard(): void {
+    this.gameRules.useActionCard();
   }
 
   getRedHand(): Hand | undefined {
@@ -427,11 +442,47 @@ export class AppComponent {
     return this.handsCards.selectedHandsCards$;
   }
 
+  getSelectedDevelopmentCard(): Observable<HandsCardsEntity | undefined> {
+    return this.handsCards.selectedHandsCards$.pipe(
+      filter(
+        (handCard) => handCard?.cardType === DEVELOPMENT_CARD_INTERFACE_NAME
+      )
+    );
+  }
+
+  getSelectedActionCard(): Observable<HandsCardsEntity | undefined> {
+    return this.handsCards.selectedHandsCards$.pipe(
+      filter((handCard) => handCard?.cardType === ACTION_CARD_INTERFACE_NAME)
+    );
+  }
+
   getSelectedLandsPileCard(): Observable<LandsPileCardsEntity | undefined> {
     return this.landsPileCards.selectedLandsPileCards$;
   }
 
   getSelectedDomainCard(): Observable<DomainsCardsEntity | undefined> {
     return this.domainsCards.selectedDomainsCards$;
+  }
+
+  getSelectedAvailableAgglomerationSlot(): Observable<
+    DomainsCardsEntity | undefined
+    // eslint-disable-next-line indent
+  > {
+    return this.domainsCards.selectedDomainsCards$.pipe(
+      filter(
+        (domainCard) => domainCard?.cardType === AVAILABLE_AGGLOMERATION_SLOT
+      )
+    );
+  }
+
+  getSelectedAvailableDevelopmentSlot(): Observable<
+    DomainsCardsEntity | undefined
+    // eslint-disable-next-line indent
+  > {
+    return this.domainsCards.selectedDomainsCards$.pipe(
+      filter(
+        (domainCard) => domainCard?.cardType === AVAILABLE_DEVELOPMENT_SLOT
+      )
+    );
   }
 }

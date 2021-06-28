@@ -1,5 +1,6 @@
 import { createReducer, on } from '@ngrx/store';
 import {
+  ActionName,
   DomainColor,
   EventValue,
   GamePhase,
@@ -16,6 +17,7 @@ export interface GameState {
   eventDie: EventValue | undefined;
   phase: GamePhase;
   player: DomainColor;
+  action: ActionName | undefined;
 }
 
 export interface GamePartialState {
@@ -28,6 +30,7 @@ export const initialGameState: GameState = {
   eventDie: undefined,
   phase: GamePhase.InitialThrow,
   player: DomainColor.Red,
+  action: undefined,
 };
 
 export const gameReducer = createReducer(
@@ -52,5 +55,9 @@ export const gameReducer = createReducer(
   on(GameActions.setPlayer, (state, { player }) => ({
     ...state,
     player,
+  })),
+  on(GameActions.setAction, (state, { action }) => ({
+    ...state,
+    action,
   }))
 );

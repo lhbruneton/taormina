@@ -44,7 +44,7 @@
     </div>
   </div>
   <div>
-    <p>Selected event:</p>
+    <p>Current event:</p>
     <div *ngIf="getSelectedEventsPileCard() | async as pivot">
       <div *ngIf="getEventCard(pivot.cardId) as event">
         {{ event.name }}
@@ -52,8 +52,16 @@
     </div>
     <hr />
     <button type="button" (click)="removeSelectedEventsPileCard()">
-      Discard event
+      Finish event
     </button>
+  </div>
+  <div>
+    <p>Current action:</p>
+    <div *ngIf="getAction() | async as action">
+      {{ action }}
+    </div>
+    <hr />
+    <button type="button" (click)="unsetAction()">Finish action</button>
   </div>
 </div>
 <hr />
@@ -84,8 +92,8 @@
     </p>
   </div>
   <div>
-    <p>Selected Agglomeration Available Slot:</p>
-    <p *ngIf="getSelectedDomainCard() | async as pivot">
+    <p>Selected Available Agglomeration Slot:</p>
+    <p *ngIf="getSelectedAvailableAgglomerationSlot() | async as pivot">
       {{ pivot.domainId }}<br />
       {{ pivot.col }}<br />
       {{ pivot.row }}
@@ -103,16 +111,32 @@
   </button>
   <div>
     <p>Selected Development Card:</p>
-    <p *ngIf="getSelectedHandCard() | async as pivot">
+    <p *ngIf="getSelectedDevelopmentCard() | async as pivot">
       {{ pivot.cardId }}
     </p>
   </div>
   <div>
-    <p>Selected Development Available Slot:</p>
-    <p *ngIf="getSelectedDomainCard() | async as pivot">
+    <p>Selected Available Development Slot:</p>
+    <p *ngIf="getSelectedAvailableDevelopmentSlot() | async as pivot">
       {{ pivot.domainId }}<br />
       {{ pivot.col }}<br />
       {{ pivot.row }}
+    </p>
+  </div>
+</div>
+<hr />
+<div class="flex-container">
+  <button
+    type="button"
+    [disabled]="useActionCardDisabled() | async"
+    (click)="useActionCard()"
+  >
+    Use action card
+  </button>
+  <div>
+    <p>Selected Action Card:</p>
+    <p *ngIf="getSelectedActionCard() | async as pivot">
+      {{ pivot.cardId }}
     </p>
   </div>
 </div>
@@ -147,7 +171,7 @@
       <div *ngIf="getLandCard(pivot.cardId) as land">
         {{ land.type }} - {{ land.die }}
         <button
-          *ngIf="i < 2"
+          *ngIf="(canSelectAnyLandCard() | async) || i < 2"
           type="button"
           (click)="selectLandsPileCard(pivot.id)"
         >
@@ -234,13 +258,6 @@
         </div>
       </div>
     </div>
-    <button
-      *ngIf="putSelectedHandCardToDiscardPileAvailable() | async"
-      type="button"
-      (click)="putSelectedHandCardToDiscardPile()"
-    >
-      Put selected hand card on top
-    </button>
   </div>
 </div>
 <hr />
