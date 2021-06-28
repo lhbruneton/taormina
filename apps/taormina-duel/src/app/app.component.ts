@@ -427,11 +427,41 @@ export class AppComponent {
     return this.handsCards.selectedHandsCards$;
   }
 
+  getSelectedDevelopmentCard(): Observable<HandsCardsEntity | undefined> {
+    return this.handsCards.selectedHandsCards$.pipe(
+      filter(
+        (handCard) => handCard?.cardType === DEVELOPMENT_CARD_INTERFACE_NAME
+      )
+    );
+  }
+
   getSelectedLandsPileCard(): Observable<LandsPileCardsEntity | undefined> {
     return this.landsPileCards.selectedLandsPileCards$;
   }
 
   getSelectedDomainCard(): Observable<DomainsCardsEntity | undefined> {
     return this.domainsCards.selectedDomainsCards$;
+  }
+
+  getSelectedAvailableAgglomerationSlot(): Observable<
+    DomainsCardsEntity | undefined
+    // eslint-disable-next-line indent
+  > {
+    return this.domainsCards.selectedDomainsCards$.pipe(
+      filter(
+        (domainCard) => domainCard?.cardType === AVAILABLE_AGGLOMERATION_SLOT
+      )
+    );
+  }
+
+  getSelectedAvailableDevelopmentSlot(): Observable<
+    DomainsCardsEntity | undefined
+    // eslint-disable-next-line indent
+  > {
+    return this.domainsCards.selectedDomainsCards$.pipe(
+      filter(
+        (domainCard) => domainCard?.cardType === AVAILABLE_DEVELOPMENT_SLOT
+      )
+    );
   }
 }

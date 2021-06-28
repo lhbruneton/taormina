@@ -84,8 +84,8 @@
     </p>
   </div>
   <div>
-    <p>Selected Agglomeration Available Slot:</p>
-    <p *ngIf="getSelectedDomainCard() | async as pivot">
+    <p>Selected Available Agglomeration Slot:</p>
+    <p *ngIf="getSelectedAvailableAgglomerationSlot() | async as pivot">
       {{ pivot.domainId }}<br />
       {{ pivot.col }}<br />
       {{ pivot.row }}
@@ -103,13 +103,13 @@
   </button>
   <div>
     <p>Selected Development Card:</p>
-    <p *ngIf="getSelectedHandCard() | async as pivot">
+    <p *ngIf="getSelectedDevelopmentCard() | async as pivot">
       {{ pivot.cardId }}
     </p>
   </div>
   <div>
-    <p>Selected Development Available Slot:</p>
-    <p *ngIf="getSelectedDomainCard() | async as pivot">
+    <p>Selected Available Development Slot:</p>
+    <p *ngIf="getSelectedAvailableDevelopmentSlot() | async as pivot">
       {{ pivot.domainId }}<br />
       {{ pivot.col }}<br />
       {{ pivot.row }}
