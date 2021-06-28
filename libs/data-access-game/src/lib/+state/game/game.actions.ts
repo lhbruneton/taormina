@@ -1,5 +1,6 @@
 import { createAction, props } from '@ngrx/store';
 import {
+  ActionName,
   DomainColor,
   EventValue,
   GamePhase,
@@ -16,6 +17,11 @@ export const setPhase = createAction(
 export const setPlayer = createAction(
   '[Game] Set Player',
   props<{ player: DomainColor }>()
+);
+
+export const setAction = createAction(
+  '[Game] Set Action',
+  props<{ action: ActionName | undefined }>()
 );
 
 export const throwDice = createAction('[Dice Component] Throw Dice');

@@ -1,5 +1,10 @@
 import { Action } from '@ngrx/store';
-import { DomainColor, EventValue, GamePhase } from '@taormina/shared-models';
+import {
+  ActionName,
+  DomainColor,
+  EventValue,
+  GamePhase,
+} from '@taormina/shared-models';
 
 import * as GameActions from './game.actions';
 import { gameReducer, GameState, initialGameState } from './game.reducer';
@@ -23,6 +28,7 @@ describe('Game Reducer', () => {
         eventDie: EventValue.Thieves,
         phase: GamePhase.InitialDraw,
         player: DomainColor.Blue,
+        action: ActionName.Goldsmith,
       };
 
       const action = GameActions.initNewGame();
@@ -41,6 +47,7 @@ describe('Game Reducer', () => {
         eventDie: undefined,
         phase: GamePhase.InitialThrow,
         player: DomainColor.Red,
+        action: undefined,
       };
 
       const action = GameActions.setProductionDie({ value: 2 });
@@ -59,6 +66,7 @@ describe('Game Reducer', () => {
         eventDie: undefined,
         phase: GamePhase.InitialThrow,
         player: DomainColor.Red,
+        action: undefined,
       };
 
       const action = GameActions.setNextProductionDie({ value: 5 });
@@ -77,6 +85,7 @@ describe('Game Reducer', () => {
         eventDie: EventValue.Thieves,
         phase: GamePhase.InitialThrow,
         player: DomainColor.Red,
+        action: undefined,
       };
 
       const action = GameActions.setEventDie({ value: EventValue.Thieves });
@@ -95,6 +104,7 @@ describe('Game Reducer', () => {
         eventDie: undefined,
         phase: GamePhase.InitialDraw,
         player: DomainColor.Red,
+        action: undefined,
       };
 
       const action = GameActions.setPhase({ phase: GamePhase.InitialDraw });
@@ -113,9 +123,29 @@ describe('Game Reducer', () => {
         eventDie: undefined,
         phase: GamePhase.InitialThrow,
         player: DomainColor.Blue,
+        action: undefined,
       };
 
       const action = GameActions.setPlayer({ player: DomainColor.Blue });
+
+      const state: GameState = gameReducer(initialGameState, action);
+
+      expect(state).toEqual(newState);
+    });
+  });
+
+  describe('setAction', () => {
+    it('should set the current action', () => {
+      const newState: GameState = {
+        productionDie: undefined,
+        nextProductionDie: undefined,
+        eventDie: undefined,
+        phase: GamePhase.InitialThrow,
+        player: DomainColor.Red,
+        action: ActionName.Goldsmith,
+      };
+
+      const action = GameActions.setAction({ action: ActionName.Goldsmith });
 
       const state: GameState = gameReducer(initialGameState, action);
 

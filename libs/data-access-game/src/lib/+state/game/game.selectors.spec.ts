@@ -1,5 +1,10 @@
 /* eslint-disable no-magic-numbers */
-import { DomainColor, EventValue, GamePhase } from '@taormina/shared-models';
+import {
+  ActionName,
+  DomainColor,
+  EventValue,
+  GamePhase,
+} from '@taormina/shared-models';
 
 import { GamePartialState, initialGameState } from './game.reducer';
 import * as GameSelectors from './game.selectors';
@@ -14,6 +19,7 @@ describe('Game Selectors', () => {
         productionDie: 1,
         nextProductionDie: 6,
         eventDie: EventValue.Event,
+        action: ActionName.Goldsmith,
       },
     };
   });
@@ -55,6 +61,14 @@ describe('Game Selectors', () => {
       const result = GameSelectors.getGamePlayer(state);
 
       expect(result).toBe(DomainColor.Red);
+    });
+  });
+
+  describe('getGameAction()', () => {
+    it('should return the current action', () => {
+      const result = GameSelectors.getGameAction(state);
+
+      expect(result).toBe(ActionName.Goldsmith);
     });
   });
 });
