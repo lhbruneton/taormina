@@ -1,26 +1,8 @@
-### TODOs
-| Filename | line # | TODO
-|:------|:------:|:------
-| [libs/feature-engine/src/lib/game-rules.service.spec.ts](libs/feature-engine/src/lib/game-rules.service.spec.ts#L614) | 614 | test actions order: event > steal on thieves > production
-| [libs/data-access-game/src/lib/+state/stock-piles-cards/stock-piles-cards.effects.ts](libs/data-access-game/src/lib/+state/stock-piles-cards/stock-piles-cards.effects.ts#L69) | 69 | throw error instead of filtering out undefined ?
-
-### FIXMEs
-| Filename | line # | FIXME
-|:------|:------:|:------
-| [libs/feature-engine/src/lib/game-rules.service.spec.ts](libs/feature-engine/src/lib/game-rules.service.spec.ts#L920) | 920 | should test error thrown
-| [libs/feature-engine/src/lib/game-rules.service.spec.ts](libs/feature-engine/src/lib/game-rules.service.spec.ts#L956) | 956 | should test error thrown
-| [libs/feature-engine/src/lib/game-rules.service.spec.ts](libs/feature-engine/src/lib/game-rules.service.spec.ts#L1055) | 1055 | should test error thrown
-| [libs/feature-engine/src/lib/game-rules.service.spec.ts](libs/feature-engine/src/lib/game-rules.service.spec.ts#L1091) | 1091 | should test error thrown
-| [libs/feature-engine/src/lib/game-rules.service.spec.ts](libs/feature-engine/src/lib/game-rules.service.spec.ts#L1184) | 1184 | should test error thrown
-| [libs/feature-engine/src/lib/game-rules.service.spec.ts](libs/feature-engine/src/lib/game-rules.service.spec.ts#L1219) | 1219 | should test error thrown
-| [libs/feature-engine/src/lib/game-rules.service.spec.ts](libs/feature-engine/src/lib/game-rules.service.spec.ts#L1303) | 1303 | should test error thrown
-| [libs/feature-engine/src/lib/game-rules.service.spec.ts](libs/feature-engine/src/lib/game-rules.service.spec.ts#L1387) | 1387 | should test error thrown
-| [libs/data-access-game/src/lib/+state/domains-cards/domains-cards.effects.spec.ts](libs/data-access-game/src/lib/+state/domains-cards/domains-cards.effects.spec.ts#L794) | 794 | https://github.com/ngrx/platform/issues/2176
-| [libs/data-access-game/src/lib/+state/domains-cards/domains-cards.effects.spec.ts](libs/data-access-game/src/lib/+state/domains-cards/domains-cards.effects.spec.ts#L820) | 820 | https://github.com/ngrx/platform/issues/2176
-
 ### ESLINT-DISABLE-NEXT-LINEs
 | Filename | line # | ESLINT-DISABLE-NEXT-LINE
 |:------|:------:|:------
+| [apps/taormina-duel/src/app/app.component.ts](apps/taormina-duel/src/app/app.component.ts#L469) | 469 | indent
+| [apps/taormina-duel/src/app/app.component.ts](apps/taormina-duel/src/app/app.component.ts#L480) | 480 | indent
 | [libs/shared-models/src/lib/interfaces/name.ts](libs/shared-models/src/lib/interfaces/name.ts#L5) | 5 | @typescript-eslint/no-explicit-any
 | [libs/shared-models/src/lib/interfaces/print.ts](libs/shared-models/src/lib/interfaces/print.ts#L5) | 5 | @typescript-eslint/no-explicit-any
 | [libs/shared-models/src/lib/structures/action.ts](libs/shared-models/src/lib/structures/action.ts#L24) | 24 | @typescript-eslint/no-explicit-any
@@ -42,6 +24,29 @@
 | [libs/data-access-game/src/lib/+state/face-up-piles-cards/face-up-piles-cards.reducer.ts](libs/data-access-game/src/lib/+state/face-up-piles-cards/face-up-piles-cards.reducer.ts#L21) | 21 | max-len
 | [libs/data-access-game/src/lib/+state/game/game.effects.ts](libs/data-access-game/src/lib/+state/game/game.effects.ts#L32) | 32 | @typescript-eslint/no-unused-vars
 | [libs/data-access-game/src/lib/+state/stock-piles-cards/stock-piles-cards.reducer.ts](libs/data-access-game/src/lib/+state/stock-piles-cards/stock-piles-cards.reducer.ts#L21) | 21 | max-len
+
+### TODOs
+| Filename | line # | TODO
+|:------|:------:|:------
+| [libs/feature-engine/src/lib/game-rules.service.spec.ts](libs/feature-engine/src/lib/game-rules.service.spec.ts#L615) | 615 | test actions order: event > steal on thieves > production
+| [libs/data-access-game/src/lib/+state/stock-piles-cards/stock-piles-cards.effects.ts](libs/data-access-game/src/lib/+state/stock-piles-cards/stock-piles-cards.effects.ts#L69) | 69 | throw error instead of filtering out undefined ?
+
+### FIXMEs
+| Filename | line # | FIXME
+|:------|:------:|:------
+| [libs/feature-engine/src/lib/game-rules.service.spec.ts](libs/feature-engine/src/lib/game-rules.service.spec.ts#L921) | 921 | should test error thrown
+| [libs/feature-engine/src/lib/game-rules.service.spec.ts](libs/feature-engine/src/lib/game-rules.service.spec.ts#L957) | 957 | should test error thrown
+| [libs/feature-engine/src/lib/game-rules.service.spec.ts](libs/feature-engine/src/lib/game-rules.service.spec.ts#L1056) | 1056 | should test error thrown
+| [libs/feature-engine/src/lib/game-rules.service.spec.ts](libs/feature-engine/src/lib/game-rules.service.spec.ts#L1092) | 1092 | should test error thrown
+| [libs/feature-engine/src/lib/game-rules.service.spec.ts](libs/feature-engine/src/lib/game-rules.service.spec.ts#L1185) | 1185 | should test error thrown
+| [libs/feature-engine/src/lib/game-rules.service.spec.ts](libs/feature-engine/src/lib/game-rules.service.spec.ts#L1220) | 1220 | should test error thrown
+| [libs/feature-engine/src/lib/game-rules.service.spec.ts](libs/feature-engine/src/lib/game-rules.service.spec.ts#L1304) | 1304 | should test error thrown
+| [libs/feature-engine/src/lib/game-rules.service.spec.ts](libs/feature-engine/src/lib/game-rules.service.spec.ts#L1403) | 1403 | should test error thrown
+| [libs/feature-engine/src/lib/game-rules.service.spec.ts](libs/feature-engine/src/lib/game-rules.service.spec.ts#L1451) | 1451 | should test error thrown
+| [libs/feature-engine/src/lib/game-rules.service.spec.ts](libs/feature-engine/src/lib/game-rules.service.spec.ts#L1499) | 1499 | should test error thrown
+| [libs/feature-engine/src/lib/game-rules.service.spec.ts](libs/feature-engine/src/lib/game-rules.service.spec.ts#L1547) | 1547 | should test error thrown
+| [libs/data-access-game/src/lib/+state/domains-cards/domains-cards.effects.spec.ts](libs/data-access-game/src/lib/+state/domains-cards/domains-cards.effects.spec.ts#L794) | 794 | https://github.com/ngrx/platform/issues/2176
+| [libs/data-access-game/src/lib/+state/domains-cards/domains-cards.effects.spec.ts](libs/data-access-game/src/lib/+state/domains-cards/domains-cards.effects.spec.ts#L820) | 820 | https://github.com/ngrx/platform/issues/2176
 
 ### PRETTIER-IGNOREs
 | Filename | line # | PRETTIER-IGNORE
