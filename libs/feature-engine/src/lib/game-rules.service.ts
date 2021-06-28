@@ -11,11 +11,13 @@ import {
   StockPilesCardsFacade,
 } from '@taormina/data-access-game';
 import {
+  actionCards,
   eventCards,
   ID_FACE_UP_HAMLET,
   ID_FACE_UP_TOWN,
 } from '@taormina/shared-constants';
 import {
+  ACTION_CARD_INTERFACE_NAME,
   AGGLOMERATION_CARD_INTERFACE_NAME,
   AVAILABLE_AGGLOMERATION_SLOT,
   AVAILABLE_DEVELOPMENT_SLOT,
@@ -317,7 +319,7 @@ export class GameRulesService {
       .subscribe();
   }
 
-  putFromHandToDiscardPile(): void {
+  useActionCard(): void {
     this.handsCards.selectedHandsCards$
       .pipe(
         take(1),
@@ -325,8 +327,21 @@ export class GameRulesService {
           if (handCard === undefined) {
             throw new Error(`Can't put card in pile if no card selected.`);
           }
+          if (
+            handCard.cardType !== ACTION_CARD_INTERFACE_NAME ||
+            handCard.cardId === undefined
+          ) {
+            throw new Error(`Can't use card other than action.`);
+          }
+          const action = actionCards.get(handCard.cardId);
+          if (action === undefined) {
+            throw new Error(
+              `Something went wrong, action shouldn't be undefined at this point.`
+            );
+          }
           this.handsCards.removeHandCard(handCard.id);
           this.handsCards.unselectHandCard();
+          this.game.setAction(action.name);
           this.discardPileCards.addCardToDiscardPile({
             type: handCard.cardType,
             id: handCard.cardId,
