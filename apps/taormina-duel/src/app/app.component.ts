@@ -276,6 +276,12 @@ export class AppComponent {
     return this.landsPileCards.allLandsPileCards$;
   }
 
+  canSelectAnyLandCard(): Observable<boolean> {
+    return this.game.action$.pipe(
+      map((action) => action === ActionName.Pathfinder)
+    );
+  }
+
   selectLandsPileCard(pivotId: string): void {
     this.landsPileCards.selectLandsPileCard(pivotId);
   }
