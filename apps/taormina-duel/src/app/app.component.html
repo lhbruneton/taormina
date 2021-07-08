@@ -63,6 +63,9 @@
     <hr />
     <button type="button" (click)="unsetAction()">Finish action</button>
   </div>
+  <button type="button" (click)="clearDomainCardSelection()">
+    clear domain selection
+  </button>
 </div>
 <hr />
 <div class="flex-container">
@@ -86,14 +89,22 @@
     buy agglomeration
   </button>
   <div>
-    <p>Selected Agglomeration Card:</p>
+    <p>Pile Selected Agglomeration Card:</p>
     <p *ngIf="getSelectedFaceUpPileCard() | async as pivot">
       {{ pivot.pileId }}
     </p>
   </div>
   <div>
-    <p>Selected Available Agglomeration Slot:</p>
-    <p *ngIf="getSelectedAvailableAgglomerationSlot() | async as pivot">
+    <p>Selected Available Agglomeration Slots:</p>
+    <p *ngFor="let pivot of getSelectedAvailableAgglomerationSlots() | async">
+      {{ pivot.domainId }}<br />
+      {{ pivot.col }}<br />
+      {{ pivot.row }}
+    </p>
+  </div>
+  <div>
+    <p>Domain Selected Agglomeration Slots:</p>
+    <p *ngFor="let pivot of getDomainSelectedAgglomerationSlots() | async">
       {{ pivot.domainId }}<br />
       {{ pivot.col }}<br />
       {{ pivot.row }}
@@ -110,14 +121,22 @@
     buy development
   </button>
   <div>
-    <p>Selected Development Card:</p>
-    <p *ngIf="getSelectedDevelopmentCard() | async as pivot">
+    <p>Hand Selected Development Card:</p>
+    <p *ngIf="getHandSelectedDevelopmentCard() | async as pivot">
       {{ pivot.cardId }}
     </p>
   </div>
   <div>
-    <p>Selected Available Development Slot:</p>
-    <p *ngIf="getSelectedAvailableDevelopmentSlot() | async as pivot">
+    <p>Selected Available Development Slots:</p>
+    <p *ngFor="let pivot of getSelectedAvailableDevelopmentSlots() | async">
+      {{ pivot.domainId }}<br />
+      {{ pivot.col }}<br />
+      {{ pivot.row }}
+    </p>
+  </div>
+  <div>
+    <p>Domain Selected Development Cards:</p>
+    <p *ngFor="let pivot of getDomainSelectedDevelopmentCards() | async">
       {{ pivot.domainId }}<br />
       {{ pivot.col }}<br />
       {{ pivot.row }}
@@ -144,14 +163,22 @@
 <div class="flex-container">
   <button type="button" (click)="putLand()">put land</button>
   <div>
-    <p>Selected Land Card:</p>
-    <p *ngIf="getSelectedLandsPileCard() | async as pivot">
+    <p>Pile Selected Land Card:</p>
+    <p *ngIf="getPileSelectedLandCard() | async as pivot">
       {{ pivot.cardId }}
     </p>
   </div>
   <div>
-    <p>Selected Land Available Slot:</p>
-    <p *ngIf="getSelectedDomainCard() | async as pivot">
+    <p>Selected Available Land Slots:</p>
+    <p *ngFor="let pivot of getSelectedAvailableLandSlots() | async">
+      {{ pivot.domainId }}<br />
+      {{ pivot.col }}<br />
+      {{ pivot.row }}
+    </p>
+  </div>
+  <div>
+    <p>Domain Selected Available Land Slots:</p>
+    <p *ngFor="let pivot of getDomainSelectedLandCards() | async">
       {{ pivot.domainId }}<br />
       {{ pivot.col }}<br />
       {{ pivot.row }}
@@ -315,6 +342,11 @@
           "
         >
           {{ development.name }}
+          <button type="button" (click)="toggleDomainCardSelection(pivot.id)">
+            {{
+              (isDomainCardSelected(pivot.id) | async) ? 'Unselect' : 'Select'
+            }}
+          </button>
         </div>
       </div>
       <div *ngSwitchCase="AGGLOMERATION_CARD_INTERFACE_NAME">
@@ -325,8 +357,10 @@
           "
         >
           {{ agglomeration.type }}
-          <button type="button" (click)="selectDomainCard(pivot.id)">
-            Select
+          <button type="button" (click)="toggleDomainCardSelection(pivot.id)">
+            {{
+              (isDomainCardSelected(pivot.id) | async) ? 'Unselect' : 'Select'
+            }}
           </button>
         </div>
       </div>
@@ -345,23 +379,28 @@
             Unlock</button
           ><br />
           <button type="button" (click)="increaseResources(pivot.id)">
-            Increase
+            Increase</button
+          ><br />
+          <button type="button" (click)="toggleDomainCardSelection(pivot.id)">
+            {{
+              (isDomainCardSelected(pivot.id) | async) ? 'Unselect' : 'Select'
+            }}
           </button>
         </div>
       </div>
       <div *ngSwitchCase="AVAILABLE_AGGLOMERATION_SLOT">
-        <button type="button" (click)="selectDomainCard(pivot.id)">
-          Select
+        <button type="button" (click)="toggleDomainCardSelection(pivot.id)">
+          {{ (isDomainCardSelected(pivot.id) | async) ? 'Unselect' : 'Select' }}
         </button>
       </div>
       <div *ngSwitchCase="AVAILABLE_DEVELOPMENT_SLOT">
-        <button type="button" (click)="selectDomainCard(pivot.id)">
-          Select
+        <button type="button" (click)="toggleDomainCardSelection(pivot.id)">
+          {{ (isDomainCardSelected(pivot.id) | async) ? 'Unselect' : 'Select' }}
         </button>
       </div>
       <div *ngSwitchCase="AVAILABLE_LAND_SLOT">
-        <button type="button" (click)="selectDomainCard(pivot.id)">
-          Select
+        <button type="button" (click)="toggleDomainCardSelection(pivot.id)">
+          {{ (isDomainCardSelected(pivot.id) | async) ? 'Unselect' : 'Select' }}
         </button>
       </div>
     </div>
@@ -411,8 +450,10 @@
           "
         >
           {{ agglomeration.type }}
-          <button type="button" (click)="selectDomainCard(pivot.id)">
-            Select
+          <button type="button" (click)="toggleDomainCardSelection(pivot.id)">
+            {{
+              (isDomainCardSelected(pivot.id) | async) ? 'Unselect' : 'Select'
+            }}
           </button>
         </div>
       </div>
@@ -436,18 +477,18 @@
         </div>
       </div>
       <div *ngSwitchCase="AVAILABLE_AGGLOMERATION_SLOT">
-        <button type="button" (click)="selectDomainCard(pivot.id)">
-          Select
+        <button type="button" (click)="toggleDomainCardSelection(pivot.id)">
+          {{ (isDomainCardSelected(pivot.id) | async) ? 'Unselect' : 'Select' }}
         </button>
       </div>
       <div *ngSwitchCase="AVAILABLE_DEVELOPMENT_SLOT">
-        <button type="button" (click)="selectDomainCard(pivot.id)">
-          Select
+        <button type="button" (click)="toggleDomainCardSelection(pivot.id)">
+          {{ (isDomainCardSelected(pivot.id) | async) ? 'Unselect' : 'Select' }}
         </button>
       </div>
       <div *ngSwitchCase="AVAILABLE_LAND_SLOT">
-        <button type="button" (click)="selectDomainCard(pivot.id)">
-          Select
+        <button type="button" (click)="toggleDomainCardSelection(pivot.id)">
+          {{ (isDomainCardSelected(pivot.id) | async) ? 'Unselect' : 'Select' }}
         </button>
       </div>
     </div>
