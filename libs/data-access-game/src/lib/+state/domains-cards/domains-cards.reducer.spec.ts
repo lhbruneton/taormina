@@ -9,6 +9,7 @@ import {
   redClayPitDomainCard,
   redClayPitId,
   someDomainsCardsId,
+  someOtherDomainsCardsId,
 } from '../../../test';
 import * as DomainsCardsActions from './domains-cards.actions';
 import {
@@ -146,35 +147,59 @@ describe('DomainsCards Reducer', () => {
       expect(state).toEqual(newState);
     });
   });
+  describe('toggleDomainCardSelection', () => {
+    describe('add', () => {
+      it('should add the DomainCard to the selection', () => {
+        const newState = {
+          ...domainsCardsNewGameState,
+          selectedIds: [someDomainsCardsId, someOtherDomainsCardsId],
+        };
 
-  describe('selectDomainCard', () => {
-    it('should select the DomainCard', () => {
-      const newState = {
-        ...domainsCardsNewGameState,
-        selectedId: someDomainsCardsId,
-      };
+        const action = DomainsCardsActions.toggleDomainCardSelection({
+          id: someOtherDomainsCardsId,
+        });
 
-      const action = DomainsCardsActions.selectDomainCard({
-        id: someDomainsCardsId,
+        const state: DomainsCardsState = domainsCardsReducer(
+          { ...domainsCardsNewGameState, selectedIds: [someDomainsCardsId] },
+          action
+        );
+
+        expect(state).toEqual(newState);
       });
+    });
 
-      const state: DomainsCardsState = domainsCardsReducer(
-        domainsCardsNewGameState,
-        action
-      );
+    describe('remove', () => {
+      it('should remove the DomainCard from the selection', () => {
+        const initialState = {
+          ...domainsCardsNewGameState,
+          selectedIds: [someDomainsCardsId, someOtherDomainsCardsId],
+        };
 
-      expect(state).toEqual(newState);
+        const action = DomainsCardsActions.toggleDomainCardSelection({
+          id: someOtherDomainsCardsId,
+        });
+
+        const state: DomainsCardsState = domainsCardsReducer(
+          initialState,
+          action
+        );
+
+        expect(state).toEqual({
+          ...domainsCardsNewGameState,
+          selectedIds: [someDomainsCardsId],
+        });
+      });
     });
   });
 
-  describe('unselectDomainCard', () => {
-    it('should unselect the DomainCard', () => {
+  describe('clearDomainCardSelection', () => {
+    it('should clear the DomainCard selection', () => {
       const initialState = {
         ...domainsCardsNewGameState,
-        selectedId: 'aaaa',
+        selectedIds: [someDomainsCardsId, someOtherDomainsCardsId],
       };
 
-      const action = DomainsCardsActions.unselectDomainCard();
+      const action = DomainsCardsActions.clearDomainCardSelection();
 
       const state: DomainsCardsState = domainsCardsReducer(
         initialState,

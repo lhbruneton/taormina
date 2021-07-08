@@ -73,12 +73,14 @@ export class DomainsCardsFacade {
     this.store.dispatch(DomainsCardsActions.useLockedResources());
   }
 
-  selectDomainCard(pivotId: string): void {
-    this.store.dispatch(DomainsCardsActions.selectDomainCard({ id: pivotId }));
+  toggleDomainCardSelection(pivotId: string): void {
+    this.store.dispatch(
+      DomainsCardsActions.toggleDomainCardSelection({ id: pivotId })
+    );
   }
 
-  unselectDomainCard(): void {
-    this.store.dispatch(DomainsCardsActions.unselectDomainCard());
+  clearDomainCardSelection(): void {
+    this.store.dispatch(DomainsCardsActions.clearDomainCardSelection());
   }
 
   putCardInSlot(

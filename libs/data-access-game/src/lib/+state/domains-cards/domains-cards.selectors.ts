@@ -55,17 +55,20 @@ export const getDomainsCardsEntities = createSelector(
   (state: DomainsCardsState) => selectEntities(state)
 );
 
-export const getDomainsCardsSelectedId = createSelector(
+export const getDomainsCardsSelectedIds = createSelector(
   getDomainsCardsState,
-  (state: DomainsCardsState) => state.selectedId
+  (state: DomainsCardsState) => state.selectedIds
 );
 
 export const getDomainsCardsSelected = createSelector(
   getDomainsCardsEntities,
-  getDomainsCardsSelectedId,
-  (entities, selectedId) => {
-    if (selectedId === undefined) return undefined;
-    return entities[selectedId];
+  getDomainsCardsSelectedIds,
+  (entities, selectedIds) => {
+    return selectedIds
+      .map((selectedId) => entities[selectedId])
+      .filter(
+        (selectedEntity) => selectedEntity !== undefined
+      ) as DomainsCardsEntity[];
   }
 );
 

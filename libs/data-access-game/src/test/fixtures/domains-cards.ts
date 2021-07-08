@@ -9,6 +9,7 @@ import { DomainsCardsState } from '../../lib/+state/domains-cards/domains-cards.
 
 export const someDomainsCardsId = '7a1e11aa-47bb-4b4e-94ab-4c91c19e6a62';
 export const redClayPitId = '9ed2d3b8-1d98-4331-969e-09b7f1ba046e';
+export const someOtherDomainsCardsId = redClayPitId;
 export const blueForestId = 'fb675e2e-ee40-4e07-b29c-d6dbd823ca53';
 const nextToRedClayPit = '444bebc9-2521-49f0-b790-2668a4baa182';
 const nextToBlueForestId = '762a3af1-c807-4fd6-b0f5-c5ec52c1c619';
@@ -47,14 +48,15 @@ export const blueForestDomainCard: DomainsCardsEntity = {
   lockedResources: 0,
 };
 
-export const aaaaWarehouseNextToBlueForestDomainCard: DomainsCardsEntity = createDomainsCardsEntity(
-  'aaaa',
-  ID_DOMAIN_BLUE,
-  DEVELOPMENT_CARD_INTERFACE_NAME,
-  'BUILDING_6', // Warehouse
-  -1,
-  1
-);
+export const aaaaWarehouseNextToBlueForestDomainCard: DomainsCardsEntity =
+  createDomainsCardsEntity(
+    'aaaa',
+    ID_DOMAIN_BLUE,
+    DEVELOPMENT_CARD_INTERFACE_NAME,
+    'BUILDING_6', // Warehouse
+    -1,
+    1
+  );
 
 const domainsCardsNewGameStateIds = [
   someDomainsCardsId,
@@ -365,376 +367,392 @@ export const domainsCardsNewGameStateEntities = {
 export const domainsCardsNewGameState: DomainsCardsState = {
   ids: domainsCardsNewGameStateIds,
   entities: domainsCardsNewGameStateEntities,
+  selectedIds: [],
   initialized: true,
   loaded: false,
 };
 
-export const domainsCardsSawmillNextToBlueForestState = (): DomainsCardsState => {
-  const newIds = (domainsCardsNewGameState.ids as string[]).filter(
-    (id) => id !== nextToBlueForestId
-  );
-  const newEntities = { ...domainsCardsNewGameState.entities };
-  delete newEntities[nextToBlueForestId];
+export const domainsCardsSawmillNextToBlueForestState =
+  (): DomainsCardsState => {
+    const newIds = (domainsCardsNewGameState.ids as string[]).filter(
+      (id) => id !== nextToBlueForestId
+    );
+    const newEntities = { ...domainsCardsNewGameState.entities };
+    delete newEntities[nextToBlueForestId];
 
-  const domainsCards = {
-    ...domainsCardsNewGameState,
-    ids: [...newIds, 'aaaa'],
-    entities: {
-      ...newEntities,
-      aaaa: createDomainsCardsEntity(
-        'aaaa',
-        ID_DOMAIN_BLUE,
-        DEVELOPMENT_CARD_INTERFACE_NAME,
-        'BUILDING_2', // Sawmill
-        -1,
-        1
-      ),
-    },
+    const domainsCards = {
+      ...domainsCardsNewGameState,
+      ids: [...newIds, 'aaaa'],
+      entities: {
+        ...newEntities,
+        aaaa: createDomainsCardsEntity(
+          'aaaa',
+          ID_DOMAIN_BLUE,
+          DEVELOPMENT_CARD_INTERFACE_NAME,
+          'BUILDING_2', // Sawmill
+          -1,
+          1
+        ),
+      },
+    };
+    return domainsCards;
   };
-  return domainsCards;
-};
 
-export const domainsCardsOneTradeRedTwoTradeBlueState = (): DomainsCardsState => {
-  const newIds = (domainsCardsNewGameState.ids as string[]).filter(
-    (id) =>
-      id !== redAvailableDevelopmentSlotOneId &&
-      id !== blueAvailableDevelopmentSlotOneId &&
-      id !== blueAvailableDevelopmentSlotTwoId
-  );
-  const newEntities = { ...domainsCardsNewGameState.entities };
-  delete newEntities[redAvailableDevelopmentSlotOneId];
-  delete newEntities[blueAvailableDevelopmentSlotOneId];
-  delete newEntities[blueAvailableDevelopmentSlotTwoId];
+export const domainsCardsOneTradeRedTwoTradeBlueState =
+  (): DomainsCardsState => {
+    const newIds = (domainsCardsNewGameState.ids as string[]).filter(
+      (id) =>
+        id !== redAvailableDevelopmentSlotOneId &&
+        id !== blueAvailableDevelopmentSlotOneId &&
+        id !== blueAvailableDevelopmentSlotTwoId
+    );
+    const newEntities = { ...domainsCardsNewGameState.entities };
+    delete newEntities[redAvailableDevelopmentSlotOneId];
+    delete newEntities[blueAvailableDevelopmentSlotOneId];
+    delete newEntities[blueAvailableDevelopmentSlotTwoId];
 
-  const domainsCards = {
-    ...domainsCardsNewGameState,
-    ids: [...newIds, 'aaaa', 'bbbb', 'cccc'],
-    entities: {
-      ...newEntities,
-      aaaa: createDomainsCardsEntity(
-        'aaaa',
-        ID_DOMAIN_RED,
-        DEVELOPMENT_CARD_INTERFACE_NAME,
-        'BUILDING_8', // Market
-        -1,
-        1
-      ),
-      bbbb: createDomainsCardsEntity(
-        'bbbb',
-        ID_DOMAIN_BLUE,
-        DEVELOPMENT_CARD_INTERFACE_NAME,
-        'BUILDING_9', // Market
-        -1,
-        1
-      ),
-      cccc: createDomainsCardsEntity(
-        'cccc',
-        ID_DOMAIN_BLUE,
-        DEVELOPMENT_CARD_INTERFACE_NAME,
-        'BUILDING_10', // Toll bridge
-        1,
-        1
-      ),
-    },
+    const domainsCards = {
+      ...domainsCardsNewGameState,
+      ids: [...newIds, 'aaaa', 'bbbb', 'cccc'],
+      entities: {
+        ...newEntities,
+        aaaa: createDomainsCardsEntity(
+          'aaaa',
+          ID_DOMAIN_RED,
+          DEVELOPMENT_CARD_INTERFACE_NAME,
+          'BUILDING_8', // Market
+          -1,
+          1
+        ),
+        bbbb: createDomainsCardsEntity(
+          'bbbb',
+          ID_DOMAIN_BLUE,
+          DEVELOPMENT_CARD_INTERFACE_NAME,
+          'BUILDING_9', // Market
+          -1,
+          1
+        ),
+        cccc: createDomainsCardsEntity(
+          'cccc',
+          ID_DOMAIN_BLUE,
+          DEVELOPMENT_CARD_INTERFACE_NAME,
+          'BUILDING_10', // Toll bridge
+          1,
+          1
+        ),
+      },
+    };
+    return domainsCards;
   };
-  return domainsCards;
-};
 
-export const domainsCardsThreeTradeRedThreeTradeBlueState = (): DomainsCardsState => {
-  const newIds = (domainsCardsOneTradeRedTwoTradeBlueState()
-    .ids as string[]).filter(
-    (id) =>
-      id !== redAvailableDevelopmentSlotTwoId &&
-      id !== redAvailableDevelopmentSlotThreeId &&
-      id !== blueAvailableDevelopmentSlotThreeId
-  );
-  const newEntities = {
-    ...domainsCardsOneTradeRedTwoTradeBlueState().entities,
+export const domainsCardsThreeTradeRedThreeTradeBlueState =
+  (): DomainsCardsState => {
+    const newIds = (
+      domainsCardsOneTradeRedTwoTradeBlueState().ids as string[]
+    ).filter(
+      (id) =>
+        id !== redAvailableDevelopmentSlotTwoId &&
+        id !== redAvailableDevelopmentSlotThreeId &&
+        id !== blueAvailableDevelopmentSlotThreeId
+    );
+    const newEntities = {
+      ...domainsCardsOneTradeRedTwoTradeBlueState().entities,
+    };
+    delete newEntities[redAvailableDevelopmentSlotTwoId];
+    delete newEntities[redAvailableDevelopmentSlotThreeId];
+    delete newEntities[blueAvailableDevelopmentSlotThreeId];
+
+    const domainsCards = {
+      ...domainsCardsOneTradeRedTwoTradeBlueState(),
+      ids: [...newIds, 'dddd', 'eeee', 'ffff'],
+      entities: {
+        ...newEntities,
+        dddd: createDomainsCardsEntity(
+          'dddd',
+          ID_DOMAIN_RED,
+          DEVELOPMENT_CARD_INTERFACE_NAME,
+          'SHIP_1',
+          1,
+          1
+        ),
+        eeee: createDomainsCardsEntity(
+          'eeee',
+          ID_DOMAIN_RED,
+          DEVELOPMENT_CARD_INTERFACE_NAME,
+          'SHIP_2',
+          1,
+          -1
+        ),
+        ffff: createDomainsCardsEntity(
+          'ffff',
+          ID_DOMAIN_BLUE,
+          DEVELOPMENT_CARD_INTERFACE_NAME,
+          'SHIP_3',
+          1,
+          -1
+        ),
+      },
+    };
+    return domainsCards;
   };
-  delete newEntities[redAvailableDevelopmentSlotTwoId];
-  delete newEntities[redAvailableDevelopmentSlotThreeId];
-  delete newEntities[blueAvailableDevelopmentSlotThreeId];
 
-  const domainsCards = {
-    ...domainsCardsOneTradeRedTwoTradeBlueState(),
-    ids: [...newIds, 'dddd', 'eeee', 'ffff'],
-    entities: {
-      ...newEntities,
-      dddd: createDomainsCardsEntity(
-        'dddd',
-        ID_DOMAIN_RED,
-        DEVELOPMENT_CARD_INTERFACE_NAME,
-        'SHIP_1',
-        1,
-        1
-      ),
-      eeee: createDomainsCardsEntity(
-        'eeee',
-        ID_DOMAIN_RED,
-        DEVELOPMENT_CARD_INTERFACE_NAME,
-        'SHIP_2',
-        1,
-        -1
-      ),
-      ffff: createDomainsCardsEntity(
-        'ffff',
-        ID_DOMAIN_BLUE,
-        DEVELOPMENT_CARD_INTERFACE_NAME,
-        'SHIP_3',
-        1,
-        -1
-      ),
-    },
+export const domainsCardsFourTradeRedThreeTradeBlueState =
+  (): DomainsCardsState => {
+    const newIds = (
+      domainsCardsThreeTradeRedThreeTradeBlueState().ids as string[]
+    ).filter((id) => id !== redAvailableDevelopmentSlotFourId);
+    const newEntities = {
+      ...domainsCardsThreeTradeRedThreeTradeBlueState().entities,
+    };
+    delete newEntities[redAvailableDevelopmentSlotFourId];
+
+    const domainsCards = {
+      ...domainsCardsThreeTradeRedThreeTradeBlueState(),
+      ids: [...newIds, 'gggg'],
+      entities: {
+        ...newEntities,
+        gggg: createDomainsCardsEntity(
+          'gggg',
+          ID_DOMAIN_RED,
+          DEVELOPMENT_CARD_INTERFACE_NAME,
+          'SHIP_4',
+          -1,
+          -1
+        ),
+      },
+    };
+    return domainsCards;
   };
-  return domainsCards;
-};
 
-export const domainsCardsFourTradeRedThreeTradeBlueState = (): DomainsCardsState => {
-  const newIds = (domainsCardsThreeTradeRedThreeTradeBlueState()
-    .ids as string[]).filter((id) => id !== redAvailableDevelopmentSlotFourId);
-  const newEntities = {
-    ...domainsCardsThreeTradeRedThreeTradeBlueState().entities,
+export const domainsCardsThreeTradeRedFourTradeBlueState =
+  (): DomainsCardsState => {
+    const newIds = (
+      domainsCardsThreeTradeRedThreeTradeBlueState().ids as string[]
+    ).filter((id) => id !== blueAvailableDevelopmentSlotFourId);
+    const newEntities = {
+      ...domainsCardsThreeTradeRedThreeTradeBlueState().entities,
+    };
+    delete newEntities[blueAvailableDevelopmentSlotFourId];
+
+    const domainsCards = {
+      ...domainsCardsThreeTradeRedThreeTradeBlueState(),
+      ids: [...newIds, 'gggg'],
+      entities: {
+        ...newEntities,
+        gggg: createDomainsCardsEntity(
+          'gggg',
+          ID_DOMAIN_BLUE,
+          DEVELOPMENT_CARD_INTERFACE_NAME,
+          'SHIP_4',
+          -1,
+          -1
+        ),
+      },
+    };
+    return domainsCards;
   };
-  delete newEntities[redAvailableDevelopmentSlotFourId];
 
-  const domainsCards = {
-    ...domainsCardsThreeTradeRedThreeTradeBlueState(),
-    ids: [...newIds, 'gggg'],
-    entities: {
-      ...newEntities,
-      gggg: createDomainsCardsEntity(
-        'gggg',
-        ID_DOMAIN_RED,
-        DEVELOPMENT_CARD_INTERFACE_NAME,
-        'SHIP_4',
-        -1,
-        -1
-      ),
-    },
+export const domainsCardsOneStrengthRedTwoStrengthBlueState =
+  (): DomainsCardsState => {
+    const newIds = (domainsCardsNewGameState.ids as string[]).filter(
+      (id) =>
+        id !== redAvailableDevelopmentSlotOneId &&
+        id !== blueAvailableDevelopmentSlotOneId
+    );
+    const newEntities = { ...domainsCardsNewGameState.entities };
+    delete newEntities[redAvailableDevelopmentSlotOneId];
+    delete newEntities[blueAvailableDevelopmentSlotOneId];
+
+    const domainsCards = {
+      ...domainsCardsNewGameState,
+      ids: [...newIds, 'aaaa', 'bbbb'],
+      entities: {
+        ...newEntities,
+        aaaa: createDomainsCardsEntity(
+          'aaaa',
+          ID_DOMAIN_RED,
+          DEVELOPMENT_CARD_INTERFACE_NAME,
+          'WARRIOR_1', // Strength 1
+          -1,
+          1
+        ),
+        bbbb: createDomainsCardsEntity(
+          'bbbb',
+          ID_DOMAIN_BLUE,
+          DEVELOPMENT_CARD_INTERFACE_NAME,
+          'WARRIOR_2', // Strength 2
+          -1,
+          1
+        ),
+      },
+    };
+    return domainsCards;
   };
-  return domainsCards;
-};
 
-export const domainsCardsThreeTradeRedFourTradeBlueState = (): DomainsCardsState => {
-  const newIds = (domainsCardsThreeTradeRedThreeTradeBlueState()
-    .ids as string[]).filter((id) => id !== blueAvailableDevelopmentSlotFourId);
-  const newEntities = {
-    ...domainsCardsThreeTradeRedThreeTradeBlueState().entities,
+export const domainsCardsThreeStrengthRedThreeStrengthBlueState =
+  (): DomainsCardsState => {
+    const newIds = (domainsCardsNewGameState.ids as string[]).filter(
+      (id) =>
+        id !== redAvailableDevelopmentSlotOneId &&
+        id !== redAvailableDevelopmentSlotTwoId &&
+        id !== blueAvailableDevelopmentSlotOneId &&
+        id !== blueAvailableDevelopmentSlotTwoId
+    );
+    const newEntities = { ...domainsCardsNewGameState.entities };
+    delete newEntities[redAvailableDevelopmentSlotOneId];
+    delete newEntities[redAvailableDevelopmentSlotTwoId];
+    delete newEntities[blueAvailableDevelopmentSlotOneId];
+    delete newEntities[blueAvailableDevelopmentSlotTwoId];
+
+    const domainsCards = {
+      ...domainsCardsNewGameState,
+      ids: [...newIds, 'aaaa', 'bbbb', 'cccc', 'dddd'],
+      entities: {
+        ...newEntities,
+        aaaa: createDomainsCardsEntity(
+          'aaaa',
+          ID_DOMAIN_RED,
+          DEVELOPMENT_CARD_INTERFACE_NAME,
+          'WARRIOR_1', // Strength 1
+          -1,
+          1
+        ),
+        bbbb: createDomainsCardsEntity(
+          'bbbb',
+          ID_DOMAIN_RED,
+          DEVELOPMENT_CARD_INTERFACE_NAME,
+          'WARRIOR_2', // Strength 2
+          1,
+          1
+        ),
+        cccc: createDomainsCardsEntity(
+          'cccc',
+          ID_DOMAIN_BLUE,
+          DEVELOPMENT_CARD_INTERFACE_NAME,
+          'WARRIOR_3', // Strength 1
+          -1,
+          1
+        ),
+        dddd: createDomainsCardsEntity(
+          'dddd',
+          ID_DOMAIN_BLUE,
+          DEVELOPMENT_CARD_INTERFACE_NAME,
+          'WARRIOR_4', // Strength 2
+          1,
+          1
+        ),
+      },
+    };
+    return domainsCards;
   };
-  delete newEntities[blueAvailableDevelopmentSlotFourId];
 
-  const domainsCards = {
-    ...domainsCardsThreeTradeRedThreeTradeBlueState(),
-    ids: [...newIds, 'gggg'],
-    entities: {
-      ...newEntities,
-      gggg: createDomainsCardsEntity(
-        'gggg',
-        ID_DOMAIN_BLUE,
-        DEVELOPMENT_CARD_INTERFACE_NAME,
-        'SHIP_4',
-        -1,
-        -1
-      ),
-    },
+export const domainsCardsSevenStrengthRedThreeStrengthBlueState =
+  (): DomainsCardsState => {
+    const newIds = (
+      domainsCardsThreeStrengthRedThreeStrengthBlueState().ids as string[]
+    ).filter((id) => id !== redAvailableDevelopmentSlotThreeId);
+    const newEntities = {
+      ...domainsCardsThreeStrengthRedThreeStrengthBlueState().entities,
+    };
+    delete newEntities[redAvailableDevelopmentSlotThreeId];
+
+    const domainsCards = {
+      ...domainsCardsThreeStrengthRedThreeStrengthBlueState(),
+      ids: [...newIds, 'eeee'],
+      entities: {
+        ...newEntities,
+        eeee: createDomainsCardsEntity(
+          'eeee',
+          ID_DOMAIN_RED,
+          DEVELOPMENT_CARD_INTERFACE_NAME,
+          'WARRIOR_6', // Strength 4
+          1,
+          -1
+        ),
+      },
+    };
+    return domainsCards;
   };
-  return domainsCards;
-};
 
-export const domainsCardsOneStrengthRedTwoStrengthBlueState = (): DomainsCardsState => {
-  const newIds = (domainsCardsNewGameState.ids as string[]).filter(
-    (id) =>
-      id !== redAvailableDevelopmentSlotOneId &&
-      id !== blueAvailableDevelopmentSlotOneId
-  );
-  const newEntities = { ...domainsCardsNewGameState.entities };
-  delete newEntities[redAvailableDevelopmentSlotOneId];
-  delete newEntities[blueAvailableDevelopmentSlotOneId];
+export const domainsCardsThreeStrengthRedSevenStrengthBlueState =
+  (): DomainsCardsState => {
+    const newIds = (
+      domainsCardsThreeStrengthRedThreeStrengthBlueState().ids as string[]
+    ).filter((id) => id !== blueAvailableDevelopmentSlotThreeId);
+    const newEntities = {
+      ...domainsCardsThreeStrengthRedThreeStrengthBlueState().entities,
+    };
+    delete newEntities[blueAvailableDevelopmentSlotThreeId];
 
-  const domainsCards = {
-    ...domainsCardsNewGameState,
-    ids: [...newIds, 'aaaa', 'bbbb'],
-    entities: {
-      ...newEntities,
-      aaaa: createDomainsCardsEntity(
-        'aaaa',
-        ID_DOMAIN_RED,
-        DEVELOPMENT_CARD_INTERFACE_NAME,
-        'WARRIOR_1', // Strength 1
-        -1,
-        1
-      ),
-      bbbb: createDomainsCardsEntity(
-        'bbbb',
-        ID_DOMAIN_BLUE,
-        DEVELOPMENT_CARD_INTERFACE_NAME,
-        'WARRIOR_2', // Strength 2
-        -1,
-        1
-      ),
-    },
+    const domainsCards = {
+      ...domainsCardsThreeStrengthRedThreeStrengthBlueState(),
+      ids: [...newIds, 'eeee'],
+      entities: {
+        ...newEntities,
+        eeee: createDomainsCardsEntity(
+          'eeee',
+          ID_DOMAIN_BLUE,
+          DEVELOPMENT_CARD_INTERFACE_NAME,
+          'WARRIOR_6', // Strength 4
+          1,
+          -1
+        ),
+      },
+    };
+    return domainsCards;
   };
-  return domainsCards;
-};
 
-export const domainsCardsThreeStrengthRedThreeStrengthBlueState = (): DomainsCardsState => {
-  const newIds = (domainsCardsNewGameState.ids as string[]).filter(
-    (id) =>
-      id !== redAvailableDevelopmentSlotOneId &&
-      id !== redAvailableDevelopmentSlotTwoId &&
-      id !== blueAvailableDevelopmentSlotOneId &&
-      id !== blueAvailableDevelopmentSlotTwoId
-  );
-  const newEntities = { ...domainsCardsNewGameState.entities };
-  delete newEntities[redAvailableDevelopmentSlotOneId];
-  delete newEntities[redAvailableDevelopmentSlotTwoId];
-  delete newEntities[blueAvailableDevelopmentSlotOneId];
-  delete newEntities[blueAvailableDevelopmentSlotTwoId];
+export const domainsCardsWarehouseNextToBlueForestState =
+  (): DomainsCardsState => {
+    const newIds = (domainsCardsNewGameState.ids as string[]).filter(
+      (id) => id !== nextToBlueForestId
+    );
+    const newEntities = { ...domainsCardsNewGameState.entities };
+    delete newEntities[nextToBlueForestId];
 
-  const domainsCards = {
-    ...domainsCardsNewGameState,
-    ids: [...newIds, 'aaaa', 'bbbb', 'cccc', 'dddd'],
-    entities: {
-      ...newEntities,
-      aaaa: createDomainsCardsEntity(
-        'aaaa',
-        ID_DOMAIN_RED,
-        DEVELOPMENT_CARD_INTERFACE_NAME,
-        'WARRIOR_1', // Strength 1
-        -1,
-        1
-      ),
-      bbbb: createDomainsCardsEntity(
-        'bbbb',
-        ID_DOMAIN_RED,
-        DEVELOPMENT_CARD_INTERFACE_NAME,
-        'WARRIOR_2', // Strength 2
-        1,
-        1
-      ),
-      cccc: createDomainsCardsEntity(
-        'cccc',
-        ID_DOMAIN_BLUE,
-        DEVELOPMENT_CARD_INTERFACE_NAME,
-        'WARRIOR_3', // Strength 1
-        -1,
-        1
-      ),
-      dddd: createDomainsCardsEntity(
-        'dddd',
-        ID_DOMAIN_BLUE,
-        DEVELOPMENT_CARD_INTERFACE_NAME,
-        'WARRIOR_4', // Strength 2
-        1,
-        1
-      ),
-    },
+    const domainsCards = {
+      ...domainsCardsNewGameState,
+      ids: [...newIds, 'aaaa'],
+      entities: {
+        ...newEntities,
+        aaaa: aaaaWarehouseNextToBlueForestDomainCard,
+      },
+    };
+    return domainsCards;
   };
-  return domainsCards;
-};
 
-export const domainsCardsSevenStrengthRedThreeStrengthBlueState = (): DomainsCardsState => {
-  const newIds = (domainsCardsThreeStrengthRedThreeStrengthBlueState()
-    .ids as string[]).filter((id) => id !== redAvailableDevelopmentSlotThreeId);
-  const newEntities = {
-    ...domainsCardsThreeStrengthRedThreeStrengthBlueState().entities,
+export const domainsCardsAuspiciousYearTwoRedOneBlueState =
+  (): DomainsCardsState => {
+    const newIds = (
+      domainsCardsWarehouseNextToBlueForestState().ids as string[]
+    ).filter((id) => id !== nextToRedClayPit);
+    const newEntities = {
+      ...domainsCardsWarehouseNextToBlueForestState().entities,
+    };
+    delete newEntities[nextToRedClayPit];
+
+    const domainsCards = {
+      ...domainsCardsWarehouseNextToBlueForestState(),
+      ids: [...newIds, 'bbbb', 'cccc'],
+      entities: {
+        ...newEntities,
+        bbbb: createDomainsCardsEntity(
+          'bbbb',
+          ID_DOMAIN_RED,
+          DEVELOPMENT_CARD_INTERFACE_NAME,
+          'BUILDING_12', // Monastery
+          -1,
+          -1
+        ),
+        cccc: createDomainsCardsEntity(
+          'cccc',
+          ID_DOMAIN_RED,
+          DEVELOPMENT_CARD_INTERFACE_NAME,
+          'BUILDING_7', // Warehouse
+          -1,
+          -2
+        ),
+      },
+    };
+    return domainsCards;
   };
-  delete newEntities[redAvailableDevelopmentSlotThreeId];
-
-  const domainsCards = {
-    ...domainsCardsThreeStrengthRedThreeStrengthBlueState(),
-    ids: [...newIds, 'eeee'],
-    entities: {
-      ...newEntities,
-      eeee: createDomainsCardsEntity(
-        'eeee',
-        ID_DOMAIN_RED,
-        DEVELOPMENT_CARD_INTERFACE_NAME,
-        'WARRIOR_6', // Strength 4
-        1,
-        -1
-      ),
-    },
-  };
-  return domainsCards;
-};
-
-export const domainsCardsThreeStrengthRedSevenStrengthBlueState = (): DomainsCardsState => {
-  const newIds = (domainsCardsThreeStrengthRedThreeStrengthBlueState()
-    .ids as string[]).filter(
-    (id) => id !== blueAvailableDevelopmentSlotThreeId
-  );
-  const newEntities = {
-    ...domainsCardsThreeStrengthRedThreeStrengthBlueState().entities,
-  };
-  delete newEntities[blueAvailableDevelopmentSlotThreeId];
-
-  const domainsCards = {
-    ...domainsCardsThreeStrengthRedThreeStrengthBlueState(),
-    ids: [...newIds, 'eeee'],
-    entities: {
-      ...newEntities,
-      eeee: createDomainsCardsEntity(
-        'eeee',
-        ID_DOMAIN_BLUE,
-        DEVELOPMENT_CARD_INTERFACE_NAME,
-        'WARRIOR_6', // Strength 4
-        1,
-        -1
-      ),
-    },
-  };
-  return domainsCards;
-};
-
-export const domainsCardsWarehouseNextToBlueForestState = (): DomainsCardsState => {
-  const newIds = (domainsCardsNewGameState.ids as string[]).filter(
-    (id) => id !== nextToBlueForestId
-  );
-  const newEntities = { ...domainsCardsNewGameState.entities };
-  delete newEntities[nextToBlueForestId];
-
-  const domainsCards = {
-    ...domainsCardsNewGameState,
-    ids: [...newIds, 'aaaa'],
-    entities: {
-      ...newEntities,
-      aaaa: aaaaWarehouseNextToBlueForestDomainCard,
-    },
-  };
-  return domainsCards;
-};
-
-export const domainsCardsAuspiciousYearTwoRedOneBlueState = (): DomainsCardsState => {
-  const newIds = (domainsCardsWarehouseNextToBlueForestState()
-    .ids as string[]).filter((id) => id !== nextToRedClayPit);
-  const newEntities = {
-    ...domainsCardsWarehouseNextToBlueForestState().entities,
-  };
-  delete newEntities[nextToRedClayPit];
-
-  const domainsCards = {
-    ...domainsCardsWarehouseNextToBlueForestState(),
-    ids: [...newIds, 'bbbb', 'cccc'],
-    entities: {
-      ...newEntities,
-      bbbb: createDomainsCardsEntity(
-        'bbbb',
-        ID_DOMAIN_RED,
-        DEVELOPMENT_CARD_INTERFACE_NAME,
-        'BUILDING_12', // Monastery
-        -1,
-        -1
-      ),
-      cccc: createDomainsCardsEntity(
-        'cccc',
-        ID_DOMAIN_RED,
-        DEVELOPMENT_CARD_INTERFACE_NAME,
-        'BUILDING_7', // Warehouse
-        -1,
-        -2
-      ),
-    },
-  };
-  return domainsCards;
-};
