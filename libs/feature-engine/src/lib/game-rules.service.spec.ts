@@ -670,17 +670,19 @@ describe('GameRulesService', () => {
   describe('useResourcesToPutFaceUpPileCardInSlot', () => {
     describe('OK road', () => {
       const domainsCardsFacadeMock = {
-        selectedDomainsCards$: of({
-          id: 'aaaa',
-          domainId: ID_DOMAIN_RED,
-          cartType: AVAILABLE_AGGLOMERATION_SLOT,
-          cardId: undefined,
-          col: 2,
-          row: 0,
-        }),
+        selectedDomainsCards$: of([
+          {
+            id: 'aaaa',
+            domainId: ID_DOMAIN_RED,
+            cartType: AVAILABLE_AGGLOMERATION_SLOT,
+            cardId: undefined,
+            col: 2,
+            row: 0,
+          },
+        ]),
+        clearDomainCardSelection: jest.fn(),
         createAvailableDomainCard: jest.fn(),
         putCardInSlot: jest.fn(),
-        unselectDomainCard: jest.fn(),
         useLockedResources: jest.fn(),
       };
       const faceUpPilesCardsFacadeMock = {
@@ -706,7 +708,7 @@ describe('GameRulesService', () => {
       });
 
       it(`should call useLockedResources, removeFaceUpPileCard,
-          putCardInSlot, createAvailableDomainCard, unselectDomainCard`, () => {
+          putCardInSlot, createAvailableDomainCard, clearDomainCardSelection`, () => {
         service.useResourcesToPutFaceUpPileCardInSlot();
 
         expect(domainsCardsFacadeMock.useLockedResources).toHaveBeenCalledTimes(
@@ -728,25 +730,27 @@ describe('GameRulesService', () => {
           3,
           0
         );
-        expect(domainsCardsFacadeMock.unselectDomainCard).toHaveBeenCalledTimes(
-          1
-        );
+        expect(
+          domainsCardsFacadeMock.clearDomainCardSelection
+        ).toHaveBeenCalledTimes(1);
       });
     });
 
     describe('OK hamlet', () => {
       const domainsCardsFacadeMock = {
-        selectedDomainsCards$: of({
-          id: 'aaaa',
-          domainId: ID_DOMAIN_RED,
-          cartType: AVAILABLE_AGGLOMERATION_SLOT,
-          cardId: undefined,
-          col: -3,
-          row: 0,
-        }),
+        selectedDomainsCards$: of([
+          {
+            id: 'aaaa',
+            domainId: ID_DOMAIN_RED,
+            cartType: AVAILABLE_AGGLOMERATION_SLOT,
+            cardId: undefined,
+            col: -3,
+            row: 0,
+          },
+        ]),
+        clearDomainCardSelection: jest.fn(),
         createAvailableDomainCard: jest.fn(),
         putCardInSlot: jest.fn(),
-        unselectDomainCard: jest.fn(),
         useLockedResources: jest.fn(),
       };
       const faceUpPilesCardsFacadeMock = {
@@ -772,7 +776,7 @@ describe('GameRulesService', () => {
       });
 
       it(`should call useLockedResources, removeFaceUpPileCard,
-          putCardInSlot, createAvailableDomainCard x3, unselectDomainCard`, () => {
+          putCardInSlot, createAvailableDomainCard x3, clearDomainCardSelection`, () => {
         service.useResourcesToPutFaceUpPileCardInSlot();
 
         expect(domainsCardsFacadeMock.useLockedResources).toHaveBeenCalledTimes(
@@ -807,25 +811,27 @@ describe('GameRulesService', () => {
         expect(
           domainsCardsFacadeMock.createAvailableDomainCard
         ).toHaveBeenNthCalledWith(3, ID_DOMAIN_RED, AVAILABLE_LAND_SLOT, -4, 1);
-        expect(domainsCardsFacadeMock.unselectDomainCard).toHaveBeenCalledTimes(
-          1
-        );
+        expect(
+          domainsCardsFacadeMock.clearDomainCardSelection
+        ).toHaveBeenCalledTimes(1);
       });
     });
 
     describe('OK town', () => {
       const domainsCardsFacadeMock = {
-        selectedDomainsCards$: of({
-          id: 'aaaa',
-          domainId: ID_DOMAIN_RED,
-          cartType: AGGLOMERATION_CARD_INTERFACE_NAME,
-          cardId: 'aaaa',
-          col: -1,
-          row: 0,
-        }),
+        selectedDomainsCards$: of([
+          {
+            id: 'aaaa',
+            domainId: ID_DOMAIN_RED,
+            cartType: AGGLOMERATION_CARD_INTERFACE_NAME,
+            cardId: 'aaaa',
+            col: -1,
+            row: 0,
+          },
+        ]),
+        clearDomainCardSelection: jest.fn(),
         createAvailableDomainCard: jest.fn(),
         putCardInSlot: jest.fn(),
-        unselectDomainCard: jest.fn(),
         useLockedResources: jest.fn(),
       };
       const faceUpPilesCardsFacadeMock = {
@@ -851,7 +857,7 @@ describe('GameRulesService', () => {
       });
 
       it(`should call useLockedResources, removeFaceUpPileCard,
-          putCardInSlot, createAvailableDomainCard x2, unselectDomainCard`, () => {
+          putCardInSlot, createAvailableDomainCard x2, clearDomainCardSelection`, () => {
         service.useResourcesToPutFaceUpPileCardInSlot();
 
         expect(domainsCardsFacadeMock.useLockedResources).toHaveBeenCalledTimes(
@@ -883,26 +889,32 @@ describe('GameRulesService', () => {
           -1,
           2
         );
-        expect(domainsCardsFacadeMock.unselectDomainCard).toHaveBeenCalledTimes(
-          1
-        );
+        expect(
+          domainsCardsFacadeMock.clearDomainCardSelection
+        ).toHaveBeenCalledTimes(1);
       });
     });
 
     describe('NOK undefined selectedFaceUpPilesCards', () => {
       const domainsCardsFacadeMock = {
-        selectedDomainsCards$: of({
-          id: 'aaaa',
-          domainId: ID_DOMAIN_RED,
-          cartType: AVAILABLE_AGGLOMERATION_SLOT,
-          cardId: undefined,
-          col: -2,
-          row: 0,
-        }),
+        selectedDomainsCards$: of([
+          {
+            id: 'aaaa',
+            domainId: ID_DOMAIN_RED,
+            cartType: AVAILABLE_AGGLOMERATION_SLOT,
+            cardId: undefined,
+            col: -2,
+            row: 0,
+          },
+        ]),
+        clearDomainCardSelection: jest.fn(),
+        createAvailableDomainCard: jest.fn(),
+        putCardInSlot: jest.fn(),
         useLockedResources: jest.fn(),
       };
       const faceUpPilesCardsFacadeMock = {
         selectedFaceUpPilesCards$: of(undefined),
+        removeFaceUpPileCard: jest.fn(),
       };
 
       beforeEach(() => {
@@ -919,18 +931,32 @@ describe('GameRulesService', () => {
       });
 
       // FIXME: should test error thrown
-      it('should call useLockedResources', () => {
+      it('should call useLockedResources then throw', () => {
         service.useResourcesToPutFaceUpPileCardInSlot();
 
         expect(domainsCardsFacadeMock.useLockedResources).toHaveBeenCalledTimes(
           1
         );
+
+        expect(
+          faceUpPilesCardsFacadeMock.removeFaceUpPileCard
+        ).not.toHaveBeenCalled();
+        expect(domainsCardsFacadeMock.putCardInSlot).not.toHaveBeenCalled();
+        expect(
+          domainsCardsFacadeMock.createAvailableDomainCard
+        ).not.toHaveBeenCalled();
+        expect(
+          domainsCardsFacadeMock.clearDomainCardSelection
+        ).not.toHaveBeenCalled();
       });
     });
 
-    describe('NOK undefined selectedDomainsCards', () => {
+    describe('NOK empty selectedDomainsCards', () => {
       const domainsCardsFacadeMock = {
-        selectedDomainsCards$: of(undefined),
+        selectedDomainsCards$: of([]),
+        clearDomainCardSelection: jest.fn(),
+        createAvailableDomainCard: jest.fn(),
+        putCardInSlot: jest.fn(),
         useLockedResources: jest.fn(),
       };
       const faceUpPilesCardsFacadeMock = {
@@ -939,6 +965,7 @@ describe('GameRulesService', () => {
           pileId: ID_FACE_UP_ROAD,
           cardId: 'ROAD_1',
         }),
+        removeFaceUpPileCard: jest.fn(),
       };
 
       beforeEach(() => {
@@ -955,12 +982,91 @@ describe('GameRulesService', () => {
       });
 
       // FIXME: should test error thrown
-      it('should call useLockedResources', () => {
+      it('should call useLockedResources then throw', () => {
         service.useResourcesToPutFaceUpPileCardInSlot();
 
         expect(domainsCardsFacadeMock.useLockedResources).toHaveBeenCalledTimes(
           1
         );
+
+        expect(
+          faceUpPilesCardsFacadeMock.removeFaceUpPileCard
+        ).not.toHaveBeenCalled();
+        expect(domainsCardsFacadeMock.putCardInSlot).not.toHaveBeenCalled();
+        expect(
+          domainsCardsFacadeMock.createAvailableDomainCard
+        ).not.toHaveBeenCalled();
+        expect(
+          domainsCardsFacadeMock.clearDomainCardSelection
+        ).not.toHaveBeenCalled();
+      });
+    });
+
+    describe('NOK more than one selectedDomainsCards', () => {
+      const domainsCardsFacadeMock = {
+        selectedDomainsCards$: of([
+          {
+            id: 'aaaa',
+            domainId: ID_DOMAIN_RED,
+            cartType: AVAILABLE_AGGLOMERATION_SLOT,
+            cardId: undefined,
+            col: -2,
+            row: 0,
+          },
+          {
+            id: 'bbbb',
+            domainId: ID_DOMAIN_RED,
+            cartType: AVAILABLE_AGGLOMERATION_SLOT,
+            cardId: undefined,
+            col: 2,
+            row: 0,
+          },
+        ]),
+        clearDomainCardSelection: jest.fn(),
+        createAvailableDomainCard: jest.fn(),
+        putCardInSlot: jest.fn(),
+        useLockedResources: jest.fn(),
+      };
+      const faceUpPilesCardsFacadeMock = {
+        selectedFaceUpPilesCards$: of({
+          id: 'aaaa',
+          pileId: ID_FACE_UP_ROAD,
+          cardId: 'ROAD_1',
+        }),
+        removeFaceUpPileCard: jest.fn(),
+      };
+
+      beforeEach(() => {
+        TestBed.configureTestingModule({
+          providers: [
+            { provide: DomainsCardsFacade, useValue: domainsCardsFacadeMock },
+            {
+              provide: FaceUpPilesCardsFacade,
+              useValue: faceUpPilesCardsFacadeMock,
+            },
+          ],
+        });
+        service = TestBed.inject(GameRulesService);
+      });
+
+      // FIXME: should test error thrown
+      it('should call useLockedResources then throw', () => {
+        service.useResourcesToPutFaceUpPileCardInSlot();
+
+        expect(domainsCardsFacadeMock.useLockedResources).toHaveBeenCalledTimes(
+          1
+        );
+
+        expect(
+          faceUpPilesCardsFacadeMock.removeFaceUpPileCard
+        ).not.toHaveBeenCalled();
+        expect(domainsCardsFacadeMock.putCardInSlot).not.toHaveBeenCalled();
+        expect(
+          domainsCardsFacadeMock.createAvailableDomainCard
+        ).not.toHaveBeenCalled();
+        expect(
+          domainsCardsFacadeMock.clearDomainCardSelection
+        ).not.toHaveBeenCalled();
       });
     });
   });
@@ -968,16 +1074,18 @@ describe('GameRulesService', () => {
   describe('useResourcesToPutHandCardInSlot', () => {
     describe('OK', () => {
       const domainsCardsFacadeMock = {
-        selectedDomainsCards$: of({
-          id: 'aaaa',
-          domainId: ID_DOMAIN_RED,
-          cartType: AVAILABLE_DEVELOPMENT_SLOT,
-          cardId: undefined,
-          col: -1,
-          row: -1,
-        }),
+        selectedDomainsCards$: of([
+          {
+            id: 'aaaa',
+            domainId: ID_DOMAIN_RED,
+            cartType: AVAILABLE_DEVELOPMENT_SLOT,
+            cardId: undefined,
+            col: -1,
+            row: -1,
+          },
+        ]),
+        clearDomainCardSelection: jest.fn(),
         putCardInSlot: jest.fn(),
-        unselectDomainCard: jest.fn(),
         useLockedResources: jest.fn(),
       };
       const handsCardsFacadeMock = {
@@ -1004,7 +1112,7 @@ describe('GameRulesService', () => {
       });
 
       it(`should call useLockedResources, removeHandCard,
-          putCardInSlot, unselectDomainCard`, () => {
+          putCardInSlot, clearDomainCardSelection`, () => {
         service.useResourcesToPutHandCardInSlot();
 
         expect(domainsCardsFacadeMock.useLockedResources).toHaveBeenCalledTimes(
@@ -1018,26 +1126,31 @@ describe('GameRulesService', () => {
           DEVELOPMENT_CARD_INTERFACE_NAME,
           'SHIP_1'
         );
-        expect(domainsCardsFacadeMock.unselectDomainCard).toHaveBeenCalledTimes(
-          1
-        );
+        expect(
+          domainsCardsFacadeMock.clearDomainCardSelection
+        ).toHaveBeenCalledTimes(1);
       });
     });
 
     describe('NOK undefined selectedHandsCards', () => {
       const domainsCardsFacadeMock = {
-        selectedDomainsCards$: of({
-          id: 'aaaa',
-          domainId: ID_DOMAIN_RED,
-          cartType: AVAILABLE_DEVELOPMENT_SLOT,
-          cardId: undefined,
-          col: -1,
-          row: -1,
-        }),
+        selectedDomainsCards$: of([
+          {
+            id: 'aaaa',
+            domainId: ID_DOMAIN_RED,
+            cartType: AVAILABLE_DEVELOPMENT_SLOT,
+            cardId: undefined,
+            col: -1,
+            row: -1,
+          },
+        ]),
+        clearDomainCardSelection: jest.fn(),
+        putCardInSlot: jest.fn(),
         useLockedResources: jest.fn(),
       };
       const handsCardsFacadeMock = {
         selectedHandsCards$: of(undefined),
+        removeHandCard: jest.fn(),
       };
 
       beforeEach(() => {
@@ -1054,18 +1167,26 @@ describe('GameRulesService', () => {
       });
 
       // FIXME: should test error thrown
-      it('should call useLockedResources', () => {
+      it('should call useLockedResources then throw', () => {
         service.useResourcesToPutHandCardInSlot();
 
         expect(domainsCardsFacadeMock.useLockedResources).toHaveBeenCalledTimes(
           1
         );
+
+        expect(handsCardsFacadeMock.removeHandCard).not.toHaveBeenCalled();
+        expect(domainsCardsFacadeMock.putCardInSlot).not.toHaveBeenCalled();
+        expect(
+          domainsCardsFacadeMock.clearDomainCardSelection
+        ).not.toHaveBeenCalled();
       });
     });
 
-    describe('NOK undefined selectedDomainsCards', () => {
+    describe('NOK empty selectedDomainsCards', () => {
       const domainsCardsFacadeMock = {
-        selectedDomainsCards$: of(undefined),
+        selectedDomainsCards$: of([]),
+        clearDomainCardSelection: jest.fn(),
+        putCardInSlot: jest.fn(),
         useLockedResources: jest.fn(),
       };
       const handsCardsFacadeMock = {
@@ -1074,6 +1195,7 @@ describe('GameRulesService', () => {
           handId: ID_DOMAIN_RED,
           cardId: 'SHIP_1',
         }),
+        removeHandCard: jest.fn(),
       };
 
       beforeEach(() => {
@@ -1090,12 +1212,18 @@ describe('GameRulesService', () => {
       });
 
       // FIXME: should test error thrown
-      it('should call useLockedResources', () => {
+      it('should call useLockedResources then throw', () => {
         service.useResourcesToPutHandCardInSlot();
 
         expect(domainsCardsFacadeMock.useLockedResources).toHaveBeenCalledTimes(
           1
         );
+
+        expect(handsCardsFacadeMock.removeHandCard).not.toHaveBeenCalled();
+        expect(domainsCardsFacadeMock.putCardInSlot).not.toHaveBeenCalled();
+        expect(
+          domainsCardsFacadeMock.clearDomainCardSelection
+        ).not.toHaveBeenCalled();
       });
     });
   });
@@ -1103,16 +1231,18 @@ describe('GameRulesService', () => {
   describe('putLandsPileCardInSlot', () => {
     describe('OK', () => {
       const domainsCardsFacadeMock = {
-        selectedDomainsCards$: of({
-          id: 'aaaa',
-          domainId: ID_DOMAIN_RED,
-          cartType: AVAILABLE_LAND_SLOT,
-          cardId: undefined,
-          col: -4,
-          row: -1,
-        }),
+        selectedDomainsCards$: of([
+          {
+            id: 'aaaa',
+            domainId: ID_DOMAIN_RED,
+            cartType: AVAILABLE_LAND_SLOT,
+            cardId: undefined,
+            col: -4,
+            row: -1,
+          },
+        ]),
+        clearDomainCardSelection: jest.fn(),
         putCardInSlot: jest.fn(),
-        unselectDomainCard: jest.fn(),
       };
       const landsPileCardsFacadeMock = {
         selectedLandsPileCards$: of({
@@ -1136,7 +1266,7 @@ describe('GameRulesService', () => {
       });
 
       it(`should call removeLandsPileCard,
-          putCardInSlot, unselectDomainCard`, () => {
+          putCardInSlot, clearDomainCardSelection`, () => {
         service.putLandsPileCardInSlot();
 
         expect(
@@ -1147,22 +1277,26 @@ describe('GameRulesService', () => {
           LAND_CARD_INTERFACE_NAME,
           'LAND_1'
         );
-        expect(domainsCardsFacadeMock.unselectDomainCard).toHaveBeenCalledTimes(
-          1
-        );
+        expect(
+          domainsCardsFacadeMock.clearDomainCardSelection
+        ).toHaveBeenCalledTimes(1);
       });
     });
 
     describe('NOK undefined selectedLandsPileCards', () => {
       const domainsCardsFacadeMock = {
-        selectedDomainsCards$: of({
-          id: 'aaaa',
-          domainId: ID_DOMAIN_RED,
-          cartType: AVAILABLE_LAND_SLOT,
-          cardId: undefined,
-          col: -4,
-          row: -1,
-        }),
+        selectedDomainsCards$: of([
+          {
+            id: 'aaaa',
+            domainId: ID_DOMAIN_RED,
+            cartType: AVAILABLE_LAND_SLOT,
+            cardId: undefined,
+            col: -4,
+            row: -1,
+          },
+        ]),
+        clearDomainCardSelection: jest.fn(),
+        putCardInSlot: jest.fn(),
       };
       const landsPileCardsFacadeMock = {
         selectedLandsPileCards$: of(undefined),
@@ -1189,12 +1323,18 @@ describe('GameRulesService', () => {
         expect(
           landsPileCardsFacadeMock.removeLandsPileCard
         ).not.toHaveBeenCalled();
+        expect(domainsCardsFacadeMock.putCardInSlot).not.toHaveBeenCalled();
+        expect(
+          domainsCardsFacadeMock.clearDomainCardSelection
+        ).not.toHaveBeenCalled();
       });
     });
 
-    describe('NOK undefined selectedDomainsCards', () => {
+    describe('NOK empty selectedDomainsCards', () => {
       const domainsCardsFacadeMock = {
-        selectedDomainsCards$: of(undefined),
+        selectedDomainsCards$: of([]),
+        clearDomainCardSelection: jest.fn(),
+        putCardInSlot: jest.fn(),
       };
       const landsPileCardsFacadeMock = {
         selectedLandsPileCards$: of({
@@ -1223,6 +1363,10 @@ describe('GameRulesService', () => {
 
         expect(
           landsPileCardsFacadeMock.removeLandsPileCard
+        ).not.toHaveBeenCalled();
+        expect(domainsCardsFacadeMock.putCardInSlot).not.toHaveBeenCalled();
+        expect(
+          domainsCardsFacadeMock.clearDomainCardSelection
         ).not.toHaveBeenCalled();
       });
     });

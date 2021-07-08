@@ -183,12 +183,20 @@ export class GameRulesService {
     ])
       .pipe(
         take(1),
-        map(([faceUpPileCard, domainCard]) => {
+        map(([faceUpPileCard, domainCards]) => {
           if (faceUpPileCard === undefined) {
             throw new Error(`Can't put card in slot if no card selected.`);
           }
+          if (domainCards.length !== 1) {
+            throw new Error(
+              `Can't put card in slot if no slot or more than one slot selected.`
+            );
+          }
+          const domainCard = domainCards[0];
           if (domainCard === undefined) {
-            throw new Error(`Can't put card in slot if no slot selected.`);
+            throw new Error(
+              `Something went wrong, domainCard shouldn't be undefined at this point.`
+            );
           }
 
           this.faceUpPilesCards.removeFaceUpPileCard(faceUpPileCard.id);
@@ -236,7 +244,7 @@ export class GameRulesService {
             }
           }
 
-          this.domainsCards.unselectDomainCard();
+          this.domainsCards.clearDomainCardSelection();
         })
       )
       .subscribe();
@@ -251,12 +259,20 @@ export class GameRulesService {
     ])
       .pipe(
         take(1),
-        map(([handCard, domainCard]) => {
+        map(([handCard, domainCards]) => {
           if (handCard === undefined) {
             throw new Error(`Can't put card in slot if no card selected.`);
           }
+          if (domainCards.length !== 1) {
+            throw new Error(
+              `Can't put card in slot if no slot or more than one slot selected.`
+            );
+          }
+          const domainCard = domainCards[0];
           if (domainCard === undefined) {
-            throw new Error(`Can't put card in slot if no slot selected.`);
+            throw new Error(
+              `Something went wrong, domainCard shouldn't be undefined at this point.`
+            );
           }
 
           this.handsCards.removeHandCard(handCard.id);
@@ -265,7 +281,7 @@ export class GameRulesService {
             DEVELOPMENT_CARD_INTERFACE_NAME,
             handCard.cardId
           );
-          this.domainsCards.unselectDomainCard();
+          this.domainsCards.clearDomainCardSelection();
         })
       )
       .subscribe();
@@ -278,12 +294,20 @@ export class GameRulesService {
     ])
       .pipe(
         take(1),
-        map(([landsPileCard, domainCard]) => {
+        map(([landsPileCard, domainCards]) => {
           if (landsPileCard === undefined) {
             throw new Error(`Can't put card in slot if no card selected.`);
           }
+          if (domainCards.length !== 1) {
+            throw new Error(
+              `Can't put card in slot if no slot or more than one slot selected.`
+            );
+          }
+          const domainCard = domainCards[0];
           if (domainCard === undefined) {
-            throw new Error(`Can't put card in slot if no slot selected.`);
+            throw new Error(
+              `Something went wrong, domainCard shouldn't be undefined at this point.`
+            );
           }
 
           this.landsPileCards.removeLandsPileCard(landsPileCard.id);
@@ -292,7 +316,7 @@ export class GameRulesService {
             LAND_CARD_INTERFACE_NAME,
             landsPileCard.cardId
           );
-          this.domainsCards.unselectDomainCard();
+          this.domainsCards.clearDomainCardSelection();
         })
       )
       .subscribe();
