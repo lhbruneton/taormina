@@ -74,13 +74,13 @@ export const useLockedResources = createAction(
   '[DomainsCards] Use Locked Resources'
 );
 
-export const selectDomainCard = createAction(
-  '[DomainsCards] Select Domain Card',
+export const toggleDomainCardSelection = createAction(
+  '[DomainsCards] Toggle DomainCard Selection',
   props<{ id: string }>()
 );
 
-export const unselectDomainCard = createAction(
-  '[DomainsCards] Unselect Domain Card'
+export const clearDomainCardSelection = createAction(
+  '[DomainsCards] Clear DomainCards Selection'
 );
 
 export const putCardInPivot = createAction(
@@ -110,4 +110,8 @@ export const createDomainCard = createAction(
 
 export const countAndStealUnprotectedGoldAndWool = createAction(
   '[DomainsCards] Count And Steal Unprotected Gold And Wool'
+);
+
+export const swapSelectedCards = createAction(
+  '[DomainsCards] Swap Selected Cards'
 );

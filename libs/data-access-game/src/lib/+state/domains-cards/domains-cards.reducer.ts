@@ -7,7 +7,7 @@ import { DomainsCardsEntity } from './domains-cards.models';
 export const DOMAINS_CARDS_FEATURE_KEY = 'domainsCards';
 
 export interface DomainsCardsState extends EntityState<DomainsCardsEntity> {
-  selectedId?: string;
+  selectedIds: string[];
   initialized: boolean;
   loaded: boolean;
   errorMsg?: string;
@@ -17,15 +17,15 @@ export interface DomainsCardsPartialState {
   readonly [DOMAINS_CARDS_FEATURE_KEY]: DomainsCardsState;
 }
 
-export const domainsCardsAdapter: EntityAdapter<DomainsCardsEntity> = createEntityAdapter<DomainsCardsEntity>();
+export const domainsCardsAdapter: EntityAdapter<DomainsCardsEntity> =
+  createEntityAdapter<DomainsCardsEntity>();
 
-export const initialDomainsCardsState: DomainsCardsState = domainsCardsAdapter.getInitialState(
-  {
-    // set initial required properties
+export const initialDomainsCardsState: DomainsCardsState =
+  domainsCardsAdapter.getInitialState({
+    selectedIds: [],
     initialized: false,
     loaded: false,
-  }
-);
+  });
 
 export const domainsCardsReducer = createReducer(
   initialDomainsCardsState,
@@ -59,14 +59,47 @@ export const domainsCardsReducer = createReducer(
   on(DomainsCardsActions.addDomainCard, (state, { domainCard }) =>
     domainsCardsAdapter.addOne(domainCard, state)
   ),
-  on(DomainsCardsActions.selectDomainCard, (state, { id }) => ({
+  on(DomainsCardsActions.toggleDomainCardSelection, (state, { id }) => {
+    const foundId = state.selectedIds.find((selectedId) => selectedId === id);
+
+    let newSelectedIds;
+    if (foundId === undefined) {
+      newSelectedIds = [...state.selectedIds, id];
+    } else {
+      newSelectedIds = state.selectedIds.filter(
+        (selectedId) => selectedId !== foundId
+      );
+    }
+
+    return {
+      ...state,
+      selectedIds: newSelectedIds,
+    };
+  }),
+  on(DomainsCardsActions.clearDomainCardSelection, (state) => ({
     ...state,
-    selectedId: id,
+    selectedIds: [],
   })),
-  on(DomainsCardsActions.unselectDomainCard, (state) => ({
-    ...state,
-    selectedId: undefined,
-  })),
+  on(DomainsCardsActions.swapSelectedCards, (state) => {
+    const card0 = state.entities[state.selectedIds[0]];
+    const card1 = state.entities[state.selectedIds[1]];
+    if (card0 === undefined || card1 === undefined) {
+      throw new Error(
+        `Something went wrong, card0 and card1 shouldn't be undefined at this point.`
+      );
+    }
+    const newCard0 = { ...card0, col: card1.col, row: card1.row };
+    const newCard1 = { ...card1, col: card0.col, row: card0.row };
+
+    return {
+      ...state,
+      entities: {
+        ...state.entities,
+        [card0.id]: newCard0,
+        [card1.id]: newCard1,
+      },
+    };
+  }),
   on(DomainsCardsActions.setDomainsCardsError, (state, { error }) => ({
     ...state,
     errorMsg: error,

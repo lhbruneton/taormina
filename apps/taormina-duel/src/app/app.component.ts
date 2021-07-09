@@ -225,8 +225,24 @@ export class AppComponent {
     );
   }
 
-  selectDomainCard(pivotId: string): void {
-    this.domainsCards.selectDomainCard(pivotId);
+  isDomainCardSelected(pivotId: string): Observable<boolean> {
+    return this.domainsCards.selectedDomainsCards$.pipe(
+      map((domainsCards) =>
+        domainsCards.map((domainsCard) => domainsCard.id).includes(pivotId)
+      )
+    );
+  }
+
+  toggleDomainCardSelection(pivotId: string): void {
+    this.domainsCards.toggleDomainCardSelection(pivotId);
+  }
+
+  clearDomainCardSelection(): void {
+    this.domainsCards.clearDomainCardSelection();
+  }
+
+  swapSelectedDomainsCards(): void {
+    this.domainsCards.swapSelectedCards();
   }
 
   lockResource(pivotId: string): void {
@@ -438,14 +454,39 @@ export class AppComponent {
     return this.faceUpPilesCards.selectedFaceUpPilesCards$;
   }
 
+  getDomainSelectedAgglomerationSlots(): Observable<
+    DomainsCardsEntity[]
+    // eslint-disable-next-line indent
+  > {
+    return this.domainsCards.selectedDomainsCards$.pipe(
+      map((domainCards) =>
+        domainCards.filter(
+          (domainCard) =>
+            domainCard?.cardType === AGGLOMERATION_CARD_INTERFACE_NAME
+        )
+      )
+    );
+  }
+
   getSelectedHandCard(): Observable<HandsCardsEntity | undefined> {
     return this.handsCards.selectedHandsCards$;
   }
 
-  getSelectedDevelopmentCard(): Observable<HandsCardsEntity | undefined> {
+  getHandSelectedDevelopmentCard(): Observable<HandsCardsEntity | undefined> {
     return this.handsCards.selectedHandsCards$.pipe(
       filter(
         (handCard) => handCard?.cardType === DEVELOPMENT_CARD_INTERFACE_NAME
+      )
+    );
+  }
+
+  getDomainSelectedDevelopmentCards(): Observable<DomainsCardsEntity[]> {
+    return this.domainsCards.selectedDomainsCards$.pipe(
+      map((domainCards) =>
+        domainCards.filter(
+          (domainCard) =>
+            domainCard?.cardType === DEVELOPMENT_CARD_INTERFACE_NAME
+        )
       )
     );
   }
@@ -456,32 +497,52 @@ export class AppComponent {
     );
   }
 
-  getSelectedLandsPileCard(): Observable<LandsPileCardsEntity | undefined> {
+  getPileSelectedLandCard(): Observable<LandsPileCardsEntity | undefined> {
     return this.landsPileCards.selectedLandsPileCards$;
   }
 
-  getSelectedDomainCard(): Observable<DomainsCardsEntity | undefined> {
-    return this.domainsCards.selectedDomainsCards$;
-  }
-
-  getSelectedAvailableAgglomerationSlot(): Observable<
-    DomainsCardsEntity | undefined
-    // eslint-disable-next-line indent
-  > {
+  getSelectedAvailableLandSlots(): Observable<DomainsCardsEntity[]> {
     return this.domainsCards.selectedDomainsCards$.pipe(
-      filter(
-        (domainCard) => domainCard?.cardType === AVAILABLE_AGGLOMERATION_SLOT
+      map((domainCards) =>
+        domainCards.filter(
+          (domainCard) => domainCard?.cardType === AVAILABLE_LAND_SLOT
+        )
       )
     );
   }
 
-  getSelectedAvailableDevelopmentSlot(): Observable<
-    DomainsCardsEntity | undefined
+  getDomainSelectedLandCards(): Observable<DomainsCardsEntity[]> {
+    return this.domainsCards.selectedDomainsCards$.pipe(
+      map((domainCards) =>
+        domainCards.filter(
+          (domainCard) => domainCard?.cardType === LAND_CARD_INTERFACE_NAME
+        )
+      )
+    );
+  }
+
+  getSelectedAvailableAgglomerationSlots(): Observable<
+    DomainsCardsEntity[]
     // eslint-disable-next-line indent
   > {
     return this.domainsCards.selectedDomainsCards$.pipe(
-      filter(
-        (domainCard) => domainCard?.cardType === AVAILABLE_DEVELOPMENT_SLOT
+      map((domainCards) =>
+        domainCards.filter(
+          (domainCard) => domainCard?.cardType === AVAILABLE_AGGLOMERATION_SLOT
+        )
+      )
+    );
+  }
+
+  getSelectedAvailableDevelopmentSlots(): Observable<
+    DomainsCardsEntity[]
+    // eslint-disable-next-line indent
+  > {
+    return this.domainsCards.selectedDomainsCards$.pipe(
+      map((domainCards) =>
+        domainCards.filter(
+          (domainCard) => domainCard?.cardType === AVAILABLE_DEVELOPMENT_SLOT
+        )
       )
     );
   }

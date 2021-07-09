@@ -28,6 +28,7 @@ import {
   redClayPitDomainCard,
   redClayPitId,
   someDomainsCardsId,
+  someOtherDomainsCardsId,
 } from '../../../test';
 import { DomainsCardsEntity } from './domains-cards.models';
 import { DomainsCardsPartialState } from './domains-cards.reducer';
@@ -62,15 +63,17 @@ describe('DomainsCards Selectors', () => {
       state = {
         domainsCards: {
           ...domainsCardsNewGameState,
-          selectedId: someDomainsCardsId,
+          selectedIds: [someDomainsCardsId, someOtherDomainsCardsId],
         },
       };
     });
-    it('should return the selected Entity', () => {
+    it('should return the selected Entities', () => {
       const result = DomainsCardsSelectors.getDomainsCardsSelected(state);
-      const selId = getDomainsCardsId(result);
+      const selId0 = getDomainsCardsId(result[0]);
+      const selId1 = getDomainsCardsId(result[1]);
 
-      expect(selId).toBe(someDomainsCardsId);
+      expect(selId0).toBe(someDomainsCardsId);
+      expect(selId1).toBe(someOtherDomainsCardsId);
     });
   });
 
