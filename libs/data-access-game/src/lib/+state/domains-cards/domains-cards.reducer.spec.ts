@@ -6,8 +6,11 @@ import {
   blueForestId,
   domainsCardsNewGameState,
   domainsCardsNewGameStateEntities,
+  domainsCardsSwappedForestAndStoneQuarryRedState,
   redClayPitDomainCard,
   redClayPitId,
+  redForestId,
+  redStoneQuarryId,
   someDomainsCardsId,
   someOtherDomainsCardsId,
 } from '../../../test';
@@ -207,6 +210,24 @@ describe('DomainsCards Reducer', () => {
       );
 
       expect(state).toEqual(domainsCardsNewGameState);
+    });
+  });
+
+  describe('swapSelectedCards', () => {
+    it('should swap the selected DomainsCards', () => {
+      const initialState = {
+        ...domainsCardsNewGameState,
+        selectedIds: [redForestId, redStoneQuarryId],
+      };
+
+      const action = DomainsCardsActions.swapSelectedCards();
+
+      const state: DomainsCardsState = domainsCardsReducer(
+        initialState,
+        action
+      );
+
+      expect(state).toEqual(domainsCardsSwappedForestAndStoneQuarryRedState());
     });
   });
 

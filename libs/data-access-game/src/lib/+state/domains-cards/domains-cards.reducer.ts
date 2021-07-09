@@ -80,6 +80,26 @@ export const domainsCardsReducer = createReducer(
     ...state,
     selectedIds: [],
   })),
+  on(DomainsCardsActions.swapSelectedCards, (state) => {
+    const card0 = state.entities[state.selectedIds[0]];
+    const card1 = state.entities[state.selectedIds[1]];
+    if (card0 === undefined || card1 === undefined) {
+      throw new Error(
+        `Something went wrong, card0 and card1 shouldn't be undefined at this point.`
+      );
+    }
+    const newCard0 = { ...card0, col: card1.col, row: card1.row };
+    const newCard1 = { ...card1, col: card0.col, row: card0.row };
+
+    return {
+      ...state,
+      entities: {
+        ...state.entities,
+        [card0.id]: newCard0,
+        [card1.id]: newCard1,
+      },
+    };
+  }),
   on(DomainsCardsActions.setDomainsCardsError, (state, { error }) => ({
     ...state,
     errorMsg: error,

@@ -9,12 +9,14 @@ import { DomainsCardsState } from '../../lib/+state/domains-cards/domains-cards.
 
 export const someDomainsCardsId = '7a1e11aa-47bb-4b4e-94ab-4c91c19e6a62';
 export const redClayPitId = '9ed2d3b8-1d98-4331-969e-09b7f1ba046e';
+export const redForestId = '4c6ae71d-6c3e-4f7a-a8fc-bbede5c4156d';
 export const someOtherDomainsCardsId = redClayPitId;
 export const blueForestId = 'fb675e2e-ee40-4e07-b29c-d6dbd823ca53';
 const nextToRedClayPit = '444bebc9-2521-49f0-b790-2668a4baa182';
 const nextToBlueForestId = '762a3af1-c807-4fd6-b0f5-c5ec52c1c619';
 const redAvailableDevelopmentSlotOneId = '83bada45-309e-4ca6-b59f-e499fdc01b6e';
 const redAvailableDevelopmentSlotTwoId = '82ef1e96-e9d2-4e35-9014-2b825e3c2904';
+export const redStoneQuarryId = '9c9eac6c-f1c8-42a7-92b9-4d6ac4067310';
 const redAvailableDevelopmentSlotThreeId =
   '66d9fc21-e2c0-40ab-88b1-1d87b32022af';
 const redAvailableDevelopmentSlotFourId = nextToRedClayPit;
@@ -65,12 +67,12 @@ const domainsCardsNewGameStateIds = [
   '537144b6-b0ca-4e7e-885c-9d6aa2056a72',
   'd5d7a7c4-b8d7-4784-b9fa-690028af57e0',
   redClayPitId,
-  '4c6ae71d-6c3e-4f7a-a8fc-bbede5c4156d',
+  redForestId,
   redAvailableDevelopmentSlotOneId,
   'fa10183d-4fd2-48ac-a38a-1af131f250c8',
   redAvailableDevelopmentSlotTwoId,
   'edbe4e44-3977-466a-8b4a-a3f39eff415a',
-  '9c9eac6c-f1c8-42a7-92b9-4d6ac4067310',
+  redStoneQuarryId,
   redAvailableDevelopmentSlotThreeId,
   '25ee1175-17c7-4f4e-8c35-ea99ee9f1751',
   nextToRedClayPit,
@@ -141,8 +143,8 @@ export const domainsCardsNewGameStateEntities = {
     lockedResources: 0,
   } as DomainsCardsEntity,
   [redClayPitId]: redClayPitDomainCard,
-  '4c6ae71d-6c3e-4f7a-a8fc-bbede5c4156d': {
-    id: '4c6ae71d-6c3e-4f7a-a8fc-bbede5c4156d',
+  [redForestId]: {
+    id: redForestId,
     domainId: 'DOMAIN_RED',
     cardType: 'LandCard',
     cardId: 'FOREST_RED',
@@ -189,8 +191,8 @@ export const domainsCardsNewGameStateEntities = {
     availableResources: 1,
     lockedResources: 0,
   } as DomainsCardsEntity,
-  '9c9eac6c-f1c8-42a7-92b9-4d6ac4067310': {
-    id: '9c9eac6c-f1c8-42a7-92b9-4d6ac4067310',
+  [redStoneQuarryId]: {
+    id: redStoneQuarryId,
     domainId: 'DOMAIN_RED',
     cardType: 'LandCard',
     cardId: 'STONE_QUARRY_RED',
@@ -752,6 +754,30 @@ export const domainsCardsAuspiciousYearTwoRedOneBlueState =
           -1,
           -2
         ),
+      },
+    };
+    return domainsCards;
+  };
+
+export const domainsCardsSwappedForestAndStoneQuarryRedState =
+  (): DomainsCardsState => {
+    const domainsCards = {
+      ...domainsCardsNewGameState,
+      selectedIds: [redForestId, redStoneQuarryId],
+      entities: {
+        ...domainsCardsNewGameState.entities,
+        [redForestId]: {
+          // eslint-disable-next-line @typescript-eslint/no-non-null-assertion
+          ...domainsCardsNewGameState.entities[redForestId]!,
+          col: 2,
+          row: -1,
+        },
+        [redStoneQuarryId]: {
+          // eslint-disable-next-line @typescript-eslint/no-non-null-assertion
+          ...domainsCardsNewGameState.entities[redStoneQuarryId]!,
+          col: -2,
+          row: 1,
+        },
       },
     };
     return domainsCards;

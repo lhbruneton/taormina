@@ -120,6 +120,10 @@ export class DomainsCardsFacade {
     );
   }
 
+  swapSelectedCards(): void {
+    this.store.dispatch(DomainsCardsActions.swapSelectedCards());
+  }
+
   getDomainMinCol(domainId: string): Observable<number> {
     return this.store.pipe(
       select(DomainsCardsSelectors.getDomainMinCol, { domainId })

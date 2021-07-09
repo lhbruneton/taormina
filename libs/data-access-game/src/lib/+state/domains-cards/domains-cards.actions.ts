@@ -111,3 +111,7 @@ export const createDomainCard = createAction(
 export const countAndStealUnprotectedGoldAndWool = createAction(
   '[DomainsCards] Count And Steal Unprotected Gold And Wool'
 );
+
+export const swapSelectedCards = createAction(
+  '[DomainsCards] Swap Selected Cards'
+);
