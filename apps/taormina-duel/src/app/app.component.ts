@@ -241,6 +241,10 @@ export class AppComponent {
     this.domainsCards.clearDomainCardSelection();
   }
 
+  swapSelectedDomainsCards(): void {
+    this.domainsCards.swapSelectedCards();
+  }
+
   lockResource(pivotId: string): void {
     this.domainsCards.lockResource(pivotId);
   }
