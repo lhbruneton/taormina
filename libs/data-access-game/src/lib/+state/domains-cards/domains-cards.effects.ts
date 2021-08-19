@@ -70,19 +70,17 @@ export class DomainsCardsEffects {
         return forkJoin({
           increaseOne: this.domainsCardsStore.pipe(
             select(
-              DomainsCardsSelectors.getLandCardsPivotsIncreaseOneProduction,
-              {
-                die: action.die,
-              }
+              DomainsCardsSelectors.getLandCardsPivotsIncreaseOneProduction(
+                action.die
+              )
             ),
             take(1)
           ),
           increaseTwo: this.domainsCardsStore.pipe(
             select(
-              DomainsCardsSelectors.getLandCardsPivotsIncreaseTwoProduction,
-              {
-                die: action.die,
-              }
+              DomainsCardsSelectors.getLandCardsPivotsIncreaseTwoProduction(
+                action.die
+              )
             ),
             take(1)
           ),
@@ -448,9 +446,7 @@ export class DomainsCardsEffects {
     id: string
   ): Observable<DomainsCardsEntity> {
     return this.domainsCardsStore.pipe(
-      select(DomainsCardsSelectors.getLandCardPivotById, {
-        id,
-      }),
+      select(DomainsCardsSelectors.getLandCardPivotById(id)),
       map((pivot) => {
         if (pivot === undefined) {
           throw new Error(`Couldn't find land card pivot for id.`);

@@ -133,34 +133,26 @@ export class DomainsCardsFacade {
   }
 
   getDomainMinCol(domainId: string): Observable<number> {
-    return this.store.pipe(
-      select(DomainsCardsSelectors.getDomainMinCol, { domainId })
-    );
+    return this.store.select(DomainsCardsSelectors.getDomainMinCol(domainId));
   }
 
   getDomainMaxCol(domainId: string): Observable<number> {
-    return this.store.pipe(
-      select(DomainsCardsSelectors.getDomainMaxCol, { domainId })
-    );
+    return this.store.select(DomainsCardsSelectors.getDomainMaxCol(domainId));
   }
 
   getDomainMinRow(domainId: string): Observable<number> {
-    return this.store.pipe(
-      select(DomainsCardsSelectors.getDomainMinRow, { domainId })
-    );
+    return this.store.select(DomainsCardsSelectors.getDomainMinRow(domainId));
   }
 
   getDomainMaxRow(domainId: string): Observable<number> {
-    return this.store.pipe(
-      select(DomainsCardsSelectors.getDomainMaxRow, { domainId })
-    );
+    return this.store.select(DomainsCardsSelectors.getDomainMaxRow(domainId));
   }
 
   getMasteryDomainForType(
     type: MasteryPointsType
   ): Observable<string | undefined> {
-    return this.store.pipe(
-      select(DomainsCardsSelectors.getMasteryDomainForType, { type })
+    return this.store.select(
+      DomainsCardsSelectors.getMasteryDomainForType(type)
     );
   }
 

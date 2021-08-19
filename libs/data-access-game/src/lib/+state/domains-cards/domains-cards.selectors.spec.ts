@@ -108,9 +108,8 @@ describe('DomainsCards Selectors', () => {
 
   describe('getLandCardPivotById({ id })', () => {
     it('should return the blue forest domain card', () => {
-      const result = DomainsCardsSelectors.getLandCardPivotById(state, {
-        id: blueForestId,
-      });
+      const result =
+        DomainsCardsSelectors.getLandCardPivotById(blueForestId)(state);
       const selId = getDomainsCardsId(result);
 
       expect(selId).toBe(blueForestId);
@@ -143,9 +142,8 @@ describe('DomainsCards Selectors', () => {
 
   describe('getDomainMinCol({ domainId })', () => {
     it('should return the lowest column number for the domain', () => {
-      const result = DomainsCardsSelectors.getDomainMinCol(state, {
-        domainId: ID_DOMAIN_BLUE,
-      });
+      const result =
+        DomainsCardsSelectors.getDomainMinCol(ID_DOMAIN_BLUE)(state);
 
       expect(result).toBe(-2);
     });
@@ -153,9 +151,8 @@ describe('DomainsCards Selectors', () => {
 
   describe('getDomainMaxCol({ domainId })', () => {
     it('should return the highest column number for the domain', () => {
-      const result = DomainsCardsSelectors.getDomainMaxCol(state, {
-        domainId: ID_DOMAIN_BLUE,
-      });
+      const result =
+        DomainsCardsSelectors.getDomainMaxCol(ID_DOMAIN_BLUE)(state);
 
       expect(result).toBe(2);
     });
@@ -163,9 +160,8 @@ describe('DomainsCards Selectors', () => {
 
   describe('getDomainMinRow({ domainId })', () => {
     it('should return the lowest row number for the domain', () => {
-      const result = DomainsCardsSelectors.getDomainMinRow(state, {
-        domainId: ID_DOMAIN_BLUE,
-      });
+      const result =
+        DomainsCardsSelectors.getDomainMinRow(ID_DOMAIN_BLUE)(state);
 
       expect(result).toBe(-1);
     });
@@ -173,9 +169,8 @@ describe('DomainsCards Selectors', () => {
 
   describe('getDomainMaxRow({ domainId })', () => {
     it('should return the highest row number for the domain', () => {
-      const result = DomainsCardsSelectors.getDomainMaxRow(state, {
-        domainId: ID_DOMAIN_BLUE,
-      });
+      const result =
+        DomainsCardsSelectors.getDomainMaxRow(ID_DOMAIN_BLUE)(state);
 
       expect(result).toBe(1);
     });
@@ -191,9 +186,9 @@ describe('DomainsCards Selectors', () => {
     describe('getLandCardsPivotsIncreaseOneProduction({ die })', () => {
       it('should return the red clay pit for die 3', () => {
         const results =
-          DomainsCardsSelectors.getLandCardsPivotsIncreaseOneProduction(state, {
-            die: 3,
-          });
+          DomainsCardsSelectors.getLandCardsPivotsIncreaseOneProduction(3)(
+            state
+          );
         const selId = getDomainsCardsId(results[0]);
 
         expect(selId).toBe(redClayPitId);
@@ -203,9 +198,9 @@ describe('DomainsCards Selectors', () => {
     describe('getLandCardsPivotsIncreaseTwoProduction({ die })', () => {
       it('should return the blue forest for die 3', () => {
         const results =
-          DomainsCardsSelectors.getLandCardsPivotsIncreaseTwoProduction(state, {
-            die: 3,
-          });
+          DomainsCardsSelectors.getLandCardsPivotsIncreaseTwoProduction(3)(
+            state
+          );
         const selId = getDomainsCardsId(results[0]);
 
         expect(selId).toBe(blueForestId);
@@ -223,9 +218,9 @@ describe('DomainsCards Selectors', () => {
         });
 
         it('should return undefined', () => {
-          const result = DomainsCardsSelectors.getMasteryDomainForType(state, {
-            type: MasteryPointsType.Trade,
-          });
+          const result = DomainsCardsSelectors.getMasteryDomainForType(
+            MasteryPointsType.Trade
+          )(state);
           expect(result).toBe(undefined);
         });
       });
@@ -238,9 +233,9 @@ describe('DomainsCards Selectors', () => {
         });
 
         it('should return undefined', () => {
-          const result = DomainsCardsSelectors.getMasteryDomainForType(state, {
-            type: MasteryPointsType.Trade,
-          });
+          const result = DomainsCardsSelectors.getMasteryDomainForType(
+            MasteryPointsType.Trade
+          )(state);
           expect(result).toBe(undefined);
         });
       });
@@ -253,9 +248,9 @@ describe('DomainsCards Selectors', () => {
         });
 
         it('should return the red domain id', () => {
-          const result = DomainsCardsSelectors.getMasteryDomainForType(state, {
-            type: MasteryPointsType.Trade,
-          });
+          const result = DomainsCardsSelectors.getMasteryDomainForType(
+            MasteryPointsType.Trade
+          )(state);
           expect(result).toBe(ID_DOMAIN_RED);
         });
       });
@@ -268,9 +263,9 @@ describe('DomainsCards Selectors', () => {
         });
 
         it('should return the blue domain id', () => {
-          const result = DomainsCardsSelectors.getMasteryDomainForType(state, {
-            type: MasteryPointsType.Trade,
-          });
+          const result = DomainsCardsSelectors.getMasteryDomainForType(
+            MasteryPointsType.Trade
+          )(state);
           expect(result).toBe(ID_DOMAIN_BLUE);
         });
       });
@@ -285,9 +280,9 @@ describe('DomainsCards Selectors', () => {
         });
 
         it('should return undefined', () => {
-          const result = DomainsCardsSelectors.getMasteryDomainForType(state, {
-            type: MasteryPointsType.Strength,
-          });
+          const result = DomainsCardsSelectors.getMasteryDomainForType(
+            MasteryPointsType.Strength
+          )(state);
           expect(result).toBe(undefined);
         });
       });
@@ -300,9 +295,9 @@ describe('DomainsCards Selectors', () => {
         });
 
         it('should return undefined', () => {
-          const result = DomainsCardsSelectors.getMasteryDomainForType(state, {
-            type: MasteryPointsType.Strength,
-          });
+          const result = DomainsCardsSelectors.getMasteryDomainForType(
+            MasteryPointsType.Strength
+          )(state);
           expect(result).toBe(undefined);
         });
       });
@@ -315,9 +310,9 @@ describe('DomainsCards Selectors', () => {
         });
 
         it('should return the red domain id', () => {
-          const result = DomainsCardsSelectors.getMasteryDomainForType(state, {
-            type: MasteryPointsType.Strength,
-          });
+          const result = DomainsCardsSelectors.getMasteryDomainForType(
+            MasteryPointsType.Strength
+          )(state);
           expect(result).toBe(ID_DOMAIN_RED);
         });
       });
@@ -330,9 +325,9 @@ describe('DomainsCards Selectors', () => {
         });
 
         it('should return the blue domain id', () => {
-          const result = DomainsCardsSelectors.getMasteryDomainForType(state, {
-            type: MasteryPointsType.Strength,
-          });
+          const result = DomainsCardsSelectors.getMasteryDomainForType(
+            MasteryPointsType.Strength
+          )(state);
           expect(result).toBe(ID_DOMAIN_BLUE);
         });
       });

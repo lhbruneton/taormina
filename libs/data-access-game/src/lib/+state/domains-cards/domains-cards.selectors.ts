@@ -1,4 +1,3 @@
-/* eslint-disable @typescript-eslint/explicit-function-return-type */
 import { createFeatureSelector, createSelector } from '@ngrx/store';
 import {
   agglomerationCards,
@@ -72,29 +71,29 @@ export const getDomainsCardsSelected = createSelector(
   }
 );
 
-export const getLandCardsPivotsIncreaseOneProduction = createSelector(
-  getAllDomainsCards,
-  (entities: DomainsCardsEntity[], props: { die: ResourceValue }) =>
+// eslint-disable-next-line @typescript-eslint/explicit-function-return-type
+export const getLandCardsPivotsIncreaseOneProduction = (die: ResourceValue) =>
+  createSelector(getAllDomainsCards, (entities: DomainsCardsEntity[]) =>
     entities.filter((pivot) => {
-      const land = getLandCardFilterByDie(pivot, props.die);
+      const land = getLandCardFilterByDie(pivot, die);
       return (
         land !== undefined &&
         !isNextToAProductionBuilding(pivot, entities, land.type)
       );
     })
-);
+  );
 
-export const getLandCardsPivotsIncreaseTwoProduction = createSelector(
-  getAllDomainsCards,
-  (entities: DomainsCardsEntity[], props: { die: ResourceValue }) =>
+// eslint-disable-next-line @typescript-eslint/explicit-function-return-type
+export const getLandCardsPivotsIncreaseTwoProduction = (die: ResourceValue) =>
+  createSelector(getAllDomainsCards, (entities: DomainsCardsEntity[]) =>
     entities.filter((pivot) => {
-      const land = getLandCardFilterByDie(pivot, props.die);
+      const land = getLandCardFilterByDie(pivot, die);
       return (
         land !== undefined &&
         isNextToAProductionBuilding(pivot, entities, land.type)
       );
     })
-);
+  );
 
 const getLandCardFilterByDie = (
   pivot: DomainsCardsEntity,
@@ -130,14 +129,13 @@ export const getLandCardsPivotsIncreaseAuspiciousYear = createSelector(
     })
 );
 
-export const getLandCardPivotById = createSelector(
-  getAllDomainsCards,
-  (entities: DomainsCardsEntity[], props: { id: string }) =>
+// eslint-disable-next-line @typescript-eslint/explicit-function-return-type
+export const getLandCardPivotById = (id: string) =>
+  createSelector(getAllDomainsCards, (entities: DomainsCardsEntity[]) =>
     entities.find(
-      (pivot) =>
-        pivot.cardType === LAND_CARD_INTERFACE_NAME && pivot.id === props.id
+      (pivot) => pivot.cardType === LAND_CARD_INTERFACE_NAME && pivot.id === id
     )
-);
+  );
 
 export const getLandCardPivotWithLockedResources = createSelector(
   getAllDomainsCards,
@@ -148,49 +146,49 @@ export const getLandCardPivotWithLockedResources = createSelector(
     )
 );
 
-export const getDomainMinCol = createSelector(
-  getAllDomainsCards,
-  (entities: DomainsCardsEntity[], props: { domainId: string }) =>
+// eslint-disable-next-line @typescript-eslint/explicit-function-return-type
+export const getDomainMinCol = (domainId: string) =>
+  createSelector(getAllDomainsCards, (entities: DomainsCardsEntity[]) =>
     Math.min(
       ...entities
-        .filter((pivot) => pivot.domainId === props.domainId)
+        .filter((pivot) => pivot.domainId === domainId)
         .map((pivot) => pivot.col)
     )
-);
+  );
 
-export const getDomainMaxCol = createSelector(
-  getAllDomainsCards,
-  (entities: DomainsCardsEntity[], props: { domainId: string }) =>
+// eslint-disable-next-line @typescript-eslint/explicit-function-return-type
+export const getDomainMaxCol = (domainId: string) =>
+  createSelector(getAllDomainsCards, (entities: DomainsCardsEntity[]) =>
     Math.max(
       ...entities
-        .filter((pivot) => pivot.domainId === props.domainId)
+        .filter((pivot) => pivot.domainId === domainId)
         .map((pivot) => pivot.col)
     )
-);
+  );
 
-export const getDomainMinRow = createSelector(
-  getAllDomainsCards,
-  (entities: DomainsCardsEntity[], props: { domainId: string }) =>
+// eslint-disable-next-line @typescript-eslint/explicit-function-return-type
+export const getDomainMinRow = (domainId: string) =>
+  createSelector(getAllDomainsCards, (entities: DomainsCardsEntity[]) =>
     Math.min(
       ...entities
-        .filter((pivot) => pivot.domainId === props.domainId)
+        .filter((pivot) => pivot.domainId === domainId)
         .map((pivot) => pivot.row)
     )
-);
+  );
 
-export const getDomainMaxRow = createSelector(
-  getAllDomainsCards,
-  (entities: DomainsCardsEntity[], props: { domainId: string }) =>
+// eslint-disable-next-line @typescript-eslint/explicit-function-return-type
+export const getDomainMaxRow = (domainId: string) =>
+  createSelector(getAllDomainsCards, (entities: DomainsCardsEntity[]) =>
     Math.max(
       ...entities
-        .filter((pivot) => pivot.domainId === props.domainId)
+        .filter((pivot) => pivot.domainId === domainId)
         .map((pivot) => pivot.row)
     )
-);
+  );
 
-export const getMasteryDomainForType = createSelector(
-  getAllDomainsCards,
-  (entities: DomainsCardsEntity[], props: { type: MasteryPointsType }) => {
+// eslint-disable-next-line @typescript-eslint/explicit-function-return-type
+export const getMasteryDomainForType = (type: MasteryPointsType) =>
+  createSelector(getAllDomainsCards, (entities: DomainsCardsEntity[]) => {
     const redDomainCards = entities.filter(
       (pivot) => pivot.domainId === ID_DOMAIN_RED
     );
@@ -198,12 +196,11 @@ export const getMasteryDomainForType = createSelector(
       (pivot) => pivot.domainId === ID_DOMAIN_BLUE
     );
 
-    const redTradePoints = accPointsForType(redDomainCards, props.type);
-    const blueTradePoints = accPointsForType(blueDomainCards, props.type);
+    const redTradePoints = accPointsForType(redDomainCards, type);
+    const blueTradePoints = accPointsForType(blueDomainCards, type);
 
     return fromPointsToMastery(redTradePoints, blueTradePoints);
-  }
-);
+  });
 
 const getDevelopmentCardPointsForType = (
   developmentCard: DevelopmentCard,
@@ -367,6 +364,7 @@ const getCardSideNeighbors = (
       (pivot.row < 0 ? domainCard.row < 0 : domainCard.row >= 0)
   );
 
+// eslint-disable-next-line @typescript-eslint/explicit-function-return-type
 export const getCardsVictoryPointsForDomain = (domainId: string) =>
   createSelector(getAllDomainsCards, (entities) => {
     return entities
