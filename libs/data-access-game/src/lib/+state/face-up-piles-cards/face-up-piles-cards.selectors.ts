@@ -49,26 +49,25 @@ export const getFaceUpSelected = createSelector(
   }
 );
 
-export const getFaceUpPileCardEntityByPivot = createSelector(
-  getAllFaceUpPilesCards,
-  (
-    entities: FaceUpPilesCardsEntity[],
-    props: { pileId: string; cardId: string }
-  ) =>
+// eslint-disable-next-line @typescript-eslint/explicit-function-return-type
+export const getFaceUpPileCardEntityByPivot = (
+  pileId: string,
+  cardId: string
+) =>
+  createSelector(getAllFaceUpPilesCards, (entities: FaceUpPilesCardsEntity[]) =>
     entities.find(
-      (entity) =>
-        entity.pileId === props.pileId && entity.cardId === props.cardId
+      (entity) => entity.pileId === pileId && entity.cardId === cardId
     )
-);
+  );
 
-export const getCardPivotsForPile = createSelector(
-  getAllFaceUpPilesCards,
-  (entities: FaceUpPilesCardsEntity[], props: { pileId: string }) =>
-    entities.filter((pivot) => pivot.pileId === props.pileId)
-);
+// eslint-disable-next-line @typescript-eslint/explicit-function-return-type
+export const getCardPivotsForPile = (pileId: string) =>
+  createSelector(getAllFaceUpPilesCards, (entities: FaceUpPilesCardsEntity[]) =>
+    entities.filter((pivot) => pivot.pileId === pileId)
+  );
 
-export const getFirstCardPivotForPile = createSelector(
-  getAllFaceUpPilesCards,
-  (entities: FaceUpPilesCardsEntity[], props: { pileId: string }) =>
-    entities.find((pivot) => pivot.pileId === props.pileId)
-);
+// eslint-disable-next-line @typescript-eslint/explicit-function-return-type
+export const getFirstCardPivotForPile = (pileId: string) =>
+  createSelector(getAllFaceUpPilesCards, (entities: FaceUpPilesCardsEntity[]) =>
+    entities.find((pivot) => pivot.pileId === pileId)
+  );

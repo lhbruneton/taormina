@@ -25,20 +25,14 @@ export class FaceUpPilesCardsFacade {
   selectedFaceUpPilesCards$ = this.store.pipe(
     select(FaceUpPilesCardsSelectors.getFaceUpSelected)
   );
-  allRoadPivots$ = this.store.pipe(
-    select(FaceUpPilesCardsSelectors.getCardPivotsForPile, {
-      pileId: ID_FACE_UP_ROAD,
-    })
+  allRoadPivots$ = this.store.select(
+    FaceUpPilesCardsSelectors.getCardPivotsForPile(ID_FACE_UP_ROAD)
   );
-  allHamletPivots$ = this.store.pipe(
-    select(FaceUpPilesCardsSelectors.getCardPivotsForPile, {
-      pileId: ID_FACE_UP_HAMLET,
-    })
+  allHamletPivots$ = this.store.select(
+    FaceUpPilesCardsSelectors.getCardPivotsForPile(ID_FACE_UP_HAMLET)
   );
-  allTownPivots$ = this.store.pipe(
-    select(FaceUpPilesCardsSelectors.getCardPivotsForPile, {
-      pileId: ID_FACE_UP_TOWN,
-    })
+  allTownPivots$ = this.store.select(
+    FaceUpPilesCardsSelectors.getCardPivotsForPile(ID_FACE_UP_TOWN)
   );
 
   constructor(
