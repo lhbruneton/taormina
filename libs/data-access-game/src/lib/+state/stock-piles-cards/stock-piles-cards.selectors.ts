@@ -48,16 +48,17 @@ export const getStockPilesCardsSelected = createSelector(
   }
 );
 
-export const getStockPileCardEntityByPivot = createSelector(
-  getAllStockPilesCards,
-  (
-    entities: StockPilesCardsEntity[],
-    props: { pileId: string; cardType: string; cardId: string }
-  ) =>
+// eslint-disable-next-line @typescript-eslint/explicit-function-return-type
+export const getStockPileCardEntityByPivot = (
+  pileId: string,
+  cardType: string,
+  cardId: string
+) =>
+  createSelector(getAllStockPilesCards, (entities: StockPilesCardsEntity[]) =>
     entities.find(
       (entity) =>
-        entity.pileId === props.pileId &&
-        entity.cardType === props.cardType &&
-        entity.cardId === props.cardId
+        entity.pileId === pileId &&
+        entity.cardType === cardType &&
+        entity.cardId === cardId
     )
-);
+  );
