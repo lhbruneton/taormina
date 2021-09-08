@@ -782,3 +782,39 @@ export const domainsCardsSwappedForestAndStoneQuarryRedState =
     };
     return domainsCards;
   };
+
+export const domainsCardsTwoShipsRedState = (): DomainsCardsState => {
+  const newIds = (domainsCardsNewGameState.ids as string[]).filter(
+    (id) =>
+      id !== redAvailableDevelopmentSlotOneId &&
+      id !== redAvailableDevelopmentSlotTwoId
+  );
+  const newEntities = { ...domainsCardsNewGameState.entities };
+  delete newEntities[redAvailableDevelopmentSlotOneId];
+  delete newEntities[redAvailableDevelopmentSlotTwoId];
+
+  const domainsCards = {
+    ...domainsCardsNewGameState,
+    ids: [...newIds, 'aaaa', 'bbbb'],
+    entities: {
+      ...newEntities,
+      aaaa: createDomainsCardsEntity(
+        'aaaa',
+        ID_DOMAIN_RED,
+        DEVELOPMENT_CARD_INTERFACE_NAME,
+        'SHIP_1',
+        -1,
+        1
+      ),
+      bbbb: createDomainsCardsEntity(
+        'bbbb',
+        ID_DOMAIN_RED,
+        DEVELOPMENT_CARD_INTERFACE_NAME,
+        'SHIP_2',
+        1,
+        1
+      ),
+    },
+  };
+  return domainsCards;
+};
