@@ -187,6 +187,10 @@ export class AppComponent {
     return this.gameRules.getVictoryPointsForDomain(domainId);
   }
 
+  getShipsCount(domainId: string): Observable<number> {
+    return this.domainsCards.getMerchantShipCountForDomain(domainId);
+  }
+
   getColumnsTemplate(domainId: string): Observable<string> {
     return combineLatest([
       this.domainsCards.getDomainMinCol(domainId),
