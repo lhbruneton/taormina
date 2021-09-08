@@ -24,6 +24,7 @@ import {
   domainsCardsThreeStrengthRedThreeStrengthBlueState,
   domainsCardsThreeTradeRedFourTradeBlueState,
   domainsCardsThreeTradeRedThreeTradeBlueState,
+  domainsCardsTwoShipsRedState,
   domainsCardsWarehouseNextToBlueForestState,
   redClayPitDomainCard,
   redClayPitId,
@@ -436,6 +437,22 @@ describe('DomainsCards Selectors', () => {
     it('should return two victory points for the two initial hamlets', () => {
       const result =
         DomainsCardsSelectors.getCardsVictoryPointsForDomain(ID_DOMAIN_RED)(
+          state
+        );
+
+      expect(result).toBe(2);
+    });
+  });
+
+  describe('getMerchantShipCountForDomain()', () => {
+    beforeEach(() => {
+      state = {
+        domainsCards: domainsCardsTwoShipsRedState(),
+      };
+    });
+    it('should return a two ships count for the red domain', () => {
+      const result =
+        DomainsCardsSelectors.getMerchantShipCountForDomain(ID_DOMAIN_RED)(
           state
         );
 

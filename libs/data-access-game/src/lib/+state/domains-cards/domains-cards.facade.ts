@@ -161,4 +161,10 @@ export class DomainsCardsFacade {
       DomainsCardsSelectors.getCardsVictoryPointsForDomain(domainId)
     );
   }
+
+  getMerchantShipCountForDomain(domainId: string): Observable<number> {
+    return this.store.select(
+      DomainsCardsSelectors.getMerchantShipCountForDomain(domainId)
+    );
+  }
 }
