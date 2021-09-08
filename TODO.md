@@ -1,9 +1,9 @@
 ### ESLINT-DISABLE-NEXT-LINEs
 | Filename | line # | ESLINT-DISABLE-NEXT-LINE
 |:------|:------:|:------
-| [apps/taormina-duel/src/app/app.component.ts](apps/taormina-duel/src/app/app.component.ts#L459) | 459 | indent
-| [apps/taormina-duel/src/app/app.component.ts](apps/taormina-duel/src/app/app.component.ts#L526) | 526 | indent
-| [apps/taormina-duel/src/app/app.component.ts](apps/taormina-duel/src/app/app.component.ts#L539) | 539 | indent
+| [apps/taormina-duel/src/app/app.component.ts](apps/taormina-duel/src/app/app.component.ts#L463) | 463 | indent
+| [apps/taormina-duel/src/app/app.component.ts](apps/taormina-duel/src/app/app.component.ts#L530) | 530 | indent
+| [apps/taormina-duel/src/app/app.component.ts](apps/taormina-duel/src/app/app.component.ts#L543) | 543 | indent
 | [libs/data-access-game/src/test/fixtures/domains-cards.ts](libs/data-access-game/src/test/fixtures/domains-cards.ts#L770) | 770 | @typescript-eslint/no-non-null-assertion
 | [libs/data-access-game/src/test/fixtures/domains-cards.ts](libs/data-access-game/src/test/fixtures/domains-cards.ts#L776) | 776 | @typescript-eslint/no-non-null-assertion
 | [libs/shared-models/src/lib/interfaces/name.ts](libs/shared-models/src/lib/interfaces/name.ts#L5) | 5 | @typescript-eslint/no-explicit-any
@@ -20,9 +20,10 @@
 | [libs/data-access-game/src/lib/+state/domains-cards/domains-cards.effects.ts](libs/data-access-game/src/lib/+state/domains-cards/domains-cards.effects.ts#L116) | 116 | @typescript-eslint/no-unused-vars
 | [libs/data-access-game/src/lib/+state/domains-cards/domains-cards.effects.ts](libs/data-access-game/src/lib/+state/domains-cards/domains-cards.effects.ts#L218) | 218 | @typescript-eslint/no-unused-vars
 | [libs/data-access-game/src/lib/+state/domains-cards/domains-cards.effects.ts](libs/data-access-game/src/lib/+state/domains-cards/domains-cards.effects.ts#L320) | 320 | @typescript-eslint/no-unused-vars
-| [libs/data-access-game/src/lib/+state/domains-cards/domains-cards.selectors.ts](libs/data-access-game/src/lib/+state/domains-cards/domains-cards.selectors.ts#L231) | 231 | @typescript-eslint/no-non-null-assertion
-| [libs/data-access-game/src/lib/+state/domains-cards/domains-cards.selectors.ts](libs/data-access-game/src/lib/+state/domains-cards/domains-cards.selectors.ts#L381) | 381 | @typescript-eslint/no-non-null-assertion
-| [libs/data-access-game/src/lib/+state/domains-cards/domains-cards.selectors.ts](libs/data-access-game/src/lib/+state/domains-cards/domains-cards.selectors.ts#L385) | 385 | @typescript-eslint/no-non-null-assertion
+| [libs/data-access-game/src/lib/+state/domains-cards/domains-cards.selectors.ts](libs/data-access-game/src/lib/+state/domains-cards/domains-cards.selectors.ts#L232) | 232 | @typescript-eslint/no-non-null-assertion
+| [libs/data-access-game/src/lib/+state/domains-cards/domains-cards.selectors.ts](libs/data-access-game/src/lib/+state/domains-cards/domains-cards.selectors.ts#L382) | 382 | @typescript-eslint/no-non-null-assertion
+| [libs/data-access-game/src/lib/+state/domains-cards/domains-cards.selectors.ts](libs/data-access-game/src/lib/+state/domains-cards/domains-cards.selectors.ts#L386) | 386 | @typescript-eslint/no-non-null-assertion
+| [libs/data-access-game/src/lib/+state/domains-cards/domains-cards.selectors.ts](libs/data-access-game/src/lib/+state/domains-cards/domains-cards.selectors.ts#L403) | 403 | @typescript-eslint/no-non-null-assertion
 | [libs/data-access-game/src/lib/+state/events-pile-cards/events-pile-cards.reducer.ts](libs/data-access-game/src/lib/+state/events-pile-cards/events-pile-cards.reducer.ts#L21) | 21 | max-len
 | [libs/data-access-game/src/lib/+state/face-up-piles-cards/face-up-piles-cards.reducer.ts](libs/data-access-game/src/lib/+state/face-up-piles-cards/face-up-piles-cards.reducer.ts#L21) | 21 | max-len
 | [libs/data-access-game/src/lib/+state/game/game.effects.ts](libs/data-access-game/src/lib/+state/game/game.effects.ts#L32) | 32 | @typescript-eslint/no-unused-vars
