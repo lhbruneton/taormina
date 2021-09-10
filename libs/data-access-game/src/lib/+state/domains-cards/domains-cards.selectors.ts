@@ -410,3 +410,21 @@ export const getMerchantShipCountForDomain = (domainId: string) =>
           (developmentCard) => developmentCard.type === DevelopmentType.Ship
         ).length
   );
+
+export const getCelebrationPointsForDomain = (domainId: string) =>
+  createSelector(getAllDomainsCards, (entities: DomainsCardsEntity[]) =>
+    entities
+      .filter(
+        (pivot) => pivot.domainId === domainId && pivot.cardId !== undefined
+      )
+      // eslint-disable-next-line @typescript-eslint/no-non-null-assertion
+      .map((pivot) => developmentCards.get(pivot.cardId!))
+      .filter(
+        (developmentCard): developmentCard is DevelopmentCard =>
+          developmentCard !== undefined
+      )
+      .map((developmentCard) => {
+        return developmentCard.celebrationPoints || 0;
+      })
+      .reduce((accumulator, currentValue) => accumulator + currentValue, 0)
+  );

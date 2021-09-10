@@ -317,12 +317,15 @@
 <div *ngIf="getRedDomain() as domain">
   <div>
     <span>{{ domain.color }}</span>
+    <span> - Ships count: {{ getShipsCount(domain.id) | async }}</span>
+    <span>
+      - Celebration points: {{ getCelebrationPoints(domain.id) | async }}</span
+    >
     <span *ngIf="getTradeMastery(domain.id) | async"> - Trade Mastery</span>
     <span *ngIf="getStrengthMastery(domain.id) | async">
       - Strength Mastery</span
     >
     <span> - Victory points: {{ getVictoryPoints(domain.id) | async }}</span>
-    <span> - Ships count: {{ getShipsCount(domain.id) | async }}</span>
   </div>
   <div
     class="grid-container"
@@ -416,12 +419,15 @@
 <div *ngIf="getBlueDomain() as domain">
   <div>
     <span>{{ domain.color }}</span>
+    <span> - Ships count: {{ getShipsCount(domain.id) | async }}</span>
+    <span>
+      - Celebration points: {{ getCelebrationPoints(domain.id) | async }}</span
+    >
     <span *ngIf="getTradeMastery(domain.id) | async"> - Trade Mastery</span>
     <span *ngIf="getStrengthMastery(domain.id) | async">
       - Strength Mastery</span
     >
     <span> - Victory points: {{ getVictoryPoints(domain.id) | async }}</span>
-    <span> - Ships count: {{ getShipsCount(domain.id) | async }}</span>
   </div>
   <div
     class="grid-container"

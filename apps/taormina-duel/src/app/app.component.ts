@@ -171,10 +171,8 @@ export class AppComponent {
     return domains.get(ID_DOMAIN_BLUE);
   }
 
-  getTradeMastery(domainId: string): Observable<boolean> {
-    return this.domainsCards
-      .getMasteryDomainForType(MasteryPointsType.Trade)
-      .pipe(map((masteryDomainId) => domainId === masteryDomainId));
+  getVictoryPoints(domainId: string): Observable<number> {
+    return this.gameRules.getVictoryPointsForDomain(domainId);
   }
 
   getStrengthMastery(domainId: string): Observable<boolean> {
@@ -183,8 +181,14 @@ export class AppComponent {
       .pipe(map((masteryDomainId) => domainId === masteryDomainId));
   }
 
-  getVictoryPoints(domainId: string): Observable<number> {
-    return this.gameRules.getVictoryPointsForDomain(domainId);
+  getTradeMastery(domainId: string): Observable<boolean> {
+    return this.domainsCards
+      .getMasteryDomainForType(MasteryPointsType.Trade)
+      .pipe(map((masteryDomainId) => domainId === masteryDomainId));
+  }
+
+  getCelebrationPoints(domainId: string): Observable<number> {
+    return this.domainsCards.getCelebrationPointsForDomain(domainId);
   }
 
   getShipsCount(domainId: string): Observable<number> {
