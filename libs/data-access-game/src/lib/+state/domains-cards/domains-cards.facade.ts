@@ -167,4 +167,10 @@ export class DomainsCardsFacade {
       DomainsCardsSelectors.getMerchantShipCountForDomain(domainId)
     );
   }
+
+  getCelebrationPointsForDomain(domainId: string): Observable<number> {
+    return this.store.select(
+      DomainsCardsSelectors.getCelebrationPointsForDomain(domainId)
+    );
+  }
 }

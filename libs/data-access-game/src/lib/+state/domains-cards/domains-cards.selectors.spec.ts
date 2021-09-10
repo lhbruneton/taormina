@@ -459,4 +459,26 @@ describe('DomainsCards Selectors', () => {
       expect(result).toBe(2);
     });
   });
+
+  describe('getCelebrationPointsForDomain()', () => {
+    beforeEach(() => {
+      state = {
+        domainsCards: domainsCardsThreeStrengthRedThreeStrengthBlueState(),
+      };
+    });
+    it(`should return two celebration points for the red domain
+        and five celebration points for the blue domain`, () => {
+      const resultRed =
+        DomainsCardsSelectors.getCelebrationPointsForDomain(ID_DOMAIN_RED)(
+          state
+        );
+      const resultBlue =
+        DomainsCardsSelectors.getCelebrationPointsForDomain(ID_DOMAIN_BLUE)(
+          state
+        );
+
+      expect(resultRed).toBe(2);
+      expect(resultBlue).toBe(5);
+    });
+  });
 });
