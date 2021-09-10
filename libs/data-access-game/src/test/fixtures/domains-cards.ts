@@ -648,6 +648,11 @@ export const domainsCardsThreeStrengthRedThreeStrengthBlueState =
     return domainsCards;
   };
 
+export const domainsCardsTwoCelebrationRedFiveCelebrationBlueState =
+  (): DomainsCardsState => {
+    return domainsCardsThreeStrengthRedThreeStrengthBlueState();
+  };
+
 export const domainsCardsSevenStrengthRedThreeStrengthBlueState =
   (): DomainsCardsState => {
     const newIds = (

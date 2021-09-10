@@ -24,6 +24,7 @@ import {
   domainsCardsThreeStrengthRedThreeStrengthBlueState,
   domainsCardsThreeTradeRedFourTradeBlueState,
   domainsCardsThreeTradeRedThreeTradeBlueState,
+  domainsCardsTwoCelebrationRedFiveCelebrationBlueState,
   domainsCardsTwoShipsRedState,
   domainsCardsWarehouseNextToBlueForestState,
   redClayPitDomainCard,
@@ -463,7 +464,7 @@ describe('DomainsCards Selectors', () => {
   describe('getCelebrationPointsForDomain()', () => {
     beforeEach(() => {
       state = {
-        domainsCards: domainsCardsThreeStrengthRedThreeStrengthBlueState(),
+        domainsCards: domainsCardsTwoCelebrationRedFiveCelebrationBlueState(),
       };
     });
     it(`should return two celebration points for the red domain
