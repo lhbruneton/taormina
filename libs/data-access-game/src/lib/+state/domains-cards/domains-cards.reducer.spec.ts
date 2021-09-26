@@ -4,8 +4,10 @@ import {
   aaaaWarehouseNextToBlueForestDomainCard,
   blueForestDomainCard,
   blueForestId,
+  domainsCardsEmptyNextToBlueForestState,
   domainsCardsNewGameState,
   domainsCardsNewGameStateEntities,
+  domainsCardsSawmillNextToBlueForestState,
   domainsCardsSwappedForestAndStoneQuarryRedState,
   redClayPitDomainCard,
   redClayPitId,
@@ -228,6 +230,25 @@ describe('DomainsCards Reducer', () => {
       );
 
       expect(state).toEqual(domainsCardsSwappedForestAndStoneQuarryRedState());
+    });
+  });
+
+  describe('removeDomainCard', () => {
+    it('should remove the DomainCard from the list', () => {
+      const initialState = {
+        ...domainsCardsSawmillNextToBlueForestState(),
+      };
+
+      const action = DomainsCardsActions.removeDomainCard({
+        id: 'aaaa',
+      });
+
+      const state: DomainsCardsState = domainsCardsReducer(
+        initialState,
+        action
+      );
+
+      expect(state).toEqual(domainsCardsEmptyNextToBlueForestState());
     });
   });
 

@@ -115,3 +115,8 @@ export const countAndStealUnprotectedGoldAndWool = createAction(
 export const swapSelectedCards = createAction(
   '[DomainsCards] Swap Selected Cards'
 );
+
+export const removeDomainCard = createAction(
+  '[DomainsCards] Remove DomainCard',
+  props<{ id: string }>()
+);
