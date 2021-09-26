@@ -124,6 +124,10 @@ export class DomainsCardsFacade {
     this.store.dispatch(DomainsCardsActions.swapSelectedCards());
   }
 
+  removeDomainCard(pivotId: string): void {
+    this.store.dispatch(DomainsCardsActions.removeDomainCard({ id: pivotId }));
+  }
+
   getDomainMinCol(domainId: string): Observable<number> {
     return this.store.pipe(
       select(DomainsCardsSelectors.getDomainMinCol, { domainId })

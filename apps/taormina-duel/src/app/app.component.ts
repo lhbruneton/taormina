@@ -430,6 +430,10 @@ export class AppComponent {
     this.gameRules.putBackFromHandToStockPile(pileId);
   }
 
+  putBackSelectedDomainCard(pileId: string): void {
+    this.gameRules.putBackFromDomainToStockPile(pileId);
+  }
+
   getActionCard(cardId: string): ActionCard | undefined {
     return actionCards.get(cardId);
   }

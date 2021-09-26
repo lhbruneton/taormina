@@ -100,6 +100,9 @@ export const domainsCardsReducer = createReducer(
       },
     };
   }),
+  on(DomainsCardsActions.removeDomainCard, (state, { id }) =>
+    domainsCardsAdapter.removeOne(id, state)
+  ),
   on(DomainsCardsActions.setDomainsCardsError, (state, { error }) => ({
     ...state,
     errorMsg: error,

@@ -374,13 +374,27 @@ export const domainsCardsNewGameState: DomainsCardsState = {
   loaded: false,
 };
 
+export const domainsCardsEmptyNextToBlueForestState = (): DomainsCardsState => {
+  const newIds = (domainsCardsNewGameState.ids as string[]).filter(
+    (id) => id !== nextToBlueForestId
+  );
+  const newEntities = { ...domainsCardsNewGameState.entities };
+  delete newEntities[nextToBlueForestId];
+
+  const domainsCards = {
+    ...domainsCardsNewGameState,
+    ids: [...newIds],
+    entities: {
+      ...newEntities,
+    },
+  };
+  return domainsCards;
+};
+
 export const domainsCardsSawmillNextToBlueForestState =
   (): DomainsCardsState => {
-    const newIds = (domainsCardsNewGameState.ids as string[]).filter(
-      (id) => id !== nextToBlueForestId
-    );
-    const newEntities = { ...domainsCardsNewGameState.entities };
-    delete newEntities[nextToBlueForestId];
+    const newIds = domainsCardsEmptyNextToBlueForestState().ids as string[];
+    const newEntities = domainsCardsEmptyNextToBlueForestState().entities;
 
     const domainsCards = {
       ...domainsCardsNewGameState,

@@ -343,6 +343,54 @@ export class GameRulesService {
       .subscribe();
   }
 
+  putBackFromDomainToStockPile(pileId: string): void {
+    this.domainsCards.selectedDomainsCards$
+      .pipe(
+        take(1),
+        map((domainCards) => {
+          if (domainCards.length !== 1) {
+            throw new Error(
+              `Can't put card in pile if no card or more than one card selected.`
+            );
+          }
+          const domainCard = domainCards[0];
+          if (domainCard === undefined) {
+            throw new Error(
+              `Something went wrong, domainCard shouldn't be undefined at this point.`
+            );
+          }
+          const type = domainCard.cardType;
+          if (type !== DEVELOPMENT_CARD_INTERFACE_NAME) {
+            throw new Error(
+              `Can't put back card of type other than development.`
+            );
+          }
+          const id = domainCard.cardId;
+          if (id === undefined) {
+            throw new Error(
+              `Something went wrong, cardId shouldn't be undefined at this point.`
+            );
+          }
+
+          this.domainsCards.removeDomainCard(domainCard.id);
+          this.domainsCards.createAvailableDomainCard(
+            domainCard.domainId,
+            AVAILABLE_DEVELOPMENT_SLOT,
+            domainCard.col,
+            domainCard.row
+          );
+          this.domainsCards.clearDomainCardSelection();
+          this.stockPilesCards.addCardsToStockPileBottom(pileId, [
+            {
+              type,
+              id,
+            },
+          ]);
+        })
+      )
+      .subscribe();
+  }
+
   useActionCard(): void {
     this.handsCards.selectedHandsCards$
       .pipe(

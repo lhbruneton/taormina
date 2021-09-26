@@ -674,7 +674,7 @@ describe('GameRulesService', () => {
           {
             id: 'aaaa',
             domainId: ID_DOMAIN_RED,
-            cartType: AVAILABLE_AGGLOMERATION_SLOT,
+            cardType: AVAILABLE_AGGLOMERATION_SLOT,
             cardId: undefined,
             col: 2,
             row: 0,
@@ -742,7 +742,7 @@ describe('GameRulesService', () => {
           {
             id: 'aaaa',
             domainId: ID_DOMAIN_RED,
-            cartType: AVAILABLE_AGGLOMERATION_SLOT,
+            cardType: AVAILABLE_AGGLOMERATION_SLOT,
             cardId: undefined,
             col: -3,
             row: 0,
@@ -823,7 +823,7 @@ describe('GameRulesService', () => {
           {
             id: 'aaaa',
             domainId: ID_DOMAIN_RED,
-            cartType: AGGLOMERATION_CARD_INTERFACE_NAME,
+            cardType: AGGLOMERATION_CARD_INTERFACE_NAME,
             cardId: 'aaaa',
             col: -1,
             row: 0,
@@ -901,7 +901,7 @@ describe('GameRulesService', () => {
           {
             id: 'aaaa',
             domainId: ID_DOMAIN_RED,
-            cartType: AVAILABLE_AGGLOMERATION_SLOT,
+            cardType: AVAILABLE_AGGLOMERATION_SLOT,
             cardId: undefined,
             col: -2,
             row: 0,
@@ -1008,7 +1008,7 @@ describe('GameRulesService', () => {
           {
             id: 'aaaa',
             domainId: ID_DOMAIN_RED,
-            cartType: AVAILABLE_AGGLOMERATION_SLOT,
+            cardType: AVAILABLE_AGGLOMERATION_SLOT,
             cardId: undefined,
             col: -2,
             row: 0,
@@ -1016,7 +1016,7 @@ describe('GameRulesService', () => {
           {
             id: 'bbbb',
             domainId: ID_DOMAIN_RED,
-            cartType: AVAILABLE_AGGLOMERATION_SLOT,
+            cardType: AVAILABLE_AGGLOMERATION_SLOT,
             cardId: undefined,
             col: 2,
             row: 0,
@@ -1078,7 +1078,7 @@ describe('GameRulesService', () => {
           {
             id: 'aaaa',
             domainId: ID_DOMAIN_RED,
-            cartType: AVAILABLE_DEVELOPMENT_SLOT,
+            cardType: AVAILABLE_DEVELOPMENT_SLOT,
             cardId: undefined,
             col: -1,
             row: -1,
@@ -1138,7 +1138,7 @@ describe('GameRulesService', () => {
           {
             id: 'aaaa',
             domainId: ID_DOMAIN_RED,
-            cartType: AVAILABLE_DEVELOPMENT_SLOT,
+            cardType: AVAILABLE_DEVELOPMENT_SLOT,
             cardId: undefined,
             col: -1,
             row: -1,
@@ -1235,7 +1235,7 @@ describe('GameRulesService', () => {
           {
             id: 'aaaa',
             domainId: ID_DOMAIN_RED,
-            cartType: AVAILABLE_LAND_SLOT,
+            cardType: AVAILABLE_LAND_SLOT,
             cardId: undefined,
             col: -4,
             row: -1,
@@ -1289,7 +1289,7 @@ describe('GameRulesService', () => {
           {
             id: 'aaaa',
             domainId: ID_DOMAIN_RED,
-            cartType: AVAILABLE_LAND_SLOT,
+            cardType: AVAILABLE_LAND_SLOT,
             cardId: undefined,
             col: -4,
             row: -1,
@@ -1451,6 +1451,164 @@ describe('GameRulesService', () => {
 
         expect(handsCardsFacadeMock.removeHandCard).not.toHaveBeenCalled();
         expect(handsCardsFacadeMock.unselectHandCard).not.toHaveBeenCalled();
+        expect(
+          stockPilesCardsFacadeMock.addCardsToStockPileBottom
+        ).not.toHaveBeenCalled();
+      });
+    });
+  });
+
+  describe('putBackFromDomainToStockPile', () => {
+    describe('OK', () => {
+      const domainsCardsFacadeMock = {
+        selectedDomainsCards$: of([
+          {
+            id: 'aaaa',
+            domainId: ID_DOMAIN_RED,
+            cardType: DEVELOPMENT_CARD_INTERFACE_NAME,
+            cardId: 'BUILDING_1',
+            col: -1,
+            row: 1,
+          },
+        ]),
+        clearDomainCardSelection: jest.fn(),
+        createAvailableDomainCard: jest.fn(),
+        removeDomainCard: jest.fn(),
+      };
+      const stockPilesCardsFacadeMock = {
+        addCardsToStockPileBottom: jest.fn(),
+      };
+
+      beforeEach(() => {
+        TestBed.configureTestingModule({
+          imports: [StoreModule.forRoot({})],
+          providers: [
+            { provide: DomainsCardsFacade, useValue: domainsCardsFacadeMock },
+            {
+              provide: StockPilesCardsFacade,
+              useValue: stockPilesCardsFacadeMock,
+            },
+          ],
+        });
+        service = TestBed.inject(GameRulesService);
+      });
+
+      it(`should call removeDomainCard, createAvailableDomainCard,
+          and clearDomainCardSelection, then addCardsToStockPileBottom`, () => {
+        service.putBackFromDomainToStockPile('STOCK_1');
+
+        expect(domainsCardsFacadeMock.removeDomainCard).toHaveBeenCalledWith(
+          'aaaa'
+        );
+        expect(
+          domainsCardsFacadeMock.createAvailableDomainCard
+        ).toHaveBeenCalledWith(
+          ID_DOMAIN_RED,
+          AVAILABLE_DEVELOPMENT_SLOT,
+          -1,
+          1
+        );
+        expect(
+          domainsCardsFacadeMock.clearDomainCardSelection
+        ).toHaveBeenCalledTimes(1);
+        expect(
+          stockPilesCardsFacadeMock.addCardsToStockPileBottom
+        ).toHaveBeenCalledWith('STOCK_1', [
+          {
+            type: DEVELOPMENT_CARD_INTERFACE_NAME,
+            id: 'BUILDING_1',
+          },
+        ]);
+      });
+    });
+
+    describe('NOK empty selectedDomainsCards', () => {
+      const domainsCardsFacadeMock = {
+        selectedDomainsCards$: of([]),
+        clearDomainCardSelection: jest.fn(),
+        createAvailableDomainCard: jest.fn(),
+        removeDomainCard: jest.fn(),
+      };
+      const stockPilesCardsFacadeMock = {
+        addCardsToStockPileBottom: jest.fn(),
+      };
+
+      beforeEach(() => {
+        TestBed.configureTestingModule({
+          imports: [StoreModule.forRoot({})],
+          providers: [
+            { provide: DomainsCardsFacade, useValue: domainsCardsFacadeMock },
+            {
+              provide: StockPilesCardsFacade,
+              useValue: stockPilesCardsFacadeMock,
+            },
+          ],
+        });
+        service = TestBed.inject(GameRulesService);
+      });
+
+      // FIXME: should test error thrown
+      it('should not call', () => {
+        service.putBackFromDomainToStockPile('STOCK_1');
+
+        expect(domainsCardsFacadeMock.removeDomainCard).not.toHaveBeenCalled();
+        expect(
+          domainsCardsFacadeMock.createAvailableDomainCard
+        ).not.toHaveBeenCalled();
+        expect(
+          domainsCardsFacadeMock.clearDomainCardSelection
+        ).not.toHaveBeenCalled();
+        expect(
+          stockPilesCardsFacadeMock.addCardsToStockPileBottom
+        ).not.toHaveBeenCalled();
+      });
+    });
+
+    describe('NOK not development', () => {
+      const domainsCardsFacadeMock = {
+        selectedDomainsCards$: of([
+          {
+            id: 'aaaa',
+            domainId: ID_DOMAIN_RED,
+            cardType: AGGLOMERATION_CARD_INTERFACE_NAME,
+            cardId: 'HAMLET_RED_1',
+            col: -1,
+            row: 0,
+          },
+        ]),
+        clearDomainCardSelection: jest.fn(),
+        createAvailableDomainCard: jest.fn(),
+        removeDomainCard: jest.fn(),
+      };
+      const stockPilesCardsFacadeMock = {
+        addCardsToStockPileBottom: jest.fn(),
+      };
+
+      beforeEach(() => {
+        TestBed.configureTestingModule({
+          imports: [StoreModule.forRoot({})],
+          providers: [
+            { provide: DomainsCardsFacade, useValue: domainsCardsFacadeMock },
+            {
+              provide: StockPilesCardsFacade,
+              useValue: stockPilesCardsFacadeMock,
+            },
+          ],
+        });
+        service = TestBed.inject(GameRulesService);
+      });
+
+      // FIXME: should test error thrown
+      it('should not call', () => {
+        service.putBackFromDomainToStockPile('STOCK_1');
+
+        expect(domainsCardsFacadeMock.removeDomainCard).not.toHaveBeenCalled();
+        expect(
+          domainsCardsFacadeMock.createAvailableDomainCard
+        ).not.toHaveBeenCalled();
+        expect(
+          domainsCardsFacadeMock.clearDomainCardSelection
+        ).not.toHaveBeenCalled();
         expect(
           stockPilesCardsFacadeMock.addCardsToStockPileBottom
         ).not.toHaveBeenCalled();
