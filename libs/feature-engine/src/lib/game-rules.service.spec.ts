@@ -674,7 +674,7 @@ describe('GameRulesService', () => {
           {
             id: 'aaaa',
             domainId: ID_DOMAIN_RED,
-            cartType: AVAILABLE_AGGLOMERATION_SLOT,
+            cardType: AVAILABLE_AGGLOMERATION_SLOT,
             cardId: undefined,
             col: 2,
             row: 0,
@@ -742,7 +742,7 @@ describe('GameRulesService', () => {
           {
             id: 'aaaa',
             domainId: ID_DOMAIN_RED,
-            cartType: AVAILABLE_AGGLOMERATION_SLOT,
+            cardType: AVAILABLE_AGGLOMERATION_SLOT,
             cardId: undefined,
             col: -3,
             row: 0,
@@ -823,7 +823,7 @@ describe('GameRulesService', () => {
           {
             id: 'aaaa',
             domainId: ID_DOMAIN_RED,
-            cartType: AGGLOMERATION_CARD_INTERFACE_NAME,
+            cardType: AGGLOMERATION_CARD_INTERFACE_NAME,
             cardId: 'aaaa',
             col: -1,
             row: 0,
@@ -901,7 +901,7 @@ describe('GameRulesService', () => {
           {
             id: 'aaaa',
             domainId: ID_DOMAIN_RED,
-            cartType: AVAILABLE_AGGLOMERATION_SLOT,
+            cardType: AVAILABLE_AGGLOMERATION_SLOT,
             cardId: undefined,
             col: -2,
             row: 0,
@@ -1008,7 +1008,7 @@ describe('GameRulesService', () => {
           {
             id: 'aaaa',
             domainId: ID_DOMAIN_RED,
-            cartType: AVAILABLE_AGGLOMERATION_SLOT,
+            cardType: AVAILABLE_AGGLOMERATION_SLOT,
             cardId: undefined,
             col: -2,
             row: 0,
@@ -1016,7 +1016,7 @@ describe('GameRulesService', () => {
           {
             id: 'bbbb',
             domainId: ID_DOMAIN_RED,
-            cartType: AVAILABLE_AGGLOMERATION_SLOT,
+            cardType: AVAILABLE_AGGLOMERATION_SLOT,
             cardId: undefined,
             col: 2,
             row: 0,
@@ -1078,7 +1078,7 @@ describe('GameRulesService', () => {
           {
             id: 'aaaa',
             domainId: ID_DOMAIN_RED,
-            cartType: AVAILABLE_DEVELOPMENT_SLOT,
+            cardType: AVAILABLE_DEVELOPMENT_SLOT,
             cardId: undefined,
             col: -1,
             row: -1,
@@ -1138,7 +1138,7 @@ describe('GameRulesService', () => {
           {
             id: 'aaaa',
             domainId: ID_DOMAIN_RED,
-            cartType: AVAILABLE_DEVELOPMENT_SLOT,
+            cardType: AVAILABLE_DEVELOPMENT_SLOT,
             cardId: undefined,
             col: -1,
             row: -1,
@@ -1235,7 +1235,7 @@ describe('GameRulesService', () => {
           {
             id: 'aaaa',
             domainId: ID_DOMAIN_RED,
-            cartType: AVAILABLE_LAND_SLOT,
+            cardType: AVAILABLE_LAND_SLOT,
             cardId: undefined,
             col: -4,
             row: -1,
@@ -1289,7 +1289,7 @@ describe('GameRulesService', () => {
           {
             id: 'aaaa',
             domainId: ID_DOMAIN_RED,
-            cartType: AVAILABLE_LAND_SLOT,
+            cardType: AVAILABLE_LAND_SLOT,
             cardId: undefined,
             col: -4,
             row: -1,
