@@ -1,11 +1,11 @@
 ### ESLINT-DISABLE-NEXT-LINEs
 | Filename | line # | ESLINT-DISABLE-NEXT-LINE
 |:------|:------:|:------
-| [apps/taormina-duel/src/app/app.component.ts](apps/taormina-duel/src/app/app.component.ts#L467) | 467 | indent
-| [apps/taormina-duel/src/app/app.component.ts](apps/taormina-duel/src/app/app.component.ts#L534) | 534 | indent
-| [apps/taormina-duel/src/app/app.component.ts](apps/taormina-duel/src/app/app.component.ts#L547) | 547 | indent
-| [libs/data-access-game/src/test/fixtures/domains-cards.ts](libs/data-access-game/src/test/fixtures/domains-cards.ts#L775) | 775 | @typescript-eslint/no-non-null-assertion
-| [libs/data-access-game/src/test/fixtures/domains-cards.ts](libs/data-access-game/src/test/fixtures/domains-cards.ts#L781) | 781 | @typescript-eslint/no-non-null-assertion
+| [apps/taormina-duel/src/app/app.component.ts](apps/taormina-duel/src/app/app.component.ts#L471) | 471 | indent
+| [apps/taormina-duel/src/app/app.component.ts](apps/taormina-duel/src/app/app.component.ts#L538) | 538 | indent
+| [apps/taormina-duel/src/app/app.component.ts](apps/taormina-duel/src/app/app.component.ts#L551) | 551 | indent
+| [libs/data-access-game/src/test/fixtures/domains-cards.ts](libs/data-access-game/src/test/fixtures/domains-cards.ts#L789) | 789 | @typescript-eslint/no-non-null-assertion
+| [libs/data-access-game/src/test/fixtures/domains-cards.ts](libs/data-access-game/src/test/fixtures/domains-cards.ts#L795) | 795 | @typescript-eslint/no-non-null-assertion
 | [libs/shared-models/src/lib/interfaces/name.ts](libs/shared-models/src/lib/interfaces/name.ts#L5) | 5 | @typescript-eslint/no-explicit-any
 | [libs/shared-models/src/lib/interfaces/print.ts](libs/shared-models/src/lib/interfaces/print.ts#L5) | 5 | @typescript-eslint/no-explicit-any
 | [libs/shared-models/src/lib/structures/action.ts](libs/shared-models/src/lib/structures/action.ts#L24) | 24 | @typescript-eslint/no-explicit-any
@@ -47,10 +47,12 @@
 | [libs/feature-engine/src/lib/game-rules.service.spec.ts](libs/feature-engine/src/lib/game-rules.service.spec.ts#L1319) | 1319 | should test error thrown
 | [libs/feature-engine/src/lib/game-rules.service.spec.ts](libs/feature-engine/src/lib/game-rules.service.spec.ts#L1360) | 1360 | should test error thrown
 | [libs/feature-engine/src/lib/game-rules.service.spec.ts](libs/feature-engine/src/lib/game-rules.service.spec.ts#L1448) | 1448 | should test error thrown
-| [libs/feature-engine/src/lib/game-rules.service.spec.ts](libs/feature-engine/src/lib/game-rules.service.spec.ts#L1547) | 1547 | should test error thrown
-| [libs/feature-engine/src/lib/game-rules.service.spec.ts](libs/feature-engine/src/lib/game-rules.service.spec.ts#L1595) | 1595 | should test error thrown
-| [libs/feature-engine/src/lib/game-rules.service.spec.ts](libs/feature-engine/src/lib/game-rules.service.spec.ts#L1643) | 1643 | should test error thrown
-| [libs/feature-engine/src/lib/game-rules.service.spec.ts](libs/feature-engine/src/lib/game-rules.service.spec.ts#L1691) | 1691 | should test error thrown
+| [libs/feature-engine/src/lib/game-rules.service.spec.ts](libs/feature-engine/src/lib/game-rules.service.spec.ts#L1550) | 1550 | should test error thrown
+| [libs/feature-engine/src/lib/game-rules.service.spec.ts](libs/feature-engine/src/lib/game-rules.service.spec.ts#L1601) | 1601 | should test error thrown
+| [libs/feature-engine/src/lib/game-rules.service.spec.ts](libs/feature-engine/src/lib/game-rules.service.spec.ts#L1705) | 1705 | should test error thrown
+| [libs/feature-engine/src/lib/game-rules.service.spec.ts](libs/feature-engine/src/lib/game-rules.service.spec.ts#L1753) | 1753 | should test error thrown
+| [libs/feature-engine/src/lib/game-rules.service.spec.ts](libs/feature-engine/src/lib/game-rules.service.spec.ts#L1801) | 1801 | should test error thrown
+| [libs/feature-engine/src/lib/game-rules.service.spec.ts](libs/feature-engine/src/lib/game-rules.service.spec.ts#L1849) | 1849 | should test error thrown
 | [libs/data-access-game/src/lib/+state/domains-cards/domains-cards.effects.spec.ts](libs/data-access-game/src/lib/+state/domains-cards/domains-cards.effects.spec.ts#L794) | 794 | https://github.com/ngrx/platform/issues/2176
 | [libs/data-access-game/src/lib/+state/domains-cards/domains-cards.effects.spec.ts](libs/data-access-game/src/lib/+state/domains-cards/domains-cards.effects.spec.ts#L820) | 820 | https://github.com/ngrx/platform/issues/2176
 
