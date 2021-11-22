@@ -37,12 +37,13 @@ import {
 } from '@taormina/shared-constants';
 import {
   ActionCard,
+  ActionName,
   ACTION_CARD_INTERFACE_NAME,
   AgglomerationCard,
   AGGLOMERATION_CARD_INTERFACE_NAME,
+  AVAILABLE_AGGLOMERATION_SLOT,
   AVAILABLE_DEVELOPMENT_SLOT,
   AVAILABLE_LAND_SLOT,
-  AVAILABLE_AGGLOMERATION_SLOT,
   DevelopmentCard,
   DEVELOPMENT_CARD_INTERFACE_NAME,
   Domain,
@@ -56,10 +57,13 @@ import {
   MasteryPointsType,
   ResourceValue,
   RESOURCE_VALUES,
-  ActionName,
 } from '@taormina/shared-models';
+import {
+  mapDomainColorToDomainId,
+  mapDomainColorToHandId,
+} from '@taormina/shared-utils';
 import { combineLatest, Observable } from 'rxjs';
-import { filter, map } from 'rxjs/operators';
+import { filter, map, switchMap, take } from 'rxjs/operators';
 
 @Component({
   selector: 'taormina-root',
@@ -79,6 +83,8 @@ export class AppComponent {
   AVAILABLE_LAND_SLOT = AVAILABLE_LAND_SLOT;
 
   RESOURCE_VALUES = RESOURCE_VALUES;
+
+  selectedStockPileId: string | undefined;
 
   constructor(
     private game: GameFacade,
@@ -265,10 +271,6 @@ export class AppComponent {
     this.domainsCards.increaseResources(pivotId);
   }
 
-  buyDomainCard(pivot: DomainsCardsEntity): void {
-    console.log(pivot);
-  }
-
   getFaceUpPiles(): string[] {
     return faceUpPiles;
   }
@@ -308,6 +310,45 @@ export class AppComponent {
 
   selectLandsPileCard(pivotId: string): void {
     this.landsPileCards.selectLandsPileCard(pivotId);
+  }
+
+  canSelectStockPile(): Observable<boolean> {
+    return this.game.player$.pipe(
+      switchMap((domainColor) => {
+        const domainId = mapDomainColorToDomainId(domainColor);
+        return this.domainsCards.hasDomainCommunityCenter(domainId);
+      })
+    );
+  }
+
+  buySelectStockPile(pileId: string): void {
+    this.domainsCards.useLockedResources();
+    this.selectedStockPileId = pileId;
+  }
+
+  unselectStockPile(): void {
+    this.selectedStockPileId = undefined;
+  }
+
+  canDrawAnyCardInStockPile(pileId: string): Observable<boolean> {
+    return this.game.player$.pipe(
+      switchMap((domainColor) => {
+        const domainId = mapDomainColorToDomainId(domainColor);
+        return this.domainsCards.hasDomainCommunityCenter(domainId);
+      }),
+      map(
+        (hasCommunityCenter) =>
+          hasCommunityCenter && pileId === this.selectedStockPileId
+      )
+    );
+  }
+
+  drawCardCurrentPlayer(pileId: string, cardId: string): void {
+    this.game.player$.pipe(take(1)).subscribe((domainColor) => {
+      const handId = mapDomainColorToHandId(domainColor);
+      this.gameRules.drawCardFromStockToHand(pileId, cardId, handId);
+      this.unselectStockPile();
+    });
   }
 
   getStockPiles(): string[] {
@@ -378,7 +419,11 @@ export class AppComponent {
 
   drawInitialRedHand(pileId: string): void {
     const initialHandCount = 3;
-    this.gameRules.drawFromStockToHand(pileId, initialHandCount, ID_HAND_RED);
+    this.gameRules.drawFirstCardsFromStockToHand(
+      pileId,
+      initialHandCount,
+      ID_HAND_RED
+    );
   }
 
   drawFirstCardRedHandAvailable(): Observable<boolean> {
@@ -390,7 +435,7 @@ export class AppComponent {
   }
 
   drawFirstCardRedHand(pileId: string): void {
-    this.gameRules.drawFromStockToHand(pileId, 1, ID_HAND_RED);
+    this.gameRules.drawFirstCardsFromStockToHand(pileId, 1, ID_HAND_RED);
   }
 
   drawInitialBlueHandAvailable(): Observable<boolean> {
@@ -403,7 +448,11 @@ export class AppComponent {
 
   drawInitialBlueHand(pileId: string): void {
     const initialHandCount = 3;
-    this.gameRules.drawFromStockToHand(pileId, initialHandCount, ID_HAND_BLUE);
+    this.gameRules.drawFirstCardsFromStockToHand(
+      pileId,
+      initialHandCount,
+      ID_HAND_BLUE
+    );
   }
 
   drawFirstCardBlueHandAvailable(): Observable<boolean> {
@@ -415,7 +464,7 @@ export class AppComponent {
   }
 
   drawFirstCardBlueHand(pileId: string): void {
-    this.gameRules.drawFromStockToHand(pileId, 1, ID_HAND_BLUE);
+    this.gameRules.drawFirstCardsFromStockToHand(pileId, 1, ID_HAND_BLUE);
   }
 
   putBackSelectedHandCardAvailable(): Observable<boolean> {

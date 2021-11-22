@@ -64,6 +64,20 @@
     <button type="button" (click)="unsetAction()">Finish action</button>
   </div>
   <div>
+    <p>Selected stock pile:</p>
+    <div *ngIf="selectedStockPileId">
+      {{ selectedStockPileId }}
+    </div>
+    <hr />
+    <button
+      [disabled]="!selectedStockPileId"
+      type="button"
+      (click)="unselectStockPile()"
+    >
+      Unselect
+    </button>
+  </div>
+  <div>
     <button type="button" (click)="swapSelectedDomainsCards()">
       swap selected domains cards</button
     ><br />
@@ -256,6 +270,13 @@
           {{ development.name }}
         </div>
       </div>
+      <button
+        *ngIf="canDrawAnyCardInStockPile(pile) | async"
+        type="button"
+        (click)="drawCardCurrentPlayer(pile, pivot.cardId)"
+      >
+        Draw
+      </button>
     </div>
     <button
       *ngIf="putBackSelectedHandCardAvailable() | async"
@@ -266,6 +287,13 @@
     </button>
     <button type="button" (click)="putBackSelectedDomainCard(pile)">
       Put back selected domain card
+    </button>
+    <button
+      *ngIf="canSelectStockPile() | async"
+      type="button"
+      (click)="buySelectStockPile(pile)"
+    >
+      Select stock pile (buy)
     </button>
   </div>
   <div>
