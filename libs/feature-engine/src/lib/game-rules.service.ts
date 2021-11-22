@@ -139,7 +139,7 @@ export class GameRulesService {
     );
   }
 
-  drawFromStockToHand(
+  drawFirstCardsFromStockToHand(
     pileId: string,
     cardsCount: number,
     handId: string
@@ -162,6 +162,36 @@ export class GameRulesService {
       .subscribe((cards) => {
         this.stockPilesCards.removeCardsFromStockPileTop(pileId, cards);
         this.handsCards.addCardsToHand(handId, cards);
+      });
+  }
+
+  drawCardFromStockToHand(
+    pileId: string,
+    cardId: string,
+    handId: string
+  ): void {
+    this.stockPilesCards.allStockPilesCards$
+      .pipe(
+        take(1),
+        map((stockPilesCards) => {
+          const card = stockPilesCards.find(
+            (stockPileCard) =>
+              stockPileCard.pileId === pileId && stockPileCard.cardId === cardId
+          );
+          if (card === undefined) {
+            throw new Error(
+              `Something went wrong, card shouldn't be undefined at this point.`
+            );
+          }
+          return {
+            type: card.cardType,
+            id: card.cardId,
+          };
+        })
+      )
+      .subscribe((card) => {
+        this.stockPilesCards.removeCardsFromStockPileTop(pileId, [card]);
+        this.handsCards.addCardsToHand(handId, [card]);
       });
   }
 

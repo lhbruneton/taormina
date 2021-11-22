@@ -493,7 +493,7 @@ describe('GameRulesService', () => {
     });
   });
 
-  describe('drawFromStockToHand', () => {
+  describe('drawFirstCardsFromStockToHand', () => {
     const handsCardsFacadeMock = {
       addCardsToHand: jest.fn(),
     };
@@ -536,7 +536,7 @@ describe('GameRulesService', () => {
     });
 
     it('should call removeCardsFromStockPileTop, then addCardsToHand', () => {
-      service.drawFromStockToHand('STOCK_1', 3, ID_HAND_RED);
+      service.drawFirstCardsFromStockToHand('STOCK_1', 3, ID_HAND_RED);
 
       const cards = [
         {
