@@ -177,4 +177,10 @@ export class DomainsCardsFacade {
       DomainsCardsSelectors.getCelebrationPointsForDomain(domainId)
     );
   }
+
+  hasDomainCommunityCenter(domainId: string): Observable<boolean> {
+    return this.store.select(
+      DomainsCardsSelectors.hasDomainCommunityCenter(domainId)
+    );
+  }
 }

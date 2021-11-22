@@ -414,6 +414,29 @@ export const domainsCardsSawmillNextToBlueForestState =
     return domainsCards;
   };
 
+export const domainsCardsCommunityCenterNextToBlueForestState =
+  (): DomainsCardsState => {
+    const newIds = domainsCardsEmptyNextToBlueForestState().ids as string[];
+    const newEntities = domainsCardsEmptyNextToBlueForestState().entities;
+
+    const domainsCards = {
+      ...domainsCardsNewGameState,
+      ids: [...newIds, 'aaaa'],
+      entities: {
+        ...newEntities,
+        aaaa: createDomainsCardsEntity(
+          'aaaa',
+          ID_DOMAIN_BLUE,
+          DEVELOPMENT_CARD_INTERFACE_NAME,
+          'BUILDING_14', // CommunityCenter
+          -1,
+          1
+        ),
+      },
+    };
+    return domainsCards;
+  };
+
 export const domainsCardsOneTradeRedTwoTradeBlueState =
   (): DomainsCardsState => {
     const newIds = (domainsCardsNewGameState.ids as string[]).filter(
