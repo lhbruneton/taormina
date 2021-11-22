@@ -428,3 +428,23 @@ export const getCelebrationPointsForDomain = (domainId: string) =>
       })
       .reduce((accumulator, currentValue) => accumulator + currentValue, 0)
   );
+
+export const hasDomainCommunityCenter = (domainId: string) =>
+  createSelector(
+    getAllDomainsCards,
+    (entities: DomainsCardsEntity[]) =>
+      entities
+        .filter(
+          (pivot) => pivot.domainId === domainId && pivot.cardId !== undefined
+        )
+        // eslint-disable-next-line @typescript-eslint/no-non-null-assertion
+        .map((pivot) => developmentCards.get(pivot.cardId!))
+        .filter(
+          (developmentCard): developmentCard is DevelopmentCard =>
+            developmentCard !== undefined
+        )
+        .filter(
+          (developmentCard) =>
+            developmentCard.name === BuildingName.CommunityCenter
+        ).length > 0
+  );

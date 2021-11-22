@@ -14,6 +14,7 @@ import { MasteryPointsType } from '@taormina/shared-models';
 import {
   blueForestId,
   domainsCardsAuspiciousYearTwoRedOneBlueState,
+  domainsCardsCommunityCenterNextToBlueForestState,
   domainsCardsFourTradeRedThreeTradeBlueState,
   domainsCardsNewGameState,
   domainsCardsOneStrengthRedTwoStrengthBlueState,
@@ -480,6 +481,35 @@ describe('DomainsCards Selectors', () => {
 
       expect(resultRed).toBe(2);
       expect(resultBlue).toBe(5);
+    });
+  });
+
+  describe('hasDomainCommunityCenter()', () => {
+    describe('new game state', () => {
+      beforeEach(() => {
+        state = {
+          domainsCards: domainsCardsNewGameState,
+        };
+      });
+      it('should return false', () => {
+        const result =
+          DomainsCardsSelectors.hasDomainCommunityCenter(ID_DOMAIN_BLUE)(state);
+
+        expect(result).toBe(false);
+      });
+    });
+    describe('community center state', () => {
+      beforeEach(() => {
+        state = {
+          domainsCards: domainsCardsCommunityCenterNextToBlueForestState(),
+        };
+      });
+      it('should return true', () => {
+        const result =
+          DomainsCardsSelectors.hasDomainCommunityCenter(ID_DOMAIN_BLUE)(state);
+
+        expect(result).toBe(true);
+      });
     });
   });
 });
