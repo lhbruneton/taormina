@@ -1,9 +1,9 @@
 ### ESLINT-DISABLE-NEXT-LINEs
 | Filename | line # | ESLINT-DISABLE-NEXT-LINE
 |:------|:------:|:------
-| [apps/taormina-duel/src/app/app.component.ts](apps/taormina-duel/src/app/app.component.ts#L520) | 520 | indent
-| [apps/taormina-duel/src/app/app.component.ts](apps/taormina-duel/src/app/app.component.ts#L587) | 587 | indent
-| [apps/taormina-duel/src/app/app.component.ts](apps/taormina-duel/src/app/app.component.ts#L600) | 600 | indent
+| [apps/taormina-duel/src/app/app.component.ts](apps/taormina-duel/src/app/app.component.ts#L524) | 524 | indent
+| [apps/taormina-duel/src/app/app.component.ts](apps/taormina-duel/src/app/app.component.ts#L591) | 591 | indent
+| [apps/taormina-duel/src/app/app.component.ts](apps/taormina-duel/src/app/app.component.ts#L604) | 604 | indent
 | [libs/data-access-game/src/test/fixtures/domains-cards.ts](libs/data-access-game/src/test/fixtures/domains-cards.ts#L812) | 812 | @typescript-eslint/no-non-null-assertion
 | [libs/data-access-game/src/test/fixtures/domains-cards.ts](libs/data-access-game/src/test/fixtures/domains-cards.ts#L818) | 818 | @typescript-eslint/no-non-null-assertion
 | [libs/shared-models/src/lib/interfaces/name.ts](libs/shared-models/src/lib/interfaces/name.ts#L5) | 5 | @typescript-eslint/no-explicit-any
@@ -16,10 +16,11 @@
 | [libs/shared-models/src/lib/types/dice.ts](libs/shared-models/src/lib/types/dice.ts#L1) | 1 | no-magic-numbers
 | [libs/shared-models/src/lib/types/resources.ts](libs/shared-models/src/lib/types/resources.ts#L19) | 19 | no-magic-numbers
 | [libs/data-access-game/src/lib/+state/discard-pile-cards/discard-pile-cards.reducer.ts](libs/data-access-game/src/lib/+state/discard-pile-cards/discard-pile-cards.reducer.ts#L21) | 21 | max-len
-| [libs/data-access-game/src/lib/+state/domains-cards/domains-cards.effects.ts](libs/data-access-game/src/lib/+state/domains-cards/domains-cards.effects.ts#L85) | 85 | no-magic-numbers
-| [libs/data-access-game/src/lib/+state/domains-cards/domains-cards.effects.ts](libs/data-access-game/src/lib/+state/domains-cards/domains-cards.effects.ts#L116) | 116 | @typescript-eslint/no-unused-vars
-| [libs/data-access-game/src/lib/+state/domains-cards/domains-cards.effects.ts](libs/data-access-game/src/lib/+state/domains-cards/domains-cards.effects.ts#L218) | 218 | @typescript-eslint/no-unused-vars
-| [libs/data-access-game/src/lib/+state/domains-cards/domains-cards.effects.ts](libs/data-access-game/src/lib/+state/domains-cards/domains-cards.effects.ts#L320) | 320 | @typescript-eslint/no-unused-vars
+| [libs/data-access-game/src/lib/+state/domains-cards/domains-cards.effects.ts](libs/data-access-game/src/lib/+state/domains-cards/domains-cards.effects.ts#L93) | 93 | no-magic-numbers
+| [libs/data-access-game/src/lib/+state/domains-cards/domains-cards.effects.ts](libs/data-access-game/src/lib/+state/domains-cards/domains-cards.effects.ts#L124) | 124 | @typescript-eslint/no-unused-vars
+| [libs/data-access-game/src/lib/+state/domains-cards/domains-cards.effects.ts](libs/data-access-game/src/lib/+state/domains-cards/domains-cards.effects.ts#L226) | 226 | @typescript-eslint/no-unused-vars
+| [libs/data-access-game/src/lib/+state/domains-cards/domains-cards.effects.ts](libs/data-access-game/src/lib/+state/domains-cards/domains-cards.effects.ts#L249) | 249 | @typescript-eslint/no-unused-vars
+| [libs/data-access-game/src/lib/+state/domains-cards/domains-cards.effects.ts](libs/data-access-game/src/lib/+state/domains-cards/domains-cards.effects.ts#L410) | 410 | @typescript-eslint/no-unused-vars
 | [libs/data-access-game/src/lib/+state/domains-cards/domains-cards.selectors.ts](libs/data-access-game/src/lib/+state/domains-cards/domains-cards.selectors.ts#L232) | 232 | @typescript-eslint/no-non-null-assertion
 | [libs/data-access-game/src/lib/+state/domains-cards/domains-cards.selectors.ts](libs/data-access-game/src/lib/+state/domains-cards/domains-cards.selectors.ts#L382) | 382 | @typescript-eslint/no-non-null-assertion
 | [libs/data-access-game/src/lib/+state/domains-cards/domains-cards.selectors.ts](libs/data-access-game/src/lib/+state/domains-cards/domains-cards.selectors.ts#L386) | 386 | @typescript-eslint/no-non-null-assertion
@@ -54,12 +55,12 @@
 | [libs/feature-engine/src/lib/game-rules.service.spec.ts](libs/feature-engine/src/lib/game-rules.service.spec.ts#L1753) | 1753 | should test error thrown
 | [libs/feature-engine/src/lib/game-rules.service.spec.ts](libs/feature-engine/src/lib/game-rules.service.spec.ts#L1801) | 1801 | should test error thrown
 | [libs/feature-engine/src/lib/game-rules.service.spec.ts](libs/feature-engine/src/lib/game-rules.service.spec.ts#L1849) | 1849 | should test error thrown
-| [libs/data-access-game/src/lib/+state/domains-cards/domains-cards.effects.spec.ts](libs/data-access-game/src/lib/+state/domains-cards/domains-cards.effects.spec.ts#L794) | 794 | https://github.com/ngrx/platform/issues/2176
-| [libs/data-access-game/src/lib/+state/domains-cards/domains-cards.effects.spec.ts](libs/data-access-game/src/lib/+state/domains-cards/domains-cards.effects.spec.ts#L820) | 820 | https://github.com/ngrx/platform/issues/2176
+| [libs/data-access-game/src/lib/+state/domains-cards/domains-cards.effects.spec.ts](libs/data-access-game/src/lib/+state/domains-cards/domains-cards.effects.spec.ts#L1213) | 1213 | https://github.com/ngrx/platform/issues/2176
+| [libs/data-access-game/src/lib/+state/domains-cards/domains-cards.effects.spec.ts](libs/data-access-game/src/lib/+state/domains-cards/domains-cards.effects.spec.ts#L1239) | 1239 | https://github.com/ngrx/platform/issues/2176
 
 ### PRETTIER-IGNOREs
 | Filename | line # | PRETTIER-IGNORE
 |:------|:------:|:------
-| [libs/data-access-game/src/lib/+state/domains-cards/domains-cards.effects.ts](libs/data-access-game/src/lib/+state/domains-cards/domains-cards.effects.ts#L157) | 157 | 
-| [libs/data-access-game/src/lib/+state/domains-cards/domains-cards.effects.ts](libs/data-access-game/src/lib/+state/domains-cards/domains-cards.effects.ts#L159) | 159 | 
-| [libs/data-access-game/src/lib/+state/domains-cards/domains-cards.effects.ts](libs/data-access-game/src/lib/+state/domains-cards/domains-cards.effects.ts#L248) | 248 | 
+| [libs/data-access-game/src/lib/+state/domains-cards/domains-cards.effects.ts](libs/data-access-game/src/lib/+state/domains-cards/domains-cards.effects.ts#L165) | 165 | 
+| [libs/data-access-game/src/lib/+state/domains-cards/domains-cards.effects.ts](libs/data-access-game/src/lib/+state/domains-cards/domains-cards.effects.ts#L167) | 167 | 
+| [libs/data-access-game/src/lib/+state/domains-cards/domains-cards.effects.ts](libs/data-access-game/src/lib/+state/domains-cards/domains-cards.effects.ts#L338) | 338 | 
