@@ -73,6 +73,10 @@ export class DomainsCardsFacade {
     this.store.dispatch(DomainsCardsActions.useLockedResources());
   }
 
+  giveLockedResources(): void {
+    this.store.dispatch(DomainsCardsActions.giveLockedResources());
+  }
+
   toggleDomainCardSelection(pivotId: string): void {
     this.store.dispatch(
       DomainsCardsActions.toggleDomainCardSelection({ id: pivotId })

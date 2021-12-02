@@ -511,6 +511,10 @@ export class AppComponent {
     this.gameRules.putLandsPileCardInSlot();
   }
 
+  giveLockedResources(): void {
+    this.domainsCards.giveLockedResources();
+  }
+
   getSelectedFaceUpPileCard(): Observable<FaceUpPilesCardsEntity | undefined> {
     return this.faceUpPilesCards.selectedFaceUpPilesCards$;
   }

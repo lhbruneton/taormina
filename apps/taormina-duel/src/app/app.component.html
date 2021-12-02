@@ -181,6 +181,9 @@
 <hr />
 <div class="flex-container">
   <button type="button" (click)="putLand()">put land</button>
+  <button type="button" (click)="giveLockedResources()">
+    Give locked resources
+  </button>
   <div>
     <p>Pile Selected Land Card:</p>
     <p *ngIf="getPileSelectedLandCard() | async as pivot">
