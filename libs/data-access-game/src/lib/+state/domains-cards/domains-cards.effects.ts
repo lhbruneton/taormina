@@ -2,8 +2,16 @@ import { Injectable } from '@angular/core';
 import { Actions, createEffect, ofType } from '@ngrx/effects';
 import { select, Store } from '@ngrx/store';
 import { fetch } from '@nrwl/angular';
-import { ID_DOMAIN_BLUE, ID_DOMAIN_RED } from '@taormina/shared-constants';
-import { ResourceCount, RESOURCE_COUNTS } from '@taormina/shared-models';
+import {
+  ID_DOMAIN_BLUE,
+  ID_DOMAIN_RED,
+  landCards,
+} from '@taormina/shared-constants';
+import {
+  LandCard,
+  ResourceCount,
+  RESOURCE_COUNTS,
+} from '@taormina/shared-models';
 import { forkJoin, Observable, of } from 'rxjs';
 import {
   catchError,
@@ -230,6 +238,88 @@ export class DomainsCardsEffects {
     )
   );
 
+  giveLockedResources$ = createEffect(() =>
+    this.actions$.pipe(
+      ofType(DomainsCardsActions.giveLockedResources),
+      withLatestFrom(
+        this.domainsCardsStore.select(
+          DomainsCardsSelectors.getLandCardPivotWithLockedResources
+        )
+      ),
+      // eslint-disable-next-line @typescript-eslint/no-unused-vars
+      concatMap(([_action, pivotsWithLockedResources]) =>
+        this.domainsCardsStore.pipe(
+          select(DomainsCardsSelectors.getDomainsCardsSelected),
+          take(1),
+          map((pivotsSelected) => {
+            if (pivotsWithLockedResources.length === 0) {
+              throw new Error(
+                `Can't give locked resources if no pivots with locked resources.`
+              );
+            }
+            const firstPivot = pivotsWithLockedResources[0];
+            const firstLand = this.getLandCardFromPivot(firstPivot);
+            let count = 0;
+            pivotsWithLockedResources.forEach((pivot) => {
+              const land = this.getLandCardFromPivot(pivot);
+              if (land.type !== firstLand.type) {
+                throw new Error(
+                  `Can't give locked resources of different types.`
+                );
+              }
+              count += pivot.lockedResources;
+            });
+
+            const updatesLocked = pivotsWithLockedResources.map((pivot) => {
+              return {
+                id: pivot.id,
+                changes: {
+                  lockedResources: 0 as ResourceCount,
+                },
+              };
+            });
+
+            if (pivotsSelected.length !== 1) {
+              throw new Error(
+                `Can't give locked resources if no pivot or more than one pivot selected.`
+              );
+            }
+            const selectedPivot = pivotsSelected[0];
+            const selectedLand = this.getLandCardFromPivot(selectedPivot);
+            if (selectedLand.type !== firstLand.type) {
+              throw new Error(
+                `Can't give locked resources to pivot of different type.`
+              );
+            }
+
+            const sumResources = selectedPivot.availableResources + count;
+            if (sumResources > Math.max(...RESOURCE_COUNTS)) {
+              throw new Error(
+                `Can't give so many locked resources to selected pivot.`
+              );
+            }
+
+            const updateAvailable = {
+              id: selectedPivot.id,
+              changes: {
+                availableResources: sumResources as ResourceCount,
+              },
+            };
+
+            return DomainsCardsActions.updateDomainsCards({
+              updates: [...updatesLocked, updateAvailable],
+            });
+          }),
+          catchError((error) =>
+            of(
+              DomainsCardsActions.setDomainsCardsError({ error: error.message })
+            )
+          )
+        )
+      )
+    )
+  );
+
   increaseResources$ = createEffect(() =>
     this.actions$.pipe(
       ofType(DomainsCardsActions.increaseAvailableResources),
@@ -414,4 +504,19 @@ export class DomainsCardsEffects {
 
     return [...belowMax, ...atMax];
   };
+
+  private getLandCardFromPivot(pivot: DomainsCardsEntity): LandCard {
+    if (pivot.cardId === undefined) {
+      throw new Error(
+        `Something went wrong, cardId shouldn't be undefined at this point.`
+      );
+    }
+    const land = landCards.get(pivot.cardId);
+    if (land === undefined) {
+      throw new Error(
+        `Something went wrong, land shouldn't be undefined at this point.`
+      );
+    }
+    return land;
+  }
 }

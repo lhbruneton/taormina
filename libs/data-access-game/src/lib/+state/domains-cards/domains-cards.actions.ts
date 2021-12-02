@@ -74,6 +74,10 @@ export const useLockedResources = createAction(
   '[DomainsCards] Use Locked Resources'
 );
 
+export const giveLockedResources = createAction(
+  '[DomainsCards] Give Locked Resources'
+);
+
 export const toggleDomainCardSelection = createAction(
   '[DomainsCards] Toggle DomainCard Selection',
   props<{ id: string }>()

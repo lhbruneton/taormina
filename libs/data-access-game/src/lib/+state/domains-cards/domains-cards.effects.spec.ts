@@ -6,10 +6,12 @@ import { MockStore, provideMockStore } from '@ngrx/store/testing';
 import { DataPersistence, NxModule } from '@nrwl/angular';
 import { hot } from '@nrwl/angular/testing';
 import {
+  ID_CLAY_PIT_BLUE,
   ID_CLAY_PIT_RED,
   ID_DOMAIN_BLUE,
   ID_DOMAIN_RED,
   ID_FOREST_BLUE,
+  ID_FOREST_RED,
   ID_GOLD_MINE_RED,
   ID_PASTURE_BLUE,
 } from '@taormina/shared-constants';
@@ -508,6 +510,423 @@ describe('DomainsCardsEffects', () => {
       });
 
       expect(effects.useLockedResources$).toBeObservable(expected);
+    });
+  });
+
+  describe('giveLockedResources$', () => {
+    describe('OK', () => {
+      beforeEach(() => {
+        injector = Injector.create({
+          providers: [
+            provideMockStore({
+              selectors: [
+                {
+                  selector:
+                    DomainsCardsSelectors.getLandCardPivotWithLockedResources,
+                  value: [
+                    {
+                      id: 'AAA',
+                      domainId: ID_DOMAIN_RED,
+                      cardType: LAND_CARD_INTERFACE_NAME,
+                      cardId: ID_CLAY_PIT_RED,
+                      availableResources: 0,
+                      lockedResources: 1,
+                    },
+                    {
+                      id: 'BBB',
+                      domainId: ID_DOMAIN_RED,
+                      cardType: LAND_CARD_INTERFACE_NAME,
+                      cardId: 'LAND_1',
+                      availableResources: 0,
+                      lockedResources: 1,
+                    },
+                  ],
+                },
+                {
+                  selector: DomainsCardsSelectors.getDomainsCardsSelected,
+                  value: [
+                    {
+                      id: 'CCC',
+                      domainId: ID_DOMAIN_BLUE,
+                      cardType: LAND_CARD_INTERFACE_NAME,
+                      cardId: ID_CLAY_PIT_BLUE,
+                      availableResources: 1,
+                      lockedResources: 0,
+                    },
+                  ],
+                },
+              ],
+            }),
+          ],
+        });
+        injector.get(MockStore);
+      });
+
+      it(`should dispatch updateDomainsCards
+          with lockedResources = 0 for pivots with locked resources
+          and availableResources += lockedResources for selected pivot`, () => {
+        actions = hot('-a-|', {
+          a: DomainsCardsActions.giveLockedResources(),
+        });
+
+        const expected = hot('-a-|', {
+          a: DomainsCardsActions.updateDomainsCards({
+            updates: [
+              {
+                id: 'AAA',
+                changes: { lockedResources: 0 },
+              },
+              {
+                id: 'BBB',
+                changes: { lockedResources: 0 },
+              },
+              {
+                id: 'CCC',
+                changes: { availableResources: 3 },
+              },
+            ],
+          }),
+        });
+
+        expect(effects.giveLockedResources$).toBeObservable(expected);
+      });
+    });
+
+    describe('KO no pivots with locked resources', () => {
+      beforeEach(() => {
+        injector = Injector.create({
+          providers: [
+            provideMockStore({
+              selectors: [
+                {
+                  selector:
+                    DomainsCardsSelectors.getLandCardPivotWithLockedResources,
+                  value: [],
+                },
+                {
+                  selector: DomainsCardsSelectors.getDomainsCardsSelected,
+                  value: [
+                    {
+                      id: 'AAA',
+                      domainId: ID_DOMAIN_BLUE,
+                      cardType: LAND_CARD_INTERFACE_NAME,
+                      cardId: ID_CLAY_PIT_BLUE,
+                      availableResources: 1,
+                      lockedResources: 0,
+                    },
+                  ],
+                },
+              ],
+            }),
+          ],
+        });
+        injector.get(MockStore);
+      });
+
+      it('should dispatch setDomainsCardsError with no pivots with locked resources error', () => {
+        actions = hot('-a-|', {
+          a: DomainsCardsActions.giveLockedResources(),
+        });
+
+        const expected = hot('-a-|', {
+          a: DomainsCardsActions.setDomainsCardsError({
+            error: `Can't give locked resources if no pivots with locked resources.`,
+          }),
+        });
+
+        expect(effects.giveLockedResources$).toBeObservable(expected);
+      });
+    });
+
+    describe('KO pivots with locked resources of different types', () => {
+      beforeEach(() => {
+        injector = Injector.create({
+          providers: [
+            provideMockStore({
+              selectors: [
+                {
+                  selector:
+                    DomainsCardsSelectors.getLandCardPivotWithLockedResources,
+                  value: [
+                    {
+                      id: 'AAA',
+                      domainId: ID_DOMAIN_RED,
+                      cardType: LAND_CARD_INTERFACE_NAME,
+                      cardId: ID_CLAY_PIT_RED,
+                      availableResources: 0,
+                      lockedResources: 1,
+                    },
+                    {
+                      id: 'BBB',
+                      domainId: ID_DOMAIN_RED,
+                      cardType: LAND_CARD_INTERFACE_NAME,
+                      cardId: ID_FOREST_RED,
+                      availableResources: 0,
+                      lockedResources: 1,
+                    },
+                  ],
+                },
+                {
+                  selector: DomainsCardsSelectors.getDomainsCardsSelected,
+                  value: [
+                    {
+                      id: 'CCC',
+                      domainId: ID_DOMAIN_BLUE,
+                      cardType: LAND_CARD_INTERFACE_NAME,
+                      cardId: ID_CLAY_PIT_BLUE,
+                      availableResources: 1,
+                      lockedResources: 0,
+                    },
+                  ],
+                },
+              ],
+            }),
+          ],
+        });
+        injector.get(MockStore);
+      });
+
+      it('should dispatch setDomainsCardsError with locked resources of different types error', () => {
+        actions = hot('-a-|', {
+          a: DomainsCardsActions.giveLockedResources(),
+        });
+
+        const expected = hot('-a-|', {
+          a: DomainsCardsActions.setDomainsCardsError({
+            error: `Can't give locked resources of different types.`,
+          }),
+        });
+
+        expect(effects.giveLockedResources$).toBeObservable(expected);
+      });
+    });
+
+    describe('KO no pivot selected', () => {
+      beforeEach(() => {
+        injector = Injector.create({
+          providers: [
+            provideMockStore({
+              selectors: [
+                {
+                  selector:
+                    DomainsCardsSelectors.getLandCardPivotWithLockedResources,
+                  value: [
+                    {
+                      id: 'AAA',
+                      domainId: ID_DOMAIN_RED,
+                      cardType: LAND_CARD_INTERFACE_NAME,
+                      cardId: ID_CLAY_PIT_RED,
+                      availableResources: 0,
+                      lockedResources: 1,
+                    },
+                  ],
+                },
+                {
+                  selector: DomainsCardsSelectors.getDomainsCardsSelected,
+                  value: [],
+                },
+              ],
+            }),
+          ],
+        });
+        injector.get(MockStore);
+      });
+
+      it('should dispatch setDomainsCardsError with no pivot selected error', () => {
+        actions = hot('-a-|', {
+          a: DomainsCardsActions.giveLockedResources(),
+        });
+
+        const expected = hot('-a-|', {
+          a: DomainsCardsActions.setDomainsCardsError({
+            error: `Can't give locked resources if no pivot or more than one pivot selected.`,
+          }),
+        });
+
+        expect(effects.giveLockedResources$).toBeObservable(expected);
+      });
+    });
+
+    describe('KO more than one pivot selected', () => {
+      beforeEach(() => {
+        injector = Injector.create({
+          providers: [
+            provideMockStore({
+              selectors: [
+                {
+                  selector:
+                    DomainsCardsSelectors.getLandCardPivotWithLockedResources,
+                  value: [
+                    {
+                      id: 'AAA',
+                      domainId: ID_DOMAIN_RED,
+                      cardType: LAND_CARD_INTERFACE_NAME,
+                      cardId: ID_CLAY_PIT_RED,
+                      availableResources: 0,
+                      lockedResources: 1,
+                    },
+                  ],
+                },
+                {
+                  selector: DomainsCardsSelectors.getDomainsCardsSelected,
+                  value: [
+                    {
+                      id: 'BBB',
+                      domainId: ID_DOMAIN_BLUE,
+                      cardType: LAND_CARD_INTERFACE_NAME,
+                      cardId: ID_CLAY_PIT_BLUE,
+                      availableResources: 1,
+                      lockedResources: 0,
+                    },
+                    {
+                      id: 'CCC',
+                      domainId: ID_DOMAIN_BLUE,
+                      cardType: LAND_CARD_INTERFACE_NAME,
+                      cardId: ID_FOREST_BLUE,
+                      availableResources: 1,
+                      lockedResources: 0,
+                    },
+                  ],
+                },
+              ],
+            }),
+          ],
+        });
+        injector.get(MockStore);
+      });
+
+      it('should dispatch setDomainsCardsError with more than one pivot selected error', () => {
+        actions = hot('-a-|', {
+          a: DomainsCardsActions.giveLockedResources(),
+        });
+
+        const expected = hot('-a-|', {
+          a: DomainsCardsActions.setDomainsCardsError({
+            error: `Can't give locked resources if no pivot or more than one pivot selected.`,
+          }),
+        });
+
+        expect(effects.giveLockedResources$).toBeObservable(expected);
+      });
+    });
+
+    describe('KO selected pivot of different type than locked resources', () => {
+      beforeEach(() => {
+        injector = Injector.create({
+          providers: [
+            provideMockStore({
+              selectors: [
+                {
+                  selector:
+                    DomainsCardsSelectors.getLandCardPivotWithLockedResources,
+                  value: [
+                    {
+                      id: 'AAA',
+                      domainId: ID_DOMAIN_RED,
+                      cardType: LAND_CARD_INTERFACE_NAME,
+                      cardId: ID_CLAY_PIT_RED,
+                      availableResources: 0,
+                      lockedResources: 1,
+                    },
+                  ],
+                },
+                {
+                  selector: DomainsCardsSelectors.getDomainsCardsSelected,
+                  value: [
+                    {
+                      id: 'BBB',
+                      domainId: ID_DOMAIN_BLUE,
+                      cardType: LAND_CARD_INTERFACE_NAME,
+                      cardId: ID_FOREST_BLUE,
+                      availableResources: 1,
+                      lockedResources: 0,
+                    },
+                  ],
+                },
+              ],
+            }),
+          ],
+        });
+        injector.get(MockStore);
+      });
+
+      it(`should dispatch setDomainsCardsError
+          with selected pivot of different type than locked resources error`, () => {
+        actions = hot('-a-|', {
+          a: DomainsCardsActions.giveLockedResources(),
+        });
+
+        const expected = hot('-a-|', {
+          a: DomainsCardsActions.setDomainsCardsError({
+            error: `Can't give locked resources to pivot of different type.`,
+          }),
+        });
+
+        expect(effects.giveLockedResources$).toBeObservable(expected);
+      });
+    });
+
+    describe('KO too many locked resources to give', () => {
+      beforeEach(() => {
+        injector = Injector.create({
+          providers: [
+            provideMockStore({
+              selectors: [
+                {
+                  selector:
+                    DomainsCardsSelectors.getLandCardPivotWithLockedResources,
+                  value: [
+                    {
+                      id: 'AAA',
+                      domainId: ID_DOMAIN_RED,
+                      cardType: LAND_CARD_INTERFACE_NAME,
+                      cardId: ID_CLAY_PIT_RED,
+                      availableResources: 0,
+                      lockedResources: 1,
+                    },
+                    {
+                      id: 'BBB',
+                      domainId: ID_DOMAIN_RED,
+                      cardType: LAND_CARD_INTERFACE_NAME,
+                      cardId: 'LAND_1',
+                      availableResources: 0,
+                      lockedResources: 1,
+                    },
+                  ],
+                },
+                {
+                  selector: DomainsCardsSelectors.getDomainsCardsSelected,
+                  value: [
+                    {
+                      id: 'CCC',
+                      domainId: ID_DOMAIN_BLUE,
+                      cardType: LAND_CARD_INTERFACE_NAME,
+                      cardId: ID_CLAY_PIT_BLUE,
+                      availableResources: 2,
+                      lockedResources: 0,
+                    },
+                  ],
+                },
+              ],
+            }),
+          ],
+        });
+        injector.get(MockStore);
+      });
+
+      it('should dispatch setDomainsCardsError with too many locked resources to give error', () => {
+        actions = hot('-a-|', {
+          a: DomainsCardsActions.giveLockedResources(),
+        });
+
+        const expected = hot('-a-|', {
+          a: DomainsCardsActions.setDomainsCardsError({
+            error: `Can't give so many locked resources to selected pivot.`,
+          }),
+        });
+
+        expect(effects.giveLockedResources$).toBeObservable(expected);
+      });
     });
   });
 
