@@ -25,33 +25,6 @@
       }
     }
   },
-  "projects": {
-    "data-access-game": {
-      "tags": []
-    },
-    "feature-engine": {
-      "tags": []
-    },
-    "shared-constants": {
-      "tags": []
-    },
-    "shared-models": {
-      "tags": []
-    },
-    "shared-utils": {
-      "tags": []
-    },
-    "taormina-duel": {
-      "tags": []
-    },
-    "taormina-duel-e2e": {
-      "tags": [],
-      "implicitDependencies": ["taormina-duel"]
-    },
-    "ui-card": {
-      "tags": []
-    }
-  },
   "targetDependencies": {
     "build": [
       {
@@ -59,5 +32,39 @@
         "projects": "dependencies"
       }
     ]
+  },
+  "cli": {
+    "analytics": false,
+    "defaultCollection": "@nrwl/angular"
+  },
+  "generators": {
+    "@nrwl/angular": {
+      "application": {
+        "linter": "eslint"
+      },
+      "library": {
+        "linter": "eslint"
+      },
+      "storybook-configuration": {
+        "linter": "eslint"
+      }
+    },
+    "@nrwl/angular:application": {
+      "style": "css",
+      "linter": "eslint",
+      "unitTestRunner": "jest",
+      "e2eTestRunner": "cypress"
+    },
+    "@nrwl/angular:library": {
+      "style": "css",
+      "linter": "eslint",
+      "unitTestRunner": "jest"
+    },
+    "@nrwl/angular:component": {
+      "style": "css"
+    },
+    "@schematics/angular:application": {
+      "strict": true
+    }
   }
 }

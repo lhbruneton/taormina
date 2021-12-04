@@ -1,4 +1,7 @@
 {
+  "cli": {
+    "analytics": "23137f4a-7623-432c-a8ac-c587ef3a9ba3"
+  },
   "version": 1,
   "projects": {
     "data-access-game": {
@@ -24,7 +27,8 @@
             "passWithNoTests": true
           }
         }
-      }
+      },
+      "tags": []
     },
     "feature-engine": {
       "projectType": "library",
@@ -49,7 +53,8 @@
             "passWithNoTests": true
           }
         }
-      }
+      },
+      "tags": []
     },
     "shared-constants": {
       "projectType": "library",
@@ -74,7 +79,8 @@
             "passWithNoTests": true
           }
         }
-      }
+      },
+      "tags": []
     },
     "shared-models": {
       "projectType": "library",
@@ -99,7 +105,8 @@
             "passWithNoTests": true
           }
         }
-      }
+      },
+      "tags": []
     },
     "shared-utils": {
       "projectType": "library",
@@ -124,7 +131,8 @@
             "passWithNoTests": true
           }
         }
-      }
+      },
+      "tags": []
     },
     "taormina-duel": {
       "projectType": "application",
@@ -217,7 +225,8 @@
             "passWithNoTests": true
           }
         }
-      }
+      },
+      "tags": []
     },
     "taormina-duel-e2e": {
       "root": "apps/taormina-duel-e2e",
@@ -243,7 +252,9 @@
             "lintFilePatterns": ["apps/taormina-duel-e2e/**/*.{js,ts}"]
           }
         }
-      }
+      },
+      "tags": [],
+      "implicitDependencies": ["taormina-duel"]
     },
     "ui-card": {
       "projectType": "library",
@@ -268,41 +279,8 @@
             "passWithNoTests": true
           }
         }
-      }
-    }
-  },
-  "cli": {
-    "analytics": false,
-    "defaultCollection": "@nrwl/angular"
-  },
-  "schematics": {
-    "@nrwl/angular": {
-      "application": {
-        "linter": "eslint"
       },
-      "library": {
-        "linter": "eslint"
-      },
-      "storybook-configuration": {
-        "linter": "eslint"
-      }
-    },
-    "@nrwl/angular:application": {
-      "style": "css",
-      "linter": "eslint",
-      "unitTestRunner": "jest",
-      "e2eTestRunner": "cypress"
-    },
-    "@nrwl/angular:library": {
-      "style": "css",
-      "linter": "eslint",
-      "unitTestRunner": "jest"
-    },
-    "@nrwl/angular:component": {
-      "style": "css"
-    },
-    "@schematics/angular:application": {
-      "strict": true
+      "tags": []
     }
   }
 }
