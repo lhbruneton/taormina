@@ -56,58 +56,46 @@ describe('EventsPileCardsFacade', () => {
     /**
      * The initially generated facade::loadAll() returns empty array
      */
-    it('loadAll() should return empty list with loaded == true', async (done) => {
-      try {
-        let list = await readFirst(facade.allEventsPileCards$);
-        let isLoaded = await readFirst(facade.loaded$);
+    it('loadAll() should return empty list with loaded == true', async () => {
+      let list = await readFirst(facade.allEventsPileCards$);
+      let isLoaded = await readFirst(facade.loaded$);
 
-        expect(list.length).toBe(0);
-        expect(isLoaded).toBe(false);
+      expect(list.length).toBe(0);
+      expect(isLoaded).toBe(false);
 
-        facade.initSavedGame();
+      facade.initSavedGame();
 
-        list = await readFirst(facade.allEventsPileCards$);
-        isLoaded = await readFirst(facade.loaded$);
+      list = await readFirst(facade.allEventsPileCards$);
+      isLoaded = await readFirst(facade.loaded$);
 
-        expect(list.length).toBe(0);
-        expect(isLoaded).toBe(true);
-
-        done();
-      } catch (err) {
-        done.fail(err);
-      }
+      expect(list.length).toBe(0);
+      expect(isLoaded).toBe(true);
     });
 
     /**
      * Use `loadEventsPileCardsSuccess` to manually update list
      */
-    it('allEventsPileCards$ should return the loaded list; and loaded flag == true', async (done) => {
-      try {
-        let list = await readFirst(facade.allEventsPileCards$);
-        let isLoaded = await readFirst(facade.loaded$);
+    it('allEventsPileCards$ should return the loaded list; and loaded flag == true', async () => {
+      let list = await readFirst(facade.allEventsPileCards$);
+      let isLoaded = await readFirst(facade.loaded$);
 
-        expect(list.length).toBe(0);
-        expect(isLoaded).toBe(false);
+      expect(list.length).toBe(0);
+      expect(isLoaded).toBe(false);
 
-        store.dispatch(
-          EventsPileCardsActions.loadEventsPileCardsSuccess({
-            eventsPileCards: [
-              createEventsPileCardsEntity('AAA', 'A'),
-              createEventsPileCardsEntity('BBB', 'B'),
-            ],
-          })
-        );
+      store.dispatch(
+        EventsPileCardsActions.loadEventsPileCardsSuccess({
+          eventsPileCards: [
+            createEventsPileCardsEntity('AAA', 'A'),
+            createEventsPileCardsEntity('BBB', 'B'),
+          ],
+        })
+      );
 
-        list = await readFirst(facade.allEventsPileCards$);
-        isLoaded = await readFirst(facade.loaded$);
+      list = await readFirst(facade.allEventsPileCards$);
+      isLoaded = await readFirst(facade.loaded$);
 
-        expect(list.length).toBe(2);
-        expect(isLoaded).toBe(true);
-
-        done();
-      } catch (err) {
-        done.fail(err);
-      }
+      expect(list.length).toBe(2);
+      expect(isLoaded).toBe(true);
     });
   });
 });

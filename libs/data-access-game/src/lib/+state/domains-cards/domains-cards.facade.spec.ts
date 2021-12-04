@@ -60,72 +60,60 @@ describe('DomainsCardsFacade', () => {
     /**
      * The initially generated facade::loadAll() returns empty array
      */
-    it('loadAll() should return empty list with loaded == true', async (done) => {
-      try {
-        let list = await readFirst(facade.allDomainsCards$);
-        let isLoaded = await readFirst(facade.loaded$);
+    it('loadAll() should return empty list with loaded == true', async () => {
+      let list = await readFirst(facade.allDomainsCards$);
+      let isLoaded = await readFirst(facade.loaded$);
 
-        expect(list.length).toBe(0);
-        expect(isLoaded).toBe(false);
+      expect(list.length).toBe(0);
+      expect(isLoaded).toBe(false);
 
-        facade.initSavedGame();
+      facade.initSavedGame();
 
-        list = await readFirst(facade.allDomainsCards$);
-        isLoaded = await readFirst(facade.loaded$);
+      list = await readFirst(facade.allDomainsCards$);
+      isLoaded = await readFirst(facade.loaded$);
 
-        expect(list.length).toBe(0);
-        expect(isLoaded).toBe(true);
-
-        done();
-      } catch (err) {
-        done.fail(err);
-      }
+      expect(list.length).toBe(0);
+      expect(isLoaded).toBe(true);
     });
 
     /**
      * Use `loadDomainsCardsSuccess` to manually update list
      */
-    it('allDomainsCards$ should return the loaded list; and loaded flag == true', async (done) => {
-      try {
-        let list = await readFirst(facade.allDomainsCards$);
-        let isLoaded = await readFirst(facade.loaded$);
+    it('allDomainsCards$ should return the loaded list; and loaded flag == true', async () => {
+      let list = await readFirst(facade.allDomainsCards$);
+      let isLoaded = await readFirst(facade.loaded$);
 
-        expect(list.length).toBe(0);
-        expect(isLoaded).toBe(false);
+      expect(list.length).toBe(0);
+      expect(isLoaded).toBe(false);
 
-        store.dispatch(
-          DomainsCardsActions.loadDomainsCardsSuccess({
-            domainsCards: [
-              createDomainsCardsEntity(
-                'AAA',
-                'A',
-                AGGLOMERATION_CARD_INTERFACE_NAME,
-                'A',
-                0,
-                0
-              ),
-              createDomainsCardsEntity(
-                'BBB',
-                'B',
-                DEVELOPMENT_CARD_INTERFACE_NAME,
-                'B',
-                0,
-                0
-              ),
-            ],
-          })
-        );
+      store.dispatch(
+        DomainsCardsActions.loadDomainsCardsSuccess({
+          domainsCards: [
+            createDomainsCardsEntity(
+              'AAA',
+              'A',
+              AGGLOMERATION_CARD_INTERFACE_NAME,
+              'A',
+              0,
+              0
+            ),
+            createDomainsCardsEntity(
+              'BBB',
+              'B',
+              DEVELOPMENT_CARD_INTERFACE_NAME,
+              'B',
+              0,
+              0
+            ),
+          ],
+        })
+      );
 
-        list = await readFirst(facade.allDomainsCards$);
-        isLoaded = await readFirst(facade.loaded$);
+      list = await readFirst(facade.allDomainsCards$);
+      isLoaded = await readFirst(facade.loaded$);
 
-        expect(list.length).toBe(2);
-        expect(isLoaded).toBe(true);
-
-        done();
-      } catch (err) {
-        done.fail(err);
-      }
+      expect(list.length).toBe(2);
+      expect(isLoaded).toBe(true);
     });
   });
 });

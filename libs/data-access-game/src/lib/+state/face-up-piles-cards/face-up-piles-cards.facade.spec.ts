@@ -56,58 +56,46 @@ describe('FaceUpPilesCardsFacade', () => {
     /**
      * The initially generated facade::loadAll() returns empty array
      */
-    it('loadAll() should return empty list with loaded == true', async (done) => {
-      try {
-        let list = await readFirst(facade.allFaceUpPilesCards$);
-        let isLoaded = await readFirst(facade.loaded$);
+    it('loadAll() should return empty list with loaded == true', async () => {
+      let list = await readFirst(facade.allFaceUpPilesCards$);
+      let isLoaded = await readFirst(facade.loaded$);
 
-        expect(list.length).toBe(0);
-        expect(isLoaded).toBe(false);
+      expect(list.length).toBe(0);
+      expect(isLoaded).toBe(false);
 
-        facade.initSavedGame();
+      facade.initSavedGame();
 
-        list = await readFirst(facade.allFaceUpPilesCards$);
-        isLoaded = await readFirst(facade.loaded$);
+      list = await readFirst(facade.allFaceUpPilesCards$);
+      isLoaded = await readFirst(facade.loaded$);
 
-        expect(list.length).toBe(0);
-        expect(isLoaded).toBe(true);
-
-        done();
-      } catch (err) {
-        done.fail(err);
-      }
+      expect(list.length).toBe(0);
+      expect(isLoaded).toBe(true);
     });
 
     /**
      * Use `loadFaceUpPilesCardsSuccess` to manually update list
      */
-    it('allFaceUpPilesCards$ should return the loaded list; and loaded flag == true', async (done) => {
-      try {
-        let list = await readFirst(facade.allFaceUpPilesCards$);
-        let isLoaded = await readFirst(facade.loaded$);
+    it('allFaceUpPilesCards$ should return the loaded list; and loaded flag == true', async () => {
+      let list = await readFirst(facade.allFaceUpPilesCards$);
+      let isLoaded = await readFirst(facade.loaded$);
 
-        expect(list.length).toBe(0);
-        expect(isLoaded).toBe(false);
+      expect(list.length).toBe(0);
+      expect(isLoaded).toBe(false);
 
-        store.dispatch(
-          FaceUpPilesCardsActions.loadFaceUpPilesCardsSuccess({
-            faceUpPilesCards: [
-              createFaceUpPilesCardsEntity('AAA', 'A', 'A'),
-              createFaceUpPilesCardsEntity('BBB', 'B', 'B'),
-            ],
-          })
-        );
+      store.dispatch(
+        FaceUpPilesCardsActions.loadFaceUpPilesCardsSuccess({
+          faceUpPilesCards: [
+            createFaceUpPilesCardsEntity('AAA', 'A', 'A'),
+            createFaceUpPilesCardsEntity('BBB', 'B', 'B'),
+          ],
+        })
+      );
 
-        list = await readFirst(facade.allFaceUpPilesCards$);
-        isLoaded = await readFirst(facade.loaded$);
+      list = await readFirst(facade.allFaceUpPilesCards$);
+      isLoaded = await readFirst(facade.loaded$);
 
-        expect(list.length).toBe(2);
-        expect(isLoaded).toBe(true);
-
-        done();
-      } catch (err) {
-        done.fail(err);
-      }
+      expect(list.length).toBe(2);
+      expect(isLoaded).toBe(true);
     });
   });
 });

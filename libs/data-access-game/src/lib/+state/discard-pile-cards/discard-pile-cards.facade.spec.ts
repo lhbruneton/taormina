@@ -56,58 +56,46 @@ describe('DiscardPileCardsFacade', () => {
     /**
      * The initially generated facade::loadAll() returns empty array
      */
-    it('loadAll() should return empty list with loaded == true', async (done) => {
-      try {
-        let list = await readFirst(facade.allDiscardPileCards$);
-        let isLoaded = await readFirst(facade.loaded$);
+    it('loadAll() should return empty list with loaded == true', async () => {
+      let list = await readFirst(facade.allDiscardPileCards$);
+      let isLoaded = await readFirst(facade.loaded$);
 
-        expect(list.length).toBe(0);
-        expect(isLoaded).toBe(false);
+      expect(list.length).toBe(0);
+      expect(isLoaded).toBe(false);
 
-        facade.initSavedGame();
+      facade.initSavedGame();
 
-        list = await readFirst(facade.allDiscardPileCards$);
-        isLoaded = await readFirst(facade.loaded$);
+      list = await readFirst(facade.allDiscardPileCards$);
+      isLoaded = await readFirst(facade.loaded$);
 
-        expect(list.length).toBe(0);
-        expect(isLoaded).toBe(true);
-
-        done();
-      } catch (err) {
-        done.fail(err);
-      }
+      expect(list.length).toBe(0);
+      expect(isLoaded).toBe(true);
     });
 
     /**
      * Use `loadDiscardPileCardsSuccess` to manually update list
      */
-    it('allDiscardPileCards$ should return the loaded list; and loaded flag == true', async (done) => {
-      try {
-        let list = await readFirst(facade.allDiscardPileCards$);
-        let isLoaded = await readFirst(facade.loaded$);
+    it('allDiscardPileCards$ should return the loaded list; and loaded flag == true', async () => {
+      let list = await readFirst(facade.allDiscardPileCards$);
+      let isLoaded = await readFirst(facade.loaded$);
 
-        expect(list.length).toBe(0);
-        expect(isLoaded).toBe(false);
+      expect(list.length).toBe(0);
+      expect(isLoaded).toBe(false);
 
-        store.dispatch(
-          DiscardPileCardsActions.loadDiscardPileCardsSuccess({
-            discardPileCards: [
-              createDiscardPileCardsEntity('AAA', 'TYPE-A', 'A'),
-              createDiscardPileCardsEntity('BBB', 'TYPE-B', 'B'),
-            ],
-          })
-        );
+      store.dispatch(
+        DiscardPileCardsActions.loadDiscardPileCardsSuccess({
+          discardPileCards: [
+            createDiscardPileCardsEntity('AAA', 'TYPE-A', 'A'),
+            createDiscardPileCardsEntity('BBB', 'TYPE-B', 'B'),
+          ],
+        })
+      );
 
-        list = await readFirst(facade.allDiscardPileCards$);
-        isLoaded = await readFirst(facade.loaded$);
+      list = await readFirst(facade.allDiscardPileCards$);
+      isLoaded = await readFirst(facade.loaded$);
 
-        expect(list.length).toBe(2);
-        expect(isLoaded).toBe(true);
-
-        done();
-      } catch (err) {
-        done.fail(err);
-      }
+      expect(list.length).toBe(2);
+      expect(isLoaded).toBe(true);
     });
   });
 });
