@@ -4,7 +4,6 @@ import { provideMockActions } from '@ngrx/effects/testing';
 import { Action } from '@ngrx/store';
 import { MockStore, provideMockStore } from '@ngrx/store/testing';
 import { DataPersistence, NxModule } from '@nrwl/angular';
-import { hot } from '@nrwl/angular/testing';
 import {
   ID_CLAY_PIT_BLUE,
   ID_CLAY_PIT_RED,
@@ -19,6 +18,7 @@ import {
   AVAILABLE_AGGLOMERATION_SLOT,
   LAND_CARD_INTERFACE_NAME,
 } from '@taormina/shared-models';
+import { hot } from 'jasmine-marbles';
 import { Observable } from 'rxjs';
 
 import * as DomainsCardsActions from './domains-cards.actions';

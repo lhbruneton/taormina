@@ -3,7 +3,7 @@ import { provideMockActions } from '@ngrx/effects/testing';
 import { Action } from '@ngrx/store';
 import { provideMockStore } from '@ngrx/store/testing';
 import { DataPersistence, NxModule } from '@nrwl/angular';
-import { hot } from '@nrwl/angular/testing';
+import { hot } from 'jasmine-marbles';
 import { ACTION_CARD_INTERFACE_NAME } from '@taormina/shared-models';
 import { Observable } from 'rxjs';
 

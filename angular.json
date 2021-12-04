@@ -1,6 +1,131 @@
 {
   "version": 1,
   "projects": {
+    "data-access-game": {
+      "projectType": "library",
+      "root": "libs/data-access-game",
+      "sourceRoot": "libs/data-access-game/src",
+      "prefix": "taormina",
+      "architect": {
+        "lint": {
+          "builder": "@nrwl/linter:eslint",
+          "options": {
+            "lintFilePatterns": [
+              "libs/data-access-game/src/**/*.ts",
+              "libs/data-access-game/src/**/*.html"
+            ]
+          }
+        },
+        "test": {
+          "builder": "@nrwl/jest:jest",
+          "outputs": ["coverage/libs/data-access-game"],
+          "options": {
+            "jestConfig": "libs/data-access-game/jest.config.js",
+            "passWithNoTests": true
+          }
+        }
+      }
+    },
+    "feature-engine": {
+      "projectType": "library",
+      "root": "libs/feature-engine",
+      "sourceRoot": "libs/feature-engine/src",
+      "prefix": "taormina",
+      "architect": {
+        "lint": {
+          "builder": "@nrwl/linter:eslint",
+          "options": {
+            "lintFilePatterns": [
+              "libs/feature-engine/src/**/*.ts",
+              "libs/feature-engine/src/**/*.html"
+            ]
+          }
+        },
+        "test": {
+          "builder": "@nrwl/jest:jest",
+          "outputs": ["coverage/libs/feature-engine"],
+          "options": {
+            "jestConfig": "libs/feature-engine/jest.config.js",
+            "passWithNoTests": true
+          }
+        }
+      }
+    },
+    "shared-constants": {
+      "projectType": "library",
+      "root": "libs/shared-constants",
+      "sourceRoot": "libs/shared-constants/src",
+      "prefix": "taormina",
+      "architect": {
+        "lint": {
+          "builder": "@nrwl/linter:eslint",
+          "options": {
+            "lintFilePatterns": [
+              "libs/shared-constants/src/**/*.ts",
+              "libs/shared-constants/src/**/*.html"
+            ]
+          }
+        },
+        "test": {
+          "builder": "@nrwl/jest:jest",
+          "outputs": ["coverage/libs/shared-constants"],
+          "options": {
+            "jestConfig": "libs/shared-constants/jest.config.js",
+            "passWithNoTests": true
+          }
+        }
+      }
+    },
+    "shared-models": {
+      "projectType": "library",
+      "root": "libs/shared-models",
+      "sourceRoot": "libs/shared-models/src",
+      "prefix": "taormina",
+      "architect": {
+        "lint": {
+          "builder": "@nrwl/linter:eslint",
+          "options": {
+            "lintFilePatterns": [
+              "libs/shared-models/src/**/*.ts",
+              "libs/shared-models/src/**/*.html"
+            ]
+          }
+        },
+        "test": {
+          "builder": "@nrwl/jest:jest",
+          "outputs": ["coverage/libs/shared-models"],
+          "options": {
+            "jestConfig": "libs/shared-models/jest.config.js",
+            "passWithNoTests": true
+          }
+        }
+      }
+    },
+    "shared-utils": {
+      "projectType": "library",
+      "root": "libs/shared-utils",
+      "sourceRoot": "libs/shared-utils/src",
+      "prefix": "taormina",
+      "architect": {
+        "lint": {
+          "builder": "@nrwl/linter:eslint",
+          "options": {
+            "lintFilePatterns": [
+              "libs/shared-utils/src/**/*.ts",
+              "libs/shared-utils/src/**/*.html"
+            ]
+          }
+        },
+        "test": {
+          "builder": "@nrwl/jest:jest",
+          "outputs": ["coverage/libs/shared-utils"],
+          "options": {
+            "jestConfig": "libs/shared-utils/jest.config.js",
+            "passWithNoTests": true
+          }
+        }
+      }
+    },
     "taormina-duel": {
       "projectType": "application",
       "root": "apps/taormina-duel",
@@ -19,9 +144,7 @@
               "apps/taormina-duel/src/favicon.ico",
               "apps/taormina-duel/src/assets"
             ],
-            "styles": [
-              "apps/taormina-duel/src/styles.css"
-            ],
+            "styles": ["apps/taormina-duel/src/styles.css"],
             "scripts": [],
             "vendorChunk": true,
             "extractLicenses": false,
@@ -88,9 +211,7 @@
         },
         "test": {
           "builder": "@nrwl/jest:jest",
-          "outputs": [
-            "coverage/apps/taormina-duel"
-          ],
+          "outputs": ["coverage/apps/taormina-duel"],
           "options": {
             "jestConfig": "apps/taormina-duel/jest.config.js",
             "passWithNoTests": true
@@ -119,9 +240,7 @@
         "lint": {
           "builder": "@nrwl/linter:eslint",
           "options": {
-            "lintFilePatterns": [
-              "apps/taormina-duel-e2e/**/*.{js,ts}"
-            ]
+            "lintFilePatterns": ["apps/taormina-duel-e2e/**/*.{js,ts}"]
           }
         }
       }
@@ -143,146 +262,9 @@
         },
         "test": {
           "builder": "@nrwl/jest:jest",
-          "outputs": [
-            "coverage/libs/ui-card"
-          ],
+          "outputs": ["coverage/libs/ui-card"],
           "options": {
             "jestConfig": "libs/ui-card/jest.config.js",
-            "passWithNoTests": true
-          }
-        }
-      }
-    },
-    "data-access-game": {
-      "projectType": "library",
-      "root": "libs/data-access-game",
-      "sourceRoot": "libs/data-access-game/src",
-      "prefix": "taormina",
-      "architect": {
-        "lint": {
-          "builder": "@nrwl/linter:eslint",
-          "options": {
-            "lintFilePatterns": [
-              "libs/data-access-game/src/**/*.ts",
-              "libs/data-access-game/src/**/*.html"
-            ]
-          }
-        },
-        "test": {
-          "builder": "@nrwl/jest:jest",
-          "outputs": [
-            "coverage/libs/data-access-game"
-          ],
-          "options": {
-            "jestConfig": "libs/data-access-game/jest.config.js",
-            "passWithNoTests": true
-          }
-        }
-      }
-    },
-    "shared-models": {
-      "projectType": "library",
-      "root": "libs/shared-models",
-      "sourceRoot": "libs/shared-models/src",
-      "prefix": "taormina",
-      "architect": {
-        "lint": {
-          "builder": "@nrwl/linter:eslint",
-          "options": {
-            "lintFilePatterns": [
-              "libs/shared-models/src/**/*.ts",
-              "libs/shared-models/src/**/*.html"
-            ]
-          }
-        },
-        "test": {
-          "builder": "@nrwl/jest:jest",
-          "outputs": [
-            "coverage/libs/shared-models"
-          ],
-          "options": {
-            "jestConfig": "libs/shared-models/jest.config.js",
-            "passWithNoTests": true
-          }
-        }
-      }
-    },
-    "shared-constants": {
-      "projectType": "library",
-      "root": "libs/shared-constants",
-      "sourceRoot": "libs/shared-constants/src",
-      "prefix": "taormina",
-      "architect": {
-        "lint": {
-          "builder": "@nrwl/linter:eslint",
-          "options": {
-            "lintFilePatterns": [
-              "libs/shared-constants/src/**/*.ts",
-              "libs/shared-constants/src/**/*.html"
-            ]
-          }
-        },
-        "test": {
-          "builder": "@nrwl/jest:jest",
-          "outputs": [
-            "coverage/libs/shared-constants"
-          ],
-          "options": {
-            "jestConfig": "libs/shared-constants/jest.config.js",
-            "passWithNoTests": true
-          }
-        }
-      }
-    },
-    "feature-engine": {
-      "projectType": "library",
-      "root": "libs/feature-engine",
-      "sourceRoot": "libs/feature-engine/src",
-      "prefix": "taormina",
-      "architect": {
-        "lint": {
-          "builder": "@nrwl/linter:eslint",
-          "options": {
-            "lintFilePatterns": [
-              "libs/feature-engine/src/**/*.ts",
-              "libs/feature-engine/src/**/*.html"
-            ]
-          }
-        },
-        "test": {
-          "builder": "@nrwl/jest:jest",
-          "outputs": [
-            "coverage/libs/feature-engine"
-          ],
-          "options": {
-            "jestConfig": "libs/feature-engine/jest.config.js",
-            "passWithNoTests": true
-          }
-        }
-      }
-    },
-    "shared-utils": {
-      "projectType": "library",
-      "root": "libs/shared-utils",
-      "sourceRoot": "libs/shared-utils/src",
-      "prefix": "taormina",
-      "architect": {
-        "lint": {
-          "builder": "@nrwl/linter:eslint",
-          "options": {
-            "lintFilePatterns": [
-              "libs/shared-utils/src/**/*.ts",
-              "libs/shared-utils/src/**/*.html"
-            ]
-          }
-        },
-        "test": {
-          "builder": "@nrwl/jest:jest",
-          "outputs": [
-            "coverage/libs/shared-utils"
-          ],
-          "options": {
-            "jestConfig": "libs/shared-utils/jest.config.js",
             "passWithNoTests": true
           }
         }

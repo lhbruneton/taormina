@@ -26,6 +26,21 @@
     }
   },
   "projects": {
+    "data-access-game": {
+      "tags": []
+    },
+    "feature-engine": {
+      "tags": []
+    },
+    "shared-constants": {
+      "tags": []
+    },
+    "shared-models": {
+      "tags": []
+    },
+    "shared-utils": {
+      "tags": []
+    },
     "taormina-duel": {
       "tags": []
     },
@@ -34,21 +49,6 @@
       "implicitDependencies": ["taormina-duel"]
     },
     "ui-card": {
-      "tags": []
-    },
-    "data-access-game": {
-      "tags": []
-    },
-    "shared-models": {
-      "tags": []
-    },
-    "shared-constants": {
-      "tags": []
-    },
-    "feature-engine": {
-      "tags": []
-    },
-    "shared-utils": {
       "tags": []
     }
   }
