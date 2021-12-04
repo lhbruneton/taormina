@@ -3,7 +3,7 @@ import { GamePartialState, GameState, GAME_FEATURE_KEY } from './game.reducer';
 
 // Lookup the 'Game' feature state managed by NgRx
 export const getGameState =
-  createFeatureSelector<GamePartialState, GameState>(GAME_FEATURE_KEY);
+  createFeatureSelector< GameState>(GAME_FEATURE_KEY);
 
 export const getGameProductionDie = createSelector(
   getGameState,

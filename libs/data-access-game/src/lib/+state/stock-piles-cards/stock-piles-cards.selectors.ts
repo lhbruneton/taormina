@@ -9,7 +9,6 @@ import {
 
 // Lookup the 'StockPilesCards' feature state managed by NgRx
 export const getStockPilesCardsState = createFeatureSelector<
-  StockPilesCardsPartialState,
   StockPilesCardsState
 >(STOCK_PILES_CARDS_FEATURE_KEY);
 

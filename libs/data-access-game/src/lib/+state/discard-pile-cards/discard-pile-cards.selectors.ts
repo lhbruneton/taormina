@@ -8,7 +8,6 @@ import {
 
 // Lookup the 'DiscardPileCards' feature state managed by NgRx
 export const getDiscardPileCardsState = createFeatureSelector<
-  DiscardPileCardsPartialState,
   DiscardPileCardsState
 >(DISCARD_PILE_CARDS_FEATURE_KEY);
 

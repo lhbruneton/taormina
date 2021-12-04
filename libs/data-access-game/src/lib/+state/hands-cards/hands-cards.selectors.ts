@@ -8,7 +8,6 @@ import {
 
 // Lookup the 'HandsCards' feature state managed by NgRx
 export const getHandsCardsState = createFeatureSelector<
-  HandsCardsPartialState,
   HandsCardsState
 >(HANDS_CARDS_FEATURE_KEY);
 

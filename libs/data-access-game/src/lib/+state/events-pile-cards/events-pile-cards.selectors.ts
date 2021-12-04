@@ -8,7 +8,6 @@ import {
 
 // Lookup the 'EventsPileCards' feature state managed by NgRx
 export const getEventsPileCardsState = createFeatureSelector<
-  EventsPileCardsPartialState,
   EventsPileCardsState
 >(EVENTS_PILE_CARDS_FEATURE_KEY);
 

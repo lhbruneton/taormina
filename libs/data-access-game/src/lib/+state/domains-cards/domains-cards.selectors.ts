@@ -30,7 +30,6 @@ import {
 
 // Lookup the 'DomainsCards' feature state managed by NgRx
 export const getDomainsCardsState = createFeatureSelector<
-  DomainsCardsPartialState,
   DomainsCardsState
 >(DOMAINS_CARDS_FEATURE_KEY);
 

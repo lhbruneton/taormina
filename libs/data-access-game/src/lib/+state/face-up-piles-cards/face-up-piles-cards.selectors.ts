@@ -10,7 +10,6 @@ import {
 
 // Lookup the 'FaceUpPilesCards' feature state managed by NgRx
 export const getFaceUpPilesCardsState = createFeatureSelector<
-  FaceUpPilesCardsPartialState,
   FaceUpPilesCardsState
 >(FACE_UP_PILES_CARDS_FEATURE_KEY);
 

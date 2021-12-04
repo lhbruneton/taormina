@@ -8,7 +8,6 @@ import {
 
 // Lookup the 'LandsPileCards' feature state managed by NgRx
 export const getLandsPileCardsState = createFeatureSelector<
-  LandsPileCardsPartialState,
   LandsPileCardsState
 >(LANDS_PILE_CARDS_FEATURE_KEY);
 
