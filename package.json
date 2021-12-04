@@ -46,7 +46,7 @@
     "@ngrx/entity": "12.0.0",
     "@ngrx/router-store": "12.0.0",
     "@ngrx/store": "12.0.0",
-    "@nrwl/angular": "12.4.0",
+    "@nrwl/angular": "12.5.9",
     "array-shuffle": "^2.0.0",
     "eslint-plugin-html": "^6.1.1",
     "rxjs": "^6.6.6",
@@ -66,13 +66,13 @@
     "@commitlint/config-conventional": "^12.0.0",
     "@ngrx/schematics": "12.0.0",
     "@ngrx/store-devtools": "12.0.0",
-    "@nrwl/cli": "12.4.0",
-    "@nrwl/cypress": "12.4.0",
-    "@nrwl/eslint-plugin-nx": "12.4.0",
-    "@nrwl/jest": "12.4.0",
+    "@nrwl/cli": "12.5.9",
+    "@nrwl/cypress": "12.5.9",
+    "@nrwl/eslint-plugin-nx": "12.5.9",
+    "@nrwl/jest": "12.5.9",
     "@nrwl/nx-cloud": "12.5.4",
-    "@nrwl/tao": "12.4.0",
-    "@nrwl/workspace": "12.4.0",
+    "@nrwl/tao": "12.5.9",
+    "@nrwl/workspace": "12.5.9",
     "@types/jest": "^26.0.20",
     "@types/node": "^15.6.1",
     "@types/uuid": "^8.3.0",
@@ -95,7 +95,7 @@
     "jest-preset-angular": "9.0.3",
     "leasot": "^12.0.0",
     "lint-staged": "^11.0.0",
-    "prettier": "^2.2.1",
+    "prettier": "2.5.1",
     "rxjs-marbles": "^6.0.1",
     "stylelint": "^13.13.0",
     "stylelint-config-standard": "^22.0.0",
@@ -105,3 +105,4 @@
     "typescript": "4.2.4"
   }
 }
+
