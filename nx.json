@@ -19,7 +19,12 @@
       "runner": "@nrwl/nx-cloud",
       "options": {
         "accessToken": "NTlkMjliMzktNWE3Mi00ZDUwLWJjNmYtN2ZhODVkMzA4NjQ4fHJlYWQtd3JpdGU=",
-        "cacheableOperations": ["build", "test", "lint", "e2e"],
+        "cacheableOperations": [
+          "build",
+          "test",
+          "lint",
+          "e2e"
+        ],
         "canTrackAnalytics": false,
         "showUsageWarnings": true,
         "parallel": 1
@@ -35,8 +40,7 @@
     ]
   },
   "cli": {
-    "analytics": false,
-    "defaultCollection": "@nrwl/angular"
+    "analytics": "4fa297e1-9a3d-4ba6-bcc1-b7c7fa4aa020"
   },
   "generators": {
     "@nrwl/angular": {
