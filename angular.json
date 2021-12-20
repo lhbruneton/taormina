@@ -1,7 +1,4 @@
 {
-  "cli": {
-    "analytics": "4fa297e1-9a3d-4ba6-bcc1-b7c7fa4aa020"
-  },
   "version": 1,
   "projects": {
     "data-access-game": {
@@ -21,9 +18,7 @@
         },
         "test": {
           "builder": "@nrwl/jest:jest",
-          "outputs": [
-            "coverage/libs/data-access-game"
-          ],
+          "outputs": ["coverage/libs/data-access-game"],
           "options": {
             "jestConfig": "libs/data-access-game/jest.config.js",
             "passWithNoTests": true
@@ -49,9 +44,7 @@
         },
         "test": {
           "builder": "@nrwl/jest:jest",
-          "outputs": [
-            "coverage/libs/feature-engine"
-          ],
+          "outputs": ["coverage/libs/feature-engine"],
           "options": {
             "jestConfig": "libs/feature-engine/jest.config.js",
             "passWithNoTests": true
@@ -77,9 +70,7 @@
         },
         "test": {
           "builder": "@nrwl/jest:jest",
-          "outputs": [
-            "coverage/libs/shared-constants"
-          ],
+          "outputs": ["coverage/libs/shared-constants"],
           "options": {
             "jestConfig": "libs/shared-constants/jest.config.js",
             "passWithNoTests": true
@@ -105,9 +96,7 @@
         },
         "test": {
           "builder": "@nrwl/jest:jest",
-          "outputs": [
-            "coverage/libs/shared-models"
-          ],
+          "outputs": ["coverage/libs/shared-models"],
           "options": {
             "jestConfig": "libs/shared-models/jest.config.js",
             "passWithNoTests": true
@@ -133,9 +122,7 @@
         },
         "test": {
           "builder": "@nrwl/jest:jest",
-          "outputs": [
-            "coverage/libs/shared-utils"
-          ],
+          "outputs": ["coverage/libs/shared-utils"],
           "options": {
             "jestConfig": "libs/shared-utils/jest.config.js",
             "passWithNoTests": true
@@ -232,9 +219,7 @@
         },
         "test": {
           "builder": "@nrwl/jest:jest",
-          "outputs": [
-            "coverage/apps/taormina-duel"
-          ],
+          "outputs": ["coverage/apps/taormina-duel"],
           "options": {
             "jestConfig": "apps/taormina-duel/jest.config.js",
             "passWithNoTests": true
@@ -264,16 +249,12 @@
         "lint": {
           "builder": "@nrwl/linter:eslint",
           "options": {
-            "lintFilePatterns": [
-              "apps/taormina-duel-e2e/**/*.{js,ts}"
-            ]
+            "lintFilePatterns": ["apps/taormina-duel-e2e/**/*.{js,ts}"]
           }
         }
       },
       "tags": [],
-      "implicitDependencies": [
-        "taormina-duel"
-      ]
+      "implicitDependencies": ["taormina-duel"]
     },
     "ui-card": {
       "projectType": "library",
@@ -292,16 +273,73 @@
         },
         "test": {
           "builder": "@nrwl/jest:jest",
-          "outputs": [
-            "coverage/libs/ui-card"
-          ],
+          "outputs": ["coverage/libs/ui-card"],
           "options": {
             "jestConfig": "libs/ui-card/jest.config.js",
             "passWithNoTests": true
           }
+        },
+        "storybook": {
+          "builder": "@nrwl/storybook:storybook",
+          "options": {
+            "uiFramework": "@storybook/angular",
+            "port": 4400,
+            "config": {
+              "configFolder": "libs/ui-card/.storybook"
+            }
+          },
+          "configurations": {
+            "ci": {
+              "quiet": true
+            }
+          }
+        },
+        "build-storybook": {
+          "builder": "@nrwl/storybook:build",
+          "outputs": ["{options.outputPath}"],
+          "options": {
+            "uiFramework": "@storybook/angular",
+            "outputPath": "dist/storybook/ui-card",
+            "config": {
+              "configFolder": "libs/ui-card/.storybook"
+            }
+          },
+          "configurations": {
+            "ci": {
+              "quiet": true
+            }
+          }
         }
       },
       "tags": []
+    },
+    "ui-card-e2e": {
+      "root": "apps/ui-card-e2e",
+      "sourceRoot": "apps/ui-card-e2e/src",
+      "projectType": "application",
+      "architect": {
+        "e2e": {
+          "builder": "@nrwl/cypress:cypress",
+          "options": {
+            "cypressConfig": "apps/ui-card-e2e/cypress.json",
+            "devServerTarget": "ui-card:storybook"
+          },
+          "configurations": {
+            "ci": {
+              "devServerTarget": "ui-card:storybook:ci"
+            }
+          }
+        },
+        "lint": {
+          "builder": "@nrwl/linter:eslint",
+          "outputs": ["{options.outputFile}"],
+          "options": {
+            "lintFilePatterns": ["apps/ui-card-e2e/**/*.{js,ts}"]
+          }
+        }
+      },
+      "tags": [],
+      "implicitDependencies": ["ui-card"]
     }
   }
 }
