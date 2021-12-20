@@ -10,7 +10,10 @@
         "../../.eslintrc.base.json"
       ],
       "parserOptions": {
-        "project": ["libs/ui-card/tsconfig.*?.json"]
+        "project": [
+          "libs/ui-card/tsconfig.*?.json",
+          "libs/ui-card/.storybook/tsconfig.json"
+        ]
       },
       "rules": {
         "@angular-eslint/directive-selector": [
