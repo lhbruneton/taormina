@@ -3,14 +3,12 @@ import { StockPilesCardsEntity } from './stock-piles-cards.models';
 import {
   STOCK_PILES_CARDS_FEATURE_KEY,
   StockPilesCardsState,
-  StockPilesCardsPartialState,
   stockPilesCardsAdapter,
 } from './stock-piles-cards.reducer';
 
 // Lookup the 'StockPilesCards' feature state managed by NgRx
-export const getStockPilesCardsState = createFeatureSelector<
-  StockPilesCardsState
->(STOCK_PILES_CARDS_FEATURE_KEY);
+export const getStockPilesCardsState =
+  createFeatureSelector<StockPilesCardsState>(STOCK_PILES_CARDS_FEATURE_KEY);
 
 const { selectAll, selectEntities } = stockPilesCardsAdapter.getSelectors();
 

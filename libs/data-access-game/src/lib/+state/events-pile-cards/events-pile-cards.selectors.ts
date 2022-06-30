@@ -2,14 +2,12 @@ import { createFeatureSelector, createSelector } from '@ngrx/store';
 import {
   EVENTS_PILE_CARDS_FEATURE_KEY,
   EventsPileCardsState,
-  EventsPileCardsPartialState,
   eventsPileCardsAdapter,
 } from './events-pile-cards.reducer';
 
 // Lookup the 'EventsPileCards' feature state managed by NgRx
-export const getEventsPileCardsState = createFeatureSelector<
-  EventsPileCardsState
->(EVENTS_PILE_CARDS_FEATURE_KEY);
+export const getEventsPileCardsState =
+  createFeatureSelector<EventsPileCardsState>(EVENTS_PILE_CARDS_FEATURE_KEY);
 
 const { selectAll, selectEntities } = eventsPileCardsAdapter.getSelectors();
 

@@ -3,15 +3,13 @@ import { createFeatureSelector, createSelector } from '@ngrx/store';
 import { FaceUpPilesCardsEntity } from './face-up-piles-cards.models';
 import {
   faceUpPilesCardsAdapter,
-  FaceUpPilesCardsPartialState,
   FaceUpPilesCardsState,
   FACE_UP_PILES_CARDS_FEATURE_KEY,
 } from './face-up-piles-cards.reducer';
 
 // Lookup the 'FaceUpPilesCards' feature state managed by NgRx
-export const getFaceUpPilesCardsState = createFeatureSelector<
-  FaceUpPilesCardsState
->(FACE_UP_PILES_CARDS_FEATURE_KEY);
+export const getFaceUpPilesCardsState =
+  createFeatureSelector<FaceUpPilesCardsState>(FACE_UP_PILES_CARDS_FEATURE_KEY);
 
 const { selectAll, selectEntities } = faceUpPilesCardsAdapter.getSelectors();
 

@@ -2,14 +2,12 @@ import { createFeatureSelector, createSelector } from '@ngrx/store';
 import {
   LANDS_PILE_CARDS_FEATURE_KEY,
   LandsPileCardsState,
-  LandsPileCardsPartialState,
   landsPileCardsAdapter,
 } from './lands-pile-cards.reducer';
 
 // Lookup the 'LandsPileCards' feature state managed by NgRx
-export const getLandsPileCardsState = createFeatureSelector<
-  LandsPileCardsState
->(LANDS_PILE_CARDS_FEATURE_KEY);
+export const getLandsPileCardsState =
+  createFeatureSelector<LandsPileCardsState>(LANDS_PILE_CARDS_FEATURE_KEY);
 
 const { selectAll, selectEntities } = landsPileCardsAdapter.getSelectors();
 
