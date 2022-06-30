@@ -2,11 +2,7 @@ import { Injectable } from '@angular/core';
 import { Actions, createEffect, ofType } from '@ngrx/effects';
 import { select, Store } from '@ngrx/store';
 import { fetch } from '@nrwl/angular';
-import {
-  ID_DOMAIN_BLUE,
-  ID_DOMAIN_RED,
-  landCards,
-} from '@taormina/shared-constants';
+import { landCards } from '@taormina/shared-constants';
 import {
   LandCard,
   ResourceCount,
@@ -102,31 +98,31 @@ export class DomainsCardsEffects {
       ofType(DomainsCardsActions.increaseAvailableResourcesForAuspiciousYear),
       withLatestFrom(
         this.domainsCardsStore.select(
-          DomainsCardsSelectors.getLandCardsPivotsIncreaseAuspiciousYear,
-          { count: 1 }
-        ),
-        this.domainsCardsStore.select(
-          DomainsCardsSelectors.getLandCardsPivotsIncreaseAuspiciousYear,
-          { count: 2 }
-        ),
-        this.domainsCardsStore.select(
-          DomainsCardsSelectors.getLandCardsPivotsIncreaseAuspiciousYear,
-          { count: 3 }
-        ),
-        this.domainsCardsStore.select(
-          DomainsCardsSelectors.getLandCardsPivotsIncreaseAuspiciousYear,
-          { count: 4 }
+          DomainsCardsSelectors.getLandCardsPivotsIncreaseAuspiciousYear
         )
       ),
       map(
-        // eslint-disable-next-line @typescript-eslint/no-unused-vars
-        ([_action, increaseOne, increaseTwo, increaseThree, increaseFour]) => {
-          const updatesOne = this.updatesAvailableResources(increaseOne, 1);
-          /* eslint-disable no-magic-numbers */
-          const updatesTwo = this.updatesAvailableResources(increaseTwo, 2);
-          const updatesThree = this.updatesAvailableResources(increaseThree, 3);
-          const updatesFour = this.updatesAvailableResources(increaseFour, 4);
-          /* eslint-enable no-magic-numbers */
+        ([
+          // eslint-disable-next-line @typescript-eslint/no-unused-vars
+          _action,
+          [increaseOne, increaseTwo, increaseThree, increaseFour],
+        ]) => {
+          const updatesOne = this.updatesAvailableResources(
+            increaseOne,
+            DomainsCardsSelectors.COUNT_1
+          );
+          const updatesTwo = this.updatesAvailableResources(
+            increaseTwo,
+            DomainsCardsSelectors.COUNT_2
+          );
+          const updatesThree = this.updatesAvailableResources(
+            increaseThree,
+            DomainsCardsSelectors.COUNT_3
+          );
+          const updatesFour = this.updatesAvailableResources(
+            increaseFour,
+            DomainsCardsSelectors.COUNT_4
+          );
           return DomainsCardsActions.updateDomainsCards({
             updates: [
               ...updatesOne,
@@ -387,30 +383,18 @@ export class DomainsCardsEffects {
       ofType(DomainsCardsActions.countAndStealUnprotectedGoldAndWool),
       withLatestFrom(
         this.domainsCardsStore.select(
-          DomainsCardsSelectors.getDomainResourceCountSeenByThieves,
-          { domainId: ID_DOMAIN_RED }
+          DomainsCardsSelectors.getDomainResourceCountSeenByThieves
         ),
         this.domainsCardsStore.select(
-          DomainsCardsSelectors.getDomainResourceCountSeenByThieves,
-          { domainId: ID_DOMAIN_BLUE }
-        ),
-        this.domainsCardsStore.select(
-          DomainsCardsSelectors.getDomainUnprotectedGoldMinesAndPastures,
-          { domainId: ID_DOMAIN_RED }
-        ),
-        this.domainsCardsStore.select(
-          DomainsCardsSelectors.getDomainUnprotectedGoldMinesAndPastures,
-          { domainId: ID_DOMAIN_BLUE }
+          DomainsCardsSelectors.getDomainUnprotectedGoldMinesAndPastures
         )
       ),
       map(
         ([
           // eslint-disable-next-line @typescript-eslint/no-unused-vars
           _action,
-          redResourceCount,
-          blueResourceCount,
-          redGoldMinesAndPastures,
-          blueGoldMinesAndPastures,
+          [redResourceCount, blueResourceCount],
+          [redGoldMinesAndPastures, blueGoldMinesAndPastures],
         ]) => {
           const thievesResourceCountThreshold = 7;
           let pivots: DomainsCardsEntity[] = [];

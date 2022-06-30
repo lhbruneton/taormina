@@ -342,51 +342,33 @@ describe('DomainsCards Selectors', () => {
     });
 
     describe('getDomainResourceCountSeenByThieves', () => {
-      it('should return 5 resources seen by thieves for the red domain', () => {
+      it(`should return 5 resources seen by thieves for the red domain
+          and 4 resources seen by thieves for the blue domain`, () => {
         const result =
-          DomainsCardsSelectors.getDomainResourceCountSeenByThieves(state, {
-            domainId: ID_DOMAIN_RED,
-          });
-        expect(result).toBe(5);
-      });
-
-      it('should return 4 resources seen by thieves for the blue domain', () => {
-        const result =
-          DomainsCardsSelectors.getDomainResourceCountSeenByThieves(state, {
-            domainId: ID_DOMAIN_BLUE,
-          });
-        expect(result).toBe(4);
+          DomainsCardsSelectors.getDomainResourceCountSeenByThieves(state);
+        expect(result.length).toBe(2);
+        expect(result[0]).toBe(5);
+        expect(result[1]).toBe(4);
       });
     });
 
     describe('getDomainUnprotectedGoldMinesAndPastures', () => {
-      it('should return the gold mine and the pasture for the red domain', () => {
+      it(`should return the gold mine and the pasture for the red domain
+          and only the pasture for the blue domain`, () => {
         const results =
-          DomainsCardsSelectors.getDomainUnprotectedGoldMinesAndPastures(
-            state,
-            {
-              domainId: ID_DOMAIN_RED,
-            }
-          );
-        const cardIdGoldMineRed = results[0]?.cardId;
-        const cardIdPastureRed = results[1]?.cardId;
-
+          DomainsCardsSelectors.getDomainUnprotectedGoldMinesAndPastures(state);
         expect(results.length).toBe(2);
+
+        const cardIdGoldMineRed = results[0][0]?.cardId;
+        const cardIdPastureRed = results[0][1]?.cardId;
+
+        expect(results[0].length).toBe(2);
         expect(cardIdGoldMineRed).toBe(ID_GOLD_MINE_RED);
         expect(cardIdPastureRed).toBe(ID_PASTURE_RED);
-      });
 
-      it('should return only the pasture for the blue domain', () => {
-        const results =
-          DomainsCardsSelectors.getDomainUnprotectedGoldMinesAndPastures(
-            state,
-            {
-              domainId: ID_DOMAIN_BLUE,
-            }
-          );
-        const cardIdPastureBlue = results[0]?.cardId;
+        const cardIdPastureBlue = results[1][0]?.cardId;
 
-        expect(results.length).toBe(1);
+        expect(results[1].length).toBe(1);
         expect(cardIdPastureBlue).toBe(ID_PASTURE_BLUE);
       });
     });
@@ -400,26 +382,24 @@ describe('DomainsCards Selectors', () => {
     });
     it('should return the clay pit and the pasture for the red domain with count 2', () => {
       const results =
-        DomainsCardsSelectors.getLandCardsPivotsIncreaseAuspiciousYear(state, {
-          count: 2,
-        });
-      const cardIdClayPitRed = results[0]?.cardId;
-      const cardIdPastureRed = results[1]?.cardId;
+        DomainsCardsSelectors.getLandCardsPivotsIncreaseAuspiciousYear(state);
+      const cardIdClayPitRed = results[1][0]?.cardId;
+      const cardIdPastureRed = results[1][1]?.cardId;
 
-      expect(results.length).toBe(2);
+      expect(results.length).toBe(4);
+      expect(results[1].length).toBe(2);
       expect(cardIdClayPitRed).toBe(ID_CLAY_PIT_RED);
       expect(cardIdPastureRed).toBe(ID_PASTURE_RED);
     });
 
     it('should return the forest and the gold mine for the blue domain with count 1', () => {
       const results =
-        DomainsCardsSelectors.getLandCardsPivotsIncreaseAuspiciousYear(state, {
-          count: 1,
-        });
-      const cardIdForestBlue = results[0]?.cardId;
-      const cardIdGoldMineBlue = results[1]?.cardId;
+        DomainsCardsSelectors.getLandCardsPivotsIncreaseAuspiciousYear(state);
+      const cardIdForestBlue = results[0][0]?.cardId;
+      const cardIdGoldMineBlue = results[0][1]?.cardId;
 
-      expect(results.length).toBe(2);
+      expect(results.length).toBe(4);
+      expect(results[0].length).toBe(2);
       expect(cardIdForestBlue).toBe(ID_FOREST_BLUE);
       expect(cardIdGoldMineBlue).toBe(ID_GOLD_MINE_BLUE);
     });

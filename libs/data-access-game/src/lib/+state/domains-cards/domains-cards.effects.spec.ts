@@ -99,8 +99,9 @@ describe('DomainsCardsEffects', () => {
         // eslint-disable-next-line @typescript-eslint/no-unused-vars
         .mockImplementation((_die: ResourceValue) =>
           createSelector(
-            () => null,
-            () => [
+            () => [],
+            // eslint-disable-next-line @typescript-eslint/no-unused-vars
+            (_) => [
               {
                 id: 'AAA',
                 domainId: ID_DOMAIN_RED,
@@ -124,8 +125,9 @@ describe('DomainsCardsEffects', () => {
         // eslint-disable-next-line @typescript-eslint/no-unused-vars
         .mockImplementation((_die: ResourceValue) =>
           createSelector(
-            () => null,
-            () => [
+            () => [],
+            // eslint-disable-next-line @typescript-eslint/no-unused-vars
+            (_) => [
               {
                 id: 'CCC',
                 domainId: ID_DOMAIN_BLUE,
@@ -189,8 +191,9 @@ describe('DomainsCardsEffects', () => {
           // eslint-disable-next-line @typescript-eslint/no-unused-vars
           .mockImplementation((_id: string) =>
             createSelector(
-              () => null,
-              () =>
+              () => [],
+              // eslint-disable-next-line @typescript-eslint/no-unused-vars
+              (_) =>
                 ({
                   id: 'AAA',
                   domainId: ID_DOMAIN_RED,
@@ -226,8 +229,9 @@ describe('DomainsCardsEffects', () => {
           // eslint-disable-next-line @typescript-eslint/no-unused-vars
           .mockImplementation((_id: string) =>
             createSelector(
-              () => null,
-              () =>
+              () => [],
+              // eslint-disable-next-line @typescript-eslint/no-unused-vars
+              (_) =>
                 undefined as DomainsCardsModels.DomainsCardsEntity | undefined
             )
           );
@@ -254,8 +258,9 @@ describe('DomainsCardsEffects', () => {
           // eslint-disable-next-line @typescript-eslint/no-unused-vars
           .mockImplementation((_id: string) =>
             createSelector(
-              () => null,
-              () =>
+              () => [],
+              // eslint-disable-next-line @typescript-eslint/no-unused-vars
+              (_) =>
                 ({
                   id: 'AAA',
                   domainId: ID_DOMAIN_RED,
@@ -289,8 +294,9 @@ describe('DomainsCardsEffects', () => {
           // eslint-disable-next-line @typescript-eslint/no-unused-vars
           .mockImplementation((_id: string) =>
             createSelector(
-              () => null,
-              () =>
+              () => [],
+              // eslint-disable-next-line @typescript-eslint/no-unused-vars
+              (_) =>
                 ({
                   id: 'AAA',
                   domainId: ID_DOMAIN_RED,
@@ -327,8 +333,9 @@ describe('DomainsCardsEffects', () => {
           // eslint-disable-next-line @typescript-eslint/no-unused-vars
           .mockImplementation((_id: string) =>
             createSelector(
-              () => null,
-              () =>
+              () => [],
+              // eslint-disable-next-line @typescript-eslint/no-unused-vars
+              (_) =>
                 ({
                   id: 'AAA',
                   domainId: ID_DOMAIN_RED,
@@ -364,8 +371,9 @@ describe('DomainsCardsEffects', () => {
           // eslint-disable-next-line @typescript-eslint/no-unused-vars
           .mockImplementation((_id: string) =>
             createSelector(
-              () => null,
-              () =>
+              () => [],
+              // eslint-disable-next-line @typescript-eslint/no-unused-vars
+              (_) =>
                 undefined as DomainsCardsModels.DomainsCardsEntity | undefined
             )
           );
@@ -392,8 +400,9 @@ describe('DomainsCardsEffects', () => {
           // eslint-disable-next-line @typescript-eslint/no-unused-vars
           .mockImplementation((_id: string) =>
             createSelector(
-              () => null,
-              () =>
+              () => [],
+              // eslint-disable-next-line @typescript-eslint/no-unused-vars
+              (_) =>
                 ({
                   id: 'AAA',
                   domainId: ID_DOMAIN_RED,
@@ -904,8 +913,9 @@ describe('DomainsCardsEffects', () => {
           // eslint-disable-next-line @typescript-eslint/no-unused-vars
           .mockImplementation((_id: string) =>
             createSelector(
-              () => null,
-              () =>
+              () => [],
+              // eslint-disable-next-line @typescript-eslint/no-unused-vars
+              (_) =>
                 ({
                   id: 'AAA',
                   domainId: ID_DOMAIN_RED,
@@ -941,8 +951,9 @@ describe('DomainsCardsEffects', () => {
           // eslint-disable-next-line @typescript-eslint/no-unused-vars
           .mockImplementation((_id: string) =>
             createSelector(
-              () => null,
-              () =>
+              () => [],
+              // eslint-disable-next-line @typescript-eslint/no-unused-vars
+              (_) =>
                 undefined as DomainsCardsModels.DomainsCardsEntity | undefined
             )
           );
@@ -969,8 +980,9 @@ describe('DomainsCardsEffects', () => {
           // eslint-disable-next-line @typescript-eslint/no-unused-vars
           .mockImplementation((_id: string) =>
             createSelector(
-              () => null,
-              () =>
+              () => [],
+              // eslint-disable-next-line @typescript-eslint/no-unused-vars
+              (_) =>
                 ({
                   id: 'AAA',
                   domainId: ID_DOMAIN_RED,
@@ -1061,28 +1073,33 @@ describe('DomainsCardsEffects', () => {
                 {
                   selector:
                     DomainsCardsSelectors.getDomainResourceCountSeenByThieves,
-                  value: 7,
+                  // eslint-disable-next-line no-magic-numbers
+                  value: [6, 7],
                 },
                 {
                   selector:
                     DomainsCardsSelectors.getDomainUnprotectedGoldMinesAndPastures,
                   value: [
-                    {
-                      id: 'aaaa',
-                      domainId: ID_DOMAIN_RED,
-                      cardType: LAND_CARD_INTERFACE_NAME,
-                      cardId: ID_GOLD_MINE_RED,
-                      availableResources: 1,
-                      lockedResources: 0,
-                    },
-                    {
-                      id: 'bbbb',
-                      domainId: ID_DOMAIN_BLUE,
-                      cardType: LAND_CARD_INTERFACE_NAME,
-                      cardId: ID_PASTURE_BLUE,
-                      availableResources: 1,
-                      lockedResources: 0,
-                    },
+                    [
+                      {
+                        id: 'aaaa',
+                        domainId: ID_DOMAIN_RED,
+                        cardType: LAND_CARD_INTERFACE_NAME,
+                        cardId: ID_GOLD_MINE_RED,
+                        availableResources: 1,
+                        lockedResources: 0,
+                      },
+                    ],
+                    [
+                      {
+                        id: 'bbbb',
+                        domainId: ID_DOMAIN_BLUE,
+                        cardType: LAND_CARD_INTERFACE_NAME,
+                        cardId: ID_PASTURE_BLUE,
+                        availableResources: 1,
+                        lockedResources: 0,
+                      },
+                    ],
                   ],
                 },
               ],
@@ -1114,28 +1131,33 @@ describe('DomainsCardsEffects', () => {
                 {
                   selector:
                     DomainsCardsSelectors.getDomainResourceCountSeenByThieves,
-                  value: 8,
+                  // eslint-disable-next-line no-magic-numbers
+                  value: [8, 7],
                 },
                 {
                   selector:
                     DomainsCardsSelectors.getDomainUnprotectedGoldMinesAndPastures,
                   value: [
-                    {
-                      id: 'aaaa',
-                      domainId: ID_DOMAIN_RED,
-                      cardType: LAND_CARD_INTERFACE_NAME,
-                      cardId: ID_GOLD_MINE_RED,
-                      availableResources: 1,
-                      lockedResources: 0,
-                    },
-                    {
-                      id: 'bbbb',
-                      domainId: ID_DOMAIN_BLUE,
-                      cardType: LAND_CARD_INTERFACE_NAME,
-                      cardId: ID_PASTURE_BLUE,
-                      availableResources: 1,
-                      lockedResources: 0,
-                    },
+                    [
+                      {
+                        id: 'aaaa',
+                        domainId: ID_DOMAIN_RED,
+                        cardType: LAND_CARD_INTERFACE_NAME,
+                        cardId: ID_GOLD_MINE_RED,
+                        availableResources: 1,
+                        lockedResources: 0,
+                      },
+                    ],
+                    [
+                      {
+                        id: 'bbbb',
+                        domainId: ID_DOMAIN_BLUE,
+                        cardType: LAND_CARD_INTERFACE_NAME,
+                        cardId: ID_PASTURE_BLUE,
+                        availableResources: 1,
+                        lockedResources: 0,
+                      },
+                    ],
                   ],
                 },
               ],
@@ -1157,19 +1179,6 @@ describe('DomainsCardsEffects', () => {
                 id: 'aaaa',
                 changes: { availableResources: 0 },
               },
-              {
-                id: 'bbbb',
-                changes: { availableResources: 0 },
-              },
-              // FIXME: https://github.com/ngrx/platform/issues/2176
-              {
-                id: 'aaaa',
-                changes: { availableResources: 0 },
-              },
-              {
-                id: 'bbbb',
-                changes: { availableResources: 0 },
-              },
             ],
           }),
         });
@@ -1187,16 +1196,44 @@ describe('DomainsCardsEffects', () => {
             selectors: [
               {
                 selector:
-                  // FIXME: https://github.com/ngrx/platform/issues/2176
                   DomainsCardsSelectors.getLandCardsPivotsIncreaseAuspiciousYear,
                 value: [
-                  {
-                    id: 'aaaa',
-                    domainId: ID_DOMAIN_RED,
-                    cardType: LAND_CARD_INTERFACE_NAME,
-                    cardId: ID_CLAY_PIT_RED,
-                    availableResources: 0,
-                  },
+                  [
+                    {
+                      id: 'aaaa',
+                      domainId: ID_DOMAIN_RED,
+                      cardType: LAND_CARD_INTERFACE_NAME,
+                      cardId: 'LAND_1',
+                      availableResources: 0,
+                    },
+                  ],
+                  [
+                    {
+                      id: 'bbbb',
+                      domainId: ID_DOMAIN_BLUE,
+                      cardType: LAND_CARD_INTERFACE_NAME,
+                      cardId: 'LAND_2',
+                      availableResources: 0,
+                    },
+                  ],
+                  [
+                    {
+                      id: 'cccc',
+                      domainId: ID_DOMAIN_BLUE,
+                      cardType: LAND_CARD_INTERFACE_NAME,
+                      cardId: 'LAND_3',
+                      availableResources: 0,
+                    },
+                  ],
+                  [
+                    {
+                      id: 'dddd',
+                      domainId: ID_DOMAIN_RED,
+                      cardType: LAND_CARD_INTERFACE_NAME,
+                      cardId: 'LAND_4',
+                      availableResources: 0,
+                    },
+                  ],
                 ],
               },
             ],
@@ -1219,15 +1256,15 @@ describe('DomainsCardsEffects', () => {
               changes: { availableResources: 1 },
             },
             {
-              id: 'aaaa',
+              id: 'bbbb',
               changes: { availableResources: 2 },
             },
             {
-              id: 'aaaa',
+              id: 'cccc',
               changes: { availableResources: 3 },
             },
             {
-              id: 'aaaa',
+              id: 'dddd',
               changes: { availableResources: 3 },
             },
           ],
