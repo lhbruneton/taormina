@@ -3,14 +3,12 @@ import { StockPilesCardsEntity } from './stock-piles-cards.models';
 import {
   STOCK_PILES_CARDS_FEATURE_KEY,
   StockPilesCardsState,
-  StockPilesCardsPartialState,
   stockPilesCardsAdapter,
 } from './stock-piles-cards.reducer';
 
 // Lookup the 'StockPilesCards' feature state managed by NgRx
-export const getStockPilesCardsState = createFeatureSelector<
-  StockPilesCardsState
->(STOCK_PILES_CARDS_FEATURE_KEY);
+export const getStockPilesCardsState =
+  createFeatureSelector<StockPilesCardsState>(STOCK_PILES_CARDS_FEATURE_KEY);
 
 const { selectAll, selectEntities } = stockPilesCardsAdapter.getSelectors();
 
@@ -48,16 +46,17 @@ export const getStockPilesCardsSelected = createSelector(
   }
 );
 
-export const getStockPileCardEntityByPivot = createSelector(
-  getAllStockPilesCards,
-  (
-    entities: StockPilesCardsEntity[],
-    props: { pileId: string; cardType: string; cardId: string }
-  ) =>
+// eslint-disable-next-line @typescript-eslint/explicit-function-return-type
+export const getStockPileCardEntityByPivot = (
+  pileId: string,
+  cardType: string,
+  cardId: string
+) =>
+  createSelector(getAllStockPilesCards, (entities: StockPilesCardsEntity[]) =>
     entities.find(
       (entity) =>
-        entity.pileId === props.pileId &&
-        entity.cardType === props.cardType &&
-        entity.cardId === props.cardId
+        entity.pileId === pileId &&
+        entity.cardType === cardType &&
+        entity.cardId === cardId
     )
-);
+  );

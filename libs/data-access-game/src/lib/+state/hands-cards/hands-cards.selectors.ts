@@ -2,14 +2,13 @@ import { createFeatureSelector, createSelector } from '@ngrx/store';
 import {
   HANDS_CARDS_FEATURE_KEY,
   HandsCardsState,
-  HandsCardsPartialState,
   handsCardsAdapter,
 } from './hands-cards.reducer';
 
 // Lookup the 'HandsCards' feature state managed by NgRx
-export const getHandsCardsState = createFeatureSelector<
-  HandsCardsState
->(HANDS_CARDS_FEATURE_KEY);
+export const getHandsCardsState = createFeatureSelector<HandsCardsState>(
+  HANDS_CARDS_FEATURE_KEY
+);
 
 const { selectAll, selectEntities } = handsCardsAdapter.getSelectors();
 

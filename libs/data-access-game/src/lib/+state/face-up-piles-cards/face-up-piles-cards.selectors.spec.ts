@@ -78,12 +78,9 @@ describe('FaceUpPilesCards Selectors', () => {
   describe('getFaceUpPileCardEntityByPivot({ pileId, cardId })', () => {
     it('should return the pivot for the pileId and cardId', () => {
       const result = FaceUpPilesCardsSelectors.getFaceUpPileCardEntityByPivot(
-        state,
-        {
-          pileId: 'B',
-          cardId: 'B',
-        }
-      );
+        'B',
+        'B'
+      )(state);
       const selId = getFaceUpPilesCardsId(result);
 
       expect(selId).toBe('PRODUCT-BBB');
@@ -92,9 +89,8 @@ describe('FaceUpPilesCards Selectors', () => {
 
   describe('getCardPivotsForPile({ pileId })', () => {
     it('should return the pivots for the pileId', () => {
-      const results = FaceUpPilesCardsSelectors.getCardPivotsForPile(state, {
-        pileId: 'B',
-      });
+      const results =
+        FaceUpPilesCardsSelectors.getCardPivotsForPile('B')(state);
       const selId = getFaceUpPilesCardsId(results[1]);
 
       expect(results.length).toBe(2);
@@ -104,9 +100,8 @@ describe('FaceUpPilesCards Selectors', () => {
 
   describe('getFirstCardPivotForPile({ pileId })', () => {
     it('should return the first pivot for the pileId', () => {
-      const result = FaceUpPilesCardsSelectors.getFirstCardPivotForPile(state, {
-        pileId: 'B',
-      });
+      const result =
+        FaceUpPilesCardsSelectors.getFirstCardPivotForPile('B')(state);
       const selId = getFaceUpPilesCardsId(result);
 
       expect(selId).toBe('PRODUCT-BBB');

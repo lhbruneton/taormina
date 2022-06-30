@@ -2,14 +2,12 @@ import { createFeatureSelector, createSelector } from '@ngrx/store';
 import {
   DISCARD_PILE_CARDS_FEATURE_KEY,
   DiscardPileCardsState,
-  DiscardPileCardsPartialState,
   discardPileCardsAdapter,
 } from './discard-pile-cards.reducer';
 
 // Lookup the 'DiscardPileCards' feature state managed by NgRx
-export const getDiscardPileCardsState = createFeatureSelector<
-  DiscardPileCardsState
->(DISCARD_PILE_CARDS_FEATURE_KEY);
+export const getDiscardPileCardsState =
+  createFeatureSelector<DiscardPileCardsState>(DISCARD_PILE_CARDS_FEATURE_KEY);
 
 const { selectAll, selectEntities } = discardPileCardsAdapter.getSelectors();
 

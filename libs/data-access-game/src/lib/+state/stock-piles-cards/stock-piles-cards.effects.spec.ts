@@ -1,8 +1,7 @@
-import { Injector } from '@angular/core';
 import { TestBed } from '@angular/core/testing';
 import { provideMockActions } from '@ngrx/effects/testing';
-import { Action } from '@ngrx/store';
-import { MockStore, provideMockStore } from '@ngrx/store/testing';
+import { Action, createSelector } from '@ngrx/store';
+import { provideMockStore } from '@ngrx/store/testing';
 import { DataPersistence, NxModule } from '@nrwl/angular';
 import { hot } from 'jasmine-marbles';
 import { ACTION_CARD_INTERFACE_NAME } from '@taormina/shared-models';
@@ -21,7 +20,6 @@ jest.mock('uuid', () => {
 });
 
 describe('StockPilesCardsEffects', () => {
-  let injector: Injector;
   let actions: Observable<Action>;
   let effects: StockPilesCardsEffects;
 
@@ -76,29 +74,25 @@ describe('StockPilesCardsEffects', () => {
   });
 
   describe('removeCards$', () => {
-    beforeEach(() => {
-      injector = Injector.create({
-        providers: [
-          provideMockStore({
-            selectors: [
-              {
-                selector:
-                  StockPilesCardsSelectors.getStockPileCardEntityByPivot,
-                value: {
-                  id: 'AAA',
-                  pileId: 'A',
-                  cardType: ACTION_CARD_INTERFACE_NAME,
-                  cardId: 'A',
-                },
-              },
-            ],
-          }),
-        ],
-      });
-      injector.get(MockStore);
-    });
-
     it('should dispatch removeStockPilesCards', () => {
+      const expectedId = 'AAA';
+      jest
+        .spyOn(StockPilesCardsSelectors, 'getStockPileCardEntityByPivot')
+        .mockImplementation(
+          (pileId: string, cardType: string, cardId: string) =>
+            createSelector(
+              () => [],
+              // eslint-disable-next-line @typescript-eslint/no-unused-vars
+              (_) =>
+                ({
+                  id: expectedId,
+                  pileId,
+                  cardType,
+                  cardId,
+                } as StockPilesCardsModels.StockPilesCardsEntity | undefined)
+            )
+        );
+
       actions = hot('-a-|', {
         a: StockPilesCardsActions.removeCardsFromStockPileTop({
           pileId: 'A',
@@ -108,7 +102,7 @@ describe('StockPilesCardsEffects', () => {
 
       const expected = hot('-a-|', {
         a: StockPilesCardsActions.removeStockPilesCards({
-          ids: ['AAA'],
+          ids: [expectedId],
         }),
       });
 

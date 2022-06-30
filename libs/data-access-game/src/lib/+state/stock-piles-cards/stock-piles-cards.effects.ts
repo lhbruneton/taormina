@@ -54,11 +54,13 @@ export class StockPilesCardsEffects {
         forkJoin(
           action.cards.map(({ type: cardType, id: cardId }) =>
             this.stockPilesCardsStore.pipe(
-              select(StockPilesCardsSelectors.getStockPileCardEntityByPivot, {
-                pileId: action.pileId,
-                cardType,
-                cardId,
-              }),
+              select(
+                StockPilesCardsSelectors.getStockPileCardEntityByPivot(
+                  action.pileId,
+                  cardType,
+                  cardId
+                )
+              ),
               take(1)
             )
           )

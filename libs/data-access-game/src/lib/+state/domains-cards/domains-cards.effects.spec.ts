@@ -1,7 +1,7 @@
 import { Injector } from '@angular/core';
 import { TestBed } from '@angular/core/testing';
 import { provideMockActions } from '@ngrx/effects/testing';
-import { Action } from '@ngrx/store';
+import { Action, createSelector } from '@ngrx/store';
 import { MockStore, provideMockStore } from '@ngrx/store/testing';
 import { DataPersistence, NxModule } from '@nrwl/angular';
 import {
@@ -17,6 +17,7 @@ import {
 import {
   AVAILABLE_AGGLOMERATION_SLOT,
   LAND_CARD_INTERFACE_NAME,
+  ResourceValue,
 } from '@taormina/shared-models';
 import { hot } from 'jasmine-marbles';
 import { Observable } from 'rxjs';
@@ -89,71 +90,73 @@ describe('DomainsCardsEffects', () => {
   });
 
   describe('increaseResourcesForDie$', () => {
-    beforeEach(() => {
-      injector = Injector.create({
-        providers: [
-          provideMockStore({
-            selectors: [
-              {
-                selector:
-                  DomainsCardsSelectors.getLandCardsPivotsIncreaseOneProduction,
-                value: [
-                  {
-                    id: 'AAA',
-                    domainId: ID_DOMAIN_RED,
-                    cardType: LAND_CARD_INTERFACE_NAME,
-                    cardId: ID_CLAY_PIT_RED,
-                    availableResources: 0,
-                  },
-                  {
-                    id: 'BBB',
-                    domainId: ID_DOMAIN_RED,
-                    cardType: LAND_CARD_INTERFACE_NAME,
-                    cardId: ID_CLAY_PIT_RED,
-                    availableResources: 3,
-                  },
-                ],
-              },
-              {
-                selector:
-                  DomainsCardsSelectors.getLandCardsPivotsIncreaseTwoProduction,
-                value: [
-                  {
-                    id: 'CCC',
-                    domainId: ID_DOMAIN_BLUE,
-                    cardType: LAND_CARD_INTERFACE_NAME,
-                    cardId: ID_FOREST_BLUE,
-                    availableResources: 0,
-                  },
-                  {
-                    id: 'DDD',
-                    domainId: ID_DOMAIN_BLUE,
-                    cardType: LAND_CARD_INTERFACE_NAME,
-                    cardId: ID_FOREST_BLUE,
-                    availableResources: 2,
-                  },
-                  {
-                    id: 'EEE',
-                    domainId: ID_DOMAIN_BLUE,
-                    cardType: LAND_CARD_INTERFACE_NAME,
-                    cardId: ID_FOREST_BLUE,
-                    availableResources: 3,
-                  },
-                ],
-              },
-            ],
-          }),
-        ],
-      });
-      injector.get(MockStore);
-    });
-
     it(`should dispatch updateDomainsCards
         with availableResources + 1
         when not next to a production building
         and availableResources < 3`, () => {
+      jest
+        .spyOn(DomainsCardsSelectors, 'getLandCardsPivotsIncreaseOneProduction')
+        // eslint-disable-next-line @typescript-eslint/no-unused-vars
+        .mockImplementation((_die: ResourceValue) =>
+          createSelector(
+            () => [],
+            // eslint-disable-next-line @typescript-eslint/no-unused-vars
+            (_) => [
+              {
+                id: 'AAA',
+                domainId: ID_DOMAIN_RED,
+                cardType: LAND_CARD_INTERFACE_NAME,
+                cardId: ID_CLAY_PIT_RED,
+                availableResources: 0,
+              } as DomainsCardsModels.DomainsCardsEntity,
+              {
+                id: 'BBB',
+                domainId: ID_DOMAIN_RED,
+                cardType: LAND_CARD_INTERFACE_NAME,
+                cardId: ID_CLAY_PIT_RED,
+                availableResources: 3,
+              } as DomainsCardsModels.DomainsCardsEntity,
+            ]
+          )
+        );
+
+      jest
+        .spyOn(DomainsCardsSelectors, 'getLandCardsPivotsIncreaseTwoProduction')
+        // eslint-disable-next-line @typescript-eslint/no-unused-vars
+        .mockImplementation((_die: ResourceValue) =>
+          createSelector(
+            () => [],
+            // eslint-disable-next-line @typescript-eslint/no-unused-vars
+            (_) => [
+              {
+                id: 'CCC',
+                domainId: ID_DOMAIN_BLUE,
+                cardType: LAND_CARD_INTERFACE_NAME,
+                cardId: ID_FOREST_BLUE,
+                availableResources: 0,
+              } as DomainsCardsModels.DomainsCardsEntity,
+              {
+                id: 'DDD',
+                domainId: ID_DOMAIN_BLUE,
+                cardType: LAND_CARD_INTERFACE_NAME,
+                cardId: ID_FOREST_BLUE,
+                availableResources: 2,
+              } as DomainsCardsModels.DomainsCardsEntity,
+              {
+                id: 'EEE',
+                domainId: ID_DOMAIN_BLUE,
+                cardType: LAND_CARD_INTERFACE_NAME,
+                cardId: ID_FOREST_BLUE,
+                availableResources: 3,
+              } as DomainsCardsModels.DomainsCardsEntity,
+            ]
+          )
+        );
+
       actions = hot('-a-|', {
-        a: DomainsCardsActions.increaseAvailableResourcesForDie({ die: 3 }),
+        a: DomainsCardsActions.increaseAvailableResourcesForDie({
+          die: 3,
+        }),
       });
 
       const expected = hot('-a-|', {
@@ -181,31 +184,27 @@ describe('DomainsCardsEffects', () => {
 
   describe('lockResource$', () => {
     describe('OK', () => {
-      beforeEach(() => {
-        injector = Injector.create({
-          providers: [
-            provideMockStore({
-              selectors: [
-                {
-                  selector: DomainsCardsSelectors.getLandCardPivotById,
-                  value: {
-                    id: 'AAA',
-                    domainId: ID_DOMAIN_RED,
-                    cardType: LAND_CARD_INTERFACE_NAME,
-                    cardId: 'LAND_1',
-                    availableResources: 3,
-                    lockedResources: 0,
-                  },
-                },
-              ],
-            }),
-          ],
-        });
-        injector.get(MockStore);
-      });
-
       it(`should dispatch updateDomainCard
           with availableResources - 1 and lockedResources + 1`, () => {
+        jest
+          .spyOn(DomainsCardsSelectors, 'getLandCardPivotById')
+          // eslint-disable-next-line @typescript-eslint/no-unused-vars
+          .mockImplementation((_id: string) =>
+            createSelector(
+              () => [],
+              // eslint-disable-next-line @typescript-eslint/no-unused-vars
+              (_) =>
+                ({
+                  id: 'AAA',
+                  domainId: ID_DOMAIN_RED,
+                  cardType: LAND_CARD_INTERFACE_NAME,
+                  cardId: 'LAND_1',
+                  availableResources: 3,
+                  lockedResources: 0,
+                } as DomainsCardsModels.DomainsCardsEntity | undefined)
+            )
+          );
+
         actions = hot('-a-|', {
           a: DomainsCardsActions.lockResource({ id: 'AAA' }),
         });
@@ -224,23 +223,19 @@ describe('DomainsCardsEffects', () => {
     });
 
     describe('KO pivot undefined', () => {
-      beforeEach(() => {
-        injector = Injector.create({
-          providers: [
-            provideMockStore({
-              selectors: [
-                {
-                  selector: DomainsCardsSelectors.getLandCardPivotById,
-                  value: undefined,
-                },
-              ],
-            }),
-          ],
-        });
-        injector.get(MockStore);
-      });
-
       it('should dispatch setDomainsCardsError with pivot error', () => {
+        jest
+          .spyOn(DomainsCardsSelectors, 'getLandCardPivotById')
+          // eslint-disable-next-line @typescript-eslint/no-unused-vars
+          .mockImplementation((_id: string) =>
+            createSelector(
+              () => [],
+              // eslint-disable-next-line @typescript-eslint/no-unused-vars
+              (_) =>
+                undefined as DomainsCardsModels.DomainsCardsEntity | undefined
+            )
+          );
+
         actions = hot('-a-|', {
           a: DomainsCardsActions.lockResource({ id: 'AAA' }),
         });
@@ -256,31 +251,27 @@ describe('DomainsCardsEffects', () => {
     });
 
     describe('KO unavailable resource', () => {
-      beforeEach(() => {
-        injector = Injector.create({
-          providers: [
-            provideMockStore({
-              selectors: [
-                {
-                  selector: DomainsCardsSelectors.getLandCardPivotById,
-                  value: {
-                    id: 'AAA',
-                    domainId: ID_DOMAIN_RED,
-                    cardType: LAND_CARD_INTERFACE_NAME,
-                    cardId: 'LAND_1',
-                    availableResources: 0,
-                    lockedResources: 0,
-                  },
-                },
-              ],
-            }),
-          ],
-        });
-        injector.get(MockStore);
-      });
-
       it(`should dispatch setDomainsCardsError
           with unavailable resource error`, () => {
+        jest
+          .spyOn(DomainsCardsSelectors, 'getLandCardPivotById')
+          // eslint-disable-next-line @typescript-eslint/no-unused-vars
+          .mockImplementation((_id: string) =>
+            createSelector(
+              () => [],
+              // eslint-disable-next-line @typescript-eslint/no-unused-vars
+              (_) =>
+                ({
+                  id: 'AAA',
+                  domainId: ID_DOMAIN_RED,
+                  cardType: LAND_CARD_INTERFACE_NAME,
+                  cardId: 'LAND_1',
+                  availableResources: 0,
+                  lockedResources: 0,
+                } as DomainsCardsModels.DomainsCardsEntity | undefined)
+            )
+          );
+
         actions = hot('-a-|', {
           a: DomainsCardsActions.lockResource({ id: 'AAA' }),
         });
@@ -296,31 +287,27 @@ describe('DomainsCardsEffects', () => {
     });
 
     describe('KO too many locked resources', () => {
-      beforeEach(() => {
-        injector = Injector.create({
-          providers: [
-            provideMockStore({
-              selectors: [
-                {
-                  selector: DomainsCardsSelectors.getLandCardPivotById,
-                  value: {
-                    id: 'AAA',
-                    domainId: ID_DOMAIN_RED,
-                    cardType: LAND_CARD_INTERFACE_NAME,
-                    cardId: 'LAND_1',
-                    availableResources: 1,
-                    lockedResources: 3,
-                  },
-                },
-              ],
-            }),
-          ],
-        });
-        injector.get(MockStore);
-      });
-
       it(`should dispatch setDomainsCardsError
           with too many locked resources error`, () => {
+        jest
+          .spyOn(DomainsCardsSelectors, 'getLandCardPivotById')
+          // eslint-disable-next-line @typescript-eslint/no-unused-vars
+          .mockImplementation((_id: string) =>
+            createSelector(
+              () => [],
+              // eslint-disable-next-line @typescript-eslint/no-unused-vars
+              (_) =>
+                ({
+                  id: 'AAA',
+                  domainId: ID_DOMAIN_RED,
+                  cardType: LAND_CARD_INTERFACE_NAME,
+                  cardId: 'LAND_1',
+                  availableResources: 1,
+                  lockedResources: 3,
+                } as DomainsCardsModels.DomainsCardsEntity | undefined)
+            )
+          );
+
         actions = hot('-a-|', {
           a: DomainsCardsActions.lockResource({ id: 'AAA' }),
         });
@@ -338,32 +325,28 @@ describe('DomainsCardsEffects', () => {
 
   describe('unlockResources$', () => {
     describe('OK', () => {
-      beforeEach(() => {
-        injector = Injector.create({
-          providers: [
-            provideMockStore({
-              selectors: [
-                {
-                  selector: DomainsCardsSelectors.getLandCardPivotById,
-                  value: {
-                    id: 'AAA',
-                    domainId: ID_DOMAIN_RED,
-                    cardType: LAND_CARD_INTERFACE_NAME,
-                    cardId: 'LAND_1',
-                    availableResources: 1,
-                    lockedResources: 2,
-                  },
-                },
-              ],
-            }),
-          ],
-        });
-        injector.get(MockStore);
-      });
-
       it(`should dispatch updateDomainCard
           with availableResources += lockedResources
           and lockedResources = 0`, () => {
+        jest
+          .spyOn(DomainsCardsSelectors, 'getLandCardPivotById')
+          // eslint-disable-next-line @typescript-eslint/no-unused-vars
+          .mockImplementation((_id: string) =>
+            createSelector(
+              () => [],
+              // eslint-disable-next-line @typescript-eslint/no-unused-vars
+              (_) =>
+                ({
+                  id: 'AAA',
+                  domainId: ID_DOMAIN_RED,
+                  cardType: LAND_CARD_INTERFACE_NAME,
+                  cardId: 'LAND_1',
+                  availableResources: 1,
+                  lockedResources: 2,
+                } as DomainsCardsModels.DomainsCardsEntity | undefined)
+            )
+          );
+
         actions = hot('-a-|', {
           a: DomainsCardsActions.unlockResources({ id: 'AAA' }),
         });
@@ -382,23 +365,19 @@ describe('DomainsCardsEffects', () => {
     });
 
     describe('KO pivot undefined', () => {
-      beforeEach(() => {
-        injector = Injector.create({
-          providers: [
-            provideMockStore({
-              selectors: [
-                {
-                  selector: DomainsCardsSelectors.getLandCardPivotById,
-                  value: undefined,
-                },
-              ],
-            }),
-          ],
-        });
-        injector.get(MockStore);
-      });
-
       it('should dispatch setDomainsCardsError with pivot error', () => {
+        jest
+          .spyOn(DomainsCardsSelectors, 'getLandCardPivotById')
+          // eslint-disable-next-line @typescript-eslint/no-unused-vars
+          .mockImplementation((_id: string) =>
+            createSelector(
+              () => [],
+              // eslint-disable-next-line @typescript-eslint/no-unused-vars
+              (_) =>
+                undefined as DomainsCardsModels.DomainsCardsEntity | undefined
+            )
+          );
+
         actions = hot('-a-|', {
           a: DomainsCardsActions.unlockResources({ id: 'AAA' }),
         });
@@ -414,31 +393,27 @@ describe('DomainsCardsEffects', () => {
     });
 
     describe('KO too many locked resources', () => {
-      beforeEach(() => {
-        injector = Injector.create({
-          providers: [
-            provideMockStore({
-              selectors: [
-                {
-                  selector: DomainsCardsSelectors.getLandCardPivotById,
-                  value: {
-                    id: 'AAA',
-                    domainId: ID_DOMAIN_RED,
-                    cardType: LAND_CARD_INTERFACE_NAME,
-                    cardId: 'LAND_1',
-                    availableResources: 2,
-                    lockedResources: 2,
-                  },
-                },
-              ],
-            }),
-          ],
-        });
-        injector.get(MockStore);
-      });
-
       it(`should dispatch setDomainsCardsError
           with too many locked resources error`, () => {
+        jest
+          .spyOn(DomainsCardsSelectors, 'getLandCardPivotById')
+          // eslint-disable-next-line @typescript-eslint/no-unused-vars
+          .mockImplementation((_id: string) =>
+            createSelector(
+              () => [],
+              // eslint-disable-next-line @typescript-eslint/no-unused-vars
+              (_) =>
+                ({
+                  id: 'AAA',
+                  domainId: ID_DOMAIN_RED,
+                  cardType: LAND_CARD_INTERFACE_NAME,
+                  cardId: 'LAND_1',
+                  availableResources: 2,
+                  lockedResources: 2,
+                } as DomainsCardsModels.DomainsCardsEntity | undefined)
+            )
+          );
+
         actions = hot('-a-|', {
           a: DomainsCardsActions.unlockResources({ id: 'AAA' }),
         });
@@ -932,30 +907,26 @@ describe('DomainsCardsEffects', () => {
 
   describe('increaseResources$', () => {
     describe('OK', () => {
-      beforeEach(() => {
-        injector = Injector.create({
-          providers: [
-            provideMockStore({
-              selectors: [
-                {
-                  selector: DomainsCardsSelectors.getLandCardPivotById,
-                  value: {
-                    id: 'AAA',
-                    domainId: ID_DOMAIN_RED,
-                    cardType: LAND_CARD_INTERFACE_NAME,
-                    cardId: 'LAND_1',
-                    availableResources: 0,
-                    lockedResources: 0,
-                  },
-                },
-              ],
-            }),
-          ],
-        });
-        injector.get(MockStore);
-      });
-
       it('should dispatch updateDomainCard with availableResources + 1', () => {
+        jest
+          .spyOn(DomainsCardsSelectors, 'getLandCardPivotById')
+          // eslint-disable-next-line @typescript-eslint/no-unused-vars
+          .mockImplementation((_id: string) =>
+            createSelector(
+              () => [],
+              // eslint-disable-next-line @typescript-eslint/no-unused-vars
+              (_) =>
+                ({
+                  id: 'AAA',
+                  domainId: ID_DOMAIN_RED,
+                  cardType: LAND_CARD_INTERFACE_NAME,
+                  cardId: 'LAND_1',
+                  availableResources: 0,
+                  lockedResources: 0,
+                } as DomainsCardsModels.DomainsCardsEntity | undefined)
+            )
+          );
+
         actions = hot('-a-|', {
           a: DomainsCardsActions.increaseAvailableResources({ id: 'AAA' }),
         });
@@ -974,23 +945,19 @@ describe('DomainsCardsEffects', () => {
     });
 
     describe('KO pivot undefined', () => {
-      beforeEach(() => {
-        injector = Injector.create({
-          providers: [
-            provideMockStore({
-              selectors: [
-                {
-                  selector: DomainsCardsSelectors.getLandCardPivotById,
-                  value: undefined,
-                },
-              ],
-            }),
-          ],
-        });
-        injector.get(MockStore);
-      });
-
       it('should dispatch setDomainsCardsError with pivot error', () => {
+        jest
+          .spyOn(DomainsCardsSelectors, 'getLandCardPivotById')
+          // eslint-disable-next-line @typescript-eslint/no-unused-vars
+          .mockImplementation((_id: string) =>
+            createSelector(
+              () => [],
+              // eslint-disable-next-line @typescript-eslint/no-unused-vars
+              (_) =>
+                undefined as DomainsCardsModels.DomainsCardsEntity | undefined
+            )
+          );
+
         actions = hot('-a-|', {
           a: DomainsCardsActions.increaseAvailableResources({ id: 'AAA' }),
         });
@@ -1006,31 +973,27 @@ describe('DomainsCardsEffects', () => {
     });
 
     describe('KO too many available resources', () => {
-      beforeEach(() => {
-        injector = Injector.create({
-          providers: [
-            provideMockStore({
-              selectors: [
-                {
-                  selector: DomainsCardsSelectors.getLandCardPivotById,
-                  value: {
-                    id: 'AAA',
-                    domainId: ID_DOMAIN_RED,
-                    cardType: LAND_CARD_INTERFACE_NAME,
-                    cardId: 'LAND_1',
-                    availableResources: 3,
-                    lockedResources: 0,
-                  },
-                },
-              ],
-            }),
-          ],
-        });
-        injector.get(MockStore);
-      });
-
       it(`should dispatch setDomainsCardsError
           with too many available resources error`, () => {
+        jest
+          .spyOn(DomainsCardsSelectors, 'getLandCardPivotById')
+          // eslint-disable-next-line @typescript-eslint/no-unused-vars
+          .mockImplementation((_id: string) =>
+            createSelector(
+              () => [],
+              // eslint-disable-next-line @typescript-eslint/no-unused-vars
+              (_) =>
+                ({
+                  id: 'AAA',
+                  domainId: ID_DOMAIN_RED,
+                  cardType: LAND_CARD_INTERFACE_NAME,
+                  cardId: 'LAND_1',
+                  availableResources: 3,
+                  lockedResources: 0,
+                } as DomainsCardsModels.DomainsCardsEntity | undefined)
+            )
+          );
+
         actions = hot('-a-|', {
           a: DomainsCardsActions.increaseAvailableResources({ id: 'AAA' }),
         });
@@ -1110,28 +1073,33 @@ describe('DomainsCardsEffects', () => {
                 {
                   selector:
                     DomainsCardsSelectors.getDomainResourceCountSeenByThieves,
-                  value: 7,
+                  // eslint-disable-next-line no-magic-numbers
+                  value: [6, 7],
                 },
                 {
                   selector:
                     DomainsCardsSelectors.getDomainUnprotectedGoldMinesAndPastures,
                   value: [
-                    {
-                      id: 'aaaa',
-                      domainId: ID_DOMAIN_RED,
-                      cardType: LAND_CARD_INTERFACE_NAME,
-                      cardId: ID_GOLD_MINE_RED,
-                      availableResources: 1,
-                      lockedResources: 0,
-                    },
-                    {
-                      id: 'bbbb',
-                      domainId: ID_DOMAIN_BLUE,
-                      cardType: LAND_CARD_INTERFACE_NAME,
-                      cardId: ID_PASTURE_BLUE,
-                      availableResources: 1,
-                      lockedResources: 0,
-                    },
+                    [
+                      {
+                        id: 'aaaa',
+                        domainId: ID_DOMAIN_RED,
+                        cardType: LAND_CARD_INTERFACE_NAME,
+                        cardId: ID_GOLD_MINE_RED,
+                        availableResources: 1,
+                        lockedResources: 0,
+                      },
+                    ],
+                    [
+                      {
+                        id: 'bbbb',
+                        domainId: ID_DOMAIN_BLUE,
+                        cardType: LAND_CARD_INTERFACE_NAME,
+                        cardId: ID_PASTURE_BLUE,
+                        availableResources: 1,
+                        lockedResources: 0,
+                      },
+                    ],
                   ],
                 },
               ],
@@ -1163,28 +1131,33 @@ describe('DomainsCardsEffects', () => {
                 {
                   selector:
                     DomainsCardsSelectors.getDomainResourceCountSeenByThieves,
-                  value: 8,
+                  // eslint-disable-next-line no-magic-numbers
+                  value: [8, 7],
                 },
                 {
                   selector:
                     DomainsCardsSelectors.getDomainUnprotectedGoldMinesAndPastures,
                   value: [
-                    {
-                      id: 'aaaa',
-                      domainId: ID_DOMAIN_RED,
-                      cardType: LAND_CARD_INTERFACE_NAME,
-                      cardId: ID_GOLD_MINE_RED,
-                      availableResources: 1,
-                      lockedResources: 0,
-                    },
-                    {
-                      id: 'bbbb',
-                      domainId: ID_DOMAIN_BLUE,
-                      cardType: LAND_CARD_INTERFACE_NAME,
-                      cardId: ID_PASTURE_BLUE,
-                      availableResources: 1,
-                      lockedResources: 0,
-                    },
+                    [
+                      {
+                        id: 'aaaa',
+                        domainId: ID_DOMAIN_RED,
+                        cardType: LAND_CARD_INTERFACE_NAME,
+                        cardId: ID_GOLD_MINE_RED,
+                        availableResources: 1,
+                        lockedResources: 0,
+                      },
+                    ],
+                    [
+                      {
+                        id: 'bbbb',
+                        domainId: ID_DOMAIN_BLUE,
+                        cardType: LAND_CARD_INTERFACE_NAME,
+                        cardId: ID_PASTURE_BLUE,
+                        availableResources: 1,
+                        lockedResources: 0,
+                      },
+                    ],
                   ],
                 },
               ],
@@ -1206,19 +1179,6 @@ describe('DomainsCardsEffects', () => {
                 id: 'aaaa',
                 changes: { availableResources: 0 },
               },
-              {
-                id: 'bbbb',
-                changes: { availableResources: 0 },
-              },
-              // FIXME: https://github.com/ngrx/platform/issues/2176
-              {
-                id: 'aaaa',
-                changes: { availableResources: 0 },
-              },
-              {
-                id: 'bbbb',
-                changes: { availableResources: 0 },
-              },
             ],
           }),
         });
@@ -1236,16 +1196,44 @@ describe('DomainsCardsEffects', () => {
             selectors: [
               {
                 selector:
-                  // FIXME: https://github.com/ngrx/platform/issues/2176
                   DomainsCardsSelectors.getLandCardsPivotsIncreaseAuspiciousYear,
                 value: [
-                  {
-                    id: 'aaaa',
-                    domainId: ID_DOMAIN_RED,
-                    cardType: LAND_CARD_INTERFACE_NAME,
-                    cardId: ID_CLAY_PIT_RED,
-                    availableResources: 0,
-                  },
+                  [
+                    {
+                      id: 'aaaa',
+                      domainId: ID_DOMAIN_RED,
+                      cardType: LAND_CARD_INTERFACE_NAME,
+                      cardId: 'LAND_1',
+                      availableResources: 0,
+                    },
+                  ],
+                  [
+                    {
+                      id: 'bbbb',
+                      domainId: ID_DOMAIN_BLUE,
+                      cardType: LAND_CARD_INTERFACE_NAME,
+                      cardId: 'LAND_2',
+                      availableResources: 0,
+                    },
+                  ],
+                  [
+                    {
+                      id: 'cccc',
+                      domainId: ID_DOMAIN_BLUE,
+                      cardType: LAND_CARD_INTERFACE_NAME,
+                      cardId: 'LAND_3',
+                      availableResources: 0,
+                    },
+                  ],
+                  [
+                    {
+                      id: 'dddd',
+                      domainId: ID_DOMAIN_RED,
+                      cardType: LAND_CARD_INTERFACE_NAME,
+                      cardId: 'LAND_4',
+                      availableResources: 0,
+                    },
+                  ],
                 ],
               },
             ],
@@ -1268,15 +1256,15 @@ describe('DomainsCardsEffects', () => {
               changes: { availableResources: 1 },
             },
             {
-              id: 'aaaa',
+              id: 'bbbb',
               changes: { availableResources: 2 },
             },
             {
-              id: 'aaaa',
+              id: 'cccc',
               changes: { availableResources: 3 },
             },
             {
-              id: 'aaaa',
+              id: 'dddd',
               changes: { availableResources: 3 },
             },
           ],

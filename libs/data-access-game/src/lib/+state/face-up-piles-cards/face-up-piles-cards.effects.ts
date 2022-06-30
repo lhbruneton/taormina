@@ -47,9 +47,9 @@ export class FaceUpPilesCardsEffects {
       ofType(FaceUpPilesCardsActions.selectFirstCardFromFaceUpPile),
       concatMap((action) =>
         this.faceUpPilesCardsStore.pipe(
-          select(FaceUpPilesCardsSelectors.getFirstCardPivotForPile, {
-            pileId: action.pileId,
-          }),
+          select(
+            FaceUpPilesCardsSelectors.getFirstCardPivotForPile(action.pileId)
+          ),
           map((pivot) => {
             if (pivot === undefined) {
               throw new Error(`Can't get first card in empty face up pile.`);

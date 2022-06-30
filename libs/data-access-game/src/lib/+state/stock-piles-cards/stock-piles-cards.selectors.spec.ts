@@ -99,9 +99,10 @@ describe('StockPilesCards Selectors', () => {
       const cardType = ACTION_CARD_INTERFACE_NAME;
       const cardId = 'F';
       const result = StockPilesCardsSelectors.getStockPileCardEntityByPivot(
-        state,
-        { pileId, cardType, cardId }
-      );
+        pileId,
+        cardType,
+        cardId
+      )(state);
       const selId = getStockPilesCardsId(result);
 
       expect(selId).toBe('PRODUCT-CCC');

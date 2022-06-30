@@ -1,8 +1,7 @@
-import { Injector } from '@angular/core';
 import { TestBed } from '@angular/core/testing';
 import { provideMockActions } from '@ngrx/effects/testing';
-import { Action } from '@ngrx/store';
-import { MockStore, provideMockStore } from '@ngrx/store/testing';
+import { Action, createSelector } from '@ngrx/store';
+import { provideMockStore } from '@ngrx/store/testing';
 import { DataPersistence, NxModule } from '@nrwl/angular';
 import { hot } from 'jasmine-marbles';
 import { ID_FACE_UP_ROAD } from '@taormina/shared-constants';
@@ -10,17 +9,10 @@ import { Observable } from 'rxjs';
 
 import * as FaceUpPilesCardsActions from './face-up-piles-cards.actions';
 import { FaceUpPilesCardsEffects } from './face-up-piles-cards.effects';
+import * as FaceUpPilesCardsModels from './face-up-piles-cards.models';
 import * as FaceUpPilesCardsSelectors from './face-up-piles-cards.selectors';
 
-jest.mock('./face-up-piles-cards.models', () => {
-  return {
-    __esModule: true,
-    createInitialFaceUpPilesCards: jest.fn(() => []),
-  };
-});
-
 describe('FaceUpPilesCardsEffects', () => {
-  let injector: Injector;
   let actions: Observable<Action>;
   let effects: FaceUpPilesCardsEffects;
 
@@ -40,6 +32,9 @@ describe('FaceUpPilesCardsEffects', () => {
 
   describe('initNewGame$', () => {
     it('should work', () => {
+      jest
+        .spyOn(FaceUpPilesCardsModels, 'createInitialFaceUpPilesCards')
+        .mockReturnValue([]);
       actions = hot('-a-|', { a: FaceUpPilesCardsActions.initFaceUpNewGame() });
 
       const expected = hot('-a-|', {
@@ -70,27 +65,23 @@ describe('FaceUpPilesCardsEffects', () => {
 
   describe('selectFirst$', () => {
     describe('OK', () => {
-      beforeEach(() => {
-        injector = Injector.create({
-          providers: [
-            provideMockStore({
-              selectors: [
-                {
-                  selector: FaceUpPilesCardsSelectors.getFirstCardPivotForPile,
-                  value: {
-                    id: 'AAA',
-                    pileId: ID_FACE_UP_ROAD,
-                    cardId: 'ROAD_1',
-                  },
-                },
-              ],
-            }),
-          ],
-        });
-        injector.get(MockStore);
-      });
-
       it('should dispatch selectFaceUpPileCard', () => {
+        const expectedId = 'AAA';
+        jest
+          .spyOn(FaceUpPilesCardsSelectors, 'getFirstCardPivotForPile')
+          .mockImplementation((pileId: string) =>
+            createSelector(
+              () => [],
+              // eslint-disable-next-line @typescript-eslint/no-unused-vars
+              (_) =>
+                ({
+                  id: expectedId,
+                  pileId,
+                  cardId: 'ROAD_1',
+                } as FaceUpPilesCardsModels.FaceUpPilesCardsEntity | undefined)
+            )
+          );
+
         actions = hot('-a-|', {
           a: FaceUpPilesCardsActions.selectFirstCardFromFaceUpPile({
             pileId: ID_FACE_UP_ROAD,
@@ -98,7 +89,7 @@ describe('FaceUpPilesCardsEffects', () => {
         });
 
         const expected = hot('-a-|', {
-          a: FaceUpPilesCardsActions.selectFaceUpPileCard({ id: 'AAA' }),
+          a: FaceUpPilesCardsActions.selectFaceUpPileCard({ id: expectedId }),
         });
 
         expect(effects.selectFirst$).toBeObservable(expected);
@@ -106,23 +97,21 @@ describe('FaceUpPilesCardsEffects', () => {
     });
 
     describe('KO pivot undefined', () => {
-      beforeEach(() => {
-        injector = Injector.create({
-          providers: [
-            provideMockStore({
-              selectors: [
-                {
-                  selector: FaceUpPilesCardsSelectors.getFirstCardPivotForPile,
-                  value: undefined,
-                },
-              ],
-            }),
-          ],
-        });
-        injector.get(MockStore);
-      });
-
       it('should dispatch setFaceUpPilesCardsError with pivot error', () => {
+        jest
+          .spyOn(FaceUpPilesCardsSelectors, 'getFirstCardPivotForPile')
+          // eslint-disable-next-line @typescript-eslint/no-unused-vars
+          .mockImplementation((_pileId: string) =>
+            createSelector(
+              () => [],
+              // eslint-disable-next-line @typescript-eslint/no-unused-vars
+              (_) =>
+                undefined as
+                  | FaceUpPilesCardsModels.FaceUpPilesCardsEntity
+                  | undefined
+            )
+          );
+
         actions = hot('-a-|', {
           a: FaceUpPilesCardsActions.selectFirstCardFromFaceUpPile({
             pileId: ID_FACE_UP_ROAD,
