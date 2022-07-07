@@ -2,6 +2,7 @@
   "version": 1,
   "projects": {
     "data-access-game": {
+      "$schema": "../../node_modules/nx/schemas/project-schema.json",
       "projectType": "library",
       "root": "libs/data-access-game",
       "sourceRoot": "libs/data-access-game/src",
@@ -20,7 +21,7 @@
           "builder": "@nrwl/jest:jest",
           "outputs": ["coverage/libs/data-access-game"],
           "options": {
-            "jestConfig": "libs/data-access-game/jest.config.js",
+            "jestConfig": "libs/data-access-game/jest.config.ts",
             "passWithNoTests": true
           }
         }
@@ -28,6 +29,7 @@
       "tags": []
     },
     "feature-engine": {
+      "$schema": "../../node_modules/nx/schemas/project-schema.json",
       "projectType": "library",
       "root": "libs/feature-engine",
       "sourceRoot": "libs/feature-engine/src",
@@ -46,7 +48,7 @@
           "builder": "@nrwl/jest:jest",
           "outputs": ["coverage/libs/feature-engine"],
           "options": {
-            "jestConfig": "libs/feature-engine/jest.config.js",
+            "jestConfig": "libs/feature-engine/jest.config.ts",
             "passWithNoTests": true
           }
         }
@@ -54,6 +56,7 @@
       "tags": []
     },
     "shared-constants": {
+      "$schema": "../../node_modules/nx/schemas/project-schema.json",
       "projectType": "library",
       "root": "libs/shared-constants",
       "sourceRoot": "libs/shared-constants/src",
@@ -72,7 +75,7 @@
           "builder": "@nrwl/jest:jest",
           "outputs": ["coverage/libs/shared-constants"],
           "options": {
-            "jestConfig": "libs/shared-constants/jest.config.js",
+            "jestConfig": "libs/shared-constants/jest.config.ts",
             "passWithNoTests": true
           }
         }
@@ -80,6 +83,7 @@
       "tags": []
     },
     "shared-models": {
+      "$schema": "../../node_modules/nx/schemas/project-schema.json",
       "projectType": "library",
       "root": "libs/shared-models",
       "sourceRoot": "libs/shared-models/src",
@@ -98,7 +102,7 @@
           "builder": "@nrwl/jest:jest",
           "outputs": ["coverage/libs/shared-models"],
           "options": {
-            "jestConfig": "libs/shared-models/jest.config.js",
+            "jestConfig": "libs/shared-models/jest.config.ts",
             "passWithNoTests": true
           }
         }
@@ -106,6 +110,7 @@
       "tags": []
     },
     "shared-utils": {
+      "$schema": "../../node_modules/nx/schemas/project-schema.json",
       "projectType": "library",
       "root": "libs/shared-utils",
       "sourceRoot": "libs/shared-utils/src",
@@ -124,7 +129,7 @@
           "builder": "@nrwl/jest:jest",
           "outputs": ["coverage/libs/shared-utils"],
           "options": {
-            "jestConfig": "libs/shared-utils/jest.config.js",
+            "jestConfig": "libs/shared-utils/jest.config.ts",
             "passWithNoTests": true
           }
         }
@@ -132,6 +137,7 @@
       "tags": []
     },
     "taormina-duel": {
+      "$schema": "../../node_modules/nx/schemas/project-schema.json",
       "projectType": "application",
       "root": "apps/taormina-duel",
       "sourceRoot": "apps/taormina-duel/src",
@@ -221,7 +227,7 @@
           "builder": "@nrwl/jest:jest",
           "outputs": ["coverage/apps/taormina-duel"],
           "options": {
-            "jestConfig": "apps/taormina-duel/jest.config.js",
+            "jestConfig": "apps/taormina-duel/jest.config.ts",
             "passWithNoTests": true
           }
         }
@@ -229,6 +235,7 @@
       "tags": []
     },
     "taormina-duel-e2e": {
+      "$schema": "../../node_modules/nx/schemas/project-schema.json",
       "root": "apps/taormina-duel-e2e",
       "sourceRoot": "apps/taormina-duel-e2e/src",
       "projectType": "application",
@@ -257,6 +264,7 @@
       "implicitDependencies": ["taormina-duel"]
     },
     "ui-card": {
+      "$schema": "../../node_modules/nx/schemas/project-schema.json",
       "projectType": "library",
       "root": "libs/ui-card",
       "sourceRoot": "libs/ui-card/src",
@@ -275,18 +283,17 @@
           "builder": "@nrwl/jest:jest",
           "outputs": ["coverage/libs/ui-card"],
           "options": {
-            "jestConfig": "libs/ui-card/jest.config.js",
+            "jestConfig": "libs/ui-card/jest.config.ts",
             "passWithNoTests": true
           }
         },
         "storybook": {
-          "builder": "@nrwl/storybook:storybook",
+          "builder": "@storybook/angular:start-storybook",
           "options": {
-            "uiFramework": "@storybook/angular",
             "port": 4400,
-            "config": {
-              "configFolder": "libs/ui-card/.storybook"
-            }
+            "configDir": "libs/ui-card/.storybook",
+            "browserTarget": "ui-card:build-storybook",
+            "compodoc": false
           },
           "configurations": {
             "ci": {
@@ -295,14 +302,13 @@
           }
         },
         "build-storybook": {
-          "builder": "@nrwl/storybook:build",
+          "builder": "@storybook/angular:build-storybook",
           "outputs": ["{options.outputPath}"],
           "options": {
-            "uiFramework": "@storybook/angular",
-            "outputPath": "dist/storybook/ui-card",
-            "config": {
-              "configFolder": "libs/ui-card/.storybook"
-            }
+            "outputDir": "dist/storybook/ui-card",
+            "configDir": "libs/ui-card/.storybook",
+            "browserTarget": "ui-card:build-storybook",
+            "compodoc": false
           },
           "configurations": {
             "ci": {
@@ -314,6 +320,7 @@
       "tags": []
     },
     "ui-card-e2e": {
+      "$schema": "../../node_modules/nx/schemas/project-schema.json",
       "root": "apps/ui-card-e2e",
       "sourceRoot": "apps/ui-card-e2e/src",
       "projectType": "application",

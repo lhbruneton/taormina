@@ -1,12 +1,12 @@
-module.exports = {
-  displayName: 'shared-constants',
+/* eslint-disable */
+export default {
+  displayName: 'data-access-game',
   preset: '../../jest.preset.js',
   setupFilesAfterEnv: ['<rootDir>/src/test-setup.ts'],
   globals: {
     'ts-jest': {
-      stringifyContentPathRegex: '\\.(html|svg)$',
-
       tsconfig: '<rootDir>/tsconfig.spec.json',
+      stringifyContentPathRegex: '\\.(html|svg)$',
     },
   },
   collectCoverage: true,

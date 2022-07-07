@@ -1,12 +1,12 @@
-module.exports = {
-  displayName: 'shared-utils',
+/* eslint-disable */
+export default {
+  displayName: 'ui-card',
   preset: '../../jest.preset.js',
   setupFilesAfterEnv: ['<rootDir>/src/test-setup.ts'],
   globals: {
     'ts-jest': {
-      stringifyContentPathRegex: '\\.(html|svg)$',
-
       tsconfig: '<rootDir>/tsconfig.spec.json',
+      stringifyContentPathRegex: '\\.(html|svg)$',
     },
   },
   collectCoverage: true,

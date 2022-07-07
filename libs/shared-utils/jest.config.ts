@@ -1,11 +1,13 @@
-module.exports = {
-  displayName: 'shared-models',
+/* eslint-disable */
+export default {
+  displayName: 'shared-utils',
   preset: '../../jest.preset.js',
   setupFilesAfterEnv: ['<rootDir>/src/test-setup.ts'],
   globals: {
     'ts-jest': {
-      tsconfig: '<rootDir>/tsconfig.spec.json',
       stringifyContentPathRegex: '\\.(html|svg)$',
+
+      tsconfig: '<rootDir>/tsconfig.spec.json',
     },
   },
   collectCoverage: true,

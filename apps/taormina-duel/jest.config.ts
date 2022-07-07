@@ -1,12 +1,12 @@
-module.exports = {
-  displayName: 'feature-engine',
+/* eslint-disable */
+export default {
+  displayName: 'taormina-duel',
   preset: '../../jest.preset.js',
   setupFilesAfterEnv: ['<rootDir>/src/test-setup.ts'],
   globals: {
     'ts-jest': {
-      stringifyContentPathRegex: '\\.(html|svg)$',
-
       tsconfig: '<rootDir>/tsconfig.spec.json',
+      stringifyContentPathRegex: '\\.(html|svg)$',
     },
   },
   collectCoverage: true,
