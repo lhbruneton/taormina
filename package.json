@@ -16,6 +16,7 @@
     "e2e": "ng e2e",
     "todo": "leasot '**/*.ts' --ignore 'node_modules,**/src/support' --tags @ts-expect-error,eslint-disable-next-line,prettier-ignore",
     "todo:gh-actions": "leasot '**/*.ts' --ignore 'node_modules,**/src/support' --tags @ts-expect-error,eslint-disable-next-line,prettier-ignore -x --reporter markdown > TODO.md",
+    "compodoc": "compodoc -p tsconfig.doc.json",
     "affected:apps": "nx affected:apps",
     "affected:libs": "nx affected:libs",
     "affected:build": "nx affected:build",
@@ -51,13 +52,13 @@
     "@ngrx/router-store": "14.0.1",
     "@ngrx/store": "14.0.1",
     "@nrwl/angular": "14.4.0",
+    "@storybook/core-server": "6.4.22",
     "array-shuffle": "^2.0.0",
     "eslint-plugin-html": "^6.1.1",
     "rxjs": "^6.6.6",
     "tslib": "^2.1.0",
     "uuid": "^8.3.2",
-    "zone.js": "0.11.4",
-    "@storybook/core-server": "6.4.22"
+    "zone.js": "0.11.4"
   },
   "devDependencies": {
     "@angular-devkit/build-angular": "14.0.4",
@@ -69,6 +70,7 @@
     "@angular/language-service": "14.0.4",
     "@commitlint/cli": "^15.0.0",
     "@commitlint/config-conventional": "^15.0.0",
+    "@compodoc/compodoc": "^1.1.19",
     "@ngrx/schematics": "14.0.1",
     "@ngrx/store-devtools": "14.0.1",
     "@nrwl/cli": "14.4.0",
@@ -105,6 +107,7 @@
     "jest-preset-angular": "11.1.2",
     "leasot": "^12.0.0",
     "lint-staged": "^12.1.2",
+    "nx": "14.4.0",
     "prettier": "2.7.1",
     "rxjs-marbles": "^6.0.1",
     "stylelint": "^13.13.0",
@@ -112,7 +115,6 @@
     "ts-jest": "27.1.4",
     "ts-node": "10.8.2",
     "tslint": "~6.1.0",
-    "typescript": "4.7.4",
-    "nx": "14.4.0"
+    "typescript": "4.7.4"
   }
 }
