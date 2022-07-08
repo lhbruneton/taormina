@@ -14,6 +14,7 @@ This project was generated using [Nx](Nx.md).
 ├── @angular/cli@14.0.5<br>
 ├── corepack@0.10.0<br>
 ├── npm@8.13.2<br>
+├── nx@14.4.2<br>
 └── updtr@4.0.0
 ```
 
