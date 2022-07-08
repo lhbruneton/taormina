@@ -1,0 +1,1643 @@
+<!doctype html>
+<html class="no-js" lang="">
+    <head>
+        <meta charset="utf-8">
+        <meta http-equiv="x-ua-compatible" content="ie=edge">
+        <title>taormina documentation</title>
+        <meta name="description" content="">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+
+        <link rel="icon" type="image/x-icon" href="../images/favicon.ico">
+	   <link rel="stylesheet" href="../styles/style.css">
+        <link rel="stylesheet" href="../styles/dark.css">
+    </head>
+    <body>
+
+        <div class="navbar navbar-default navbar-fixed-top visible-xs">
+            <a href="../" class="navbar-brand">taormina documentation</a>
+            <button type="button" class="btn btn-default btn-menu ion-ios-menu" id="btn-menu"></button>
+        </div>
+
+        <div class="xs-menu menu" id="mobile-menu">
+                <div id="book-search-input" role="search"><input type="text" placeholder="Type to search"></div>            <compodoc-menu></compodoc-menu>
+        </div>
+
+        <div class="container-fluid main">
+           <div class="row main">
+               <div class="hidden-xs menu">
+                   <compodoc-menu mode="normal"></compodoc-menu>
+               </div>
+               <!-- START CONTENT -->
+               <div class="content injectable">
+                   <div class="content-data">
+
+
+
+
+
+
+
+
+<ol class="breadcrumb">
+  <li>Injectables</li>
+  <li >DomainsCardsEffects</li>
+</ol>
+
+<ul class="nav nav-tabs" role="tablist">
+        <li class="active">
+            <a href="#info" role="tab" id="info-tab" data-toggle="tab" data-link="info">Info</a>
+        </li>
+        <li >
+            <a href="#source" role="tab" id="source-tab" data-toggle="tab" data-link="source">Source</a>
+        </li>
+</ul>
+
+<div class="tab-content">
+    <div class="tab-pane fade active in" id="c-info">
+        <p class="comment">
+            <h3>File</h3>
+        </p>
+        <p class="comment">
+            <code>libs/data-access-game/src/lib/+state/domains-cards/domains-cards.effects.ts</code>
+        </p>
+
+
+
+
+
+            <section>
+    <h3 id="index">Index</h3>
+    <table class="table table-sm table-bordered index-table">
+        <tbody>
+                <tr>
+                    <td class="col-md-4">
+                        <h6><b>Properties</b></h6>
+                    </td>
+                </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <ul class="index-list">
+                            <li>
+                                <a href="#countStealResources$" >countStealResources$</a>
+                            </li>
+                            <li>
+                                <a href="#createCard$" >createCard$</a>
+                            </li>
+                            <li>
+                                <a href="#giveLockedResources$" >giveLockedResources$</a>
+                            </li>
+                            <li>
+                                <a href="#increaseResources$" >increaseResources$</a>
+                            </li>
+                            <li>
+                                <a href="#increaseResourcesAuspiciousYear$" >increaseResourcesAuspiciousYear$</a>
+                            </li>
+                            <li>
+                                <a href="#increaseResourcesForDie$" >increaseResourcesForDie$</a>
+                            </li>
+                            <li>
+                                <a href="#initNewGame$" >initNewGame$</a>
+                            </li>
+                            <li>
+                                <a href="#initSavedGame$" >initSavedGame$</a>
+                            </li>
+                            <li>
+                                <a href="#lockResource$" >lockResource$</a>
+                            </li>
+                            <li>
+                                <a href="#putCardInPivot$" >putCardInPivot$</a>
+                            </li>
+                            <li>
+                                <a href="#unlockResources$" >unlockResources$</a>
+                            </li>
+                            <li>
+                                    <span class="modifier">Private</span>
+                                <a href="#updatesAvailableResources" >updatesAvailableResources</a>
+                            </li>
+                            <li>
+                                <a href="#useLockedResources$" >useLockedResources$</a>
+                            </li>
+                        </ul>
+                    </td>
+                </tr>
+
+                <tr>
+                    <td class="col-md-4">
+                        <h6><b>Methods</b></h6>
+                    </td>
+                </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <ul class="index-list">
+                            <li>
+                                    <span class="modifier">Private</span>
+                                <a href="#getLandCardFromPivot" >getLandCardFromPivot</a>
+                            </li>
+                            <li>
+                                    <span class="modifier">Private</span>
+                                <a href="#takeOneDefinedPivotOrThrow" >takeOneDefinedPivotOrThrow</a>
+                            </li>
+                        </ul>
+                    </td>
+                </tr>
+
+
+
+
+
+        </tbody>
+    </table>
+</section>
+
+            <section>
+    <h3 id="constructor">Constructor</h3>
+        <table class="table table-sm table-bordered">
+            <tbody>
+                <tr>
+                    <td class="col-md-4">
+<code>constructor(actions$: Actions, domainsCardsStore: Store<DomainsCardsFeature.DomainsCardsPartialState>)</code>
+                    </td>
+                </tr>
+                        <tr>
+                            <td class="col-md-4">
+                                <div class="io-line">Defined in <a href="" data-line="422" class="link-to-prism">libs/data-access-game/src/lib/+state/domains-cards/domains-cards.effects.ts:422</a></div>
+                            </td>
+                        </tr>
+
+                <tr>
+                    <td class="col-md-4">
+                            <div>
+                                    <b>Parameters :</b>
+                                    <table class="params">
+                                        <thead>
+                                            <tr>
+                                                <td>Name</td>
+                                                    <td>Type</td>
+                                                <td>Optional</td>
+                                            </tr>
+                                        </thead>
+                                        <tbody>
+                                                <tr>
+                                                        <td>actions$</td>
+                                                  
+                                                        <td>
+                                                                    <code>Actions</code>
+                                                        </td>
+                                                  
+                                                    <td>
+                                                            No
+                                                    </td>
+                                                    
+                                                </tr>
+                                                <tr>
+                                                        <td>domainsCardsStore</td>
+                                                  
+                                                        <td>
+                                                                    <code>Store&lt;DomainsCardsFeature.DomainsCardsPartialState&gt;</code>
+                                                        </td>
+                                                  
+                                                    <td>
+                                                            No
+                                                    </td>
+                                                    
+                                                </tr>
+                                        </tbody>
+                                    </table>
+                            </div>
+                    </td>
+                </tr>
+            </tbody>
+        </table>
+</section>
+
+            <section>
+    
+    <h3 id="methods">
+        Methods
+    </h3>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="getLandCardFromPivot"></a>
+                    <span class="name">
+                        <span class="modifier">Private</span>
+                        <span ><b>getLandCardFromPivot</b></span>
+                        <a href="#getLandCardFromPivot"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+            <tr>
+                <td class="col-md-4">
+                    <span class="modifier-icon icon ion-ios-reset"></span>
+                    <code>getLandCardFromPivot(pivot: <a href="../interfaces/DomainsCardsEntity.html" target="_self">DomainsCardsEntity</a>)</code>
+                </td>
+            </tr>
+
+
+            <tr>
+                <td class="col-md-4">
+                    <div class="io-line">Defined in <a href="" data-line="488"
+                            class="link-to-prism">libs/data-access-game/src/lib/+state/domains-cards/domains-cards.effects.ts:488</a></div>
+                </td>
+            </tr>
+
+
+            <tr>
+                <td class="col-md-4">
+
+                    <div class="io-description">
+                        <b>Parameters :</b>
+                        
+                        <table class="params">
+                            <thead>
+                                <tr>
+                                    <td>Name</td>
+                                    <td>Type</td>
+                                    <td>Optional</td>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr>
+                                    <td>pivot</td>
+                                    <td>
+                                                <code><a href="../interfaces/DomainsCardsEntity.html" target="_self" >DomainsCardsEntity</a></code>
+                                    </td>
+
+                                    <td>
+                                        No
+                                    </td>
+
+
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                    <div>
+                    </div>
+                    <div class="io-description">
+                        <b>Returns : </b>        <code><a href="../interfaces/LandCard.html" target="_self" >LandCard</a></code>
+
+                    </div>
+                    <div class="io-description">
+                        
+                    </div>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="takeOneDefinedPivotOrThrow"></a>
+                    <span class="name">
+                        <span class="modifier">Private</span>
+                        <span ><b>takeOneDefinedPivotOrThrow</b></span>
+                        <a href="#takeOneDefinedPivotOrThrow"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+            <tr>
+                <td class="col-md-4">
+                    <span class="modifier-icon icon ion-ios-reset"></span>
+                    <code>takeOneDefinedPivotOrThrow(id: <a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/string" target="_blank">string</a>)</code>
+                </td>
+            </tr>
+
+
+            <tr>
+                <td class="col-md-4">
+                    <div class="io-line">Defined in <a href="" data-line="429"
+                            class="link-to-prism">libs/data-access-game/src/lib/+state/domains-cards/domains-cards.effects.ts:429</a></div>
+                </td>
+            </tr>
+
+
+            <tr>
+                <td class="col-md-4">
+
+                    <div class="io-description">
+                        <b>Parameters :</b>
+                        
+                        <table class="params">
+                            <thead>
+                                <tr>
+                                    <td>Name</td>
+                                    <td>Type</td>
+                                    <td>Optional</td>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr>
+                                    <td>id</td>
+                                    <td>
+                                                <code><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/string" target="_blank" >string</a></code>
+                                    </td>
+
+                                    <td>
+                                        No
+                                    </td>
+
+
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                    <div>
+                    </div>
+                    <div class="io-description">
+                        <b>Returns : </b>    <code>Observable&lt;DomainsCardsEntity&gt;</code>
+
+                    </div>
+                    <div class="io-description">
+                        
+                    </div>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+</section>
+            <section>
+    
+    <h3 id="inputs">
+        Properties
+    </h3>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="countStealResources$"></a>
+                    <span class="name">
+                        <span ><b>countStealResources$</b></span>
+                        <a href="#countStealResources$"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <i>Default value : </i><code>createEffect(() &#x3D;&gt;
+    this.actions$.pipe(
+      ofType(DomainsCardsActions.countAndStealUnprotectedGoldAndWool),
+      withLatestFrom(
+        this.domainsCardsStore.select(
+          DomainsCardsSelectors.getDomainResourceCountSeenByThieves
+        ),
+        this.domainsCardsStore.select(
+          DomainsCardsSelectors.getDomainUnprotectedGoldMinesAndPastures
+        )
+      ),
+      map(
+        ([
+          // eslint-disable-next-line @typescript-eslint/no-unused-vars
+          _action,
+          [redResourceCount, blueResourceCount],
+          [redGoldMinesAndPastures, blueGoldMinesAndPastures],
+        ]) &#x3D;&gt; {
+          const thievesResourceCountThreshold &#x3D; 7;
+          let pivots: DomainsCardsEntity[] &#x3D; [];
+          if (redResourceCount &gt; thievesResourceCountThreshold) {
+            pivots &#x3D; [...pivots, ...redGoldMinesAndPastures];
+          }
+          if (blueResourceCount &gt; thievesResourceCountThreshold) {
+            pivots &#x3D; [...pivots, ...blueGoldMinesAndPastures];
+          }
+          return pivots;
+        }
+      ),
+      map((pivots) &#x3D;&gt; {
+        const updates &#x3D; pivots.map((pivot) &#x3D;&gt; {
+          return {
+            id: pivot.id,
+            changes: {
+              availableResources: 0 as ResourceCount,
+            },
+          };
+        });
+        return DomainsCardsActions.updateDomainsCards({ updates });
+      })
+    )
+  )</code>
+                    </td>
+                </tr>
+                    <tr>
+                        <td class="col-md-4">
+                                <div class="io-line">Defined in <a href="" data-line="381" class="link-to-prism">libs/data-access-game/src/lib/+state/domains-cards/domains-cards.effects.ts:381</a></div>
+                        </td>
+                    </tr>
+
+
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="createCard$"></a>
+                    <span class="name">
+                        <span ><b>createCard$</b></span>
+                        <a href="#createCard$"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <i>Default value : </i><code>createEffect(() &#x3D;&gt;
+    this.actions$.pipe(
+      ofType(DomainsCardsActions.createDomainCard),
+      map(({ domainId, cardType, cardId, col, row }) &#x3D;&gt; {
+        const domainCard &#x3D; createDomainsCardsEntity(
+          uuidv4(),
+          domainId,
+          cardType,
+          cardId,
+          col,
+          row
+        );
+        return DomainsCardsActions.addDomainCard({ domainCard });
+      })
+    )
+  )</code>
+                    </td>
+                </tr>
+                    <tr>
+                        <td class="col-md-4">
+                                <div class="io-line">Defined in <a href="" data-line="364" class="link-to-prism">libs/data-access-game/src/lib/+state/domains-cards/domains-cards.effects.ts:364</a></div>
+                        </td>
+                    </tr>
+
+
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="giveLockedResources$"></a>
+                    <span class="name">
+                        <span ><b>giveLockedResources$</b></span>
+                        <a href="#giveLockedResources$"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <i>Default value : </i><code>createEffect(() &#x3D;&gt;
+    this.actions$.pipe(
+      ofType(DomainsCardsActions.giveLockedResources),
+      withLatestFrom(
+        this.domainsCardsStore.select(
+          DomainsCardsSelectors.getLandCardPivotWithLockedResources
+        )
+      ),
+      // eslint-disable-next-line @typescript-eslint/no-unused-vars
+      concatMap(([_action, pivotsWithLockedResources]) &#x3D;&gt;
+        this.domainsCardsStore.pipe(
+          select(DomainsCardsSelectors.getDomainsCardsSelected),
+          take(1),
+          map((pivotsSelected) &#x3D;&gt; {
+            if (pivotsWithLockedResources.length &#x3D;&#x3D;&#x3D; 0) {
+              throw new Error(
+                &#x60;Can&#x27;t give locked resources if no pivots with locked resources.&#x60;
+              );
+            }
+            const firstPivot &#x3D; pivotsWithLockedResources[0];
+            const firstLand &#x3D; this.getLandCardFromPivot(firstPivot);
+            let count &#x3D; 0;
+            pivotsWithLockedResources.forEach((pivot) &#x3D;&gt; {
+              const land &#x3D; this.getLandCardFromPivot(pivot);
+              if (land.type !&#x3D;&#x3D; firstLand.type) {
+                throw new Error(
+                  &#x60;Can&#x27;t give locked resources of different types.&#x60;
+                );
+              }
+              count +&#x3D; pivot.lockedResources;
+            });
+
+            const updatesLocked &#x3D; pivotsWithLockedResources.map((pivot) &#x3D;&gt; {
+              return {
+                id: pivot.id,
+                changes: {
+                  lockedResources: 0 as ResourceCount,
+                },
+              };
+            });
+
+            if (pivotsSelected.length !&#x3D;&#x3D; 1) {
+              throw new Error(
+                &#x60;Can&#x27;t give locked resources if no pivot or more than one pivot selected.&#x60;
+              );
+            }
+            const selectedPivot &#x3D; pivotsSelected[0];
+            const selectedLand &#x3D; this.getLandCardFromPivot(selectedPivot);
+            if (selectedLand.type !&#x3D;&#x3D; firstLand.type) {
+              throw new Error(
+                &#x60;Can&#x27;t give locked resources to pivot of different type.&#x60;
+              );
+            }
+
+            const sumResources &#x3D; selectedPivot.availableResources + count;
+            if (sumResources &gt; Math.max(...RESOURCE_COUNTS)) {
+              throw new Error(
+                &#x60;Can&#x27;t give so many locked resources to selected pivot.&#x60;
+              );
+            }
+
+            const updateAvailable &#x3D; {
+              id: selectedPivot.id,
+              changes: {
+                availableResources: sumResources as ResourceCount,
+              },
+            };
+
+            return DomainsCardsActions.updateDomainsCards({
+              updates: [...updatesLocked, updateAvailable],
+            });
+          }),
+          catchError((error) &#x3D;&gt;
+            of(
+              DomainsCardsActions.setDomainsCardsError({ error: error.message })
+            )
+          )
+        )
+      )
+    )
+  )</code>
+                    </td>
+                </tr>
+                    <tr>
+                        <td class="col-md-4">
+                                <div class="io-line">Defined in <a href="" data-line="235" class="link-to-prism">libs/data-access-game/src/lib/+state/domains-cards/domains-cards.effects.ts:235</a></div>
+                        </td>
+                    </tr>
+
+
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="increaseResources$"></a>
+                    <span class="name">
+                        <span ><b>increaseResources$</b></span>
+                        <a href="#increaseResources$"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <i>Default value : </i><code>createEffect(() &#x3D;&gt;
+    this.actions$.pipe(
+      ofType(DomainsCardsActions.increaseAvailableResources),
+      concatMap((action) &#x3D;&gt;
+        this.takeOneDefinedPivotOrThrow(action.id).pipe(
+          map((pivot) &#x3D;&gt; {
+            if (pivot.availableResources &#x3D;&#x3D;&#x3D; Math.max(...RESOURCE_COUNTS)) {
+              throw new Error(
+                &#x60;Can&#x27;t increase available resources beyond maximum for pivot ${pivot.id}.&#x60;
+              );
+            }
+
+            const update &#x3D; {
+              id: pivot.id,
+              changes: {
+                // prettier-ignore
+                availableResources: (pivot.availableResources + 1) as ResourceCount,
+              },
+            };
+            return DomainsCardsActions.updateDomainCard({ update });
+          }),
+          catchError((error) &#x3D;&gt;
+            of(
+              DomainsCardsActions.setDomainsCardsError({ error: error.message })
+            )
+          )
+        )
+      )
+    )
+  )</code>
+                    </td>
+                </tr>
+                    <tr>
+                        <td class="col-md-4">
+                                <div class="io-line">Defined in <a href="" data-line="317" class="link-to-prism">libs/data-access-game/src/lib/+state/domains-cards/domains-cards.effects.ts:317</a></div>
+                        </td>
+                    </tr>
+
+
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="increaseResourcesAuspiciousYear$"></a>
+                    <span class="name">
+                        <span ><b>increaseResourcesAuspiciousYear$</b></span>
+                        <a href="#increaseResourcesAuspiciousYear$"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <i>Default value : </i><code>createEffect(() &#x3D;&gt;
+    this.actions$.pipe(
+      ofType(DomainsCardsActions.increaseAvailableResourcesForAuspiciousYear),
+      withLatestFrom(
+        this.domainsCardsStore.select(
+          DomainsCardsSelectors.getLandCardsPivotsIncreaseAuspiciousYear
+        )
+      ),
+      map(
+        ([
+          // eslint-disable-next-line @typescript-eslint/no-unused-vars
+          _action,
+          [increaseOne, increaseTwo, increaseThree, increaseFour],
+        ]) &#x3D;&gt; {
+          const updatesOne &#x3D; this.updatesAvailableResources(
+            increaseOne,
+            DomainsCardsSelectors.COUNT_1
+          );
+          const updatesTwo &#x3D; this.updatesAvailableResources(
+            increaseTwo,
+            DomainsCardsSelectors.COUNT_2
+          );
+          const updatesThree &#x3D; this.updatesAvailableResources(
+            increaseThree,
+            DomainsCardsSelectors.COUNT_3
+          );
+          const updatesFour &#x3D; this.updatesAvailableResources(
+            increaseFour,
+            DomainsCardsSelectors.COUNT_4
+          );
+          return DomainsCardsActions.updateDomainsCards({
+            updates: [
+              ...updatesOne,
+              ...updatesTwo,
+              ...updatesThree,
+              ...updatesFour,
+            ],
+          });
+        }
+      )
+    )
+  )</code>
+                    </td>
+                </tr>
+                    <tr>
+                        <td class="col-md-4">
+                                <div class="io-line">Defined in <a href="" data-line="96" class="link-to-prism">libs/data-access-game/src/lib/+state/domains-cards/domains-cards.effects.ts:96</a></div>
+                        </td>
+                    </tr>
+
+
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="increaseResourcesForDie$"></a>
+                    <span class="name">
+                        <span ><b>increaseResourcesForDie$</b></span>
+                        <a href="#increaseResourcesForDie$"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <i>Default value : </i><code>createEffect(() &#x3D;&gt;
+    this.actions$.pipe(
+      ofType(DomainsCardsActions.increaseAvailableResourcesForDie),
+      concatMap((action) &#x3D;&gt; {
+        return forkJoin({
+          increaseOne: this.domainsCardsStore.pipe(
+            select(
+              DomainsCardsSelectors.getLandCardsPivotsIncreaseOneProduction(
+                action.die
+              )
+            ),
+            take(1)
+          ),
+          increaseTwo: this.domainsCardsStore.pipe(
+            select(
+              DomainsCardsSelectors.getLandCardsPivotsIncreaseTwoProduction(
+                action.die
+              )
+            ),
+            take(1)
+          ),
+        });
+      }),
+      map(({ increaseOne, increaseTwo }) &#x3D;&gt; {
+        const updatesOne &#x3D; this.updatesAvailableResources(increaseOne, 1);
+        // eslint-disable-next-line no-magic-numbers
+        const updatesTwo &#x3D; this.updatesAvailableResources(increaseTwo, 2);
+        return DomainsCardsActions.updateDomainsCards({
+          updates: [...updatesOne, ...updatesTwo],
+        });
+      })
+    )
+  )</code>
+                    </td>
+                </tr>
+                    <tr>
+                        <td class="col-md-4">
+                                <div class="io-line">Defined in <a href="" data-line="62" class="link-to-prism">libs/data-access-game/src/lib/+state/domains-cards/domains-cards.effects.ts:62</a></div>
+                        </td>
+                    </tr>
+
+
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="initNewGame$"></a>
+                    <span class="name">
+                        <span ><b>initNewGame$</b></span>
+                        <a href="#initNewGame$"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <i>Default value : </i><code>createEffect(() &#x3D;&gt;
+    this.actions$.pipe(
+      ofType(DomainsCardsActions.initDomainsCardsNewGame),
+      map(() &#x3D;&gt;
+        DomainsCardsActions.setDomainsCardsInitialized({
+          domainsCards: createInitialDomainsCards(),
+        })
+      )
+    )
+  )</code>
+                    </td>
+                </tr>
+                    <tr>
+                        <td class="col-md-4">
+                                <div class="io-line">Defined in <a href="" data-line="32" class="link-to-prism">libs/data-access-game/src/lib/+state/domains-cards/domains-cards.effects.ts:32</a></div>
+                        </td>
+                    </tr>
+
+
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="initSavedGame$"></a>
+                    <span class="name">
+                        <span ><b>initSavedGame$</b></span>
+                        <a href="#initSavedGame$"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <i>Default value : </i><code>createEffect(() &#x3D;&gt;
+    this.actions$.pipe(
+      ofType(DomainsCardsActions.initDomainsCardsSavedGame),
+      fetch({
+        run: () &#x3D;&gt; {
+          // Your custom service &#x27;load&#x27; logic goes here. For now just return a success action...
+          return DomainsCardsActions.loadDomainsCardsSuccess({
+            domainsCards: [],
+          });
+        },
+
+        onError: (_action, error) &#x3D;&gt; {
+          console.error(&#x27;Error&#x27;, error);
+          return DomainsCardsActions.loadDomainsCardsFailure({ error });
+        },
+      })
+    )
+  )</code>
+                    </td>
+                </tr>
+                    <tr>
+                        <td class="col-md-4">
+                                <div class="io-line">Defined in <a href="" data-line="43" class="link-to-prism">libs/data-access-game/src/lib/+state/domains-cards/domains-cards.effects.ts:43</a></div>
+                        </td>
+                    </tr>
+
+
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="lockResource$"></a>
+                    <span class="name">
+                        <span ><b>lockResource$</b></span>
+                        <a href="#lockResource$"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <i>Default value : </i><code>createEffect(() &#x3D;&gt;
+    this.actions$.pipe(
+      ofType(DomainsCardsActions.lockResource),
+      concatMap((action) &#x3D;&gt;
+        this.takeOneDefinedPivotOrThrow(action.id).pipe(
+          map((pivot) &#x3D;&gt; {
+            if (pivot.availableResources &#x3D;&#x3D;&#x3D; 0) {
+              throw new Error(
+                &#x60;Can&#x27;t lock unavailable resource for pivot ${pivot.id}.&#x60;
+              );
+            }
+            if (pivot.lockedResources &#x3D;&#x3D;&#x3D; Math.max(...RESOURCE_COUNTS)) {
+              throw new Error(
+                &#x60;Can&#x27;t lock more resources for pivot ${pivot.id}.&#x60;
+              );
+            }
+
+            const update &#x3D; {
+              id: pivot.id,
+              changes: {
+                // prettier-ignore
+                availableResources: (pivot.availableResources - 1) as ResourceCount,
+                // prettier-ignore
+                lockedResources: (pivot.lockedResources + 1) as ResourceCount,
+              },
+            };
+            return DomainsCardsActions.updateDomainCard({ update });
+          }),
+          catchError((error) &#x3D;&gt;
+            of(
+              DomainsCardsActions.setDomainsCardsError({ error: error.message })
+            )
+          )
+        )
+      )
+    )
+  )</code>
+                    </td>
+                </tr>
+                    <tr>
+                        <td class="col-md-4">
+                                <div class="io-line">Defined in <a href="" data-line="139" class="link-to-prism">libs/data-access-game/src/lib/+state/domains-cards/domains-cards.effects.ts:139</a></div>
+                        </td>
+                    </tr>
+
+
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="putCardInPivot$"></a>
+                    <span class="name">
+                        <span ><b>putCardInPivot$</b></span>
+                        <a href="#putCardInPivot$"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <i>Default value : </i><code>createEffect(() &#x3D;&gt;
+    this.actions$.pipe(
+      ofType(DomainsCardsActions.putCardInPivot),
+      map((action) &#x3D;&gt; {
+        const update &#x3D; {
+          id: action.id,
+          changes: {
+            cardType: action.cardType,
+            cardId: action.cardId,
+          },
+        };
+        return DomainsCardsActions.updateDomainCard({ update });
+      })
+    )
+  )</code>
+                    </td>
+                </tr>
+                    <tr>
+                        <td class="col-md-4">
+                                <div class="io-line">Defined in <a href="" data-line="348" class="link-to-prism">libs/data-access-game/src/lib/+state/domains-cards/domains-cards.effects.ts:348</a></div>
+                        </td>
+                    </tr>
+
+
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="unlockResources$"></a>
+                    <span class="name">
+                        <span ><b>unlockResources$</b></span>
+                        <a href="#unlockResources$"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <i>Default value : </i><code>createEffect(() &#x3D;&gt;
+    this.actions$.pipe(
+      ofType(DomainsCardsActions.unlockResources),
+      concatMap((action) &#x3D;&gt;
+        this.takeOneDefinedPivotOrThrow(action.id).pipe(
+          map((pivot) &#x3D;&gt; {
+            if (
+              pivot.availableResources + pivot.lockedResources &gt;
+              Math.max(...RESOURCE_COUNTS)
+            ) {
+              throw new Error(
+                &#x60;Shouldn&#x27;t have been able to lock so many resources for pivot ${pivot.id}.&#x60;
+              );
+            }
+
+            const update &#x3D; {
+              id: pivot.id,
+              changes: {
+                availableResources: (pivot.availableResources +
+                  pivot.lockedResources) as ResourceCount,
+                lockedResources: 0 as ResourceCount,
+              },
+            };
+            return DomainsCardsActions.updateDomainCard({ update });
+          }),
+          catchError((error) &#x3D;&gt;
+            of(
+              DomainsCardsActions.setDomainsCardsError({ error: error.message })
+            )
+          )
+        )
+      )
+    )
+  )</code>
+                    </td>
+                </tr>
+                    <tr>
+                        <td class="col-md-4">
+                                <div class="io-line">Defined in <a href="" data-line="177" class="link-to-prism">libs/data-access-game/src/lib/+state/domains-cards/domains-cards.effects.ts:177</a></div>
+                        </td>
+                    </tr>
+
+
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="updatesAvailableResources"></a>
+                    <span class="name">
+                            <span class="modifier">Private</span>
+                        <span ><b>updatesAvailableResources</b></span>
+                        <a href="#updatesAvailableResources"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <i>Default value : </i><code>() &#x3D;&gt; {...}</code>
+                    </td>
+                </tr>
+                    <tr>
+                        <td class="col-md-4">
+                                <div class="io-line">Defined in <a href="" data-line="444" class="link-to-prism">libs/data-access-game/src/lib/+state/domains-cards/domains-cards.effects.ts:444</a></div>
+                        </td>
+                    </tr>
+
+
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="useLockedResources$"></a>
+                    <span class="name">
+                        <span ><b>useLockedResources$</b></span>
+                        <a href="#useLockedResources$"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <i>Default value : </i><code>createEffect(() &#x3D;&gt;
+    this.actions$.pipe(
+      ofType(DomainsCardsActions.useLockedResources),
+      withLatestFrom(
+        this.domainsCardsStore.select(
+          DomainsCardsSelectors.getLandCardPivotWithLockedResources
+        )
+      ),
+      // eslint-disable-next-line @typescript-eslint/no-unused-vars
+      map(([_action, pivots]) &#x3D;&gt; {
+        const updates &#x3D; pivots.map((pivot) &#x3D;&gt; {
+          return {
+            id: pivot.id,
+            changes: {
+              lockedResources: 0 as ResourceCount,
+            },
+          };
+        });
+        return DomainsCardsActions.updateDomainsCards({ updates });
+      })
+    )
+  )</code>
+                    </td>
+                </tr>
+                    <tr>
+                        <td class="col-md-4">
+                                <div class="io-line">Defined in <a href="" data-line="212" class="link-to-prism">libs/data-access-game/src/lib/+state/domains-cards/domains-cards.effects.ts:212</a></div>
+                        </td>
+                    </tr>
+
+
+        </tbody>
+    </table>
+</section>
+
+    </div>
+
+
+    <div class="tab-pane fade  tab-source-code" id="c-source">
+        <pre class="line-numbers compodoc-sourcecode"><code class="language-typescript">import { Injectable } from &#x27;@angular/core&#x27;;
+import { Actions, createEffect, ofType } from &#x27;@ngrx/effects&#x27;;
+import { select, Store } from &#x27;@ngrx/store&#x27;;
+import { fetch } from &#x27;@nrwl/angular&#x27;;
+import { landCards } from &#x27;@taormina/shared-constants&#x27;;
+import {
+  LandCard,
+  ResourceCount,
+  RESOURCE_COUNTS,
+} from &#x27;@taormina/shared-models&#x27;;
+import { forkJoin, Observable, of } from &#x27;rxjs&#x27;;
+import {
+  catchError,
+  concatMap,
+  map,
+  take,
+  withLatestFrom,
+} from &#x27;rxjs/operators&#x27;;
+import { v4 as uuidv4 } from &#x27;uuid&#x27;;
+
+import * as DomainsCardsActions from &#x27;./domains-cards.actions&#x27;;
+import {
+  createDomainsCardsEntity,
+  createInitialDomainsCards,
+  DomainsCardsEntity,
+} from &#x27;./domains-cards.models&#x27;;
+import * as DomainsCardsFeature from &#x27;./domains-cards.reducer&#x27;;
+import * as DomainsCardsSelectors from &#x27;./domains-cards.selectors&#x27;;
+
+@Injectable()
+export class DomainsCardsEffects {
+  initNewGame$ &#x3D; createEffect(() &#x3D;&gt;
+    this.actions$.pipe(
+      ofType(DomainsCardsActions.initDomainsCardsNewGame),
+      map(() &#x3D;&gt;
+        DomainsCardsActions.setDomainsCardsInitialized({
+          domainsCards: createInitialDomainsCards(),
+        })
+      )
+    )
+  );
+
+  initSavedGame$ &#x3D; createEffect(() &#x3D;&gt;
+    this.actions$.pipe(
+      ofType(DomainsCardsActions.initDomainsCardsSavedGame),
+      fetch({
+        run: () &#x3D;&gt; {
+          // Your custom service &#x27;load&#x27; logic goes here. For now just return a success action...
+          return DomainsCardsActions.loadDomainsCardsSuccess({
+            domainsCards: [],
+          });
+        },
+
+        onError: (_action, error) &#x3D;&gt; {
+          console.error(&#x27;Error&#x27;, error);
+          return DomainsCardsActions.loadDomainsCardsFailure({ error });
+        },
+      })
+    )
+  );
+
+  increaseResourcesForDie$ &#x3D; createEffect(() &#x3D;&gt;
+    this.actions$.pipe(
+      ofType(DomainsCardsActions.increaseAvailableResourcesForDie),
+      concatMap((action) &#x3D;&gt; {
+        return forkJoin({
+          increaseOne: this.domainsCardsStore.pipe(
+            select(
+              DomainsCardsSelectors.getLandCardsPivotsIncreaseOneProduction(
+                action.die
+              )
+            ),
+            take(1)
+          ),
+          increaseTwo: this.domainsCardsStore.pipe(
+            select(
+              DomainsCardsSelectors.getLandCardsPivotsIncreaseTwoProduction(
+                action.die
+              )
+            ),
+            take(1)
+          ),
+        });
+      }),
+      map(({ increaseOne, increaseTwo }) &#x3D;&gt; {
+        const updatesOne &#x3D; this.updatesAvailableResources(increaseOne, 1);
+        // eslint-disable-next-line no-magic-numbers
+        const updatesTwo &#x3D; this.updatesAvailableResources(increaseTwo, 2);
+        return DomainsCardsActions.updateDomainsCards({
+          updates: [...updatesOne, ...updatesTwo],
+        });
+      })
+    )
+  );
+
+  increaseResourcesAuspiciousYear$ &#x3D; createEffect(() &#x3D;&gt;
+    this.actions$.pipe(
+      ofType(DomainsCardsActions.increaseAvailableResourcesForAuspiciousYear),
+      withLatestFrom(
+        this.domainsCardsStore.select(
+          DomainsCardsSelectors.getLandCardsPivotsIncreaseAuspiciousYear
+        )
+      ),
+      map(
+        ([
+          // eslint-disable-next-line @typescript-eslint/no-unused-vars
+          _action,
+          [increaseOne, increaseTwo, increaseThree, increaseFour],
+        ]) &#x3D;&gt; {
+          const updatesOne &#x3D; this.updatesAvailableResources(
+            increaseOne,
+            DomainsCardsSelectors.COUNT_1
+          );
+          const updatesTwo &#x3D; this.updatesAvailableResources(
+            increaseTwo,
+            DomainsCardsSelectors.COUNT_2
+          );
+          const updatesThree &#x3D; this.updatesAvailableResources(
+            increaseThree,
+            DomainsCardsSelectors.COUNT_3
+          );
+          const updatesFour &#x3D; this.updatesAvailableResources(
+            increaseFour,
+            DomainsCardsSelectors.COUNT_4
+          );
+          return DomainsCardsActions.updateDomainsCards({
+            updates: [
+              ...updatesOne,
+              ...updatesTwo,
+              ...updatesThree,
+              ...updatesFour,
+            ],
+          });
+        }
+      )
+    )
+  );
+
+  lockResource$ &#x3D; createEffect(() &#x3D;&gt;
+    this.actions$.pipe(
+      ofType(DomainsCardsActions.lockResource),
+      concatMap((action) &#x3D;&gt;
+        this.takeOneDefinedPivotOrThrow(action.id).pipe(
+          map((pivot) &#x3D;&gt; {
+            if (pivot.availableResources &#x3D;&#x3D;&#x3D; 0) {
+              throw new Error(
+                &#x60;Can&#x27;t lock unavailable resource for pivot ${pivot.id}.&#x60;
+              );
+            }
+            if (pivot.lockedResources &#x3D;&#x3D;&#x3D; Math.max(...RESOURCE_COUNTS)) {
+              throw new Error(
+                &#x60;Can&#x27;t lock more resources for pivot ${pivot.id}.&#x60;
+              );
+            }
+
+            const update &#x3D; {
+              id: pivot.id,
+              changes: {
+                // prettier-ignore
+                availableResources: (pivot.availableResources - 1) as ResourceCount,
+                // prettier-ignore
+                lockedResources: (pivot.lockedResources + 1) as ResourceCount,
+              },
+            };
+            return DomainsCardsActions.updateDomainCard({ update });
+          }),
+          catchError((error) &#x3D;&gt;
+            of(
+              DomainsCardsActions.setDomainsCardsError({ error: error.message })
+            )
+          )
+        )
+      )
+    )
+  );
+
+  unlockResources$ &#x3D; createEffect(() &#x3D;&gt;
+    this.actions$.pipe(
+      ofType(DomainsCardsActions.unlockResources),
+      concatMap((action) &#x3D;&gt;
+        this.takeOneDefinedPivotOrThrow(action.id).pipe(
+          map((pivot) &#x3D;&gt; {
+            if (
+              pivot.availableResources + pivot.lockedResources &gt;
+              Math.max(...RESOURCE_COUNTS)
+            ) {
+              throw new Error(
+                &#x60;Shouldn&#x27;t have been able to lock so many resources for pivot ${pivot.id}.&#x60;
+              );
+            }
+
+            const update &#x3D; {
+              id: pivot.id,
+              changes: {
+                availableResources: (pivot.availableResources +
+                  pivot.lockedResources) as ResourceCount,
+                lockedResources: 0 as ResourceCount,
+              },
+            };
+            return DomainsCardsActions.updateDomainCard({ update });
+          }),
+          catchError((error) &#x3D;&gt;
+            of(
+              DomainsCardsActions.setDomainsCardsError({ error: error.message })
+            )
+          )
+        )
+      )
+    )
+  );
+
+  useLockedResources$ &#x3D; createEffect(() &#x3D;&gt;
+    this.actions$.pipe(
+      ofType(DomainsCardsActions.useLockedResources),
+      withLatestFrom(
+        this.domainsCardsStore.select(
+          DomainsCardsSelectors.getLandCardPivotWithLockedResources
+        )
+      ),
+      // eslint-disable-next-line @typescript-eslint/no-unused-vars
+      map(([_action, pivots]) &#x3D;&gt; {
+        const updates &#x3D; pivots.map((pivot) &#x3D;&gt; {
+          return {
+            id: pivot.id,
+            changes: {
+              lockedResources: 0 as ResourceCount,
+            },
+          };
+        });
+        return DomainsCardsActions.updateDomainsCards({ updates });
+      })
+    )
+  );
+
+  giveLockedResources$ &#x3D; createEffect(() &#x3D;&gt;
+    this.actions$.pipe(
+      ofType(DomainsCardsActions.giveLockedResources),
+      withLatestFrom(
+        this.domainsCardsStore.select(
+          DomainsCardsSelectors.getLandCardPivotWithLockedResources
+        )
+      ),
+      // eslint-disable-next-line @typescript-eslint/no-unused-vars
+      concatMap(([_action, pivotsWithLockedResources]) &#x3D;&gt;
+        this.domainsCardsStore.pipe(
+          select(DomainsCardsSelectors.getDomainsCardsSelected),
+          take(1),
+          map((pivotsSelected) &#x3D;&gt; {
+            if (pivotsWithLockedResources.length &#x3D;&#x3D;&#x3D; 0) {
+              throw new Error(
+                &#x60;Can&#x27;t give locked resources if no pivots with locked resources.&#x60;
+              );
+            }
+            const firstPivot &#x3D; pivotsWithLockedResources[0];
+            const firstLand &#x3D; this.getLandCardFromPivot(firstPivot);
+            let count &#x3D; 0;
+            pivotsWithLockedResources.forEach((pivot) &#x3D;&gt; {
+              const land &#x3D; this.getLandCardFromPivot(pivot);
+              if (land.type !&#x3D;&#x3D; firstLand.type) {
+                throw new Error(
+                  &#x60;Can&#x27;t give locked resources of different types.&#x60;
+                );
+              }
+              count +&#x3D; pivot.lockedResources;
+            });
+
+            const updatesLocked &#x3D; pivotsWithLockedResources.map((pivot) &#x3D;&gt; {
+              return {
+                id: pivot.id,
+                changes: {
+                  lockedResources: 0 as ResourceCount,
+                },
+              };
+            });
+
+            if (pivotsSelected.length !&#x3D;&#x3D; 1) {
+              throw new Error(
+                &#x60;Can&#x27;t give locked resources if no pivot or more than one pivot selected.&#x60;
+              );
+            }
+            const selectedPivot &#x3D; pivotsSelected[0];
+            const selectedLand &#x3D; this.getLandCardFromPivot(selectedPivot);
+            if (selectedLand.type !&#x3D;&#x3D; firstLand.type) {
+              throw new Error(
+                &#x60;Can&#x27;t give locked resources to pivot of different type.&#x60;
+              );
+            }
+
+            const sumResources &#x3D; selectedPivot.availableResources + count;
+            if (sumResources &gt; Math.max(...RESOURCE_COUNTS)) {
+              throw new Error(
+                &#x60;Can&#x27;t give so many locked resources to selected pivot.&#x60;
+              );
+            }
+
+            const updateAvailable &#x3D; {
+              id: selectedPivot.id,
+              changes: {
+                availableResources: sumResources as ResourceCount,
+              },
+            };
+
+            return DomainsCardsActions.updateDomainsCards({
+              updates: [...updatesLocked, updateAvailable],
+            });
+          }),
+          catchError((error) &#x3D;&gt;
+            of(
+              DomainsCardsActions.setDomainsCardsError({ error: error.message })
+            )
+          )
+        )
+      )
+    )
+  );
+
+  increaseResources$ &#x3D; createEffect(() &#x3D;&gt;
+    this.actions$.pipe(
+      ofType(DomainsCardsActions.increaseAvailableResources),
+      concatMap((action) &#x3D;&gt;
+        this.takeOneDefinedPivotOrThrow(action.id).pipe(
+          map((pivot) &#x3D;&gt; {
+            if (pivot.availableResources &#x3D;&#x3D;&#x3D; Math.max(...RESOURCE_COUNTS)) {
+              throw new Error(
+                &#x60;Can&#x27;t increase available resources beyond maximum for pivot ${pivot.id}.&#x60;
+              );
+            }
+
+            const update &#x3D; {
+              id: pivot.id,
+              changes: {
+                // prettier-ignore
+                availableResources: (pivot.availableResources + 1) as ResourceCount,
+              },
+            };
+            return DomainsCardsActions.updateDomainCard({ update });
+          }),
+          catchError((error) &#x3D;&gt;
+            of(
+              DomainsCardsActions.setDomainsCardsError({ error: error.message })
+            )
+          )
+        )
+      )
+    )
+  );
+
+  putCardInPivot$ &#x3D; createEffect(() &#x3D;&gt;
+    this.actions$.pipe(
+      ofType(DomainsCardsActions.putCardInPivot),
+      map((action) &#x3D;&gt; {
+        const update &#x3D; {
+          id: action.id,
+          changes: {
+            cardType: action.cardType,
+            cardId: action.cardId,
+          },
+        };
+        return DomainsCardsActions.updateDomainCard({ update });
+      })
+    )
+  );
+
+  createCard$ &#x3D; createEffect(() &#x3D;&gt;
+    this.actions$.pipe(
+      ofType(DomainsCardsActions.createDomainCard),
+      map(({ domainId, cardType, cardId, col, row }) &#x3D;&gt; {
+        const domainCard &#x3D; createDomainsCardsEntity(
+          uuidv4(),
+          domainId,
+          cardType,
+          cardId,
+          col,
+          row
+        );
+        return DomainsCardsActions.addDomainCard({ domainCard });
+      })
+    )
+  );
+
+  countStealResources$ &#x3D; createEffect(() &#x3D;&gt;
+    this.actions$.pipe(
+      ofType(DomainsCardsActions.countAndStealUnprotectedGoldAndWool),
+      withLatestFrom(
+        this.domainsCardsStore.select(
+          DomainsCardsSelectors.getDomainResourceCountSeenByThieves
+        ),
+        this.domainsCardsStore.select(
+          DomainsCardsSelectors.getDomainUnprotectedGoldMinesAndPastures
+        )
+      ),
+      map(
+        ([
+          // eslint-disable-next-line @typescript-eslint/no-unused-vars
+          _action,
+          [redResourceCount, blueResourceCount],
+          [redGoldMinesAndPastures, blueGoldMinesAndPastures],
+        ]) &#x3D;&gt; {
+          const thievesResourceCountThreshold &#x3D; 7;
+          let pivots: DomainsCardsEntity[] &#x3D; [];
+          if (redResourceCount &gt; thievesResourceCountThreshold) {
+            pivots &#x3D; [...pivots, ...redGoldMinesAndPastures];
+          }
+          if (blueResourceCount &gt; thievesResourceCountThreshold) {
+            pivots &#x3D; [...pivots, ...blueGoldMinesAndPastures];
+          }
+          return pivots;
+        }
+      ),
+      map((pivots) &#x3D;&gt; {
+        const updates &#x3D; pivots.map((pivot) &#x3D;&gt; {
+          return {
+            id: pivot.id,
+            changes: {
+              availableResources: 0 as ResourceCount,
+            },
+          };
+        });
+        return DomainsCardsActions.updateDomainsCards({ updates });
+      })
+    )
+  );
+
+  constructor(
+    private actions$: Actions,
+    private domainsCardsStore: Store&lt;DomainsCardsFeature.DomainsCardsPartialState&gt;
+  ) {}
+
+  private takeOneDefinedPivotOrThrow(
+    id: string
+  ): Observable&lt;DomainsCardsEntity&gt; {
+    return this.domainsCardsStore.pipe(
+      select(DomainsCardsSelectors.getLandCardPivotById(id)),
+      map((pivot) &#x3D;&gt; {
+        if (pivot &#x3D;&#x3D;&#x3D; undefined) {
+          throw new Error(&#x60;Couldn&#x27;t find land card pivot for id.&#x60;);
+        }
+        return pivot;
+      }),
+      take(1)
+    );
+  }
+
+  private updatesAvailableResources &#x3D; (
+    domainsCards: DomainsCardsEntity[],
+    resourceIncrement: number
+  ): {
+    id: string;
+    changes: {
+      availableResources: ResourceCount;
+    };
+  }[] &#x3D;&gt; {
+    const belowMax &#x3D; domainsCards
+      .filter(
+        (pivot) &#x3D;&gt;
+          pivot.availableResources &lt;
+          Math.max(...RESOURCE_COUNTS) - resourceIncrement
+      )
+      .map((pivot) &#x3D;&gt; {
+        return {
+          id: pivot.id,
+          changes: {
+            availableResources: (pivot.availableResources +
+              resourceIncrement) as ResourceCount,
+          },
+        };
+      });
+
+    const atMax &#x3D; domainsCards
+      .filter(
+        (pivot) &#x3D;&gt;
+          pivot.availableResources &gt;&#x3D;
+            Math.max(...RESOURCE_COUNTS) - resourceIncrement &amp;&amp;
+          pivot.availableResources &lt; Math.max(...RESOURCE_COUNTS)
+      )
+      .map((pivot) &#x3D;&gt; {
+        return {
+          id: pivot.id,
+          changes: {
+            availableResources: Math.max(...RESOURCE_COUNTS) as ResourceCount,
+          },
+        };
+      });
+
+    return [...belowMax, ...atMax];
+  };
+
+  private getLandCardFromPivot(pivot: DomainsCardsEntity): LandCard {
+    if (pivot.cardId &#x3D;&#x3D;&#x3D; undefined) {
+      throw new Error(
+        &#x60;Something went wrong, cardId shouldn&#x27;t be undefined at this point.&#x60;
+      );
+    }
+    const land &#x3D; landCards.get(pivot.cardId);
+    if (land &#x3D;&#x3D;&#x3D; undefined) {
+      throw new Error(
+        &#x60;Something went wrong, land shouldn&#x27;t be undefined at this point.&#x60;
+      );
+    }
+    return land;
+  }
+}
+</code></pre>
+    </div>
+
+</div>
+
+
+
+
+
+
+
+
+
+
+
+
+
+                   </div><div class="search-results">
+    <div class="has-results">
+        <h1 class="search-results-title"><span class='search-results-count'></span> results matching "<span class='search-query'></span>"</h1>
+        <ul class="search-results-list"></ul>
+    </div>
+    <div class="no-results">
+        <h1 class="search-results-title">No results matching "<span class='search-query'></span>"</h1>
+    </div>
+</div>
+</div>
+               <!-- END CONTENT -->
+           </div>
+       </div>
+
+          <label class="dark-mode-switch">
+               <input type="checkbox">
+               <span class="slider">
+                    <svg class="slider-icon" viewBox="0 0 24 24" fill="none" height="20" stroke="#000" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" width="20" xmlns="http://www.w3.org/2000/svg">
+                    <path d="M21 12.79A9 9 0 1111.21 3 7 7 0 0021 12.79z"></path>
+                    </svg>
+               </span>
+          </label>
+
+       <script>
+            var COMPODOC_CURRENT_PAGE_DEPTH = 1;
+            var COMPODOC_CURRENT_PAGE_CONTEXT = 'injectable';
+            var COMPODOC_CURRENT_PAGE_URL = 'DomainsCardsEffects.html';
+            var MAX_SEARCH_RESULTS = 15;
+       </script>
+
+       <script src="../js/libs/custom-elements.min.js"></script>
+       <script src="../js/libs/lit-html.js"></script>
+
+       <script src="../js/menu-wc.js" defer></script>
+       <script nomodule src="../js/menu-wc_es5.js" defer></script>
+
+       <script src="../js/libs/bootstrap-native.js"></script>
+
+       <script src="../js/libs/es6-shim.min.js"></script>
+       <script src="../js/libs/EventDispatcher.js"></script>
+       <script src="../js/libs/promise.min.js"></script>
+       <script src="../js/libs/zepto.min.js"></script>
+
+       <script src="../js/compodoc.js"></script>
+
+       <script src="../js/tabs.js"></script>
+       <script src="../js/menu.js"></script>
+       <script src="../js/libs/clipboard.min.js"></script>
+       <script src="../js/libs/prism.js"></script>
+       <script src="../js/sourceCode.js"></script>
+          <script src="../js/search/search.js"></script>
+          <script src="../js/search/lunr.min.js"></script>
+          <script src="../js/search/search-lunr.js"></script>
+          <script src="../js/search/search_index.js"></script>
+       <script src="../js/lazy-load-graphs.js"></script>
+
+
+    </body>
+</html>
