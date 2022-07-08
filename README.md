@@ -12,13 +12,13 @@ This project was generated using [Nx](Nx.md).
 
 ```
 ├── @angular/cli@11.0.4<br>
-├── npm@7.15.1<br>
-├── nx@11.0.4<br>
+├── npm@8.13.2<br>
+├── nx@14.4.0<br>
 └── updtr@3.1.0
 ```
 
 ### Node version
 
 ```
-v14.16.1
+v14.19.2
 ```
