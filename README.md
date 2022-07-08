@@ -11,14 +11,14 @@ This project was generated using [Nx](Nx.md).
 ### Globally installed packages
 
 ```
-├── @angular/cli@11.0.4<br>
+├── @angular/cli@14.0.5<br>
+├── corepack@0.10.0<br>
 ├── npm@8.13.2<br>
-├── nx@14.4.0<br>
-└── updtr@3.1.0
+└── updtr@4.0.0
 ```
 
 ### Node version
 
 ```
-v14.19.2
+v16.16.0
 ```
