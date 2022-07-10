@@ -1,0 +1,20 @@
+<div *ngIf="getHand() as hand">
+  <div>{{ hand.color }}</div>
+  <div
+    *ngFor="let pivot of getHandsCards(hand.id) | async"
+    [ngSwitch]="pivot.cardType"
+  >
+    <div *ngSwitchCase="ACTION_CARD_INTERFACE_NAME">
+      <div *ngIf="getActionCard(pivot.cardId) as action">
+        {{ action.name }}
+        <button type="button" (click)="selectHandCard(pivot.id)">Select</button>
+      </div>
+    </div>
+    <div *ngSwitchCase="DEVELOPMENT_CARD_INTERFACE_NAME">
+      <div *ngIf="getDevelopmentCard(pivot.cardId) as development">
+        {{ development.name }}
+        <button type="button" (click)="selectHandCard(pivot.id)">Select</button>
+      </div>
+    </div>
+  </div>
+</div>

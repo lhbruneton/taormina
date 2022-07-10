@@ -55,6 +55,32 @@
       },
       "tags": []
     },
+    "feature-game": {
+      "projectType": "library",
+      "root": "libs/feature-game",
+      "sourceRoot": "libs/feature-game/src",
+      "prefix": "taormina",
+      "architect": {
+        "test": {
+          "builder": "@nrwl/jest:jest",
+          "outputs": ["coverage/libs/feature-game"],
+          "options": {
+            "jestConfig": "libs/feature-game/jest.config.ts",
+            "passWithNoTests": true
+          }
+        },
+        "lint": {
+          "builder": "@nrwl/linter:eslint",
+          "options": {
+            "lintFilePatterns": [
+              "libs/feature-game/**/*.ts",
+              "libs/feature-game/**/*.html"
+            ]
+          }
+        }
+      },
+      "tags": []
+    },
     "shared-constants": {
       "$schema": "../../node_modules/nx/schemas/project-schema.json",
       "projectType": "library",
