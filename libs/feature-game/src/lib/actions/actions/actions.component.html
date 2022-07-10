@@ -1,0 +1,117 @@
+<div class="flex-container">
+  <button
+    type="button"
+    [disabled]="buyDisabled() | async"
+    (click)="buyAgglomeration()"
+  >
+    buy agglomeration
+  </button>
+  <div>
+    <p>Pile Selected Agglomeration Card:</p>
+    <p *ngIf="getSelectedFaceUpPileCard() | async as pivot">
+      {{ pivot.pileId }}
+    </p>
+  </div>
+  <div>
+    <p>Selected Available Agglomeration Slots:</p>
+    <p *ngFor="let pivot of getSelectedAvailableAgglomerationSlots() | async">
+      {{ pivot.domainId }}<br />
+      {{ pivot.col }}<br />
+      {{ pivot.row }}
+    </p>
+  </div>
+  <div>
+    <p>Domain Selected Agglomeration Slots:</p>
+    <p *ngFor="let pivot of getDomainSelectedAgglomerationSlots() | async">
+      {{ pivot.domainId }}<br />
+      {{ pivot.col }}<br />
+      {{ pivot.row }}
+    </p>
+  </div>
+</div>
+<hr />
+<div class="flex-container">
+  <button
+    type="button"
+    [disabled]="buyDisabled() | async"
+    (click)="buyDevelopment()"
+  >
+    buy development
+  </button>
+  <div>
+    <p>Hand Selected Development Card:</p>
+    <p *ngIf="getHandSelectedDevelopmentCard() | async as pivot">
+      {{ pivot.cardId }}
+    </p>
+  </div>
+  <div>
+    <p>Selected Available Development Slots:</p>
+    <p *ngFor="let pivot of getSelectedAvailableDevelopmentSlots() | async">
+      {{ pivot.domainId }}<br />
+      {{ pivot.col }}<br />
+      {{ pivot.row }}
+    </p>
+  </div>
+  <div>
+    <p>Domain Selected Development Cards:</p>
+    <p *ngFor="let pivot of getDomainSelectedDevelopmentCards() | async">
+      {{ pivot.domainId }}<br />
+      {{ pivot.col }}<br />
+      {{ pivot.row }}
+    </p>
+  </div>
+</div>
+<hr />
+<div class="flex-container">
+  <button
+    type="button"
+    [disabled]="useActionCardDisabled() | async"
+    (click)="useActionCard()"
+  >
+    Use action card
+  </button>
+  <div>
+    <p>Selected Action Card:</p>
+    <p *ngIf="getSelectedActionCard() | async as pivot">
+      {{ pivot.cardId }}
+    </p>
+  </div>
+</div>
+<hr />
+<div class="flex-container">
+  <button type="button" (click)="putLand()">put land</button>
+  <button type="button" (click)="giveLockedResources()">
+    Give locked resources
+  </button>
+  <div>
+    <p>Pile Selected Land Card:</p>
+    <p *ngIf="getPileSelectedLandCard() | async as pivot">
+      {{ pivot.cardId }}
+    </p>
+  </div>
+  <div>
+    <p>Selected Available Land Slots:</p>
+    <p *ngFor="let pivot of getSelectedAvailableLandSlots() | async">
+      {{ pivot.domainId }}<br />
+      {{ pivot.col }}<br />
+      {{ pivot.row }}
+    </p>
+  </div>
+  <div>
+    <p>Domain Selected Available Land Slots:</p>
+    <p *ngFor="let pivot of getDomainSelectedLandCards() | async">
+      {{ pivot.domainId }}<br />
+      {{ pivot.col }}<br />
+      {{ pivot.row }}
+    </p>
+  </div>
+</div>
+<hr />
+<div>
+  <button type="button" (click)="swapSelectedDomainsCards()">
+    swap selected domains cards</button
+  ><br />
+  <button type="button" (click)="clearDomainCardSelection()">
+    clear domain selection
+  </button>
+</div>

@@ -1,0 +1,25 @@
+<div class="flex-container">
+  <div>
+    <p>Next Production Die:</p>
+    <div *ngFor="let value of RESOURCE_VALUES">
+      <label>
+        <input
+          type="radio"
+          [value]="value"
+          name="nextProductionDie"
+          [ngModel]="getNextProductionDie() | async"
+          (ngModelChange)="setNextProductionDie($event)"
+        />{{ value }}</label
+      >
+    </div>
+  </div>
+  <button
+    type="button"
+    [disabled]="throwDisabled() | async"
+    (click)="onThrow()"
+  >
+    throw
+  </button>
+  <p *ngIf="getProductionDie() | async as value">Production: {{ value }}</p>
+  <p *ngIf="getEventDie() | async as value">Event: {{ value }}</p>
+</div>

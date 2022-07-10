@@ -1,0 +1,50 @@
+<div class="flex-container">
+  <div>
+    <p>Current Player:</p>
+    <div *ngFor="let player of DomainColor | keyvalue">
+      <label>
+        <input
+          type="radio"
+          [value]="player.value"
+          name="player"
+          [ngModel]="getPlayer() | async"
+          (ngModelChange)="setPlayer($event)"
+        />{{ player.key }}</label
+      >
+    </div>
+  </div>
+  <div>
+    <p>Current Phase:</p>
+    <div *ngFor="let phase of GamePhase | keyvalue">
+      <label>
+        <input
+          type="radio"
+          [value]="phase.value"
+          name="phase"
+          [ngModel]="getPhase() | async"
+          (ngModelChange)="setPhase($event)"
+        />{{ phase.key }}</label
+      >
+    </div>
+  </div>
+  <div>
+    <p>Current event:</p>
+    <div *ngIf="getSelectedEventsPileCard() | async as pivot">
+      <div *ngIf="getEventCard(pivot.cardId) as event">
+        {{ event.name }}
+      </div>
+    </div>
+    <hr />
+    <button type="button" (click)="removeSelectedEventsPileCard()">
+      Finish event
+    </button>
+  </div>
+  <div>
+    <p>Current action:</p>
+    <div *ngIf="getAction() | async as action">
+      {{ action }}
+    </div>
+    <hr />
+    <button type="button" (click)="unsetAction()">Finish action</button>
+  </div>
+</div>

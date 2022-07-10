@@ -1,0 +1,132 @@
+<div class="flex-container">
+  <div *ngFor="let pile of getFaceUpPiles()">
+    <p>{{ pile }}</p>
+    <button type="button" (click)="selectFirst(pile)">Select</button>
+    <p>Remaining: {{ getFaceUpPileCount(pile) | async }}</p>
+  </div>
+  <div>
+    LANDS PILE
+    <div *ngFor="let pivot of getLandsPileCards() | async; index as i">
+      <div *ngIf="getLandCard(pivot.cardId) as land">
+        {{ land.type }} - {{ land.die }}
+        <button
+          *ngIf="(canSelectAnyLandCard() | async) || i < 2"
+          type="button"
+          (click)="selectLandsPileCard(pivot.id)"
+        >
+          Select
+        </button>
+      </div>
+    </div>
+  </div>
+  <div>
+    <p>Selected stock pile:</p>
+    <div *ngIf="selectedStockPileId">
+      {{ selectedStockPileId }}
+    </div>
+    <hr />
+    <button
+      [disabled]="!selectedStockPileId"
+      type="button"
+      (click)="unselectStockPile()"
+    >
+      Unselect
+    </button>
+  </div>
+  <div *ngFor="let pile of getStockPiles(); index as i">
+    STOCK PILE {{ i }}
+    <button
+      *ngIf="drawInitialRedHandAvailable() | async"
+      type="button"
+      (click)="drawInitialRedHand(pile)"
+    >
+      Draw 3 cards to red hand
+    </button>
+    <button
+      *ngIf="drawFirstCardRedHandAvailable() | async"
+      type="button"
+      (click)="drawFirstCardRedHand(pile)"
+    >
+      Draw first card to red hand
+    </button>
+    <button
+      *ngIf="drawInitialBlueHandAvailable() | async"
+      type="button"
+      (click)="drawInitialBlueHand(pile)"
+    >
+      Draw 3 cards to blue hand
+    </button>
+    <button
+      *ngIf="drawFirstCardBlueHandAvailable() | async"
+      type="button"
+      (click)="drawFirstCardBlueHand(pile)"
+    >
+      Draw first card to blue hand
+    </button>
+    <div
+      *ngFor="let pivot of getStockPilesCards(pile) | async"
+      [ngSwitch]="pivot.cardType"
+    >
+      <div *ngSwitchCase="ACTION_CARD_INTERFACE_NAME">
+        <div *ngIf="getActionCard(pivot.cardId) as action">
+          {{ action.name }}
+        </div>
+      </div>
+      <div *ngSwitchCase="DEVELOPMENT_CARD_INTERFACE_NAME">
+        <div *ngIf="getDevelopmentCard(pivot.cardId) as development">
+          {{ development.name }}
+        </div>
+      </div>
+      <button
+        *ngIf="canDrawAnyCardInStockPile(pile) | async"
+        type="button"
+        (click)="drawCardCurrentPlayer(pile, pivot.cardId)"
+      >
+        Draw
+      </button>
+    </div>
+    <button
+      *ngIf="putBackSelectedHandCardAvailable() | async"
+      type="button"
+      (click)="putBackSelectedHandCard(pile)"
+    >
+      Put back selected hand card
+    </button>
+    <button type="button" (click)="putBackSelectedDomainCard(pile)">
+      Put back selected domain card
+    </button>
+    <button
+      *ngIf="canSelectStockPile() | async"
+      type="button"
+      (click)="buySelectStockPile(pile)"
+    >
+      Select stock pile (buy)
+    </button>
+  </div>
+  <div>
+    EVENTS PILE
+    <div *ngFor="let pivot of getEventsPileCards() | async">
+      <div *ngIf="getEventCard(pivot.cardId) as event">
+        {{ event.name }}
+      </div>
+    </div>
+  </div>
+  <div>
+    DISCARD PILE
+    <div
+      *ngFor="let pivot of getDiscardPileCardsReverse() | async"
+      [ngSwitch]="pivot.cardType"
+    >
+      <div *ngSwitchCase="ACTION_CARD_INTERFACE_NAME">
+        <div *ngIf="getActionCard(pivot.cardId) as action">
+          {{ action.name }}
+        </div>
+      </div>
+      <div *ngSwitchCase="DEVELOPMENT_CARD_INTERFACE_NAME">
+        <div *ngIf="getDevelopmentCard(pivot.cardId) as development">
+          {{ development.name }}
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
