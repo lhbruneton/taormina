@@ -1,0 +1,987 @@
+<!doctype html>
+<html class="no-js" lang="">
+    <head>
+        <meta charset="utf-8">
+        <meta http-equiv="x-ua-compatible" content="ie=edge">
+        <title>taormina documentation</title>
+        <meta name="description" content="">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+
+        <link rel="icon" type="image/x-icon" href="../images/favicon.ico">
+	   <link rel="stylesheet" href="../styles/style.css">
+        <link rel="stylesheet" href="../styles/dark.css">
+    </head>
+    <body>
+
+        <div class="navbar navbar-default navbar-fixed-top visible-xs">
+            <a href="../" class="navbar-brand">taormina documentation</a>
+            <button type="button" class="btn btn-default btn-menu ion-ios-menu" id="btn-menu"></button>
+        </div>
+
+        <div class="xs-menu menu" id="mobile-menu">
+                <div id="book-search-input" role="search"><input type="text" placeholder="Type to search"></div>            <compodoc-menu></compodoc-menu>
+        </div>
+
+        <div class="container-fluid main">
+           <div class="row main">
+               <div class="hidden-xs menu">
+                   <compodoc-menu mode="normal"></compodoc-menu>
+               </div>
+               <!-- START CONTENT -->
+               <div class="content component">
+                   <div class="content-data">
+
+
+
+
+<ol class="breadcrumb">
+  <li>Components</li>
+  <li
+  >
+  PhasesComponent</li>
+</ol>
+
+<ul class="nav nav-tabs" role="tablist">
+        <li class="active">
+            <a href="#info" role="tab" id="info-tab" data-toggle="tab" data-link="info">Info</a>
+        </li>
+        <li >
+            <a href="#source" role="tab" id="source-tab" data-toggle="tab" data-link="source">Source</a>
+        </li>
+        <li >
+            <a href="#templateData" role="tab" id="templateData-tab" data-toggle="tab" data-link="template">Template</a>
+        </li>
+        <li >
+            <a href="#styleData" role="tab" id="styleData-tab" data-toggle="tab" data-link="style">Styles</a>
+        </li>
+        <li >
+            <a href="#tree" role="tab" id="tree-tab" data-toggle="tab" data-link="dom-tree">DOM Tree</a>
+        </li>
+</ul>
+
+<div class="tab-content">
+    <div class="tab-pane fade active in" id="c-info"><p class="comment">
+    <h3>File</h3>
+</p>
+<p class="comment">
+    <code>libs/feature-game/src/lib/phases/phases/phases.component.ts</code>
+</p>
+
+
+
+
+
+
+<section>
+    <h3>Metadata</h3>
+    <table class="table table-sm table-hover metadata">
+        <tbody>
+
+
+
+
+
+
+
+
+
+
+
+            <tr>
+                <td class="col-md-3">selector</td>
+                <td class="col-md-9"><code>taormina-phases</code></td>
+            </tr>
+
+            <tr>
+                <td class="col-md-3">styleUrls</td>
+                <td class="col-md-9"><code>./phases.component.css</code></td>
+            </tr>
+
+
+
+            <tr>
+                <td class="col-md-3">templateUrl</td>
+                <td class="col-md-9"><code>./phases.component.html</code></td>
+            </tr>
+
+
+
+
+
+
+
+
+        </tbody>
+    </table>
+</section>
+
+    <section>
+    <h3 id="index">Index</h3>
+    <table class="table table-sm table-bordered index-table">
+        <tbody>
+                <tr>
+                    <td class="col-md-4">
+                        <h6><b>Properties</b></h6>
+                    </td>
+                </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <ul class="index-list">
+                            <li>
+                                <a href="#DomainColor" >DomainColor</a>
+                            </li>
+                            <li>
+                                <a href="#GamePhase" >GamePhase</a>
+                            </li>
+                        </ul>
+                    </td>
+                </tr>
+
+                <tr>
+                    <td class="col-md-4">
+                        <h6><b>Methods</b></h6>
+                    </td>
+                </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <ul class="index-list">
+                            <li>
+                                <a href="#getAction" >getAction</a>
+                            </li>
+                            <li>
+                                <a href="#getEventCard" >getEventCard</a>
+                            </li>
+                            <li>
+                                <a href="#getPhase" >getPhase</a>
+                            </li>
+                            <li>
+                                <a href="#getPlayer" >getPlayer</a>
+                            </li>
+                            <li>
+                                <a href="#getSelectedEventsPileCard" >getSelectedEventsPileCard</a>
+                            </li>
+                            <li>
+                                <a href="#removeSelectedEventsPileCard" >removeSelectedEventsPileCard</a>
+                            </li>
+                            <li>
+                                <a href="#setPhase" >setPhase</a>
+                            </li>
+                            <li>
+                                <a href="#setPlayer" >setPlayer</a>
+                            </li>
+                            <li>
+                                <a href="#unsetAction" >unsetAction</a>
+                            </li>
+                        </ul>
+                    </td>
+                </tr>
+
+
+
+
+
+        </tbody>
+    </table>
+</section>
+
+    <section>
+    <h3 id="constructor">Constructor</h3>
+        <table class="table table-sm table-bordered">
+            <tbody>
+                <tr>
+                    <td class="col-md-4">
+<code>constructor(game: <a href="../injectables/GameFacade.html" target="_self">GameFacade</a>, eventsPileCards: <a href="../injectables/EventsPileCardsFacade.html" target="_self">EventsPileCardsFacade</a>)</code>
+                    </td>
+                </tr>
+                        <tr>
+                            <td class="col-md-4">
+                                <div class="io-line">Defined in <a href="" data-line="23" class="link-to-prism">libs/feature-game/src/lib/phases/phases/phases.component.ts:23</a></div>
+                            </td>
+                        </tr>
+
+                <tr>
+                    <td class="col-md-4">
+                            <div>
+                                    <b>Parameters :</b>
+                                    <table class="params">
+                                        <thead>
+                                            <tr>
+                                                <td>Name</td>
+                                                    <td>Type</td>
+                                                <td>Optional</td>
+                                            </tr>
+                                        </thead>
+                                        <tbody>
+                                                <tr>
+                                                        <td>game</td>
+                                                  
+                                                        <td>
+                                                                        <code><a href="../injectables/GameFacade.html" target="_self" >GameFacade</a></code>
+                                                        </td>
+                                                  
+                                                    <td>
+                                                            No
+                                                    </td>
+                                                    
+                                                </tr>
+                                                <tr>
+                                                        <td>eventsPileCards</td>
+                                                  
+                                                        <td>
+                                                                        <code><a href="../injectables/EventsPileCardsFacade.html" target="_self" >EventsPileCardsFacade</a></code>
+                                                        </td>
+                                                  
+                                                    <td>
+                                                            No
+                                                    </td>
+                                                    
+                                                </tr>
+                                        </tbody>
+                                    </table>
+                            </div>
+                    </td>
+                </tr>
+            </tbody>
+        </table>
+</section>
+
+
+
+
+
+    <section>
+    
+    <h3 id="methods">
+        Methods
+    </h3>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="getAction"></a>
+                    <span class="name">
+                        <span ><b>getAction</b></span>
+                        <a href="#getAction"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+            <tr>
+                <td class="col-md-4">
+<code>getAction()</code>
+                </td>
+            </tr>
+
+
+            <tr>
+                <td class="col-md-4">
+                    <div class="io-line">Defined in <a href="" data-line="58"
+                            class="link-to-prism">libs/feature-game/src/lib/phases/phases/phases.component.ts:58</a></div>
+                </td>
+            </tr>
+
+
+            <tr>
+                <td class="col-md-4">
+
+                    <div class="io-description">
+                        <b>Returns : </b>        <code><a href="../miscellaneous/enumerations.html#ActionName" target="_self" >Observable&lt;ActionName | undefined&gt;</a></code>
+
+                    </div>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="getEventCard"></a>
+                    <span class="name">
+                        <span ><b>getEventCard</b></span>
+                        <a href="#getEventCard"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+            <tr>
+                <td class="col-md-4">
+<code>getEventCard(cardId: <a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/string" target="_blank">string</a>)</code>
+                </td>
+            </tr>
+
+
+            <tr>
+                <td class="col-md-4">
+                    <div class="io-line">Defined in <a href="" data-line="46"
+                            class="link-to-prism">libs/feature-game/src/lib/phases/phases/phases.component.ts:46</a></div>
+                </td>
+            </tr>
+
+
+            <tr>
+                <td class="col-md-4">
+
+                    <div class="io-description">
+                        <b>Parameters :</b>
+                        
+                        <table class="params">
+                            <thead>
+                                <tr>
+                                    <td>Name</td>
+                                    <td>Type</td>
+                                    <td>Optional</td>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr>
+                                    <td>cardId</td>
+                                    <td>
+                                                <code><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/string" target="_blank" >string</a></code>
+                                    </td>
+
+                                    <td>
+                                        No
+                                    </td>
+
+
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                    <div>
+                    </div>
+                    <div class="io-description">
+                        <b>Returns : </b>        <code><a href="../interfaces/EventCard.html" target="_self" >EventCard | undefined</a></code>
+
+                    </div>
+                    <div class="io-description">
+                        
+                    </div>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="getPhase"></a>
+                    <span class="name">
+                        <span ><b>getPhase</b></span>
+                        <a href="#getPhase"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+            <tr>
+                <td class="col-md-4">
+<code>getPhase()</code>
+                </td>
+            </tr>
+
+
+            <tr>
+                <td class="col-md-4">
+                    <div class="io-line">Defined in <a href="" data-line="30"
+                            class="link-to-prism">libs/feature-game/src/lib/phases/phases/phases.component.ts:30</a></div>
+                </td>
+            </tr>
+
+
+            <tr>
+                <td class="col-md-4">
+
+                    <div class="io-description">
+                        <b>Returns : </b>        <code><a href="../miscellaneous/enumerations.html#GamePhase" target="_self" >Observable&lt;GamePhase&gt;</a></code>
+
+                    </div>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="getPlayer"></a>
+                    <span class="name">
+                        <span ><b>getPlayer</b></span>
+                        <a href="#getPlayer"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+            <tr>
+                <td class="col-md-4">
+<code>getPlayer()</code>
+                </td>
+            </tr>
+
+
+            <tr>
+                <td class="col-md-4">
+                    <div class="io-line">Defined in <a href="" data-line="38"
+                            class="link-to-prism">libs/feature-game/src/lib/phases/phases/phases.component.ts:38</a></div>
+                </td>
+            </tr>
+
+
+            <tr>
+                <td class="col-md-4">
+
+                    <div class="io-description">
+                        <b>Returns : </b>        <code><a href="../interfaces/Domain.html" target="_self" >Observable&lt;DomainColor&gt;</a></code>
+
+                    </div>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="getSelectedEventsPileCard"></a>
+                    <span class="name">
+                        <span ><b>getSelectedEventsPileCard</b></span>
+                        <a href="#getSelectedEventsPileCard"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+            <tr>
+                <td class="col-md-4">
+<code>getSelectedEventsPileCard()</code>
+                </td>
+            </tr>
+
+
+            <tr>
+                <td class="col-md-4">
+                    <div class="io-line">Defined in <a href="" data-line="50"
+                            class="link-to-prism">libs/feature-game/src/lib/phases/phases/phases.component.ts:50</a></div>
+                </td>
+            </tr>
+
+
+            <tr>
+                <td class="col-md-4">
+
+                    <div class="io-description">
+                        <b>Returns : </b>        <code><a href="../interfaces/EventsPileCardsEntity.html" target="_self" >Observable&lt;EventsPileCardsEntity | undefined&gt;</a></code>
+
+                    </div>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="removeSelectedEventsPileCard"></a>
+                    <span class="name">
+                        <span ><b>removeSelectedEventsPileCard</b></span>
+                        <a href="#removeSelectedEventsPileCard"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+            <tr>
+                <td class="col-md-4">
+<code>removeSelectedEventsPileCard()</code>
+                </td>
+            </tr>
+
+
+            <tr>
+                <td class="col-md-4">
+                    <div class="io-line">Defined in <a href="" data-line="54"
+                            class="link-to-prism">libs/feature-game/src/lib/phases/phases/phases.component.ts:54</a></div>
+                </td>
+            </tr>
+
+
+            <tr>
+                <td class="col-md-4">
+
+                    <div class="io-description">
+                        <b>Returns : </b>        <code><a href="https://www.typescriptlang.org/docs/handbook/basic-types.html" target="_blank" >void</a></code>
+
+                    </div>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="setPhase"></a>
+                    <span class="name">
+                        <span ><b>setPhase</b></span>
+                        <a href="#setPhase"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+            <tr>
+                <td class="col-md-4">
+<code>setPhase(phase: <a href="../undefineds/GamePhase.html" target="_self">GamePhase</a>)</code>
+                </td>
+            </tr>
+
+
+            <tr>
+                <td class="col-md-4">
+                    <div class="io-line">Defined in <a href="" data-line="34"
+                            class="link-to-prism">libs/feature-game/src/lib/phases/phases/phases.component.ts:34</a></div>
+                </td>
+            </tr>
+
+
+            <tr>
+                <td class="col-md-4">
+
+                    <div class="io-description">
+                        <b>Parameters :</b>
+                        
+                        <table class="params">
+                            <thead>
+                                <tr>
+                                    <td>Name</td>
+                                    <td>Type</td>
+                                    <td>Optional</td>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr>
+                                    <td>phase</td>
+                                    <td>
+                                                <code><a href="../miscellaneous/enumerations.html#GamePhase" target="_self" >GamePhase</a></code>
+                                    </td>
+
+                                    <td>
+                                        No
+                                    </td>
+
+
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                    <div>
+                    </div>
+                    <div class="io-description">
+                        <b>Returns : </b>        <code><a href="https://www.typescriptlang.org/docs/handbook/basic-types.html" target="_blank" >void</a></code>
+
+                    </div>
+                    <div class="io-description">
+                        
+                    </div>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="setPlayer"></a>
+                    <span class="name">
+                        <span ><b>setPlayer</b></span>
+                        <a href="#setPlayer"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+            <tr>
+                <td class="col-md-4">
+<code>setPlayer(player: <a href="../interfaces/Domain.html" target="_self">DomainColor</a>)</code>
+                </td>
+            </tr>
+
+
+            <tr>
+                <td class="col-md-4">
+                    <div class="io-line">Defined in <a href="" data-line="42"
+                            class="link-to-prism">libs/feature-game/src/lib/phases/phases/phases.component.ts:42</a></div>
+                </td>
+            </tr>
+
+
+            <tr>
+                <td class="col-md-4">
+
+                    <div class="io-description">
+                        <b>Parameters :</b>
+                        
+                        <table class="params">
+                            <thead>
+                                <tr>
+                                    <td>Name</td>
+                                    <td>Type</td>
+                                    <td>Optional</td>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr>
+                                    <td>player</td>
+                                    <td>
+                                                <code><a href="../interfaces/Domain.html" target="_self" >DomainColor</a></code>
+                                    </td>
+
+                                    <td>
+                                        No
+                                    </td>
+
+
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                    <div>
+                    </div>
+                    <div class="io-description">
+                        <b>Returns : </b>        <code><a href="https://www.typescriptlang.org/docs/handbook/basic-types.html" target="_blank" >void</a></code>
+
+                    </div>
+                    <div class="io-description">
+                        
+                    </div>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="unsetAction"></a>
+                    <span class="name">
+                        <span ><b>unsetAction</b></span>
+                        <a href="#unsetAction"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+            <tr>
+                <td class="col-md-4">
+<code>unsetAction()</code>
+                </td>
+            </tr>
+
+
+            <tr>
+                <td class="col-md-4">
+                    <div class="io-line">Defined in <a href="" data-line="62"
+                            class="link-to-prism">libs/feature-game/src/lib/phases/phases/phases.component.ts:62</a></div>
+                </td>
+            </tr>
+
+
+            <tr>
+                <td class="col-md-4">
+
+                    <div class="io-description">
+                        <b>Returns : </b>        <code><a href="https://www.typescriptlang.org/docs/handbook/basic-types.html" target="_blank" >void</a></code>
+
+                    </div>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+</section>
+    <section>
+    
+    <h3 id="inputs">
+        Properties
+    </h3>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="DomainColor"></a>
+                    <span class="name">
+                        <span ><b>DomainColor</b></span>
+                        <a href="#DomainColor"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <i>Default value : </i><code>DomainColor</code>
+                    </td>
+                </tr>
+                    <tr>
+                        <td class="col-md-4">
+                                <div class="io-line">Defined in <a href="" data-line="23" class="link-to-prism">libs/feature-game/src/lib/phases/phases/phases.component.ts:23</a></div>
+                        </td>
+                    </tr>
+
+
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="GamePhase"></a>
+                    <span class="name">
+                        <span ><b>GamePhase</b></span>
+                        <a href="#GamePhase"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <i>Default value : </i><code>GamePhase</code>
+                    </td>
+                </tr>
+                    <tr>
+                        <td class="col-md-4">
+                                <div class="io-line">Defined in <a href="" data-line="22" class="link-to-prism">libs/feature-game/src/lib/phases/phases/phases.component.ts:22</a></div>
+                        </td>
+                    </tr>
+
+
+        </tbody>
+    </table>
+</section>
+
+</div>
+
+
+    <div class="tab-pane fade  tab-source-code" id="c-source">
+        <pre class="line-numbers compodoc-sourcecode"><code class="language-typescript">import { Component } from &#x27;@angular/core&#x27;;
+import {
+  EventsPileCardsEntity,
+  EventsPileCardsFacade,
+  GameFacade,
+} from &#x27;@taormina/data-access-game&#x27;;
+import { eventCards } from &#x27;@taormina/shared-constants&#x27;;
+import {
+  ActionName,
+  DomainColor,
+  EventCard,
+  GamePhase,
+} from &#x27;@taormina/shared-models&#x27;;
+import { Observable } from &#x27;rxjs&#x27;;
+
+@Component({
+  selector: &#x27;taormina-phases&#x27;,
+  templateUrl: &#x27;./phases.component.html&#x27;,
+  styleUrls: [&#x27;./phases.component.css&#x27;],
+})
+export class PhasesComponent {
+  GamePhase &#x3D; GamePhase;
+  DomainColor &#x3D; DomainColor;
+
+  constructor(
+    private game: GameFacade,
+    private eventsPileCards: EventsPileCardsFacade
+  ) {}
+
+  getPhase(): Observable&lt;GamePhase&gt; {
+    return this.game.phase$;
+  }
+
+  setPhase(phase: GamePhase): void {
+    this.game.setPhase(phase);
+  }
+
+  getPlayer(): Observable&lt;DomainColor&gt; {
+    return this.game.player$;
+  }
+
+  setPlayer(player: DomainColor): void {
+    this.game.setPlayer(player);
+  }
+
+  getEventCard(cardId: string): EventCard | undefined {
+    return eventCards.get(cardId);
+  }
+
+  getSelectedEventsPileCard(): Observable&lt;EventsPileCardsEntity | undefined&gt; {
+    return this.eventsPileCards.selectedEventsPileCards$;
+  }
+
+  removeSelectedEventsPileCard(): void {
+    this.eventsPileCards.removeSelected();
+  }
+
+  getAction(): Observable&lt;ActionName | undefined&gt; {
+    return this.game.action$;
+  }
+
+  unsetAction(): void {
+    this.game.setAction(undefined);
+  }
+}
+</code></pre>
+    </div>
+
+    <div class="tab-pane fade " id="c-templateData">
+        <pre class="line-numbers"><code class="language-html">&lt;div class&#x3D;&quot;flex-container&quot;&gt;
+  &lt;div&gt;
+    &lt;p&gt;Current Player:&lt;/p&gt;
+    &lt;div *ngFor&#x3D;&quot;let player of DomainColor | keyvalue&quot;&gt;
+      &lt;label&gt;
+        &lt;input
+          type&#x3D;&quot;radio&quot;
+          [value]&#x3D;&quot;player.value&quot;
+          name&#x3D;&quot;player&quot;
+          [ngModel]&#x3D;&quot;getPlayer() | async&quot;
+          (ngModelChange)&#x3D;&quot;setPlayer($event)&quot;
+        /&gt;{{ player.key }}&lt;/label
+      &gt;
+    &lt;/div&gt;
+  &lt;/div&gt;
+  &lt;div&gt;
+    &lt;p&gt;Current Phase:&lt;/p&gt;
+    &lt;div *ngFor&#x3D;&quot;let phase of GamePhase | keyvalue&quot;&gt;
+      &lt;label&gt;
+        &lt;input
+          type&#x3D;&quot;radio&quot;
+          [value]&#x3D;&quot;phase.value&quot;
+          name&#x3D;&quot;phase&quot;
+          [ngModel]&#x3D;&quot;getPhase() | async&quot;
+          (ngModelChange)&#x3D;&quot;setPhase($event)&quot;
+        /&gt;{{ phase.key }}&lt;/label
+      &gt;
+    &lt;/div&gt;
+  &lt;/div&gt;
+  &lt;div&gt;
+    &lt;p&gt;Current event:&lt;/p&gt;
+    &lt;div *ngIf&#x3D;&quot;getSelectedEventsPileCard() | async as pivot&quot;&gt;
+      &lt;div *ngIf&#x3D;&quot;getEventCard(pivot.cardId) as event&quot;&gt;
+        {{ event.name }}
+      &lt;/div&gt;
+    &lt;/div&gt;
+    &lt;hr /&gt;
+    &lt;button type&#x3D;&quot;button&quot; (click)&#x3D;&quot;removeSelectedEventsPileCard()&quot;&gt;
+      Finish event
+    &lt;/button&gt;
+  &lt;/div&gt;
+  &lt;div&gt;
+    &lt;p&gt;Current action:&lt;/p&gt;
+    &lt;div *ngIf&#x3D;&quot;getAction() | async as action&quot;&gt;
+      {{ action }}
+    &lt;/div&gt;
+    &lt;hr /&gt;
+    &lt;button type&#x3D;&quot;button&quot; (click)&#x3D;&quot;unsetAction()&quot;&gt;Finish action&lt;/button&gt;
+  &lt;/div&gt;
+&lt;/div&gt;
+</code></pre>
+    </div>
+
+    <div class="tab-pane fade " id="c-styleData">
+                <p class="comment">
+                    <code>./phases.component.css</code>
+                </p>
+                <pre class="line-numbers"><code class="language-scss">.flex-container {
+  display: flex;
+  column-gap: 20px;
+}
+</code></pre>
+    </div>
+
+    <div class="tab-pane fade " id="c-tree">
+        <div id="tree-container"></div>
+        <div class="tree-legend">
+            <div class="title">
+                <b>Legend</b>
+            </div>
+            <div>
+                <div class="color htmlelement"></div><span>Html element</span>
+            </div>
+            <div>
+                <div class="color component"></div><span>Component</span>
+            </div>
+            <div>
+                <div class="color directive"></div><span>Html element with directive</span>
+            </div>
+        </div>
+    </div>
+
+    
+</div>
+
+<script src="../js/libs/vis.min.js"></script>
+<script src="../js/libs/htmlparser.js"></script>
+<script src="../js/libs/deep-iterator.js"></script>
+<script>
+        var COMPONENT_TEMPLATE = '<div><div class="flex-container">  <div>    <p>Current Player:</p>    <div *ngFor="let player of DomainColor | keyvalue">      <label>        <input          type="radio"          [value]="player.value"          name="player"          [ngModel]="getPlayer() | async"          (ngModelChange)="setPlayer($event)"        />{{ player.key }}</label      >    </div>  </div>  <div>    <p>Current Phase:</p>    <div *ngFor="let phase of GamePhase | keyvalue">      <label>        <input          type="radio"          [value]="phase.value"          name="phase"          [ngModel]="getPhase() | async"          (ngModelChange)="setPhase($event)"        />{{ phase.key }}</label      >    </div>  </div>  <div>    <p>Current event:</p>    <div *ngIf="getSelectedEventsPileCard() | async as pivot">      <div *ngIf="getEventCard(pivot.cardId) as event">        {{ event.name }}      </div>    </div>    <hr />    <button type="button" (click)="removeSelectedEventsPileCard()">      Finish event    </button>  </div>  <div>    <p>Current action:</p>    <div *ngIf="getAction() | async as action">      {{ action }}    </div>    <hr />    <button type="button" (click)="unsetAction()">Finish action</button>  </div></div></div>'
+    var COMPONENTS = [{'name': 'ActionsComponent', 'selector': 'taormina-actions'},{'name': 'AppComponent', 'selector': 'taormina-root'},{'name': 'BoardComponent', 'selector': 'taormina-board'},{'name': 'CardComponent', 'selector': 'taormina-card'},{'name': 'DiceComponent', 'selector': 'taormina-dice'},{'name': 'DomainComponent', 'selector': 'taormina-domain'},{'name': 'HandComponent', 'selector': 'taormina-hand'},{'name': 'PhasesComponent', 'selector': 'taormina-phases'},{'name': 'PilesComponent', 'selector': 'taormina-piles'}];
+    var DIRECTIVES = [];
+    var ACTUAL_COMPONENT = {'name': 'PhasesComponent'};
+</script>
+<script src="../js/tree.js"></script>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+                   </div><div class="search-results">
+    <div class="has-results">
+        <h1 class="search-results-title"><span class='search-results-count'></span> results matching "<span class='search-query'></span>"</h1>
+        <ul class="search-results-list"></ul>
+    </div>
+    <div class="no-results">
+        <h1 class="search-results-title">No results matching "<span class='search-query'></span>"</h1>
+    </div>
+</div>
+</div>
+               <!-- END CONTENT -->
+           </div>
+       </div>
+
+          <label class="dark-mode-switch">
+               <input type="checkbox">
+               <span class="slider">
+                    <svg class="slider-icon" viewBox="0 0 24 24" fill="none" height="20" stroke="#000" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" width="20" xmlns="http://www.w3.org/2000/svg">
+                    <path d="M21 12.79A9 9 0 1111.21 3 7 7 0 0021 12.79z"></path>
+                    </svg>
+               </span>
+          </label>
+
+       <script>
+            var COMPODOC_CURRENT_PAGE_DEPTH = 1;
+            var COMPODOC_CURRENT_PAGE_CONTEXT = 'component';
+            var COMPODOC_CURRENT_PAGE_URL = 'PhasesComponent.html';
+            var MAX_SEARCH_RESULTS = 15;
+       </script>
+
+       <script src="../js/libs/custom-elements.min.js"></script>
+       <script src="../js/libs/lit-html.js"></script>
+
+       <script src="../js/menu-wc.js" defer></script>
+       <script nomodule src="../js/menu-wc_es5.js" defer></script>
+
+       <script src="../js/libs/bootstrap-native.js"></script>
+
+       <script src="../js/libs/es6-shim.min.js"></script>
+       <script src="../js/libs/EventDispatcher.js"></script>
+       <script src="../js/libs/promise.min.js"></script>
+       <script src="../js/libs/zepto.min.js"></script>
+
+       <script src="../js/compodoc.js"></script>
+
+       <script src="../js/tabs.js"></script>
+       <script src="../js/menu.js"></script>
+       <script src="../js/libs/clipboard.min.js"></script>
+       <script src="../js/libs/prism.js"></script>
+       <script src="../js/sourceCode.js"></script>
+          <script src="../js/search/search.js"></script>
+          <script src="../js/search/lunr.min.js"></script>
+          <script src="../js/search/search-lunr.js"></script>
+          <script src="../js/search/search_index.js"></script>
+       <script src="../js/lazy-load-graphs.js"></script>
+
+
+    </body>
+</html>

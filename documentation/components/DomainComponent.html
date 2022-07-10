@@ -1,0 +1,2002 @@
+<!doctype html>
+<html class="no-js" lang="">
+    <head>
+        <meta charset="utf-8">
+        <meta http-equiv="x-ua-compatible" content="ie=edge">
+        <title>taormina documentation</title>
+        <meta name="description" content="">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+
+        <link rel="icon" type="image/x-icon" href="../images/favicon.ico">
+	   <link rel="stylesheet" href="../styles/style.css">
+        <link rel="stylesheet" href="../styles/dark.css">
+    </head>
+    <body>
+
+        <div class="navbar navbar-default navbar-fixed-top visible-xs">
+            <a href="../" class="navbar-brand">taormina documentation</a>
+            <button type="button" class="btn btn-default btn-menu ion-ios-menu" id="btn-menu"></button>
+        </div>
+
+        <div class="xs-menu menu" id="mobile-menu">
+                <div id="book-search-input" role="search"><input type="text" placeholder="Type to search"></div>            <compodoc-menu></compodoc-menu>
+        </div>
+
+        <div class="container-fluid main">
+           <div class="row main">
+               <div class="hidden-xs menu">
+                   <compodoc-menu mode="normal"></compodoc-menu>
+               </div>
+               <!-- START CONTENT -->
+               <div class="content component">
+                   <div class="content-data">
+
+
+
+
+<ol class="breadcrumb">
+  <li>Components</li>
+  <li
+  >
+  DomainComponent</li>
+</ol>
+
+<ul class="nav nav-tabs" role="tablist">
+        <li class="active">
+            <a href="#info" role="tab" id="info-tab" data-toggle="tab" data-link="info">Info</a>
+        </li>
+        <li >
+            <a href="#source" role="tab" id="source-tab" data-toggle="tab" data-link="source">Source</a>
+        </li>
+        <li >
+            <a href="#templateData" role="tab" id="templateData-tab" data-toggle="tab" data-link="template">Template</a>
+        </li>
+        <li >
+            <a href="#styleData" role="tab" id="styleData-tab" data-toggle="tab" data-link="style">Styles</a>
+        </li>
+        <li >
+            <a href="#tree" role="tab" id="tree-tab" data-toggle="tab" data-link="dom-tree">DOM Tree</a>
+        </li>
+</ul>
+
+<div class="tab-content">
+    <div class="tab-pane fade active in" id="c-info"><p class="comment">
+    <h3>File</h3>
+</p>
+<p class="comment">
+    <code>libs/feature-game/src/lib/domain/domain/domain.component.ts</code>
+</p>
+
+
+
+
+
+
+<section>
+    <h3>Metadata</h3>
+    <table class="table table-sm table-hover metadata">
+        <tbody>
+
+
+
+
+
+
+
+
+
+
+
+            <tr>
+                <td class="col-md-3">selector</td>
+                <td class="col-md-9"><code>taormina-domain</code></td>
+            </tr>
+
+            <tr>
+                <td class="col-md-3">styleUrls</td>
+                <td class="col-md-9"><code>./domain.component.css</code></td>
+            </tr>
+
+
+
+            <tr>
+                <td class="col-md-3">templateUrl</td>
+                <td class="col-md-9"><code>./domain.component.html</code></td>
+            </tr>
+
+
+
+
+
+
+
+
+        </tbody>
+    </table>
+</section>
+
+    <section>
+    <h3 id="index">Index</h3>
+    <table class="table table-sm table-bordered index-table">
+        <tbody>
+                <tr>
+                    <td class="col-md-4">
+                        <h6><b>Properties</b></h6>
+                    </td>
+                </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <ul class="index-list">
+                            <li>
+                                <a href="#AGGLOMERATION_CARD_INTERFACE_NAME" >AGGLOMERATION_CARD_INTERFACE_NAME</a>
+                            </li>
+                            <li>
+                                <a href="#AVAILABLE_AGGLOMERATION_SLOT" >AVAILABLE_AGGLOMERATION_SLOT</a>
+                            </li>
+                            <li>
+                                <a href="#AVAILABLE_DEVELOPMENT_SLOT" >AVAILABLE_DEVELOPMENT_SLOT</a>
+                            </li>
+                            <li>
+                                <a href="#AVAILABLE_LAND_SLOT" >AVAILABLE_LAND_SLOT</a>
+                            </li>
+                            <li>
+                                <a href="#DEVELOPMENT_CARD_INTERFACE_NAME" >DEVELOPMENT_CARD_INTERFACE_NAME</a>
+                            </li>
+                            <li>
+                                <a href="#LAND_CARD_INTERFACE_NAME" >LAND_CARD_INTERFACE_NAME</a>
+                            </li>
+                        </ul>
+                    </td>
+                </tr>
+
+                <tr>
+                    <td class="col-md-4">
+                        <h6><b>Methods</b></h6>
+                    </td>
+                </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <ul class="index-list">
+                            <li>
+                                <a href="#getAgglomerationCard" >getAgglomerationCard</a>
+                            </li>
+                            <li>
+                                <a href="#getCelebrationPoints" >getCelebrationPoints</a>
+                            </li>
+                            <li>
+                                <a href="#getColumnsTemplate" >getColumnsTemplate</a>
+                            </li>
+                            <li>
+                                <a href="#getDevelopmentCard" >getDevelopmentCard</a>
+                            </li>
+                            <li>
+                                <a href="#getDomain" >getDomain</a>
+                            </li>
+                            <li>
+                                <a href="#getDomainsCards" >getDomainsCards</a>
+                            </li>
+                            <li>
+                                <a href="#getLandCard" >getLandCard</a>
+                            </li>
+                            <li>
+                                <a href="#getRowsTemplate" >getRowsTemplate</a>
+                            </li>
+                            <li>
+                                <a href="#getShipsCount" >getShipsCount</a>
+                            </li>
+                            <li>
+                                <a href="#getStrengthMastery" >getStrengthMastery</a>
+                            </li>
+                            <li>
+                                <a href="#getTradeMastery" >getTradeMastery</a>
+                            </li>
+                            <li>
+                                <a href="#getVictoryPoints" >getVictoryPoints</a>
+                            </li>
+                            <li>
+                                <a href="#increaseResources" >increaseResources</a>
+                            </li>
+                            <li>
+                                <a href="#isDomainCardSelected" >isDomainCardSelected</a>
+                            </li>
+                            <li>
+                                <a href="#lockResource" >lockResource</a>
+                            </li>
+                            <li>
+                                <a href="#toggleDomainCardSelection" >toggleDomainCardSelection</a>
+                            </li>
+                            <li>
+                                <a href="#unlockResources" >unlockResources</a>
+                            </li>
+                        </ul>
+                    </td>
+                </tr>
+
+                <tr>
+                    <td class="col-md-4">
+                        <h6><b>Inputs</b></h6>
+                    </td>
+                </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <ul class="index-list">
+                            <li>
+                                <a href="#domainId" >domainId</a>
+                            </li>
+                        </ul>
+                    </td>
+                </tr>
+
+
+
+
+        </tbody>
+    </table>
+</section>
+
+    <section>
+    <h3 id="constructor">Constructor</h3>
+        <table class="table table-sm table-bordered">
+            <tbody>
+                <tr>
+                    <td class="col-md-4">
+<code>constructor(domainsCards: <a href="../injectables/DomainsCardsFacade.html" target="_self">DomainsCardsFacade</a>, gameRules: <a href="../injectables/GameRulesService.html" target="_self">GameRulesService</a>)</code>
+                    </td>
+                </tr>
+                        <tr>
+                            <td class="col-md-4">
+                                <div class="io-line">Defined in <a href="" data-line="42" class="link-to-prism">libs/feature-game/src/lib/domain/domain/domain.component.ts:42</a></div>
+                            </td>
+                        </tr>
+
+                <tr>
+                    <td class="col-md-4">
+                            <div>
+                                    <b>Parameters :</b>
+                                    <table class="params">
+                                        <thead>
+                                            <tr>
+                                                <td>Name</td>
+                                                    <td>Type</td>
+                                                <td>Optional</td>
+                                            </tr>
+                                        </thead>
+                                        <tbody>
+                                                <tr>
+                                                        <td>domainsCards</td>
+                                                  
+                                                        <td>
+                                                                        <code><a href="../injectables/DomainsCardsFacade.html" target="_self" >DomainsCardsFacade</a></code>
+                                                        </td>
+                                                  
+                                                    <td>
+                                                            No
+                                                    </td>
+                                                    
+                                                </tr>
+                                                <tr>
+                                                        <td>gameRules</td>
+                                                  
+                                                        <td>
+                                                                        <code><a href="../injectables/GameRulesService.html" target="_self" >GameRulesService</a></code>
+                                                        </td>
+                                                  
+                                                    <td>
+                                                            No
+                                                    </td>
+                                                    
+                                                </tr>
+                                        </tbody>
+                                    </table>
+                            </div>
+                    </td>
+                </tr>
+            </tbody>
+        </table>
+</section>
+
+    <section>
+    <h3 id="inputs">Inputs</h3>
+        <table class="table table-sm table-bordered">
+            <tbody>
+                <tr>
+                    <td class="col-md-4">
+                        <a name="domainId"></a>
+                        <b>domainId</b>
+                    </td>
+                </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <i>Type : </i>        <code><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/string" target="_blank" >string</a></code>
+
+                    </td>
+                </tr>
+                        <tr>
+                            <td class="col-md-2" colspan="2">
+                                    <div class="io-line">Defined in <a href="" data-line="35" class="link-to-prism">libs/feature-game/src/lib/domain/domain/domain.component.ts:35</a></div>
+                            </td>
+                        </tr>
+            </tbody>
+        </table>
+</section>
+
+
+
+    <section>
+    
+    <h3 id="methods">
+        Methods
+    </h3>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="getAgglomerationCard"></a>
+                    <span class="name">
+                        <span ><b>getAgglomerationCard</b></span>
+                        <a href="#getAgglomerationCard"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+            <tr>
+                <td class="col-md-4">
+<code>getAgglomerationCard(cardId: <a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/string" target="_blank">string</a>)</code>
+                </td>
+            </tr>
+
+
+            <tr>
+                <td class="col-md-4">
+                    <div class="io-line">Defined in <a href="" data-line="119"
+                            class="link-to-prism">libs/feature-game/src/lib/domain/domain/domain.component.ts:119</a></div>
+                </td>
+            </tr>
+
+
+            <tr>
+                <td class="col-md-4">
+
+                    <div class="io-description">
+                        <b>Parameters :</b>
+                        
+                        <table class="params">
+                            <thead>
+                                <tr>
+                                    <td>Name</td>
+                                    <td>Type</td>
+                                    <td>Optional</td>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr>
+                                    <td>cardId</td>
+                                    <td>
+                                                <code><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/string" target="_blank" >string</a></code>
+                                    </td>
+
+                                    <td>
+                                        No
+                                    </td>
+
+
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                    <div>
+                    </div>
+                    <div class="io-description">
+                        <b>Returns : </b>        <code><a href="../interfaces/AgglomerationCard.html" target="_self" >AgglomerationCard | undefined</a></code>
+
+                    </div>
+                    <div class="io-description">
+                        
+                    </div>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="getCelebrationPoints"></a>
+                    <span class="name">
+                        <span ><b>getCelebrationPoints</b></span>
+                        <a href="#getCelebrationPoints"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+            <tr>
+                <td class="col-md-4">
+<code>getCelebrationPoints(domainId: <a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/string" target="_blank">string</a>)</code>
+                </td>
+            </tr>
+
+
+            <tr>
+                <td class="col-md-4">
+                    <div class="io-line">Defined in <a href="" data-line="57"
+                            class="link-to-prism">libs/feature-game/src/lib/domain/domain/domain.component.ts:57</a></div>
+                </td>
+            </tr>
+
+
+            <tr>
+                <td class="col-md-4">
+
+                    <div class="io-description">
+                        <b>Parameters :</b>
+                        
+                        <table class="params">
+                            <thead>
+                                <tr>
+                                    <td>Name</td>
+                                    <td>Type</td>
+                                    <td>Optional</td>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr>
+                                    <td>domainId</td>
+                                    <td>
+                                                <code><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/string" target="_blank" >string</a></code>
+                                    </td>
+
+                                    <td>
+                                        No
+                                    </td>
+
+
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                    <div>
+                    </div>
+                    <div class="io-description">
+                        <b>Returns : </b>    <code>Observable&lt;number&gt;</code>
+
+                    </div>
+                    <div class="io-description">
+                        
+                    </div>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="getColumnsTemplate"></a>
+                    <span class="name">
+                        <span ><b>getColumnsTemplate</b></span>
+                        <a href="#getColumnsTemplate"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+            <tr>
+                <td class="col-md-4">
+<code>getColumnsTemplate(domainId: <a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/string" target="_blank">string</a>)</code>
+                </td>
+            </tr>
+
+
+            <tr>
+                <td class="col-md-4">
+                    <div class="io-line">Defined in <a href="" data-line="77"
+                            class="link-to-prism">libs/feature-game/src/lib/domain/domain/domain.component.ts:77</a></div>
+                </td>
+            </tr>
+
+
+            <tr>
+                <td class="col-md-4">
+
+                    <div class="io-description">
+                        <b>Parameters :</b>
+                        
+                        <table class="params">
+                            <thead>
+                                <tr>
+                                    <td>Name</td>
+                                    <td>Type</td>
+                                    <td>Optional</td>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr>
+                                    <td>domainId</td>
+                                    <td>
+                                                <code><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/string" target="_blank" >string</a></code>
+                                    </td>
+
+                                    <td>
+                                        No
+                                    </td>
+
+
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                    <div>
+                    </div>
+                    <div class="io-description">
+                        <b>Returns : </b>    <code>Observable&lt;string&gt;</code>
+
+                    </div>
+                    <div class="io-description">
+                        
+                    </div>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="getDevelopmentCard"></a>
+                    <span class="name">
+                        <span ><b>getDevelopmentCard</b></span>
+                        <a href="#getDevelopmentCard"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+            <tr>
+                <td class="col-md-4">
+<code>getDevelopmentCard(cardId: <a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/string" target="_blank">string</a>)</code>
+                </td>
+            </tr>
+
+
+            <tr>
+                <td class="col-md-4">
+                    <div class="io-line">Defined in <a href="" data-line="115"
+                            class="link-to-prism">libs/feature-game/src/lib/domain/domain/domain.component.ts:115</a></div>
+                </td>
+            </tr>
+
+
+            <tr>
+                <td class="col-md-4">
+
+                    <div class="io-description">
+                        <b>Parameters :</b>
+                        
+                        <table class="params">
+                            <thead>
+                                <tr>
+                                    <td>Name</td>
+                                    <td>Type</td>
+                                    <td>Optional</td>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr>
+                                    <td>cardId</td>
+                                    <td>
+                                                <code><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/string" target="_blank" >string</a></code>
+                                    </td>
+
+                                    <td>
+                                        No
+                                    </td>
+
+
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                    <div>
+                    </div>
+                    <div class="io-description">
+                        <b>Returns : </b>        <code><a href="../interfaces/DevelopmentCard.html" target="_self" >DevelopmentCard | undefined</a></code>
+
+                    </div>
+                    <div class="io-description">
+                        
+                    </div>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="getDomain"></a>
+                    <span class="name">
+                        <span ><b>getDomain</b></span>
+                        <a href="#getDomain"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+            <tr>
+                <td class="col-md-4">
+<code>getDomain()</code>
+                </td>
+            </tr>
+
+
+            <tr>
+                <td class="col-md-4">
+                    <div class="io-line">Defined in <a href="" data-line="49"
+                            class="link-to-prism">libs/feature-game/src/lib/domain/domain/domain.component.ts:49</a></div>
+                </td>
+            </tr>
+
+
+            <tr>
+                <td class="col-md-4">
+
+                    <div class="io-description">
+                        <b>Returns : </b>        <code><a href="../interfaces/Domain.html" target="_self" >Domain | undefined</a></code>
+
+                    </div>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="getDomainsCards"></a>
+                    <span class="name">
+                        <span ><b>getDomainsCards</b></span>
+                        <a href="#getDomainsCards"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+            <tr>
+                <td class="col-md-4">
+<code>getDomainsCards(domainId: <a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/string" target="_blank">string</a>)</code>
+                </td>
+            </tr>
+
+
+            <tr>
+                <td class="col-md-4">
+                    <div class="io-line">Defined in <a href="" data-line="107"
+                            class="link-to-prism">libs/feature-game/src/lib/domain/domain/domain.component.ts:107</a></div>
+                </td>
+            </tr>
+
+
+            <tr>
+                <td class="col-md-4">
+
+                    <div class="io-description">
+                        <b>Parameters :</b>
+                        
+                        <table class="params">
+                            <thead>
+                                <tr>
+                                    <td>Name</td>
+                                    <td>Type</td>
+                                    <td>Optional</td>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr>
+                                    <td>domainId</td>
+                                    <td>
+                                                <code><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/string" target="_blank" >string</a></code>
+                                    </td>
+
+                                    <td>
+                                        No
+                                    </td>
+
+
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                    <div>
+                    </div>
+                    <div class="io-description">
+                        <b>Returns : </b>    <code>Observable&lt;DomainsCardsEntity[]&gt;</code>
+
+                    </div>
+                    <div class="io-description">
+                        
+                    </div>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="getLandCard"></a>
+                    <span class="name">
+                        <span ><b>getLandCard</b></span>
+                        <a href="#getLandCard"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+            <tr>
+                <td class="col-md-4">
+<code>getLandCard(cardId: <a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/string" target="_blank">string</a>)</code>
+                </td>
+            </tr>
+
+
+            <tr>
+                <td class="col-md-4">
+                    <div class="io-line">Defined in <a href="" data-line="123"
+                            class="link-to-prism">libs/feature-game/src/lib/domain/domain/domain.component.ts:123</a></div>
+                </td>
+            </tr>
+
+
+            <tr>
+                <td class="col-md-4">
+
+                    <div class="io-description">
+                        <b>Parameters :</b>
+                        
+                        <table class="params">
+                            <thead>
+                                <tr>
+                                    <td>Name</td>
+                                    <td>Type</td>
+                                    <td>Optional</td>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr>
+                                    <td>cardId</td>
+                                    <td>
+                                                <code><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/string" target="_blank" >string</a></code>
+                                    </td>
+
+                                    <td>
+                                        No
+                                    </td>
+
+
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                    <div>
+                    </div>
+                    <div class="io-description">
+                        <b>Returns : </b>        <code><a href="../interfaces/LandCard.html" target="_self" >LandCard | undefined</a></code>
+
+                    </div>
+                    <div class="io-description">
+                        
+                    </div>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="getRowsTemplate"></a>
+                    <span class="name">
+                        <span ><b>getRowsTemplate</b></span>
+                        <a href="#getRowsTemplate"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+            <tr>
+                <td class="col-md-4">
+<code>getRowsTemplate(domainId: <a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/string" target="_blank">string</a>)</code>
+                </td>
+            </tr>
+
+
+            <tr>
+                <td class="col-md-4">
+                    <div class="io-line">Defined in <a href="" data-line="92"
+                            class="link-to-prism">libs/feature-game/src/lib/domain/domain/domain.component.ts:92</a></div>
+                </td>
+            </tr>
+
+
+            <tr>
+                <td class="col-md-4">
+
+                    <div class="io-description">
+                        <b>Parameters :</b>
+                        
+                        <table class="params">
+                            <thead>
+                                <tr>
+                                    <td>Name</td>
+                                    <td>Type</td>
+                                    <td>Optional</td>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr>
+                                    <td>domainId</td>
+                                    <td>
+                                                <code><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/string" target="_blank" >string</a></code>
+                                    </td>
+
+                                    <td>
+                                        No
+                                    </td>
+
+
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                    <div>
+                    </div>
+                    <div class="io-description">
+                        <b>Returns : </b>    <code>Observable&lt;string&gt;</code>
+
+                    </div>
+                    <div class="io-description">
+                        
+                    </div>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="getShipsCount"></a>
+                    <span class="name">
+                        <span ><b>getShipsCount</b></span>
+                        <a href="#getShipsCount"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+            <tr>
+                <td class="col-md-4">
+<code>getShipsCount(domainId: <a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/string" target="_blank">string</a>)</code>
+                </td>
+            </tr>
+
+
+            <tr>
+                <td class="col-md-4">
+                    <div class="io-line">Defined in <a href="" data-line="53"
+                            class="link-to-prism">libs/feature-game/src/lib/domain/domain/domain.component.ts:53</a></div>
+                </td>
+            </tr>
+
+
+            <tr>
+                <td class="col-md-4">
+
+                    <div class="io-description">
+                        <b>Parameters :</b>
+                        
+                        <table class="params">
+                            <thead>
+                                <tr>
+                                    <td>Name</td>
+                                    <td>Type</td>
+                                    <td>Optional</td>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr>
+                                    <td>domainId</td>
+                                    <td>
+                                                <code><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/string" target="_blank" >string</a></code>
+                                    </td>
+
+                                    <td>
+                                        No
+                                    </td>
+
+
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                    <div>
+                    </div>
+                    <div class="io-description">
+                        <b>Returns : </b>    <code>Observable&lt;number&gt;</code>
+
+                    </div>
+                    <div class="io-description">
+                        
+                    </div>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="getStrengthMastery"></a>
+                    <span class="name">
+                        <span ><b>getStrengthMastery</b></span>
+                        <a href="#getStrengthMastery"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+            <tr>
+                <td class="col-md-4">
+<code>getStrengthMastery(domainId: <a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/string" target="_blank">string</a>)</code>
+                </td>
+            </tr>
+
+
+            <tr>
+                <td class="col-md-4">
+                    <div class="io-line">Defined in <a href="" data-line="61"
+                            class="link-to-prism">libs/feature-game/src/lib/domain/domain/domain.component.ts:61</a></div>
+                </td>
+            </tr>
+
+
+            <tr>
+                <td class="col-md-4">
+
+                    <div class="io-description">
+                        <b>Parameters :</b>
+                        
+                        <table class="params">
+                            <thead>
+                                <tr>
+                                    <td>Name</td>
+                                    <td>Type</td>
+                                    <td>Optional</td>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr>
+                                    <td>domainId</td>
+                                    <td>
+                                                <code><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/string" target="_blank" >string</a></code>
+                                    </td>
+
+                                    <td>
+                                        No
+                                    </td>
+
+
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                    <div>
+                    </div>
+                    <div class="io-description">
+                        <b>Returns : </b>    <code>Observable&lt;boolean&gt;</code>
+
+                    </div>
+                    <div class="io-description">
+                        
+                    </div>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="getTradeMastery"></a>
+                    <span class="name">
+                        <span ><b>getTradeMastery</b></span>
+                        <a href="#getTradeMastery"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+            <tr>
+                <td class="col-md-4">
+<code>getTradeMastery(domainId: <a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/string" target="_blank">string</a>)</code>
+                </td>
+            </tr>
+
+
+            <tr>
+                <td class="col-md-4">
+                    <div class="io-line">Defined in <a href="" data-line="67"
+                            class="link-to-prism">libs/feature-game/src/lib/domain/domain/domain.component.ts:67</a></div>
+                </td>
+            </tr>
+
+
+            <tr>
+                <td class="col-md-4">
+
+                    <div class="io-description">
+                        <b>Parameters :</b>
+                        
+                        <table class="params">
+                            <thead>
+                                <tr>
+                                    <td>Name</td>
+                                    <td>Type</td>
+                                    <td>Optional</td>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr>
+                                    <td>domainId</td>
+                                    <td>
+                                                <code><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/string" target="_blank" >string</a></code>
+                                    </td>
+
+                                    <td>
+                                        No
+                                    </td>
+
+
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                    <div>
+                    </div>
+                    <div class="io-description">
+                        <b>Returns : </b>    <code>Observable&lt;boolean&gt;</code>
+
+                    </div>
+                    <div class="io-description">
+                        
+                    </div>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="getVictoryPoints"></a>
+                    <span class="name">
+                        <span ><b>getVictoryPoints</b></span>
+                        <a href="#getVictoryPoints"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+            <tr>
+                <td class="col-md-4">
+<code>getVictoryPoints(domainId: <a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/string" target="_blank">string</a>)</code>
+                </td>
+            </tr>
+
+
+            <tr>
+                <td class="col-md-4">
+                    <div class="io-line">Defined in <a href="" data-line="73"
+                            class="link-to-prism">libs/feature-game/src/lib/domain/domain/domain.component.ts:73</a></div>
+                </td>
+            </tr>
+
+
+            <tr>
+                <td class="col-md-4">
+
+                    <div class="io-description">
+                        <b>Parameters :</b>
+                        
+                        <table class="params">
+                            <thead>
+                                <tr>
+                                    <td>Name</td>
+                                    <td>Type</td>
+                                    <td>Optional</td>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr>
+                                    <td>domainId</td>
+                                    <td>
+                                                <code><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/string" target="_blank" >string</a></code>
+                                    </td>
+
+                                    <td>
+                                        No
+                                    </td>
+
+
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                    <div>
+                    </div>
+                    <div class="io-description">
+                        <b>Returns : </b>    <code>Observable&lt;number&gt;</code>
+
+                    </div>
+                    <div class="io-description">
+                        
+                    </div>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="increaseResources"></a>
+                    <span class="name">
+                        <span ><b>increaseResources</b></span>
+                        <a href="#increaseResources"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+            <tr>
+                <td class="col-md-4">
+<code>increaseResources(pivotId: <a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/string" target="_blank">string</a>)</code>
+                </td>
+            </tr>
+
+
+            <tr>
+                <td class="col-md-4">
+                    <div class="io-line">Defined in <a href="" data-line="147"
+                            class="link-to-prism">libs/feature-game/src/lib/domain/domain/domain.component.ts:147</a></div>
+                </td>
+            </tr>
+
+
+            <tr>
+                <td class="col-md-4">
+
+                    <div class="io-description">
+                        <b>Parameters :</b>
+                        
+                        <table class="params">
+                            <thead>
+                                <tr>
+                                    <td>Name</td>
+                                    <td>Type</td>
+                                    <td>Optional</td>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr>
+                                    <td>pivotId</td>
+                                    <td>
+                                                <code><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/string" target="_blank" >string</a></code>
+                                    </td>
+
+                                    <td>
+                                        No
+                                    </td>
+
+
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                    <div>
+                    </div>
+                    <div class="io-description">
+                        <b>Returns : </b>        <code><a href="https://www.typescriptlang.org/docs/handbook/basic-types.html" target="_blank" >void</a></code>
+
+                    </div>
+                    <div class="io-description">
+                        
+                    </div>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="isDomainCardSelected"></a>
+                    <span class="name">
+                        <span ><b>isDomainCardSelected</b></span>
+                        <a href="#isDomainCardSelected"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+            <tr>
+                <td class="col-md-4">
+<code>isDomainCardSelected(pivotId: <a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/string" target="_blank">string</a>)</code>
+                </td>
+            </tr>
+
+
+            <tr>
+                <td class="col-md-4">
+                    <div class="io-line">Defined in <a href="" data-line="127"
+                            class="link-to-prism">libs/feature-game/src/lib/domain/domain/domain.component.ts:127</a></div>
+                </td>
+            </tr>
+
+
+            <tr>
+                <td class="col-md-4">
+
+                    <div class="io-description">
+                        <b>Parameters :</b>
+                        
+                        <table class="params">
+                            <thead>
+                                <tr>
+                                    <td>Name</td>
+                                    <td>Type</td>
+                                    <td>Optional</td>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr>
+                                    <td>pivotId</td>
+                                    <td>
+                                                <code><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/string" target="_blank" >string</a></code>
+                                    </td>
+
+                                    <td>
+                                        No
+                                    </td>
+
+
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                    <div>
+                    </div>
+                    <div class="io-description">
+                        <b>Returns : </b>    <code>Observable&lt;boolean&gt;</code>
+
+                    </div>
+                    <div class="io-description">
+                        
+                    </div>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="lockResource"></a>
+                    <span class="name">
+                        <span ><b>lockResource</b></span>
+                        <a href="#lockResource"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+            <tr>
+                <td class="col-md-4">
+<code>lockResource(pivotId: <a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/string" target="_blank">string</a>)</code>
+                </td>
+            </tr>
+
+
+            <tr>
+                <td class="col-md-4">
+                    <div class="io-line">Defined in <a href="" data-line="139"
+                            class="link-to-prism">libs/feature-game/src/lib/domain/domain/domain.component.ts:139</a></div>
+                </td>
+            </tr>
+
+
+            <tr>
+                <td class="col-md-4">
+
+                    <div class="io-description">
+                        <b>Parameters :</b>
+                        
+                        <table class="params">
+                            <thead>
+                                <tr>
+                                    <td>Name</td>
+                                    <td>Type</td>
+                                    <td>Optional</td>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr>
+                                    <td>pivotId</td>
+                                    <td>
+                                                <code><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/string" target="_blank" >string</a></code>
+                                    </td>
+
+                                    <td>
+                                        No
+                                    </td>
+
+
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                    <div>
+                    </div>
+                    <div class="io-description">
+                        <b>Returns : </b>        <code><a href="https://www.typescriptlang.org/docs/handbook/basic-types.html" target="_blank" >void</a></code>
+
+                    </div>
+                    <div class="io-description">
+                        
+                    </div>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="toggleDomainCardSelection"></a>
+                    <span class="name">
+                        <span ><b>toggleDomainCardSelection</b></span>
+                        <a href="#toggleDomainCardSelection"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+            <tr>
+                <td class="col-md-4">
+<code>toggleDomainCardSelection(pivotId: <a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/string" target="_blank">string</a>)</code>
+                </td>
+            </tr>
+
+
+            <tr>
+                <td class="col-md-4">
+                    <div class="io-line">Defined in <a href="" data-line="135"
+                            class="link-to-prism">libs/feature-game/src/lib/domain/domain/domain.component.ts:135</a></div>
+                </td>
+            </tr>
+
+
+            <tr>
+                <td class="col-md-4">
+
+                    <div class="io-description">
+                        <b>Parameters :</b>
+                        
+                        <table class="params">
+                            <thead>
+                                <tr>
+                                    <td>Name</td>
+                                    <td>Type</td>
+                                    <td>Optional</td>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr>
+                                    <td>pivotId</td>
+                                    <td>
+                                                <code><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/string" target="_blank" >string</a></code>
+                                    </td>
+
+                                    <td>
+                                        No
+                                    </td>
+
+
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                    <div>
+                    </div>
+                    <div class="io-description">
+                        <b>Returns : </b>        <code><a href="https://www.typescriptlang.org/docs/handbook/basic-types.html" target="_blank" >void</a></code>
+
+                    </div>
+                    <div class="io-description">
+                        
+                    </div>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="unlockResources"></a>
+                    <span class="name">
+                        <span ><b>unlockResources</b></span>
+                        <a href="#unlockResources"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+            <tr>
+                <td class="col-md-4">
+<code>unlockResources(pivotId: <a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/string" target="_blank">string</a>)</code>
+                </td>
+            </tr>
+
+
+            <tr>
+                <td class="col-md-4">
+                    <div class="io-line">Defined in <a href="" data-line="143"
+                            class="link-to-prism">libs/feature-game/src/lib/domain/domain/domain.component.ts:143</a></div>
+                </td>
+            </tr>
+
+
+            <tr>
+                <td class="col-md-4">
+
+                    <div class="io-description">
+                        <b>Parameters :</b>
+                        
+                        <table class="params">
+                            <thead>
+                                <tr>
+                                    <td>Name</td>
+                                    <td>Type</td>
+                                    <td>Optional</td>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr>
+                                    <td>pivotId</td>
+                                    <td>
+                                                <code><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/string" target="_blank" >string</a></code>
+                                    </td>
+
+                                    <td>
+                                        No
+                                    </td>
+
+
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                    <div>
+                    </div>
+                    <div class="io-description">
+                        <b>Returns : </b>        <code><a href="https://www.typescriptlang.org/docs/handbook/basic-types.html" target="_blank" >void</a></code>
+
+                    </div>
+                    <div class="io-description">
+                        
+                    </div>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+</section>
+    <section>
+    
+    <h3 id="inputs">
+        Properties
+    </h3>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="AGGLOMERATION_CARD_INTERFACE_NAME"></a>
+                    <span class="name">
+                        <span ><b>AGGLOMERATION_CARD_INTERFACE_NAME</b></span>
+                        <a href="#AGGLOMERATION_CARD_INTERFACE_NAME"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <i>Default value : </i><code>AGGLOMERATION_CARD_INTERFACE_NAME</code>
+                    </td>
+                </tr>
+                    <tr>
+                        <td class="col-md-4">
+                                <div class="io-line">Defined in <a href="" data-line="38" class="link-to-prism">libs/feature-game/src/lib/domain/domain/domain.component.ts:38</a></div>
+                        </td>
+                    </tr>
+
+
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="AVAILABLE_AGGLOMERATION_SLOT"></a>
+                    <span class="name">
+                        <span ><b>AVAILABLE_AGGLOMERATION_SLOT</b></span>
+                        <a href="#AVAILABLE_AGGLOMERATION_SLOT"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <i>Default value : </i><code>AVAILABLE_AGGLOMERATION_SLOT</code>
+                    </td>
+                </tr>
+                    <tr>
+                        <td class="col-md-4">
+                                <div class="io-line">Defined in <a href="" data-line="40" class="link-to-prism">libs/feature-game/src/lib/domain/domain/domain.component.ts:40</a></div>
+                        </td>
+                    </tr>
+
+
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="AVAILABLE_DEVELOPMENT_SLOT"></a>
+                    <span class="name">
+                        <span ><b>AVAILABLE_DEVELOPMENT_SLOT</b></span>
+                        <a href="#AVAILABLE_DEVELOPMENT_SLOT"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <i>Default value : </i><code>AVAILABLE_DEVELOPMENT_SLOT</code>
+                    </td>
+                </tr>
+                    <tr>
+                        <td class="col-md-4">
+                                <div class="io-line">Defined in <a href="" data-line="41" class="link-to-prism">libs/feature-game/src/lib/domain/domain/domain.component.ts:41</a></div>
+                        </td>
+                    </tr>
+
+
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="AVAILABLE_LAND_SLOT"></a>
+                    <span class="name">
+                        <span ><b>AVAILABLE_LAND_SLOT</b></span>
+                        <a href="#AVAILABLE_LAND_SLOT"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <i>Default value : </i><code>AVAILABLE_LAND_SLOT</code>
+                    </td>
+                </tr>
+                    <tr>
+                        <td class="col-md-4">
+                                <div class="io-line">Defined in <a href="" data-line="42" class="link-to-prism">libs/feature-game/src/lib/domain/domain/domain.component.ts:42</a></div>
+                        </td>
+                    </tr>
+
+
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="DEVELOPMENT_CARD_INTERFACE_NAME"></a>
+                    <span class="name">
+                        <span ><b>DEVELOPMENT_CARD_INTERFACE_NAME</b></span>
+                        <a href="#DEVELOPMENT_CARD_INTERFACE_NAME"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <i>Default value : </i><code>DEVELOPMENT_CARD_INTERFACE_NAME</code>
+                    </td>
+                </tr>
+                    <tr>
+                        <td class="col-md-4">
+                                <div class="io-line">Defined in <a href="" data-line="37" class="link-to-prism">libs/feature-game/src/lib/domain/domain/domain.component.ts:37</a></div>
+                        </td>
+                    </tr>
+
+
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="LAND_CARD_INTERFACE_NAME"></a>
+                    <span class="name">
+                        <span ><b>LAND_CARD_INTERFACE_NAME</b></span>
+                        <a href="#LAND_CARD_INTERFACE_NAME"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <i>Default value : </i><code>LAND_CARD_INTERFACE_NAME</code>
+                    </td>
+                </tr>
+                    <tr>
+                        <td class="col-md-4">
+                                <div class="io-line">Defined in <a href="" data-line="39" class="link-to-prism">libs/feature-game/src/lib/domain/domain/domain.component.ts:39</a></div>
+                        </td>
+                    </tr>
+
+
+        </tbody>
+    </table>
+</section>
+
+</div>
+
+
+    <div class="tab-pane fade  tab-source-code" id="c-source">
+        <pre class="line-numbers compodoc-sourcecode"><code class="language-typescript">import { Component, Input } from &#x27;@angular/core&#x27;;
+import {
+  DomainsCardsEntity,
+  DomainsCardsFacade,
+} from &#x27;@taormina/data-access-game&#x27;;
+import { GameRulesService } from &#x27;@taormina/feature-engine&#x27;;
+import {
+  agglomerationCards,
+  developmentCards,
+  domains,
+  landCards,
+} from &#x27;@taormina/shared-constants&#x27;;
+import {
+  AgglomerationCard,
+  AGGLOMERATION_CARD_INTERFACE_NAME,
+  AVAILABLE_AGGLOMERATION_SLOT,
+  AVAILABLE_DEVELOPMENT_SLOT,
+  AVAILABLE_LAND_SLOT,
+  DevelopmentCard,
+  DEVELOPMENT_CARD_INTERFACE_NAME,
+  Domain,
+  LandCard,
+  LAND_CARD_INTERFACE_NAME,
+  MasteryPointsType,
+} from &#x27;@taormina/shared-models&#x27;;
+import { combineLatest, Observable } from &#x27;rxjs&#x27;;
+import { map } from &#x27;rxjs/operators&#x27;;
+
+@Component({
+  selector: &#x27;taormina-domain&#x27;,
+  templateUrl: &#x27;./domain.component.html&#x27;,
+  styleUrls: [&#x27;./domain.component.css&#x27;],
+})
+export class DomainComponent {
+  @Input() domainId!: string;
+
+  DEVELOPMENT_CARD_INTERFACE_NAME &#x3D; DEVELOPMENT_CARD_INTERFACE_NAME;
+  AGGLOMERATION_CARD_INTERFACE_NAME &#x3D; AGGLOMERATION_CARD_INTERFACE_NAME;
+  LAND_CARD_INTERFACE_NAME &#x3D; LAND_CARD_INTERFACE_NAME;
+  AVAILABLE_AGGLOMERATION_SLOT &#x3D; AVAILABLE_AGGLOMERATION_SLOT;
+  AVAILABLE_DEVELOPMENT_SLOT &#x3D; AVAILABLE_DEVELOPMENT_SLOT;
+  AVAILABLE_LAND_SLOT &#x3D; AVAILABLE_LAND_SLOT;
+
+  constructor(
+    private domainsCards: DomainsCardsFacade,
+    private gameRules: GameRulesService
+  ) {}
+
+  getDomain(): Domain | undefined {
+    return domains.get(this.domainId);
+  }
+
+  getShipsCount(domainId: string): Observable&lt;number&gt; {
+    return this.domainsCards.getMerchantShipCountForDomain(domainId);
+  }
+
+  getCelebrationPoints(domainId: string): Observable&lt;number&gt; {
+    return this.domainsCards.getCelebrationPointsForDomain(domainId);
+  }
+
+  getStrengthMastery(domainId: string): Observable&lt;boolean&gt; {
+    return this.domainsCards
+      .getMasteryDomainForType(MasteryPointsType.Strength)
+      .pipe(map((masteryDomainId) &#x3D;&gt; domainId &#x3D;&#x3D;&#x3D; masteryDomainId));
+  }
+
+  getTradeMastery(domainId: string): Observable&lt;boolean&gt; {
+    return this.domainsCards
+      .getMasteryDomainForType(MasteryPointsType.Trade)
+      .pipe(map((masteryDomainId) &#x3D;&gt; domainId &#x3D;&#x3D;&#x3D; masteryDomainId));
+  }
+
+  getVictoryPoints(domainId: string): Observable&lt;number&gt; {
+    return this.gameRules.getVictoryPointsForDomain(domainId);
+  }
+
+  getColumnsTemplate(domainId: string): Observable&lt;string&gt; {
+    return combineLatest([
+      this.domainsCards.getDomainMinCol(domainId),
+      this.domainsCards.getDomainMaxCol(domainId),
+    ]).pipe(
+      map(([min, max]) &#x3D;&gt; {
+        let template &#x3D; &#x27;&#x27;;
+        for (let i &#x3D; min; i &lt; max + 1; i++) {
+          template +&#x3D; &#x60;[col${i}] 150px &#x60;;
+        }
+        return template;
+      })
+    );
+  }
+
+  getRowsTemplate(domainId: string): Observable&lt;string&gt; {
+    return combineLatest([
+      this.domainsCards.getDomainMinRow(domainId),
+      this.domainsCards.getDomainMaxRow(domainId),
+    ]).pipe(
+      map(([min, max]) &#x3D;&gt; {
+        let template &#x3D; &#x27;&#x27;;
+        for (let i &#x3D; min; i &lt; max + 1; i++) {
+          template +&#x3D; &#x60;[row${i}] 150px &#x60;;
+        }
+        return template;
+      })
+    );
+  }
+
+  getDomainsCards(domainId: string): Observable&lt;DomainsCardsEntity[]&gt; {
+    return this.domainsCards.allDomainsCards$.pipe(
+      map((domainsCards) &#x3D;&gt;
+        domainsCards.filter((domainCard) &#x3D;&gt; domainCard.domainId &#x3D;&#x3D;&#x3D; domainId)
+      )
+    );
+  }
+
+  getDevelopmentCard(cardId: string): DevelopmentCard | undefined {
+    return developmentCards.get(cardId);
+  }
+
+  getAgglomerationCard(cardId: string): AgglomerationCard | undefined {
+    return agglomerationCards.get(cardId);
+  }
+
+  getLandCard(cardId: string): LandCard | undefined {
+    return landCards.get(cardId);
+  }
+
+  isDomainCardSelected(pivotId: string): Observable&lt;boolean&gt; {
+    return this.domainsCards.selectedDomainsCards$.pipe(
+      map((domainsCards) &#x3D;&gt;
+        domainsCards.map((domainsCard) &#x3D;&gt; domainsCard.id).includes(pivotId)
+      )
+    );
+  }
+
+  toggleDomainCardSelection(pivotId: string): void {
+    this.domainsCards.toggleDomainCardSelection(pivotId);
+  }
+
+  lockResource(pivotId: string): void {
+    this.domainsCards.lockResource(pivotId);
+  }
+
+  unlockResources(pivotId: string): void {
+    this.domainsCards.unlockResources(pivotId);
+  }
+
+  increaseResources(pivotId: string): void {
+    this.domainsCards.increaseResources(pivotId);
+  }
+}
+</code></pre>
+    </div>
+
+    <div class="tab-pane fade " id="c-templateData">
+        <pre class="line-numbers"><code class="language-html">&lt;div *ngIf&#x3D;&quot;getDomain() as domain&quot;&gt;
+  &lt;div&gt;
+    &lt;span&gt;{{ domain.color }}&lt;/span&gt;
+    &lt;span&gt; - Ships count: {{ getShipsCount(domain.id) | async }}&lt;/span&gt;
+    &lt;span&gt;
+      - Celebration points: {{ getCelebrationPoints(domain.id) | async }}&lt;/span
+    &gt;
+    &lt;span *ngIf&#x3D;&quot;getTradeMastery(domain.id) | async&quot;&gt; - Trade Mastery&lt;/span&gt;
+    &lt;span *ngIf&#x3D;&quot;getStrengthMastery(domain.id) | async&quot;&gt;
+      - Strength Mastery&lt;/span
+    &gt;
+    &lt;span&gt; - Victory points: {{ getVictoryPoints(domain.id) | async }}&lt;/span&gt;
+  &lt;/div&gt;
+  &lt;div
+    class&#x3D;&quot;grid-container&quot;
+    [ngStyle]&#x3D;&quot;{
+      &#x27;grid-template-columns&#x27;: getColumnsTemplate(domain.id) | async,
+      &#x27;grid-template-rows&#x27;: getRowsTemplate(domain.id) | async
+    }&quot;
+  &gt;
+    &lt;div
+      *ngFor&#x3D;&quot;let pivot of getDomainsCards(domain.id) | async&quot;
+      [ngSwitch]&#x3D;&quot;pivot.cardType&quot;
+      class&#x3D;&quot;grid-cell&quot;
+      [ngStyle]&#x3D;&quot;{
+        &#x27;grid-column-start&#x27;: &#x27;col&#x27; + pivot.col,
+        &#x27;grid-row-start&#x27;: &#x27;row&#x27; + pivot.row
+      }&quot;
+    &gt;
+      &lt;div *ngSwitchCase&#x3D;&quot;DEVELOPMENT_CARD_INTERFACE_NAME&quot;&gt;
+        &lt;div
+          *ngIf&#x3D;&quot;
+            pivot.cardId !&#x3D;&#x3D; undefined &amp;&amp;
+            getDevelopmentCard(pivot.cardId) as development
+          &quot;
+        &gt;
+          {{ development.name }}
+        &lt;/div&gt;
+      &lt;/div&gt;
+      &lt;div *ngSwitchCase&#x3D;&quot;AGGLOMERATION_CARD_INTERFACE_NAME&quot;&gt;
+        &lt;div
+          *ngIf&#x3D;&quot;
+            pivot.cardId !&#x3D;&#x3D; undefined &amp;&amp;
+            getAgglomerationCard(pivot.cardId) as agglomeration
+          &quot;
+        &gt;
+          {{ agglomeration.type }}
+          &lt;button type&#x3D;&quot;button&quot; (click)&#x3D;&quot;toggleDomainCardSelection(pivot.id)&quot;&gt;
+            {{
+              (isDomainCardSelected(pivot.id) | async) ? &#x27;Unselect&#x27; : &#x27;Select&#x27;
+            }}
+          &lt;/button&gt;
+        &lt;/div&gt;
+      &lt;/div&gt;
+      &lt;div *ngSwitchCase&#x3D;&quot;LAND_CARD_INTERFACE_NAME&quot;&gt;
+        &lt;div
+          *ngIf&#x3D;&quot;
+            pivot.cardId !&#x3D;&#x3D; undefined &amp;&amp; getLandCard(pivot.cardId) as land
+          &quot;
+        &gt;
+          {{ land.type }}&lt;br /&gt;
+          {{ land.die }}&lt;br /&gt;
+          Available: {{ pivot.availableResources }}&lt;br /&gt;
+          locked: {{ pivot.lockedResources }}&lt;br /&gt;
+          &lt;button type&#x3D;&quot;button&quot; (click)&#x3D;&quot;lockResource(pivot.id)&quot;&gt;Lock&lt;/button&gt;
+          &lt;button type&#x3D;&quot;button&quot; (click)&#x3D;&quot;unlockResources(pivot.id)&quot;&gt;
+            Unlock&lt;/button
+          &gt;&lt;br /&gt;
+          &lt;button type&#x3D;&quot;button&quot; (click)&#x3D;&quot;increaseResources(pivot.id)&quot;&gt;
+            Increase
+          &lt;/button&gt;
+        &lt;/div&gt;
+      &lt;/div&gt;
+      &lt;div *ngSwitchCase&#x3D;&quot;AVAILABLE_AGGLOMERATION_SLOT&quot;&gt;
+        &lt;button type&#x3D;&quot;button&quot; (click)&#x3D;&quot;toggleDomainCardSelection(pivot.id)&quot;&gt;
+          {{ (isDomainCardSelected(pivot.id) | async) ? &#x27;Unselect&#x27; : &#x27;Select&#x27; }}
+        &lt;/button&gt;
+      &lt;/div&gt;
+      &lt;div *ngSwitchCase&#x3D;&quot;AVAILABLE_DEVELOPMENT_SLOT&quot;&gt;
+        &lt;button type&#x3D;&quot;button&quot; (click)&#x3D;&quot;toggleDomainCardSelection(pivot.id)&quot;&gt;
+          {{ (isDomainCardSelected(pivot.id) | async) ? &#x27;Unselect&#x27; : &#x27;Select&#x27; }}
+        &lt;/button&gt;
+      &lt;/div&gt;
+      &lt;div *ngSwitchCase&#x3D;&quot;AVAILABLE_LAND_SLOT&quot;&gt;
+        &lt;button type&#x3D;&quot;button&quot; (click)&#x3D;&quot;toggleDomainCardSelection(pivot.id)&quot;&gt;
+          {{ (isDomainCardSelected(pivot.id) | async) ? &#x27;Unselect&#x27; : &#x27;Select&#x27; }}
+        &lt;/button&gt;
+      &lt;/div&gt;
+    &lt;/div&gt;
+  &lt;/div&gt;
+&lt;/div&gt;
+</code></pre>
+    </div>
+
+    <div class="tab-pane fade " id="c-styleData">
+                <p class="comment">
+                    <code>./domain.component.css</code>
+                </p>
+                <pre class="line-numbers"><code class="language-scss">.grid-container {
+  display: grid;
+  grid-gap: 20px;
+}
+
+.grid-cell {
+  border: 1px solid black;
+}
+</code></pre>
+    </div>
+
+    <div class="tab-pane fade " id="c-tree">
+        <div id="tree-container"></div>
+        <div class="tree-legend">
+            <div class="title">
+                <b>Legend</b>
+            </div>
+            <div>
+                <div class="color htmlelement"></div><span>Html element</span>
+            </div>
+            <div>
+                <div class="color component"></div><span>Component</span>
+            </div>
+            <div>
+                <div class="color directive"></div><span>Html element with directive</span>
+            </div>
+        </div>
+    </div>
+
+    
+</div>
+
+<script src="../js/libs/vis.min.js"></script>
+<script src="../js/libs/htmlparser.js"></script>
+<script src="../js/libs/deep-iterator.js"></script>
+<script>
+        var COMPONENT_TEMPLATE = '<div><div *ngIf="getDomain() as domain">  <div>    <span>{{ domain.color }}</span>    <span> - Ships count: {{ getShipsCount(domain.id) | async }}</span>    <span>      - Celebration points: {{ getCelebrationPoints(domain.id) | async }}</span    >    <span *ngIf="getTradeMastery(domain.id) | async"> - Trade Mastery</span>    <span *ngIf="getStrengthMastery(domain.id) | async">      - Strength Mastery</span    >    <span> - Victory points: {{ getVictoryPoints(domain.id) | async }}</span>  </div>  <div    class="grid-container"    [ngStyle]="{      \'grid-template-columns\': getColumnsTemplate(domain.id) | async,      \'grid-template-rows\': getRowsTemplate(domain.id) | async    }"  >    <div      *ngFor="let pivot of getDomainsCards(domain.id) | async"      [ngSwitch]="pivot.cardType"      class="grid-cell"      [ngStyle]="{        \'grid-column-start\': \'col\' + pivot.col,        \'grid-row-start\': \'row\' + pivot.row      }"    >      <div *ngSwitchCase="DEVELOPMENT_CARD_INTERFACE_NAME">        <div          *ngIf="            pivot.cardId !== undefined &&            getDevelopmentCard(pivot.cardId) as development          "        >          {{ development.name }}        </div>      </div>      <div *ngSwitchCase="AGGLOMERATION_CARD_INTERFACE_NAME">        <div          *ngIf="            pivot.cardId !== undefined &&            getAgglomerationCard(pivot.cardId) as agglomeration          "        >          {{ agglomeration.type }}          <button type="button" (click)="toggleDomainCardSelection(pivot.id)">            {{              (isDomainCardSelected(pivot.id) | async) ? \'Unselect\' : \'Select\'            }}          </button>        </div>      </div>      <div *ngSwitchCase="LAND_CARD_INTERFACE_NAME">        <div          *ngIf="            pivot.cardId !== undefined && getLandCard(pivot.cardId) as land          "        >          {{ land.type }}<br />          {{ land.die }}<br />          Available: {{ pivot.availableResources }}<br />          locked: {{ pivot.lockedResources }}<br />          <button type="button" (click)="lockResource(pivot.id)">Lock</button>          <button type="button" (click)="unlockResources(pivot.id)">            Unlock</button          ><br />          <button type="button" (click)="increaseResources(pivot.id)">            Increase          </button>        </div>      </div>      <div *ngSwitchCase="AVAILABLE_AGGLOMERATION_SLOT">        <button type="button" (click)="toggleDomainCardSelection(pivot.id)">          {{ (isDomainCardSelected(pivot.id) | async) ? \'Unselect\' : \'Select\' }}        </button>      </div>      <div *ngSwitchCase="AVAILABLE_DEVELOPMENT_SLOT">        <button type="button" (click)="toggleDomainCardSelection(pivot.id)">          {{ (isDomainCardSelected(pivot.id) | async) ? \'Unselect\' : \'Select\' }}        </button>      </div>      <div *ngSwitchCase="AVAILABLE_LAND_SLOT">        <button type="button" (click)="toggleDomainCardSelection(pivot.id)">          {{ (isDomainCardSelected(pivot.id) | async) ? \'Unselect\' : \'Select\' }}        </button>      </div>    </div>  </div></div></div>'
+    var COMPONENTS = [{'name': 'ActionsComponent', 'selector': 'taormina-actions'},{'name': 'AppComponent', 'selector': 'taormina-root'},{'name': 'BoardComponent', 'selector': 'taormina-board'},{'name': 'CardComponent', 'selector': 'taormina-card'},{'name': 'DiceComponent', 'selector': 'taormina-dice'},{'name': 'DomainComponent', 'selector': 'taormina-domain'},{'name': 'HandComponent', 'selector': 'taormina-hand'},{'name': 'PhasesComponent', 'selector': 'taormina-phases'},{'name': 'PilesComponent', 'selector': 'taormina-piles'}];
+    var DIRECTIVES = [];
+    var ACTUAL_COMPONENT = {'name': 'DomainComponent'};
+</script>
+<script src="../js/tree.js"></script>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+                   </div><div class="search-results">
+    <div class="has-results">
+        <h1 class="search-results-title"><span class='search-results-count'></span> results matching "<span class='search-query'></span>"</h1>
+        <ul class="search-results-list"></ul>
+    </div>
+    <div class="no-results">
+        <h1 class="search-results-title">No results matching "<span class='search-query'></span>"</h1>
+    </div>
+</div>
+</div>
+               <!-- END CONTENT -->
+           </div>
+       </div>
+
+          <label class="dark-mode-switch">
+               <input type="checkbox">
+               <span class="slider">
+                    <svg class="slider-icon" viewBox="0 0 24 24" fill="none" height="20" stroke="#000" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" width="20" xmlns="http://www.w3.org/2000/svg">
+                    <path d="M21 12.79A9 9 0 1111.21 3 7 7 0 0021 12.79z"></path>
+                    </svg>
+               </span>
+          </label>
+
+       <script>
+            var COMPODOC_CURRENT_PAGE_DEPTH = 1;
+            var COMPODOC_CURRENT_PAGE_CONTEXT = 'component';
+            var COMPODOC_CURRENT_PAGE_URL = 'DomainComponent.html';
+            var MAX_SEARCH_RESULTS = 15;
+       </script>
+
+       <script src="../js/libs/custom-elements.min.js"></script>
+       <script src="../js/libs/lit-html.js"></script>
+
+       <script src="../js/menu-wc.js" defer></script>
+       <script nomodule src="../js/menu-wc_es5.js" defer></script>
+
+       <script src="../js/libs/bootstrap-native.js"></script>
+
+       <script src="../js/libs/es6-shim.min.js"></script>
+       <script src="../js/libs/EventDispatcher.js"></script>
+       <script src="../js/libs/promise.min.js"></script>
+       <script src="../js/libs/zepto.min.js"></script>
+
+       <script src="../js/compodoc.js"></script>
+
+       <script src="../js/tabs.js"></script>
+       <script src="../js/menu.js"></script>
+       <script src="../js/libs/clipboard.min.js"></script>
+       <script src="../js/libs/prism.js"></script>
+       <script src="../js/sourceCode.js"></script>
+          <script src="../js/search/search.js"></script>
+          <script src="../js/search/lunr.min.js"></script>
+          <script src="../js/search/search-lunr.js"></script>
+          <script src="../js/search/search_index.js"></script>
+       <script src="../js/lazy-load-graphs.js"></script>
+
+
+    </body>
+</html>

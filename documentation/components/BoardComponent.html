@@ -38,7 +38,7 @@
   <li>Components</li>
   <li
   >
-  AppComponent</li>
+  BoardComponent</li>
 </ol>
 
 <ul class="nav nav-tabs" role="tablist">
@@ -64,7 +64,7 @@
     <h3>File</h3>
 </p>
 <p class="comment">
-    <code>apps/taormina-duel/src/app/app.component.ts</code>
+    <code>libs/feature-game/src/lib/board/board/board.component.ts</code>
 </p>
 
 
@@ -89,19 +89,19 @@
 
             <tr>
                 <td class="col-md-3">selector</td>
-                <td class="col-md-9"><code>taormina-root</code></td>
+                <td class="col-md-9"><code>taormina-board</code></td>
             </tr>
 
             <tr>
                 <td class="col-md-3">styleUrls</td>
-                <td class="col-md-9"><code>./app.component.css</code></td>
+                <td class="col-md-9"><code>./board.component.css</code></td>
             </tr>
 
 
 
             <tr>
                 <td class="col-md-3">templateUrl</td>
-                <td class="col-md-9"><code>./app.component.html</code></td>
+                <td class="col-md-9"><code>./board.component.html</code></td>
             </tr>
 
 
@@ -119,17 +119,25 @@
     <h3 id="index">Index</h3>
     <table class="table table-sm table-bordered index-table">
         <tbody>
-
                 <tr>
                     <td class="col-md-4">
-                        <h6><b>Methods</b></h6>
+                        <h6><b>Properties</b></h6>
                     </td>
                 </tr>
                 <tr>
                     <td class="col-md-4">
                         <ul class="index-list">
                             <li>
-                                <a href="#startNewGame" >startNewGame</a>
+                                <a href="#ID_DOMAIN_BLUE" >ID_DOMAIN_BLUE</a>
+                            </li>
+                            <li>
+                                <a href="#ID_DOMAIN_RED" >ID_DOMAIN_RED</a>
+                            </li>
+                            <li>
+                                <a href="#ID_HAND_BLUE" >ID_HAND_BLUE</a>
+                            </li>
+                            <li>
+                                <a href="#ID_HAND_RED" >ID_HAND_RED</a>
                             </li>
                         </ul>
                     </td>
@@ -139,58 +147,12 @@
 
 
 
+
         </tbody>
     </table>
 </section>
 
-    <section>
-    <h3 id="constructor">Constructor</h3>
-        <table class="table table-sm table-bordered">
-            <tbody>
-                <tr>
-                    <td class="col-md-4">
-<code>constructor(gameRules: <a href="../injectables/GameRulesService.html" target="_self">GameRulesService</a>)</code>
-                    </td>
-                </tr>
-                        <tr>
-                            <td class="col-md-4">
-                                <div class="io-line">Defined in <a href="" data-line="9" class="link-to-prism">apps/taormina-duel/src/app/app.component.ts:9</a></div>
-                            </td>
-                        </tr>
 
-                <tr>
-                    <td class="col-md-4">
-                            <div>
-                                    <b>Parameters :</b>
-                                    <table class="params">
-                                        <thead>
-                                            <tr>
-                                                <td>Name</td>
-                                                    <td>Type</td>
-                                                <td>Optional</td>
-                                            </tr>
-                                        </thead>
-                                        <tbody>
-                                                <tr>
-                                                        <td>gameRules</td>
-                                                  
-                                                        <td>
-                                                                        <code><a href="../injectables/GameRulesService.html" target="_self" >GameRulesService</a></code>
-                                                        </td>
-                                                  
-                                                    <td>
-                                                            No
-                                                    </td>
-                                                    
-                                                </tr>
-                                        </tbody>
-                                    </table>
-                            </div>
-                    </td>
-                </tr>
-            </tbody>
-        </table>
-</section>
 
 
 
@@ -198,44 +160,107 @@
 
     <section>
     
-    <h3 id="methods">
-        Methods
+    <h3 id="inputs">
+        Properties
     </h3>
     <table class="table table-sm table-bordered">
         <tbody>
             <tr>
                 <td class="col-md-4">
-                    <a name="startNewGame"></a>
+                    <a name="ID_DOMAIN_BLUE"></a>
                     <span class="name">
-                        <span ><b>startNewGame</b></span>
-                        <a href="#startNewGame"><span class="icon ion-ios-link"></span></a>
+                        <span ><b>ID_DOMAIN_BLUE</b></span>
+                        <a href="#ID_DOMAIN_BLUE"><span class="icon ion-ios-link"></span></a>
                     </span>
                 </td>
             </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <i>Default value : </i><code>ID_DOMAIN_BLUE</code>
+                    </td>
+                </tr>
+                    <tr>
+                        <td class="col-md-4">
+                                <div class="io-line">Defined in <a href="" data-line="18" class="link-to-prism">libs/feature-game/src/lib/board/board/board.component.ts:18</a></div>
+                        </td>
+                    </tr>
+
+
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
             <tr>
                 <td class="col-md-4">
-<code>startNewGame()</code>
+                    <a name="ID_DOMAIN_RED"></a>
+                    <span class="name">
+                        <span ><b>ID_DOMAIN_RED</b></span>
+                        <a href="#ID_DOMAIN_RED"><span class="icon ion-ios-link"></span></a>
+                    </span>
                 </td>
             </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <i>Default value : </i><code>ID_DOMAIN_RED</code>
+                    </td>
+                </tr>
+                    <tr>
+                        <td class="col-md-4">
+                                <div class="io-line">Defined in <a href="" data-line="17" class="link-to-prism">libs/feature-game/src/lib/board/board/board.component.ts:17</a></div>
+                        </td>
+                    </tr>
 
 
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
             <tr>
                 <td class="col-md-4">
-                    <div class="io-line">Defined in <a href="" data-line="12"
-                            class="link-to-prism">apps/taormina-duel/src/app/app.component.ts:12</a></div>
+                    <a name="ID_HAND_BLUE"></a>
+                    <span class="name">
+                        <span ><b>ID_HAND_BLUE</b></span>
+                        <a href="#ID_HAND_BLUE"><span class="icon ion-ios-link"></span></a>
+                    </span>
                 </td>
             </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <i>Default value : </i><code>ID_HAND_BLUE</code>
+                    </td>
+                </tr>
+                    <tr>
+                        <td class="col-md-4">
+                                <div class="io-line">Defined in <a href="" data-line="16" class="link-to-prism">libs/feature-game/src/lib/board/board/board.component.ts:16</a></div>
+                        </td>
+                    </tr>
 
 
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
             <tr>
                 <td class="col-md-4">
-
-                    <div class="io-description">
-                        <b>Returns : </b>        <code><a href="https://www.typescriptlang.org/docs/handbook/basic-types.html" target="_blank" >void</a></code>
-
-                    </div>
+                    <a name="ID_HAND_RED"></a>
+                    <span class="name">
+                        <span ><b>ID_HAND_RED</b></span>
+                        <a href="#ID_HAND_RED"><span class="icon ion-ios-link"></span></a>
+                    </span>
                 </td>
             </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <i>Default value : </i><code>ID_HAND_RED</code>
+                    </td>
+                </tr>
+                    <tr>
+                        <td class="col-md-4">
+                                <div class="io-line">Defined in <a href="" data-line="15" class="link-to-prism">libs/feature-game/src/lib/board/board/board.component.ts:15</a></div>
+                        </td>
+                    </tr>
+
+
         </tbody>
     </table>
 </section>
@@ -245,36 +270,51 @@
 
     <div class="tab-pane fade  tab-source-code" id="c-source">
         <pre class="line-numbers compodoc-sourcecode"><code class="language-typescript">import { Component } from &#x27;@angular/core&#x27;;
-import { GameRulesService } from &#x27;@taormina/feature-engine&#x27;;
+import {
+  ID_DOMAIN_BLUE,
+  ID_DOMAIN_RED,
+  ID_HAND_BLUE,
+  ID_HAND_RED,
+} from &#x27;@taormina/shared-constants&#x27;;
 
 @Component({
-  selector: &#x27;taormina-root&#x27;,
-  templateUrl: &#x27;./app.component.html&#x27;,
-  styleUrls: [&#x27;./app.component.css&#x27;],
+  selector: &#x27;taormina-board&#x27;,
+  templateUrl: &#x27;./board.component.html&#x27;,
+  styleUrls: [&#x27;./board.component.css&#x27;],
 })
-export class AppComponent {
-  constructor(private gameRules: GameRulesService) {}
-
-  startNewGame(): void {
-    this.gameRules.initNewGame();
-  }
+export class BoardComponent {
+  ID_HAND_RED &#x3D; ID_HAND_RED;
+  ID_HAND_BLUE &#x3D; ID_HAND_BLUE;
+  ID_DOMAIN_RED &#x3D; ID_DOMAIN_RED;
+  ID_DOMAIN_BLUE &#x3D; ID_DOMAIN_BLUE;
 }
 </code></pre>
     </div>
 
     <div class="tab-pane fade " id="c-templateData">
-        <pre class="line-numbers"><code class="language-html">&lt;button type&#x3D;&quot;button&quot; (click)&#x3D;&quot;startNewGame()&quot;&gt;New Game !&lt;/button&gt;
+        <pre class="line-numbers"><code class="language-html">&lt;taormina-phases&gt;&lt;/taormina-phases&gt;
 &lt;hr /&gt;
-&lt;taormina-board&gt;&lt;/taormina-board&gt;
+&lt;taormina-dice&gt;&lt;/taormina-dice&gt;
+&lt;hr /&gt;
+&lt;taormina-actions&gt;&lt;/taormina-actions&gt;
+&lt;hr /&gt;
+&lt;taormina-piles&gt;&lt;/taormina-piles&gt;
+&lt;hr /&gt;
+&lt;taormina-hand [handId]&#x3D;&quot;ID_HAND_RED&quot;&gt;&lt;/taormina-hand&gt;
+&lt;hr /&gt;
+&lt;taormina-domain [domainId]&#x3D;&quot;ID_DOMAIN_RED&quot;&gt;&lt;/taormina-domain&gt;
+&lt;hr /&gt;
+&lt;taormina-domain [domainId]&#x3D;&quot;ID_DOMAIN_BLUE&quot;&gt;&lt;/taormina-domain&gt;
+&lt;hr /&gt;
+&lt;taormina-hand [handId]&#x3D;&quot;ID_HAND_BLUE&quot;&gt;&lt;/taormina-hand&gt;
 </code></pre>
     </div>
 
     <div class="tab-pane fade " id="c-styleData">
                 <p class="comment">
-                    <code>./app.component.css</code>
+                    <code>./board.component.css</code>
                 </p>
-                <pre class="line-numbers"><code class="language-scss">/* stylelint-disable no-empty-source */
-</code></pre>
+                <pre class="line-numbers"><code class="language-scss"></code></pre>
     </div>
 
     <div class="tab-pane fade " id="c-tree">
@@ -302,10 +342,10 @@ export class AppComponent {
 <script src="../js/libs/htmlparser.js"></script>
 <script src="../js/libs/deep-iterator.js"></script>
 <script>
-        var COMPONENT_TEMPLATE = '<div><button type="button" (click)="startNewGame()">New Game !</button><hr /><taormina-board></taormina-board></div>'
+        var COMPONENT_TEMPLATE = '<div><taormina-phases></taormina-phases><hr /><taormina-dice></taormina-dice><hr /><taormina-actions></taormina-actions><hr /><taormina-piles></taormina-piles><hr /><taormina-hand [handId]="ID_HAND_RED"></taormina-hand><hr /><taormina-domain [domainId]="ID_DOMAIN_RED"></taormina-domain><hr /><taormina-domain [domainId]="ID_DOMAIN_BLUE"></taormina-domain><hr /><taormina-hand [handId]="ID_HAND_BLUE"></taormina-hand></div>'
     var COMPONENTS = [{'name': 'ActionsComponent', 'selector': 'taormina-actions'},{'name': 'AppComponent', 'selector': 'taormina-root'},{'name': 'BoardComponent', 'selector': 'taormina-board'},{'name': 'CardComponent', 'selector': 'taormina-card'},{'name': 'DiceComponent', 'selector': 'taormina-dice'},{'name': 'DomainComponent', 'selector': 'taormina-domain'},{'name': 'HandComponent', 'selector': 'taormina-hand'},{'name': 'PhasesComponent', 'selector': 'taormina-phases'},{'name': 'PilesComponent', 'selector': 'taormina-piles'}];
     var DIRECTIVES = [];
-    var ACTUAL_COMPONENT = {'name': 'AppComponent'};
+    var ACTUAL_COMPONENT = {'name': 'BoardComponent'};
 </script>
 <script src="../js/tree.js"></script>
 
@@ -351,7 +391,7 @@ export class AppComponent {
        <script>
             var COMPODOC_CURRENT_PAGE_DEPTH = 1;
             var COMPODOC_CURRENT_PAGE_CONTEXT = 'component';
-            var COMPODOC_CURRENT_PAGE_URL = 'AppComponent.html';
+            var COMPODOC_CURRENT_PAGE_URL = 'BoardComponent.html';
             var MAX_SEARCH_RESULTS = 15;
        </script>
 

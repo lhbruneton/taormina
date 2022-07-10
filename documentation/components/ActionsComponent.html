@@ -1,0 +1,1488 @@
+<!doctype html>
+<html class="no-js" lang="">
+    <head>
+        <meta charset="utf-8">
+        <meta http-equiv="x-ua-compatible" content="ie=edge">
+        <title>taormina documentation</title>
+        <meta name="description" content="">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+
+        <link rel="icon" type="image/x-icon" href="../images/favicon.ico">
+	   <link rel="stylesheet" href="../styles/style.css">
+        <link rel="stylesheet" href="../styles/dark.css">
+    </head>
+    <body>
+
+        <div class="navbar navbar-default navbar-fixed-top visible-xs">
+            <a href="../" class="navbar-brand">taormina documentation</a>
+            <button type="button" class="btn btn-default btn-menu ion-ios-menu" id="btn-menu"></button>
+        </div>
+
+        <div class="xs-menu menu" id="mobile-menu">
+                <div id="book-search-input" role="search"><input type="text" placeholder="Type to search"></div>            <compodoc-menu></compodoc-menu>
+        </div>
+
+        <div class="container-fluid main">
+           <div class="row main">
+               <div class="hidden-xs menu">
+                   <compodoc-menu mode="normal"></compodoc-menu>
+               </div>
+               <!-- START CONTENT -->
+               <div class="content component">
+                   <div class="content-data">
+
+
+
+
+<ol class="breadcrumb">
+  <li>Components</li>
+  <li
+  >
+  ActionsComponent</li>
+</ol>
+
+<ul class="nav nav-tabs" role="tablist">
+        <li class="active">
+            <a href="#info" role="tab" id="info-tab" data-toggle="tab" data-link="info">Info</a>
+        </li>
+        <li >
+            <a href="#source" role="tab" id="source-tab" data-toggle="tab" data-link="source">Source</a>
+        </li>
+        <li >
+            <a href="#templateData" role="tab" id="templateData-tab" data-toggle="tab" data-link="template">Template</a>
+        </li>
+        <li >
+            <a href="#styleData" role="tab" id="styleData-tab" data-toggle="tab" data-link="style">Styles</a>
+        </li>
+        <li >
+            <a href="#tree" role="tab" id="tree-tab" data-toggle="tab" data-link="dom-tree">DOM Tree</a>
+        </li>
+</ul>
+
+<div class="tab-content">
+    <div class="tab-pane fade active in" id="c-info"><p class="comment">
+    <h3>File</h3>
+</p>
+<p class="comment">
+    <code>libs/feature-game/src/lib/actions/actions/actions.component.ts</code>
+</p>
+
+
+
+
+
+
+<section>
+    <h3>Metadata</h3>
+    <table class="table table-sm table-hover metadata">
+        <tbody>
+
+
+
+
+
+
+
+
+
+
+
+            <tr>
+                <td class="col-md-3">selector</td>
+                <td class="col-md-9"><code>taormina-actions</code></td>
+            </tr>
+
+            <tr>
+                <td class="col-md-3">styleUrls</td>
+                <td class="col-md-9"><code>./actions.component.css</code></td>
+            </tr>
+
+
+
+            <tr>
+                <td class="col-md-3">templateUrl</td>
+                <td class="col-md-9"><code>./actions.component.html</code></td>
+            </tr>
+
+
+
+
+
+
+
+
+        </tbody>
+    </table>
+</section>
+
+    <section>
+    <h3 id="index">Index</h3>
+    <table class="table table-sm table-bordered index-table">
+        <tbody>
+
+                <tr>
+                    <td class="col-md-4">
+                        <h6><b>Methods</b></h6>
+                    </td>
+                </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <ul class="index-list">
+                            <li>
+                                <a href="#buyAgglomeration" >buyAgglomeration</a>
+                            </li>
+                            <li>
+                                <a href="#buyDevelopment" >buyDevelopment</a>
+                            </li>
+                            <li>
+                                <a href="#buyDisabled" >buyDisabled</a>
+                            </li>
+                            <li>
+                                <a href="#clearDomainCardSelection" >clearDomainCardSelection</a>
+                            </li>
+                            <li>
+                                <a href="#getDomainSelectedAgglomerationSlots" >getDomainSelectedAgglomerationSlots</a>
+                            </li>
+                            <li>
+                                <a href="#getDomainSelectedDevelopmentCards" >getDomainSelectedDevelopmentCards</a>
+                            </li>
+                            <li>
+                                <a href="#getDomainSelectedLandCards" >getDomainSelectedLandCards</a>
+                            </li>
+                            <li>
+                                <a href="#getHandSelectedDevelopmentCard" >getHandSelectedDevelopmentCard</a>
+                            </li>
+                            <li>
+                                <a href="#getPileSelectedLandCard" >getPileSelectedLandCard</a>
+                            </li>
+                            <li>
+                                <a href="#getSelectedActionCard" >getSelectedActionCard</a>
+                            </li>
+                            <li>
+                                <a href="#getSelectedAvailableAgglomerationSlots" >getSelectedAvailableAgglomerationSlots</a>
+                            </li>
+                            <li>
+                                <a href="#getSelectedAvailableDevelopmentSlots" >getSelectedAvailableDevelopmentSlots</a>
+                            </li>
+                            <li>
+                                <a href="#getSelectedAvailableLandSlots" >getSelectedAvailableLandSlots</a>
+                            </li>
+                            <li>
+                                <a href="#getSelectedFaceUpPileCard" >getSelectedFaceUpPileCard</a>
+                            </li>
+                            <li>
+                                <a href="#getSelectedHandCard" >getSelectedHandCard</a>
+                            </li>
+                            <li>
+                                <a href="#giveLockedResources" >giveLockedResources</a>
+                            </li>
+                            <li>
+                                <a href="#putLand" >putLand</a>
+                            </li>
+                            <li>
+                                <a href="#swapSelectedDomainsCards" >swapSelectedDomainsCards</a>
+                            </li>
+                            <li>
+                                <a href="#useActionCard" >useActionCard</a>
+                            </li>
+                            <li>
+                                <a href="#useActionCardDisabled" >useActionCardDisabled</a>
+                            </li>
+                        </ul>
+                    </td>
+                </tr>
+
+
+
+
+
+        </tbody>
+    </table>
+</section>
+
+    <section>
+    <h3 id="constructor">Constructor</h3>
+        <table class="table table-sm table-bordered">
+            <tbody>
+                <tr>
+                    <td class="col-md-4">
+<code>constructor(game: <a href="../injectables/GameFacade.html" target="_self">GameFacade</a>, domainsCards: <a href="../injectables/DomainsCardsFacade.html" target="_self">DomainsCardsFacade</a>, handsCards: <a href="../injectables/HandsCardsFacade.html" target="_self">HandsCardsFacade</a>, faceUpPilesCards: <a href="../injectables/FaceUpPilesCardsFacade.html" target="_self">FaceUpPilesCardsFacade</a>, landsPileCards: <a href="../injectables/LandsPileCardsFacade.html" target="_self">LandsPileCardsFacade</a>, gameRules: <a href="../injectables/GameRulesService.html" target="_self">GameRulesService</a>)</code>
+                    </td>
+                </tr>
+                        <tr>
+                            <td class="col-md-4">
+                                <div class="io-line">Defined in <a href="" data-line="32" class="link-to-prism">libs/feature-game/src/lib/actions/actions/actions.component.ts:32</a></div>
+                            </td>
+                        </tr>
+
+                <tr>
+                    <td class="col-md-4">
+                            <div>
+                                    <b>Parameters :</b>
+                                    <table class="params">
+                                        <thead>
+                                            <tr>
+                                                <td>Name</td>
+                                                    <td>Type</td>
+                                                <td>Optional</td>
+                                            </tr>
+                                        </thead>
+                                        <tbody>
+                                                <tr>
+                                                        <td>game</td>
+                                                  
+                                                        <td>
+                                                                        <code><a href="../injectables/GameFacade.html" target="_self" >GameFacade</a></code>
+                                                        </td>
+                                                  
+                                                    <td>
+                                                            No
+                                                    </td>
+                                                    
+                                                </tr>
+                                                <tr>
+                                                        <td>domainsCards</td>
+                                                  
+                                                        <td>
+                                                                        <code><a href="../injectables/DomainsCardsFacade.html" target="_self" >DomainsCardsFacade</a></code>
+                                                        </td>
+                                                  
+                                                    <td>
+                                                            No
+                                                    </td>
+                                                    
+                                                </tr>
+                                                <tr>
+                                                        <td>handsCards</td>
+                                                  
+                                                        <td>
+                                                                        <code><a href="../injectables/HandsCardsFacade.html" target="_self" >HandsCardsFacade</a></code>
+                                                        </td>
+                                                  
+                                                    <td>
+                                                            No
+                                                    </td>
+                                                    
+                                                </tr>
+                                                <tr>
+                                                        <td>faceUpPilesCards</td>
+                                                  
+                                                        <td>
+                                                                        <code><a href="../injectables/FaceUpPilesCardsFacade.html" target="_self" >FaceUpPilesCardsFacade</a></code>
+                                                        </td>
+                                                  
+                                                    <td>
+                                                            No
+                                                    </td>
+                                                    
+                                                </tr>
+                                                <tr>
+                                                        <td>landsPileCards</td>
+                                                  
+                                                        <td>
+                                                                        <code><a href="../injectables/LandsPileCardsFacade.html" target="_self" >LandsPileCardsFacade</a></code>
+                                                        </td>
+                                                  
+                                                    <td>
+                                                            No
+                                                    </td>
+                                                    
+                                                </tr>
+                                                <tr>
+                                                        <td>gameRules</td>
+                                                  
+                                                        <td>
+                                                                        <code><a href="../injectables/GameRulesService.html" target="_self" >GameRulesService</a></code>
+                                                        </td>
+                                                  
+                                                    <td>
+                                                            No
+                                                    </td>
+                                                    
+                                                </tr>
+                                        </tbody>
+                                    </table>
+                            </div>
+                    </td>
+                </tr>
+            </tbody>
+        </table>
+</section>
+
+
+
+
+
+    <section>
+    
+    <h3 id="methods">
+        Methods
+    </h3>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="buyAgglomeration"></a>
+                    <span class="name">
+                        <span ><b>buyAgglomeration</b></span>
+                        <a href="#buyAgglomeration"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+            <tr>
+                <td class="col-md-4">
+<code>buyAgglomeration()</code>
+                </td>
+            </tr>
+
+
+            <tr>
+                <td class="col-md-4">
+                    <div class="io-line">Defined in <a href="" data-line="48"
+                            class="link-to-prism">libs/feature-game/src/lib/actions/actions/actions.component.ts:48</a></div>
+                </td>
+            </tr>
+
+
+            <tr>
+                <td class="col-md-4">
+
+                    <div class="io-description">
+                        <b>Returns : </b>        <code><a href="https://www.typescriptlang.org/docs/handbook/basic-types.html" target="_blank" >void</a></code>
+
+                    </div>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="buyDevelopment"></a>
+                    <span class="name">
+                        <span ><b>buyDevelopment</b></span>
+                        <a href="#buyDevelopment"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+            <tr>
+                <td class="col-md-4">
+<code>buyDevelopment()</code>
+                </td>
+            </tr>
+
+
+            <tr>
+                <td class="col-md-4">
+                    <div class="io-line">Defined in <a href="" data-line="83"
+                            class="link-to-prism">libs/feature-game/src/lib/actions/actions/actions.component.ts:83</a></div>
+                </td>
+            </tr>
+
+
+            <tr>
+                <td class="col-md-4">
+
+                    <div class="io-description">
+                        <b>Returns : </b>        <code><a href="https://www.typescriptlang.org/docs/handbook/basic-types.html" target="_blank" >void</a></code>
+
+                    </div>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="buyDisabled"></a>
+                    <span class="name">
+                        <span ><b>buyDisabled</b></span>
+                        <a href="#buyDisabled"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+            <tr>
+                <td class="col-md-4">
+<code>buyDisabled()</code>
+                </td>
+            </tr>
+
+
+            <tr>
+                <td class="col-md-4">
+                    <div class="io-line">Defined in <a href="" data-line="42"
+                            class="link-to-prism">libs/feature-game/src/lib/actions/actions/actions.component.ts:42</a></div>
+                </td>
+            </tr>
+
+
+            <tr>
+                <td class="col-md-4">
+
+                    <div class="io-description">
+                        <b>Returns : </b>    <code>Observable&lt;boolean&gt;</code>
+
+                    </div>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="clearDomainCardSelection"></a>
+                    <span class="name">
+                        <span ><b>clearDomainCardSelection</b></span>
+                        <a href="#clearDomainCardSelection"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+            <tr>
+                <td class="col-md-4">
+<code>clearDomainCardSelection()</code>
+                </td>
+            </tr>
+
+
+            <tr>
+                <td class="col-md-4">
+                    <div class="io-line">Defined in <a href="" data-line="173"
+                            class="link-to-prism">libs/feature-game/src/lib/actions/actions/actions.component.ts:173</a></div>
+                </td>
+            </tr>
+
+
+            <tr>
+                <td class="col-md-4">
+
+                    <div class="io-description">
+                        <b>Returns : </b>        <code><a href="https://www.typescriptlang.org/docs/handbook/basic-types.html" target="_blank" >void</a></code>
+
+                    </div>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="getDomainSelectedAgglomerationSlots"></a>
+                    <span class="name">
+                        <span ><b>getDomainSelectedAgglomerationSlots</b></span>
+                        <a href="#getDomainSelectedAgglomerationSlots"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+            <tr>
+                <td class="col-md-4">
+<code>getDomainSelectedAgglomerationSlots()</code>
+                </td>
+            </tr>
+
+
+            <tr>
+                <td class="col-md-4">
+                    <div class="io-line">Defined in <a href="" data-line="69"
+                            class="link-to-prism">libs/feature-game/src/lib/actions/actions/actions.component.ts:69</a></div>
+                </td>
+            </tr>
+
+
+            <tr>
+                <td class="col-md-4">
+
+                    <div class="io-description">
+                        <b>Returns : </b>    <code>Observable&lt;DomainsCardsEntity[]&gt;</code>
+
+                    </div>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="getDomainSelectedDevelopmentCards"></a>
+                    <span class="name">
+                        <span ><b>getDomainSelectedDevelopmentCards</b></span>
+                        <a href="#getDomainSelectedDevelopmentCards"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+            <tr>
+                <td class="col-md-4">
+<code>getDomainSelectedDevelopmentCards()</code>
+                </td>
+            </tr>
+
+
+            <tr>
+                <td class="col-md-4">
+                    <div class="io-line">Defined in <a href="" data-line="108"
+                            class="link-to-prism">libs/feature-game/src/lib/actions/actions/actions.component.ts:108</a></div>
+                </td>
+            </tr>
+
+
+            <tr>
+                <td class="col-md-4">
+
+                    <div class="io-description">
+                        <b>Returns : </b>    <code>Observable&lt;DomainsCardsEntity[]&gt;</code>
+
+                    </div>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="getDomainSelectedLandCards"></a>
+                    <span class="name">
+                        <span ><b>getDomainSelectedLandCards</b></span>
+                        <a href="#getDomainSelectedLandCards"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+            <tr>
+                <td class="col-md-4">
+<code>getDomainSelectedLandCards()</code>
+                </td>
+            </tr>
+
+
+            <tr>
+                <td class="col-md-4">
+                    <div class="io-line">Defined in <a href="" data-line="163"
+                            class="link-to-prism">libs/feature-game/src/lib/actions/actions/actions.component.ts:163</a></div>
+                </td>
+            </tr>
+
+
+            <tr>
+                <td class="col-md-4">
+
+                    <div class="io-description">
+                        <b>Returns : </b>    <code>Observable&lt;DomainsCardsEntity[]&gt;</code>
+
+                    </div>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="getHandSelectedDevelopmentCard"></a>
+                    <span class="name">
+                        <span ><b>getHandSelectedDevelopmentCard</b></span>
+                        <a href="#getHandSelectedDevelopmentCard"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+            <tr>
+                <td class="col-md-4">
+<code>getHandSelectedDevelopmentCard()</code>
+                </td>
+            </tr>
+
+
+            <tr>
+                <td class="col-md-4">
+                    <div class="io-line">Defined in <a href="" data-line="87"
+                            class="link-to-prism">libs/feature-game/src/lib/actions/actions/actions.component.ts:87</a></div>
+                </td>
+            </tr>
+
+
+            <tr>
+                <td class="col-md-4">
+
+                    <div class="io-description">
+                        <b>Returns : </b>    <code>Observable&lt;HandsCardsEntity | undefined&gt;</code>
+
+                    </div>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="getPileSelectedLandCard"></a>
+                    <span class="name">
+                        <span ><b>getPileSelectedLandCard</b></span>
+                        <a href="#getPileSelectedLandCard"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+            <tr>
+                <td class="col-md-4">
+<code>getPileSelectedLandCard()</code>
+                </td>
+            </tr>
+
+
+            <tr>
+                <td class="col-md-4">
+                    <div class="io-line">Defined in <a href="" data-line="145"
+                            class="link-to-prism">libs/feature-game/src/lib/actions/actions/actions.component.ts:145</a></div>
+                </td>
+            </tr>
+
+
+            <tr>
+                <td class="col-md-4">
+
+                    <div class="io-description">
+                        <b>Returns : </b>        <code><a href="../interfaces/LandsPileCardsEntity.html" target="_self" >Observable&lt;LandsPileCardsEntity | undefined&gt;</a></code>
+
+                    </div>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="getSelectedActionCard"></a>
+                    <span class="name">
+                        <span ><b>getSelectedActionCard</b></span>
+                        <a href="#getSelectedActionCard"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+            <tr>
+                <td class="col-md-4">
+<code>getSelectedActionCard()</code>
+                </td>
+            </tr>
+
+
+            <tr>
+                <td class="col-md-4">
+                    <div class="io-line">Defined in <a href="" data-line="131"
+                            class="link-to-prism">libs/feature-game/src/lib/actions/actions/actions.component.ts:131</a></div>
+                </td>
+            </tr>
+
+
+            <tr>
+                <td class="col-md-4">
+
+                    <div class="io-description">
+                        <b>Returns : </b>    <code>Observable&lt;HandsCardsEntity | undefined&gt;</code>
+
+                    </div>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="getSelectedAvailableAgglomerationSlots"></a>
+                    <span class="name">
+                        <span ><b>getSelectedAvailableAgglomerationSlots</b></span>
+                        <a href="#getSelectedAvailableAgglomerationSlots"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+            <tr>
+                <td class="col-md-4">
+<code>getSelectedAvailableAgglomerationSlots()</code>
+                </td>
+            </tr>
+
+
+            <tr>
+                <td class="col-md-4">
+                    <div class="io-line">Defined in <a href="" data-line="56"
+                            class="link-to-prism">libs/feature-game/src/lib/actions/actions/actions.component.ts:56</a></div>
+                </td>
+            </tr>
+
+
+            <tr>
+                <td class="col-md-4">
+
+                    <div class="io-description">
+                        <b>Returns : </b>    <code>Observable&lt;DomainsCardsEntity[]&gt;</code>
+
+                    </div>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="getSelectedAvailableDevelopmentSlots"></a>
+                    <span class="name">
+                        <span ><b>getSelectedAvailableDevelopmentSlots</b></span>
+                        <a href="#getSelectedAvailableDevelopmentSlots"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+            <tr>
+                <td class="col-md-4">
+<code>getSelectedAvailableDevelopmentSlots()</code>
+                </td>
+            </tr>
+
+
+            <tr>
+                <td class="col-md-4">
+                    <div class="io-line">Defined in <a href="" data-line="95"
+                            class="link-to-prism">libs/feature-game/src/lib/actions/actions/actions.component.ts:95</a></div>
+                </td>
+            </tr>
+
+
+            <tr>
+                <td class="col-md-4">
+
+                    <div class="io-description">
+                        <b>Returns : </b>    <code>Observable&lt;DomainsCardsEntity[]&gt;</code>
+
+                    </div>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="getSelectedAvailableLandSlots"></a>
+                    <span class="name">
+                        <span ><b>getSelectedAvailableLandSlots</b></span>
+                        <a href="#getSelectedAvailableLandSlots"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+            <tr>
+                <td class="col-md-4">
+<code>getSelectedAvailableLandSlots()</code>
+                </td>
+            </tr>
+
+
+            <tr>
+                <td class="col-md-4">
+                    <div class="io-line">Defined in <a href="" data-line="153"
+                            class="link-to-prism">libs/feature-game/src/lib/actions/actions/actions.component.ts:153</a></div>
+                </td>
+            </tr>
+
+
+            <tr>
+                <td class="col-md-4">
+
+                    <div class="io-description">
+                        <b>Returns : </b>    <code>Observable&lt;DomainsCardsEntity[]&gt;</code>
+
+                    </div>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="getSelectedFaceUpPileCard"></a>
+                    <span class="name">
+                        <span ><b>getSelectedFaceUpPileCard</b></span>
+                        <a href="#getSelectedFaceUpPileCard"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+            <tr>
+                <td class="col-md-4">
+<code>getSelectedFaceUpPileCard()</code>
+                </td>
+            </tr>
+
+
+            <tr>
+                <td class="col-md-4">
+                    <div class="io-line">Defined in <a href="" data-line="52"
+                            class="link-to-prism">libs/feature-game/src/lib/actions/actions/actions.component.ts:52</a></div>
+                </td>
+            </tr>
+
+
+            <tr>
+                <td class="col-md-4">
+
+                    <div class="io-description">
+                        <b>Returns : </b>        <code><a href="../interfaces/FaceUpPilesCardsEntity.html" target="_self" >Observable&lt;FaceUpPilesCardsEntity | undefined&gt;</a></code>
+
+                    </div>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="getSelectedHandCard"></a>
+                    <span class="name">
+                        <span ><b>getSelectedHandCard</b></span>
+                        <a href="#getSelectedHandCard"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+            <tr>
+                <td class="col-md-4">
+<code>getSelectedHandCard()</code>
+                </td>
+            </tr>
+
+
+            <tr>
+                <td class="col-md-4">
+                    <div class="io-line">Defined in <a href="" data-line="149"
+                            class="link-to-prism">libs/feature-game/src/lib/actions/actions/actions.component.ts:149</a></div>
+                </td>
+            </tr>
+
+
+            <tr>
+                <td class="col-md-4">
+
+                    <div class="io-description">
+                        <b>Returns : </b>    <code>Observable&lt;HandsCardsEntity | undefined&gt;</code>
+
+                    </div>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="giveLockedResources"></a>
+                    <span class="name">
+                        <span ><b>giveLockedResources</b></span>
+                        <a href="#giveLockedResources"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+            <tr>
+                <td class="col-md-4">
+<code>giveLockedResources()</code>
+                </td>
+            </tr>
+
+
+            <tr>
+                <td class="col-md-4">
+                    <div class="io-line">Defined in <a href="" data-line="141"
+                            class="link-to-prism">libs/feature-game/src/lib/actions/actions/actions.component.ts:141</a></div>
+                </td>
+            </tr>
+
+
+            <tr>
+                <td class="col-md-4">
+
+                    <div class="io-description">
+                        <b>Returns : </b>        <code><a href="https://www.typescriptlang.org/docs/handbook/basic-types.html" target="_blank" >void</a></code>
+
+                    </div>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="putLand"></a>
+                    <span class="name">
+                        <span ><b>putLand</b></span>
+                        <a href="#putLand"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+            <tr>
+                <td class="col-md-4">
+<code>putLand()</code>
+                </td>
+            </tr>
+
+
+            <tr>
+                <td class="col-md-4">
+                    <div class="io-line">Defined in <a href="" data-line="137"
+                            class="link-to-prism">libs/feature-game/src/lib/actions/actions/actions.component.ts:137</a></div>
+                </td>
+            </tr>
+
+
+            <tr>
+                <td class="col-md-4">
+
+                    <div class="io-description">
+                        <b>Returns : </b>        <code><a href="https://www.typescriptlang.org/docs/handbook/basic-types.html" target="_blank" >void</a></code>
+
+                    </div>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="swapSelectedDomainsCards"></a>
+                    <span class="name">
+                        <span ><b>swapSelectedDomainsCards</b></span>
+                        <a href="#swapSelectedDomainsCards"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+            <tr>
+                <td class="col-md-4">
+<code>swapSelectedDomainsCards()</code>
+                </td>
+            </tr>
+
+
+            <tr>
+                <td class="col-md-4">
+                    <div class="io-line">Defined in <a href="" data-line="177"
+                            class="link-to-prism">libs/feature-game/src/lib/actions/actions/actions.component.ts:177</a></div>
+                </td>
+            </tr>
+
+
+            <tr>
+                <td class="col-md-4">
+
+                    <div class="io-description">
+                        <b>Returns : </b>        <code><a href="https://www.typescriptlang.org/docs/handbook/basic-types.html" target="_blank" >void</a></code>
+
+                    </div>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="useActionCard"></a>
+                    <span class="name">
+                        <span ><b>useActionCard</b></span>
+                        <a href="#useActionCard"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+            <tr>
+                <td class="col-md-4">
+<code>useActionCard()</code>
+                </td>
+            </tr>
+
+
+            <tr>
+                <td class="col-md-4">
+                    <div class="io-line">Defined in <a href="" data-line="127"
+                            class="link-to-prism">libs/feature-game/src/lib/actions/actions/actions.component.ts:127</a></div>
+                </td>
+            </tr>
+
+
+            <tr>
+                <td class="col-md-4">
+
+                    <div class="io-description">
+                        <b>Returns : </b>        <code><a href="https://www.typescriptlang.org/docs/handbook/basic-types.html" target="_blank" >void</a></code>
+
+                    </div>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="useActionCardDisabled"></a>
+                    <span class="name">
+                        <span ><b>useActionCardDisabled</b></span>
+                        <a href="#useActionCardDisabled"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+            <tr>
+                <td class="col-md-4">
+<code>useActionCardDisabled()</code>
+                </td>
+            </tr>
+
+
+            <tr>
+                <td class="col-md-4">
+                    <div class="io-line">Defined in <a href="" data-line="119"
+                            class="link-to-prism">libs/feature-game/src/lib/actions/actions/actions.component.ts:119</a></div>
+                </td>
+            </tr>
+
+
+            <tr>
+                <td class="col-md-4">
+
+                    <div class="io-description">
+                        <b>Returns : </b>    <code>Observable&lt;boolean&gt;</code>
+
+                    </div>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+</section>
+
+</div>
+
+
+    <div class="tab-pane fade  tab-source-code" id="c-source">
+        <pre class="line-numbers compodoc-sourcecode"><code class="language-typescript">import { Component } from &#x27;@angular/core&#x27;;
+import {
+  DomainsCardsEntity,
+  DomainsCardsFacade,
+  FaceUpPilesCardsEntity,
+  FaceUpPilesCardsFacade,
+  GameFacade,
+  HandsCardsEntity,
+  HandsCardsFacade,
+  LandsPileCardsEntity,
+  LandsPileCardsFacade,
+} from &#x27;@taormina/data-access-game&#x27;;
+import { GameRulesService } from &#x27;@taormina/feature-engine&#x27;;
+import {
+  ACTION_CARD_INTERFACE_NAME,
+  AGGLOMERATION_CARD_INTERFACE_NAME,
+  AVAILABLE_AGGLOMERATION_SLOT,
+  AVAILABLE_DEVELOPMENT_SLOT,
+  AVAILABLE_LAND_SLOT,
+  DEVELOPMENT_CARD_INTERFACE_NAME,
+  GamePhase,
+  LAND_CARD_INTERFACE_NAME,
+} from &#x27;@taormina/shared-models&#x27;;
+import { Observable } from &#x27;rxjs&#x27;;
+import { filter, map } from &#x27;rxjs/operators&#x27;;
+
+@Component({
+  selector: &#x27;taormina-actions&#x27;,
+  templateUrl: &#x27;./actions.component.html&#x27;,
+  styleUrls: [&#x27;./actions.component.css&#x27;],
+})
+export class ActionsComponent {
+  constructor(
+    private game: GameFacade,
+    private domainsCards: DomainsCardsFacade,
+    private handsCards: HandsCardsFacade,
+    private faceUpPilesCards: FaceUpPilesCardsFacade,
+    private landsPileCards: LandsPileCardsFacade,
+    private gameRules: GameRulesService
+  ) {}
+
+  buyDisabled(): Observable&lt;boolean&gt; {
+    return this.game.phase$.pipe(
+      map((phase) &#x3D;&gt; phase !&#x3D;&#x3D; GamePhase.LoopActions)
+    );
+  }
+
+  buyAgglomeration(): void {
+    this.gameRules.useResourcesToPutFaceUpPileCardInSlot();
+  }
+
+  getSelectedFaceUpPileCard(): Observable&lt;FaceUpPilesCardsEntity | undefined&gt; {
+    return this.faceUpPilesCards.selectedFaceUpPilesCards$;
+  }
+
+  getSelectedAvailableAgglomerationSlots(): Observable&lt;
+    DomainsCardsEntity[]
+    // eslint-disable-next-line indent
+  &gt; {
+    return this.domainsCards.selectedDomainsCards$.pipe(
+      map((domainCards) &#x3D;&gt;
+        domainCards.filter(
+          (domainCard) &#x3D;&gt; domainCard?.cardType &#x3D;&#x3D;&#x3D; AVAILABLE_AGGLOMERATION_SLOT
+        )
+      )
+    );
+  }
+
+  getDomainSelectedAgglomerationSlots(): Observable&lt;
+    DomainsCardsEntity[]
+    // eslint-disable-next-line indent
+  &gt; {
+    return this.domainsCards.selectedDomainsCards$.pipe(
+      map((domainCards) &#x3D;&gt;
+        domainCards.filter(
+          (domainCard) &#x3D;&gt;
+            domainCard?.cardType &#x3D;&#x3D;&#x3D; AGGLOMERATION_CARD_INTERFACE_NAME
+        )
+      )
+    );
+  }
+
+  buyDevelopment(): void {
+    this.gameRules.useResourcesToPutHandCardInSlot();
+  }
+
+  getHandSelectedDevelopmentCard(): Observable&lt;HandsCardsEntity | undefined&gt; {
+    return this.handsCards.selectedHandsCards$.pipe(
+      filter(
+        (handCard) &#x3D;&gt; handCard?.cardType &#x3D;&#x3D;&#x3D; DEVELOPMENT_CARD_INTERFACE_NAME
+      )
+    );
+  }
+
+  getSelectedAvailableDevelopmentSlots(): Observable&lt;
+    DomainsCardsEntity[]
+    // eslint-disable-next-line indent
+  &gt; {
+    return this.domainsCards.selectedDomainsCards$.pipe(
+      map((domainCards) &#x3D;&gt;
+        domainCards.filter(
+          (domainCard) &#x3D;&gt; domainCard?.cardType &#x3D;&#x3D;&#x3D; AVAILABLE_DEVELOPMENT_SLOT
+        )
+      )
+    );
+  }
+
+  getDomainSelectedDevelopmentCards(): Observable&lt;DomainsCardsEntity[]&gt; {
+    return this.domainsCards.selectedDomainsCards$.pipe(
+      map((domainCards) &#x3D;&gt;
+        domainCards.filter(
+          (domainCard) &#x3D;&gt;
+            domainCard?.cardType &#x3D;&#x3D;&#x3D; DEVELOPMENT_CARD_INTERFACE_NAME
+        )
+      )
+    );
+  }
+
+  useActionCardDisabled(): Observable&lt;boolean&gt; {
+    return this.game.phase$.pipe(
+      map((phase) &#x3D;&gt; {
+        return phase !&#x3D;&#x3D; GamePhase.LoopActions;
+      })
+    );
+  }
+
+  useActionCard(): void {
+    this.gameRules.useActionCard();
+  }
+
+  getSelectedActionCard(): Observable&lt;HandsCardsEntity | undefined&gt; {
+    return this.handsCards.selectedHandsCards$.pipe(
+      filter((handCard) &#x3D;&gt; handCard?.cardType &#x3D;&#x3D;&#x3D; ACTION_CARD_INTERFACE_NAME)
+    );
+  }
+
+  putLand(): void {
+    this.gameRules.putLandsPileCardInSlot();
+  }
+
+  giveLockedResources(): void {
+    this.domainsCards.giveLockedResources();
+  }
+
+  getPileSelectedLandCard(): Observable&lt;LandsPileCardsEntity | undefined&gt; {
+    return this.landsPileCards.selectedLandsPileCards$;
+  }
+
+  getSelectedHandCard(): Observable&lt;HandsCardsEntity | undefined&gt; {
+    return this.handsCards.selectedHandsCards$;
+  }
+
+  getSelectedAvailableLandSlots(): Observable&lt;DomainsCardsEntity[]&gt; {
+    return this.domainsCards.selectedDomainsCards$.pipe(
+      map((domainCards) &#x3D;&gt;
+        domainCards.filter(
+          (domainCard) &#x3D;&gt; domainCard?.cardType &#x3D;&#x3D;&#x3D; AVAILABLE_LAND_SLOT
+        )
+      )
+    );
+  }
+
+  getDomainSelectedLandCards(): Observable&lt;DomainsCardsEntity[]&gt; {
+    return this.domainsCards.selectedDomainsCards$.pipe(
+      map((domainCards) &#x3D;&gt;
+        domainCards.filter(
+          (domainCard) &#x3D;&gt; domainCard?.cardType &#x3D;&#x3D;&#x3D; LAND_CARD_INTERFACE_NAME
+        )
+      )
+    );
+  }
+
+  clearDomainCardSelection(): void {
+    this.domainsCards.clearDomainCardSelection();
+  }
+
+  swapSelectedDomainsCards(): void {
+    this.domainsCards.swapSelectedCards();
+  }
+}
+</code></pre>
+    </div>
+
+    <div class="tab-pane fade " id="c-templateData">
+        <pre class="line-numbers"><code class="language-html">&lt;div class&#x3D;&quot;flex-container&quot;&gt;
+  &lt;button
+    type&#x3D;&quot;button&quot;
+    [disabled]&#x3D;&quot;buyDisabled() | async&quot;
+    (click)&#x3D;&quot;buyAgglomeration()&quot;
+  &gt;
+    buy agglomeration
+  &lt;/button&gt;
+  &lt;div&gt;
+    &lt;p&gt;Pile Selected Agglomeration Card:&lt;/p&gt;
+    &lt;p *ngIf&#x3D;&quot;getSelectedFaceUpPileCard() | async as pivot&quot;&gt;
+      {{ pivot.pileId }}
+    &lt;/p&gt;
+  &lt;/div&gt;
+  &lt;div&gt;
+    &lt;p&gt;Selected Available Agglomeration Slots:&lt;/p&gt;
+    &lt;p *ngFor&#x3D;&quot;let pivot of getSelectedAvailableAgglomerationSlots() | async&quot;&gt;
+      {{ pivot.domainId }}&lt;br /&gt;
+      {{ pivot.col }}&lt;br /&gt;
+      {{ pivot.row }}
+    &lt;/p&gt;
+  &lt;/div&gt;
+  &lt;div&gt;
+    &lt;p&gt;Domain Selected Agglomeration Slots:&lt;/p&gt;
+    &lt;p *ngFor&#x3D;&quot;let pivot of getDomainSelectedAgglomerationSlots() | async&quot;&gt;
+      {{ pivot.domainId }}&lt;br /&gt;
+      {{ pivot.col }}&lt;br /&gt;
+      {{ pivot.row }}
+    &lt;/p&gt;
+  &lt;/div&gt;
+&lt;/div&gt;
+&lt;hr /&gt;
+&lt;div class&#x3D;&quot;flex-container&quot;&gt;
+  &lt;button
+    type&#x3D;&quot;button&quot;
+    [disabled]&#x3D;&quot;buyDisabled() | async&quot;
+    (click)&#x3D;&quot;buyDevelopment()&quot;
+  &gt;
+    buy development
+  &lt;/button&gt;
+  &lt;div&gt;
+    &lt;p&gt;Hand Selected Development Card:&lt;/p&gt;
+    &lt;p *ngIf&#x3D;&quot;getHandSelectedDevelopmentCard() | async as pivot&quot;&gt;
+      {{ pivot.cardId }}
+    &lt;/p&gt;
+  &lt;/div&gt;
+  &lt;div&gt;
+    &lt;p&gt;Selected Available Development Slots:&lt;/p&gt;
+    &lt;p *ngFor&#x3D;&quot;let pivot of getSelectedAvailableDevelopmentSlots() | async&quot;&gt;
+      {{ pivot.domainId }}&lt;br /&gt;
+      {{ pivot.col }}&lt;br /&gt;
+      {{ pivot.row }}
+    &lt;/p&gt;
+  &lt;/div&gt;
+  &lt;div&gt;
+    &lt;p&gt;Domain Selected Development Cards:&lt;/p&gt;
+    &lt;p *ngFor&#x3D;&quot;let pivot of getDomainSelectedDevelopmentCards() | async&quot;&gt;
+      {{ pivot.domainId }}&lt;br /&gt;
+      {{ pivot.col }}&lt;br /&gt;
+      {{ pivot.row }}
+    &lt;/p&gt;
+  &lt;/div&gt;
+&lt;/div&gt;
+&lt;hr /&gt;
+&lt;div class&#x3D;&quot;flex-container&quot;&gt;
+  &lt;button
+    type&#x3D;&quot;button&quot;
+    [disabled]&#x3D;&quot;useActionCardDisabled() | async&quot;
+    (click)&#x3D;&quot;useActionCard()&quot;
+  &gt;
+    Use action card
+  &lt;/button&gt;
+  &lt;div&gt;
+    &lt;p&gt;Selected Action Card:&lt;/p&gt;
+    &lt;p *ngIf&#x3D;&quot;getSelectedActionCard() | async as pivot&quot;&gt;
+      {{ pivot.cardId }}
+    &lt;/p&gt;
+  &lt;/div&gt;
+&lt;/div&gt;
+&lt;hr /&gt;
+&lt;div class&#x3D;&quot;flex-container&quot;&gt;
+  &lt;button type&#x3D;&quot;button&quot; (click)&#x3D;&quot;putLand()&quot;&gt;put land&lt;/button&gt;
+  &lt;button type&#x3D;&quot;button&quot; (click)&#x3D;&quot;giveLockedResources()&quot;&gt;
+    Give locked resources
+  &lt;/button&gt;
+  &lt;div&gt;
+    &lt;p&gt;Pile Selected Land Card:&lt;/p&gt;
+    &lt;p *ngIf&#x3D;&quot;getPileSelectedLandCard() | async as pivot&quot;&gt;
+      {{ pivot.cardId }}
+    &lt;/p&gt;
+  &lt;/div&gt;
+  &lt;div&gt;
+    &lt;p&gt;Selected Available Land Slots:&lt;/p&gt;
+    &lt;p *ngFor&#x3D;&quot;let pivot of getSelectedAvailableLandSlots() | async&quot;&gt;
+      {{ pivot.domainId }}&lt;br /&gt;
+      {{ pivot.col }}&lt;br /&gt;
+      {{ pivot.row }}
+    &lt;/p&gt;
+  &lt;/div&gt;
+  &lt;div&gt;
+    &lt;p&gt;Domain Selected Available Land Slots:&lt;/p&gt;
+    &lt;p *ngFor&#x3D;&quot;let pivot of getDomainSelectedLandCards() | async&quot;&gt;
+      {{ pivot.domainId }}&lt;br /&gt;
+      {{ pivot.col }}&lt;br /&gt;
+      {{ pivot.row }}
+    &lt;/p&gt;
+  &lt;/div&gt;
+&lt;/div&gt;
+&lt;hr /&gt;
+&lt;div&gt;
+  &lt;button type&#x3D;&quot;button&quot; (click)&#x3D;&quot;swapSelectedDomainsCards()&quot;&gt;
+    swap selected domains cards&lt;/button
+  &gt;&lt;br /&gt;
+  &lt;button type&#x3D;&quot;button&quot; (click)&#x3D;&quot;clearDomainCardSelection()&quot;&gt;
+    clear domain selection
+  &lt;/button&gt;
+&lt;/div&gt;
+</code></pre>
+    </div>
+
+    <div class="tab-pane fade " id="c-styleData">
+                <p class="comment">
+                    <code>./actions.component.css</code>
+                </p>
+                <pre class="line-numbers"><code class="language-scss">.flex-container {
+  display: flex;
+  column-gap: 20px;
+}
+</code></pre>
+    </div>
+
+    <div class="tab-pane fade " id="c-tree">
+        <div id="tree-container"></div>
+        <div class="tree-legend">
+            <div class="title">
+                <b>Legend</b>
+            </div>
+            <div>
+                <div class="color htmlelement"></div><span>Html element</span>
+            </div>
+            <div>
+                <div class="color component"></div><span>Component</span>
+            </div>
+            <div>
+                <div class="color directive"></div><span>Html element with directive</span>
+            </div>
+        </div>
+    </div>
+
+    
+</div>
+
+<script src="../js/libs/vis.min.js"></script>
+<script src="../js/libs/htmlparser.js"></script>
+<script src="../js/libs/deep-iterator.js"></script>
+<script>
+        var COMPONENT_TEMPLATE = '<div><div class="flex-container">  <button    type="button"    [disabled]="buyDisabled() | async"    (click)="buyAgglomeration()"  >    buy agglomeration  </button>  <div>    <p>Pile Selected Agglomeration Card:</p>    <p *ngIf="getSelectedFaceUpPileCard() | async as pivot">      {{ pivot.pileId }}    </p>  </div>  <div>    <p>Selected Available Agglomeration Slots:</p>    <p *ngFor="let pivot of getSelectedAvailableAgglomerationSlots() | async">      {{ pivot.domainId }}<br />      {{ pivot.col }}<br />      {{ pivot.row }}    </p>  </div>  <div>    <p>Domain Selected Agglomeration Slots:</p>    <p *ngFor="let pivot of getDomainSelectedAgglomerationSlots() | async">      {{ pivot.domainId }}<br />      {{ pivot.col }}<br />      {{ pivot.row }}    </p>  </div></div><hr /><div class="flex-container">  <button    type="button"    [disabled]="buyDisabled() | async"    (click)="buyDevelopment()"  >    buy development  </button>  <div>    <p>Hand Selected Development Card:</p>    <p *ngIf="getHandSelectedDevelopmentCard() | async as pivot">      {{ pivot.cardId }}    </p>  </div>  <div>    <p>Selected Available Development Slots:</p>    <p *ngFor="let pivot of getSelectedAvailableDevelopmentSlots() | async">      {{ pivot.domainId }}<br />      {{ pivot.col }}<br />      {{ pivot.row }}    </p>  </div>  <div>    <p>Domain Selected Development Cards:</p>    <p *ngFor="let pivot of getDomainSelectedDevelopmentCards() | async">      {{ pivot.domainId }}<br />      {{ pivot.col }}<br />      {{ pivot.row }}    </p>  </div></div><hr /><div class="flex-container">  <button    type="button"    [disabled]="useActionCardDisabled() | async"    (click)="useActionCard()"  >    Use action card  </button>  <div>    <p>Selected Action Card:</p>    <p *ngIf="getSelectedActionCard() | async as pivot">      {{ pivot.cardId }}    </p>  </div></div><hr /><div class="flex-container">  <button type="button" (click)="putLand()">put land</button>  <button type="button" (click)="giveLockedResources()">    Give locked resources  </button>  <div>    <p>Pile Selected Land Card:</p>    <p *ngIf="getPileSelectedLandCard() | async as pivot">      {{ pivot.cardId }}    </p>  </div>  <div>    <p>Selected Available Land Slots:</p>    <p *ngFor="let pivot of getSelectedAvailableLandSlots() | async">      {{ pivot.domainId }}<br />      {{ pivot.col }}<br />      {{ pivot.row }}    </p>  </div>  <div>    <p>Domain Selected Available Land Slots:</p>    <p *ngFor="let pivot of getDomainSelectedLandCards() | async">      {{ pivot.domainId }}<br />      {{ pivot.col }}<br />      {{ pivot.row }}    </p>  </div></div><hr /><div>  <button type="button" (click)="swapSelectedDomainsCards()">    swap selected domains cards</button  ><br />  <button type="button" (click)="clearDomainCardSelection()">    clear domain selection  </button></div></div>'
+    var COMPONENTS = [{'name': 'ActionsComponent', 'selector': 'taormina-actions'},{'name': 'AppComponent', 'selector': 'taormina-root'},{'name': 'BoardComponent', 'selector': 'taormina-board'},{'name': 'CardComponent', 'selector': 'taormina-card'},{'name': 'DiceComponent', 'selector': 'taormina-dice'},{'name': 'DomainComponent', 'selector': 'taormina-domain'},{'name': 'HandComponent', 'selector': 'taormina-hand'},{'name': 'PhasesComponent', 'selector': 'taormina-phases'},{'name': 'PilesComponent', 'selector': 'taormina-piles'}];
+    var DIRECTIVES = [];
+    var ACTUAL_COMPONENT = {'name': 'ActionsComponent'};
+</script>
+<script src="../js/tree.js"></script>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+                   </div><div class="search-results">
+    <div class="has-results">
+        <h1 class="search-results-title"><span class='search-results-count'></span> results matching "<span class='search-query'></span>"</h1>
+        <ul class="search-results-list"></ul>
+    </div>
+    <div class="no-results">
+        <h1 class="search-results-title">No results matching "<span class='search-query'></span>"</h1>
+    </div>
+</div>
+</div>
+               <!-- END CONTENT -->
+           </div>
+       </div>
+
+          <label class="dark-mode-switch">
+               <input type="checkbox">
+               <span class="slider">
+                    <svg class="slider-icon" viewBox="0 0 24 24" fill="none" height="20" stroke="#000" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" width="20" xmlns="http://www.w3.org/2000/svg">
+                    <path d="M21 12.79A9 9 0 1111.21 3 7 7 0 0021 12.79z"></path>
+                    </svg>
+               </span>
+          </label>
+
+       <script>
+            var COMPODOC_CURRENT_PAGE_DEPTH = 1;
+            var COMPODOC_CURRENT_PAGE_CONTEXT = 'component';
+            var COMPODOC_CURRENT_PAGE_URL = 'ActionsComponent.html';
+            var MAX_SEARCH_RESULTS = 15;
+       </script>
+
+       <script src="../js/libs/custom-elements.min.js"></script>
+       <script src="../js/libs/lit-html.js"></script>
+
+       <script src="../js/menu-wc.js" defer></script>
+       <script nomodule src="../js/menu-wc_es5.js" defer></script>
+
+       <script src="../js/libs/bootstrap-native.js"></script>
+
+       <script src="../js/libs/es6-shim.min.js"></script>
+       <script src="../js/libs/EventDispatcher.js"></script>
+       <script src="../js/libs/promise.min.js"></script>
+       <script src="../js/libs/zepto.min.js"></script>
+
+       <script src="../js/compodoc.js"></script>
+
+       <script src="../js/tabs.js"></script>
+       <script src="../js/menu.js"></script>
+       <script src="../js/libs/clipboard.min.js"></script>
+       <script src="../js/libs/prism.js"></script>
+       <script src="../js/sourceCode.js"></script>
+          <script src="../js/search/search.js"></script>
+          <script src="../js/search/lunr.min.js"></script>
+          <script src="../js/search/search-lunr.js"></script>
+          <script src="../js/search/search_index.js"></script>
+       <script src="../js/lazy-load-graphs.js"></script>
+
+
+    </body>
+</html>
