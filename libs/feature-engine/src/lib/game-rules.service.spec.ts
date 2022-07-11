@@ -5,7 +5,7 @@ import {
   DiscardPileCardsFacade,
   DomainsCardsFacade,
   EventsPileCardsFacade,
-  FaceUpPilesCardsFacade,
+  AgglomerationPilesCardsFacade,
   GameFacade,
   HandsCardsFacade,
   LandsPileCardsFacade,
@@ -13,9 +13,9 @@ import {
 } from '@taormina/data-access-game';
 import {
   ID_DOMAIN_RED,
-  ID_FACE_UP_HAMLET,
-  ID_FACE_UP_ROAD,
-  ID_FACE_UP_TOWN,
+  ID_AGGLOMERATION_HAMLET,
+  ID_AGGLOMERATION_ROAD,
+  ID_AGGLOMERATION_TOWN,
   ID_HAND_BLUE,
   ID_HAND_RED,
 } from '@taormina/shared-constants';
@@ -48,7 +48,7 @@ describe('GameRulesService', () => {
         GameFacade,
         DomainsCardsFacade,
         HandsCardsFacade,
-        FaceUpPilesCardsFacade,
+        AgglomerationPilesCardsFacade,
         LandsPileCardsFacade,
         StockPilesCardsFacade,
         EventsPileCardsFacade,
@@ -403,7 +403,7 @@ describe('GameRulesService', () => {
     const handsCardsFacadeMock = {
       initNewGame: jest.fn(),
     };
-    const faceUpPilesCardsFacadeMock = {
+    const agglomerationPilesCardsFacadeMock = {
       initNewGame: jest.fn(),
     };
     const landsPileCardsFacadeMock = {
@@ -427,8 +427,8 @@ describe('GameRulesService', () => {
           { provide: DomainsCardsFacade, useValue: domainsCardsFacadeMock },
           { provide: HandsCardsFacade, useValue: handsCardsFacadeMock },
           {
-            provide: FaceUpPilesCardsFacade,
-            useValue: faceUpPilesCardsFacadeMock,
+            provide: AgglomerationPilesCardsFacade,
+            useValue: agglomerationPilesCardsFacadeMock,
           },
           { provide: LandsPileCardsFacade, useValue: landsPileCardsFacadeMock },
           {
@@ -485,7 +485,9 @@ describe('GameRulesService', () => {
       expect(gameFacadeMock.initNewGame).toHaveBeenCalledTimes(1);
       expect(domainsCardsFacadeMock.initNewGame).toHaveBeenCalledTimes(1);
       expect(handsCardsFacadeMock.initNewGame).toHaveBeenCalledTimes(1);
-      expect(faceUpPilesCardsFacadeMock.initNewGame).toHaveBeenCalledTimes(1);
+      expect(
+        agglomerationPilesCardsFacadeMock.initNewGame
+      ).toHaveBeenCalledTimes(1);
       expect(landsPileCardsFacadeMock.initNewGame).toHaveBeenCalledTimes(1);
       expect(stockPilesCardsFacadeMock.initNewGame).toHaveBeenCalledTimes(1);
       expect(eventsPileCardsFacadeMock.initNewGame).toHaveBeenCalledTimes(1);
@@ -667,7 +669,7 @@ describe('GameRulesService', () => {
     });
   });
 
-  describe('useResourcesToPutFaceUpPileCardInSlot', () => {
+  describe('useResourcesToPutAgglomerationPileCardInSlot', () => {
     describe('OK road', () => {
       const domainsCardsFacadeMock = {
         selectedDomainsCards$: of([
@@ -685,13 +687,13 @@ describe('GameRulesService', () => {
         putCardInSlot: jest.fn(),
         useLockedResources: jest.fn(),
       };
-      const faceUpPilesCardsFacadeMock = {
-        selectedFaceUpPilesCards$: of({
+      const agglomerationPilesCardsFacadeMock = {
+        selectedAgglomerationPilesCards$: of({
           id: 'aaaa',
-          pileId: ID_FACE_UP_ROAD,
+          pileId: ID_AGGLOMERATION_ROAD,
           cardId: 'ROAD_1',
         }),
-        removeFaceUpPileCard: jest.fn(),
+        removeAgglomerationPileCard: jest.fn(),
       };
 
       beforeEach(() => {
@@ -699,23 +701,23 @@ describe('GameRulesService', () => {
           providers: [
             { provide: DomainsCardsFacade, useValue: domainsCardsFacadeMock },
             {
-              provide: FaceUpPilesCardsFacade,
-              useValue: faceUpPilesCardsFacadeMock,
+              provide: AgglomerationPilesCardsFacade,
+              useValue: agglomerationPilesCardsFacadeMock,
             },
           ],
         });
         service = TestBed.inject(GameRulesService);
       });
 
-      it(`should call useLockedResources, removeFaceUpPileCard,
+      it(`should call useLockedResources, removeAgglomerationPileCard,
           putCardInSlot, createAvailableDomainCard, clearDomainCardSelection`, () => {
-        service.useResourcesToPutFaceUpPileCardInSlot();
+        service.useResourcesToPutAgglomerationPileCardInSlot();
 
         expect(domainsCardsFacadeMock.useLockedResources).toHaveBeenCalledTimes(
           1
         );
         expect(
-          faceUpPilesCardsFacadeMock.removeFaceUpPileCard
+          agglomerationPilesCardsFacadeMock.removeAgglomerationPileCard
         ).toHaveBeenCalledWith('aaaa');
         expect(domainsCardsFacadeMock.putCardInSlot).toHaveBeenCalledWith(
           'aaaa',
@@ -753,13 +755,13 @@ describe('GameRulesService', () => {
         putCardInSlot: jest.fn(),
         useLockedResources: jest.fn(),
       };
-      const faceUpPilesCardsFacadeMock = {
-        selectedFaceUpPilesCards$: of({
+      const agglomerationPilesCardsFacadeMock = {
+        selectedAgglomerationPilesCards$: of({
           id: 'aaaa',
-          pileId: ID_FACE_UP_HAMLET,
+          pileId: ID_AGGLOMERATION_HAMLET,
           cardId: 'HAMLET_1',
         }),
-        removeFaceUpPileCard: jest.fn(),
+        removeAgglomerationPileCard: jest.fn(),
       };
 
       beforeEach(() => {
@@ -767,23 +769,23 @@ describe('GameRulesService', () => {
           providers: [
             { provide: DomainsCardsFacade, useValue: domainsCardsFacadeMock },
             {
-              provide: FaceUpPilesCardsFacade,
-              useValue: faceUpPilesCardsFacadeMock,
+              provide: AgglomerationPilesCardsFacade,
+              useValue: agglomerationPilesCardsFacadeMock,
             },
           ],
         });
         service = TestBed.inject(GameRulesService);
       });
 
-      it(`should call useLockedResources, removeFaceUpPileCard,
+      it(`should call useLockedResources, removeAgglomerationPileCard,
           putCardInSlot, createAvailableDomainCard x3, clearDomainCardSelection`, () => {
-        service.useResourcesToPutFaceUpPileCardInSlot();
+        service.useResourcesToPutAgglomerationPileCardInSlot();
 
         expect(domainsCardsFacadeMock.useLockedResources).toHaveBeenCalledTimes(
           1
         );
         expect(
-          faceUpPilesCardsFacadeMock.removeFaceUpPileCard
+          agglomerationPilesCardsFacadeMock.removeAgglomerationPileCard
         ).toHaveBeenCalledWith('aaaa');
         expect(domainsCardsFacadeMock.putCardInSlot).toHaveBeenCalledWith(
           'aaaa',
@@ -834,13 +836,13 @@ describe('GameRulesService', () => {
         putCardInSlot: jest.fn(),
         useLockedResources: jest.fn(),
       };
-      const faceUpPilesCardsFacadeMock = {
-        selectedFaceUpPilesCards$: of({
+      const agglomerationPilesCardsFacadeMock = {
+        selectedAgglomerationPilesCards$: of({
           id: 'aaaa',
-          pileId: ID_FACE_UP_TOWN,
+          pileId: ID_AGGLOMERATION_TOWN,
           cardId: 'TOWN_1',
         }),
-        removeFaceUpPileCard: jest.fn(),
+        removeAgglomerationPileCard: jest.fn(),
       };
 
       beforeEach(() => {
@@ -848,23 +850,23 @@ describe('GameRulesService', () => {
           providers: [
             { provide: DomainsCardsFacade, useValue: domainsCardsFacadeMock },
             {
-              provide: FaceUpPilesCardsFacade,
-              useValue: faceUpPilesCardsFacadeMock,
+              provide: AgglomerationPilesCardsFacade,
+              useValue: agglomerationPilesCardsFacadeMock,
             },
           ],
         });
         service = TestBed.inject(GameRulesService);
       });
 
-      it(`should call useLockedResources, removeFaceUpPileCard,
+      it(`should call useLockedResources, removeAgglomerationPileCard,
           putCardInSlot, createAvailableDomainCard x2, clearDomainCardSelection`, () => {
-        service.useResourcesToPutFaceUpPileCardInSlot();
+        service.useResourcesToPutAgglomerationPileCardInSlot();
 
         expect(domainsCardsFacadeMock.useLockedResources).toHaveBeenCalledTimes(
           1
         );
         expect(
-          faceUpPilesCardsFacadeMock.removeFaceUpPileCard
+          agglomerationPilesCardsFacadeMock.removeAgglomerationPileCard
         ).toHaveBeenCalledWith('aaaa');
         expect(domainsCardsFacadeMock.putCardInSlot).toHaveBeenCalledWith(
           'aaaa',
@@ -895,7 +897,7 @@ describe('GameRulesService', () => {
       });
     });
 
-    describe('NOK undefined selectedFaceUpPilesCards', () => {
+    describe('NOK undefined selectedAgglomerationPilesCards', () => {
       const domainsCardsFacadeMock = {
         selectedDomainsCards$: of([
           {
@@ -912,9 +914,9 @@ describe('GameRulesService', () => {
         putCardInSlot: jest.fn(),
         useLockedResources: jest.fn(),
       };
-      const faceUpPilesCardsFacadeMock = {
-        selectedFaceUpPilesCards$: of(undefined),
-        removeFaceUpPileCard: jest.fn(),
+      const agglomerationPilesCardsFacadeMock = {
+        selectedAgglomerationPilesCards$: of(undefined),
+        removeAgglomerationPileCard: jest.fn(),
       };
 
       beforeEach(() => {
@@ -922,8 +924,8 @@ describe('GameRulesService', () => {
           providers: [
             { provide: DomainsCardsFacade, useValue: domainsCardsFacadeMock },
             {
-              provide: FaceUpPilesCardsFacade,
-              useValue: faceUpPilesCardsFacadeMock,
+              provide: AgglomerationPilesCardsFacade,
+              useValue: agglomerationPilesCardsFacadeMock,
             },
           ],
         });
@@ -932,14 +934,14 @@ describe('GameRulesService', () => {
 
       // FIXME: should test error thrown
       it('should call useLockedResources then throw', () => {
-        service.useResourcesToPutFaceUpPileCardInSlot();
+        service.useResourcesToPutAgglomerationPileCardInSlot();
 
         expect(domainsCardsFacadeMock.useLockedResources).toHaveBeenCalledTimes(
           1
         );
 
         expect(
-          faceUpPilesCardsFacadeMock.removeFaceUpPileCard
+          agglomerationPilesCardsFacadeMock.removeAgglomerationPileCard
         ).not.toHaveBeenCalled();
         expect(domainsCardsFacadeMock.putCardInSlot).not.toHaveBeenCalled();
         expect(
@@ -959,13 +961,13 @@ describe('GameRulesService', () => {
         putCardInSlot: jest.fn(),
         useLockedResources: jest.fn(),
       };
-      const faceUpPilesCardsFacadeMock = {
-        selectedFaceUpPilesCards$: of({
+      const agglomerationPilesCardsFacadeMock = {
+        selectedAgglomerationPilesCards$: of({
           id: 'aaaa',
-          pileId: ID_FACE_UP_ROAD,
+          pileId: ID_AGGLOMERATION_ROAD,
           cardId: 'ROAD_1',
         }),
-        removeFaceUpPileCard: jest.fn(),
+        removeAgglomerationPileCard: jest.fn(),
       };
 
       beforeEach(() => {
@@ -973,8 +975,8 @@ describe('GameRulesService', () => {
           providers: [
             { provide: DomainsCardsFacade, useValue: domainsCardsFacadeMock },
             {
-              provide: FaceUpPilesCardsFacade,
-              useValue: faceUpPilesCardsFacadeMock,
+              provide: AgglomerationPilesCardsFacade,
+              useValue: agglomerationPilesCardsFacadeMock,
             },
           ],
         });
@@ -983,14 +985,14 @@ describe('GameRulesService', () => {
 
       // FIXME: should test error thrown
       it('should call useLockedResources then throw', () => {
-        service.useResourcesToPutFaceUpPileCardInSlot();
+        service.useResourcesToPutAgglomerationPileCardInSlot();
 
         expect(domainsCardsFacadeMock.useLockedResources).toHaveBeenCalledTimes(
           1
         );
 
         expect(
-          faceUpPilesCardsFacadeMock.removeFaceUpPileCard
+          agglomerationPilesCardsFacadeMock.removeAgglomerationPileCard
         ).not.toHaveBeenCalled();
         expect(domainsCardsFacadeMock.putCardInSlot).not.toHaveBeenCalled();
         expect(
@@ -1027,13 +1029,13 @@ describe('GameRulesService', () => {
         putCardInSlot: jest.fn(),
         useLockedResources: jest.fn(),
       };
-      const faceUpPilesCardsFacadeMock = {
-        selectedFaceUpPilesCards$: of({
+      const agglomerationPilesCardsFacadeMock = {
+        selectedAgglomerationPilesCards$: of({
           id: 'aaaa',
-          pileId: ID_FACE_UP_ROAD,
+          pileId: ID_AGGLOMERATION_ROAD,
           cardId: 'ROAD_1',
         }),
-        removeFaceUpPileCard: jest.fn(),
+        removeAgglomerationPileCard: jest.fn(),
       };
 
       beforeEach(() => {
@@ -1041,8 +1043,8 @@ describe('GameRulesService', () => {
           providers: [
             { provide: DomainsCardsFacade, useValue: domainsCardsFacadeMock },
             {
-              provide: FaceUpPilesCardsFacade,
-              useValue: faceUpPilesCardsFacadeMock,
+              provide: AgglomerationPilesCardsFacade,
+              useValue: agglomerationPilesCardsFacadeMock,
             },
           ],
         });
@@ -1051,14 +1053,14 @@ describe('GameRulesService', () => {
 
       // FIXME: should test error thrown
       it('should call useLockedResources then throw', () => {
-        service.useResourcesToPutFaceUpPileCardInSlot();
+        service.useResourcesToPutAgglomerationPileCardInSlot();
 
         expect(domainsCardsFacadeMock.useLockedResources).toHaveBeenCalledTimes(
           1
         );
 
         expect(
-          faceUpPilesCardsFacadeMock.removeFaceUpPileCard
+          agglomerationPilesCardsFacadeMock.removeAgglomerationPileCard
         ).not.toHaveBeenCalled();
         expect(domainsCardsFacadeMock.putCardInSlot).not.toHaveBeenCalled();
         expect(

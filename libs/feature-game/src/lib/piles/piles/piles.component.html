@@ -1,8 +1,8 @@
 <div class="flex-container">
-  <div *ngFor="let pile of getFaceUpPiles()">
+  <div *ngFor="let pile of getAgglomerationPiles()">
     <p>{{ pile }}</p>
     <button type="button" (click)="selectFirst(pile)">Select</button>
-    <p>Remaining: {{ getFaceUpPileCount(pile) | async }}</p>
+    <p>Remaining: {{ getAgglomerationPileCount(pile) | async }}</p>
   </div>
   <div>
     LANDS PILE

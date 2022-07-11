@@ -11,9 +11,9 @@ import * as fromDomainsCards from './+state/domains-cards/domains-cards.reducer'
 import { EventsPileCardsEffects } from './+state/events-pile-cards/events-pile-cards.effects';
 import { EventsPileCardsFacade } from './+state/events-pile-cards/events-pile-cards.facade';
 import * as fromEventsPileCards from './+state/events-pile-cards/events-pile-cards.reducer';
-import { FaceUpPilesCardsEffects } from './+state/face-up-piles-cards/face-up-piles-cards.effects';
-import { FaceUpPilesCardsFacade } from './+state/face-up-piles-cards/face-up-piles-cards.facade';
-import * as fromFaceUpPilesCards from './+state/face-up-piles-cards/face-up-piles-cards.reducer';
+import { AgglomerationPilesCardsEffects } from './+state/agglomeration-piles-cards/agglomeration-piles-cards.effects';
+import { AgglomerationPilesCardsFacade } from './+state/agglomeration-piles-cards/agglomeration-piles-cards.facade';
+import * as fromAgglomerationPilesCards from './+state/agglomeration-piles-cards/agglomeration-piles-cards.reducer';
 import { GameEffects } from './+state/game/game.effects';
 import { GameFacade } from './+state/game/game.facade';
 import * as fromGame from './+state/game/game.reducer';
@@ -43,15 +43,15 @@ import * as fromStockPilesCards from './+state/stock-piles-cards/stock-piles-car
     ),
     EffectsModule.forFeature([HandsCardsEffects]),
     StoreModule.forFeature(
-      fromFaceUpPilesCards.FACE_UP_PILES_CARDS_FEATURE_KEY,
-      fromFaceUpPilesCards.faceUpPilesCardsReducer
+      fromAgglomerationPilesCards.AGGLOMERATION_PILES_CARDS_FEATURE_KEY,
+      fromAgglomerationPilesCards.agglomerationPilesCardsReducer
     ),
     EffectsModule.forFeature([EventsPileCardsEffects]),
     StoreModule.forFeature(
       fromLandsPileCards.LANDS_PILE_CARDS_FEATURE_KEY,
       fromLandsPileCards.landsPileCardsReducer
     ),
-    EffectsModule.forFeature([FaceUpPilesCardsEffects]),
+    EffectsModule.forFeature([AgglomerationPilesCardsEffects]),
     StoreModule.forFeature(
       fromStockPilesCards.STOCK_PILES_CARDS_FEATURE_KEY,
       fromStockPilesCards.stockPilesCardsReducer
@@ -72,7 +72,7 @@ import * as fromStockPilesCards from './+state/stock-piles-cards/stock-piles-car
     GameFacade,
     DomainsCardsFacade,
     HandsCardsFacade,
-    FaceUpPilesCardsFacade,
+    AgglomerationPilesCardsFacade,
     LandsPileCardsFacade,
     StockPilesCardsFacade,
     EventsPileCardsFacade,

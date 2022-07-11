@@ -5,7 +5,7 @@ import {
   DomainsCardsFacade,
   EventsPileCardsEntity,
   EventsPileCardsFacade,
-  FaceUpPilesCardsFacade,
+  AgglomerationPilesCardsFacade,
   GameFacade,
   LandsPileCardsEntity,
   LandsPileCardsFacade,
@@ -17,10 +17,10 @@ import {
   actionCards,
   developmentCards,
   eventCards,
-  faceUpPiles,
-  ID_FACE_UP_HAMLET,
-  ID_FACE_UP_ROAD,
-  ID_FACE_UP_TOWN,
+  agglomerationPiles,
+  ID_AGGLOMERATION_HAMLET,
+  ID_AGGLOMERATION_ROAD,
+  ID_AGGLOMERATION_TOWN,
   ID_HAND_BLUE,
   ID_HAND_RED,
   landCards,
@@ -58,7 +58,7 @@ export class PilesComponent {
   constructor(
     private game: GameFacade,
     private domainsCards: DomainsCardsFacade,
-    private faceUpPilesCards: FaceUpPilesCardsFacade,
+    private agglomerationPilesCards: AgglomerationPilesCardsFacade,
     private landsPileCards: LandsPileCardsFacade,
     private stockPilesCards: StockPilesCardsFacade,
     private eventsPileCards: EventsPileCardsFacade,
@@ -66,26 +66,26 @@ export class PilesComponent {
     private gameRules: GameRulesService
   ) {}
 
-  getFaceUpPiles(): string[] {
-    return faceUpPiles;
+  getAgglomerationPiles(): string[] {
+    return agglomerationPiles;
   }
 
   selectFirst(pileId: string): void {
-    this.faceUpPilesCards.selectFirstCardFromFaceUpPile(pileId);
+    this.agglomerationPilesCards.selectFirstCardFromAgglomerationPile(pileId);
   }
 
-  getFaceUpPileCount(pileId: string): Observable<number> {
+  getAgglomerationPileCount(pileId: string): Observable<number> {
     switch (pileId) {
-      case ID_FACE_UP_ROAD:
-        return this.faceUpPilesCards.allRoadPivots$.pipe(
+      case ID_AGGLOMERATION_ROAD:
+        return this.agglomerationPilesCards.allRoadPivots$.pipe(
           map((pivots) => pivots.length)
         );
-      case ID_FACE_UP_HAMLET:
-        return this.faceUpPilesCards.allHamletPivots$.pipe(
+      case ID_AGGLOMERATION_HAMLET:
+        return this.agglomerationPilesCards.allHamletPivots$.pipe(
           map((pivots) => pivots.length)
         );
-      case ID_FACE_UP_TOWN:
-        return this.faceUpPilesCards.allTownPivots$.pipe(
+      case ID_AGGLOMERATION_TOWN:
+        return this.agglomerationPilesCards.allTownPivots$.pipe(
           map((pivots) => pivots.length)
         );
       default:

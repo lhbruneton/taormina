@@ -4,43 +4,50 @@ import { Action, createSelector } from '@ngrx/store';
 import { provideMockStore } from '@ngrx/store/testing';
 import { DataPersistence, NxModule } from '@nrwl/angular';
 import { hot } from 'jasmine-marbles';
-import { ID_FACE_UP_ROAD } from '@taormina/shared-constants';
+import { ID_AGGLOMERATION_ROAD } from '@taormina/shared-constants';
 import { Observable } from 'rxjs';
 
-import * as FaceUpPilesCardsActions from './face-up-piles-cards.actions';
-import { FaceUpPilesCardsEffects } from './face-up-piles-cards.effects';
-import * as FaceUpPilesCardsModels from './face-up-piles-cards.models';
-import * as FaceUpPilesCardsSelectors from './face-up-piles-cards.selectors';
+import * as AgglomerationPilesCardsActions from './agglomeration-piles-cards.actions';
+import { AgglomerationPilesCardsEffects } from './agglomeration-piles-cards.effects';
+import * as AgglomerationPilesCardsModels from './agglomeration-piles-cards.models';
+import * as AgglomerationPilesCardsSelectors from './agglomeration-piles-cards.selectors';
 
-describe('FaceUpPilesCardsEffects', () => {
+describe('AgglomerationPilesCardsEffects', () => {
   let actions: Observable<Action>;
-  let effects: FaceUpPilesCardsEffects;
+  let effects: AgglomerationPilesCardsEffects;
 
   beforeEach(() => {
     TestBed.configureTestingModule({
       imports: [NxModule.forRoot()],
       providers: [
-        FaceUpPilesCardsEffects,
+        AgglomerationPilesCardsEffects,
         DataPersistence,
         provideMockActions(() => actions),
         provideMockStore(),
       ],
     });
 
-    effects = TestBed.get(FaceUpPilesCardsEffects);
+    effects = TestBed.get(AgglomerationPilesCardsEffects);
   });
 
   describe('initNewGame$', () => {
     it('should work', () => {
       jest
-        .spyOn(FaceUpPilesCardsModels, 'createInitialFaceUpPilesCards')
+        .spyOn(
+          AgglomerationPilesCardsModels,
+          'createInitialAgglomerationPilesCards'
+        )
         .mockReturnValue([]);
-      actions = hot('-a-|', { a: FaceUpPilesCardsActions.initFaceUpNewGame() });
+      actions = hot('-a-|', {
+        a: AgglomerationPilesCardsActions.initAgglomerationNewGame(),
+      });
 
       const expected = hot('-a-|', {
-        a: FaceUpPilesCardsActions.setFaceUpPilesCardsInitialized({
-          faceUpPilesCards: [],
-        }),
+        a: AgglomerationPilesCardsActions.setAgglomerationPilesCardsInitialized(
+          {
+            agglomerationPilesCards: [],
+          }
+        ),
       });
 
       expect(effects.initNewGame$).toBeObservable(expected);
@@ -50,12 +57,12 @@ describe('FaceUpPilesCardsEffects', () => {
   describe('initSavedGame$', () => {
     it('should work', () => {
       actions = hot('-a-|', {
-        a: FaceUpPilesCardsActions.initFaceUpSavedGame(),
+        a: AgglomerationPilesCardsActions.initAgglomerationSavedGame(),
       });
 
       const expected = hot('-a-|', {
-        a: FaceUpPilesCardsActions.loadFaceUpPilesCardsSuccess({
-          faceUpPilesCards: [],
+        a: AgglomerationPilesCardsActions.loadAgglomerationPilesCardsSuccess({
+          agglomerationPilesCards: [],
         }),
       });
 
@@ -65,10 +72,10 @@ describe('FaceUpPilesCardsEffects', () => {
 
   describe('selectFirst$', () => {
     describe('OK', () => {
-      it('should dispatch selectFaceUpPileCard', () => {
+      it('should dispatch selectAgglomerationPileCard', () => {
         const expectedId = 'AAA';
         jest
-          .spyOn(FaceUpPilesCardsSelectors, 'getFirstCardPivotForPile')
+          .spyOn(AgglomerationPilesCardsSelectors, 'getFirstCardPivotForPile')
           .mockImplementation((pileId: string) =>
             createSelector(
               () => [],
@@ -78,18 +85,24 @@ describe('FaceUpPilesCardsEffects', () => {
                   id: expectedId,
                   pileId,
                   cardId: 'ROAD_1',
-                } as FaceUpPilesCardsModels.FaceUpPilesCardsEntity | undefined)
+                } as
+                  | AgglomerationPilesCardsModels.AgglomerationPilesCardsEntity
+                  | undefined)
             )
           );
 
         actions = hot('-a-|', {
-          a: FaceUpPilesCardsActions.selectFirstCardFromFaceUpPile({
-            pileId: ID_FACE_UP_ROAD,
-          }),
+          a: AgglomerationPilesCardsActions.selectFirstCardFromAgglomerationPile(
+            {
+              pileId: ID_AGGLOMERATION_ROAD,
+            }
+          ),
         });
 
         const expected = hot('-a-|', {
-          a: FaceUpPilesCardsActions.selectFaceUpPileCard({ id: expectedId }),
+          a: AgglomerationPilesCardsActions.selectAgglomerationPileCard({
+            id: expectedId,
+          }),
         });
 
         expect(effects.selectFirst$).toBeObservable(expected);
@@ -97,9 +110,9 @@ describe('FaceUpPilesCardsEffects', () => {
     });
 
     describe('KO pivot undefined', () => {
-      it('should dispatch setFaceUpPilesCardsError with pivot error', () => {
+      it('should dispatch setAgglomerationPilesCardsError with pivot error', () => {
         jest
-          .spyOn(FaceUpPilesCardsSelectors, 'getFirstCardPivotForPile')
+          .spyOn(AgglomerationPilesCardsSelectors, 'getFirstCardPivotForPile')
           // eslint-disable-next-line @typescript-eslint/no-unused-vars
           .mockImplementation((_pileId: string) =>
             createSelector(
@@ -107,20 +120,22 @@ describe('FaceUpPilesCardsEffects', () => {
               // eslint-disable-next-line @typescript-eslint/no-unused-vars
               (_) =>
                 undefined as
-                  | FaceUpPilesCardsModels.FaceUpPilesCardsEntity
+                  | AgglomerationPilesCardsModels.AgglomerationPilesCardsEntity
                   | undefined
             )
           );
 
         actions = hot('-a-|', {
-          a: FaceUpPilesCardsActions.selectFirstCardFromFaceUpPile({
-            pileId: ID_FACE_UP_ROAD,
-          }),
+          a: AgglomerationPilesCardsActions.selectFirstCardFromAgglomerationPile(
+            {
+              pileId: ID_AGGLOMERATION_ROAD,
+            }
+          ),
         });
 
         const expected = hot('-a-|', {
-          a: FaceUpPilesCardsActions.setFaceUpPilesCardsError({
-            error: `Can't get first card in empty face up pile.`,
+          a: AgglomerationPilesCardsActions.setAgglomerationPilesCardsError({
+            error: `Can't get first card in empty agglomeration pile.`,
           }),
         });
 

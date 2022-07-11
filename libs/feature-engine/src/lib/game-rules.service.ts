@@ -4,7 +4,7 @@ import {
   DomainsCardsFacade,
   EventsPileCardsEntity,
   EventsPileCardsFacade,
-  FaceUpPilesCardsFacade,
+  AgglomerationPilesCardsFacade,
   GameFacade,
   HandsCardsFacade,
   LandsPileCardsFacade,
@@ -13,8 +13,8 @@ import {
 import {
   actionCards,
   eventCards,
-  ID_FACE_UP_HAMLET,
-  ID_FACE_UP_TOWN,
+  ID_AGGLOMERATION_HAMLET,
+  ID_AGGLOMERATION_TOWN,
 } from '@taormina/shared-constants';
 import {
   ACTION_CARD_INTERFACE_NAME,
@@ -92,7 +92,7 @@ export class GameRulesService {
     private game: GameFacade,
     private domainsCards: DomainsCardsFacade,
     private handsCards: HandsCardsFacade,
-    private faceUpPilesCards: FaceUpPilesCardsFacade,
+    private agglomerationPilesCards: AgglomerationPilesCardsFacade,
     private landsPileCards: LandsPileCardsFacade,
     private stockPilesCards: StockPilesCardsFacade,
     private eventsPileCards: EventsPileCardsFacade,
@@ -110,7 +110,7 @@ export class GameRulesService {
     this.game.initNewGame();
     this.domainsCards.initNewGame();
     this.handsCards.initNewGame();
-    this.faceUpPilesCards.initNewGame();
+    this.agglomerationPilesCards.initNewGame();
     this.landsPileCards.initNewGame();
     this.stockPilesCards.initNewGame();
     this.eventsPileCards.initNewGame();
@@ -204,17 +204,17 @@ export class GameRulesService {
     });
   }
 
-  useResourcesToPutFaceUpPileCardInSlot(): void {
+  useResourcesToPutAgglomerationPileCardInSlot(): void {
     this.domainsCards.useLockedResources();
 
     combineLatest([
-      this.faceUpPilesCards.selectedFaceUpPilesCards$,
+      this.agglomerationPilesCards.selectedAgglomerationPilesCards$,
       this.domainsCards.selectedDomainsCards$,
     ])
       .pipe(
         take(1),
-        map(([faceUpPileCard, domainCards]) => {
-          if (faceUpPileCard === undefined) {
+        map(([agglomerationPileCard, domainCards]) => {
+          if (agglomerationPileCard === undefined) {
             throw new Error(`Can't put card in slot if no card selected.`);
           }
           if (domainCards.length !== 1) {
@@ -229,14 +229,16 @@ export class GameRulesService {
             );
           }
 
-          this.faceUpPilesCards.removeFaceUpPileCard(faceUpPileCard.id);
+          this.agglomerationPilesCards.removeAgglomerationPileCard(
+            agglomerationPileCard.id
+          );
           this.domainsCards.putCardInSlot(
             domainCard.id,
             AGGLOMERATION_CARD_INTERFACE_NAME,
-            faceUpPileCard.cardId
+            agglomerationPileCard.cardId
           );
 
-          if (faceUpPileCard.pileId === ID_FACE_UP_TOWN) {
+          if (agglomerationPileCard.pileId === ID_AGGLOMERATION_TOWN) {
             this.domainsCards.createAvailableDomainCard(
               domainCard.domainId,
               AVAILABLE_DEVELOPMENT_SLOT,
@@ -258,7 +260,7 @@ export class GameRulesService {
               availableCol,
               RowValue.Middle
             );
-            if (faceUpPileCard.pileId === ID_FACE_UP_HAMLET) {
+            if (agglomerationPileCard.pileId === ID_AGGLOMERATION_HAMLET) {
               this.domainsCards.createAvailableDomainCard(
                 domainCard.domainId,
                 AVAILABLE_LAND_SLOT,

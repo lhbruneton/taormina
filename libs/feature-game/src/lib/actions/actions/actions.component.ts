@@ -2,8 +2,8 @@ import { Component } from '@angular/core';
 import {
   DomainsCardsEntity,
   DomainsCardsFacade,
-  FaceUpPilesCardsEntity,
-  FaceUpPilesCardsFacade,
+  AgglomerationPilesCardsEntity,
+  AgglomerationPilesCardsFacade,
   GameFacade,
   HandsCardsEntity,
   HandsCardsFacade,
@@ -34,7 +34,7 @@ export class ActionsComponent {
     private game: GameFacade,
     private domainsCards: DomainsCardsFacade,
     private handsCards: HandsCardsFacade,
-    private faceUpPilesCards: FaceUpPilesCardsFacade,
+    private agglomerationPilesCards: AgglomerationPilesCardsFacade,
     private landsPileCards: LandsPileCardsFacade,
     private gameRules: GameRulesService
   ) {}
@@ -46,11 +46,13 @@ export class ActionsComponent {
   }
 
   buyAgglomeration(): void {
-    this.gameRules.useResourcesToPutFaceUpPileCardInSlot();
+    this.gameRules.useResourcesToPutAgglomerationPileCardInSlot();
   }
 
-  getSelectedFaceUpPileCard(): Observable<FaceUpPilesCardsEntity | undefined> {
-    return this.faceUpPilesCards.selectedFaceUpPilesCards$;
+  getSelectedAgglomerationPileCard(): Observable<
+    AgglomerationPilesCardsEntity | undefined
+  > {
+    return this.agglomerationPilesCards.selectedAgglomerationPilesCards$;
   }
 
   getSelectedAvailableAgglomerationSlots(): Observable<

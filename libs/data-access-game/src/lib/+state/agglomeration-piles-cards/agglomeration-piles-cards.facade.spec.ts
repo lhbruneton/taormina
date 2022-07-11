@@ -6,22 +6,22 @@ import { Store, StoreModule } from '@ngrx/store';
 import { NxModule } from '@nrwl/angular';
 import { readFirst } from '@nrwl/angular/testing';
 
-import * as FaceUpPilesCardsActions from './face-up-piles-cards.actions';
-import { FaceUpPilesCardsEffects } from './face-up-piles-cards.effects';
-import { FaceUpPilesCardsFacade } from './face-up-piles-cards.facade';
-import { createFaceUpPilesCardsEntity } from './face-up-piles-cards.models';
+import * as AgglomerationPilesCardsActions from './agglomeration-piles-cards.actions';
+import { AgglomerationPilesCardsEffects } from './agglomeration-piles-cards.effects';
+import { AgglomerationPilesCardsFacade } from './agglomeration-piles-cards.facade';
+import { createAgglomerationPilesCardsEntity } from './agglomeration-piles-cards.models';
 import {
-  faceUpPilesCardsReducer,
-  FaceUpPilesCardsState,
-  FACE_UP_PILES_CARDS_FEATURE_KEY,
-} from './face-up-piles-cards.reducer';
+  agglomerationPilesCardsReducer,
+  AgglomerationPilesCardsState,
+  AGGLOMERATION_PILES_CARDS_FEATURE_KEY,
+} from './agglomeration-piles-cards.reducer';
 
 interface TestSchema {
-  faceUpPilesCards: FaceUpPilesCardsState;
+  agglomerationPilesCards: AgglomerationPilesCardsState;
 }
 
-describe('FaceUpPilesCardsFacade', () => {
-  let facade: FaceUpPilesCardsFacade;
+describe('AgglomerationPilesCardsFacade', () => {
+  let facade: AgglomerationPilesCardsFacade;
   let store: Store<TestSchema>;
 
   describe('used in NgModule', () => {
@@ -29,12 +29,12 @@ describe('FaceUpPilesCardsFacade', () => {
       @NgModule({
         imports: [
           StoreModule.forFeature(
-            FACE_UP_PILES_CARDS_FEATURE_KEY,
-            faceUpPilesCardsReducer
+            AGGLOMERATION_PILES_CARDS_FEATURE_KEY,
+            agglomerationPilesCardsReducer
           ),
-          EffectsModule.forFeature([FaceUpPilesCardsEffects]),
+          EffectsModule.forFeature([AgglomerationPilesCardsEffects]),
         ],
-        providers: [FaceUpPilesCardsFacade],
+        providers: [AgglomerationPilesCardsFacade],
       })
       class CustomFeatureModule {}
 
@@ -50,14 +50,14 @@ describe('FaceUpPilesCardsFacade', () => {
       TestBed.configureTestingModule({ imports: [RootModule] });
 
       store = TestBed.get(Store);
-      facade = TestBed.get(FaceUpPilesCardsFacade);
+      facade = TestBed.get(AgglomerationPilesCardsFacade);
     });
 
     /**
      * The initially generated facade::loadAll() returns empty array
      */
     it('loadAll() should return empty list with loaded == true', async () => {
-      let list = await readFirst(facade.allFaceUpPilesCards$);
+      let list = await readFirst(facade.allAgglomerationPilesCards$);
       let isLoaded = await readFirst(facade.loaded$);
 
       expect(list.length).toBe(0);
@@ -65,7 +65,7 @@ describe('FaceUpPilesCardsFacade', () => {
 
       facade.initSavedGame();
 
-      list = await readFirst(facade.allFaceUpPilesCards$);
+      list = await readFirst(facade.allAgglomerationPilesCards$);
       isLoaded = await readFirst(facade.loaded$);
 
       expect(list.length).toBe(0);
@@ -73,25 +73,25 @@ describe('FaceUpPilesCardsFacade', () => {
     });
 
     /**
-     * Use `loadFaceUpPilesCardsSuccess` to manually update list
+     * Use `loadAgglomerationPilesCardsSuccess` to manually update list
      */
-    it('allFaceUpPilesCards$ should return the loaded list; and loaded flag == true', async () => {
-      let list = await readFirst(facade.allFaceUpPilesCards$);
+    it('allAgglomerationPilesCards$ should return the loaded list; and loaded flag == true', async () => {
+      let list = await readFirst(facade.allAgglomerationPilesCards$);
       let isLoaded = await readFirst(facade.loaded$);
 
       expect(list.length).toBe(0);
       expect(isLoaded).toBe(false);
 
       store.dispatch(
-        FaceUpPilesCardsActions.loadFaceUpPilesCardsSuccess({
-          faceUpPilesCards: [
-            createFaceUpPilesCardsEntity('AAA', 'A', 'A'),
-            createFaceUpPilesCardsEntity('BBB', 'B', 'B'),
+        AgglomerationPilesCardsActions.loadAgglomerationPilesCardsSuccess({
+          agglomerationPilesCards: [
+            createAgglomerationPilesCardsEntity('AAA', 'A', 'A'),
+            createAgglomerationPilesCardsEntity('BBB', 'B', 'B'),
           ],
         })
       );
 
-      list = await readFirst(facade.allFaceUpPilesCards$);
+      list = await readFirst(facade.allAgglomerationPilesCards$);
       isLoaded = await readFirst(facade.loaded$);
 
       expect(list.length).toBe(2);

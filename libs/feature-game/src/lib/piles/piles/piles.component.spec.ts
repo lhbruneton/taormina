@@ -3,7 +3,7 @@ import {
   DiscardPileCardsFacade,
   DomainsCardsFacade,
   EventsPileCardsFacade,
-  FaceUpPilesCardsFacade,
+  AgglomerationPilesCardsFacade,
   GameFacade,
   LandsPileCardsFacade,
   StockPilesCardsFacade,
@@ -26,7 +26,7 @@ describe('PilesComponent', () => {
           player$: EMPTY,
         }),
         MockProvider(DomainsCardsFacade),
-        MockProvider(FaceUpPilesCardsFacade, {
+        MockProvider(AgglomerationPilesCardsFacade, {
           allRoadPivots$: EMPTY,
           allHamletPivots$: EMPTY,
           allTownPivots$: EMPTY,

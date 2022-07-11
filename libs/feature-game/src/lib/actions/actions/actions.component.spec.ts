@@ -1,7 +1,7 @@
 import { ComponentFixture, TestBed } from '@angular/core/testing';
 import {
   DomainsCardsFacade,
-  FaceUpPilesCardsFacade,
+  AgglomerationPilesCardsFacade,
   GameFacade,
   HandsCardsFacade,
   LandsPileCardsFacade,
@@ -28,7 +28,7 @@ describe('ActionsComponent', () => {
         MockProvider(HandsCardsFacade, {
           selectedHandsCards$: EMPTY,
         }),
-        MockProvider(FaceUpPilesCardsFacade),
+        MockProvider(AgglomerationPilesCardsFacade),
         MockProvider(LandsPileCardsFacade),
         MockProvider(GameRulesService),
       ],

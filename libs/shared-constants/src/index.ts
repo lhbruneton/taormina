@@ -5,5 +5,5 @@ export * from './lib/cards/event';
 export * from './lib/cards/land';
 export * from './lib/domain';
 export * from './lib/hand';
-export * from './lib/piles/face-up';
+export * from './lib/piles/agglomeration';
 export * from './lib/piles/stock';
