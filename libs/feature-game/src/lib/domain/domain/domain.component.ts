@@ -82,7 +82,7 @@ export class DomainComponent {
       map(([min, max]) => {
         let template = '';
         for (let i = min; i < max + 1; i++) {
-          template += `[col${i}] 150px `;
+          template += `[col${i}] 15rem `;
         }
         return template;
       })
@@ -97,7 +97,7 @@ export class DomainComponent {
       map(([min, max]) => {
         let template = '';
         for (let i = min; i < max + 1; i++) {
-          template += `[row${i}] 150px `;
+          template += `[row${i}] 15rem `;
         }
         return template;
       })

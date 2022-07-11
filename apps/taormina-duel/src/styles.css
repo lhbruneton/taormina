@@ -1,9 +1,12 @@
 /* You can add global styles to this file, and also import other style files */
 
+html { font-size: 62.5%; }
+
 html,
 body { height: 100%; }
 
 body {
   margin: 0;
+  font-size: 1.6rem; /* 16px */
   font-family: Roboto, "Helvetica Neue", sans-serif;
 }
