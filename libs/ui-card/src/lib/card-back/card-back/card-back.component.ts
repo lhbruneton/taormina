@@ -8,7 +8,8 @@ import { getImgSrc } from '@taormina/shared-utils';
 })
 export class CardBackComponent {
   @Input() typeIconName!: string;
-  @Input() ressources?: [{ ressourceIconName: string; count: number }];
+  @Input() ressources?: { iconName: string; count: number }[];
 
+  Array = Array;
   getImgSrc = getImgSrc;
 }

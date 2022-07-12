@@ -3,6 +3,7 @@
     <p>{{ pile }}</p>
     <taormina-card-back
       [typeIconName]="getAgglomerationPileTypeIconName(pile)"
+      [ressources]="getAgglomerationPileRessources(pile)"
     ></taormina-card-back>
     <button type="button" (click)="selectFirst(pile)">Select</button>
     <p>Remaining: {{ getAgglomerationPileCount(pile) | async }}</p>

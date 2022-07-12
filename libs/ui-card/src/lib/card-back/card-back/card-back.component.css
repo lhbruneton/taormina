@@ -7,7 +7,28 @@
   align-items: center;
 }
 
-img {
+.type-icon {
   width: 50%;
   height: 50%;
+}
+
+.ressources {
+  position: relative;
+  bottom: 4em;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 0.3em;
+}
+
+.ressource-icon {
+  width: 15%;
+  height: 15%;
+  padding: 2px;
+  background-color: white;
+  border-style: solid;
+  border-color: black;
+  border-width: 1px;
+  border-radius: 20%;
+  box-shadow: inset -0.1em -0.1em 0.5em lightgray;
 }

@@ -87,6 +87,32 @@ export class PilesComponent {
     }
   }
 
+  getAgglomerationPileRessources(
+    pileId: string
+  ): { iconName: string; count: number }[] {
+    switch (pileId) {
+      case ID_AGGLOMERATION_ROAD:
+        return [
+          { iconName: 'wood', count: 1 },
+          { iconName: 'brick', count: 2 },
+        ];
+      case ID_AGGLOMERATION_HAMLET:
+        return [
+          { iconName: 'wood', count: 1 },
+          { iconName: 'brick', count: 1 },
+          { iconName: 'hay', count: 1 },
+          { iconName: 'sheep', count: 1 },
+        ];
+      case ID_AGGLOMERATION_TOWN:
+        return [
+          { iconName: 'hay', count: 2 },
+          { iconName: 'stone', count: 3 },
+        ];
+      default:
+        throw new Error(`Can't get type icon name for pile with id ${pileId}.`);
+    }
+  }
+
   getAgglomerationPileCount(pileId: string): Observable<number> {
     switch (pileId) {
       case ID_AGGLOMERATION_ROAD:
