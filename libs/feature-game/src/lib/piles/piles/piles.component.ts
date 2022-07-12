@@ -74,6 +74,19 @@ export class PilesComponent {
     this.agglomerationPilesCards.selectFirstCardFromAgglomerationPile(pileId);
   }
 
+  getAgglomerationPileTypeIconName(pileId: string): string {
+    switch (pileId) {
+      case ID_AGGLOMERATION_ROAD:
+        return 'path';
+      case ID_AGGLOMERATION_HAMLET:
+        return 'village';
+      case ID_AGGLOMERATION_TOWN:
+        return 'castle';
+      default:
+        throw new Error(`Can't get type icon name for pile with id ${pileId}.`);
+    }
+  }
+
   getAgglomerationPileCount(pileId: string): Observable<number> {
     switch (pileId) {
       case ID_AGGLOMERATION_ROAD:

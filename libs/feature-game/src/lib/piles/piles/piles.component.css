@@ -2,3 +2,9 @@
   display: flex;
   column-gap: 2rem;
 }
+
+taormina-card-back {
+  display: block;
+  width: 15rem;
+  height: 15rem;
+}

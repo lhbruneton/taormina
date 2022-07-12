@@ -1,6 +1,9 @@
 <div class="flex-container">
   <div *ngFor="let pile of getAgglomerationPiles()">
     <p>{{ pile }}</p>
+    <taormina-card-back
+      [typeIconName]="getAgglomerationPileTypeIconName(pile)"
+    ></taormina-card-back>
     <button type="button" (click)="selectFirst(pile)">Select</button>
     <p>Remaining: {{ getAgglomerationPileCount(pile) | async }}</p>
   </div>
