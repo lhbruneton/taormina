@@ -622,7 +622,7 @@ export class DiceComponent {
                 </p>
                 <pre class="line-numbers"><code class="language-scss">.flex-container {
   display: flex;
-  column-gap: 20px;
+  column-gap: 2rem;
 }
 </code></pre>
     </div>
@@ -653,7 +653,7 @@ export class DiceComponent {
 <script src="../js/libs/deep-iterator.js"></script>
 <script>
         var COMPONENT_TEMPLATE = '<div><div class="flex-container">  <div>    <p>Next Production Die:</p>    <div *ngFor="let value of RESOURCE_VALUES">      <label>        <input          type="radio"          [value]="value"          name="nextProductionDie"          [ngModel]="getNextProductionDie() | async"          (ngModelChange)="setNextProductionDie($event)"        />{{ value }}</label      >    </div>  </div>  <button    type="button"    [disabled]="throwDisabled() | async"    (click)="onThrow()"  >    throw  </button>  <p *ngIf="getProductionDie() | async as value">Production: {{ value }}</p>  <p *ngIf="getEventDie() | async as value">Event: {{ value }}</p></div></div>'
-    var COMPONENTS = [{'name': 'ActionsComponent', 'selector': 'taormina-actions'},{'name': 'AppComponent', 'selector': 'taormina-root'},{'name': 'BoardComponent', 'selector': 'taormina-board'},{'name': 'CardComponent', 'selector': 'taormina-card'},{'name': 'DiceComponent', 'selector': 'taormina-dice'},{'name': 'DomainComponent', 'selector': 'taormina-domain'},{'name': 'HandComponent', 'selector': 'taormina-hand'},{'name': 'PhasesComponent', 'selector': 'taormina-phases'},{'name': 'PilesComponent', 'selector': 'taormina-piles'}];
+    var COMPONENTS = [{'name': 'ActionsComponent', 'selector': 'taormina-actions'},{'name': 'AppComponent', 'selector': 'taormina-root'},{'name': 'BoardComponent', 'selector': 'taormina-board'},{'name': 'CardBackComponent', 'selector': 'taormina-card-back'},{'name': 'CardComponent', 'selector': 'taormina-card'},{'name': 'DiceComponent', 'selector': 'taormina-dice'},{'name': 'DomainComponent', 'selector': 'taormina-domain'},{'name': 'HandComponent', 'selector': 'taormina-hand'},{'name': 'PhasesComponent', 'selector': 'taormina-phases'},{'name': 'PilesComponent', 'selector': 'taormina-piles'}];
     var DIRECTIVES = [];
     var ACTUAL_COMPONENT = {'name': 'DiceComponent'};
 </script>

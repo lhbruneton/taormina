@@ -1,26 +1,26 @@
 ### TODOs
 | Filename | line # | TODO
 |:------|:------:|:------
-| [libs/feature-engine/src/lib/game-rules.service.spec.ts](libs/feature-engine/src/lib/game-rules.service.spec.ts#L615) | 615 | test actions order: event > steal on thieves > production
+| [libs/feature-engine/src/lib/game-rules.service.spec.ts](libs/feature-engine/src/lib/game-rules.service.spec.ts#L617) | 617 | test actions order: event > steal on thieves > production
 | [libs/data-access-game/src/lib/+state/stock-piles-cards/stock-piles-cards.effects.ts](libs/data-access-game/src/lib/+state/stock-piles-cards/stock-piles-cards.effects.ts#L71) | 71 | throw error instead of filtering out undefined ?
 
 ### FIXMEs
 | Filename | line # | FIXME
 |:------|:------:|:------
-| [libs/feature-engine/src/lib/game-rules.service.spec.ts](libs/feature-engine/src/lib/game-rules.service.spec.ts#L933) | 933 | should test error thrown
-| [libs/feature-engine/src/lib/game-rules.service.spec.ts](libs/feature-engine/src/lib/game-rules.service.spec.ts#L984) | 984 | should test error thrown
-| [libs/feature-engine/src/lib/game-rules.service.spec.ts](libs/feature-engine/src/lib/game-rules.service.spec.ts#L1052) | 1052 | should test error thrown
-| [libs/feature-engine/src/lib/game-rules.service.spec.ts](libs/feature-engine/src/lib/game-rules.service.spec.ts#L1169) | 1169 | should test error thrown
-| [libs/feature-engine/src/lib/game-rules.service.spec.ts](libs/feature-engine/src/lib/game-rules.service.spec.ts#L1214) | 1214 | should test error thrown
-| [libs/feature-engine/src/lib/game-rules.service.spec.ts](libs/feature-engine/src/lib/game-rules.service.spec.ts#L1319) | 1319 | should test error thrown
-| [libs/feature-engine/src/lib/game-rules.service.spec.ts](libs/feature-engine/src/lib/game-rules.service.spec.ts#L1360) | 1360 | should test error thrown
-| [libs/feature-engine/src/lib/game-rules.service.spec.ts](libs/feature-engine/src/lib/game-rules.service.spec.ts#L1448) | 1448 | should test error thrown
-| [libs/feature-engine/src/lib/game-rules.service.spec.ts](libs/feature-engine/src/lib/game-rules.service.spec.ts#L1550) | 1550 | should test error thrown
-| [libs/feature-engine/src/lib/game-rules.service.spec.ts](libs/feature-engine/src/lib/game-rules.service.spec.ts#L1601) | 1601 | should test error thrown
-| [libs/feature-engine/src/lib/game-rules.service.spec.ts](libs/feature-engine/src/lib/game-rules.service.spec.ts#L1705) | 1705 | should test error thrown
-| [libs/feature-engine/src/lib/game-rules.service.spec.ts](libs/feature-engine/src/lib/game-rules.service.spec.ts#L1753) | 1753 | should test error thrown
-| [libs/feature-engine/src/lib/game-rules.service.spec.ts](libs/feature-engine/src/lib/game-rules.service.spec.ts#L1801) | 1801 | should test error thrown
-| [libs/feature-engine/src/lib/game-rules.service.spec.ts](libs/feature-engine/src/lib/game-rules.service.spec.ts#L1849) | 1849 | should test error thrown
+| [libs/feature-engine/src/lib/game-rules.service.spec.ts](libs/feature-engine/src/lib/game-rules.service.spec.ts#L935) | 935 | should test error thrown
+| [libs/feature-engine/src/lib/game-rules.service.spec.ts](libs/feature-engine/src/lib/game-rules.service.spec.ts#L986) | 986 | should test error thrown
+| [libs/feature-engine/src/lib/game-rules.service.spec.ts](libs/feature-engine/src/lib/game-rules.service.spec.ts#L1054) | 1054 | should test error thrown
+| [libs/feature-engine/src/lib/game-rules.service.spec.ts](libs/feature-engine/src/lib/game-rules.service.spec.ts#L1171) | 1171 | should test error thrown
+| [libs/feature-engine/src/lib/game-rules.service.spec.ts](libs/feature-engine/src/lib/game-rules.service.spec.ts#L1216) | 1216 | should test error thrown
+| [libs/feature-engine/src/lib/game-rules.service.spec.ts](libs/feature-engine/src/lib/game-rules.service.spec.ts#L1321) | 1321 | should test error thrown
+| [libs/feature-engine/src/lib/game-rules.service.spec.ts](libs/feature-engine/src/lib/game-rules.service.spec.ts#L1362) | 1362 | should test error thrown
+| [libs/feature-engine/src/lib/game-rules.service.spec.ts](libs/feature-engine/src/lib/game-rules.service.spec.ts#L1450) | 1450 | should test error thrown
+| [libs/feature-engine/src/lib/game-rules.service.spec.ts](libs/feature-engine/src/lib/game-rules.service.spec.ts#L1552) | 1552 | should test error thrown
+| [libs/feature-engine/src/lib/game-rules.service.spec.ts](libs/feature-engine/src/lib/game-rules.service.spec.ts#L1603) | 1603 | should test error thrown
+| [libs/feature-engine/src/lib/game-rules.service.spec.ts](libs/feature-engine/src/lib/game-rules.service.spec.ts#L1707) | 1707 | should test error thrown
+| [libs/feature-engine/src/lib/game-rules.service.spec.ts](libs/feature-engine/src/lib/game-rules.service.spec.ts#L1755) | 1755 | should test error thrown
+| [libs/feature-engine/src/lib/game-rules.service.spec.ts](libs/feature-engine/src/lib/game-rules.service.spec.ts#L1803) | 1803 | should test error thrown
+| [libs/feature-engine/src/lib/game-rules.service.spec.ts](libs/feature-engine/src/lib/game-rules.service.spec.ts#L1851) | 1851 | should test error thrown
 
 ### ESLINT-DISABLE-NEXT-LINEs
 | Filename | line # | ESLINT-DISABLE-NEXT-LINE
@@ -36,6 +36,13 @@
 | [libs/shared-models/src/lib/structures/land.ts](libs/shared-models/src/lib/structures/land.ts#L37) | 37 | @typescript-eslint/no-explicit-any
 | [libs/shared-models/src/lib/types/dice.ts](libs/shared-models/src/lib/types/dice.ts#L1) | 1 | no-magic-numbers
 | [libs/shared-models/src/lib/types/resources.ts](libs/shared-models/src/lib/types/resources.ts#L19) | 19 | no-magic-numbers
+| [libs/data-access-game/src/lib/+state/agglomeration-piles-cards/agglomeration-piles-cards.effects.spec.ts](libs/data-access-game/src/lib/+state/agglomeration-piles-cards/agglomeration-piles-cards.effects.spec.ts#L82) | 82 | @typescript-eslint/no-unused-vars
+| [libs/data-access-game/src/lib/+state/agglomeration-piles-cards/agglomeration-piles-cards.effects.spec.ts](libs/data-access-game/src/lib/+state/agglomeration-piles-cards/agglomeration-piles-cards.effects.spec.ts#L116) | 116 | @typescript-eslint/no-unused-vars
+| [libs/data-access-game/src/lib/+state/agglomeration-piles-cards/agglomeration-piles-cards.effects.spec.ts](libs/data-access-game/src/lib/+state/agglomeration-piles-cards/agglomeration-piles-cards.effects.spec.ts#L120) | 120 | @typescript-eslint/no-unused-vars
+| [libs/data-access-game/src/lib/+state/agglomeration-piles-cards/agglomeration-piles-cards.reducer.ts](libs/data-access-game/src/lib/+state/agglomeration-piles-cards/agglomeration-piles-cards.reducer.ts#L21) | 21 | max-len
+| [libs/data-access-game/src/lib/+state/agglomeration-piles-cards/agglomeration-piles-cards.selectors.ts](libs/data-access-game/src/lib/+state/agglomeration-piles-cards/agglomeration-piles-cards.selectors.ts#L53) | 53 | @typescript-eslint/explicit-function-return-type
+| [libs/data-access-game/src/lib/+state/agglomeration-piles-cards/agglomeration-piles-cards.selectors.ts](libs/data-access-game/src/lib/+state/agglomeration-piles-cards/agglomeration-piles-cards.selectors.ts#L66) | 66 | @typescript-eslint/explicit-function-return-type
+| [libs/data-access-game/src/lib/+state/agglomeration-piles-cards/agglomeration-piles-cards.selectors.ts](libs/data-access-game/src/lib/+state/agglomeration-piles-cards/agglomeration-piles-cards.selectors.ts#L74) | 74 | @typescript-eslint/explicit-function-return-type
 | [libs/data-access-game/src/lib/+state/discard-pile-cards/discard-pile-cards.reducer.ts](libs/data-access-game/src/lib/+state/discard-pile-cards/discard-pile-cards.reducer.ts#L21) | 21 | max-len
 | [libs/data-access-game/src/lib/+state/domains-cards/domains-cards.effects.spec.ts](libs/data-access-game/src/lib/+state/domains-cards/domains-cards.effects.spec.ts#L99) | 99 | @typescript-eslint/no-unused-vars
 | [libs/data-access-game/src/lib/+state/domains-cards/domains-cards.effects.spec.ts](libs/data-access-game/src/lib/+state/domains-cards/domains-cards.effects.spec.ts#L103) | 103 | @typescript-eslint/no-unused-vars
@@ -87,20 +94,13 @@
 | [libs/data-access-game/src/lib/+state/domains-cards/domains-cards.selectors.ts](libs/data-access-game/src/lib/+state/domains-cards/domains-cards.selectors.ts#L443) | 443 | @typescript-eslint/explicit-function-return-type
 | [libs/data-access-game/src/lib/+state/domains-cards/domains-cards.selectors.ts](libs/data-access-game/src/lib/+state/domains-cards/domains-cards.selectors.ts#L452) | 452 | @typescript-eslint/no-non-null-assertion
 | [libs/data-access-game/src/lib/+state/events-pile-cards/events-pile-cards.reducer.ts](libs/data-access-game/src/lib/+state/events-pile-cards/events-pile-cards.reducer.ts#L21) | 21 | max-len
-| [libs/data-access-game/src/lib/+state/face-up-piles-cards/face-up-piles-cards.effects.spec.ts](libs/data-access-game/src/lib/+state/face-up-piles-cards/face-up-piles-cards.effects.spec.ts#L75) | 75 | @typescript-eslint/no-unused-vars
-| [libs/data-access-game/src/lib/+state/face-up-piles-cards/face-up-piles-cards.effects.spec.ts](libs/data-access-game/src/lib/+state/face-up-piles-cards/face-up-piles-cards.effects.spec.ts#L103) | 103 | @typescript-eslint/no-unused-vars
-| [libs/data-access-game/src/lib/+state/face-up-piles-cards/face-up-piles-cards.effects.spec.ts](libs/data-access-game/src/lib/+state/face-up-piles-cards/face-up-piles-cards.effects.spec.ts#L107) | 107 | @typescript-eslint/no-unused-vars
-| [libs/data-access-game/src/lib/+state/face-up-piles-cards/face-up-piles-cards.reducer.ts](libs/data-access-game/src/lib/+state/face-up-piles-cards/face-up-piles-cards.reducer.ts#L21) | 21 | max-len
-| [libs/data-access-game/src/lib/+state/face-up-piles-cards/face-up-piles-cards.selectors.ts](libs/data-access-game/src/lib/+state/face-up-piles-cards/face-up-piles-cards.selectors.ts#L50) | 50 | @typescript-eslint/explicit-function-return-type
-| [libs/data-access-game/src/lib/+state/face-up-piles-cards/face-up-piles-cards.selectors.ts](libs/data-access-game/src/lib/+state/face-up-piles-cards/face-up-piles-cards.selectors.ts#L61) | 61 | @typescript-eslint/explicit-function-return-type
-| [libs/data-access-game/src/lib/+state/face-up-piles-cards/face-up-piles-cards.selectors.ts](libs/data-access-game/src/lib/+state/face-up-piles-cards/face-up-piles-cards.selectors.ts#L67) | 67 | @typescript-eslint/explicit-function-return-type
 | [libs/data-access-game/src/lib/+state/game/game.effects.ts](libs/data-access-game/src/lib/+state/game/game.effects.ts#L32) | 32 | @typescript-eslint/no-unused-vars
 | [libs/data-access-game/src/lib/+state/stock-piles-cards/stock-piles-cards.effects.spec.ts](libs/data-access-game/src/lib/+state/stock-piles-cards/stock-piles-cards.effects.spec.ts#L85) | 85 | @typescript-eslint/no-unused-vars
 | [libs/data-access-game/src/lib/+state/stock-piles-cards/stock-piles-cards.reducer.ts](libs/data-access-game/src/lib/+state/stock-piles-cards/stock-piles-cards.reducer.ts#L21) | 21 | max-len
 | [libs/data-access-game/src/lib/+state/stock-piles-cards/stock-piles-cards.selectors.ts](libs/data-access-game/src/lib/+state/stock-piles-cards/stock-piles-cards.selectors.ts#L49) | 49 | @typescript-eslint/explicit-function-return-type
-| [libs/feature-game/src/lib/actions/actions/actions.component.ts](libs/feature-game/src/lib/actions/actions/actions.component.ts#L58) | 58 | indent
-| [libs/feature-game/src/lib/actions/actions/actions.component.ts](libs/feature-game/src/lib/actions/actions/actions.component.ts#L71) | 71 | indent
-| [libs/feature-game/src/lib/actions/actions/actions.component.ts](libs/feature-game/src/lib/actions/actions/actions.component.ts#L97) | 97 | indent
+| [libs/feature-game/src/lib/actions/actions/actions.component.ts](libs/feature-game/src/lib/actions/actions/actions.component.ts#L60) | 60 | indent
+| [libs/feature-game/src/lib/actions/actions/actions.component.ts](libs/feature-game/src/lib/actions/actions/actions.component.ts#L73) | 73 | indent
+| [libs/feature-game/src/lib/actions/actions/actions.component.ts](libs/feature-game/src/lib/actions/actions/actions.component.ts#L99) | 99 | indent
 
 ### PRETTIER-IGNOREs
 | Filename | line # | PRETTIER-IGNORE

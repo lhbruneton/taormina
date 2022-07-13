@@ -14,6 +14,10 @@
 <title>cluster_BoardModule</title>
 <polygon fill="none" stroke="black" stroke-dasharray="1,5" points="8,-32.8 8,-230.8 838,-230.8 838,-32.8 8,-32.8"/>
 </g>
+<g id="clust5" class="cluster">
+<title>cluster_BoardModule_exports</title>
+<polygon fill="none" stroke="black" points="361,-170.8 361,-222.8 497,-222.8 497,-170.8 361,-170.8"/>
+</g>
 <g id="clust4" class="cluster">
 <title>cluster_BoardModule_imports</title>
 <polygon fill="none" stroke="black" points="156,-40.8 156,-92.8 830,-92.8 830,-40.8 156,-40.8"/>
@@ -21,10 +25,6 @@
 <g id="clust2" class="cluster">
 <title>cluster_BoardModule_declarations</title>
 <polygon fill="none" stroke="black" points="16,-40.8 16,-92.8 148,-92.8 148,-40.8 16,-40.8"/>
-</g>
-<g id="clust5" class="cluster">
-<title>cluster_BoardModule_exports</title>
-<polygon fill="none" stroke="black" points="361,-170.8 361,-222.8 497,-222.8 497,-170.8 361,-170.8"/>
 </g>
 <!-- BoardComponent -->
 <g id="node1" class="node">

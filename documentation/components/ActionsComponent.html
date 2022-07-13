@@ -159,6 +159,9 @@
                                 <a href="#getSelectedActionCard" >getSelectedActionCard</a>
                             </li>
                             <li>
+                                <a href="#getSelectedAgglomerationPileCard" >getSelectedAgglomerationPileCard</a>
+                            </li>
+                            <li>
                                 <a href="#getSelectedAvailableAgglomerationSlots" >getSelectedAvailableAgglomerationSlots</a>
                             </li>
                             <li>
@@ -166,9 +169,6 @@
                             </li>
                             <li>
                                 <a href="#getSelectedAvailableLandSlots" >getSelectedAvailableLandSlots</a>
-                            </li>
-                            <li>
-                                <a href="#getSelectedFaceUpPileCard" >getSelectedFaceUpPileCard</a>
                             </li>
                             <li>
                                 <a href="#getSelectedHandCard" >getSelectedHandCard</a>
@@ -206,7 +206,7 @@
             <tbody>
                 <tr>
                     <td class="col-md-4">
-<code>constructor(game: <a href="../injectables/GameFacade.html" target="_self">GameFacade</a>, domainsCards: <a href="../injectables/DomainsCardsFacade.html" target="_self">DomainsCardsFacade</a>, handsCards: <a href="../injectables/HandsCardsFacade.html" target="_self">HandsCardsFacade</a>, faceUpPilesCards: <a href="../injectables/FaceUpPilesCardsFacade.html" target="_self">FaceUpPilesCardsFacade</a>, landsPileCards: <a href="../injectables/LandsPileCardsFacade.html" target="_self">LandsPileCardsFacade</a>, gameRules: <a href="../injectables/GameRulesService.html" target="_self">GameRulesService</a>)</code>
+<code>constructor(game: <a href="../injectables/GameFacade.html" target="_self">GameFacade</a>, domainsCards: <a href="../injectables/DomainsCardsFacade.html" target="_self">DomainsCardsFacade</a>, handsCards: <a href="../injectables/HandsCardsFacade.html" target="_self">HandsCardsFacade</a>, agglomerationPilesCards: <a href="../injectables/AgglomerationPilesCardsFacade.html" target="_self">AgglomerationPilesCardsFacade</a>, landsPileCards: <a href="../injectables/LandsPileCardsFacade.html" target="_self">LandsPileCardsFacade</a>, gameRules: <a href="../injectables/GameRulesService.html" target="_self">GameRulesService</a>)</code>
                     </td>
                 </tr>
                         <tr>
@@ -265,10 +265,10 @@
                                                     
                                                 </tr>
                                                 <tr>
-                                                        <td>faceUpPilesCards</td>
+                                                        <td>agglomerationPilesCards</td>
                                                   
                                                         <td>
-                                                                        <code><a href="../injectables/FaceUpPilesCardsFacade.html" target="_self" >FaceUpPilesCardsFacade</a></code>
+                                                                        <code><a href="../injectables/AgglomerationPilesCardsFacade.html" target="_self" >AgglomerationPilesCardsFacade</a></code>
                                                         </td>
                                                   
                                                     <td>
@@ -375,8 +375,8 @@
 
             <tr>
                 <td class="col-md-4">
-                    <div class="io-line">Defined in <a href="" data-line="83"
-                            class="link-to-prism">libs/feature-game/src/lib/actions/actions/actions.component.ts:83</a></div>
+                    <div class="io-line">Defined in <a href="" data-line="85"
+                            class="link-to-prism">libs/feature-game/src/lib/actions/actions/actions.component.ts:85</a></div>
                 </td>
             </tr>
 
@@ -449,8 +449,8 @@
 
             <tr>
                 <td class="col-md-4">
-                    <div class="io-line">Defined in <a href="" data-line="173"
-                            class="link-to-prism">libs/feature-game/src/lib/actions/actions/actions.component.ts:173</a></div>
+                    <div class="io-line">Defined in <a href="" data-line="175"
+                            class="link-to-prism">libs/feature-game/src/lib/actions/actions/actions.component.ts:175</a></div>
                 </td>
             </tr>
 
@@ -486,8 +486,8 @@
 
             <tr>
                 <td class="col-md-4">
-                    <div class="io-line">Defined in <a href="" data-line="69"
-                            class="link-to-prism">libs/feature-game/src/lib/actions/actions/actions.component.ts:69</a></div>
+                    <div class="io-line">Defined in <a href="" data-line="71"
+                            class="link-to-prism">libs/feature-game/src/lib/actions/actions/actions.component.ts:71</a></div>
                 </td>
             </tr>
 
@@ -523,8 +523,8 @@
 
             <tr>
                 <td class="col-md-4">
-                    <div class="io-line">Defined in <a href="" data-line="108"
-                            class="link-to-prism">libs/feature-game/src/lib/actions/actions/actions.component.ts:108</a></div>
+                    <div class="io-line">Defined in <a href="" data-line="110"
+                            class="link-to-prism">libs/feature-game/src/lib/actions/actions/actions.component.ts:110</a></div>
                 </td>
             </tr>
 
@@ -560,8 +560,8 @@
 
             <tr>
                 <td class="col-md-4">
-                    <div class="io-line">Defined in <a href="" data-line="163"
-                            class="link-to-prism">libs/feature-game/src/lib/actions/actions/actions.component.ts:163</a></div>
+                    <div class="io-line">Defined in <a href="" data-line="165"
+                            class="link-to-prism">libs/feature-game/src/lib/actions/actions/actions.component.ts:165</a></div>
                 </td>
             </tr>
 
@@ -597,8 +597,8 @@
 
             <tr>
                 <td class="col-md-4">
-                    <div class="io-line">Defined in <a href="" data-line="87"
-                            class="link-to-prism">libs/feature-game/src/lib/actions/actions/actions.component.ts:87</a></div>
+                    <div class="io-line">Defined in <a href="" data-line="89"
+                            class="link-to-prism">libs/feature-game/src/lib/actions/actions/actions.component.ts:89</a></div>
                 </td>
             </tr>
 
@@ -634,8 +634,8 @@
 
             <tr>
                 <td class="col-md-4">
-                    <div class="io-line">Defined in <a href="" data-line="145"
-                            class="link-to-prism">libs/feature-game/src/lib/actions/actions/actions.component.ts:145</a></div>
+                    <div class="io-line">Defined in <a href="" data-line="147"
+                            class="link-to-prism">libs/feature-game/src/lib/actions/actions/actions.component.ts:147</a></div>
                 </td>
             </tr>
 
@@ -671,8 +671,8 @@
 
             <tr>
                 <td class="col-md-4">
-                    <div class="io-line">Defined in <a href="" data-line="131"
-                            class="link-to-prism">libs/feature-game/src/lib/actions/actions/actions.component.ts:131</a></div>
+                    <div class="io-line">Defined in <a href="" data-line="133"
+                            class="link-to-prism">libs/feature-game/src/lib/actions/actions/actions.component.ts:133</a></div>
                 </td>
             </tr>
 
@@ -682,6 +682,43 @@
 
                     <div class="io-description">
                         <b>Returns : </b>    <code>Observable&lt;HandsCardsEntity | undefined&gt;</code>
+
+                    </div>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="getSelectedAgglomerationPileCard"></a>
+                    <span class="name">
+                        <span ><b>getSelectedAgglomerationPileCard</b></span>
+                        <a href="#getSelectedAgglomerationPileCard"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+            <tr>
+                <td class="col-md-4">
+<code>getSelectedAgglomerationPileCard()</code>
+                </td>
+            </tr>
+
+
+            <tr>
+                <td class="col-md-4">
+                    <div class="io-line">Defined in <a href="" data-line="52"
+                            class="link-to-prism">libs/feature-game/src/lib/actions/actions/actions.component.ts:52</a></div>
+                </td>
+            </tr>
+
+
+            <tr>
+                <td class="col-md-4">
+
+                    <div class="io-description">
+                        <b>Returns : </b>        <code><a href="../interfaces/AgglomerationPilesCardsEntity.html" target="_self" >Observable&lt;AgglomerationPilesCardsEntity | undefined&gt;</a></code>
 
                     </div>
                 </td>
@@ -708,8 +745,8 @@
 
             <tr>
                 <td class="col-md-4">
-                    <div class="io-line">Defined in <a href="" data-line="56"
-                            class="link-to-prism">libs/feature-game/src/lib/actions/actions/actions.component.ts:56</a></div>
+                    <div class="io-line">Defined in <a href="" data-line="58"
+                            class="link-to-prism">libs/feature-game/src/lib/actions/actions/actions.component.ts:58</a></div>
                 </td>
             </tr>
 
@@ -745,8 +782,8 @@
 
             <tr>
                 <td class="col-md-4">
-                    <div class="io-line">Defined in <a href="" data-line="95"
-                            class="link-to-prism">libs/feature-game/src/lib/actions/actions/actions.component.ts:95</a></div>
+                    <div class="io-line">Defined in <a href="" data-line="97"
+                            class="link-to-prism">libs/feature-game/src/lib/actions/actions/actions.component.ts:97</a></div>
                 </td>
             </tr>
 
@@ -782,8 +819,8 @@
 
             <tr>
                 <td class="col-md-4">
-                    <div class="io-line">Defined in <a href="" data-line="153"
-                            class="link-to-prism">libs/feature-game/src/lib/actions/actions/actions.component.ts:153</a></div>
+                    <div class="io-line">Defined in <a href="" data-line="155"
+                            class="link-to-prism">libs/feature-game/src/lib/actions/actions/actions.component.ts:155</a></div>
                 </td>
             </tr>
 
@@ -793,43 +830,6 @@
 
                     <div class="io-description">
                         <b>Returns : </b>    <code>Observable&lt;DomainsCardsEntity[]&gt;</code>
-
-                    </div>
-                </td>
-            </tr>
-        </tbody>
-    </table>
-    <table class="table table-sm table-bordered">
-        <tbody>
-            <tr>
-                <td class="col-md-4">
-                    <a name="getSelectedFaceUpPileCard"></a>
-                    <span class="name">
-                        <span ><b>getSelectedFaceUpPileCard</b></span>
-                        <a href="#getSelectedFaceUpPileCard"><span class="icon ion-ios-link"></span></a>
-                    </span>
-                </td>
-            </tr>
-            <tr>
-                <td class="col-md-4">
-<code>getSelectedFaceUpPileCard()</code>
-                </td>
-            </tr>
-
-
-            <tr>
-                <td class="col-md-4">
-                    <div class="io-line">Defined in <a href="" data-line="52"
-                            class="link-to-prism">libs/feature-game/src/lib/actions/actions/actions.component.ts:52</a></div>
-                </td>
-            </tr>
-
-
-            <tr>
-                <td class="col-md-4">
-
-                    <div class="io-description">
-                        <b>Returns : </b>        <code><a href="../interfaces/FaceUpPilesCardsEntity.html" target="_self" >Observable&lt;FaceUpPilesCardsEntity | undefined&gt;</a></code>
 
                     </div>
                 </td>
@@ -856,8 +856,8 @@
 
             <tr>
                 <td class="col-md-4">
-                    <div class="io-line">Defined in <a href="" data-line="149"
-                            class="link-to-prism">libs/feature-game/src/lib/actions/actions/actions.component.ts:149</a></div>
+                    <div class="io-line">Defined in <a href="" data-line="151"
+                            class="link-to-prism">libs/feature-game/src/lib/actions/actions/actions.component.ts:151</a></div>
                 </td>
             </tr>
 
@@ -893,8 +893,8 @@
 
             <tr>
                 <td class="col-md-4">
-                    <div class="io-line">Defined in <a href="" data-line="141"
-                            class="link-to-prism">libs/feature-game/src/lib/actions/actions/actions.component.ts:141</a></div>
+                    <div class="io-line">Defined in <a href="" data-line="143"
+                            class="link-to-prism">libs/feature-game/src/lib/actions/actions/actions.component.ts:143</a></div>
                 </td>
             </tr>
 
@@ -930,8 +930,8 @@
 
             <tr>
                 <td class="col-md-4">
-                    <div class="io-line">Defined in <a href="" data-line="137"
-                            class="link-to-prism">libs/feature-game/src/lib/actions/actions/actions.component.ts:137</a></div>
+                    <div class="io-line">Defined in <a href="" data-line="139"
+                            class="link-to-prism">libs/feature-game/src/lib/actions/actions/actions.component.ts:139</a></div>
                 </td>
             </tr>
 
@@ -967,8 +967,8 @@
 
             <tr>
                 <td class="col-md-4">
-                    <div class="io-line">Defined in <a href="" data-line="177"
-                            class="link-to-prism">libs/feature-game/src/lib/actions/actions/actions.component.ts:177</a></div>
+                    <div class="io-line">Defined in <a href="" data-line="179"
+                            class="link-to-prism">libs/feature-game/src/lib/actions/actions/actions.component.ts:179</a></div>
                 </td>
             </tr>
 
@@ -1004,8 +1004,8 @@
 
             <tr>
                 <td class="col-md-4">
-                    <div class="io-line">Defined in <a href="" data-line="127"
-                            class="link-to-prism">libs/feature-game/src/lib/actions/actions/actions.component.ts:127</a></div>
+                    <div class="io-line">Defined in <a href="" data-line="129"
+                            class="link-to-prism">libs/feature-game/src/lib/actions/actions/actions.component.ts:129</a></div>
                 </td>
             </tr>
 
@@ -1041,8 +1041,8 @@
 
             <tr>
                 <td class="col-md-4">
-                    <div class="io-line">Defined in <a href="" data-line="119"
-                            class="link-to-prism">libs/feature-game/src/lib/actions/actions/actions.component.ts:119</a></div>
+                    <div class="io-line">Defined in <a href="" data-line="121"
+                            class="link-to-prism">libs/feature-game/src/lib/actions/actions/actions.component.ts:121</a></div>
                 </td>
             </tr>
 
@@ -1068,8 +1068,8 @@
 import {
   DomainsCardsEntity,
   DomainsCardsFacade,
-  FaceUpPilesCardsEntity,
-  FaceUpPilesCardsFacade,
+  AgglomerationPilesCardsEntity,
+  AgglomerationPilesCardsFacade,
   GameFacade,
   HandsCardsEntity,
   HandsCardsFacade,
@@ -1100,7 +1100,7 @@ export class ActionsComponent {
     private game: GameFacade,
     private domainsCards: DomainsCardsFacade,
     private handsCards: HandsCardsFacade,
-    private faceUpPilesCards: FaceUpPilesCardsFacade,
+    private agglomerationPilesCards: AgglomerationPilesCardsFacade,
     private landsPileCards: LandsPileCardsFacade,
     private gameRules: GameRulesService
   ) {}
@@ -1112,11 +1112,13 @@ export class ActionsComponent {
   }
 
   buyAgglomeration(): void {
-    this.gameRules.useResourcesToPutFaceUpPileCardInSlot();
+    this.gameRules.useResourcesToPutAgglomerationPileCardInSlot();
   }
 
-  getSelectedFaceUpPileCard(): Observable&lt;FaceUpPilesCardsEntity | undefined&gt; {
-    return this.faceUpPilesCards.selectedFaceUpPilesCards$;
+  getSelectedAgglomerationPileCard(): Observable&lt;
+    AgglomerationPilesCardsEntity | undefined
+  &gt; {
+    return this.agglomerationPilesCards.selectedAgglomerationPilesCards$;
   }
 
   getSelectedAvailableAgglomerationSlots(): Observable&lt;
@@ -1258,7 +1260,7 @@ export class ActionsComponent {
   &lt;/button&gt;
   &lt;div&gt;
     &lt;p&gt;Pile Selected Agglomeration Card:&lt;/p&gt;
-    &lt;p *ngIf&#x3D;&quot;getSelectedFaceUpPileCard() | async as pivot&quot;&gt;
+    &lt;p *ngIf&#x3D;&quot;getSelectedAgglomerationPileCard() | async as pivot&quot;&gt;
       {{ pivot.pileId }}
     &lt;/p&gt;
   &lt;/div&gt;
@@ -1374,7 +1376,7 @@ export class ActionsComponent {
                 </p>
                 <pre class="line-numbers"><code class="language-scss">.flex-container {
   display: flex;
-  column-gap: 20px;
+  column-gap: 2rem;
 }
 </code></pre>
     </div>
@@ -1404,8 +1406,8 @@ export class ActionsComponent {
 <script src="../js/libs/htmlparser.js"></script>
 <script src="../js/libs/deep-iterator.js"></script>
 <script>
-        var COMPONENT_TEMPLATE = '<div><div class="flex-container">  <button    type="button"    [disabled]="buyDisabled() | async"    (click)="buyAgglomeration()"  >    buy agglomeration  </button>  <div>    <p>Pile Selected Agglomeration Card:</p>    <p *ngIf="getSelectedFaceUpPileCard() | async as pivot">      {{ pivot.pileId }}    </p>  </div>  <div>    <p>Selected Available Agglomeration Slots:</p>    <p *ngFor="let pivot of getSelectedAvailableAgglomerationSlots() | async">      {{ pivot.domainId }}<br />      {{ pivot.col }}<br />      {{ pivot.row }}    </p>  </div>  <div>    <p>Domain Selected Agglomeration Slots:</p>    <p *ngFor="let pivot of getDomainSelectedAgglomerationSlots() | async">      {{ pivot.domainId }}<br />      {{ pivot.col }}<br />      {{ pivot.row }}    </p>  </div></div><hr /><div class="flex-container">  <button    type="button"    [disabled]="buyDisabled() | async"    (click)="buyDevelopment()"  >    buy development  </button>  <div>    <p>Hand Selected Development Card:</p>    <p *ngIf="getHandSelectedDevelopmentCard() | async as pivot">      {{ pivot.cardId }}    </p>  </div>  <div>    <p>Selected Available Development Slots:</p>    <p *ngFor="let pivot of getSelectedAvailableDevelopmentSlots() | async">      {{ pivot.domainId }}<br />      {{ pivot.col }}<br />      {{ pivot.row }}    </p>  </div>  <div>    <p>Domain Selected Development Cards:</p>    <p *ngFor="let pivot of getDomainSelectedDevelopmentCards() | async">      {{ pivot.domainId }}<br />      {{ pivot.col }}<br />      {{ pivot.row }}    </p>  </div></div><hr /><div class="flex-container">  <button    type="button"    [disabled]="useActionCardDisabled() | async"    (click)="useActionCard()"  >    Use action card  </button>  <div>    <p>Selected Action Card:</p>    <p *ngIf="getSelectedActionCard() | async as pivot">      {{ pivot.cardId }}    </p>  </div></div><hr /><div class="flex-container">  <button type="button" (click)="putLand()">put land</button>  <button type="button" (click)="giveLockedResources()">    Give locked resources  </button>  <div>    <p>Pile Selected Land Card:</p>    <p *ngIf="getPileSelectedLandCard() | async as pivot">      {{ pivot.cardId }}    </p>  </div>  <div>    <p>Selected Available Land Slots:</p>    <p *ngFor="let pivot of getSelectedAvailableLandSlots() | async">      {{ pivot.domainId }}<br />      {{ pivot.col }}<br />      {{ pivot.row }}    </p>  </div>  <div>    <p>Domain Selected Available Land Slots:</p>    <p *ngFor="let pivot of getDomainSelectedLandCards() | async">      {{ pivot.domainId }}<br />      {{ pivot.col }}<br />      {{ pivot.row }}    </p>  </div></div><hr /><div>  <button type="button" (click)="swapSelectedDomainsCards()">    swap selected domains cards</button  ><br />  <button type="button" (click)="clearDomainCardSelection()">    clear domain selection  </button></div></div>'
-    var COMPONENTS = [{'name': 'ActionsComponent', 'selector': 'taormina-actions'},{'name': 'AppComponent', 'selector': 'taormina-root'},{'name': 'BoardComponent', 'selector': 'taormina-board'},{'name': 'CardComponent', 'selector': 'taormina-card'},{'name': 'DiceComponent', 'selector': 'taormina-dice'},{'name': 'DomainComponent', 'selector': 'taormina-domain'},{'name': 'HandComponent', 'selector': 'taormina-hand'},{'name': 'PhasesComponent', 'selector': 'taormina-phases'},{'name': 'PilesComponent', 'selector': 'taormina-piles'}];
+        var COMPONENT_TEMPLATE = '<div><div class="flex-container">  <button    type="button"    [disabled]="buyDisabled() | async"    (click)="buyAgglomeration()"  >    buy agglomeration  </button>  <div>    <p>Pile Selected Agglomeration Card:</p>    <p *ngIf="getSelectedAgglomerationPileCard() | async as pivot">      {{ pivot.pileId }}    </p>  </div>  <div>    <p>Selected Available Agglomeration Slots:</p>    <p *ngFor="let pivot of getSelectedAvailableAgglomerationSlots() | async">      {{ pivot.domainId }}<br />      {{ pivot.col }}<br />      {{ pivot.row }}    </p>  </div>  <div>    <p>Domain Selected Agglomeration Slots:</p>    <p *ngFor="let pivot of getDomainSelectedAgglomerationSlots() | async">      {{ pivot.domainId }}<br />      {{ pivot.col }}<br />      {{ pivot.row }}    </p>  </div></div><hr /><div class="flex-container">  <button    type="button"    [disabled]="buyDisabled() | async"    (click)="buyDevelopment()"  >    buy development  </button>  <div>    <p>Hand Selected Development Card:</p>    <p *ngIf="getHandSelectedDevelopmentCard() | async as pivot">      {{ pivot.cardId }}    </p>  </div>  <div>    <p>Selected Available Development Slots:</p>    <p *ngFor="let pivot of getSelectedAvailableDevelopmentSlots() | async">      {{ pivot.domainId }}<br />      {{ pivot.col }}<br />      {{ pivot.row }}    </p>  </div>  <div>    <p>Domain Selected Development Cards:</p>    <p *ngFor="let pivot of getDomainSelectedDevelopmentCards() | async">      {{ pivot.domainId }}<br />      {{ pivot.col }}<br />      {{ pivot.row }}    </p>  </div></div><hr /><div class="flex-container">  <button    type="button"    [disabled]="useActionCardDisabled() | async"    (click)="useActionCard()"  >    Use action card  </button>  <div>    <p>Selected Action Card:</p>    <p *ngIf="getSelectedActionCard() | async as pivot">      {{ pivot.cardId }}    </p>  </div></div><hr /><div class="flex-container">  <button type="button" (click)="putLand()">put land</button>  <button type="button" (click)="giveLockedResources()">    Give locked resources  </button>  <div>    <p>Pile Selected Land Card:</p>    <p *ngIf="getPileSelectedLandCard() | async as pivot">      {{ pivot.cardId }}    </p>  </div>  <div>    <p>Selected Available Land Slots:</p>    <p *ngFor="let pivot of getSelectedAvailableLandSlots() | async">      {{ pivot.domainId }}<br />      {{ pivot.col }}<br />      {{ pivot.row }}    </p>  </div>  <div>    <p>Domain Selected Available Land Slots:</p>    <p *ngFor="let pivot of getDomainSelectedLandCards() | async">      {{ pivot.domainId }}<br />      {{ pivot.col }}<br />      {{ pivot.row }}    </p>  </div></div><hr /><div>  <button type="button" (click)="swapSelectedDomainsCards()">    swap selected domains cards</button  ><br />  <button type="button" (click)="clearDomainCardSelection()">    clear domain selection  </button></div></div>'
+    var COMPONENTS = [{'name': 'ActionsComponent', 'selector': 'taormina-actions'},{'name': 'AppComponent', 'selector': 'taormina-root'},{'name': 'BoardComponent', 'selector': 'taormina-board'},{'name': 'CardBackComponent', 'selector': 'taormina-card-back'},{'name': 'CardComponent', 'selector': 'taormina-card'},{'name': 'DiceComponent', 'selector': 'taormina-dice'},{'name': 'DomainComponent', 'selector': 'taormina-domain'},{'name': 'HandComponent', 'selector': 'taormina-hand'},{'name': 'PhasesComponent', 'selector': 'taormina-phases'},{'name': 'PilesComponent', 'selector': 'taormina-piles'}];
     var DIRECTIVES = [];
     var ACTUAL_COMPONENT = {'name': 'ActionsComponent'};
 </script>
