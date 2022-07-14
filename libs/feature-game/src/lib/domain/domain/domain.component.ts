@@ -23,6 +23,7 @@ import {
   LAND_CARD_INTERFACE_NAME,
   MasteryPointsType,
 } from '@taormina/shared-models';
+import { mapTypeToIconNameFront } from '@taormina/shared-utils';
 import { combineLatest, Observable } from 'rxjs';
 import { map } from 'rxjs/operators';
 
@@ -40,6 +41,8 @@ export class DomainComponent {
   AVAILABLE_AGGLOMERATION_SLOT = AVAILABLE_AGGLOMERATION_SLOT;
   AVAILABLE_DEVELOPMENT_SLOT = AVAILABLE_DEVELOPMENT_SLOT;
   AVAILABLE_LAND_SLOT = AVAILABLE_LAND_SLOT;
+
+  mapTypeToIconNameFront = mapTypeToIconNameFront;
 
   constructor(
     private domainsCards: DomainsCardsFacade,
