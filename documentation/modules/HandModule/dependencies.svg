@@ -14,13 +14,13 @@
 <title>cluster_HandModule</title>
 <polygon fill="none" stroke="black" stroke-dasharray="1,5" points="8,-32.8 8,-230.8 156,-230.8 156,-32.8 8,-32.8"/>
 </g>
-<g id="clust5" class="cluster">
-<title>cluster_HandModule_exports</title>
-<polygon fill="none" stroke="black" points="16,-170.8 16,-222.8 148,-222.8 148,-170.8 16,-170.8"/>
-</g>
 <g id="clust2" class="cluster">
 <title>cluster_HandModule_declarations</title>
 <polygon fill="none" stroke="black" points="18,-40.8 18,-92.8 146,-92.8 146,-40.8 18,-40.8"/>
+</g>
+<g id="clust5" class="cluster">
+<title>cluster_HandModule_exports</title>
+<polygon fill="none" stroke="black" points="16,-170.8 16,-222.8 148,-222.8 148,-170.8 16,-170.8"/>
 </g>
 <!-- HandComponent -->
 <g id="node1" class="node">

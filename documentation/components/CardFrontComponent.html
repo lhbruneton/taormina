@@ -38,7 +38,7 @@
   <li>Components</li>
   <li
   >
-  CardBackComponent</li>
+  CardFrontComponent</li>
 </ol>
 
 <ul class="nav nav-tabs" role="tablist">
@@ -64,7 +64,7 @@
     <h3>File</h3>
 </p>
 <p class="comment">
-    <code>libs/ui-card/src/lib/card-back/card-back/card-back.component.ts</code>
+    <code>libs/ui-card/src/lib/card-front/card-front/card-front.component.ts</code>
 </p>
 
 
@@ -89,19 +89,19 @@
 
             <tr>
                 <td class="col-md-3">selector</td>
-                <td class="col-md-9"><code>taormina-card-back</code></td>
+                <td class="col-md-9"><code>taormina-card-front</code></td>
             </tr>
 
             <tr>
                 <td class="col-md-3">styleUrls</td>
-                <td class="col-md-9"><code>./card-back.component.css</code></td>
+                <td class="col-md-9"><code>./card-front.component.css</code></td>
             </tr>
 
 
 
             <tr>
                 <td class="col-md-3">templateUrl</td>
-                <td class="col-md-9"><code>./card-back.component.html</code></td>
+                <td class="col-md-9"><code>./card-front.component.html</code></td>
             </tr>
 
 
@@ -128,9 +128,6 @@
                     <td class="col-md-4">
                         <ul class="index-list">
                             <li>
-                                <a href="#Array" >Array</a>
-                            </li>
-                            <li>
                                 <a href="#getImgSrc" >getImgSrc</a>
                             </li>
                         </ul>
@@ -147,7 +144,7 @@
                     <td class="col-md-4">
                         <ul class="index-list">
                             <li>
-                                <a href="#ressources" >ressources</a>
+                                <a href="#dieIconName" >dieIconName</a>
                             </li>
                             <li>
                                 <a href="#typeIconName" >typeIconName</a>
@@ -170,19 +167,19 @@
             <tbody>
                 <tr>
                     <td class="col-md-4">
-                        <a name="ressources"></a>
-                        <b>ressources</b>
+                        <a name="dieIconName"></a>
+                        <b>dieIconName</b>
                     </td>
                 </tr>
                 <tr>
                     <td class="col-md-4">
-                        <i>Type : </i>    <code>literal type[]</code>
+                        <i>Type : </i>        <code><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/string" target="_blank" >string</a></code>
 
                     </td>
                 </tr>
                         <tr>
                             <td class="col-md-2" colspan="2">
-                                    <div class="io-line">Defined in <a href="" data-line="11" class="link-to-prism">libs/ui-card/src/lib/card-back/card-back/card-back.component.ts:11</a></div>
+                                    <div class="io-line">Defined in <a href="" data-line="11" class="link-to-prism">libs/ui-card/src/lib/card-front/card-front/card-front.component.ts:11</a></div>
                             </td>
                         </tr>
             </tbody>
@@ -203,7 +200,7 @@
                 </tr>
                         <tr>
                             <td class="col-md-2" colspan="2">
-                                    <div class="io-line">Defined in <a href="" data-line="10" class="link-to-prism">libs/ui-card/src/lib/card-back/card-back/card-back.component.ts:10</a></div>
+                                    <div class="io-line">Defined in <a href="" data-line="10" class="link-to-prism">libs/ui-card/src/lib/card-front/card-front/card-front.component.ts:10</a></div>
                             </td>
                         </tr>
             </tbody>
@@ -222,31 +219,6 @@
         <tbody>
             <tr>
                 <td class="col-md-4">
-                    <a name="Array"></a>
-                    <span class="name">
-                        <span ><b>Array</b></span>
-                        <a href="#Array"><span class="icon ion-ios-link"></span></a>
-                    </span>
-                </td>
-            </tr>
-                <tr>
-                    <td class="col-md-4">
-                        <i>Default value : </i><code>Array</code>
-                    </td>
-                </tr>
-                    <tr>
-                        <td class="col-md-4">
-                                <div class="io-line">Defined in <a href="" data-line="13" class="link-to-prism">libs/ui-card/src/lib/card-back/card-back/card-back.component.ts:13</a></div>
-                        </td>
-                    </tr>
-
-
-        </tbody>
-    </table>
-    <table class="table table-sm table-bordered">
-        <tbody>
-            <tr>
-                <td class="col-md-4">
                     <a name="getImgSrc"></a>
                     <span class="name">
                         <span ><b>getImgSrc</b></span>
@@ -261,7 +233,7 @@
                 </tr>
                     <tr>
                         <td class="col-md-4">
-                                <div class="io-line">Defined in <a href="" data-line="14" class="link-to-prism">libs/ui-card/src/lib/card-back/card-back/card-back.component.ts:14</a></div>
+                                <div class="io-line">Defined in <a href="" data-line="13" class="link-to-prism">libs/ui-card/src/lib/card-front/card-front/card-front.component.ts:13</a></div>
                         </td>
                     </tr>
 
@@ -278,15 +250,14 @@
 import { getImgSrc } from &#x27;@taormina/shared-utils&#x27;;
 
 @Component({
-  selector: &#x27;taormina-card-back&#x27;,
-  templateUrl: &#x27;./card-back.component.html&#x27;,
-  styleUrls: [&#x27;./card-back.component.css&#x27;],
+  selector: &#x27;taormina-card-front&#x27;,
+  templateUrl: &#x27;./card-front.component.html&#x27;,
+  styleUrls: [&#x27;./card-front.component.css&#x27;],
 })
-export class CardBackComponent {
+export class CardFrontComponent {
   @Input() typeIconName!: string;
-  @Input() ressources?: { iconName: string; count: number }[];
+  @Input() dieIconName?: string;
 
-  Array &#x3D; Array;
   getImgSrc &#x3D; getImgSrc;
 }
 </code></pre>
@@ -296,57 +267,51 @@ export class CardBackComponent {
         <pre class="line-numbers"><code class="language-html">&lt;div class&#x3D;&quot;card-back&quot;&gt;
   &lt;img [src]&#x3D;&quot;getImgSrc(typeIconName)&quot; [alt]&#x3D;&quot;typeIconName&quot; class&#x3D;&quot;type-icon&quot; /&gt;
 &lt;/div&gt;
-&lt;span class&#x3D;&quot;ressources&quot;&gt;
-  &lt;ng-container *ngFor&#x3D;&quot;let ressource of ressources&quot;&gt;
-    &lt;ng-container *ngFor&#x3D;&quot;let n of Array(ressource.count)&quot;&gt;
-      &lt;img
-        [src]&#x3D;&quot;getImgSrc(ressource.iconName)&quot;
-        [alt]&#x3D;&quot;ressource.iconName&quot;
-        class&#x3D;&quot;ressource-icon&quot;
-      /&gt;
-    &lt;/ng-container&gt;
-  &lt;/ng-container&gt;
+&lt;span class&#x3D;&quot;die&quot;&gt;
+  &lt;img
+    *ngIf&#x3D;&quot;dieIconName&quot;
+    [src]&#x3D;&quot;getImgSrc(dieIconName)&quot;
+    [alt]&#x3D;&quot;dieIconName&quot;
+    class&#x3D;&quot;die-icon&quot;
+  /&gt;
 &lt;/span&gt;
 </code></pre>
     </div>
 
     <div class="tab-pane fade " id="c-styleData">
                 <p class="comment">
-                    <code>./card-back.component.css</code>
+                    <code>./card-front.component.css</code>
                 </p>
                 <pre class="line-numbers"><code class="language-scss">.card-back {
   width: 100%;
   height: 100%;
-  background-color: gray;
   display: flex;
   justify-content: center;
   align-items: center;
 }
 
 .type-icon {
-  width: 50%;
-  height: 50%;
+  width: 90%;
+  height: 90%;
 }
 
-.ressources {
+.die {
+  width: 100%;
+  height: 100%;
   position: relative;
-  bottom: 4em;
+  top: -100%;
+  z-index: 2;
   display: flex;
   justify-content: center;
   align-items: center;
-  gap: 0.3em;
 }
 
-.ressource-icon {
-  width: 15%;
-  height: 15%;
-  padding: 2px;
-  background-color: white;
-  border-style: solid;
-  border-color: black;
-  border-width: 1px;
+.die-icon {
+  width: 30%;
+  height: 30%;
   border-radius: 20%;
-  box-shadow: inset -0.1em -0.1em 0.5em lightgray;
+  outline: 2px solid black;
+  outline-offset: -2px;
 }
 </code></pre>
     </div>
@@ -376,10 +341,10 @@ export class CardBackComponent {
 <script src="../js/libs/htmlparser.js"></script>
 <script src="../js/libs/deep-iterator.js"></script>
 <script>
-        var COMPONENT_TEMPLATE = '<div><div class="card-back">  <img [src]="getImgSrc(typeIconName)" [alt]="typeIconName" class="type-icon" /></div><span class="ressources">  <ng-container *ngFor="let ressource of ressources">    <ng-container *ngFor="let n of Array(ressource.count)">      <img        [src]="getImgSrc(ressource.iconName)"        [alt]="ressource.iconName"        class="ressource-icon"      />    </ng-container>  </ng-container></span></div>'
+        var COMPONENT_TEMPLATE = '<div><div class="card-back">  <img [src]="getImgSrc(typeIconName)" [alt]="typeIconName" class="type-icon" /></div><span class="die">  <img    *ngIf="dieIconName"    [src]="getImgSrc(dieIconName)"    [alt]="dieIconName"    class="die-icon"  /></span></div>'
     var COMPONENTS = [{'name': 'ActionsComponent', 'selector': 'taormina-actions'},{'name': 'AppComponent', 'selector': 'taormina-root'},{'name': 'BoardComponent', 'selector': 'taormina-board'},{'name': 'CardBackComponent', 'selector': 'taormina-card-back'},{'name': 'CardComponent', 'selector': 'taormina-card'},{'name': 'CardFrontComponent', 'selector': 'taormina-card-front'},{'name': 'DiceComponent', 'selector': 'taormina-dice'},{'name': 'DomainComponent', 'selector': 'taormina-domain'},{'name': 'HandComponent', 'selector': 'taormina-hand'},{'name': 'PhasesComponent', 'selector': 'taormina-phases'},{'name': 'PilesComponent', 'selector': 'taormina-piles'}];
     var DIRECTIVES = [];
-    var ACTUAL_COMPONENT = {'name': 'CardBackComponent'};
+    var ACTUAL_COMPONENT = {'name': 'CardFrontComponent'};
 </script>
 <script src="../js/tree.js"></script>
 
@@ -425,7 +390,7 @@ export class CardBackComponent {
        <script>
             var COMPODOC_CURRENT_PAGE_DEPTH = 1;
             var COMPODOC_CURRENT_PAGE_CONTEXT = 'component';
-            var COMPODOC_CURRENT_PAGE_URL = 'CardBackComponent.html';
+            var COMPODOC_CURRENT_PAGE_URL = 'CardFrontComponent.html';
             var MAX_SEARCH_RESULTS = 15;
        </script>
 

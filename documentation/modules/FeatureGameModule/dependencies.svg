@@ -14,13 +14,13 @@
 <title>cluster_FeatureGameModule</title>
 <polygon fill="none" stroke="black" stroke-dasharray="1,5" points="8,-32.8 8,-230.8 158,-230.8 158,-32.8 8,-32.8"/>
 </g>
-<g id="clust4" class="cluster">
-<title>cluster_FeatureGameModule_exports</title>
-<polygon fill="none" stroke="black" points="26,-170.8 26,-222.8 140,-222.8 140,-170.8 26,-170.8"/>
-</g>
 <g id="clust3" class="cluster">
 <title>cluster_FeatureGameModule_imports</title>
 <polygon fill="none" stroke="black" points="28,-40.8 28,-92.8 138,-92.8 138,-40.8 28,-40.8"/>
+</g>
+<g id="clust4" class="cluster">
+<title>cluster_FeatureGameModule_exports</title>
+<polygon fill="none" stroke="black" points="26,-170.8 26,-222.8 140,-222.8 140,-170.8 26,-170.8"/>
 </g>
 <!-- BoardModule -->
 <g id="node1" class="node">
