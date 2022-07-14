@@ -8,7 +8,7 @@ import { getImgSrc } from '@taormina/shared-utils';
 })
 export class CardFrontComponent {
   @Input() typeIconName!: string;
-  @Input() diceIconName?: string;
+  @Input() dieIconName?: string;
 
   getImgSrc = getImgSrc;
 }
