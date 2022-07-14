@@ -1,0 +1,11 @@
+<div class="card-back">
+  <img [src]="getImgSrc(typeIconName)" [alt]="typeIconName" class="type-icon" />
+</div>
+<span class="die">
+  <img
+    *ngIf="dieIconName"
+    [src]="getImgSrc(dieIconName)"
+    [alt]="dieIconName"
+    class="die-icon"
+  />
+</span>

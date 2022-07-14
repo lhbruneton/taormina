@@ -37,28 +37,35 @@
           {{ development.name }}
         </div>
       </div>
-      <div *ngSwitchCase="AGGLOMERATION_CARD_INTERFACE_NAME">
-        <div
+      <ng-container *ngSwitchCase="AGGLOMERATION_CARD_INTERFACE_NAME">
+        <ng-container
           *ngIf="
             pivot.cardId !== undefined &&
             getAgglomerationCard(pivot.cardId) as agglomeration
           "
         >
-          {{ agglomeration.type }}
+          <taormina-card-front
+            [typeIconName]="mapTypeToIconNameFront(agglomeration.type)"
+          ></taormina-card-front>
+          <!-- {{ agglomeration.type }}
           <button type="button" (click)="toggleDomainCardSelection(pivot.id)">
             {{
               (isDomainCardSelected(pivot.id) | async) ? 'Unselect' : 'Select'
             }}
-          </button>
-        </div>
-      </div>
-      <div *ngSwitchCase="LAND_CARD_INTERFACE_NAME">
-        <div
+          </button> -->
+        </ng-container>
+      </ng-container>
+      <ng-container *ngSwitchCase="LAND_CARD_INTERFACE_NAME">
+        <ng-container
           *ngIf="
             pivot.cardId !== undefined && getLandCard(pivot.cardId) as land
           "
         >
-          {{ land.type }}<br />
+          <taormina-card-front
+            [typeIconName]="mapTypeToIconNameFront(land.type)"
+            [dieIconName]="mapDieToIconNameFront(land.die)"
+          ></taormina-card-front>
+          <!-- {{ land.type }}<br />
           {{ land.die }}<br />
           Available: {{ pivot.availableResources }}<br />
           locked: {{ pivot.lockedResources }}<br />
@@ -68,9 +75,9 @@
           ><br />
           <button type="button" (click)="increaseResources(pivot.id)">
             Increase
-          </button>
-        </div>
-      </div>
+          </button> -->
+        </ng-container>
+      </ng-container>
       <div *ngSwitchCase="AVAILABLE_AGGLOMERATION_SLOT">
         <button type="button" (click)="toggleDomainCardSelection(pivot.id)">
           {{ (isDomainCardSelected(pivot.id) | async) ? 'Unselect' : 'Select' }}
