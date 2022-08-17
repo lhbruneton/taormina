@@ -150,12 +150,29 @@
                                 <a href="#ressources" >ressources</a>
                             </li>
                             <li>
+                                <a href="#selected" >selected</a>
+                            </li>
+                            <li>
                                 <a href="#typeIconName" >typeIconName</a>
                             </li>
                         </ul>
                     </td>
                 </tr>
 
+                <tr>
+                    <td class="col-md-4">
+                        <h6><b>Outputs</b></h6>
+                    </td>
+                </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <ul class="index-list">
+                            <li>
+                                <a href="#selectedChange" >selectedChange</a>
+                            </li>
+                        </ul>
+                    </td>
+                </tr>
 
 
 
@@ -191,6 +208,27 @@
             <tbody>
                 <tr>
                     <td class="col-md-4">
+                        <a name="selected"></a>
+                        <b>selected</b>
+                    </td>
+                </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <i>Type : </i>        <code><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/boolean" target="_blank" >boolean</a></code>
+
+                    </td>
+                </tr>
+                        <tr>
+                            <td class="col-md-2" colspan="2">
+                                    <div class="io-line">Defined in <a href="" data-line="12" class="link-to-prism">libs/ui-card/src/lib/card-back/card-back/card-back.component.ts:12</a></div>
+                            </td>
+                        </tr>
+            </tbody>
+        </table>
+        <table class="table table-sm table-bordered">
+            <tbody>
+                <tr>
+                    <td class="col-md-4">
                         <a name="typeIconName"></a>
                         <b>typeIconName</b>
                     </td>
@@ -209,7 +247,30 @@
             </tbody>
         </table>
 </section>
+    <section>
+    <h3 id="outputs">Outputs</h3>
+        <table class="table table-sm table-bordered">
+            <tbody>
+                <tr>
+                    <td class="col-md-4">
+                        <a name="selectedChange"></a>
+                        <b>selectedChange</b>
+                    </td>
+                </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <i>Type : </i>        <code><a href="https://angular.io/api/core/EventEmitter" target="_blank" >EventEmitter</a></code>
 
+                    </td>
+                </tr>
+                        <tr>
+                            <td class="col-md-2" colspan="2">
+                                    <div class="io-line">Defined in <a href="" data-line="13" class="link-to-prism">libs/ui-card/src/lib/card-back/card-back/card-back.component.ts:13</a></div>
+                            </td>
+                        </tr>
+            </tbody>
+        </table>
+</section>
 
 
 
@@ -236,7 +297,7 @@
                 </tr>
                     <tr>
                         <td class="col-md-4">
-                                <div class="io-line">Defined in <a href="" data-line="13" class="link-to-prism">libs/ui-card/src/lib/card-back/card-back/card-back.component.ts:13</a></div>
+                                <div class="io-line">Defined in <a href="" data-line="15" class="link-to-prism">libs/ui-card/src/lib/card-back/card-back/card-back.component.ts:15</a></div>
                         </td>
                     </tr>
 
@@ -261,7 +322,7 @@
                 </tr>
                     <tr>
                         <td class="col-md-4">
-                                <div class="io-line">Defined in <a href="" data-line="14" class="link-to-prism">libs/ui-card/src/lib/card-back/card-back/card-back.component.ts:14</a></div>
+                                <div class="io-line">Defined in <a href="" data-line="16" class="link-to-prism">libs/ui-card/src/lib/card-back/card-back/card-back.component.ts:16</a></div>
                         </td>
                     </tr>
 
@@ -274,7 +335,7 @@
 
 
     <div class="tab-pane fade  tab-source-code" id="c-source">
-        <pre class="line-numbers compodoc-sourcecode"><code class="language-typescript">import { Component, Input } from &#x27;@angular/core&#x27;;
+        <pre class="line-numbers compodoc-sourcecode"><code class="language-typescript">import { Component, EventEmitter, Input, Output } from &#x27;@angular/core&#x27;;
 import { getImgSrc } from &#x27;@taormina/shared-utils&#x27;;
 
 @Component({
@@ -285,6 +346,8 @@ import { getImgSrc } from &#x27;@taormina/shared-utils&#x27;;
 export class CardBackComponent {
   @Input() typeIconName!: string;
   @Input() ressources?: { iconName: string; count: number }[];
+  @Input() selected?: boolean;
+  @Output() selectedChange &#x3D; new EventEmitter&lt;boolean&gt;();
 
   Array &#x3D; Array;
   getImgSrc &#x3D; getImgSrc;
@@ -293,20 +356,30 @@ export class CardBackComponent {
     </div>
 
     <div class="tab-pane fade " id="c-templateData">
-        <pre class="line-numbers"><code class="language-html">&lt;div class&#x3D;&quot;card-back&quot;&gt;
-  &lt;img [src]&#x3D;&quot;getImgSrc(typeIconName)&quot; [alt]&#x3D;&quot;typeIconName&quot; class&#x3D;&quot;type-icon&quot; /&gt;
-&lt;/div&gt;
-&lt;span class&#x3D;&quot;ressources&quot;&gt;
-  &lt;ng-container *ngFor&#x3D;&quot;let ressource of ressources&quot;&gt;
-    &lt;ng-container *ngFor&#x3D;&quot;let n of Array(ressource.count)&quot;&gt;
-      &lt;img
-        [src]&#x3D;&quot;getImgSrc(ressource.iconName)&quot;
-        [alt]&#x3D;&quot;ressource.iconName&quot;
-        class&#x3D;&quot;ressource-icon&quot;
-      /&gt;
+        <pre class="line-numbers"><code class="language-html">&lt;div
+  class&#x3D;&quot;card-back&quot;
+  [class.selected]&#x3D;&quot;selected&quot;
+  (click)&#x3D;&quot;selected &#x3D; !selected&quot;
+&gt;
+  &lt;div class&#x3D;&quot;type&quot;&gt;
+    &lt;img
+      [src]&#x3D;&quot;getImgSrc(typeIconName)&quot;
+      [alt]&#x3D;&quot;typeIconName&quot;
+      class&#x3D;&quot;type-icon&quot;
+    /&gt;
+  &lt;/div&gt;
+  &lt;span class&#x3D;&quot;ressources&quot;&gt;
+    &lt;ng-container *ngFor&#x3D;&quot;let ressource of ressources&quot;&gt;
+      &lt;ng-container *ngFor&#x3D;&quot;let n of Array(ressource.count)&quot;&gt;
+        &lt;img
+          [src]&#x3D;&quot;getImgSrc(ressource.iconName)&quot;
+          [alt]&#x3D;&quot;ressource.iconName&quot;
+          class&#x3D;&quot;ressource-icon&quot;
+        /&gt;
+      &lt;/ng-container&gt;
     &lt;/ng-container&gt;
-  &lt;/ng-container&gt;
-&lt;/span&gt;
+  &lt;/span&gt;
+&lt;/div&gt;
 </code></pre>
     </div>
 
@@ -318,6 +391,29 @@ export class CardBackComponent {
   width: 100%;
   height: 100%;
   background-color: gray;
+  border-style: solid;
+  border-color: black;
+  border-width: 1px;
+  border-radius: 5%;
+  transition: transform 450ms, box-shadow 450ms;
+}
+
+.selected {
+  transform: translate(20px, -20px);
+  box-shadow: 1em 1em 1em lightgray;
+  transition: transform 125ms, box-shadow 125ms;
+  will-change: transform;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .card {
+    transition: none;
+  }
+}
+
+.type {
+  width: 100%;
+  height: 100%;
   display: flex;
   justify-content: center;
   align-items: center;
@@ -376,8 +472,8 @@ export class CardBackComponent {
 <script src="../js/libs/htmlparser.js"></script>
 <script src="../js/libs/deep-iterator.js"></script>
 <script>
-        var COMPONENT_TEMPLATE = '<div><div class="card-back">  <img [src]="getImgSrc(typeIconName)" [alt]="typeIconName" class="type-icon" /></div><span class="ressources">  <ng-container *ngFor="let ressource of ressources">    <ng-container *ngFor="let n of Array(ressource.count)">      <img        [src]="getImgSrc(ressource.iconName)"        [alt]="ressource.iconName"        class="ressource-icon"      />    </ng-container>  </ng-container></span></div>'
-    var COMPONENTS = [{'name': 'ActionsComponent', 'selector': 'taormina-actions'},{'name': 'AppComponent', 'selector': 'taormina-root'},{'name': 'BoardComponent', 'selector': 'taormina-board'},{'name': 'CardBackComponent', 'selector': 'taormina-card-back'},{'name': 'CardComponent', 'selector': 'taormina-card'},{'name': 'CardFrontComponent', 'selector': 'taormina-card-front'},{'name': 'DiceComponent', 'selector': 'taormina-dice'},{'name': 'DomainComponent', 'selector': 'taormina-domain'},{'name': 'HandComponent', 'selector': 'taormina-hand'},{'name': 'PhasesComponent', 'selector': 'taormina-phases'},{'name': 'PilesComponent', 'selector': 'taormina-piles'}];
+        var COMPONENT_TEMPLATE = '<div><div  class="card-back"  [class.selected]="selected"  (click)="selected = !selected">  <div class="type">    <img      [src]="getImgSrc(typeIconName)"      [alt]="typeIconName"      class="type-icon"    />  </div>  <span class="ressources">    <ng-container *ngFor="let ressource of ressources">      <ng-container *ngFor="let n of Array(ressource.count)">        <img          [src]="getImgSrc(ressource.iconName)"          [alt]="ressource.iconName"          class="ressource-icon"        />      </ng-container>    </ng-container>  </span></div></div>'
+    var COMPONENTS = [{'name': 'ActionsComponent', 'selector': 'taormina-actions'},{'name': 'AppComponent', 'selector': 'taormina-root'},{'name': 'BoardComponent', 'selector': 'taormina-board'},{'name': 'CardBackComponent', 'selector': 'taormina-card-back'},{'name': 'CardFrontComponent', 'selector': 'taormina-card-front'},{'name': 'DiceComponent', 'selector': 'taormina-dice'},{'name': 'DomainComponent', 'selector': 'taormina-domain'},{'name': 'HandComponent', 'selector': 'taormina-hand'},{'name': 'PhasesComponent', 'selector': 'taormina-phases'},{'name': 'PilesComponent', 'selector': 'taormina-piles'}];
     var DIRECTIVES = [];
     var ACTUAL_COMPONENT = {'name': 'CardBackComponent'};
 </script>

@@ -281,20 +281,6 @@ customElements.define('compodoc-menu', class extends HTMLElement {
                             </li>
                             <li class="link">
                                 <a href="modules/UiCardModule.html" data-type="entity-link" >UiCardModule</a>
-                                    <li class="chapter inner">
-                                        <div class="simple menu-toggler" data-toggle="collapse" ${ isNormalMode ?
-                                            'data-target="#components-links-module-UiCardModule-d2f6bb0d2d6f86d00a485a2d282f4b5e409028ed8b614398daf97bd1920fdd4c5a7328cfbf4b5a43a2b67cb83e11ec0de838e0f80544c743244660ef61c3c598"' : 'data-target="#xs-components-links-module-UiCardModule-d2f6bb0d2d6f86d00a485a2d282f4b5e409028ed8b614398daf97bd1920fdd4c5a7328cfbf4b5a43a2b67cb83e11ec0de838e0f80544c743244660ef61c3c598"' }>
-                                            <span class="icon ion-md-cog"></span>
-                                            <span>Components</span>
-                                            <span class="icon ion-ios-arrow-down"></span>
-                                        </div>
-                                        <ul class="links collapse" ${ isNormalMode ? 'id="components-links-module-UiCardModule-d2f6bb0d2d6f86d00a485a2d282f4b5e409028ed8b614398daf97bd1920fdd4c5a7328cfbf4b5a43a2b67cb83e11ec0de838e0f80544c743244660ef61c3c598"' :
-                                            'id="xs-components-links-module-UiCardModule-d2f6bb0d2d6f86d00a485a2d282f4b5e409028ed8b614398daf97bd1920fdd4c5a7328cfbf4b5a43a2b67cb83e11ec0de838e0f80544c743244660ef61c3c598"' }>
-                                            <li class="link">
-                                                <a href="components/CardComponent.html" data-type="entity-link" data-context="sub-entity" data-context-id="modules" >CardComponent</a>
-                                            </li>
-                                        </ul>
-                                    </li>
                             </li>
                 </ul>
                 </li>

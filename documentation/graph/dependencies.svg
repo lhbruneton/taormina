@@ -56,27 +56,27 @@
 </g>
 <g id="clust22" class="cluster">
 <title>cluster_CardBackModule</title>
-<polygon fill="none" stroke="black" stroke-dasharray="1,5" points="275,-32.8 275,-230.8 447,-230.8 447,-32.8 275,-32.8"/>
+<polygon fill="none" stroke="black" stroke-dasharray="1,5" points="225,-32.8 225,-230.8 397,-230.8 397,-32.8 225,-32.8"/>
 </g>
 <g id="clust23" class="cluster">
 <title>cluster_CardBackModule_declarations</title>
-<polygon fill="none" stroke="black" points="284,-40.8 284,-92.8 438,-92.8 438,-40.8 284,-40.8"/>
+<polygon fill="none" stroke="black" points="234,-40.8 234,-92.8 388,-92.8 388,-40.8 234,-40.8"/>
 </g>
 <g id="clust26" class="cluster">
 <title>cluster_CardBackModule_exports</title>
-<polygon fill="none" stroke="black" points="283,-170.8 283,-222.8 439,-222.8 439,-170.8 283,-170.8"/>
+<polygon fill="none" stroke="black" points="233,-170.8 233,-222.8 389,-222.8 389,-170.8 233,-170.8"/>
 </g>
 <g id="clust29" class="cluster">
 <title>cluster_CardFrontModule</title>
-<polygon fill="none" stroke="black" stroke-dasharray="1,5" points="899,-32.8 899,-230.8 1073,-230.8 1073,-32.8 899,-32.8"/>
+<polygon fill="none" stroke="black" stroke-dasharray="1,5" points="849,-32.8 849,-230.8 1023,-230.8 1023,-32.8 849,-32.8"/>
 </g>
 <g id="clust30" class="cluster">
 <title>cluster_CardFrontModule_declarations</title>
-<polygon fill="none" stroke="black" points="908,-40.8 908,-92.8 1062,-92.8 1062,-40.8 908,-40.8"/>
+<polygon fill="none" stroke="black" points="858,-40.8 858,-92.8 1012,-92.8 1012,-40.8 858,-40.8"/>
 </g>
 <g id="clust33" class="cluster">
 <title>cluster_CardFrontModule_exports</title>
-<polygon fill="none" stroke="black" points="907,-170.8 907,-222.8 1065,-222.8 1065,-170.8 907,-170.8"/>
+<polygon fill="none" stroke="black" points="857,-170.8 857,-222.8 1015,-222.8 1015,-170.8 857,-170.8"/>
 </g>
 <g id="clust36" class="cluster">
 <title>cluster_DataAccessGameModule</title>
@@ -100,19 +100,19 @@
 </g>
 <g id="clust49" class="cluster">
 <title>cluster_DomainModule</title>
-<polygon fill="none" stroke="black" stroke-dasharray="1,5" points="455,-162.8 455,-230.8 891,-230.8 891,-162.8 455,-162.8"/>
+<polygon fill="none" stroke="black" stroke-dasharray="1,5" points="405,-162.8 405,-230.8 841,-230.8 841,-162.8 405,-162.8"/>
 </g>
 <g id="clust50" class="cluster">
 <title>cluster_DomainModule_declarations</title>
-<polygon fill="none" stroke="black" points="617,-170.8 617,-222.8 759,-222.8 759,-170.8 617,-170.8"/>
+<polygon fill="none" stroke="black" points="567,-170.8 567,-222.8 709,-222.8 709,-170.8 567,-170.8"/>
 </g>
 <g id="clust52" class="cluster">
 <title>cluster_DomainModule_imports</title>
-<polygon fill="none" stroke="black" points="767,-170.8 767,-222.8 883,-222.8 883,-170.8 767,-170.8"/>
+<polygon fill="none" stroke="black" points="717,-170.8 717,-222.8 833,-222.8 833,-170.8 717,-170.8"/>
 </g>
 <g id="clust53" class="cluster">
 <title>cluster_DomainModule_exports</title>
-<polygon fill="none" stroke="black" points="463,-170.8 463,-222.8 609,-222.8 609,-170.8 463,-170.8"/>
+<polygon fill="none" stroke="black" points="413,-170.8 413,-222.8 559,-222.8 559,-170.8 413,-170.8"/>
 </g>
 <g id="clust62" class="cluster">
 <title>cluster_FeatureGameModule</title>
@@ -160,13 +160,9 @@
 </g>
 <g id="clust89" class="cluster">
 <title>cluster_UiCardModule</title>
-<polygon fill="none" stroke="black" stroke-dasharray="1,5" points="892,-238.8 892,-306.8 1314,-306.8 1314,-238.8 892,-238.8"/>
+<polygon fill="none" stroke="black" stroke-dasharray="1,5" points="892,-238.8 892,-306.8 1182,-306.8 1182,-238.8 892,-238.8"/>
 </g>
-<g id="clust90" class="cluster">
-<title>cluster_UiCardModule_declarations</title>
-<polygon fill="none" stroke="black" points="1182,-246.8 1182,-298.8 1306,-298.8 1306,-246.8 1182,-246.8"/>
-</g>
-<g id="clust93" class="cluster">
+<g id="clust92" class="cluster">
 <title>cluster_UiCardModule_exports</title>
 <polygon fill="none" stroke="black" points="900,-246.8 900,-298.8 1174,-298.8 1174,-246.8 900,-246.8"/>
 </g>
@@ -359,14 +355,14 @@
 <!-- DomainComponent  -->
 <g id="node36" class="node">
 <title>DomainComponent </title>
-<polygon fill="#fb8072" stroke="black" points="600.93,-214.8 471.07,-214.8 471.07,-178.8 600.93,-178.8 600.93,-214.8"/>
-<text text-anchor="middle" x="536" y="-192.6" font-family="Times,serif" font-size="14.00">DomainComponent </text>
+<polygon fill="#fb8072" stroke="black" points="550.93,-214.8 421.07,-214.8 421.07,-178.8 550.93,-178.8 550.93,-214.8"/>
+<text text-anchor="middle" x="486" y="-192.6" font-family="Times,serif" font-size="14.00">DomainComponent </text>
 </g>
 <!-- DomainModule&#45;&gt;DomainComponent  -->
 <g id="edge32" class="edge">
 <title>DomainModule&#45;&gt;DomainComponent </title>
-<path fill="none" stroke="black" stroke-dasharray="5,2" d="M436.4,-272.8C441.7,-272.8 445.17,-272.8 445.17,-272.8 445.17,-272.8 445.17,-196.8 445.17,-196.8 445.17,-196.8 460.95,-196.8 460.95,-196.8"/>
-<polygon fill="black" stroke="black" points="460.95,-200.3 470.95,-196.8 460.95,-193.3 460.95,-200.3"/>
+<path fill="none" stroke="black" stroke-dasharray="5,2" d="M424.86,-254.79C424.86,-254.79 424.86,-224.95 424.86,-224.95"/>
+<polygon fill="black" stroke="black" points="428.36,-224.95 424.86,-214.95 421.36,-224.95 428.36,-224.95"/>
 </g>
 <!-- HandModule -->
 <g id="node14" class="node">
@@ -389,8 +385,8 @@
 <!-- HandModule&#45;&gt;HandComponent  -->
 <g id="edge36" class="edge">
 <title>HandModule&#45;&gt;HandComponent </title>
-<path fill="none" stroke="black" stroke-dasharray="5,2" d="M635.13,-290.84C635.13,-303.36 635.13,-317.8 635.13,-317.8 635.13,-317.8 1245.35,-317.8 1245.35,-317.8 1245.35,-317.8 1245.35,-320.77 1245.35,-320.77"/>
-<polygon fill="black" stroke="black" points="1241.85,-320.77 1245.35,-330.77 1248.85,-320.77 1241.85,-320.77"/>
+<path fill="none" stroke="black" stroke-dasharray="5,2" d="M635.13,-290.84C635.13,-303.36 635.13,-317.8 635.13,-317.8 635.13,-317.8 1250,-317.8 1250,-317.8 1250,-317.8 1250,-320.77 1250,-320.77"/>
+<polygon fill="black" stroke="black" points="1246.5,-320.77 1250,-330.77 1253.5,-320.77 1246.5,-320.77"/>
 </g>
 <!-- PhasesModule -->
 <g id="node15" class="node">
@@ -443,80 +439,80 @@
 <!-- CardBackComponent -->
 <g id="node18" class="node">
 <title>CardBackComponent</title>
-<polygon fill="#ffffb3" stroke="black" points="429.81,-84.8 292.19,-84.8 292.19,-48.8 429.81,-48.8 429.81,-84.8"/>
-<text text-anchor="middle" x="361" y="-62.6" font-family="Times,serif" font-size="14.00">CardBackComponent</text>
+<polygon fill="#ffffb3" stroke="black" points="379.81,-84.8 242.19,-84.8 242.19,-48.8 379.81,-48.8 379.81,-84.8"/>
+<text text-anchor="middle" x="311" y="-62.6" font-family="Times,serif" font-size="14.00">CardBackComponent</text>
 </g>
 <!-- CardBackModule -->
 <g id="node19" class="node">
 <title>CardBackModule</title>
-<polygon fill="#8dd3c7" stroke="black" points="418.53,-149.8 415.53,-153.8 394.53,-153.8 391.53,-149.8 303.47,-149.8 303.47,-113.8 418.53,-113.8 418.53,-149.8"/>
-<text text-anchor="middle" x="361" y="-127.6" font-family="Times,serif" font-size="14.00">CardBackModule</text>
+<polygon fill="#8dd3c7" stroke="black" points="368.53,-149.8 365.53,-153.8 344.53,-153.8 341.53,-149.8 253.47,-149.8 253.47,-113.8 368.53,-113.8 368.53,-149.8"/>
+<text text-anchor="middle" x="311" y="-127.6" font-family="Times,serif" font-size="14.00">CardBackModule</text>
 </g>
 <!-- CardBackComponent&#45;&gt;CardBackModule -->
 <g id="edge16" class="edge">
 <title>CardBackComponent&#45;&gt;CardBackModule</title>
-<path fill="none" stroke="black" d="M361,-84.91C361,-84.91 361,-103.79 361,-103.79"/>
-<polygon fill="black" stroke="black" points="357.5,-103.79 361,-113.79 364.5,-103.79 357.5,-103.79"/>
+<path fill="none" stroke="black" d="M311,-84.91C311,-84.91 311,-103.79 311,-103.79"/>
+<polygon fill="black" stroke="black" points="307.5,-103.79 311,-113.79 314.5,-103.79 307.5,-103.79"/>
 </g>
 <!-- CardBackComponent  -->
 <g id="node20" class="node">
 <title>CardBackComponent </title>
-<polygon fill="#fb8072" stroke="black" points="431.31,-214.8 290.69,-214.8 290.69,-178.8 431.31,-178.8 431.31,-214.8"/>
-<text text-anchor="middle" x="361" y="-192.6" font-family="Times,serif" font-size="14.00">CardBackComponent </text>
+<polygon fill="#fb8072" stroke="black" points="381.31,-214.8 240.69,-214.8 240.69,-178.8 381.31,-178.8 381.31,-214.8"/>
+<text text-anchor="middle" x="311" y="-192.6" font-family="Times,serif" font-size="14.00">CardBackComponent </text>
 </g>
 <!-- CardBackModule&#45;&gt;CardBackComponent  -->
 <g id="edge17" class="edge">
 <title>CardBackModule&#45;&gt;CardBackComponent </title>
-<path fill="none" stroke="black" stroke-dasharray="5,2" d="M361,-149.91C361,-149.91 361,-168.79 361,-168.79"/>
-<polygon fill="black" stroke="black" points="357.5,-168.79 361,-178.79 364.5,-168.79 357.5,-168.79"/>
+<path fill="none" stroke="black" stroke-dasharray="5,2" d="M311,-149.91C311,-149.91 311,-168.79 311,-168.79"/>
+<polygon fill="black" stroke="black" points="307.5,-168.79 311,-178.79 314.5,-168.79 307.5,-168.79"/>
 </g>
 <!-- UiCardModule -->
 <g id="node35" class="node">
 <title>UiCardModule</title>
-<polygon fill="#8dd3c7" stroke="black" points="875.27,-214.8 872.27,-218.8 851.27,-218.8 848.27,-214.8 774.73,-214.8 774.73,-178.8 875.27,-178.8 875.27,-214.8"/>
-<text text-anchor="middle" x="825" y="-192.6" font-family="Times,serif" font-size="14.00">UiCardModule</text>
+<polygon fill="#8dd3c7" stroke="black" points="825.27,-214.8 822.27,-218.8 801.27,-218.8 798.27,-214.8 724.73,-214.8 724.73,-178.8 825.27,-178.8 825.27,-214.8"/>
+<text text-anchor="middle" x="775" y="-192.6" font-family="Times,serif" font-size="14.00">UiCardModule</text>
 </g>
 <!-- CardBackModule&#45;&gt;UiCardModule -->
-<g id="edge43" class="edge">
+<g id="edge42" class="edge">
 <title>CardBackModule&#45;&gt;UiCardModule</title>
-<path fill="none" stroke="black" d="M418.55,-125.8C539.33,-125.8 808.21,-125.8 808.21,-125.8 808.21,-125.8 808.21,-168.52 808.21,-168.52"/>
-<polygon fill="black" stroke="black" points="804.71,-168.52 808.21,-178.52 811.71,-168.52 804.71,-168.52"/>
+<path fill="none" stroke="black" d="M368.55,-125.8C489.33,-125.8 758.21,-125.8 758.21,-125.8 758.21,-125.8 758.21,-168.52 758.21,-168.52"/>
+<polygon fill="black" stroke="black" points="754.71,-168.52 758.21,-178.52 761.71,-168.52 754.71,-168.52"/>
 </g>
 <!-- CardFrontComponent -->
 <g id="node21" class="node">
 <title>CardFrontComponent</title>
-<polygon fill="#ffffb3" stroke="black" points="1054.38,-84.8 915.62,-84.8 915.62,-48.8 1054.38,-48.8 1054.38,-84.8"/>
-<text text-anchor="middle" x="985" y="-62.6" font-family="Times,serif" font-size="14.00">CardFrontComponent</text>
+<polygon fill="#ffffb3" stroke="black" points="1004.38,-84.8 865.62,-84.8 865.62,-48.8 1004.38,-48.8 1004.38,-84.8"/>
+<text text-anchor="middle" x="935" y="-62.6" font-family="Times,serif" font-size="14.00">CardFrontComponent</text>
 </g>
 <!-- CardFrontModule -->
 <g id="node22" class="node">
 <title>CardFrontModule</title>
-<polygon fill="#8dd3c7" stroke="black" points="1043.6,-149.8 1040.6,-153.8 1019.6,-153.8 1016.6,-149.8 926.4,-149.8 926.4,-113.8 1043.6,-113.8 1043.6,-149.8"/>
-<text text-anchor="middle" x="985" y="-127.6" font-family="Times,serif" font-size="14.00">CardFrontModule</text>
+<polygon fill="#8dd3c7" stroke="black" points="993.6,-149.8 990.6,-153.8 969.6,-153.8 966.6,-149.8 876.4,-149.8 876.4,-113.8 993.6,-113.8 993.6,-149.8"/>
+<text text-anchor="middle" x="935" y="-127.6" font-family="Times,serif" font-size="14.00">CardFrontModule</text>
 </g>
 <!-- CardFrontComponent&#45;&gt;CardFrontModule -->
 <g id="edge18" class="edge">
 <title>CardFrontComponent&#45;&gt;CardFrontModule</title>
-<path fill="none" stroke="black" d="M985,-84.91C985,-84.91 985,-103.79 985,-103.79"/>
-<polygon fill="black" stroke="black" points="981.5,-103.79 985,-113.79 988.5,-103.79 981.5,-103.79"/>
+<path fill="none" stroke="black" d="M935,-84.91C935,-84.91 935,-103.79 935,-103.79"/>
+<polygon fill="black" stroke="black" points="931.5,-103.79 935,-113.79 938.5,-103.79 931.5,-103.79"/>
 </g>
 <!-- CardFrontComponent  -->
 <g id="node23" class="node">
 <title>CardFrontComponent </title>
-<polygon fill="#fb8072" stroke="black" points="1057.38,-214.8 914.62,-214.8 914.62,-178.8 1057.38,-178.8 1057.38,-214.8"/>
-<text text-anchor="middle" x="986" y="-192.6" font-family="Times,serif" font-size="14.00">CardFrontComponent </text>
+<polygon fill="#fb8072" stroke="black" points="1007.38,-214.8 864.62,-214.8 864.62,-178.8 1007.38,-178.8 1007.38,-214.8"/>
+<text text-anchor="middle" x="936" y="-192.6" font-family="Times,serif" font-size="14.00">CardFrontComponent </text>
 </g>
 <!-- CardFrontModule&#45;&gt;CardFrontComponent  -->
 <g id="edge19" class="edge">
 <title>CardFrontModule&#45;&gt;CardFrontComponent </title>
-<path fill="none" stroke="black" stroke-dasharray="5,2" d="M985,-149.91C985,-149.91 985,-168.79 985,-168.79"/>
-<polygon fill="black" stroke="black" points="981.5,-168.79 985,-178.79 988.5,-168.79 981.5,-168.79"/>
+<path fill="none" stroke="black" stroke-dasharray="5,2" d="M935,-149.91C935,-149.91 935,-168.79 935,-168.79"/>
+<polygon fill="black" stroke="black" points="931.5,-168.79 935,-178.79 938.5,-168.79 931.5,-168.79"/>
 </g>
 <!-- CardFrontModule&#45;&gt;UiCardModule -->
-<g id="edge44" class="edge">
+<g id="edge43" class="edge">
 <title>CardFrontModule&#45;&gt;UiCardModule</title>
-<path fill="none" stroke="black" d="M926.34,-137.8C886.79,-137.8 841.79,-137.8 841.79,-137.8 841.79,-137.8 841.79,-168.78 841.79,-168.78"/>
-<polygon fill="black" stroke="black" points="838.29,-168.78 841.79,-178.78 845.29,-168.78 838.29,-168.78"/>
+<path fill="none" stroke="black" d="M876.34,-137.8C836.79,-137.8 791.79,-137.8 791.79,-137.8 791.79,-137.8 791.79,-168.78 791.79,-168.78"/>
+<polygon fill="black" stroke="black" points="788.29,-168.78 791.79,-178.78 795.29,-168.78 788.29,-168.78"/>
 </g>
 <!-- AgglomerationPilesCardsFacade -->
 <g id="node24" class="node">
@@ -629,50 +625,50 @@
 <!-- DomainComponent -->
 <g id="node34" class="node">
 <title>DomainComponent</title>
-<polygon fill="#ffffb3" stroke="black" points="751.44,-214.8 624.56,-214.8 624.56,-178.8 751.44,-178.8 751.44,-214.8"/>
-<text text-anchor="middle" x="688" y="-192.6" font-family="Times,serif" font-size="14.00">DomainComponent</text>
+<polygon fill="#ffffb3" stroke="black" points="701.44,-214.8 574.56,-214.8 574.56,-178.8 701.44,-178.8 701.44,-214.8"/>
+<text text-anchor="middle" x="638" y="-192.6" font-family="Times,serif" font-size="14.00">DomainComponent</text>
 </g>
 <!-- DomainComponent&#45;&gt;DomainModule -->
 <g id="edge30" class="edge">
 <title>DomainComponent&#45;&gt;DomainModule</title>
-<path fill="none" stroke="black" d="M636.36,-214.99C636.36,-223.08 636.36,-230.8 636.36,-230.8 636.36,-230.8 364.92,-230.8 364.92,-230.8 364.92,-230.8 364.92,-244.74 364.92,-244.74"/>
-<polygon fill="black" stroke="black" points="361.42,-244.74 364.92,-254.74 368.42,-244.74 361.42,-244.74"/>
+<path fill="none" stroke="black" d="M611.36,-214.99C611.36,-223.08 611.36,-230.8 611.36,-230.8 611.36,-230.8 428.68,-230.8 428.68,-230.8 428.68,-230.8 428.68,-244.74 428.68,-244.74"/>
+<polygon fill="black" stroke="black" points="425.18,-244.74 428.68,-254.74 432.18,-244.74 425.18,-244.74"/>
 </g>
 <!-- UiCardModule&#45;&gt;DomainModule -->
 <g id="edge31" class="edge">
 <title>UiCardModule&#45;&gt;DomainModule</title>
-<path fill="none" stroke="black" d="M798.97,-214.86C798.97,-226.24 798.97,-238.8 798.97,-238.8 798.97,-238.8 398.16,-238.8 398.16,-238.8 398.16,-238.8 398.16,-244.61 398.16,-244.61"/>
-<polygon fill="black" stroke="black" points="394.66,-244.61 398.16,-254.61 401.66,-244.61 394.66,-244.61"/>
+<path fill="none" stroke="black" d="M744.22,-214.86C744.22,-226.24 744.22,-238.8 744.22,-238.8 744.22,-238.8 432.5,-238.8 432.5,-238.8 432.5,-238.8 432.5,-244.61 432.5,-244.61"/>
+<polygon fill="black" stroke="black" points="429,-244.61 432.5,-254.61 436,-244.61 429,-244.61"/>
 </g>
 <!-- UiCardModule&#45;&gt;PilesModule -->
 <g id="edge40" class="edge">
 <title>UiCardModule&#45;&gt;PilesModule</title>
-<path fill="none" stroke="black" d="M816.32,-214.81C816.32,-214.81 816.32,-244.65 816.32,-244.65"/>
-<polygon fill="black" stroke="black" points="812.82,-244.65 816.32,-254.65 819.82,-244.65 812.82,-244.65"/>
+<path fill="none" stroke="black" d="M792.55,-214.81C792.55,-214.81 792.55,-244.65 792.55,-244.65"/>
+<polygon fill="black" stroke="black" points="789.05,-244.65 792.55,-254.65 796.05,-244.65 789.05,-244.65"/>
 </g>
 <!-- CardBackModule  -->
-<g id="node45" class="node">
+<g id="node44" class="node">
 <title>CardBackModule </title>
 <polygon fill="#fb8072" stroke="black" points="1165.53,-290.8 1046.47,-290.8 1046.47,-254.8 1165.53,-254.8 1165.53,-290.8"/>
 <text text-anchor="middle" x="1106" y="-268.6" font-family="Times,serif" font-size="14.00">CardBackModule </text>
 </g>
 <!-- UiCardModule&#45;&gt;CardBackModule  -->
-<g id="edge45" class="edge">
+<g id="edge44" class="edge">
 <title>UiCardModule&#45;&gt;CardBackModule </title>
-<path fill="none" stroke="black" stroke-dasharray="5,2" d="M851.03,-214.85C851.03,-229.17 851.03,-246.8 851.03,-246.8 851.03,-246.8 1051.84,-246.8 1051.84,-246.8 1051.84,-246.8 1051.84,-247.59 1051.84,-247.59"/>
-<polygon fill="black" stroke="black" points="1048.34,-244.74 1051.84,-254.74 1055.34,-244.74 1048.34,-244.74"/>
+<path fill="none" stroke="black" stroke-dasharray="5,2" d="M814.44,-214.86C814.44,-219.29 814.44,-222.8 814.44,-222.8 814.44,-222.8 1106,-222.8 1106,-222.8 1106,-222.8 1106,-244.75 1106,-244.75"/>
+<polygon fill="black" stroke="black" points="1102.5,-244.75 1106,-254.75 1109.5,-244.75 1102.5,-244.75"/>
 </g>
 <!-- CardFrontModule  -->
-<g id="node46" class="node">
+<g id="node45" class="node">
 <title>CardFrontModule </title>
 <polygon fill="#fb8072" stroke="black" points="1028.1,-290.8 907.9,-290.8 907.9,-254.8 1028.1,-254.8 1028.1,-290.8"/>
 <text text-anchor="middle" x="968" y="-268.6" font-family="Times,serif" font-size="14.00">CardFrontModule </text>
 </g>
 <!-- UiCardModule&#45;&gt;CardFrontModule  -->
-<g id="edge46" class="edge">
+<g id="edge45" class="edge">
 <title>UiCardModule&#45;&gt;CardFrontModule </title>
-<path fill="none" stroke="black" stroke-dasharray="5,2" d="M875.67,-196.8C894.45,-196.8 911.25,-196.8 911.25,-196.8 911.25,-196.8 911.25,-244.79 911.25,-244.79"/>
-<polygon fill="black" stroke="black" points="907.75,-244.79 911.25,-254.79 914.75,-244.79 907.75,-244.79"/>
+<path fill="none" stroke="black" stroke-dasharray="5,2" d="M803.5,-214.85C803.5,-229.17 803.5,-246.8 803.5,-246.8 803.5,-246.8 957.44,-246.8 957.44,-246.8 957.44,-246.8 957.44,-247.59 957.44,-247.59"/>
+<polygon fill="black" stroke="black" points="953.94,-244.74 957.44,-254.74 960.94,-244.74 953.94,-244.74"/>
 </g>
 <!-- HandComponent -->
 <g id="node38" class="node">
@@ -709,18 +705,6 @@
 <title>PilesComponent&#45;&gt;PilesModule</title>
 <path fill="none" stroke="black" d="M1980,-330.56C1980,-315.23 1980,-295.8 1980,-295.8 1980,-295.8 803.31,-295.8 803.31,-295.8 803.31,-295.8 803.31,-295.31 803.31,-295.31"/>
 <polygon fill="black" stroke="black" points="806.81,-300.92 803.31,-290.92 799.81,-300.92 806.81,-300.92"/>
-</g>
-<!-- CardComponent -->
-<g id="node44" class="node">
-<title>CardComponent</title>
-<polygon fill="#ffffb3" stroke="black" points="1298.05,-290.8 1189.95,-290.8 1189.95,-254.8 1298.05,-254.8 1298.05,-290.8"/>
-<text text-anchor="middle" x="1244" y="-268.6" font-family="Times,serif" font-size="14.00">CardComponent</text>
-</g>
-<!-- CardComponent&#45;&gt;UiCardModule -->
-<g id="edge42" class="edge">
-<title>CardComponent&#45;&gt;UiCardModule</title>
-<path fill="none" stroke="black" d="M1244,-254.75C1244,-240.43 1244,-222.8 1244,-222.8 1244,-222.8 833.68,-222.8 833.68,-222.8 833.68,-222.8 833.68,-222.01 833.68,-222.01"/>
-<polygon fill="black" stroke="black" points="837.18,-224.86 833.68,-214.86 830.18,-224.86 837.18,-224.86"/>
 </g>
 </g>
 </svg>

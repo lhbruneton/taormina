@@ -14,6 +14,10 @@
 <title>cluster_PilesModule</title>
 <polygon fill="none" stroke="black" stroke-dasharray="1,5" points="8,-32.8 8,-230.8 272,-230.8 272,-32.8 8,-32.8"/>
 </g>
+<g id="clust5" class="cluster">
+<title>cluster_PilesModule_exports</title>
+<polygon fill="none" stroke="black" points="76,-170.8 76,-222.8 204,-222.8 204,-170.8 76,-170.8"/>
+</g>
 <g id="clust4" class="cluster">
 <title>cluster_PilesModule_imports</title>
 <polygon fill="none" stroke="black" points="148,-40.8 148,-92.8 264,-92.8 264,-40.8 148,-40.8"/>
@@ -21,10 +25,6 @@
 <g id="clust2" class="cluster">
 <title>cluster_PilesModule_declarations</title>
 <polygon fill="none" stroke="black" points="16,-40.8 16,-92.8 140,-92.8 140,-40.8 16,-40.8"/>
-</g>
-<g id="clust5" class="cluster">
-<title>cluster_PilesModule_exports</title>
-<polygon fill="none" stroke="black" points="76,-170.8 76,-222.8 204,-222.8 204,-170.8 76,-170.8"/>
 </g>
 <!-- PilesComponent -->
 <g id="node1" class="node">
