@@ -1,14 +1,24 @@
-<div class="card-back">
-  <img [src]="getImgSrc(typeIconName)" [alt]="typeIconName" class="type-icon" />
-</div>
-<span class="ressources">
-  <ng-container *ngFor="let ressource of ressources">
-    <ng-container *ngFor="let n of Array(ressource.count)">
-      <img
-        [src]="getImgSrc(ressource.iconName)"
-        [alt]="ressource.iconName"
-        class="ressource-icon"
-      />
+<div
+  class="card-back"
+  [class.selected]="selected"
+  (click)="selected = !selected"
+>
+  <div class="type">
+    <img
+      [src]="getImgSrc(typeIconName)"
+      [alt]="typeIconName"
+      class="type-icon"
+    />
+  </div>
+  <span class="ressources">
+    <ng-container *ngFor="let ressource of ressources">
+      <ng-container *ngFor="let n of Array(ressource.count)">
+        <img
+          [src]="getImgSrc(ressource.iconName)"
+          [alt]="ressource.iconName"
+          class="ressource-icon"
+        />
+      </ng-container>
     </ng-container>
-  </ng-container>
-</span>
+  </span>
+</div>
