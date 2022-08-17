@@ -1,11 +1,21 @@
-<div class="card-back">
-  <img [src]="getImgSrc(typeIconName)" [alt]="typeIconName" class="type-icon" />
+<div
+  class="card-front"
+  [class.selected]="selected"
+  (click)="selected = !selected"
+>
+  <div class="type">
+    <img
+      [src]="getImgSrc(typeIconName)"
+      [alt]="typeIconName"
+      class="type-icon"
+    />
+  </div>
+  <span class="die">
+    <img
+      *ngIf="dieIconName"
+      [src]="getImgSrc(dieIconName)"
+      [alt]="dieIconName"
+      class="die-icon"
+    />
+  </span>
 </div>
-<span class="die">
-  <img
-    *ngIf="dieIconName"
-    [src]="getImgSrc(dieIconName)"
-    [alt]="dieIconName"
-    class="die-icon"
-  />
-</span>

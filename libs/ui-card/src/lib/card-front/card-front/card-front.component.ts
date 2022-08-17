@@ -1,4 +1,4 @@
-import { Component, Input } from '@angular/core';
+import { Component, EventEmitter, Input, Output } from '@angular/core';
 import { getImgSrc } from '@taormina/shared-utils';
 
 @Component({
@@ -9,6 +9,8 @@ import { getImgSrc } from '@taormina/shared-utils';
 export class CardFrontComponent {
   @Input() typeIconName!: string;
   @Input() dieIconName?: string;
+  @Input() selected?: boolean;
+  @Output() selectedChange = new EventEmitter<boolean>();
 
   getImgSrc = getImgSrc;
 }
