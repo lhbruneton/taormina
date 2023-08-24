@@ -1066,16 +1066,16 @@
                             <a href="#toggleDomainCardSelection" title="libs/data-access-game/src/lib/+state/domains-cards/domains-cards.actions.ts" ><b>toggleDomainCardSelection</b>&nbsp;&nbsp;&nbsp;(libs/.../domains-cards.actions.ts)</a>
                         </li>
                         <li>
+                            <a href="#unselectAgglomerationPileCard" title="libs/data-access-game/src/lib/+state/agglomeration-piles-cards/agglomeration-piles-cards.actions.ts" ><b>unselectAgglomerationPileCard</b>&nbsp;&nbsp;&nbsp;(libs/.../agglomeration-piles-cards.actions.ts)</a>
+                        </li>
+                        <li>
+                            <a href="#" title="libs/data-access-game/src/lib/+state/agglomeration-piles-cards/agglomeration-piles-cards.selectors.ts" ><b></b>&nbsp;&nbsp;&nbsp;(libs/.../agglomeration-piles-cards.selectors.ts)</a>
+                        </li>
+                        <li>
                             <a href="#" title="libs/data-access-game/src/lib/+state/discard-pile-cards/discard-pile-cards.selectors.ts" ><b></b>&nbsp;&nbsp;&nbsp;(libs/.../discard-pile-cards.selectors.ts)</a>
                         </li>
                         <li>
                             <a href="#unlockResources" title="libs/data-access-game/src/lib/+state/domains-cards/domains-cards.actions.ts" ><b>unlockResources</b>&nbsp;&nbsp;&nbsp;(libs/.../domains-cards.actions.ts)</a>
-                        </li>
-                        <li>
-                            <a href="#updateDomainCard" title="libs/data-access-game/src/lib/+state/domains-cards/domains-cards.actions.ts" ><b>updateDomainCard</b>&nbsp;&nbsp;&nbsp;(libs/.../domains-cards.actions.ts)</a>
-                        </li>
-                        <li>
-                            <a href="#updateDomainsCards" title="libs/data-access-game/src/lib/+state/domains-cards/domains-cards.actions.ts" ><b>updateDomainsCards</b>&nbsp;&nbsp;&nbsp;(libs/.../domains-cards.actions.ts)</a>
                         </li>
                         <li>
                             <a href="#useLockedResources" title="libs/data-access-game/src/lib/+state/domains-cards/domains-cards.actions.ts" ><b>useLockedResources</b>&nbsp;&nbsp;&nbsp;(libs/.../domains-cards.actions.ts)</a>
@@ -1090,6 +1090,15 @@
                             <a href="#" title="libs/data-access-game/src/lib/+state/events-pile-cards/events-pile-cards.selectors.ts" ><b></b>&nbsp;&nbsp;&nbsp;(libs/.../events-pile-cards.selectors.ts)</a>
                         </li>
                         <li>
+                            <a href="#unselectHandCard" title="libs/data-access-game/src/lib/+state/hands-cards/hands-cards.actions.ts" ><b>unselectHandCard</b>&nbsp;&nbsp;&nbsp;(libs/.../hands-cards.actions.ts)</a>
+                        </li>
+                        <li>
+                            <a href="#updateDomainCard" title="libs/data-access-game/src/lib/+state/domains-cards/domains-cards.actions.ts" ><b>updateDomainCard</b>&nbsp;&nbsp;&nbsp;(libs/.../domains-cards.actions.ts)</a>
+                        </li>
+                        <li>
+                            <a href="#updateDomainsCards" title="libs/data-access-game/src/lib/+state/domains-cards/domains-cards.actions.ts" ><b>updateDomainsCards</b>&nbsp;&nbsp;&nbsp;(libs/.../domains-cards.actions.ts)</a>
+                        </li>
+                        <li>
                             <a href="#" title="libs/data-access-game/src/lib/+state/hands-cards/hands-cards.selectors.ts" ><b></b>&nbsp;&nbsp;&nbsp;(libs/.../hands-cards.selectors.ts)</a>
                         </li>
                         <li>
@@ -1097,15 +1106,6 @@
                         </li>
                         <li>
                             <a href="#" title="libs/data-access-game/src/lib/+state/stock-piles-cards/stock-piles-cards.selectors.ts" ><b></b>&nbsp;&nbsp;&nbsp;(libs/.../stock-piles-cards.selectors.ts)</a>
-                        </li>
-                        <li>
-                            <a href="#unselectAgglomerationPileCard" title="libs/data-access-game/src/lib/+state/agglomeration-piles-cards/agglomeration-piles-cards.actions.ts" ><b>unselectAgglomerationPileCard</b>&nbsp;&nbsp;&nbsp;(libs/.../agglomeration-piles-cards.actions.ts)</a>
-                        </li>
-                        <li>
-                            <a href="#unselectHandCard" title="libs/data-access-game/src/lib/+state/hands-cards/hands-cards.actions.ts" ><b>unselectHandCard</b>&nbsp;&nbsp;&nbsp;(libs/.../hands-cards.actions.ts)</a>
-                        </li>
-                        <li>
-                            <a href="#" title="libs/data-access-game/src/lib/+state/agglomeration-piles-cards/agglomeration-piles-cards.selectors.ts" ><b></b>&nbsp;&nbsp;&nbsp;(libs/.../agglomeration-piles-cards.selectors.ts)</a>
                         </li>
                     </ul>
                 </td>
@@ -5137,6 +5137,28 @@
         <tbody>
             <tr>
                 <td class="col-md-4">
+                    <a name="useLockedResources"></a>
+                    <span class="name">
+                        <span ><b>useLockedResources</b></span>
+                        <a href="#useLockedResources"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <i>Default value : </i><code>createAction(
+  &#x27;[DomainsCards] Use Locked Resources&#x27;
+)</code>
+                    </td>
+                </tr>
+
+
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
                     <a name="updateDomainCard"></a>
                     <span class="name">
                         <span ><b>updateDomainCard</b></span>
@@ -5172,28 +5194,6 @@
                         <i>Default value : </i><code>createAction(
   &#x27;[DomainsCards] Update DomainsCards&#x27;,
   props&lt;{ updates: UpdateStr&lt;DomainsCardsEntity&gt;[] }&gt;()
-)</code>
-                    </td>
-                </tr>
-
-
-        </tbody>
-    </table>
-    <table class="table table-sm table-bordered">
-        <tbody>
-            <tr>
-                <td class="col-md-4">
-                    <a name="useLockedResources"></a>
-                    <span class="name">
-                        <span ><b>useLockedResources</b></span>
-                        <a href="#useLockedResources"><span class="icon ion-ios-link"></span></a>
-                    </span>
-                </td>
-            </tr>
-                <tr>
-                    <td class="col-md-4">
-                        <i>Default value : </i><code>createAction(
-  &#x27;[DomainsCards] Use Locked Resources&#x27;
 )</code>
                     </td>
                 </tr>
