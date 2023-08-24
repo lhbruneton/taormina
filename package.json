@@ -51,7 +51,7 @@
     "@ngrx/entity": "14.0.1",
     "@ngrx/router-store": "14.0.1",
     "@ngrx/store": "14.0.1",
-    "@nrwl/angular": "14.4.0",
+    "@nrwl/angular": "14.8.6",
     "@storybook/core-server": "6.4.22",
     "array-shuffle": "^2.0.0",
     "eslint-plugin-html": "^6.1.1",
@@ -61,7 +61,7 @@
     "zone.js": "0.11.4"
   },
   "devDependencies": {
-    "@angular-devkit/build-angular": "14.0.4",
+    "@angular-devkit/build-angular": "14.2.10",
     "@angular-eslint/eslint-plugin": "14.0.0",
     "@angular-eslint/eslint-plugin-template": "14.0.0",
     "@angular-eslint/template-parser": "14.0.0",
@@ -80,7 +80,7 @@
     "@nrwl/nx-cloud": "14.2.0",
     "@nrwl/storybook": "14.4.0",
     "@nrwl/workspace": "14.4.0",
-    "@storybook/addon-essentials": "6.4.22",
+    "@storybook/addon-essentials": "6.5.13",
     "@storybook/angular": "6.4.22",
     "@storybook/builder-webpack5": "6.4.22",
     "@storybook/cli": "^6.4.9",
