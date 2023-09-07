@@ -1,0 +1,27 @@
+{
+  "name": "feature-game",
+  "$schema": "../../node_modules/nx/schemas/project-schema.json",
+  "projectType": "library",
+  "sourceRoot": "libs/feature-game/src",
+  "prefix": "taormina",
+  "targets": {
+    "test": {
+      "executor": "@nx/jest:jest",
+      "outputs": ["{workspaceRoot}/coverage/libs/feature-game"],
+      "options": {
+        "jestConfig": "libs/feature-game/jest.config.ts",
+        "passWithNoTests": true
+      }
+    },
+    "lint": {
+      "executor": "@nrwl/linter:eslint",
+      "options": {
+        "lintFilePatterns": [
+          "libs/feature-game/**/*.ts",
+          "libs/feature-game/**/*.html"
+        ]
+      }
+    }
+  },
+  "tags": []
+}

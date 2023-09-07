@@ -3,12 +3,11 @@ import { NgModule } from '@angular/core';
 import { TestBed } from '@angular/core/testing';
 import { EffectsModule } from '@ngrx/effects';
 import { Store, StoreModule } from '@ngrx/store';
-import { NxModule } from '@nrwl/angular';
-import { readFirst } from '@nrwl/angular/testing';
 import {
   ACTION_CARD_INTERFACE_NAME,
   DEVELOPMENT_CARD_INTERFACE_NAME,
 } from '@taormina/shared-models';
+import { firstValueFrom } from 'rxjs';
 
 import * as HandsCardsActions from './hands-cards.actions';
 import { HandsCardsEffects } from './hands-cards.effects';
@@ -41,7 +40,6 @@ describe('HandsCardsFacade', () => {
 
       @NgModule({
         imports: [
-          NxModule.forRoot(),
           StoreModule.forRoot({}),
           EffectsModule.forRoot([]),
           CustomFeatureModule,
@@ -58,16 +56,16 @@ describe('HandsCardsFacade', () => {
      * The initially generated facade::loadAll() returns empty array
      */
     it('loadAll() should return empty list with loaded == true', async () => {
-      let list = await readFirst(facade.allHandsCards$);
-      let isLoaded = await readFirst(facade.loaded$);
+      let list = await firstValueFrom(facade.allHandsCards$);
+      let isLoaded = await firstValueFrom(facade.loaded$);
 
       expect(list.length).toBe(0);
       expect(isLoaded).toBe(false);
 
       facade.initSavedGame();
 
-      list = await readFirst(facade.allHandsCards$);
-      isLoaded = await readFirst(facade.loaded$);
+      list = await firstValueFrom(facade.allHandsCards$);
+      isLoaded = await firstValueFrom(facade.loaded$);
 
       expect(list.length).toBe(0);
       expect(isLoaded).toBe(true);
@@ -77,8 +75,8 @@ describe('HandsCardsFacade', () => {
      * Use `loadHandsCardsSuccess` to manually update list
      */
     it('allHandsCards$ should return the loaded list; and loaded flag == true', async () => {
-      let list = await readFirst(facade.allHandsCards$);
-      let isLoaded = await readFirst(facade.loaded$);
+      let list = await firstValueFrom(facade.allHandsCards$);
+      let isLoaded = await firstValueFrom(facade.loaded$);
 
       expect(list.length).toBe(0);
       expect(isLoaded).toBe(false);
@@ -97,8 +95,8 @@ describe('HandsCardsFacade', () => {
         })
       );
 
-      list = await readFirst(facade.allHandsCards$);
-      isLoaded = await readFirst(facade.loaded$);
+      list = await firstValueFrom(facade.allHandsCards$);
+      isLoaded = await firstValueFrom(facade.loaded$);
 
       expect(list.length).toBe(2);
       expect(isLoaded).toBe(true);

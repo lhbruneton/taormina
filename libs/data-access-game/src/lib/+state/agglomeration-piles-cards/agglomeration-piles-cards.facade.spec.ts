@@ -3,8 +3,7 @@ import { NgModule } from '@angular/core';
 import { TestBed } from '@angular/core/testing';
 import { EffectsModule } from '@ngrx/effects';
 import { Store, StoreModule } from '@ngrx/store';
-import { NxModule } from '@nrwl/angular';
-import { readFirst } from '@nrwl/angular/testing';
+import { firstValueFrom } from 'rxjs';
 
 import * as AgglomerationPilesCardsActions from './agglomeration-piles-cards.actions';
 import { AgglomerationPilesCardsEffects } from './agglomeration-piles-cards.effects';
@@ -40,7 +39,6 @@ describe('AgglomerationPilesCardsFacade', () => {
 
       @NgModule({
         imports: [
-          NxModule.forRoot(),
           StoreModule.forRoot({}),
           EffectsModule.forRoot([]),
           CustomFeatureModule,
@@ -49,24 +47,24 @@ describe('AgglomerationPilesCardsFacade', () => {
       class RootModule {}
       TestBed.configureTestingModule({ imports: [RootModule] });
 
-      store = TestBed.get(Store);
-      facade = TestBed.get(AgglomerationPilesCardsFacade);
+      store = TestBed.inject(Store);
+      facade = TestBed.inject(AgglomerationPilesCardsFacade);
     });
 
     /**
      * The initially generated facade::loadAll() returns empty array
      */
     it('loadAll() should return empty list with loaded == true', async () => {
-      let list = await readFirst(facade.allAgglomerationPilesCards$);
-      let isLoaded = await readFirst(facade.loaded$);
+      let list = await firstValueFrom(facade.allAgglomerationPilesCards$);
+      let isLoaded = await firstValueFrom(facade.loaded$);
 
       expect(list.length).toBe(0);
       expect(isLoaded).toBe(false);
 
       facade.initSavedGame();
 
-      list = await readFirst(facade.allAgglomerationPilesCards$);
-      isLoaded = await readFirst(facade.loaded$);
+      list = await firstValueFrom(facade.allAgglomerationPilesCards$);
+      isLoaded = await firstValueFrom(facade.loaded$);
 
       expect(list.length).toBe(0);
       expect(isLoaded).toBe(true);
@@ -76,8 +74,8 @@ describe('AgglomerationPilesCardsFacade', () => {
      * Use `loadAgglomerationPilesCardsSuccess` to manually update list
      */
     it('allAgglomerationPilesCards$ should return the loaded list; and loaded flag == true', async () => {
-      let list = await readFirst(facade.allAgglomerationPilesCards$);
-      let isLoaded = await readFirst(facade.loaded$);
+      let list = await firstValueFrom(facade.allAgglomerationPilesCards$);
+      let isLoaded = await firstValueFrom(facade.loaded$);
 
       expect(list.length).toBe(0);
       expect(isLoaded).toBe(false);
@@ -91,8 +89,8 @@ describe('AgglomerationPilesCardsFacade', () => {
         })
       );
 
-      list = await readFirst(facade.allAgglomerationPilesCards$);
-      isLoaded = await readFirst(facade.loaded$);
+      list = await firstValueFrom(facade.allAgglomerationPilesCards$);
+      isLoaded = await firstValueFrom(facade.loaded$);
 
       expect(list.length).toBe(2);
       expect(isLoaded).toBe(true);

@@ -2,7 +2,6 @@ import { TestBed } from '@angular/core/testing';
 import { provideMockActions } from '@ngrx/effects/testing';
 import { Action, createSelector } from '@ngrx/store';
 import { provideMockStore } from '@ngrx/store/testing';
-import { DataPersistence, NxModule } from '@nrwl/angular';
 import { hot } from 'jasmine-marbles';
 import { ACTION_CARD_INTERFACE_NAME } from '@taormina/shared-models';
 import { Observable } from 'rxjs';
@@ -25,10 +24,8 @@ describe('StockPilesCardsEffects', () => {
 
   beforeEach(() => {
     TestBed.configureTestingModule({
-      imports: [NxModule.forRoot()],
       providers: [
         StockPilesCardsEffects,
-        DataPersistence,
         provideMockActions(() => actions),
         provideMockStore(),
       ],
@@ -81,7 +78,7 @@ describe('StockPilesCardsEffects', () => {
         .mockImplementation(
           (pileId: string, cardType: string, cardId: string) =>
             createSelector(
-              () => [],
+              () => [] as StockPilesCardsModels.StockPilesCardsEntity[],
               // eslint-disable-next-line @typescript-eslint/no-unused-vars
               (_) =>
                 ({

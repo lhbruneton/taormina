@@ -3,7 +3,6 @@ import { TestBed } from '@angular/core/testing';
 import { provideMockActions } from '@ngrx/effects/testing';
 import { Action, createSelector } from '@ngrx/store';
 import { MockStore, provideMockStore } from '@ngrx/store/testing';
-import { DataPersistence, NxModule } from '@nrwl/angular';
 import {
   ID_CLAY_PIT_BLUE,
   ID_CLAY_PIT_RED,
@@ -41,10 +40,8 @@ describe('DomainsCardsEffects', () => {
 
   beforeEach(() => {
     TestBed.configureTestingModule({
-      imports: [NxModule.forRoot()],
       providers: [
         DomainsCardsEffects,
-        DataPersistence,
         provideMockActions(() => actions),
         provideMockStore(),
       ],
@@ -99,7 +96,7 @@ describe('DomainsCardsEffects', () => {
         // eslint-disable-next-line @typescript-eslint/no-unused-vars
         .mockImplementation((_die: ResourceValue) =>
           createSelector(
-            () => [],
+            () => [] as DomainsCardsModels.DomainsCardsEntity[],
             // eslint-disable-next-line @typescript-eslint/no-unused-vars
             (_) => [
               {
@@ -125,7 +122,7 @@ describe('DomainsCardsEffects', () => {
         // eslint-disable-next-line @typescript-eslint/no-unused-vars
         .mockImplementation((_die: ResourceValue) =>
           createSelector(
-            () => [],
+            () => [] as DomainsCardsModels.DomainsCardsEntity[],
             // eslint-disable-next-line @typescript-eslint/no-unused-vars
             (_) => [
               {
@@ -191,7 +188,7 @@ describe('DomainsCardsEffects', () => {
           // eslint-disable-next-line @typescript-eslint/no-unused-vars
           .mockImplementation((_id: string) =>
             createSelector(
-              () => [],
+              () => [] as DomainsCardsModels.DomainsCardsEntity[],
               // eslint-disable-next-line @typescript-eslint/no-unused-vars
               (_) =>
                 ({
@@ -229,7 +226,7 @@ describe('DomainsCardsEffects', () => {
           // eslint-disable-next-line @typescript-eslint/no-unused-vars
           .mockImplementation((_id: string) =>
             createSelector(
-              () => [],
+              () => [] as DomainsCardsModels.DomainsCardsEntity[],
               // eslint-disable-next-line @typescript-eslint/no-unused-vars
               (_) =>
                 undefined as DomainsCardsModels.DomainsCardsEntity | undefined
@@ -258,7 +255,7 @@ describe('DomainsCardsEffects', () => {
           // eslint-disable-next-line @typescript-eslint/no-unused-vars
           .mockImplementation((_id: string) =>
             createSelector(
-              () => [],
+              () => [] as DomainsCardsModels.DomainsCardsEntity[],
               // eslint-disable-next-line @typescript-eslint/no-unused-vars
               (_) =>
                 ({
@@ -294,7 +291,7 @@ describe('DomainsCardsEffects', () => {
           // eslint-disable-next-line @typescript-eslint/no-unused-vars
           .mockImplementation((_id: string) =>
             createSelector(
-              () => [],
+              () => [] as DomainsCardsModels.DomainsCardsEntity[],
               // eslint-disable-next-line @typescript-eslint/no-unused-vars
               (_) =>
                 ({
@@ -333,7 +330,7 @@ describe('DomainsCardsEffects', () => {
           // eslint-disable-next-line @typescript-eslint/no-unused-vars
           .mockImplementation((_id: string) =>
             createSelector(
-              () => [],
+              () => [] as DomainsCardsModels.DomainsCardsEntity[],
               // eslint-disable-next-line @typescript-eslint/no-unused-vars
               (_) =>
                 ({
@@ -371,7 +368,7 @@ describe('DomainsCardsEffects', () => {
           // eslint-disable-next-line @typescript-eslint/no-unused-vars
           .mockImplementation((_id: string) =>
             createSelector(
-              () => [],
+              () => [] as DomainsCardsModels.DomainsCardsEntity[],
               // eslint-disable-next-line @typescript-eslint/no-unused-vars
               (_) =>
                 undefined as DomainsCardsModels.DomainsCardsEntity | undefined
@@ -400,7 +397,7 @@ describe('DomainsCardsEffects', () => {
           // eslint-disable-next-line @typescript-eslint/no-unused-vars
           .mockImplementation((_id: string) =>
             createSelector(
-              () => [],
+              () => [] as DomainsCardsModels.DomainsCardsEntity[],
               // eslint-disable-next-line @typescript-eslint/no-unused-vars
               (_) =>
                 ({
@@ -913,7 +910,7 @@ describe('DomainsCardsEffects', () => {
           // eslint-disable-next-line @typescript-eslint/no-unused-vars
           .mockImplementation((_id: string) =>
             createSelector(
-              () => [],
+              () => [] as DomainsCardsModels.DomainsCardsEntity[],
               // eslint-disable-next-line @typescript-eslint/no-unused-vars
               (_) =>
                 ({
@@ -951,7 +948,7 @@ describe('DomainsCardsEffects', () => {
           // eslint-disable-next-line @typescript-eslint/no-unused-vars
           .mockImplementation((_id: string) =>
             createSelector(
-              () => [],
+              () => [] as DomainsCardsModels.DomainsCardsEntity[],
               // eslint-disable-next-line @typescript-eslint/no-unused-vars
               (_) =>
                 undefined as DomainsCardsModels.DomainsCardsEntity | undefined
@@ -980,7 +977,7 @@ describe('DomainsCardsEffects', () => {
           // eslint-disable-next-line @typescript-eslint/no-unused-vars
           .mockImplementation((_id: string) =>
             createSelector(
-              () => [],
+              () => [] as DomainsCardsModels.DomainsCardsEntity[],
               // eslint-disable-next-line @typescript-eslint/no-unused-vars
               (_) =>
                 ({

@@ -3,12 +3,11 @@ import { NgModule } from '@angular/core';
 import { TestBed } from '@angular/core/testing';
 import { EffectsModule } from '@ngrx/effects';
 import { Store, StoreModule } from '@ngrx/store';
-import { NxModule } from '@nrwl/angular';
-import { readFirst } from '@nrwl/angular/testing';
 import {
   AGGLOMERATION_CARD_INTERFACE_NAME,
   DEVELOPMENT_CARD_INTERFACE_NAME,
 } from '@taormina/shared-models';
+import { firstValueFrom } from 'rxjs';
 
 import * as DomainsCardsActions from './domains-cards.actions';
 import { DomainsCardsEffects } from './domains-cards.effects';
@@ -44,7 +43,6 @@ describe('DomainsCardsFacade', () => {
 
       @NgModule({
         imports: [
-          NxModule.forRoot(),
           StoreModule.forRoot({}),
           EffectsModule.forRoot([]),
           CustomFeatureModule,
@@ -61,16 +59,16 @@ describe('DomainsCardsFacade', () => {
      * The initially generated facade::loadAll() returns empty array
      */
     it('loadAll() should return empty list with loaded == true', async () => {
-      let list = await readFirst(facade.allDomainsCards$);
-      let isLoaded = await readFirst(facade.loaded$);
+      let list = await firstValueFrom(facade.allDomainsCards$);
+      let isLoaded = await firstValueFrom(facade.loaded$);
 
       expect(list.length).toBe(0);
       expect(isLoaded).toBe(false);
 
       facade.initSavedGame();
 
-      list = await readFirst(facade.allDomainsCards$);
-      isLoaded = await readFirst(facade.loaded$);
+      list = await firstValueFrom(facade.allDomainsCards$);
+      isLoaded = await firstValueFrom(facade.loaded$);
 
       expect(list.length).toBe(0);
       expect(isLoaded).toBe(true);
@@ -80,8 +78,8 @@ describe('DomainsCardsFacade', () => {
      * Use `loadDomainsCardsSuccess` to manually update list
      */
     it('allDomainsCards$ should return the loaded list; and loaded flag == true', async () => {
-      let list = await readFirst(facade.allDomainsCards$);
-      let isLoaded = await readFirst(facade.loaded$);
+      let list = await firstValueFrom(facade.allDomainsCards$);
+      let isLoaded = await firstValueFrom(facade.loaded$);
 
       expect(list.length).toBe(0);
       expect(isLoaded).toBe(false);
@@ -109,8 +107,8 @@ describe('DomainsCardsFacade', () => {
         })
       );
 
-      list = await readFirst(facade.allDomainsCards$);
-      isLoaded = await readFirst(facade.loaded$);
+      list = await firstValueFrom(facade.allDomainsCards$);
+      isLoaded = await firstValueFrom(facade.loaded$);
 
       expect(list.length).toBe(2);
       expect(isLoaded).toBe(true);

@@ -3,8 +3,7 @@ import { NgModule } from '@angular/core';
 import { TestBed } from '@angular/core/testing';
 import { EffectsModule } from '@ngrx/effects';
 import { Store, StoreModule } from '@ngrx/store';
-import { NxModule } from '@nrwl/angular';
-import { readFirst } from '@nrwl/angular/testing';
+import { firstValueFrom } from 'rxjs';
 
 import * as EventsPileCardsActions from './events-pile-cards.actions';
 import { EventsPileCardsEffects } from './events-pile-cards.effects';
@@ -40,7 +39,6 @@ describe('EventsPileCardsFacade', () => {
 
       @NgModule({
         imports: [
-          NxModule.forRoot(),
           StoreModule.forRoot({}),
           EffectsModule.forRoot([]),
           CustomFeatureModule,
@@ -57,16 +55,16 @@ describe('EventsPileCardsFacade', () => {
      * The initially generated facade::loadAll() returns empty array
      */
     it('loadAll() should return empty list with loaded == true', async () => {
-      let list = await readFirst(facade.allEventsPileCards$);
-      let isLoaded = await readFirst(facade.loaded$);
+      let list = await firstValueFrom(facade.allEventsPileCards$);
+      let isLoaded = await firstValueFrom(facade.loaded$);
 
       expect(list.length).toBe(0);
       expect(isLoaded).toBe(false);
 
       facade.initSavedGame();
 
-      list = await readFirst(facade.allEventsPileCards$);
-      isLoaded = await readFirst(facade.loaded$);
+      list = await firstValueFrom(facade.allEventsPileCards$);
+      isLoaded = await firstValueFrom(facade.loaded$);
 
       expect(list.length).toBe(0);
       expect(isLoaded).toBe(true);
@@ -76,8 +74,8 @@ describe('EventsPileCardsFacade', () => {
      * Use `loadEventsPileCardsSuccess` to manually update list
      */
     it('allEventsPileCards$ should return the loaded list; and loaded flag == true', async () => {
-      let list = await readFirst(facade.allEventsPileCards$);
-      let isLoaded = await readFirst(facade.loaded$);
+      let list = await firstValueFrom(facade.allEventsPileCards$);
+      let isLoaded = await firstValueFrom(facade.loaded$);
 
       expect(list.length).toBe(0);
       expect(isLoaded).toBe(false);
@@ -91,8 +89,8 @@ describe('EventsPileCardsFacade', () => {
         })
       );
 
-      list = await readFirst(facade.allEventsPileCards$);
-      isLoaded = await readFirst(facade.loaded$);
+      list = await firstValueFrom(facade.allEventsPileCards$);
+      isLoaded = await firstValueFrom(facade.loaded$);
 
       expect(list.length).toBe(2);
       expect(isLoaded).toBe(true);
