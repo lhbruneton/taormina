@@ -2,7 +2,6 @@ import { TestBed } from '@angular/core/testing';
 import { provideMockActions } from '@ngrx/effects/testing';
 import { Action, createSelector } from '@ngrx/store';
 import { provideMockStore } from '@ngrx/store/testing';
-import { DataPersistence, NxModule } from '@nrwl/angular';
 import { hot } from 'jasmine-marbles';
 import { ID_AGGLOMERATION_ROAD } from '@taormina/shared-constants';
 import { Observable } from 'rxjs';
@@ -18,16 +17,14 @@ describe('AgglomerationPilesCardsEffects', () => {
 
   beforeEach(() => {
     TestBed.configureTestingModule({
-      imports: [NxModule.forRoot()],
       providers: [
         AgglomerationPilesCardsEffects,
-        DataPersistence,
         provideMockActions(() => actions),
         provideMockStore(),
       ],
     });
 
-    effects = TestBed.get(AgglomerationPilesCardsEffects);
+    effects = TestBed.inject(AgglomerationPilesCardsEffects);
   });
 
   describe('initNewGame$', () => {
@@ -78,7 +75,8 @@ describe('AgglomerationPilesCardsEffects', () => {
           .spyOn(AgglomerationPilesCardsSelectors, 'getFirstCardPivotForPile')
           .mockImplementation((pileId: string) =>
             createSelector(
-              () => [],
+              () =>
+                [] as AgglomerationPilesCardsModels.AgglomerationPilesCardsEntity[],
               // eslint-disable-next-line @typescript-eslint/no-unused-vars
               (_) =>
                 ({
@@ -116,7 +114,8 @@ describe('AgglomerationPilesCardsEffects', () => {
           // eslint-disable-next-line @typescript-eslint/no-unused-vars
           .mockImplementation((_pileId: string) =>
             createSelector(
-              () => [],
+              () =>
+                [] as AgglomerationPilesCardsModels.AgglomerationPilesCardsEntity[],
               // eslint-disable-next-line @typescript-eslint/no-unused-vars
               (_) =>
                 undefined as

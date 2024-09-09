@@ -1,7 +1,7 @@
 import { Injectable } from '@angular/core';
 import { Actions, createEffect, ofType } from '@ngrx/effects';
 import { Store } from '@ngrx/store';
-import { fetch } from '@nrwl/angular';
+import { fetch } from '@ngrx/router-store/data-persistence';
 import { map } from 'rxjs/operators';
 import * as EventsPileCardsActions from './events-pile-cards.actions';
 import { createInitialEventsPileCards } from './events-pile-cards.models';

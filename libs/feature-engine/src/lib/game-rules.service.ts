@@ -38,7 +38,7 @@ import { filter, map, take, takeUntil } from 'rxjs/operators';
   providedIn: 'root',
 })
 export class GameRulesService {
-  gameEnded$ = new Subject();
+  gameEnded$ = new Subject<void>();
 
   event$ = this.game.eventDie$.pipe(filter((die) => die === EventValue.Event));
 

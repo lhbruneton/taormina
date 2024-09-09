@@ -1,0 +1,661 @@
+🔎 checking possible migrations..
+
+⚠️  failed to check fix missingStorybookDependencies
+
+Error: Unable to find or evaluate libs/ui-card/.storybook/main.js: SB_CORE-SERVER_0007 (MainFileEvaluationError): Storybook couldn't evaluate your libs/ui-card/.storybook/main.js file.
+
+Original error:
+TypeError: rootMain.stories is not iterable
+    at Object.<anonymous> (/libs/ui-card/.storybook/main.js:9:17)
+    at Module._compile (node:internal/modules/cjs/loader:1256:14)
+    at Module._compile (/node_modules/esbuild-register/dist/node.js:2258:26)
+    at Module._extensions..js (node:internal/modules/cjs/loader:1310:10)
+    at Object.newLoader (/node_modules/esbuild-register/dist/node.js:2262:9)
+    at extensions..js (/node_modules/esbuild-register/dist/node.js:4833:24)
+    at Module.load (node:internal/modules/cjs/loader:1119:32)
+    at Module._load (node:internal/modules/cjs/loader:960:12)
+    at Module.require (node:internal/modules/cjs/loader:1143:19)
+    at require (node:internal/modules/cjs/helpers:121:18)
+    at getStorybookData (/mnt/shared/work/taormina/node_modules/storybook/dist/generate.cjs:196:4457)
+    at async runFixes (/mnt/shared/work/taormina/node_modules/storybook/dist/generate.cjs:663:2645)
+    at async automigrate (/mnt/shared/work/taormina/node_modules/storybook/dist/generate.cjs:663:1620)
+    at async doAutomigrate (/mnt/shared/work/taormina/node_modules/storybook/dist/generate.cjs:663:636)
+    at async Command.<anonymous> (/mnt/shared/work/taormina/node_modules/storybook/dist/generate.cjs:739:2867)
+
+⚠️  failed to check fix addons-api
+
+Error: Unable to find or evaluate libs/ui-card/.storybook/main.js: SB_CORE-SERVER_0007 (MainFileEvaluationError): Storybook couldn't evaluate your libs/ui-card/.storybook/main.js file.
+
+Original error:
+TypeError: rootMain.stories is not iterable
+    at Object.<anonymous> (/libs/ui-card/.storybook/main.js:9:17)
+    at Module._compile (node:internal/modules/cjs/loader:1256:14)
+    at Module._compile (/node_modules/esbuild-register/dist/node.js:2258:26)
+    at Module._extensions..js (node:internal/modules/cjs/loader:1310:10)
+    at Object.newLoader (/node_modules/esbuild-register/dist/node.js:2262:9)
+    at extensions..js (/node_modules/esbuild-register/dist/node.js:4833:24)
+    at Module.load (node:internal/modules/cjs/loader:1119:32)
+    at Module._load (node:internal/modules/cjs/loader:960:12)
+    at Module.require (node:internal/modules/cjs/loader:1143:19)
+    at require (node:internal/modules/cjs/helpers:121:18)
+    at getStorybookData (/mnt/shared/work/taormina/node_modules/storybook/dist/generate.cjs:196:4457)
+    at async runFixes (/mnt/shared/work/taormina/node_modules/storybook/dist/generate.cjs:663:2645)
+    at async automigrate (/mnt/shared/work/taormina/node_modules/storybook/dist/generate.cjs:663:1620)
+    at async doAutomigrate (/mnt/shared/work/taormina/node_modules/storybook/dist/generate.cjs:663:636)
+    at async Command.<anonymous> (/mnt/shared/work/taormina/node_modules/storybook/dist/generate.cjs:739:2867)
+
+⚠️  failed to check fix new-frameworks
+
+Error: Unable to find or evaluate libs/ui-card/.storybook/main.js: SB_CORE-SERVER_0007 (MainFileEvaluationError): Storybook couldn't evaluate your libs/ui-card/.storybook/main.js file.
+
+Original error:
+TypeError: rootMain.stories is not iterable
+    at Object.<anonymous> (/libs/ui-card/.storybook/main.js:9:17)
+    at Module._compile (node:internal/modules/cjs/loader:1256:14)
+    at Module._compile (/node_modules/esbuild-register/dist/node.js:2258:26)
+    at Module._extensions..js (node:internal/modules/cjs/loader:1310:10)
+    at Object.newLoader (/node_modules/esbuild-register/dist/node.js:2262:9)
+    at extensions..js (/node_modules/esbuild-register/dist/node.js:4833:24)
+    at Module.load (node:internal/modules/cjs/loader:1119:32)
+    at Module._load (node:internal/modules/cjs/loader:960:12)
+    at Module.require (node:internal/modules/cjs/loader:1143:19)
+    at require (node:internal/modules/cjs/helpers:121:18)
+    at getStorybookData (/mnt/shared/work/taormina/node_modules/storybook/dist/generate.cjs:196:4457)
+    at async runFixes (/mnt/shared/work/taormina/node_modules/storybook/dist/generate.cjs:663:2645)
+    at async automigrate (/mnt/shared/work/taormina/node_modules/storybook/dist/generate.cjs:663:1620)
+    at async doAutomigrate (/mnt/shared/work/taormina/node_modules/storybook/dist/generate.cjs:663:636)
+    at async Command.<anonymous> (/mnt/shared/work/taormina/node_modules/storybook/dist/generate.cjs:739:2867)
+
+⚠️  failed to check fix cra5
+
+Error: Unable to find or evaluate libs/ui-card/.storybook/main.js: SB_CORE-SERVER_0007 (MainFileEvaluationError): Storybook couldn't evaluate your libs/ui-card/.storybook/main.js file.
+
+Original error:
+TypeError: rootMain.stories is not iterable
+    at Object.<anonymous> (/libs/ui-card/.storybook/main.js:9:17)
+    at Module._compile (node:internal/modules/cjs/loader:1256:14)
+    at Module._compile (/node_modules/esbuild-register/dist/node.js:2258:26)
+    at Module._extensions..js (node:internal/modules/cjs/loader:1310:10)
+    at Object.newLoader (/node_modules/esbuild-register/dist/node.js:2262:9)
+    at extensions..js (/node_modules/esbuild-register/dist/node.js:4833:24)
+    at Module.load (node:internal/modules/cjs/loader:1119:32)
+    at Module._load (node:internal/modules/cjs/loader:960:12)
+    at Module.require (node:internal/modules/cjs/loader:1143:19)
+    at require (node:internal/modules/cjs/helpers:121:18)
+    at getStorybookData (/mnt/shared/work/taormina/node_modules/storybook/dist/generate.cjs:196:4457)
+    at async runFixes (/mnt/shared/work/taormina/node_modules/storybook/dist/generate.cjs:663:2645)
+    at async automigrate (/mnt/shared/work/taormina/node_modules/storybook/dist/generate.cjs:663:1620)
+    at async doAutomigrate (/mnt/shared/work/taormina/node_modules/storybook/dist/generate.cjs:663:636)
+    at async Command.<anonymous> (/mnt/shared/work/taormina/node_modules/storybook/dist/generate.cjs:739:2867)
+
+⚠️  failed to check fix webpack5
+
+Error: Unable to find or evaluate libs/ui-card/.storybook/main.js: SB_CORE-SERVER_0007 (MainFileEvaluationError): Storybook couldn't evaluate your libs/ui-card/.storybook/main.js file.
+
+Original error:
+TypeError: rootMain.stories is not iterable
+    at Object.<anonymous> (/libs/ui-card/.storybook/main.js:9:17)
+    at Module._compile (node:internal/modules/cjs/loader:1256:14)
+    at Module._compile (/node_modules/esbuild-register/dist/node.js:2258:26)
+    at Module._extensions..js (node:internal/modules/cjs/loader:1310:10)
+    at Object.newLoader (/node_modules/esbuild-register/dist/node.js:2262:9)
+    at extensions..js (/node_modules/esbuild-register/dist/node.js:4833:24)
+    at Module.load (node:internal/modules/cjs/loader:1119:32)
+    at Module._load (node:internal/modules/cjs/loader:960:12)
+    at Module.require (node:internal/modules/cjs/loader:1143:19)
+    at require (node:internal/modules/cjs/helpers:121:18)
+    at getStorybookData (/mnt/shared/work/taormina/node_modules/storybook/dist/generate.cjs:196:4457)
+    at async runFixes (/mnt/shared/work/taormina/node_modules/storybook/dist/generate.cjs:663:2645)
+    at async automigrate (/mnt/shared/work/taormina/node_modules/storybook/dist/generate.cjs:663:1620)
+    at async doAutomigrate (/mnt/shared/work/taormina/node_modules/storybook/dist/generate.cjs:663:636)
+    at async Command.<anonymous> (/mnt/shared/work/taormina/node_modules/storybook/dist/generate.cjs:739:2867)
+
+⚠️  failed to check fix vue3
+
+Error: Unable to find or evaluate libs/ui-card/.storybook/main.js: SB_CORE-SERVER_0007 (MainFileEvaluationError): Storybook couldn't evaluate your libs/ui-card/.storybook/main.js file.
+
+Original error:
+TypeError: rootMain.stories is not iterable
+    at Object.<anonymous> (/libs/ui-card/.storybook/main.js:9:17)
+    at Module._compile (node:internal/modules/cjs/loader:1256:14)
+    at Module._compile (/node_modules/esbuild-register/dist/node.js:2258:26)
+    at Module._extensions..js (node:internal/modules/cjs/loader:1310:10)
+    at Object.newLoader (/node_modules/esbuild-register/dist/node.js:2262:9)
+    at extensions..js (/node_modules/esbuild-register/dist/node.js:4833:24)
+    at Module.load (node:internal/modules/cjs/loader:1119:32)
+    at Module._load (node:internal/modules/cjs/loader:960:12)
+    at Module.require (node:internal/modules/cjs/loader:1143:19)
+    at require (node:internal/modules/cjs/helpers:121:18)
+    at getStorybookData (/mnt/shared/work/taormina/node_modules/storybook/dist/generate.cjs:196:4457)
+    at async runFixes (/mnt/shared/work/taormina/node_modules/storybook/dist/generate.cjs:663:2645)
+    at async automigrate (/mnt/shared/work/taormina/node_modules/storybook/dist/generate.cjs:663:1620)
+    at async doAutomigrate (/mnt/shared/work/taormina/node_modules/storybook/dist/generate.cjs:663:636)
+    at async Command.<anonymous> (/mnt/shared/work/taormina/node_modules/storybook/dist/generate.cjs:739:2867)
+
+⚠️  failed to check fix addon-postcss
+
+Error: Unable to find or evaluate libs/ui-card/.storybook/main.js: SB_CORE-SERVER_0007 (MainFileEvaluationError): Storybook couldn't evaluate your libs/ui-card/.storybook/main.js file.
+
+Original error:
+TypeError: rootMain.stories is not iterable
+    at Object.<anonymous> (/libs/ui-card/.storybook/main.js:9:17)
+    at Module._compile (node:internal/modules/cjs/loader:1256:14)
+    at Module._compile (/node_modules/esbuild-register/dist/node.js:2258:26)
+    at Module._extensions..js (node:internal/modules/cjs/loader:1310:10)
+    at Object.newLoader (/node_modules/esbuild-register/dist/node.js:2262:9)
+    at extensions..js (/node_modules/esbuild-register/dist/node.js:4833:24)
+    at Module.load (node:internal/modules/cjs/loader:1119:32)
+    at Module._load (node:internal/modules/cjs/loader:960:12)
+    at Module.require (node:internal/modules/cjs/loader:1143:19)
+    at require (node:internal/modules/cjs/helpers:121:18)
+    at getStorybookData (/mnt/shared/work/taormina/node_modules/storybook/dist/generate.cjs:196:4457)
+    at async runFixes (/mnt/shared/work/taormina/node_modules/storybook/dist/generate.cjs:663:2645)
+    at async automigrate (/mnt/shared/work/taormina/node_modules/storybook/dist/generate.cjs:663:1620)
+    at async doAutomigrate (/mnt/shared/work/taormina/node_modules/storybook/dist/generate.cjs:663:636)
+    at async Command.<anonymous> (/mnt/shared/work/taormina/node_modules/storybook/dist/generate.cjs:739:2867)
+
+⚠️  failed to check fix viteConfigFile
+
+Error: Unable to find or evaluate libs/ui-card/.storybook/main.js: SB_CORE-SERVER_0007 (MainFileEvaluationError): Storybook couldn't evaluate your libs/ui-card/.storybook/main.js file.
+
+Original error:
+TypeError: rootMain.stories is not iterable
+    at Object.<anonymous> (/libs/ui-card/.storybook/main.js:9:17)
+    at Module._compile (node:internal/modules/cjs/loader:1256:14)
+    at Module._compile (/node_modules/esbuild-register/dist/node.js:2258:26)
+    at Module._extensions..js (node:internal/modules/cjs/loader:1310:10)
+    at Object.newLoader (/node_modules/esbuild-register/dist/node.js:2262:9)
+    at extensions..js (/node_modules/esbuild-register/dist/node.js:4833:24)
+    at Module.load (node:internal/modules/cjs/loader:1119:32)
+    at Module._load (node:internal/modules/cjs/loader:960:12)
+    at Module.require (node:internal/modules/cjs/loader:1143:19)
+    at require (node:internal/modules/cjs/helpers:121:18)
+    at getStorybookData (/mnt/shared/work/taormina/node_modules/storybook/dist/generate.cjs:196:4457)
+    at async runFixes (/mnt/shared/work/taormina/node_modules/storybook/dist/generate.cjs:663:2645)
+    at async automigrate (/mnt/shared/work/taormina/node_modules/storybook/dist/generate.cjs:663:1620)
+    at async doAutomigrate (/mnt/shared/work/taormina/node_modules/storybook/dist/generate.cjs:663:636)
+    at async Command.<anonymous> (/mnt/shared/work/taormina/node_modules/storybook/dist/generate.cjs:739:2867)
+
+⚠️  failed to check fix eslintPlugin
+
+Error: Unable to find or evaluate libs/ui-card/.storybook/main.js: SB_CORE-SERVER_0007 (MainFileEvaluationError): Storybook couldn't evaluate your libs/ui-card/.storybook/main.js file.
+
+Original error:
+TypeError: rootMain.stories is not iterable
+    at Object.<anonymous> (/libs/ui-card/.storybook/main.js:9:17)
+    at Module._compile (node:internal/modules/cjs/loader:1256:14)
+    at Module._compile (/node_modules/esbuild-register/dist/node.js:2258:26)
+    at Module._extensions..js (node:internal/modules/cjs/loader:1310:10)
+    at Object.newLoader (/node_modules/esbuild-register/dist/node.js:2262:9)
+    at extensions..js (/node_modules/esbuild-register/dist/node.js:4833:24)
+    at Module.load (node:internal/modules/cjs/loader:1119:32)
+    at Module._load (node:internal/modules/cjs/loader:960:12)
+    at Module.require (node:internal/modules/cjs/loader:1143:19)
+    at require (node:internal/modules/cjs/helpers:121:18)
+    at getStorybookData (/mnt/shared/work/taormina/node_modules/storybook/dist/generate.cjs:196:4457)
+    at async runFixes (/mnt/shared/work/taormina/node_modules/storybook/dist/generate.cjs:663:2645)
+    at async automigrate (/mnt/shared/work/taormina/node_modules/storybook/dist/generate.cjs:663:1620)
+    at async doAutomigrate (/mnt/shared/work/taormina/node_modules/storybook/dist/generate.cjs:663:636)
+    at async Command.<anonymous> (/mnt/shared/work/taormina/node_modules/storybook/dist/generate.cjs:739:2867)
+
+⚠️  failed to check fix builder-vite
+
+Error: Unable to find or evaluate libs/ui-card/.storybook/main.js: SB_CORE-SERVER_0007 (MainFileEvaluationError): Storybook couldn't evaluate your libs/ui-card/.storybook/main.js file.
+
+Original error:
+TypeError: rootMain.stories is not iterable
+    at Object.<anonymous> (/libs/ui-card/.storybook/main.js:9:17)
+    at Module._compile (node:internal/modules/cjs/loader:1256:14)
+    at Module._compile (/node_modules/esbuild-register/dist/node.js:2258:26)
+    at Module._extensions..js (node:internal/modules/cjs/loader:1310:10)
+    at Object.newLoader (/node_modules/esbuild-register/dist/node.js:2262:9)
+    at extensions..js (/node_modules/esbuild-register/dist/node.js:4833:24)
+    at Module.load (node:internal/modules/cjs/loader:1119:32)
+    at Module._load (node:internal/modules/cjs/loader:960:12)
+    at Module.require (node:internal/modules/cjs/loader:1143:19)
+    at require (node:internal/modules/cjs/helpers:121:18)
+    at getStorybookData (/mnt/shared/work/taormina/node_modules/storybook/dist/generate.cjs:196:4457)
+    at async runFixes (/mnt/shared/work/taormina/node_modules/storybook/dist/generate.cjs:663:2645)
+    at async automigrate (/mnt/shared/work/taormina/node_modules/storybook/dist/generate.cjs:663:1620)
+    at async doAutomigrate (/mnt/shared/work/taormina/node_modules/storybook/dist/generate.cjs:663:636)
+    at async Command.<anonymous> (/mnt/shared/work/taormina/node_modules/storybook/dist/generate.cjs:739:2867)
+
+⚠️  failed to check fix storybook-binary
+
+Error: Unable to find or evaluate libs/ui-card/.storybook/main.js: SB_CORE-SERVER_0007 (MainFileEvaluationError): Storybook couldn't evaluate your libs/ui-card/.storybook/main.js file.
+
+Original error:
+TypeError: rootMain.stories is not iterable
+    at Object.<anonymous> (/libs/ui-card/.storybook/main.js:9:17)
+    at Module._compile (node:internal/modules/cjs/loader:1256:14)
+    at Module._compile (/node_modules/esbuild-register/dist/node.js:2258:26)
+    at Module._extensions..js (node:internal/modules/cjs/loader:1310:10)
+    at Object.newLoader (/node_modules/esbuild-register/dist/node.js:2262:9)
+    at extensions..js (/node_modules/esbuild-register/dist/node.js:4833:24)
+    at Module.load (node:internal/modules/cjs/loader:1119:32)
+    at Module._load (node:internal/modules/cjs/loader:960:12)
+    at Module.require (node:internal/modules/cjs/loader:1143:19)
+    at require (node:internal/modules/cjs/helpers:121:18)
+    at getStorybookData (/mnt/shared/work/taormina/node_modules/storybook/dist/generate.cjs:196:4457)
+    at async runFixes (/mnt/shared/work/taormina/node_modules/storybook/dist/generate.cjs:663:2645)
+    at async automigrate (/mnt/shared/work/taormina/node_modules/storybook/dist/generate.cjs:663:1620)
+    at async doAutomigrate (/mnt/shared/work/taormina/node_modules/storybook/dist/generate.cjs:663:636)
+    at async Command.<anonymous> (/mnt/shared/work/taormina/node_modules/storybook/dist/generate.cjs:739:2867)
+
+⚠️  failed to check fix sb-scripts
+
+Error: Unable to find or evaluate libs/ui-card/.storybook/main.js: SB_CORE-SERVER_0007 (MainFileEvaluationError): Storybook couldn't evaluate your libs/ui-card/.storybook/main.js file.
+
+Original error:
+TypeError: rootMain.stories is not iterable
+    at Object.<anonymous> (/libs/ui-card/.storybook/main.js:9:17)
+    at Module._compile (node:internal/modules/cjs/loader:1256:14)
+    at Module._compile (/node_modules/esbuild-register/dist/node.js:2258:26)
+    at Module._extensions..js (node:internal/modules/cjs/loader:1310:10)
+    at Object.newLoader (/node_modules/esbuild-register/dist/node.js:2262:9)
+    at extensions..js (/node_modules/esbuild-register/dist/node.js:4833:24)
+    at Module.load (node:internal/modules/cjs/loader:1119:32)
+    at Module._load (node:internal/modules/cjs/loader:960:12)
+    at Module.require (node:internal/modules/cjs/loader:1143:19)
+    at require (node:internal/modules/cjs/helpers:121:18)
+    at getStorybookData (/mnt/shared/work/taormina/node_modules/storybook/dist/generate.cjs:196:4457)
+    at async runFixes (/mnt/shared/work/taormina/node_modules/storybook/dist/generate.cjs:663:2645)
+    at async automigrate (/mnt/shared/work/taormina/node_modules/storybook/dist/generate.cjs:663:1620)
+    at async doAutomigrate (/mnt/shared/work/taormina/node_modules/storybook/dist/generate.cjs:663:636)
+    at async Command.<anonymous> (/mnt/shared/work/taormina/node_modules/storybook/dist/generate.cjs:739:2867)
+
+⚠️  failed to check fix remove-jest-testing-library
+
+Error: Unable to find or evaluate libs/ui-card/.storybook/main.js: SB_CORE-SERVER_0007 (MainFileEvaluationError): Storybook couldn't evaluate your libs/ui-card/.storybook/main.js file.
+
+Original error:
+TypeError: rootMain.stories is not iterable
+    at Object.<anonymous> (/libs/ui-card/.storybook/main.js:9:17)
+    at Module._compile (node:internal/modules/cjs/loader:1256:14)
+    at Module._compile (/node_modules/esbuild-register/dist/node.js:2258:26)
+    at Module._extensions..js (node:internal/modules/cjs/loader:1310:10)
+    at Object.newLoader (/node_modules/esbuild-register/dist/node.js:2262:9)
+    at extensions..js (/node_modules/esbuild-register/dist/node.js:4833:24)
+    at Module.load (node:internal/modules/cjs/loader:1119:32)
+    at Module._load (node:internal/modules/cjs/loader:960:12)
+    at Module.require (node:internal/modules/cjs/loader:1143:19)
+    at require (node:internal/modules/cjs/helpers:121:18)
+    at getStorybookData (/mnt/shared/work/taormina/node_modules/storybook/dist/generate.cjs:196:4457)
+    at async runFixes (/mnt/shared/work/taormina/node_modules/storybook/dist/generate.cjs:663:2645)
+    at async automigrate (/mnt/shared/work/taormina/node_modules/storybook/dist/generate.cjs:663:1620)
+    at async doAutomigrate (/mnt/shared/work/taormina/node_modules/storybook/dist/generate.cjs:663:636)
+    at async Command.<anonymous> (/mnt/shared/work/taormina/node_modules/storybook/dist/generate.cjs:739:2867)
+
+⚠️  failed to check fix remove-argtypes-regex
+
+Error: Unable to find or evaluate libs/ui-card/.storybook/main.js: SB_CORE-SERVER_0007 (MainFileEvaluationError): Storybook couldn't evaluate your libs/ui-card/.storybook/main.js file.
+
+Original error:
+TypeError: rootMain.stories is not iterable
+    at Object.<anonymous> (/libs/ui-card/.storybook/main.js:9:17)
+    at Module._compile (node:internal/modules/cjs/loader:1256:14)
+    at Module._compile (/node_modules/esbuild-register/dist/node.js:2258:26)
+    at Module._extensions..js (node:internal/modules/cjs/loader:1310:10)
+    at Object.newLoader (/node_modules/esbuild-register/dist/node.js:2262:9)
+    at extensions..js (/node_modules/esbuild-register/dist/node.js:4833:24)
+    at Module.load (node:internal/modules/cjs/loader:1119:32)
+    at Module._load (node:internal/modules/cjs/loader:960:12)
+    at Module.require (node:internal/modules/cjs/loader:1143:19)
+    at require (node:internal/modules/cjs/helpers:121:18)
+    at getStorybookData (/mnt/shared/work/taormina/node_modules/storybook/dist/generate.cjs:196:4457)
+    at async runFixes (/mnt/shared/work/taormina/node_modules/storybook/dist/generate.cjs:663:2645)
+    at async automigrate (/mnt/shared/work/taormina/node_modules/storybook/dist/generate.cjs:663:1620)
+    at async doAutomigrate (/mnt/shared/work/taormina/node_modules/storybook/dist/generate.cjs:663:636)
+    at async Command.<anonymous> (/mnt/shared/work/taormina/node_modules/storybook/dist/generate.cjs:739:2867)
+
+⚠️  failed to check fix removedglobalclientapis
+
+Error: Unable to find or evaluate libs/ui-card/.storybook/main.js: SB_CORE-SERVER_0007 (MainFileEvaluationError): Storybook couldn't evaluate your libs/ui-card/.storybook/main.js file.
+
+Original error:
+TypeError: rootMain.stories is not iterable
+    at Object.<anonymous> (/libs/ui-card/.storybook/main.js:9:17)
+    at Module._compile (node:internal/modules/cjs/loader:1256:14)
+    at Module._compile (/node_modules/esbuild-register/dist/node.js:2258:26)
+    at Module._extensions..js (node:internal/modules/cjs/loader:1310:10)
+    at Object.newLoader (/node_modules/esbuild-register/dist/node.js:2262:9)
+    at extensions..js (/node_modules/esbuild-register/dist/node.js:4833:24)
+    at Module.load (node:internal/modules/cjs/loader:1119:32)
+    at Module._load (node:internal/modules/cjs/loader:960:12)
+    at Module.require (node:internal/modules/cjs/loader:1143:19)
+    at require (node:internal/modules/cjs/helpers:121:18)
+    at getStorybookData (/mnt/shared/work/taormina/node_modules/storybook/dist/generate.cjs:196:4457)
+    at async runFixes (/mnt/shared/work/taormina/node_modules/storybook/dist/generate.cjs:663:2645)
+    at async automigrate (/mnt/shared/work/taormina/node_modules/storybook/dist/generate.cjs:663:1620)
+    at async doAutomigrate (/mnt/shared/work/taormina/node_modules/storybook/dist/generate.cjs:663:636)
+    at async Command.<anonymous> (/mnt/shared/work/taormina/node_modules/storybook/dist/generate.cjs:739:2867)
+
+⚠️  failed to check fix github-flavored-markdown-mdx
+
+Error: Unable to find or evaluate libs/ui-card/.storybook/main.js: SB_CORE-SERVER_0007 (MainFileEvaluationError): Storybook couldn't evaluate your libs/ui-card/.storybook/main.js file.
+
+Original error:
+TypeError: rootMain.stories is not iterable
+    at Object.<anonymous> (/libs/ui-card/.storybook/main.js:9:17)
+    at Module._compile (node:internal/modules/cjs/loader:1256:14)
+    at Module._compile (/node_modules/esbuild-register/dist/node.js:2258:26)
+    at Module._extensions..js (node:internal/modules/cjs/loader:1310:10)
+    at Object.newLoader (/node_modules/esbuild-register/dist/node.js:2262:9)
+    at extensions..js (/node_modules/esbuild-register/dist/node.js:4833:24)
+    at Module.load (node:internal/modules/cjs/loader:1119:32)
+    at Module._load (node:internal/modules/cjs/loader:960:12)
+    at Module.require (node:internal/modules/cjs/loader:1143:19)
+    at require (node:internal/modules/cjs/helpers:121:18)
+    at getStorybookData (/mnt/shared/work/taormina/node_modules/storybook/dist/generate.cjs:196:4457)
+    at async runFixes (/mnt/shared/work/taormina/node_modules/storybook/dist/generate.cjs:663:2645)
+    at async automigrate (/mnt/shared/work/taormina/node_modules/storybook/dist/generate.cjs:663:1620)
+    at async doAutomigrate (/mnt/shared/work/taormina/node_modules/storybook/dist/generate.cjs:663:636)
+    at async Command.<anonymous> (/mnt/shared/work/taormina/node_modules/storybook/dist/generate.cjs:739:2867)
+
+⚠️  failed to check fix mdx-to-csf
+
+Error: Unable to find or evaluate libs/ui-card/.storybook/main.js: SB_CORE-SERVER_0007 (MainFileEvaluationError): Storybook couldn't evaluate your libs/ui-card/.storybook/main.js file.
+
+Original error:
+TypeError: rootMain.stories is not iterable
+    at Object.<anonymous> (/libs/ui-card/.storybook/main.js:9:17)
+    at Module._compile (node:internal/modules/cjs/loader:1256:14)
+    at Module._compile (/node_modules/esbuild-register/dist/node.js:2258:26)
+    at Module._extensions..js (node:internal/modules/cjs/loader:1310:10)
+    at Object.newLoader (/node_modules/esbuild-register/dist/node.js:2262:9)
+    at extensions..js (/node_modules/esbuild-register/dist/node.js:4833:24)
+    at Module.load (node:internal/modules/cjs/loader:1119:32)
+    at Module._load (node:internal/modules/cjs/loader:960:12)
+    at Module.require (node:internal/modules/cjs/loader:1143:19)
+    at require (node:internal/modules/cjs/helpers:121:18)
+    at getStorybookData (/mnt/shared/work/taormina/node_modules/storybook/dist/generate.cjs:196:4457)
+    at async runFixes (/mnt/shared/work/taormina/node_modules/storybook/dist/generate.cjs:663:2645)
+    at async automigrate (/mnt/shared/work/taormina/node_modules/storybook/dist/generate.cjs:663:1620)
+    at async doAutomigrate (/mnt/shared/work/taormina/node_modules/storybook/dist/generate.cjs:663:636)
+    at async Command.<anonymous> (/mnt/shared/work/taormina/node_modules/storybook/dist/generate.cjs:739:2867)
+
+⚠️  failed to check fix autodocsTrue
+
+Error: Unable to find or evaluate libs/ui-card/.storybook/main.js: SB_CORE-SERVER_0007 (MainFileEvaluationError): Storybook couldn't evaluate your libs/ui-card/.storybook/main.js file.
+
+Original error:
+TypeError: rootMain.stories is not iterable
+    at Object.<anonymous> (/libs/ui-card/.storybook/main.js:9:17)
+    at Module._compile (node:internal/modules/cjs/loader:1256:14)
+    at Module._compile (/node_modules/esbuild-register/dist/node.js:2258:26)
+    at Module._extensions..js (node:internal/modules/cjs/loader:1310:10)
+    at Object.newLoader (/node_modules/esbuild-register/dist/node.js:2262:9)
+    at extensions..js (/node_modules/esbuild-register/dist/node.js:4833:24)
+    at Module.load (node:internal/modules/cjs/loader:1119:32)
+    at Module._load (node:internal/modules/cjs/loader:960:12)
+    at Module.require (node:internal/modules/cjs/loader:1143:19)
+    at require (node:internal/modules/cjs/helpers:121:18)
+    at getStorybookData (/mnt/shared/work/taormina/node_modules/storybook/dist/generate.cjs:196:4457)
+    at async runFixes (/mnt/shared/work/taormina/node_modules/storybook/dist/generate.cjs:663:2645)
+    at async automigrate (/mnt/shared/work/taormina/node_modules/storybook/dist/generate.cjs:663:1620)
+    at async doAutomigrate (/mnt/shared/work/taormina/node_modules/storybook/dist/generate.cjs:663:636)
+    at async Command.<anonymous> (/mnt/shared/work/taormina/node_modules/storybook/dist/generate.cjs:739:2867)
+
+⚠️  failed to check fix angular-builders-multiproject
+
+Error: Unable to find or evaluate libs/ui-card/.storybook/main.js: SB_CORE-SERVER_0007 (MainFileEvaluationError): Storybook couldn't evaluate your libs/ui-card/.storybook/main.js file.
+
+Original error:
+TypeError: rootMain.stories is not iterable
+    at Object.<anonymous> (/libs/ui-card/.storybook/main.js:9:17)
+    at Module._compile (node:internal/modules/cjs/loader:1256:14)
+    at Module._compile (/node_modules/esbuild-register/dist/node.js:2258:26)
+    at Module._extensions..js (node:internal/modules/cjs/loader:1310:10)
+    at Object.newLoader (/node_modules/esbuild-register/dist/node.js:2262:9)
+    at extensions..js (/node_modules/esbuild-register/dist/node.js:4833:24)
+    at Module.load (node:internal/modules/cjs/loader:1119:32)
+    at Module._load (node:internal/modules/cjs/loader:960:12)
+    at Module.require (node:internal/modules/cjs/loader:1143:19)
+    at require (node:internal/modules/cjs/helpers:121:18)
+    at getStorybookData (/mnt/shared/work/taormina/node_modules/storybook/dist/generate.cjs:196:4457)
+    at async runFixes (/mnt/shared/work/taormina/node_modules/storybook/dist/generate.cjs:663:2645)
+    at async automigrate (/mnt/shared/work/taormina/node_modules/storybook/dist/generate.cjs:663:1620)
+    at async doAutomigrate (/mnt/shared/work/taormina/node_modules/storybook/dist/generate.cjs:663:636)
+    at async Command.<anonymous> (/mnt/shared/work/taormina/node_modules/storybook/dist/generate.cjs:739:2867)
+
+⚠️  failed to check fix angular-builders
+
+Error: Unable to find or evaluate libs/ui-card/.storybook/main.js: SB_CORE-SERVER_0007 (MainFileEvaluationError): Storybook couldn't evaluate your libs/ui-card/.storybook/main.js file.
+
+Original error:
+TypeError: rootMain.stories is not iterable
+    at Object.<anonymous> (/libs/ui-card/.storybook/main.js:9:17)
+    at Module._compile (node:internal/modules/cjs/loader:1256:14)
+    at Module._compile (/node_modules/esbuild-register/dist/node.js:2258:26)
+    at Module._extensions..js (node:internal/modules/cjs/loader:1310:10)
+    at Object.newLoader (/node_modules/esbuild-register/dist/node.js:2262:9)
+    at extensions..js (/node_modules/esbuild-register/dist/node.js:4833:24)
+    at Module.load (node:internal/modules/cjs/loader:1119:32)
+    at Module._load (node:internal/modules/cjs/loader:960:12)
+    at Module.require (node:internal/modules/cjs/loader:1143:19)
+    at require (node:internal/modules/cjs/helpers:121:18)
+    at getStorybookData (/mnt/shared/work/taormina/node_modules/storybook/dist/generate.cjs:196:4457)
+    at async runFixes (/mnt/shared/work/taormina/node_modules/storybook/dist/generate.cjs:663:2645)
+    at async automigrate (/mnt/shared/work/taormina/node_modules/storybook/dist/generate.cjs:663:1620)
+    at async doAutomigrate (/mnt/shared/work/taormina/node_modules/storybook/dist/generate.cjs:663:636)
+    at async Command.<anonymous> (/mnt/shared/work/taormina/node_modules/storybook/dist/generate.cjs:739:2867)
+
+⚠️  failed to check fix wrap-require
+
+Error: Unable to find or evaluate libs/ui-card/.storybook/main.js: SB_CORE-SERVER_0007 (MainFileEvaluationError): Storybook couldn't evaluate your libs/ui-card/.storybook/main.js file.
+
+Original error:
+TypeError: rootMain.stories is not iterable
+    at Object.<anonymous> (/libs/ui-card/.storybook/main.js:9:17)
+    at Module._compile (node:internal/modules/cjs/loader:1256:14)
+    at Module._compile (/node_modules/esbuild-register/dist/node.js:2258:26)
+    at Module._extensions..js (node:internal/modules/cjs/loader:1310:10)
+    at Object.newLoader (/node_modules/esbuild-register/dist/node.js:2262:9)
+    at extensions..js (/node_modules/esbuild-register/dist/node.js:4833:24)
+    at Module.load (node:internal/modules/cjs/loader:1119:32)
+    at Module._load (node:internal/modules/cjs/loader:960:12)
+    at Module.require (node:internal/modules/cjs/loader:1143:19)
+    at require (node:internal/modules/cjs/helpers:121:18)
+    at getStorybookData (/mnt/shared/work/taormina/node_modules/storybook/dist/generate.cjs:196:4457)
+    at async runFixes (/mnt/shared/work/taormina/node_modules/storybook/dist/generate.cjs:663:2645)
+    at async automigrate (/mnt/shared/work/taormina/node_modules/storybook/dist/generate.cjs:663:1620)
+    at async doAutomigrate (/mnt/shared/work/taormina/node_modules/storybook/dist/generate.cjs:663:636)
+    at async Command.<anonymous> (/mnt/shared/work/taormina/node_modules/storybook/dist/generate.cjs:739:2867)
+
+⚠️  failed to check fix react-docgen
+
+Error: Unable to find or evaluate libs/ui-card/.storybook/main.js: SB_CORE-SERVER_0007 (MainFileEvaluationError): Storybook couldn't evaluate your libs/ui-card/.storybook/main.js file.
+
+Original error:
+TypeError: rootMain.stories is not iterable
+    at Object.<anonymous> (/libs/ui-card/.storybook/main.js:9:17)
+    at Module._compile (node:internal/modules/cjs/loader:1256:14)
+    at Module._compile (/node_modules/esbuild-register/dist/node.js:2258:26)
+    at Module._extensions..js (node:internal/modules/cjs/loader:1310:10)
+    at Object.newLoader (/node_modules/esbuild-register/dist/node.js:2262:9)
+    at extensions..js (/node_modules/esbuild-register/dist/node.js:4833:24)
+    at Module.load (node:internal/modules/cjs/loader:1119:32)
+    at Module._load (node:internal/modules/cjs/loader:960:12)
+    at Module.require (node:internal/modules/cjs/loader:1143:19)
+    at require (node:internal/modules/cjs/helpers:121:18)
+    at getStorybookData (/mnt/shared/work/taormina/node_modules/storybook/dist/generate.cjs:196:4457)
+    at async runFixes (/mnt/shared/work/taormina/node_modules/storybook/dist/generate.cjs:663:2645)
+    at async automigrate (/mnt/shared/work/taormina/node_modules/storybook/dist/generate.cjs:663:1620)
+    at async doAutomigrate (/mnt/shared/work/taormina/node_modules/storybook/dist/generate.cjs:663:636)
+    at async Command.<anonymous> (/mnt/shared/work/taormina/node_modules/storybook/dist/generate.cjs:739:2867)
+
+⚠️  failed to check fix storyshots
+
+Error: Unable to find or evaluate libs/ui-card/.storybook/main.js: SB_CORE-SERVER_0007 (MainFileEvaluationError): Storybook couldn't evaluate your libs/ui-card/.storybook/main.js file.
+
+Original error:
+TypeError: rootMain.stories is not iterable
+    at Object.<anonymous> (/libs/ui-card/.storybook/main.js:9:17)
+    at Module._compile (node:internal/modules/cjs/loader:1256:14)
+    at Module._compile (/node_modules/esbuild-register/dist/node.js:2258:26)
+    at Module._extensions..js (node:internal/modules/cjs/loader:1310:10)
+    at Object.newLoader (/node_modules/esbuild-register/dist/node.js:2262:9)
+    at extensions..js (/node_modules/esbuild-register/dist/node.js:4833:24)
+    at Module.load (node:internal/modules/cjs/loader:1119:32)
+    at Module._load (node:internal/modules/cjs/loader:960:12)
+    at Module.require (node:internal/modules/cjs/loader:1143:19)
+    at require (node:internal/modules/cjs/helpers:121:18)
+    at getStorybookData (/mnt/shared/work/taormina/node_modules/storybook/dist/generate.cjs:196:4457)
+    at async runFixes (/mnt/shared/work/taormina/node_modules/storybook/dist/generate.cjs:663:2645)
+    at async automigrate (/mnt/shared/work/taormina/node_modules/storybook/dist/generate.cjs:663:1620)
+    at async doAutomigrate (/mnt/shared/work/taormina/node_modules/storybook/dist/generate.cjs:663:636)
+    at async Command.<anonymous> (/mnt/shared/work/taormina/node_modules/storybook/dist/generate.cjs:739:2867)
+
+⚠️  failed to check fix remove-react-dependency
+
+Error: Unable to find or evaluate libs/ui-card/.storybook/main.js: SB_CORE-SERVER_0007 (MainFileEvaluationError): Storybook couldn't evaluate your libs/ui-card/.storybook/main.js file.
+
+Original error:
+TypeError: rootMain.stories is not iterable
+    at Object.<anonymous> (/libs/ui-card/.storybook/main.js:9:17)
+    at Module._compile (node:internal/modules/cjs/loader:1256:14)
+    at Module._compile (/node_modules/esbuild-register/dist/node.js:2258:26)
+    at Module._extensions..js (node:internal/modules/cjs/loader:1310:10)
+    at Object.newLoader (/node_modules/esbuild-register/dist/node.js:2262:9)
+    at extensions..js (/node_modules/esbuild-register/dist/node.js:4833:24)
+    at Module.load (node:internal/modules/cjs/loader:1119:32)
+    at Module._load (node:internal/modules/cjs/loader:960:12)
+    at Module.require (node:internal/modules/cjs/loader:1143:19)
+    at require (node:internal/modules/cjs/helpers:121:18)
+    at getStorybookData (/mnt/shared/work/taormina/node_modules/storybook/dist/generate.cjs:196:4457)
+    at async runFixes (/mnt/shared/work/taormina/node_modules/storybook/dist/generate.cjs:663:2645)
+    at async automigrate (/mnt/shared/work/taormina/node_modules/storybook/dist/generate.cjs:663:1620)
+    at async doAutomigrate (/mnt/shared/work/taormina/node_modules/storybook/dist/generate.cjs:663:636)
+    at async Command.<anonymous> (/mnt/shared/work/taormina/node_modules/storybook/dist/generate.cjs:739:2867)
+
+⚠️  failed to check fix remove-legacy-mdx1
+
+Error: Unable to find or evaluate libs/ui-card/.storybook/main.js: SB_CORE-SERVER_0007 (MainFileEvaluationError): Storybook couldn't evaluate your libs/ui-card/.storybook/main.js file.
+
+Original error:
+TypeError: rootMain.stories is not iterable
+    at Object.<anonymous> (/libs/ui-card/.storybook/main.js:9:17)
+    at Module._compile (node:internal/modules/cjs/loader:1256:14)
+    at Module._compile (/node_modules/esbuild-register/dist/node.js:2258:26)
+    at Module._extensions..js (node:internal/modules/cjs/loader:1310:10)
+    at Object.newLoader (/node_modules/esbuild-register/dist/node.js:2262:9)
+    at extensions..js (/node_modules/esbuild-register/dist/node.js:4833:24)
+    at Module.load (node:internal/modules/cjs/loader:1119:32)
+    at Module._load (node:internal/modules/cjs/loader:960:12)
+    at Module.require (node:internal/modules/cjs/loader:1143:19)
+    at require (node:internal/modules/cjs/helpers:121:18)
+    at getStorybookData (/mnt/shared/work/taormina/node_modules/storybook/dist/generate.cjs:196:4457)
+    at async runFixes (/mnt/shared/work/taormina/node_modules/storybook/dist/generate.cjs:663:2645)
+    at async automigrate (/mnt/shared/work/taormina/node_modules/storybook/dist/generate.cjs:663:1620)
+    at async doAutomigrate (/mnt/shared/work/taormina/node_modules/storybook/dist/generate.cjs:663:636)
+    at async Command.<anonymous> (/mnt/shared/work/taormina/node_modules/storybook/dist/generate.cjs:739:2867)
+
+⚠️  failed to check fix webpack5-compiler-setup
+
+Error: Unable to find or evaluate libs/ui-card/.storybook/main.js: SB_CORE-SERVER_0007 (MainFileEvaluationError): Storybook couldn't evaluate your libs/ui-card/.storybook/main.js file.
+
+Original error:
+TypeError: rootMain.stories is not iterable
+    at Object.<anonymous> (/libs/ui-card/.storybook/main.js:9:17)
+    at Module._compile (node:internal/modules/cjs/loader:1256:14)
+    at Module._compile (/node_modules/esbuild-register/dist/node.js:2258:26)
+    at Module._extensions..js (node:internal/modules/cjs/loader:1310:10)
+    at Object.newLoader (/node_modules/esbuild-register/dist/node.js:2262:9)
+    at extensions..js (/node_modules/esbuild-register/dist/node.js:4833:24)
+    at Module.load (node:internal/modules/cjs/loader:1119:32)
+    at Module._load (node:internal/modules/cjs/loader:960:12)
+    at Module.require (node:internal/modules/cjs/loader:1143:19)
+    at require (node:internal/modules/cjs/helpers:121:18)
+    at getStorybookData (/mnt/shared/work/taormina/node_modules/storybook/dist/generate.cjs:196:4457)
+    at async runFixes (/mnt/shared/work/taormina/node_modules/storybook/dist/generate.cjs:663:2645)
+    at async automigrate (/mnt/shared/work/taormina/node_modules/storybook/dist/generate.cjs:663:1620)
+    at async doAutomigrate (/mnt/shared/work/taormina/node_modules/storybook/dist/generate.cjs:663:636)
+    at async Command.<anonymous> (/mnt/shared/work/taormina/node_modules/storybook/dist/generate.cjs:739:2867)
+
+⚠️  failed to check fix mdx1to3
+
+Error: Unable to find or evaluate libs/ui-card/.storybook/main.js: SB_CORE-SERVER_0007 (MainFileEvaluationError): Storybook couldn't evaluate your libs/ui-card/.storybook/main.js file.
+
+Original error:
+TypeError: rootMain.stories is not iterable
+    at Object.<anonymous> (/libs/ui-card/.storybook/main.js:9:17)
+    at Module._compile (node:internal/modules/cjs/loader:1256:14)
+    at Module._compile (/node_modules/esbuild-register/dist/node.js:2258:26)
+    at Module._extensions..js (node:internal/modules/cjs/loader:1310:10)
+    at Object.newLoader (/node_modules/esbuild-register/dist/node.js:2262:9)
+    at extensions..js (/node_modules/esbuild-register/dist/node.js:4833:24)
+    at Module.load (node:internal/modules/cjs/loader:1119:32)
+    at Module._load (node:internal/modules/cjs/loader:960:12)
+    at Module.require (node:internal/modules/cjs/loader:1143:19)
+    at require (node:internal/modules/cjs/helpers:121:18)
+    at getStorybookData (/mnt/shared/work/taormina/node_modules/storybook/dist/generate.cjs:196:4457)
+    at async runFixes (/mnt/shared/work/taormina/node_modules/storybook/dist/generate.cjs:663:2645)
+    at async automigrate (/mnt/shared/work/taormina/node_modules/storybook/dist/generate.cjs:663:1620)
+    at async doAutomigrate (/mnt/shared/work/taormina/node_modules/storybook/dist/generate.cjs:663:636)
+    at async Command.<anonymous> (/mnt/shared/work/taormina/node_modules/storybook/dist/generate.cjs:739:2867)
+
+⚠️  failed to check fix visual-tests-addon
+
+Error: Unable to find or evaluate libs/ui-card/.storybook/main.js: SB_CORE-SERVER_0007 (MainFileEvaluationError): Storybook couldn't evaluate your libs/ui-card/.storybook/main.js file.
+
+Original error:
+TypeError: rootMain.stories is not iterable
+    at Object.<anonymous> (/libs/ui-card/.storybook/main.js:9:17)
+    at Module._compile (node:internal/modules/cjs/loader:1256:14)
+    at Module._compile (/node_modules/esbuild-register/dist/node.js:2258:26)
+    at Module._extensions..js (node:internal/modules/cjs/loader:1310:10)
+    at Object.newLoader (/node_modules/esbuild-register/dist/node.js:2262:9)
+    at extensions..js (/node_modules/esbuild-register/dist/node.js:4833:24)
+    at Module.load (node:internal/modules/cjs/loader:1119:32)
+    at Module._load (node:internal/modules/cjs/loader:960:12)
+    at Module.require (node:internal/modules/cjs/loader:1143:19)
+    at require (node:internal/modules/cjs/helpers:121:18)
+    at getStorybookData (/mnt/shared/work/taormina/node_modules/storybook/dist/generate.cjs:196:4457)
+    at async runFixes (/mnt/shared/work/taormina/node_modules/storybook/dist/generate.cjs:663:2645)
+    at async automigrate (/mnt/shared/work/taormina/node_modules/storybook/dist/generate.cjs:663:1620)
+    at async doAutomigrate (/mnt/shared/work/taormina/node_modules/storybook/dist/generate.cjs:663:636)
+    at async Command.<anonymous> (/mnt/shared/work/taormina/node_modules/storybook/dist/generate.cjs:739:2867)
+
+⚠️  failed to check fix autodocs-tags
+
+Error: Unable to find or evaluate libs/ui-card/.storybook/main.js: SB_CORE-SERVER_0007 (MainFileEvaluationError): Storybook couldn't evaluate your libs/ui-card/.storybook/main.js file.
+
+Original error:
+TypeError: rootMain.stories is not iterable
+    at Object.<anonymous> (/libs/ui-card/.storybook/main.js:9:17)
+    at Module._compile (node:internal/modules/cjs/loader:1256:14)
+    at Module._compile (/node_modules/esbuild-register/dist/node.js:2258:26)
+    at Module._extensions..js (node:internal/modules/cjs/loader:1310:10)
+    at Object.newLoader (/node_modules/esbuild-register/dist/node.js:2262:9)
+    at extensions..js (/node_modules/esbuild-register/dist/node.js:4833:24)
+    at Module.load (node:internal/modules/cjs/loader:1119:32)
+    at Module._load (node:internal/modules/cjs/loader:960:12)
+    at Module.require (node:internal/modules/cjs/loader:1143:19)
+    at require (node:internal/modules/cjs/helpers:121:18)
+    at getStorybookData (/mnt/shared/work/taormina/node_modules/storybook/dist/generate.cjs:196:4457)
+    at async runFixes (/mnt/shared/work/taormina/node_modules/storybook/dist/generate.cjs:663:2645)
+    at async automigrate (/mnt/shared/work/taormina/node_modules/storybook/dist/generate.cjs:663:1620)
+    at async doAutomigrate (/mnt/shared/work/taormina/node_modules/storybook/dist/generate.cjs:663:636)
+    at async Command.<anonymous> (/mnt/shared/work/taormina/node_modules/storybook/dist/generate.cjs:739:2867)
+
+⚠️  failed to check fix initial-globals
+
+Error: Unable to find or evaluate libs/ui-card/.storybook/main.js: SB_CORE-SERVER_0007 (MainFileEvaluationError): Storybook couldn't evaluate your libs/ui-card/.storybook/main.js file.
+
+Original error:
+TypeError: rootMain.stories is not iterable
+    at Object.<anonymous> (/libs/ui-card/.storybook/main.js:9:17)
+    at Module._compile (node:internal/modules/cjs/loader:1256:14)
+    at Module._compile (/node_modules/esbuild-register/dist/node.js:2258:26)
+    at Module._extensions..js (node:internal/modules/cjs/loader:1310:10)
+    at Object.newLoader (/node_modules/esbuild-register/dist/node.js:2262:9)
+    at extensions..js (/node_modules/esbuild-register/dist/node.js:4833:24)
+    at Module.load (node:internal/modules/cjs/loader:1119:32)
+    at Module._load (node:internal/modules/cjs/loader:960:12)
+    at Module.require (node:internal/modules/cjs/loader:1143:19)
+    at require (node:internal/modules/cjs/helpers:121:18)
+    at getStorybookData (/mnt/shared/work/taormina/node_modules/storybook/dist/generate.cjs:196:4457)
+    at async runFixes (/mnt/shared/work/taormina/node_modules/storybook/dist/generate.cjs:663:2645)
+    at async automigrate (/mnt/shared/work/taormina/node_modules/storybook/dist/generate.cjs:663:1620)
+    at async doAutomigrate (/mnt/shared/work/taormina/node_modules/storybook/dist/generate.cjs:663:636)
+    at async Command.<anonymous> (/mnt/shared/work/taormina/node_modules/storybook/dist/generate.cjs:739:2867)

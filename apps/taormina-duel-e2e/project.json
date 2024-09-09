@@ -1,0 +1,29 @@
+{
+  "name": "taormina-duel-e2e",
+  "$schema": "../../node_modules/nx/schemas/project-schema.json",
+  "sourceRoot": "apps/taormina-duel-e2e/src",
+  "projectType": "application",
+  "targets": {
+    "e2e": {
+      "executor": "@nx/cypress:cypress",
+      "options": {
+        "cypressConfig": "apps/taormina-duel-e2e/cypress.json",
+        "tsConfig": "apps/taormina-duel-e2e/tsconfig.e2e.json",
+        "devServerTarget": "taormina-duel:serve"
+      },
+      "configurations": {
+        "production": {
+          "devServerTarget": "taormina-duel:serve:production"
+        }
+      }
+    },
+    "lint": {
+      "executor": "@nrwl/linter:eslint",
+      "options": {
+        "lintFilePatterns": ["apps/taormina-duel-e2e/**/*.{js,ts}"]
+      }
+    }
+  },
+  "tags": [],
+  "implicitDependencies": ["taormina-duel"]
+}

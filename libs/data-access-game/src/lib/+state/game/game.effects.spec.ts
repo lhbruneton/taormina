@@ -3,7 +3,6 @@ import { TestBed } from '@angular/core/testing';
 import { provideMockActions } from '@ngrx/effects/testing';
 import { Action } from '@ngrx/store';
 import { MockStore, provideMockStore } from '@ngrx/store/testing';
-import { DataPersistence, NxModule } from '@nrwl/angular';
 import { hot } from 'jasmine-marbles';
 import { EventValue } from '@taormina/shared-models';
 import { Observable } from 'rxjs';
@@ -31,10 +30,8 @@ describe('GameEffects', () => {
 
   beforeEach(() => {
     TestBed.configureTestingModule({
-      imports: [NxModule.forRoot()],
       providers: [
         GameEffects,
-        DataPersistence,
         provideMockActions(() => actions),
         provideMockStore(),
       ],

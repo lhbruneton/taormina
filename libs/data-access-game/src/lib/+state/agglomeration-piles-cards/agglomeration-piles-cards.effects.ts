@@ -1,7 +1,7 @@
 import { Injectable } from '@angular/core';
 import { Actions, createEffect, ofType } from '@ngrx/effects';
 import { select, Store } from '@ngrx/store';
-import { fetch } from '@nrwl/angular';
+import { fetch } from '@ngrx/router-store/data-persistence';
 import { of } from 'rxjs';
 import { catchError, concatMap, map, take } from 'rxjs/operators';
 

@@ -1,7 +1,7 @@
 import { Injectable } from '@angular/core';
 import { Actions, createEffect, ofType } from '@ngrx/effects';
 import { select, Store } from '@ngrx/store';
-import { fetch } from '@nrwl/angular';
+import { fetch } from '@ngrx/router-store/data-persistence';
 import { landCards } from '@taormina/shared-constants';
 import {
   LandCard,

@@ -1,6 +1,6 @@
 import { Injectable } from '@angular/core';
 import { Actions, createEffect, ofType } from '@ngrx/effects';
-import { fetch } from '@nrwl/angular';
+import { fetch } from '@ngrx/router-store/data-persistence';
 import { map } from 'rxjs/operators';
 
 import * as LandsPileCardsActions from './lands-pile-cards.actions';
