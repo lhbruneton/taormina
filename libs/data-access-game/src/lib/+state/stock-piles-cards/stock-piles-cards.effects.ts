@@ -1,7 +1,7 @@
 import { Injectable } from '@angular/core';
 import { Actions, createEffect, ofType } from '@ngrx/effects';
 import { select, Store } from '@ngrx/store';
-import { fetch } from '@nx/angular';
+import { fetch } from '@ngrx/router-store/data-persistence';
 import { forkJoin } from 'rxjs';
 import { map, mergeMap, take } from 'rxjs/operators';
 import { v4 as uuidv4 } from 'uuid';

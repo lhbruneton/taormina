@@ -1,6 +1,6 @@
 import { Injectable } from '@angular/core';
 import { Actions, createEffect, ofType } from '@ngrx/effects';
-import { fetch } from '@nx/angular';
+import { fetch } from '@ngrx/router-store/data-persistence';
 import { map } from 'rxjs/operators';
 import { v4 as uuidv4 } from 'uuid';
 

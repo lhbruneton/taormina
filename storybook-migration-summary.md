@@ -19,11 +19,15 @@ the Storybook automigration scripts could run successfully. The changes that wer
 
 ## The Storybook automigration scripts were ran
 
-The following commands ran successfully and your Storybook configuration was successfully migrated to the latest version 7:
+### Some migrations failed
+
+The following commands failed and your Storybook configuration for these projects was not
+migrated to the latest version 7:
 
 - `npx storybook@latest automigrate --config-dir libs/ui-card/.storybook --renderer @storybook/angular`
 
-Please make sure to check the results yourself and make sure that everything is working as expected.
+You can run these commands again, manually, and follow the instructions in the
+output of these commands to migrate your Storybook configuration to the latest version 7.
 
 Also, we may have missed something. Please make sure to check the logs of the Storybook CLI commands that were run, and look for
 the `❌ Failed trying to evaluate` message or `❌ The migration failed to update` message. This will indicate if a command was
@@ -59,4 +63,4 @@ Please read the [Storybook 7.0.0 release article](https://storybook.js.org/blog/
 official [Storybook 7.0.0 migration guide](https://storybook.js.org/docs/react/migration-guide)
 for more information.
 
-You can also read the docs for the [@nx/storybook:migrate-7 generator](https://nx.dev/packages/storybook/generators/migrate-7) and our [Storybook 7 setup guide](https://nx.dev/packages/storybook/documents/storybook-7-setup).
+You can also read the docs for the [@nx/storybook:migrate-7 generator](https://nx.dev/nx-api/storybook/generators/migrate-7) and our [Storybook 7 setup guide](https://nx.dev/nx-api/storybook/documents/storybook-7-setup).
