@@ -28,7 +28,9 @@ import { AppComponent } from './app.component';
       }
     ),
     EffectsModule.forRoot([]),
-    !environment.production ? StoreDevtoolsModule.instrument() : [],
+    !environment.production
+      ? StoreDevtoolsModule.instrument({ connectInZone: true })
+      : [],
     DataAccessGameModule,
     FeatureGameModule,
   ],

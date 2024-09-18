@@ -50,10 +50,10 @@ export const getAgglomerationSelected = createSelector(
   }
 );
 
-// eslint-disable-next-line @typescript-eslint/explicit-function-return-type
 export const getAgglomerationPileCardEntityByPivot = (
   pileId: string,
   cardId: string
+  // eslint-disable-next-line @typescript-eslint/explicit-function-return-type
 ) =>
   createSelector(
     getAllAgglomerationPilesCards,

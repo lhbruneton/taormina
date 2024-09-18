@@ -4,6 +4,7 @@
   "projectType": "application",
   "sourceRoot": "apps/taormina-duel/src",
   "prefix": "taormina",
+  "tags": [],
   "targets": {
     "build": {
       "executor": "@angular-devkit/build-angular:browser",
@@ -62,22 +63,22 @@
     "serve": {
       "executor": "@angular-devkit/build-angular:dev-server",
       "options": {
-        "browserTarget": "taormina-duel:build"
+        "buildTarget": "taormina-duel:build"
       },
       "configurations": {
         "production": {
-          "browserTarget": "taormina-duel:build:production"
+          "buildTarget": "taormina-duel:build:production"
         }
       }
     },
     "extract-i18n": {
       "executor": "@angular-devkit/build-angular:extract-i18n",
       "options": {
-        "browserTarget": "taormina-duel:build"
+        "buildTarget": "taormina-duel:build"
       }
     },
     "lint": {
-      "executor": "@nrwl/linter:eslint",
+      "executor": "@nx/linter:eslint",
       "options": {
         "lintFilePatterns": [
           "apps/taormina-duel/src/**/*.ts",
@@ -89,10 +90,8 @@
       "executor": "@nx/jest:jest",
       "outputs": ["{workspaceRoot}/coverage/apps/taormina-duel"],
       "options": {
-        "jestConfig": "apps/taormina-duel/jest.config.ts",
-        "passWithNoTests": true
+        "jestConfig": "apps/taormina-duel/jest.config.ts"
       }
     }
-  },
-  "tags": []
+  }
 }
