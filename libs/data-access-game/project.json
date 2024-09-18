@@ -4,9 +4,10 @@
   "projectType": "library",
   "sourceRoot": "libs/data-access-game/src",
   "prefix": "taormina",
+  "tags": [],
   "targets": {
     "lint": {
-      "executor": "@nrwl/linter:eslint",
+      "executor": "@nx/linter:eslint",
       "options": {
         "lintFilePatterns": [
           "libs/data-access-game/src/**/*.ts",
@@ -18,10 +19,8 @@
       "executor": "@nx/jest:jest",
       "outputs": ["{workspaceRoot}/coverage/libs/data-access-game"],
       "options": {
-        "jestConfig": "libs/data-access-game/jest.config.ts",
-        "passWithNoTests": true
+        "jestConfig": "libs/data-access-game/jest.config.ts"
       }
     }
-  },
-  "tags": []
+  }
 }

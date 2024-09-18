@@ -28,13 +28,18 @@
         "project": "./tsconfig.*?.json"
       },
       "rules": {
-        "@typescript-eslint/explicit-function-return-type": "error"
+        "@typescript-eslint/explicit-function-return-type": "error",
+        "@typescript-eslint/no-extra-semi": "error",
+        "no-extra-semi": "off"
       }
     },
     {
       "files": ["*.js", "*.jsx"],
       "extends": ["plugin:@nx/javascript"],
-      "rules": {}
+      "rules": {
+        "@typescript-eslint/no-extra-semi": "error",
+        "no-extra-semi": "off"
+      }
     }
   ],
   "extends": ["plugin:storybook/recommended"]

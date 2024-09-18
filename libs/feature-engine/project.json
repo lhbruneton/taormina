@@ -4,9 +4,10 @@
   "projectType": "library",
   "sourceRoot": "libs/feature-engine/src",
   "prefix": "taormina",
+  "tags": [],
   "targets": {
     "lint": {
-      "executor": "@nrwl/linter:eslint",
+      "executor": "@nx/linter:eslint",
       "options": {
         "lintFilePatterns": [
           "libs/feature-engine/src/**/*.ts",
@@ -18,10 +19,8 @@
       "executor": "@nx/jest:jest",
       "outputs": ["{workspaceRoot}/coverage/libs/feature-engine"],
       "options": {
-        "jestConfig": "libs/feature-engine/jest.config.ts",
-        "passWithNoTests": true
+        "jestConfig": "libs/feature-engine/jest.config.ts"
       }
     }
-  },
-  "tags": []
+  }
 }

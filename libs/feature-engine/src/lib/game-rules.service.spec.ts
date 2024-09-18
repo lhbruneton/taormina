@@ -37,6 +37,7 @@ import { marbles } from 'rxjs-marbles/jest';
 import { tap } from 'rxjs/operators';
 
 import { GameRulesService } from './game-rules.service';
+import { TestObservableLike } from 'rxjs-marbles/types';
 
 describe('GameRulesService', () => {
   let service: GameRulesService;
@@ -91,7 +92,7 @@ describe('GameRulesService', () => {
           // Then only event events should remain
           const expected$ = m.cold('--a-----|', {
             a: EventValue.Event,
-          });
+          }) as TestObservableLike<EventValue.Event>;
           m.expect(service.event$).toBeObservable(expected$);
         })
       );
@@ -119,7 +120,7 @@ describe('GameRulesService', () => {
           // Then only thieves events should remain
           const expected$ = m.cold('----a---|', {
             a: EventValue.Thieves,
-          });
+          }) as TestObservableLike<EventValue.Thieves>;
           m.expect(service.thieves$).toBeObservable(expected$);
         })
       );

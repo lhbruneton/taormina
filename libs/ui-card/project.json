@@ -4,9 +4,10 @@
   "projectType": "library",
   "sourceRoot": "libs/ui-card/src",
   "prefix": "taormina",
+  "tags": [],
   "targets": {
     "lint": {
-      "executor": "@nrwl/linter:eslint",
+      "executor": "@nx/linter:eslint",
       "options": {
         "lintFilePatterns": [
           "libs/ui-card/src/**/*.ts",
@@ -18,8 +19,7 @@
       "executor": "@nx/jest:jest",
       "outputs": ["{workspaceRoot}/coverage/libs/ui-card"],
       "options": {
-        "jestConfig": "libs/ui-card/jest.config.ts",
-        "passWithNoTests": true
+        "jestConfig": "libs/ui-card/jest.config.ts"
       }
     },
     "storybook": {
@@ -51,6 +51,5 @@
         }
       }
     }
-  },
-  "tags": []
+  }
 }

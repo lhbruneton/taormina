@@ -1,17 +1,9 @@
 {
-  "npmScope": "taormina",
-  "affected": {
-    "defaultBase": "master"
-  },
   "tasksRunnerOptions": {
     "default": {
-      "runner": "nx-cloud",
       "options": {
-        "accessToken": "NTlkMjliMzktNWE3Mi00ZDUwLWJjNmYtN2ZhODVkMzA4NjQ4fHJlYWQtd3JpdGU=",
-        "cacheableOperations": ["build", "test", "lint", "e2e"],
         "canTrackAnalytics": false,
-        "showUsageWarnings": true,
-        "parallel": 1
+        "showUsageWarnings": true
       }
     }
   },
@@ -51,7 +43,8 @@
   "targetDefaults": {
     "build": {
       "dependsOn": ["^build"],
-      "inputs": ["production", "^production"]
+      "inputs": ["production", "^production"],
+      "cache": true
     },
     "build-storybook": {
       "inputs": [
@@ -63,10 +56,24 @@
       ]
     },
     "e2e": {
-      "inputs": ["default", "^production"]
+      "inputs": ["default", "^production"],
+      "cache": true
     },
-    "test": {
-      "inputs": ["default", "^production", "{workspaceRoot}/jest.preset.js"]
+    "lint": {
+      "cache": true
+    },
+    "@nx/jest:jest": {
+      "inputs": ["default", "^production", "{workspaceRoot}/jest.preset.js"],
+      "cache": true,
+      "options": {
+        "passWithNoTests": true
+      },
+      "configurations": {
+        "ci": {
+          "ci": true,
+          "codeCoverage": true
+        }
+      }
     }
   },
   "namedInputs": {
@@ -87,5 +94,9 @@
       "!{projectRoot}/jest.config.[jt]s",
       "!{projectRoot}/src/test-setup.[jt]s"
     ]
-  }
+  },
+  "nxCloudAccessToken": "NTlkMjliMzktNWE3Mi00ZDUwLWJjNmYtN2ZhODVkMzA4NjQ4fHJlYWQtd3JpdGU=",
+  "parallel": 1,
+  "useInferencePlugins": false,
+  "defaultBase": "master"
 }

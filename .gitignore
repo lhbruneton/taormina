@@ -26,6 +26,8 @@
 
 # misc
 /.angular/cache
+/.nx/cache
+/.nx/workspace-data
 /.sass-cache
 /connect.lock
 /coverage
@@ -39,6 +41,3 @@ testem.log
 # System Files
 .DS_Store
 Thumbs.db
-
-.angular
-.nx

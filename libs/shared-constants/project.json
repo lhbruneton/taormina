@@ -4,9 +4,10 @@
   "projectType": "library",
   "sourceRoot": "libs/shared-constants/src",
   "prefix": "taormina",
+  "tags": [],
   "targets": {
     "lint": {
-      "executor": "@nrwl/linter:eslint",
+      "executor": "@nx/linter:eslint",
       "options": {
         "lintFilePatterns": [
           "libs/shared-constants/src/**/*.ts",
@@ -18,10 +19,8 @@
       "executor": "@nx/jest:jest",
       "outputs": ["{workspaceRoot}/coverage/libs/shared-constants"],
       "options": {
-        "jestConfig": "libs/shared-constants/jest.config.ts",
-        "passWithNoTests": true
+        "jestConfig": "libs/shared-constants/jest.config.ts"
       }
     }
-  },
-  "tags": []
+  }
 }
